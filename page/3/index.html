@@ -70,6 +70,66 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-161011_ml_notes2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/11/161011_ml_notes2/" class="article-date">
+  <time datetime="2016-10-10T16:00:00.000Z" itemprop="datePublished">2016-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/11/161011_ml_notes2/">Machine Learning Notes 02</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Linear-Regression-with-one-variable"><a href="#Linear-Regression-with-one-variable" class="headerlink" title="Linear Regression with one variable"></a>Linear Regression with one variable</h2><ul>
+<li><p><strong>Hypothesis:</strong><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <span>$h(\theta) = \theta_{0} + \theta_{1}x_{1}$</span><!-- Has MathJax --></p>
+</li>
+<li><p><strong>Cost function:</strong><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <span>$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$</span><!-- Has MathJax --></p>
+</li>
+</ul>
+<hr>
+<h2 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a><strong>Gradient descent</strong></h2><p><strong>Target:</strong> minimize <span>$J(\theta_{0},\theta_{1})$</span><!-- Has MathJax --> or <span>$J(\theta_{0},\theta_{1},...,\theta_{n})$</span><!-- Has MathJax --></p>
+<ul>
+<li><strong>Gradient algorithm:</strong></li>
+</ul>
+<p>&emsp;&emsp;&emsp;Repeat until convergence{<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})(for \: j=0\:and\:j=1)$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;}<br>&emsp;&emsp;&emsp;&emsp;( <span>$:=$</span><!-- Has MathJax --> - <em>Assignment</em>&emsp;&emsp;&emsp;&emsp;<span>$\alpha$</span><!-- Has MathJax --> - <em>Learning rate</em> )<br>&emsp;&emsp;<strong>Warning: </strong><span>$\theta_{0}$</span><!-- Has MathJax --> and <span>$\theta_{1}$</span><!-- Has MathJax -->should be updated <strong>Simultaneously</strong> !!!</p>
+<p>&emsp;&emsp;Especially, when gradient descent for linear regression,</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;<span>$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax -->&emsp;&emsp;when <span>$i=0$</span><!-- Has MathJax -->, we suppose <span>$x^{(0)}=1$</span><!-- Has MathJax --></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2016/10/11/161011_ml_notes2/" data-id="cj4tlhpws0015h1qd4huvpdom" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 02">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-161010_ml_notes1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/10/161010_ml_notes1/" class="article-date">
@@ -120,7 +180,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/10/10/161010_ml_notes1/" data-id="cj4malcrg001av6qd2mvpw7e6" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 01">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/10/10/161010_ml_notes1/" data-id="cj4tlhpwp0011h1qdne947803" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 01">分享到</a>
       
 
       
@@ -168,7 +228,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/09/20/160920_plans/" data-id="cj4malcth004rv6qdo5utg858" class="article-share-link" data-share="baidu" data-title="一点规划">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/09/20/160920_plans/" data-id="cj4tlhpwf000xh1qdk47e9zsu" class="article-share-link" data-share="baidu" data-title="一点规划">分享到</a>
       
 
       
@@ -256,7 +316,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/08/10/160810_re/" data-id="cj4malcqy000uv6qd24d586di" class="article-share-link" data-share="baidu" data-title="7.16-8.10">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/08/10/160810_re/" data-id="cj4tlhpwd000th1qdtj8nuhht" class="article-share-link" data-share="baidu" data-title="7.16-8.10">分享到</a>
       
 
       
@@ -328,7 +388,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/07/13/160713_re/" data-id="cj4malcqw000sv6qdb65apkw4" class="article-share-link" data-share="baidu" data-title="6.26-7.13">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/07/13/160713_re/" data-id="cj4tlhpw9000qh1qd83zl9zcv" class="article-share-link" data-share="baidu" data-title="6.26-7.13">分享到</a>
       
 
       
@@ -392,7 +452,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/06/24/160624_re/" data-id="cj4malcqt000ov6qd7kqqgqcj" class="article-share-link" data-share="baidu" data-title="5.17-6.24">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/06/24/160624_re/" data-id="cj4tlhpw7000mh1qd9h94lfph" class="article-share-link" data-share="baidu" data-title="5.17-6.24">分享到</a>
       
 
       
@@ -492,7 +552,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/05/17/160517_re/" data-id="cj4malcqo000gv6qdhofbuqbx" class="article-share-link" data-share="baidu" data-title="4.17-5.17">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/05/17/160517_re/" data-id="cj4tlhpw2000hh1qdyr92fols" class="article-share-link" data-share="baidu" data-title="4.17-5.17">分享到</a>
       
 
       
@@ -546,7 +606,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/05/14/160513_dsa-ch2/" data-id="cj4malcqs000mv6qd64qrzmz0" class="article-share-link" data-share="baidu" data-title="第二章 算法分析">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/05/14/160513_dsa-ch2/" data-id="cj4tlhpw5000lh1qdj02bpfey" class="article-share-link" data-share="baidu" data-title="第二章 算法分析">分享到</a>
       
 
       
@@ -605,64 +665,13 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/05/13/160513_dsa-ch1/" data-id="cj4malcql000dv6qddka6z4py" class="article-share-link" data-share="baidu" data-title="第一章 引论">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/05/13/160513_dsa-ch1/" data-id="cj4tlhpw0000fh1qd3tmyw2co" class="article-share-link" data-share="baidu" data-title="第一章 引论">分享到</a>
       
 
       
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/《数据结构与算法分析——C语言描述》/">《数据结构与算法分析——C语言描述》</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-160503_jsp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/03/160503_jsp/" class="article-date">
-  <time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished">2016-05-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/03/160503_jsp/">jsp搭建JEECMS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2016/05/03/160503_jsp/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2016/05/03/160503_jsp/" data-id="cj4malcqq000iv6qd7s57bk1m" class="article-share-link" data-share="baidu" data-title="jsp搭建JEECMS">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Networks/">Networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
 
     </footer>
   </div>
@@ -707,7 +716,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/05/03/160503_asp/" data-id="cj4malcqi000bv6qd0lrz33mb" class="article-share-link" data-share="baidu" data-title="ASP.NET 搭建 Discuz! NT">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/05/03/160503_asp/" data-id="cj4tlhpvw000ch1qdilfn3vzj" class="article-share-link" data-share="baidu" data-title="ASP.NET 搭建 Discuz! NT">分享到</a>
       
 
       
@@ -744,7 +753,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
