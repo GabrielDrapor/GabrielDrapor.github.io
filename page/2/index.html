@@ -70,6 +70,59 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-170406_ml_notes6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/05/170406_ml_notes6/" class="article-date">
+  <time datetime="2017-04-04T16:00:00.000Z" itemprop="datePublished">2017-04-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/05/170406_ml_notes6/">Machine Learning Notes 06</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="How-biological-neural-network-work"><a href="#How-biological-neural-network-work" class="headerlink" title="How biological neural network work"></a>How biological neural network work</h2><p>  As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg"></p>
+<hr>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/05/170406_ml_notes6/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/" data-id="cj4zsldnr00289jqd9l2z1d2c" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 06">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-170507_notice" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/21/170507_notice/" class="article-date">
@@ -642,78 +695,6 @@ Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}
 
 
   
-    <article id="post-161018_ml_notes3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/18/161018_ml_notes3/" class="article-date">
-  <time datetime="2016-10-17T16:00:00.000Z" itemprop="datePublished">2016-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/18/161018_ml_notes3/">Machine Learning Notes 03</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Multivariate-Linear-Regression"><a href="#Multivariate-Linear-Regression" class="headerlink" title="Multivariate Linear Regression"></a>Multivariate Linear Regression</h2><ul>
-<li><strong>Hypothesis:</strong><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <span>$h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i}$</span><!-- Has MathJax --></li>
-</ul>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax -->&emsp;&emsp;<span>$\theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax --></p>
-<p>&emsp;&emsp;<strong>Also</strong>,&emsp;<span>$h(\theta) = \theta ^{ T} X$</span><!-- Has MathJax --></p>
-<hr>
-<h2 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a><strong>Gradient descent</strong></h2><ul>
-<li><strong>Algorithm:</strong></li>
-</ul>
-<p>&emsp;&emsp;&emsp;Repeat{<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;}</p>
-<hr>
-<h2 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h2><ul>
-<li><strong>Idea</strong>: Make sure fretures are on a similar scale.</li>
-<li><strong>Mean normalization</strong><br>&emsp;&emsp;Replace <span>$x_{i}$</span><!-- Has MathJax --> with <span>$x_{i}-\mu_{i}$</span><!-- Has MathJax --> to make features have approximately zero mean(Do not apply to <span>$x_{0}$</span><!-- Has MathJax -->, Which we suppose equals 1)<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(<span>$\mu_{i}$</span><!-- Has MathJax --> :Average value of <span>$x_{i}$</span><!-- Has MathJax --> in training set, <span>$s_{i}$</span><!-- Has MathJax --> :range(=max-min)(or standard deviation))</li>
-</ul>
-<hr>
-<h2 id="Learning-Rate"><a href="#Learning-Rate" class="headerlink" title="Learning Rate"></a>Learning Rate</h2><ul>
-<li>If <span>$\alpha$</span><!-- Has MathJax --> is too small: slow convergence;</li>
-<li>If <span>$\alpha$</span><!-- Has MathJax --> is too large: <span>$J(\theta)$</span><!-- Has MathJax --> may not decrese on every iteration, may not converge(slow converge also possible);</li>
-</ul>
-<hr>
-<h2 id="Normal-Equation-—Solve-for-analytically"><a href="#Normal-Equation-—Solve-for-analytically" class="headerlink" title="Normal Equation —Solve for  analytically"></a>Normal Equation —Solve for <span>$\theta$</span><!-- Has MathJax --> analytically</h2><ul>
-<li>For the input X, add a column on the left in X filled with 1, make up a new X;</li>
-<li>then,<br>&emsp;&emsp; <span>$\theta = (X^{ T}X)^{-1}X^{ T}y$</span><!-- Has MathJax --></li>
-</ul>
-<p><strong>The difference between Gradient Descent and Normal Equation:</strong><br><img src="http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2016/10/18/161018_ml_notes3/" data-id="cj4zsldn3001b9jqdbapra85o" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 03">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -736,7 +717,7 @@ Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

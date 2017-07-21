@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2017-07-21T02:43:09.792Z</updated>
+  <updated>2017-07-21T05:06:50.653Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Codewars上一道5 kyu的SQL题</title>
+    <link href="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/"/>
+    <id>http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/</id>
+    <published>2017-07-20T16:00:00.000Z</published>
+    <updated>2017-07-21T05:06:50.653Z</updated>
+    
+    <content type="html"><![CDATA[<p>具体思路和过程以后有时间再来整理（Flag）。</p>
+<p>原题目的url是<a href="https://www.codewars.com/kata/calculating-running-total" target="_blank" rel="external">https://www.codewars.com/kata/calculating-running-total</a></p>
+<p>参考了一下简单的情况 <a href="http://sql55.com/query/cumulative-amount-1.php" target="_blank" rel="external">http://sql55.com/query/cumulative-amount-1.php</a> ，然后自己建表鼓捣了一会儿，</p>
+<p>终于得(meng)出了一个可行的答案：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;具体思路和过程以后有时间再来整理（Flag）。&lt;/p&gt;
+&lt;p&gt;原题目的url是&lt;a href=&quot;https://www.codewars.com/kata/calculating-running-total&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;h
+    
+    </summary>
+    
+    
+      <category term="SQL" scheme="http://gabrieldrapor.github.io/tags/SQL/"/>
+    
+  </entry>
   
   <entry>
     <title>记录一下最近参加过的面试；</title>
@@ -1167,54 +1193,6 @@ Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}
     <summary type="html">
     
       &lt;h2 id=&quot;Classification&quot;&gt;&lt;a href=&quot;#Classification&quot; class=&quot;headerlink&quot; title=&quot;Classification&quot;&gt;&lt;/a&gt;Classification&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;For the bi
-    
-    </summary>
-    
-      <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/categories/Machine-Learning/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/tags/Machine-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Machine Learning Notes 03</title>
-    <link href="http://gabrieldrapor.github.io/2016/10/18/161018_ml_notes3/"/>
-    <id>http://gabrieldrapor.github.io/2016/10/18/161018_ml_notes3/</id>
-    <published>2016-10-17T16:00:00.000Z</published>
-    <updated>2017-03-19T04:31:54.548Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Multivariate-Linear-Regression"><a href="#Multivariate-Linear-Regression" class="headerlink" title="Multivariate Linear Regression"></a>Multivariate Linear Regression</h2><ul>
-<li><strong>Hypothesis:</strong><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <span>$h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i}$</span><!-- Has MathJax --></li>
-</ul>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax -->&emsp;&emsp;<span>$\theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax --></p>
-<p>&emsp;&emsp;<strong>Also</strong>,&emsp;<span>$h(\theta) = \theta ^{ T} X$</span><!-- Has MathJax --></p>
-<hr>
-<h2 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a><strong>Gradient descent</strong></h2><ul>
-<li><strong>Algorithm:</strong></li>
-</ul>
-<p>&emsp;&emsp;&emsp;Repeat{<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;}</p>
-<hr>
-<h2 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h2><ul>
-<li><strong>Idea</strong>: Make sure fretures are on a similar scale.</li>
-<li><strong>Mean normalization</strong><br>&emsp;&emsp;Replace <span>$x_{i}$</span><!-- Has MathJax --> with <span>$x_{i}-\mu_{i}$</span><!-- Has MathJax --> to make features have approximately zero mean(Do not apply to <span>$x_{0}$</span><!-- Has MathJax -->, Which we suppose equals 1)<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(<span>$\mu_{i}$</span><!-- Has MathJax --> :Average value of <span>$x_{i}$</span><!-- Has MathJax --> in training set, <span>$s_{i}$</span><!-- Has MathJax --> :range(=max-min)(or standard deviation))</li>
-</ul>
-<hr>
-<h2 id="Learning-Rate"><a href="#Learning-Rate" class="headerlink" title="Learning Rate"></a>Learning Rate</h2><ul>
-<li>If <span>$\alpha$</span><!-- Has MathJax --> is too small: slow convergence;</li>
-<li>If <span>$\alpha$</span><!-- Has MathJax --> is too large: <span>$J(\theta)$</span><!-- Has MathJax --> may not decrese on every iteration, may not converge(slow converge also possible);</li>
-</ul>
-<hr>
-<h2 id="Normal-Equation-—Solve-for-analytically"><a href="#Normal-Equation-—Solve-for-analytically" class="headerlink" title="Normal Equation —Solve for  analytically"></a>Normal Equation —Solve for <span>$\theta$</span><!-- Has MathJax --> analytically</h2><ul>
-<li>For the input X, add a column on the left in X filled with 1, make up a new X;</li>
-<li>then,<br>&emsp;&emsp; <span>$\theta = (X^{ T}X)^{-1}X^{ T}y$</span><!-- Has MathJax --></li>
-</ul>
-<p><strong>The difference between Gradient Descent and Normal Equation:</strong><br><img src="http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Multivariate-Linear-Regression&quot;&gt;&lt;a href=&quot;#Multivariate-Linear-Regression&quot; class=&quot;headerlink&quot; title=&quot;Multivariate Linear Regression&quot;&gt;
     
     </summary>
     

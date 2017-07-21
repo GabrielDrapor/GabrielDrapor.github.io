@@ -4,17 +4,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>category: Server | DRAPORLAND</title>
+  <title>Codewars上一道5 kyu的SQL题 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Just record something">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DRAPORLAND">
-<meta property="og:url" content="http://gabrieldrapor.github.io/categories/Server/index.html">
+  <meta name="description" content="具体思路和过程以后有时间再来整理（Flag）。 原题目的url是https://www.codewars.com/kata/calculating-running-total 参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿， 终于得(meng)出了一个可行的答案： 1234567SELECT CAST(">
+<meta name="keywords" content="SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codewars上一道5 kyu的SQL题">
+<meta property="og:url" content="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="Just record something">
+<meta property="og:description" content="具体思路和过程以后有时间再来整理（Flag）。 原题目的url是https://www.codewars.com/kata/calculating-running-total 参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿， 终于得(meng)出了一个可行的答案： 1234567SELECT CAST(">
+<meta property="og:updated_time" content="2017-07-21T05:06:50.653Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DRAPORLAND">
-<meta name="twitter:description" content="Just record something">
+<meta name="twitter:title" content="Codewars上一道5 kyu的SQL题">
+<meta name="twitter:description" content="具体思路和过程以后有时间再来整理（Flag）。 原题目的url是https://www.codewars.com/kata/calculating-running-total 参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿， 终于得(meng)出了一个可行的答案： 1234567SELECT CAST(">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -68,77 +70,62 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/03/160503-php/" class="archive-article-date">
-  <time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished">5月 3</time>
+      <section id="main"><article id="post-170721_a_sql_ex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/21/170721_a_sql_ex/" class="article-date">
+  <time datetime="2017-07-20T16:00:00.000Z" itemprop="datePublished">2017-07-21</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/03/160503-php/">php搭建WordPress</a>
+    <h1 class="article-title" itemprop="name">
+      Codewars上一道5 kyu的SQL题
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/03/160503_jsp/" class="archive-article-date">
-  <time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished">5月 3</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/03/160503_jsp/">jsp搭建JEECMS</a>
-    </h1>
-  
+        <p>具体思路和过程以后有时间再来整理（Flag）。</p>
+<p>原题目的url是<a href="https://www.codewars.com/kata/calculating-running-total" target="_blank" rel="external">https://www.codewars.com/kata/calculating-running-total</a></p>
+<p>参考了一下简单的情况 <a href="http://sql55.com/query/cumulative-amount-1.php" target="_blank" rel="external">http://sql55.com/query/cumulative-amount-1.php</a> ，然后自己建表鼓捣了一会儿，</p>
+<p>终于得(meng)出了一个可行的答案：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/03/160503_asp/" class="archive-article-date">
-  <time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished">5月 3</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/03/160503_asp/">ASP.NET 搭建 Discuz! NT</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/" data-id="cj5deltya0000xzqdftzksbww" class="article-share-link" data-share="baidu" data-title="Codewars上一道5 kyu的SQL题">分享到</a>
+      
 
-    </header>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/11/170707-firstinterview-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">记录一下最近参加过的面试；</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
       
