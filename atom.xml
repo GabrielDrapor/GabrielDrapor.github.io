@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2017-07-21T05:06:50.653Z</updated>
+  <updated>2017-07-21T05:57:00.368Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/"/>
     <id>http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/</id>
     <published>2017-07-20T16:00:00.000Z</published>
-    <updated>2017-07-21T05:06:50.653Z</updated>
+    <updated>2017-07-21T05:57:00.368Z</updated>
     
     <content type="html"><![CDATA[<p>具体思路和过程以后有时间再来整理（Flag）。</p>
 <p>原题目的url是<a href="https://www.codewars.com/kata/calculating-running-total" target="_blank" rel="external">https://www.codewars.com/kata/calculating-running-total</a></p>
@@ -36,8 +36,8 @@
     
     </summary>
     
+      <category term="SQL" scheme="http://gabrieldrapor.github.io/categories/SQL/"/>
     
-      <category term="SQL" scheme="http://gabrieldrapor.github.io/tags/SQL/"/>
     
   </entry>
   
