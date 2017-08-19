@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2017-08-19T05:50:48.099Z</updated>
+  <updated>2017-08-19T06:56:49.141Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Codewars上有趣的题（一）</title>
+    <link href="http://gabrieldrapor.github.io/2017/08/19/170819_funny_codewars/"/>
+    <id>http://gabrieldrapor.github.io/2017/08/19/170819_funny_codewars/</id>
+    <published>2017-08-19T00:00:00.000Z</published>
+    <updated>2017-08-19T06:56:49.141Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p>
+<a id="more"></a>
+<ul>
+<li><p><a href="https://www.codewars.com/kata/sum-of-digits-slash-digital-root" target="_blank" rel="external">Sum of Digits / Digital Root</a></p>
+<p>题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIkipedia）。按照定义来做的话，也其实没什么难的，用python的话，无非就是分拆成字符，再转回数字然后相加，如此往复直到位数为1。然而在做完之后，我在Solutions里发现了这样两个答案：</p>
+<ul>
+<li><p>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &lt; <span class="number">10</span> <span class="keyword">else</span> digital_root(sum(map(int,str(n))))</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后我往下翻，又看到了下面这个让我颇为震惊的解法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">	<span class="keyword">return</span> n%<span class="number">9</span> <span class="keyword">or</span> n <span class="keyword">and</span> <span class="number">9</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：<a href="https://www.zhihu.com/question/30972581" target="_blank" rel="external">https://www.zhihu.com/question/30972581</a> 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p>
+<ul>
+<li><p>a and b，ab都非零时，结果为b；ab其中一个为0时，结果为0；</p>
+</li>
+<li><p>a or b，ab都非零时，结果为a；ab其中一个为0时，结果为另一个非零的数；</p>
+<p>并且，0 and 0和0 or 0都等于0。另外就是and的运算级要高于or，所以return后面的执行顺序就是先and后or：</p>
+</li>
+</ul>
+<blockquote>
+<p>n != 0且n != 9时，n and 9 == 9，n % 9 or 9 == n % 9；</p>
+<p>n == 0时，n and 9 == 0，n % 9 or 0 == 0；</p>
+<p>n == 9时，n and 9 == 9，n%9 or 9 == 9；</p>
+</blockquote>
+</li>
+<li><p><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don’t rely on luck.</a></p>
+<p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
+<p>在代码框里最开始给的是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure>
+<p>我想了想好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
+<ul>
+<li><p>首先是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
+</li>
+<li><p>然后是这个：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure>
+<p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
+</li>
+<li><p>当然，最让我折服的还是下面这个：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure>
+<p>？？？？？？？？？</p>
+<p>与上面这种解法类似的还有：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure>
+<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Coding" scheme="http://gabrieldrapor.github.io/categories/Coding/"/>
+    
+    
+      <category term="Codewars" scheme="http://gabrieldrapor.github.io/tags/Codewars/"/>
+    
+  </entry>
   
   <entry>
     <title>SQL的时间／日期无脑转换</title>
@@ -78,7 +151,7 @@
     <link href="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/"/>
     <id>http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/</id>
     <published>2017-07-21T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:36.297Z</updated>
+    <updated>2017-08-19T05:57:04.671Z</updated>
     
     <content type="html"><![CDATA[<p>具体思路和过程以后有时间再来整理（Flag）。</p>
 <p>原题目的url是<a href="https://www.codewars.com/kata/calculating-running-total" target="_blank" rel="external">https://www.codewars.com/kata/calculating-running-total</a></p>
@@ -96,6 +169,8 @@
     
       <category term="SQL" scheme="http://gabrieldrapor.github.io/categories/SQL/"/>
     
+    
+      <category term="Codewars" scheme="http://gabrieldrapor.github.io/tags/Codewars/"/>
     
   </entry>
   
@@ -1136,42 +1211,6 @@
     <summary type="html">
     
       &lt;p&gt;Besides what we have seen in &lt;a href=&quot;http://drapor.me/2016/12/01/161201_pyCrawler1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Note 1&lt;/a&gt;, we can a
-    
-    </summary>
-    
-      <category term="pyCrawler" scheme="http://gabrieldrapor.github.io/categories/pyCrawler/"/>
-    
-    
-      <category term="python" scheme="http://gabrieldrapor.github.io/tags/python/"/>
-    
-      <category term="Crawler" scheme="http://gabrieldrapor.github.io/tags/Crawler/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python Crawler Note 1</title>
-    <link href="http://gabrieldrapor.github.io/2016/12/01/161201_pyCrawler1/"/>
-    <id>http://gabrieldrapor.github.io/2016/12/01/161201_pyCrawler1/</id>
-    <published>2016-12-01T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:38.145Z</updated>
-    
-    <content type="html"><![CDATA[<p>First, let’s start with a easy one:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>The output should be like:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">......</div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>Also, codes below do the same thing,<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">request=urllib2.Request(url)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission" target="_blank" rel="external">Tutorial I recommand</a>) here to help us:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line">content = response.read()              <span class="comment">#First we store the content of whole webpage</span></div><div class="line">content = content.replace(<span class="string">'\n'</span>,<span class="string">''</span>)     <span class="comment">#I use this to delete all the newline character to avoid some troubles</span></div><div class="line"></div><div class="line">pattern = <span class="string">r'&lt;a class="article-title" href=".*?"&gt;.*?&lt;/a&gt;'</span>   <span class="comment">#Then your regex here, remember the 'r'</span></div><div class="line"></div><div class="line">result = re.findall(pattern, content) <span class="comment">#Find all the result</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">"index.html"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:    <span class="comment">#Write the result in a new HTML file</span></div><div class="line">    <span class="keyword">for</span> items <span class="keyword">in</span> result:</div><div class="line">        f.write(items+<span class="string">'&lt;br&gt;'</span>)</div></pre></td></tr></table></figure></p>
-<p><strong>Tip: Don’t use something like ‘+’ or ‘*’ in your zero-width assertion or write your regex like ‘(?&lt;![a-z]+)/d+’, or you will get:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error: look-behind requires fixed-width pattern.</div></pre></td></tr></table></figure></p>
-<p>And open the new HTML file we create with browser, we got this:<br><img src="http://7xugq7.com1.z0.glb.clouddn.com/pycrawler1_out.PNG"></p>
-<p><strong>Wow! How fantastic!!!</strong></p>
-<hr>
-<p><strong>And here’s the first attempt of mine (also my first crawler):</strong></p>
-<blockquote>
-<p>URL: <a href="http://stat.drapor.me/" target="_blank" rel="external">http://stat.drapor.me/</a><br>Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague" target="_blank" rel="external">https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;First, let’s start with a easy one:&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div 
     
     </summary>
     

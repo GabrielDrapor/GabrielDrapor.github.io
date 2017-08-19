@@ -70,6 +70,57 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-170423_sql2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/170423_sql2/" class="article-date">
+  <time datetime="2017-04-23T00:00:00.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/170423_sql2/">SQL Syntax(Ⅱ)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>继续。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/23/170423_sql2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/04/23/170423_sql2/" data-id="cj60gqfsy002gz2xufm5kwaz6" class="article-share-link" data-share="baidu" data-title="SQL Syntax(Ⅱ)">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-170422_sql1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/22/170422_sql1/" class="article-date">
@@ -587,64 +638,6 @@
 
 
   
-    <article id="post-161201_pyCrawler1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/01/161201_pyCrawler1/" class="article-date">
-  <time datetime="2016-12-01T00:00:00.000Z" itemprop="datePublished">2016-12-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/pyCrawler/">pyCrawler</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/01/161201_pyCrawler1/">Python Crawler Note 1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>First, let’s start with a easy one:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>The output should be like:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">......</div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>Also, codes below do the same thing,<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">request=urllib2.Request(url)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission" target="_blank" rel="external">Tutorial I recommand</a>) here to help us:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line">content = response.read()              <span class="comment">#First we store the content of whole webpage</span></div><div class="line">content = content.replace(<span class="string">'\n'</span>,<span class="string">''</span>)     <span class="comment">#I use this to delete all the newline character to avoid some troubles</span></div><div class="line"></div><div class="line">pattern = <span class="string">r'&lt;a class="article-title" href=".*?"&gt;.*?&lt;/a&gt;'</span>   <span class="comment">#Then your regex here, remember the 'r'</span></div><div class="line"></div><div class="line">result = re.findall(pattern, content) <span class="comment">#Find all the result</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">"index.html"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:    <span class="comment">#Write the result in a new HTML file</span></div><div class="line">    <span class="keyword">for</span> items <span class="keyword">in</span> result:</div><div class="line">        f.write(items+<span class="string">'&lt;br&gt;'</span>)</div></pre></td></tr></table></figure></p>
-<p><strong>Tip: Don’t use something like ‘+’ or ‘*’ in your zero-width assertion or write your regex like ‘(?&lt;![a-z]+)/d+’, or you will get:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error: look-behind requires fixed-width pattern.</div></pre></td></tr></table></figure></p>
-<p>And open the new HTML file we create with browser, we got this:<br><img src="http://7xugq7.com1.z0.glb.clouddn.com/pycrawler1_out.PNG"></p>
-<p><strong>Wow! How fantastic!!!</strong></p>
-<hr>
-<p><strong>And here’s the first attempt of mine (also my first crawler):</strong></p>
-<blockquote>
-<p>URL: <a href="http://stat.drapor.me/" target="_blank" rel="external">http://stat.drapor.me/</a><br>Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague" target="_blank" rel="external">https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2016/12/01/161201_pyCrawler1/" data-id="cj60gqfr0001jz2xui8dignp6" class="article-share-link" data-share="baidu" data-title="Python Crawler Note 1">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Crawler/">Crawler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -658,7 +651,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/numpy/">numpy</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pandas/">pandas</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pyCrawler/">pyCrawler</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《数据结构与算法分析——C语言描述》/">《数据结构与算法分析——C语言描述》</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人规划/">个人规划</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习记录/">学习记录</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/numpy/">numpy</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pandas/">pandas</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pyCrawler/">pyCrawler</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《数据结构与算法分析——C语言描述》/">《数据结构与算法分析——C语言描述》</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人规划/">个人规划</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习记录/">学习记录</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -667,7 +660,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
