@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/08/19/170819_funny_codewars/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
 <meta property="og:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。">
-<meta property="og:updated_time" content="2017-08-19T07:04:16.035Z">
+<meta property="og:updated_time" content="2017-08-19T07:06:45.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codewars上有趣的题（一）">
 <meta name="twitter:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。">
@@ -122,27 +122,28 @@
 </blockquote>
 <hr>
 <h4 id="Don’t-rely-on-luck"><a href="#Don’t-rely-on-luck" class="headerlink" title="Don’t rely on luck."></a><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don’t rely on luck.</a></h4><p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
-<p>在代码框里最开始给的是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure>
-<p>我想了想好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
 <ul>
-<li>首先是：</li>
+<li>在代码框里最开始给的是：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
+<ul>
+<li><p>首先是：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure>
-<p>  强行改seed让randint()输出一样的数，可以，很厉害。</p>
-<ul>
-<li>然后是这个：</li>
-</ul>
+<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
+</li>
+<li><p>然后是这个：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line"><span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure>
-<p>  前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
-<ul>
-<li>当然，最让我折服的还是下面这个：</li>
-</ul>
+<p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
+</li>
+<li><p>当然，最让我折服的还是下面这个：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line"><span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure>
-<p>  ？？？？？？？？？</p>
-<p>  与上面这种解法类似的还有：</p>
+<p>？？？？？？？？？</p>
+<p>与上面这种解法类似的还有：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure>
-<p>  <strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
+<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
+</li>
+</ul>
 
       
     </div>
