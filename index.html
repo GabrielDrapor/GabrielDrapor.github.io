@@ -70,6 +70,87 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-posts/170808_sql_time_switch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/08/posts/170808_sql_time_switch/" class="article-date">
+  <time datetime="2017-08-08T00:00:00.000Z" itemprop="datePublished">2017-08-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/08/posts/170808_sql_time_switch/">SQL的时间／日期无脑转换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。</p>
+<p>其实主要涉及的几种日期格式就是以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIMESTAMP</td>
+<td>‘2017-08-08 15:56:31.111’</td>
+</tr>
+<tr>
+<td>STRING(‘yyyyMMdd’)</td>
+<td>‘20170808’</td>
+</tr>
+<tr>
+<td>DATE(‘yyyy-MM-dd’)</td>
+<td>‘2017-08-08’</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>20170808</td>
+</tr>
+</tbody>
+</table>
+<p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
+<ul>
+<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyyMMdd’)即可；</li>
+<li>from_unixtime()函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li>
+</ul>
+<p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用UNIX_TIMESTAMP()转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p>
+<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp(‘2017-08-08’,’yyyy-MM-dd’),’yyyyMMdd’) 即可，反之也是一样的道理。     </p>
+<p>当然这其中存在很多捷径，比如TO_DATE()可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p>
+<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，’2017-08-08’ = ‘20170808’这个等式并不成立。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/08/08/posts/170808_sql_time_switch/" data-id="cj6ivv6y2002zu4xucbp8zicl" class="article-share-link" data-share="baidu" data-title="SQL的时间／日期无脑转换">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-170808_sql_time_switch" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/08/170808_sql_time_switch/" class="article-date">
@@ -151,6 +232,57 @@
 
 
   
+    <article id="post-posts/170721_a_sql_ex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/21/posts/170721_a_sql_ex/" class="article-date">
+  <time datetime="2017-07-21T00:00:00.000Z" itemprop="datePublished">2017-07-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/21/posts/170721_a_sql_ex/">Codewars上一道5 kyu的SQL题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>具体思路和过程以后有时间再来整理（Flag）。</p>
+<p>原题目的url是<a href="https://www.codewars.com/kata/calculating-running-total" target="_blank" rel="external">https://www.codewars.com/kata/calculating-running-total</a></p>
+<p>参考了一下简单的情况 <a href="http://sql55.com/query/cumulative-amount-1.php" target="_blank" rel="external">http://sql55.com/query/cumulative-amount-1.php</a> ，然后自己建表鼓捣了一会儿，</p>
+<p>终于得(meng)出了一个可行的答案：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/07/21/posts/170721_a_sql_ex/" data-id="cj6ivv6xy002wu4xu3ba5ht28" class="article-share-link" data-share="baidu" data-title="Codewars上一道5 kyu的SQL题">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Codewars/">Codewars</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-170721_a_sql_ex" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/21/170721_a_sql_ex/" class="article-date">
@@ -193,6 +325,53 @@
       
 
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-posts/170707-firstinterview-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/11/posts/170707-firstinterview-md/" class="article-date">
+  <time datetime="2017-07-11T00:00:00.000Z" itemprop="datePublished">2017-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/11/posts/170707-firstinterview-md/">记录一下最近参加过的面试；</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近几天参加了几次面试，也是我人生中的头几次面试，感觉值得一记，故有此篇。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/11/posts/170707-firstinterview-md/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/07/11/posts/170707-firstinterview-md/" data-id="cj6ivv6xt002tu4xuj13vb41o" class="article-share-link" data-share="baidu" data-title="记录一下最近参加过的面试；">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paths/">Paths</a></li></ul>
+
     </footer>
   </div>
   
@@ -247,6 +426,57 @@
 
 
   
+    <article id="post-posts/170701_semester-summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/01/posts/170701_semester-summary/" class="article-date">
+  <time datetime="2017-07-01T00:00:00.000Z" itemprop="datePublished">2017-07-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习记录/">学习记录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/01/posts/170701_semester-summary/">来写个学期总结吧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个学期就这样结束了，简单来写个总结吧，顺便做点计划。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/01/posts/170701_semester-summary/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/07/01/posts/170701_semester-summary/" data-id="cj6ivv6xr002qu4xun69lkkon" class="article-share-link" data-share="baidu" data-title="来写个学期总结吧">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paths/">Paths</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plans/">Plans</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-170701_term-summary" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/01/170701_term-summary/" class="article-date">
@@ -290,6 +520,58 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paths/">Paths</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plans/">Plans</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-posts/170614-pandas" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/14/posts/170614-pandas/" class="article-date">
+  <time datetime="2017-06-14T00:00:00.000Z" itemprop="datePublished">2017-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/pandas/">pandas</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/14/posts/170614-pandas/">pandas笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看书时顺手用Jupyter Notebook做的笔记。</p>
+<p>并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……</p>
+<p class="article-more-link"><a href="/python_data_analysis/pandas.html">Read More</a></p>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/06/14/posts/170614-pandas/" data-id="cj6ivv6xp002nu4xuq8evl5dz" class="article-share-link" data-share="baidu" data-title="pandas笔记">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
     </footer>
   </div>
@@ -350,271 +632,10 @@
 
 
   
-    <article id="post-170601_ml_notes7" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/01/170601_ml_notes7/" class="article-date">
-  <time datetime="2017-06-01T00:00:00.000Z" itemprop="datePublished">2017-06-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/01/170601_ml_notes7/">Machine Learning Notes 07</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="What-should-we-do-if-we-have-a-bad-predictions"><a href="#What-should-we-do-if-we-have-a-bad-predictions" class="headerlink" title="What should we do if we have a bad predictions?"></a>What should we do if we have a bad predictions?</h2><p>The following options may be feasible:</p>
-<ul>
-<li>Get more training examples;</li>
-<li>Try smaller sets of features;</li>
-<li>Try getting additional features;</li>
-<li>Try adding polynomial features (increasing degree of polynomial);</li>
-<li>Try decreasing $\lambda$;</li>
-<li>Try increasing $\lambda$;</li>
-</ul>
-<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn’t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/06/01/170601_ml_notes7/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2017/06/01/170601_ml_notes7/" data-id="cj60gqfti0031z2xuz9ddjks0" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 07">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-170511-numpy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/11/170511-numpy/" class="article-date">
-  <time datetime="2017-05-11T00:00:00.000Z" itemprop="datePublished">2017-05-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/numpy/">numpy</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/170511-numpy/">Numpy入门笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>看书时顺手用Jupyter Notebook做的笔记。<br>并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。</p>
-<p class="article-more-link"><a href="http://7xugq7.com1.z0.glb.clouddn.com/NpBasic.html" target="_blank" rel="external">Read More</a></p>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2017/05/11/170511-numpy/" data-id="cj60gqftf002wz2xufzor23nk" class="article-share-link" data-share="baidu" data-title="Numpy入门笔记">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-170502_ipython" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/02/170502_ipython/" class="article-date">
-  <time datetime="2017-05-02T00:00:00.000Z" itemprop="datePublished">2017-05-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/numpy/">numpy</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/02/170502_ipython/">IPython的一些笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在看《利用Python进行数据分析》…</p>
-<p>·</p><p class="article-more-link"><a href="/python_data_analysis/IPython.html">Read More</a></p><p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2017/05/02/170502_ipython/" data-id="cj60gqft5002oz2xuwucmwtkj" class="article-share-link" data-share="baidu" data-title="IPython的一些笔记">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-170425_sql3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/25/170425_sql3/" class="article-date">
-  <time datetime="2017-04-25T00:00:00.000Z" itemprop="datePublished">2017-04-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SQL/">SQL</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/170425_sql3/">SQL Syntax(Ⅲ)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/04/25/170425_sql3/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2017/04/25/170425_sql3/" data-id="cj60gqft3002lz2xuijjf14vr" class="article-share-link" data-share="baidu" data-title="SQL Syntax(Ⅲ)">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-170423_sql2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/23/170423_sql2/" class="article-date">
-  <time datetime="2017-04-23T00:00:00.000Z" itemprop="datePublished">2017-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SQL/">SQL</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/170423_sql2/">SQL Syntax(Ⅱ)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>继续。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/04/23/170423_sql2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2017/04/23/170423_sql2/" data-id="cj60gqfsy002gz2xufm5kwaz6" class="article-share-link" data-share="baidu" data-title="SQL Syntax(Ⅱ)">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
   </nav>
 </section>
       
@@ -624,7 +645,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/numpy/">numpy</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pandas/">pandas</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pyCrawler/">pyCrawler</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《数据结构与算法分析——C语言描述》/">《数据结构与算法分析——C语言描述》</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人规划/">个人规划</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习记录/">学习记录</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/numpy/">numpy</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pandas/">pandas</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pyCrawler/">pyCrawler</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《数据结构与算法分析——C语言描述》/">《数据结构与算法分析——C语言描述》</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人规划/">个人规划</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习记录/">学习记录</a><span class="category-list-count">14</span></li></ul>
     </div>
   </div>
 
@@ -633,7 +654,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 

@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>ASP.NET 搭建 Discuz! NT | DRAPORLAND</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express">
+<meta name="keywords" content="Networks,Server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASP.NET 搭建 Discuz! NT">
+<meta property="og:url" content="http://gabrieldrapor.github.io/2016/05/03/posts/160503_asp/index.html">
+<meta property="og:site_name" content="DRAPORLAND">
+<meta property="og:description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image004.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image001.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image005.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image007.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image009.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image011.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image013.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image015.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image019.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image018.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image021.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image019.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image022.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image023.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image026.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image028.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image032.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image030.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image033.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image034.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image036.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image037.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image039.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image041.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image045.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image043.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image047.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image049.png">
+<meta property="og:updated_time" content="2017-08-19T05:48:21.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASP.NET 搭建 Discuz! NT">
+<meta name="twitter:description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express">
+<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image004.png">
+  
+    <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head>
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">DRAPORLAND</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">“Witness me.”</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about-me">About me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="rss_feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://gabrieldrapor.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-posts/160503_asp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/03/posts/160503_asp/" class="article-date">
+  <time datetime="2016-05-03T00:00:00.000Z" itemprop="datePublished">2016-05-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Server/">Server</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ASP.NET 搭建 Discuz! NT
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express</strong></p>
+<a id="more"></a>
+<p><strong>*由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
+<h5 id="1-配置IIS。"><a href="#1-配置IIS。" class="headerlink" title="1.配置IIS。"></a>1.配置IIS。</h5><p>&emsp;&emsp; IIS是我们的服务器应用程序，我们首先需要打开它。</p>
+<ul>
+<li>首先在控制面板-程序和功能-打开或关闭Windows功能（如图），勾选“Internet Information Services可承载的Web核心”，“Internet信息服务”。</li>
+</ul>
+<p>   <img src="http://7xugq7.com1.z0.glb.clouddn.com/image004.png"></p>
+<p>​    </p>
+<ul>
+<li><p>在管理工具中找到“Internet 信息服务(IIS)管理器”，打开它，在左侧的“连接”栏下面找“个人电脑名&gt;网站”，右键点击网站，选择“添加网站”（如图）</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image001.png"></p>
+</li>
+</ul>
+<p>在弹出的对话框中，填写必要信息。</p>
+<!--more-->
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image005.png"></p>
+<p>​    </p>
+<pre><code>网站名称----给你的网站起个名字,如这里的&quot;SNC_ASP.NET&quot;
+
+物理路径----选取你网站在本地的目录
+
+绑定-IP地址----选取你服务器的ip地址，这里由于是在校园网环境中，无法搭建到外网的服务器，所以选取内网ip。
+
+端口----默认是80，如果有冲突可以自行修改。查看当前系统所占用的端口可以打开cmd，输入指令“netstat -a”查询（如图）
+</code></pre><p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image007.png"> </p>
+<ul>
+<li><p>查看IIS的主界面，找到“默认文档”，打开。</p>
+</li>
+<li><p>在打开的界面中，右键选择添加，添加名称为index.aspx，否则搭建服务器之后由于服务器不认识aspx的首页而打不开它。</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image009.png"></p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image011.png"></p>
+</li>
+</ul>
+<hr>
+<h5 id="2-配置SQL-Server"><a href="#2-配置SQL-Server" class="headerlink" title="2.配置SQL Server"></a>2.配置SQL Server</h5><p>从<a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=42299" target="_blank" rel="external">https://www.microsoft.com/zh-CN/download/details.aspx?id=42299</a> 下载 Microsoft® SQL Server® 2014 Express，只需下载    “ExpressAndTools 64BIT\SQLEXPRWT_你系统位数_CHS.exe”即可。下载完之后打开，选择提取目录，等待解压。</p>
+<p>打开解压的目录下的SETUP.EXE，在打开的“SQL Server安装中心”中选择“全新SQL Server 独立安装或向现有安装添加功能”，打开“SQL Server 2014安装程序”进行安装。</p>
+<p><strong>需要特别注意的是:</strong></p>
+<ul>
+<li>在“实例配置”中，可以自行命名实例，也可以用系统默认的实例名，但最好把名字记下来</li>
+</ul>
+<ul>
+<li>在“服务器配置”中，需要对SQL Server数据库选择一个用户，可以添加系统中的用户，填写对应的密码。如图。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image013.png"></p>
+<ul>
+<li>在“数据库引擎配置”中，最好选择混合模式，单独设置一个SQL Server系统管理员账户，否则在后面关联用户的时候可能会遇到麻烦。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image015.png"></p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image019.png"></p>
+<p>完成安装后，打开SQL Server 2014 Management Studio，连接到你的服务器。</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image018.png"></p>
+<p>这里可以选择Windows 身份验证，也可以选择SQL Server身份验证。然后点击“连接”。</p>
+<p>连接后，在右侧的对象资源管理器中，找到“数据库，右键单击，选择“新建数据库”，填写数据库名称，如dnt，然后设置所有者，可以直接选sa即可。</p>
+<figure class="half"><br><br>    <img src="http://7xugq7.com1.z0.glb.clouddn.com/image021.png"><br><br>    <img src="http://7xugq7.com1.z0.glb.clouddn.com/image019.png"><br><br></figure>
+
+
+
+<hr>
+<h5 id="3-安装Discuz！NT。"><a href="#3-安装Discuz！NT。" class="headerlink" title="3.安装Discuz！NT。"></a>3.安装Discuz！NT。</h5><p>从官网 <a href="http://www.comsenz.com/products/nt" target="_blank" rel="external">http://www.comsenz.com/products/nt</a> 下载Discuz！NT压缩包，将其解压，</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image022.png"></p>
+<p>打开readme目录下的catalog.html可以看见官方所给出的介绍页面，其中就包括了安装指南</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image023.png"></p>
+<p>接下来，我们只需按照安装指南所给的步骤一步步进行</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image026.png"></p>
+<ul>
+<li>这里特别注意划红线的部分，是把upload_files目录里的东西放到服务器的根目录下而不是把upload_files文件夹整个放进服务器根目录。如图。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image028.png"></p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image032.png"></p>
+<ul>
+<li>我使用的系统是WIN7，但依旧需要修改目录的权限，右键-属性-安全-编辑就可以编辑用户权限了。在IIS管理器中也可以对目录的权限进行设置。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image030.png"></p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image033.png"> </p>
+<ul>
+<li>按照教程要求，我们在浏览器地址栏中输入应输入的内容，然后发现了如下的报错。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image034.png"></p>
+<ul>
+<li>通过阅读错误信息和查看根目录下的web.config配置文件，我们可以大概了解到问题出在Discuz!NT没有获得接管权，而在配置文件中也没有对相关权限的设置。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image036.png"></p>
+<ul>
+<li>此时我们应该做的是，打开控制面板-Windows功能，在应用程序开发功能目录下将下面的ASP.NET功能勾选上。系统会自动将需要的其他功能自动勾选上。</li>
+</ul>
+<figure class="half"><br><br>    <img src="http://7xugq7.com1.z0.glb.clouddn.com/image037.png"><br><br>    <img src="http://7xugq7.com1.z0.glb.clouddn.com/image039.png"><br><br></figure>
+
+
+
+<ul>
+<li>再次运行安装脚本，即访问<a href="http://您的域名/install/index.aspx" target="_blank" rel="external">http://您的域名/install/index.aspx</a> ，会看到如图的界面。 选择”接受”，点击“下一步”。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image041.png"></p>
+<ul>
+<li>通过环境监测后，需要填写数据库信息，填写刚才创建的数据库名称，管理员账号和密码，在数据库服务器一项中填写自己的SQL Server服务器名称。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image045.png"></p>
+<p>点击下一步。</p>
+<ul>
+<li>在出现的“论坛设置信息”界面中，自行设定管理员名称和密码。然后再次点击下一步。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image043.png"></p>
+<ul>
+<li>然后会出现如图界面。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image047.png"></p>
+<ul>
+<li>点击”进入论坛“，可以看到论坛的界面，说明搭建成功。可以尝试登陆管理员账号，也可以通过本机ip访问论坛。</li>
+</ul>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image049.png"></p>
+<pre><code>  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2016/05/03/posts/160503_asp/" data-id="cj6ivv6v4000cu4xuedol0btl" class="article-share-link" data-share="baidu" data-title="ASP.NET 搭建 Discuz! NT">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Networks/">Networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/03/posts/160503-php/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          php搭建WordPress
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/03/posts/160503_jsp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">jsp搭建JEECMS</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">　</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/numpy/">numpy</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pandas/">pandas</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pyCrawler/">pyCrawler</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《数据结构与算法分析——C语言描述》/">《数据结构与算法分析——C语言描述》</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人规划/">个人规划</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习记录/">学习记录</a><span class="category-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">　</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Gabriel Drapor<br>
+      Powered by Hexo
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about-me" class="mobile-nav-link">About me</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

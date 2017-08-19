@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2017-08-08T08:27:53.209Z</updated>
+  <updated>2017-08-19T05:48:32.994Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL的时间／日期无脑转换</title>
+    <link href="http://gabrieldrapor.github.io/2017/08/08/posts/170808_sql_time_switch/"/>
+    <id>http://gabrieldrapor.github.io/2017/08/08/posts/170808_sql_time_switch/</id>
+    <published>2017-08-08T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:32.994Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。</p>
+<p>其实主要涉及的几种日期格式就是以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIMESTAMP</td>
+<td>‘2017-08-08 15:56:31.111’</td>
+</tr>
+<tr>
+<td>STRING(‘yyyyMMdd’)</td>
+<td>‘20170808’</td>
+</tr>
+<tr>
+<td>DATE(‘yyyy-MM-dd’)</td>
+<td>‘2017-08-08’</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>20170808</td>
+</tr>
+</tbody>
+</table>
+<p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
+<ul>
+<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyyMMdd’)即可；</li>
+<li>from_unixtime()函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li>
+</ul>
+<p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用UNIX_TIMESTAMP()转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p>
+<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp(‘2017-08-08’,’yyyy-MM-dd’),’yyyyMMdd’) 即可，反之也是一样的道理。     </p>
+<p>当然这其中存在很多捷径，比如TO_DATE()可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p>
+<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，’2017-08-08’ = ‘20170808’这个等式并不成立。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。&lt;/p&gt;
+&lt;p&gt;其实主要涉及的几种日期格式就是以下几种：&lt;/p
+    
+    </summary>
+    
+      <category term="SQL" scheme="http://gabrieldrapor.github.io/categories/SQL/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>SQL的时间／日期无脑转换</title>
@@ -75,6 +133,34 @@
   
   <entry>
     <title>Codewars上一道5 kyu的SQL题</title>
+    <link href="http://gabrieldrapor.github.io/2017/07/21/posts/170721_a_sql_ex/"/>
+    <id>http://gabrieldrapor.github.io/2017/07/21/posts/170721_a_sql_ex/</id>
+    <published>2017-07-21T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:32.730Z</updated>
+    
+    <content type="html"><![CDATA[<p>具体思路和过程以后有时间再来整理（Flag）。</p>
+<p>原题目的url是<a href="https://www.codewars.com/kata/calculating-running-total" target="_blank" rel="external">https://www.codewars.com/kata/calculating-running-total</a></p>
+<p>参考了一下简单的情况 <a href="http://sql55.com/query/cumulative-amount-1.php" target="_blank" rel="external">http://sql55.com/query/cumulative-amount-1.php</a> ，然后自己建表鼓捣了一会儿，</p>
+<p>终于得(meng)出了一个可行的答案：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;具体思路和过程以后有时间再来整理（Flag）。&lt;/p&gt;
+&lt;p&gt;原题目的url是&lt;a href=&quot;https://www.codewars.com/kata/calculating-running-total&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;h
+    
+    </summary>
+    
+      <category term="SQL" scheme="http://gabrieldrapor.github.io/categories/SQL/"/>
+    
+    
+      <category term="Codewars" scheme="http://gabrieldrapor.github.io/tags/Codewars/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Codewars上一道5 kyu的SQL题</title>
     <link href="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/"/>
     <id>http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/</id>
     <published>2017-07-21T00:00:00.000Z</published>
@@ -96,6 +182,41 @@
     
       <category term="SQL" scheme="http://gabrieldrapor.github.io/categories/SQL/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>记录一下最近参加过的面试；</title>
+    <link href="http://gabrieldrapor.github.io/2017/07/11/posts/170707-firstinterview-md/"/>
+    <id>http://gabrieldrapor.github.io/2017/07/11/posts/170707-firstinterview-md/</id>
+    <published>2017-07-11T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:32.466Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近几天参加了几次面试，也是我人生中的头几次面试，感觉值得一记，故有此篇。</p>
+<a id="more"></a>
+<p><strong>17.7.7：</strong>　　</p>
+<p>　　昨天下午接到了一家互联网公司HR的电话，问我是不是还在找实习以及有没有时间参加电话面试。于是昨天晚上+今天早上稍微地准备了一下，想着面试官会问关于Python的一些高级的东西比如解释器或者GIL什么的就去补了一波知识，并且对这家公司也做了一些调查，有了一些了解。</p>
+<p>　　终于等到下午三点开始了面试，形式是电话面试。在得知要写代码之后，我心里其实有点慌，因为我知道自己的数据结构和算法很薄弱，而且动手的时候可能会卡在一些细枝末节的地方。面试官人很好，上来没有让我做自我介绍，直接让我把自己掌握的技术说了一下，并对我在博客上和GIthub上的一些东西以及过往经历提了一些问题。很明显对方在面试前还是做了一点工作的，而且整个面试过程基本没有废话，我很喜欢这种面试风格。后面让我动手写一道算法题，是在数组中找出三个数之和为0的一道题。开始不久我就卡住了，原先以为自己会卡在数据结构或者算法的地方，后来发现不是这样的，我卡在了动手实现上。一些东西我知道思路，但我写不出来。究其原因的话，可能也是我太久没刷OJ了，动手能力退化了不少，另一反面本身基础就不够扎实，编码能力本来也不强，再加上面试时候的紧张， 结果就不太尽如人意。</p>
+<p> 　　面试结果怎样已经没那么重要了，重要的是我的确在这次面试中清楚地认识到了自己还是说得太多看得太多做得太少，导致动手能力很弱，之后还是要在这方面加强才是。很感谢那家公司给我这个面试的机会。</p>
+<hr>
+<p><strong>17.7.8：</strong></p>
+<p>　　 昨天面试的时候表现得比较糟糕，我以为已经铁定没戏了，结果昨天晚些时候HR跟我说还有一轮面试，我以为这次会是关于ML方面的面试，于是又回去翻了翻之前记过的笔记。没想到，今天的面试还是写代码，不过面试官看我昨天表现得那么惨，今天就给了我一个简单的问题，求第n个斐波那契数，我最开始用递归写了一个，后来面试官问我还有没有别的方法，我又把用循环写的那种方式写了一下；之后面试官又问了我一个递进的问题：一只蜗牛一次可以爬１级或２级或３级或……或n级台阶，现在它要爬上n级台阶，问有多少种爬法？起初我以为是一个等差数列问题，愚蠢地说了一个n(n-1)/2。面试官置疑了一下，我发现了根本不对，于是开始拿出纸笔算，在面试官的引导下捣鼓了很久才得出正确的结果【当时是先计算n=1，n=2，n=3的情况然后推广得到通项是2^(n-1)，7.13晚上洗澡的时候突然想到其实除了最后一级台阶，其他所有台阶都有两种可能，迈上或者不迈，于是n-1级台阶就是2^(n-1)种情况…】…后面还聊了一些关于公司技术栈的事情，发现其实技术不太对口，他们目前主要还是做后端，而我还是想找一份数据相关的实习…总之第二轮面试依旧很僵硬，基本已经没有希望了我觉得。。</p>
+<hr>
+<p><strong>17.7.11：</strong></p>
+<p>　　之前向洋葱数学投了简历，HR联系了我好几次一直没有联系上我，我一度觉得我可能和这家公司没有缘分，但终于我还是联系上了他们的HR，得知真相之后对HR的坚持不懈莫名有些感动…</p>
+<p>　　于是今天就去面试了 ，到了公司之后最大的感觉就是“哇这办公环境怎么这么好”，坐着观察了一会儿之后感觉这个公司整体的氛围很让我喜欢。之后数据组的组长就来了，首先是做了一下对我基本情况的一些了解，之后先问了一个SQL的问题，我心里很没底，因为我虽然过过一遍SQL的用法但并没有太多的实践经验，导致只说了一个基本思路；他看我SQL不太熟，于是问我如果用pandas的DataFrame怎么做，我同样回答了一个十分笨重但可行的方法；之后他又问了我一个对dict操作的python问题，我同样是用了一个“能解决问题但看起来有些笨拙”的方法做，其中被他指出了一些问题，经指出后还是改正了这些问题。这部分带给我的反思就是：<strong>代码写得太少啦！很多很基本的东西都没有记住！以后一定要多写代码！多写代码！！！！</strong>；再之后面试官问了我这样一个问题：因为他们是做在线教育的，他们现在想做一个类似于Dota里面的天梯系统，让我做一个简单的设计。对于这个问题其实我有一些头绪，但是都很乱，组织不起来，在他的帮助下和一段时间的整理之后，终于大致地把思路理了出来，他还带着我对其中的一个核心部分进行了设计相关的讨论，整个过程他都在引导我一步步地达到核心，面试体验还是相当愉快的。之后又聊了一些别的技术的事情，比如我问了一下他们公司的技术栈，以及我一直不了解的为什么初创公司都爱用MongoDB之类的。和他聊的大概就是以上这些。</p>
+<p>　　后面又和HR聊了一会儿，聊了很多，方方面面都聊到了，个人目标啊，性格啊，等等等等，于是聊了很久，也询问了一些关于他们公司的事情。【HR还建议我应该找一个活泼开朗的女朋友……</p>
+<p>　　出来之后我才发现面试竟然持续了两个多小时，而我一点感觉都没有，完全沉浸在其中，没有注意到时间的流逝。总的来说面试体验还是十分不错的，而且技术也非常对口，期待能收到人生第一份实习Offer。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近几天参加了几次面试，也是我人生中的头几次面试，感觉值得一记，故有此篇。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Paths" scheme="http://gabrieldrapor.github.io/tags/Paths/"/>
     
   </entry>
   
@@ -129,6 +250,102 @@
     
     </summary>
     
+    
+      <category term="Paths" scheme="http://gabrieldrapor.github.io/tags/Paths/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>来写个学期总结吧</title>
+    <link href="http://gabrieldrapor.github.io/2017/07/01/posts/170701_semester-summary/"/>
+    <id>http://gabrieldrapor.github.io/2017/07/01/posts/170701_semester-summary/</id>
+    <published>2017-07-01T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:32.202Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个学期就这样结束了，简单来写个总结吧，顺便做点计划。</p>
+<a id="more"></a>
+<hr>
+<ul>
+<li>看完了Coursera上Andrew Ng的Machine Learning；完成相应作业；</li>
+<li>读周志华先生的《机器学习》，但还有几章没读完；</li>
+<li>为了解决一些疑问，用Python写过几个小爬虫；</li>
+<li>看完了《SQL必知必会》，细致地学习了一波SQL；</li>
+<li>《利用Python进行数据分析》看了小半本，学习了一些Numpy和pandas的用法，用Jupyter Notebook做了笔记；</li>
+<li>学了一点PyQt5；</li>
+</ul>
+<ul>
+<li>学习了数理统计、偏微分方程、实变函数与泛函分析、数学模型和复变函数与积分变换这几门课，总的来说每门课都还是很有意思的，惭愧的是我下的工夫还是太少；</li>
+</ul>
+<ul>
+<li>开始学习日语，背完了五十音图；</li>
+</ul>
+<ul>
+<li>参加了一次校赛建模，本来是想用numpy和pandas替代MATLAB，结果发现还是不行，于是就顺便增强了一下MATLAB方面的技能，但做得很随意，最后得了二等奖；</li>
+<li>报名参加了2017中国高校计算机大赛—大数据挑战赛；</li>
+</ul>
+<ul>
+<li>刷了几波实习信息，也投了一波简历，结果最后发现了一些意外的情况（其实是操作失误），导致估计假期的实习期待落空了；</li>
+<li>这两天考完试把双系统弄好了，Ubuntu+Win10，尽量把和编程开发有关的事情都移到Ubuntu里做，WIn10留作娱乐，希望下一次换系统是Mac OS；</li>
+</ul>
+<hr>
+<ul>
+<li>《Planet Earth II》</li>
+<li>《嫌疑人X的献身》（中国版）</li>
+<li>《人民的名义》</li>
+<li>《驴得水》</li>
+<li>《看不见的客人》</li>
+<li>《百鸟朝凤》</li>
+<li>《摔跤吧！爸爸 Dangal》</li>
+<li>《TBBT Season 10》</li>
+<li>《和食双神：最后的约定》</li>
+<li>《四重奏》</li>
+<li>《辩护人》</li>
+<li>《求婚大作战》</li>
+<li>《Silcon Valley Season 4》</li>
+<li>《伊斯坦布尔的猫/Kedi》</li>
+<li>《Elementary Season 5》</li>
+<li>《The Flash Season 3》</li>
+<li>《S.H.I.E.L.D. Season 4》</li>
+</ul>
+<ul>
+<li>机器之心 GMIS全球机器智能峰会；</li>
+<li>Microsoft Build Tour 2017；</li>
+</ul>
+<ul>
+<li>读+摘抄完了杨伯峻先生的《论语译注》；</li>
+<li>读了一半《巨人的陨落》；</li>
+</ul>
+<ul>
+<li>入了SONY 100ABN；</li>
+<li>开了一个微信公众号没事写点无病呻吟的东西；</li>
+</ul>
+<p>　　干的事情还是感觉很少，效率还是极大地受到了情绪的影响。学期中之前感觉精神状态一直都还比较稳定，五月中旬到期末这段时间非常非常非常丧，生活失去了期待。但是还好有后面的期末考试（我第一次这么感激期末复习的到来），整个人还好没有这么堕落下去。</p>
+<hr>
+<p>既然不能去实习，那就还是按照原先想的那样，继续让自己变得更好吧，把数据结构和算法弄一弄，再多了解和熟悉一下python，机器学习的部分也还需要继续提高。所以接下来的小学期和暑假，主要就是</p>
+<ul>
+<li>《数据结构与算法分析：C语言描述》+ MOOC，把数据结构和算法弄一下；</li>
+<li>考虑看看《流畅的Python》;</li>
+<li>《机器学习基石》；</li>
+<li>《集体智慧编程》、《机器学习实战》</li>
+<li>复习数理统计，考虑看看课本和陈希孺的书；</li>
+<li>看看《陶哲轩实分析》；</li>
+<li><strong>尝试发展一些别的兴趣爱好；</strong></li>
+<li><p>学学日语；<br>​</p>
+<p>暂时就想到这些，大概就这样吧；</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这个学期就这样结束了，简单来写个总结吧，顺便做点计划。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习记录" scheme="http://gabrieldrapor.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="Plans" scheme="http://gabrieldrapor.github.io/tags/Plans/"/>
     
       <category term="Paths" scheme="http://gabrieldrapor.github.io/tags/Paths/"/>
     
@@ -232,6 +449,36 @@
   
   <entry>
     <title>pandas笔记</title>
+    <link href="http://gabrieldrapor.github.io/2017/06/14/posts/170614-pandas/"/>
+    <id>http://gabrieldrapor.github.io/2017/06/14/posts/170614-pandas/</id>
+    <published>2017-06-14T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:31.946Z</updated>
+    
+    <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。</p>
+<p>并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……</p>
+<p class="article-more-link"><a href="/python_data_analysis/pandas.html">Read More</a></p>
+
+
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;/p&gt;
+&lt;p&gt;并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……&lt;/p&gt;
+&lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;/python_data_analysis/pandas
+    
+    </summary>
+    
+      <category term="pandas" scheme="http://gabrieldrapor.github.io/categories/pandas/"/>
+    
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pandas笔记</title>
     <link href="http://gabrieldrapor.github.io/2017/06/14/170614-pandas/"/>
     <id>http://gabrieldrapor.github.io/2017/06/14/170614-pandas/</id>
     <published>2017-06-14T00:00:00.000Z</published>
@@ -257,6 +504,82 @@
     
     
       <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Machine Learning Notes 07</title>
+    <link href="http://gabrieldrapor.github.io/2017/06/01/posts/170601_ml_notes7/"/>
+    <id>http://gabrieldrapor.github.io/2017/06/01/posts/170601_ml_notes7/</id>
+    <published>2017-06-01T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:31.690Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="What-should-we-do-if-we-have-a-bad-predictions"><a href="#What-should-we-do-if-we-have-a-bad-predictions" class="headerlink" title="What should we do if we have a bad predictions?"></a>What should we do if we have a bad predictions?</h2><p>The following options may be feasible:</p>
+<ul>
+<li>Get more training examples;</li>
+<li>Try smaller sets of features;</li>
+<li>Try getting additional features;</li>
+<li>Try adding polynomial features (increasing degree of polynomial);</li>
+<li>Try decreasing $\lambda$;</li>
+<li>Try increasing $\lambda$;</li>
+</ul>
+<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn’t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
+<a id="more"></a>
+<hr>
+<h2 id="Evaluating-a-hypothesis"><a href="#Evaluating-a-hypothesis" class="headerlink" title="Evaluating a hypothesis"></a>Evaluating a hypothesis</h2><p>To evaluating whether a hypothesis is good or bad (and we don’t have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p>
+<hr>
+<h2 id="Model-Selection"><a href="#Model-Selection" class="headerlink" title="Model Selection"></a>Model Selection</h2><p>Take linear regression as a example, we use $h_{\theta}(x) = \theta_0 +\theta_1 x + \theta_2 x^2 +… $ as our hypothesis function, and we can add the degree of polynomial to make our hypothe/.sis better, but it may brings the over fitting problem, so we need to find out the best degree.</p>
+<p>To  achieve so, we can compute the $J_{test}$(cost of different degrees $d$ on test set), and choose the best $d$, but it’s only fit to the test set. So we divide the data set into three parts:</p>
+<ul>
+<li>training set (60% usually)</li>
+<li>cross validation set (20% usually) </li>
+<li>test set (20% usually)(check if the combo of $\theta$ and $\lambda$ has a good generalization of the problem, avoiding over fitting)</li>
+</ul>
+<p>and three kinds of cost function is $J_{train}$, $J_{cv}$, $J_{test}$.</p>
+<p>Then for different $d(d=1, 2, 3, …)$, minimize $J(\theta)$ with $J_{train}$ and $J_{test}$, then compute the $J_{cv}$ for each $d$. We choose $d$ who has the lowest $J_{cv}$, and that.s how we do the model selection.</p>
+<hr>
+<h2 id="Bias-vs-Variance"><a href="#Bias-vs-Variance" class="headerlink" title="Bias vs. Variance"></a>Bias vs. Variance</h2><ul>
+<li><img src="http://7xugq7.com1.z0.glb.clouddn.com/bias_vs_var.JPG"></li>
+</ul>
+<h3 id="Diagnosing-bias-vs-variance"><a href="#Diagnosing-bias-vs-variance" class="headerlink" title="Diagnosing bias vs. variance"></a>Diagnosing bias vs. variance</h3><ul>
+<li>If $J_{train}$ is high and $J_{cv}\approx J_{train}$, we can tell it’s a <strong>bias</strong> problem;</li>
+<li>If $J_{train}$ is low and $J_{cv}\gg J_{train}$, we can tell it’s a <strong>variance</strong> problem;</li>
+</ul>
+<hr>
+<h2 id="About-regularization"><a href="#About-regularization" class="headerlink" title="About regularization"></a>About regularization</h2><p>As we know, appropriate $\lambda$ (regularization parameter) can help to prevent over fitting, but when the $\lambda$ is too large or too small. it won’t work as so:</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/different_lambda.JPG"></p>
+<p>So choosing appropriate value of $\lambda$ is very necessary. </p>
+<p>We can try different $\lambda$, minimize $J(\theta)$, then compute $J_{cv}$ (like what we do the model selection), and we can finf the best $\lambda$.</p>
+<hr>
+<h2 id="Learning-Curves"><a href="#Learning-Curves" class="headerlink" title="Learning Curves"></a>Learning Curves</h2><p>The learning curves describe the relationship of $m$(training set size) and error($J_{cv},J_{train}$), it’s look like:</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/learningcurves.JPG" width="500"></p>
+<p>And if the algorithm is suffering from high bias, the learning curve is look like:</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/high_bias_curve.JPG" width="500"></p>
+<p>We can see from the graph that the increasing $m$ doesn’t help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p>
+<p>While if the algorithm is suffering from high variance, the learning curve is look like:</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/high_var_curve.JPG" width="500"></p>
+<p>From the graph we can see that there is a gap between $J_{cv}$ and $J_{train}$, and as $m$ increasing, the gap diminishes and the bias is also decreasing. So we can conclude that getting more training data is helpful to solve the high-variance problem.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;What-should-we-do-if-we-have-a-bad-predictions&quot;&gt;&lt;a href=&quot;#What-should-we-do-if-we-have-a-bad-predictions&quot; class=&quot;headerlink&quot; title=&quot;What should we do if we have a bad predictions?&quot;&gt;&lt;/a&gt;What should we do if we have a bad predictions?&lt;/h2&gt;&lt;p&gt;The following options may be feasible:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Get more training examples;&lt;/li&gt;
+&lt;li&gt;Try smaller sets of features;&lt;/li&gt;
+&lt;li&gt;Try getting additional features;&lt;/li&gt;
+&lt;li&gt;Try adding polynomial features (increasing degree of polynomial);&lt;/li&gt;
+&lt;li&gt;Try decreasing $\lambda$;&lt;/li&gt;
+&lt;li&gt;Try increasing $\lambda$;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So we can take a kind of test called &lt;strong&gt;machine learning diagnostic&lt;/strong&gt; to insight what is/isn’t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/categories/Machine-Learning/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -338,6 +661,34 @@
   
   <entry>
     <title>Numpy入门笔记</title>
+    <link href="http://gabrieldrapor.github.io/2017/05/11/posts/170511-numpy/"/>
+    <id>http://gabrieldrapor.github.io/2017/05/11/posts/170511-numpy/</id>
+    <published>2017-05-11T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:31.434Z</updated>
+    
+    <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。<br>并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。</p>
+<p class="article-more-link"><a href="http://7xugq7.com1.z0.glb.clouddn.com/NpBasic.html" target="_blank" rel="external">Read More</a></p>
+
+
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;br&gt;并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。&lt;/p&gt;
+&lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;http://7xugq7.com1.z0.glb.clouddn.
+    
+    </summary>
+    
+      <category term="numpy" scheme="http://gabrieldrapor.github.io/categories/numpy/"/>
+    
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Numpy入门笔记</title>
     <link href="http://gabrieldrapor.github.io/2017/05/11/170511-numpy/"/>
     <id>http://gabrieldrapor.github.io/2017/05/11/170511-numpy/</id>
     <published>2017-05-11T00:00:00.000Z</published>
@@ -387,6 +738,160 @@
     
     
       <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IPython的一些笔记</title>
+    <link href="http://gabrieldrapor.github.io/2017/05/02/posts/170502_ipython/"/>
+    <id>http://gabrieldrapor.github.io/2017/05/02/posts/170502_ipython/</id>
+    <published>2017-05-02T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:30.246Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在看《利用Python进行数据分析》…</p>
+<p>·</p><p class="article-more-link"><a href="/python_data_analysis/IPython.html">Read More</a></p><p></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在看《利用Python进行数据分析》…&lt;/p&gt;
+&lt;p&gt;·&lt;/p&gt;&lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;/python_data_analysis/IPython.html&quot;&gt;Read More&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="numpy" scheme="http://gabrieldrapor.github.io/categories/numpy/"/>
+    
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQL Syntax(Ⅲ)</title>
+    <link href="http://gabrieldrapor.github.io/2017/04/25/posts/170425_sql3/"/>
+    <id>http://gabrieldrapor.github.io/2017/04/25/posts/170425_sql3/</id>
+    <published>2017-04-25T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:29.646Z</updated>
+    
+    <content type="html"><![CDATA[<p>后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。</p>
+<a id="more"></a>
+<hr>
+<h2 id="联结表"><a href="#联结表" class="headerlink" title="联结表"></a>联结表</h2><h5 id="创建联结"><a href="#创建联结" class="headerlink" title="创建联结"></a>创建联结</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders, Products</div><div class="line"><span class="keyword">WHERE</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure>
+<p>　　简单解释一下，Venders和Products是一个数据库下的两张表，他们都有一个列叫Vend_id, prod_name和prod_price是表Products中的列，vend_name是表Venders中的列。<br>需要注意的是，如果在SELECT中添加了共有的列名，需要做完全限定，比如上面的例子中，如果需要把vend_id这个列提取出来，需要用Venders.vend_id或者Products.id来完全限定。<br>另外就是，WHERE子句非常重要，如果这里不用WHERE子句的话，输出的结果将会是指定的两部分内容的每一行的组合的结果，而忽略其中的逻辑，输出结果的行数将等于第一部分的列乘以第二个部分列的行数。这个结果也被称为<em>笛卡尔积</em>。所以，在联结表时为了避免输出的结果过长，千万不要忘了WHERE子句。</p>
+<p>　　以上的联结称为等值联结(equijoin)，也称为内联结(inner join)，我们可以用内联结的写法来重新写与上面等价的SQL语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Products</div><div class="line"> <span class="keyword">ON</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure>
+<p>　　实际上，联结表的操作也可以用子查询完成，但SQL语句书写起来会麻烦许多。</p>
+<hr>
+<h2 id="创建高级联结"><a href="#创建高级联结" class="headerlink" title="创建高级联结"></a>创建高级联结</h2><h5 id="使用表别名"><a href="#使用表别名" class="headerlink" title="使用表别名"></a>使用表别名</h5><p>  表别名还有以下这种有趣的用法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contract</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span></div></pre></td></tr></table></figure>
+<p>P.S.:Oracle中没有AS这个用法</p>
+<h5 id="其他类型的联结"><a href="#其他类型的联结" class="headerlink" title="其他类型的联结"></a>其他类型的联结</h5><ul>
+<li>自联结(self-join)<br>   使用别名的好处在于可以不止一次地引用同一个表。下面两段SQL语句是等价的：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cest_id, cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = (<span class="keyword">SELECT</span> cust_name</div><div class="line">                   <span class="keyword">FROM</span> Customers</div><div class="line">                   <span class="keyword">WHERE</span> cust_contact = <span class="string">'Jim Jones'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> c1.cust_id, c1.cust_name, c1.cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> c1, Customers <span class="keyword">AS</span> c2</div><div class="line"><span class="keyword">WHERE</span> c1.cust_name = c2.cust_name</div><div class="line"> <span class="keyword">AND</span> c2.cust_contract = <span class="string">'Jim Jones'</span>;</div></pre></td></tr></table></figure>
+<p>　　第一段使用了子查询,而第二段使用了联结，他们的效果是一样的，但在许多DBMS中，处理联结远比子查询快得多。
+　　</p>
+<ul>
+<li><p>自然联结(natural join)</p>
+<p>  标准的联结返回所有的数据，相同的列甚至多次出现。自然联结排除多次出现，使每一列只返回一次。如：</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> C.*, O.order_num, O.order_date,</div><div class="line">       OI.prod_id, OI.quantity, OI.item_price</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>外联结<br>包含在相关表中没有关联行的行的联结，称为外联结(outer join)。用法如：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure>
+<p>注意，OUT JOIN前必须使用RIGHT或者LEFT关键字制定包括其所有行的表（RIGHT指出的是OUTER JOIN了FROM中右边的表，LEFT同理）。</p>
+<ul>
+<li>全外联结<br>检索两个表中的所有行并关联那些可以关联的行，这种外联结称为全外联结(full outer join),如：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure>
+<p>当然，也可以在联结中使用聚集函数。</p>
+<hr>
+<h2 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h2><p>SQL允许执行多个查询（多条SELECT语句），并将结果作为一个查询结果集返回。这些组合查询通常称为并(union)或复制查询(compound query)</p>
+<h5 id="使用UNION"><a href="#使用UNION" class="headerlink" title="使用UNION"></a>使用UNION</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'IL'</span>, <span class="string">'IN'</span>, <span class="string">'MI'</span>)</div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'Fun4All'</span>;</div></pre></td></tr></table></figure>
+<p>　　当然这里可以用OR达成同样的效果，但对于较复杂的过滤条件，或者从多个表检索数据的情形，使用UNION可能会使处理更简单。另外需要注意,UNION每个查询必须包含相同的列，表达式或聚集函数。</p>
+<p>　　此外，UNION会默认自动取消重复的行，当然如果有需要，也可以改变它，使用UNION ALL即可。如果需要对组合查询的结果进行排序，只需要在最后加上ORDER BY即可。</p>
+<hr>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><h5 id="使用INSERT"><a href="#使用INSERT" class="headerlink" title="使用INSERT"></a>使用INSERT</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure>
+<p>　　这种用法很简单，但并不安全，应该尽量避免使用。更安全（也更烦琐）的用法应当是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure>
+<p>　　Values将以指定的次序匹配指定的列名，不一定按各列出现在表中的实际次序。其优点是，即使表的结构改变，这条INSERT仍然能正确工作。
+　　</p>
+<h5 id="插入检索出的数据"><a href="#插入检索出的数据" class="headerlink" title="插入检索出的数据"></a>插入检索出的数据</h5><p>　　INSERT还存在另一种形式，可以利用它将SELECT语句的结果插入表中，这就是所谓的INSERT SELECT，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">SELECT</span> column_a,</div><div class="line">       column_b,</div><div class="line">       column_c,</div><div class="line">       ......</div><div class="line"><span class="keyword">FROM</span> another_table_name;</div></pre></td></tr></table></figure>
+<p>　　当然，利用INSERT SELECT，可以实现从一个表复制到另一个表：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">INTO</span> table1</div><div class="line"><span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure></p>
+<p>在MariaDB, MySQL, Oracle, PostgreSQL 和 SQLite 使用的用法稍有不同：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table1 <span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="更新和删除数据"><a href="#更新和删除数据" class="headerlink" title="更新和删除数据"></a>更新和删除数据</h2><h5 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> table_name</div><div class="line"><span class="keyword">SET</span> column1=value1,</div><div class="line">    column2=value2,</div><div class="line">    ......</div><div class="line"><span class="keyword">WHERE</span> certain_column = certain_value;</div></pre></td></tr></table></figure>
+<h5 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> ......</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="创建和操纵表"><a href="#创建和操纵表" class="headerlink" title="创建和操纵表"></a>创建和操纵表</h2><h5 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>其中，NULL是默认设置，可以省略。</p>
+<h5 id="指定默认值"><a href="#指定默认值" class="headerlink" title="指定默认值"></a>指定默认值</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>在实际中，常用的默认值会用到当前时间。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">DBMS</th>
+<th style="text-align:center">函数/变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Access</td>
+<td style="text-align:center">NOW()</td>
+</tr>
+<tr>
+<td style="text-align:center">DB2</td>
+<td style="text-align:center">CURRENT_DATE</td>
+</tr>
+<tr>
+<td style="text-align:center">MySQL</td>
+<td style="text-align:center">CURRENT_DATE()</td>
+</tr>
+<tr>
+<td style="text-align:center">Oracle</td>
+<td style="text-align:center">SYSDATE</td>
+</tr>
+<tr>
+<td style="text-align:center">PostgreSQL</td>
+<td style="text-align:center">CURRENT_DATE</td>
+</tr>
+<tr>
+<td style="text-align:center">SQL Server</td>
+<td style="text-align:center">GETDATE()</td>
+</tr>
+<tr>
+<td style="text-align:center">SQLite</td>
+<td style="text-align:center">date(‘now’)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="更新表"><a href="#更新表" class="headerlink" title="更新表"></a>更新表</h5><p>以下展示了添加和删除列的用法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">ADD</span> column_name column_type;</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">DROP</span> column_name;</div></pre></td></tr></table></figure>
+<h5 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> table_name;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="使用视图"><a href="#使用视图" class="headerlink" title="使用视图"></a>使用视图</h2><p>视图(View)，其实就是封装起来的查询操作。【使用视图的好处大约就和贯彻面向对象思想的好处一样多。】</p>
+<h5 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name <span class="keyword">AS</span></div><div class="line">.....</div><div class="line">[<span class="keyword">SQL</span> <span class="keyword">Query</span>]</div><div class="line">.....</div></pre></td></tr></table></figure>
+<p>之后需要再次执行该查询操作时，只需要直接用<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column1,column2,...</div><div class="line"><span class="keyword">FROM</span> view_name</div><div class="line"><span class="keyword">WHERE</span> ...</div></pre></td></tr></table></figure></p>
+<p>即可。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="SQL" scheme="http://gabrieldrapor.github.io/categories/SQL/"/>
+    
+    
+      <category term="SQL" scheme="http://gabrieldrapor.github.io/tags/SQL/"/>
     
   </entry>
   
@@ -508,6 +1013,142 @@
     <summary type="html">
     
       &lt;p&gt;后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="SQL" scheme="http://gabrieldrapor.github.io/categories/SQL/"/>
+    
+    
+      <category term="SQL" scheme="http://gabrieldrapor.github.io/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQL Syntax(Ⅱ)</title>
+    <link href="http://gabrieldrapor.github.io/2017/04/23/posts/170423_sql2/"/>
+    <id>http://gabrieldrapor.github.io/2017/04/23/posts/170423_sql2/</id>
+    <published>2017-04-23T00:00:00.000Z</published>
+    <updated>2017-08-19T05:48:29.394Z</updated>
+    
+    <content type="html"><![CDATA[<p>继续。</p>
+<a id="more"></a>
+<hr>
+<h2 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h2><p>以下以书中例子呈现相关用法。</p>
+<ul>
+<li>拼接字段</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name || <span class="string">'('</span> || vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
+<p>以上两种写法是等价的，还可以用RTRIM()去除字符串右边的空格，用LTRIM()去除字符串左边的空格，用TRIM()去除字符串左右两边的空格。<br>特别地，在MySQL和MariaDB中需要使用Concat()函数来完成相同的功能：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># In MySQL and MariaDB</div><div class="line">SELECT Concat(vend_name, '(', vend_country, ')')</div><div class="line">FROM venders</div><div class="line">ORDER BY vender_name;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>为结果使用别名</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">AS</span> vend_title</div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
+<ul>
+<li>执行算术计算</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> prod_id,</div><div class="line">       quantity,</div><div class="line">       item_price,</div><div class="line">       quantity*item_price <span class="keyword">AS</span> expanded_price</div><div class="line"><span class="keyword">FROM</span> OrderItems</div><div class="line"><span class="keyword">WHERE</span> order_num = <span class="number">20008</span>;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="使用函数处理数据"><a href="#使用函数处理数据" class="headerlink" title="使用函数处理数据"></a>使用函数处理数据</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">LEFT()（或使用子字符串函数）</td>
+<td style="text-align:center">返回字符串左边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">LENGTH()（也使用DATALENGTH()或LEN()）</td>
+<td style="text-align:center">返回字符串的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">LOWER()（Access使用LCASE()）</td>
+<td style="text-align:center">将字符串转换为小写</td>
+</tr>
+<tr>
+<td style="text-align:center">SOUNDEX()</td>
+<td style="text-align:center">返回字符串的SOUNDEX值（Access和PostgreSQL不支持，SQLite需要编译支持）</td>
+</tr>
+<tr>
+<td style="text-align:center">UPPER()</td>
+<td style="text-align:center">将字符串转换为大写</td>
+</tr>
+<tr>
+<td style="text-align:center">DATEPART()</td>
+<td style="text-align:center">返回日期类型中的年、月或日</td>
+</tr>
+</tbody>
+</table>
+<p>关于SOUNDEX()，</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">SOUNDEX</span>(cust_contact) = <span class="keyword">SOUNDEX</span>(<span class="string">'Michael Green'</span>)</div></pre></td></tr></table></figure>
+<p>【实测了一下，Michelle和Michael，Knuth和Kant的SOUNDEX值都是一样的，但是Bitch和Beach是不一样的，前者的SOUNDEX值是B320，后者则是B200……】</p>
+<hr>
+<h2 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h2><ul>
+<li><p>聚集函数</p>
+<p>常用的函数包括AVG(), COUNT(), MAX(), MIN(), SUM()等，可以使用WHERE过滤，这些函数默认会忽略值为NULL的行，用*则可以不忽略；</p>
+</li>
+<li><p>聚集不同值</p>
+<p>ALL代表对所有行进行运算，是默认行为，不需要指定；</p>
+<p>DISTINCT只对不同的行进行操作；</p>
+</li>
+<li><p>组合聚集函数</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_items,</div><div class="line">       <span class="keyword">MIN</span>(prod_price) <span class="keyword">AS</span> price_min,</div><div class="line">       <span class="keyword">MAX</span>(prod_price) <span class="keyword">AS</span> price_max,</div><div class="line">       ACG(prod_price) <span class="keyword">AS</span> price_avg</div><div class="line"><span class="keyword">FROM</span> Products;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h2><ul>
+<li>创建分组</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_prods</div><div class="line"><span class="keyword">FROM</span> Products</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> vend_id</div><div class="line"></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		4</div><div class="line">FNG01		2</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>其中，GROUP BY后可以包含任意数目的列以进行更细致的数据分组，还可以在子句中嵌套分组。SELECT语句中的每一列都必须在GROUP BY子句中给出。包含NULL值的行会被作为一个分组返回。GROUP BY子句必须在WHERE子句之后，ORDER BY子句之前。</p>
+<ul>
+<li><p>过滤分组</p>
+<p>即规定包括哪些组，排除哪些组。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div></pre></td></tr></table></figure>
+<p>  这里不能用 WHERE替换HAVING，可以理解为 WHERE 在分组前进行过滤，故排除的行不包括在分组中，而 HAVING      在数据分组后过滤。当然，两个子句并非不能同时存在，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> prod_price &gt;= <span class="number">4</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		2</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li><p>分组和排序</p>
+<p>下表列出了 ORDER BY 和 GROUP BY 的区别</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ORDER BY</th>
+<th style="text-align:center">GROUP BY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">对产生的输出进行排序</td>
+<td style="text-align:center">对行分组，但输出可能不是分组的顺序【所以可以在后面再使用ORDER BY对输出进行排序】</td>
+</tr>
+<tr>
+<td style="text-align:center">任意列都可以使用（甚至非选择的列也可以使用）</td>
+<td style="text-align:center">只可能使用选择列或表达式列，而且必须使用每个选择列表达式</td>
+</tr>
+<tr>
+<td style="text-align:center">不一定需要</td>
+<td style="text-align:center">如果与聚集函数一起使用列（或表达式），则必须使用</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="使用子查询"><a href="#使用子查询" class="headerlink" title="使用子查询"></a>使用子查询</h2><p>子查询(Subquery)，即嵌套在其他查询中的查询。在需要多个SQL语句共同完成一个任务且他们之间存在递进关系时，可以使用类似于以下的用法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> order_num <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_num</div><div class="line">                    <span class="keyword">FROM</span> OrderItems</div><div class="line">                    <span class="keyword">WHERE</span> prod_id = <span class="string">'RGAN01'</span>);</div></pre></td></tr></table></figure>
+<p>这其实就是将括号中的 SELECT order_num FROM OrderItems WHERE prod_id = ‘RGAN01’ 这一句的输出结果传递给外面的 WHERE 查询子句。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继续。&lt;/p&gt;
     
     </summary>
     
@@ -651,536 +1292,6 @@
     
     
       <category term="SQL" scheme="http://gabrieldrapor.github.io/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQL Syntax(Ⅰ)</title>
-    <link href="http://gabrieldrapor.github.io/2017/04/22/170422_sql1/"/>
-    <id>http://gabrieldrapor.github.io/2017/04/22/170422_sql1/</id>
-    <published>2017-04-22T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:38.868Z</updated>
-    
-    <content type="html"><![CDATA[<p>　　这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。</p>
-<a id="more"></a>
-<h2 id="检索数据"><a href="#检索数据" class="headerlink" title="检索数据"></a>检索数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... <span class="comment">--'\*' for all</span></div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
-<ul>
-<li>In SQL Server and Access,</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TOP [<span class="keyword">num</span>] column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
-<ul>
-<li>In DB2,</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">FETCH</span> <span class="keyword">FIRST</span> [<span class="keyword">num</span>] <span class="keyword">ROWS</span> <span class="keyword">ONLY</span>;</div></pre></td></tr></table></figure>
-<ul>
-<li>In Oracle,</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= [<span class="keyword">num</span>];</div></pre></td></tr></table></figure>
-<ul>
-<li>In MySQL, MariaDB, PostgreSQL and SQLite</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">LIMIT</span> [<span class="keyword">num</span>] &#123;<span class="keyword">OFFSET</span> [<span class="keyword">num</span>]&#125;;</div></pre></td></tr></table></figure>
-<ul>
-<li>Select distinct value</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> column_name</div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
-<ul>
-<li>Annotation</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Here is a comment</div><div class="line">SELECT column0 -- Here is also a comment</div><div class="line">FROM table_name;</div><div class="line">/*</div><div class="line">Also a comment~</div><div class="line">*/</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="排列检索数据"><a href="#排列检索数据" class="headerlink" title="排列检索数据"></a>排列检索数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column0, column1, ...;</div><div class="line"><span class="comment">-- Also, you can use order numbers to represent certain column</span></div><div class="line"><span class="comment">-- Use 'DESC' or 'ASC' in the end to assigned the order direction</span></div></pre></td></tr></table></figure>
-<hr>
-<h2 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">column</span> = [<span class="keyword">value</span>];</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="高级数据过滤"><a href="#高级数据过滤" class="headerlink" title="高级数据过滤"></a>高级数据过滤</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [clause] <span class="keyword">AND</span>/<span class="keyword">OR</span> [clause];</div><div class="line"><span class="comment">-- The priority of 'AND' is higher than 'OR' when they are used together</span></div></pre></td></tr></table></figure>
-<ul>
-<li>Actually, ‘OR’ is same as ‘IN’</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [column_name] <span class="keyword">IN</span> ([value1],[value2],...);</div></pre></td></tr></table></figure>
-<ul>
-<li>‘NOT’</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> xxxx;</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="用通配符进行过滤"><a href="#用通配符进行过滤" class="headerlink" title="用通配符进行过滤"></a>用通配符进行过滤</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">通配符</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">%(* in Access)</td>
-<td style="text-align:center">任意字符任意次数</td>
-</tr>
-<tr>
-<td style="text-align:center">_</td>
-<td style="text-align:center">任意字符一次</td>
-</tr>
-<tr>
-<td style="text-align:center">[]</td>
-<td style="text-align:center">指定一个字符集, 如 [JM] 匹配’J’和’M’（用”^”可以否定）</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　　这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="SQL" scheme="http://gabrieldrapor.github.io/categories/SQL/"/>
-    
-    
-      <category term="SQL" scheme="http://gabrieldrapor.github.io/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Machine Learning Notes 06</title>
-    <link href="http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/"/>
-    <id>http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/</id>
-    <published>2017-04-05T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:38.692Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="How-biological-neural-network-work"><a href="#How-biological-neural-network-work" class="headerlink" title="How biological neural network work"></a>How biological neural network work</h2><p>  As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.</p>
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg"></p>
-<hr>
-<a id="more"></a>
-<h2 id="How-artificial-neural-network-work"><a href="#How-artificial-neural-network-work" class="headerlink" title="How artificial neural network work"></a>How artificial neural network work</h2><p><img src="http://7xugq7.com1.z0.glb.clouddn.com/perceptron.jpg" width="500"></p>
-<p>  The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
-<p>  And here’s what a three-layer ann looks like,</p>
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/3lann.jpg" height="200"></p>
-<p>  The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, …, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that’s why we need more). </p>
-<hr>
-<h2 id="Feedforward-Propagation-Algorithm"><a href="#Feedforward-Propagation-Algorithm" class="headerlink" title="Feedforward Propagation Algorithm"></a>Feedforward Propagation Algorithm</h2><p>  We obtain the output first, by:</p>
-<p>$$y_{j}=g(\sum^{n}_{i=1}\omega_{ji}x_i-\theta),$$</p>
-<p>,and we often choose sigmoid function $g(z)=\frac{1}{1+e^{-z}}$ as our activation function. For the more complex situation, we can also use vectorization:</p>
-<p>$$a_{n+1}=g(a_{n}*\Theta_n)$$ </p>
-<p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
-<hr>
-<h2 id="Back-Propagation-Algorithm"><a href="#Back-Propagation-Algorithm" class="headerlink" title="Back Propagation Algorithm"></a>Back Propagation Algorithm</h2><p>  For the training set ${(x^{(1)},y^{(1)}),…,(x^{(m)},y^{(m)}) }$, we first $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). Then we run the following loop:</p>
-<p>For $i = 1$ to $m$:</p>
-<p>　　Set $a^{(1)}=x^{(i)}$</p>
-<p>　　Perform forward propagation to compute $a^{(l)}$ for $l=2,3,..,L$</p>
-<p>　　Using $y^{(i)}​$, compute $\delta^{L}=a^{(L)}-y^{(i)}​$</p>
-<p>　　Compute $\delta^{(L-1)}, \delta^{(L-2)}, …, \color{red}{\delta^{(2)}}$</p>
-<p>　　$\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i}$</p>
-<p>After that, </p>
-<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
-<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
-<p>And we get:</p>
-<p>　　$$\frac{\partial}{\partial\Theta^{(l)}_{ij}}J(\Theta) = D_{ij}^{(l)}$$</p>
-<hr>
-<h2 id="Process-of-Training-a-Neural-Network"><a href="#Process-of-Training-a-Neural-Network" class="headerlink" title="Process of Training a Neural Network"></a>Process of Training a Neural Network</h2><ol>
-<li>Randomly initialize the weights;</li>
-<li>Implement forward propagation to get $h_{\Theta}(x^{(i)})$ for any $x^{(i)}$;</li>
-<li>Implement the cost function;</li>
-<li>Implement backpropagation to compute partial derivatives;</li>
-<li>Use gradient checking to confirm that your backpropagation works. Then disable gradient checking;</li>
-<li>Use gradient descent or a built-in optimization function to minimize the cost function with the weights in theta;</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;How-biological-neural-network-work&quot;&gt;&lt;a href=&quot;#How-biological-neural-network-work&quot; class=&quot;headerlink&quot; title=&quot;How biological neural network work&quot;&gt;&lt;/a&gt;How biological neural network work&lt;/h2&gt;&lt;p&gt;  As the following image shown, there are three main parts in each neuron:  &lt;strong&gt;Dendrites&lt;/strong&gt;, &lt;strong&gt;Cell Body&lt;/strong&gt; and &lt;strong&gt;Axon&lt;/strong&gt;. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/categories/Machine-Learning/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/tags/Machine-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一条置顶声明（已经不是了）</title>
-    <link href="http://gabrieldrapor.github.io/2017/03/21/170507_notice/"/>
-    <id>http://gabrieldrapor.github.io/2017/03/21/170507_notice/</id>
-    <published>2017-03-21T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:41.652Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于在2017.3.21，<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说官方</a>发布了重要通知：</p>
-<blockquote>
-<p>因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。</p>
-</blockquote>
-<p>且在博客评论领域中覆盖率最广的Disqus并不支持国内访问，其他评论系统我都并不太喜欢，再加上本身其实也没多少人会来看我的博客……所以打算关闭评论系统了…</p>
-<p>另外在评论系统正式关闭之前…我暂时还不会主动关掉它…先留着吧…毕竟看一天少一天了……</p>
-<p>……不知道除了我还有谁会看见这条声明：）</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;由于在2017.3.21，&lt;a href=&quot;http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;多说官方&lt;/a&gt;发布了重要通知：&lt;/p&gt;
-&lt;block
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>开学已经四周了</title>
-    <link href="http://gabrieldrapor.github.io/2017/03/19/170319-plans/"/>
-    <id>http://gabrieldrapor.github.io/2017/03/19/170319-plans/</id>
-    <published>2017-03-19T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:36.109Z</updated>
-    
-    <content type="html"><![CDATA[<p>&emsp;&emsp;时间过得真快，开学已经四周了……</p>
-<p>&emsp;&emsp;这四周过得并没有想象中的好，被一些事情占据了不少时间，自己也浪费了很多时间，导致总共到现在Coursera的课仅仅推了不到两周的内容………</p>
-<p>&emsp;&emsp;于是，为了改变这种颓废的状态，打算开始实践最近发现的<a href="https://www.zhihu.com/question/31877598/answer/53667346" target="_blank" rel="external">沉浸工作法</a>，并且受<a href="https://github.com/lanshan-studio/weekly" target="_blank" rel="external">https://github.com/lanshan-studio/weekly</a> 的启发，决定开始写周简报督促自己的学习，暂定每周日写吧。周报就放在这好了 <a href="https://github.com/GabrielDrapor/Weekly" target="_blank" rel="external">https://github.com/GabrielDrapor/Weekly</a></p>
-<p>&emsp;&emsp;另外就是，这学期课内的课真的有点难度了，不能再像之前那样堆到期末再来学了，平时也要多看书。【上学期概率论学的不踏实，数理统计真的好难啊……</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;emsp;&amp;emsp;时间过得真快，开学已经四周了……&lt;/p&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;这四周过得并没有想象中的好，被一些事情占据了不少时间，自己也浪费了很多时间，导致总共到现在Coursera的课仅仅推了不到两周的内容………&lt;/p&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;
-    
-    </summary>
-    
-      <category term="个人规划" scheme="http://gabrieldrapor.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/"/>
-    
-    
-      <category term="Plans" scheme="http://gabrieldrapor.github.io/tags/Plans/"/>
-    
-      <category term="Paths" scheme="http://gabrieldrapor.github.io/tags/Paths/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>A Concrete Plan</title>
-    <link href="http://gabrieldrapor.github.io/2017/03/05/170305-plans/"/>
-    <id>http://gabrieldrapor.github.io/2017/03/05/170305-plans/</id>
-    <published>2017-03-05T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:33.441Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Maths"><a href="#Maths" class="headerlink" title="Maths"></a>Maths</h3><blockquote>
-<ul>
-<li>《实变函数与泛函分析基础》</li>
-<li>《数学物理方程》</li>
-<li>《概率论与数理统计》</li>
-<li>《复变函数与积分变换》</li>
-<li>《数学模型》/姜启源</li>
-<li>《陶哲轩实分析》</li>
-</ul>
-</blockquote>
-<hr>
-<h3 id="Skills"><a href="#Skills" class="headerlink" title="Skills"></a>Skills</h3><ul>
-<li>Courses:</li>
-</ul>
-<blockquote>
-<ul>
-<li>Machine Learning - Andrew Ng</li>
-<li>Stanford CS229 - Andrew Ng(选)</li>
-<li>机器学习基石、机器学习技法 - 台湾大学</li>
-<li>……</li>
-</ul>
-</blockquote>
-<ul>
-<li>Py:</li>
-</ul>
-<blockquote>
-<ul>
-<li>scikit-learn</li>
-<li>Numpy</li>
-</ul>
-</blockquote>
-<ul>
-<li>SQL advanced</li>
-</ul>
-<ul>
-<li>Books:</li>
-</ul>
-<blockquote>
-<ul>
-<li>Introduction to Data Mining</li>
-<li>Data Structure &amp; Algorithm analysis in C</li>
-<li>PRML(选)</li>
-<li>集体智慧编程</li>
-<li>利用python进行数据分析</li>
-</ul>
-</blockquote>
-<ul>
-<li>Kaggle startup</li>
-</ul>
-<hr>
-<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><ul>
-<li>Cook more</li>
-<li>Read more</li>
-<li>Play puzzles</li>
-<li>……</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Maths&quot;&gt;&lt;a href=&quot;#Maths&quot; class=&quot;headerlink&quot; title=&quot;Maths&quot;&gt;&lt;/a&gt;Maths&lt;/h3&gt;&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;《实变函数与泛函分析基础》&lt;/li&gt;
-&lt;li&gt;《数学物理方程》&lt;/li&gt;
-&lt;l
-    
-    </summary>
-    
-      <category term="个人规划" scheme="http://gabrieldrapor.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/"/>
-    
-    
-      <category term="Plans" scheme="http://gabrieldrapor.github.io/tags/Plans/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新学期来了，也写点啥吧</title>
-    <link href="http://gabrieldrapor.github.io/2017/02/19/170219_plans/"/>
-    <id>http://gabrieldrapor.github.io/2017/02/19/170219_plans/</id>
-    <published>2017-02-19T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:35.921Z</updated>
-    
-    <content type="html"><![CDATA[<p>  不知不觉寒假已经过完了，上学期说实话过得很糟糕，导致最后成绩也很糟糕。假期开头的时候参加了美赛，然后回老家大年初一就病倒了，在床上躺了几天，病好了之后还是看了一点Andrew Ng的课，后面也捡起《数据结构与算法分析——C语言描述》看了一点（中间的许多时间都被补《权力的游戏》占掉了，没有办法，实在是太好看了……）。新学期开始了，总觉得还是来应该来写点什么，列个简短的计划啥的骗骗自己也好。嗯。</p>
-<p>  这学期，父母也都因为种种原因不能在身边了，算是真的开始独居了。独居的忧愁参半：更自由了，也可以更多地邀请朋友来家玩了，但对自律的要求也更高了；是个提升厨艺的好机会，还可以有更多机会逛菜市场，但总是不愿洗碗……总之，这应该还算是个不错的机会，能够让我学会更独立地生活。</p>
-<p>  技术方面，上学期过得实在是堕落，进步得实在太少了…Andrew Ng的课拖了那么久也没上完，这学期还是把它结了吧；数据结构和算法先把那本书啃完，一定要动手亲自实现，然后适当做做题什么的练练手；Python的经典教材有机会也翻翻，爬虫也可以往深了玩一玩；机器学习和爬虫的笔记有时间的话也整理几篇markdown发出来吧。数据挖掘方向的学习路线，参考知乎和各种文章，找出一条适合自己的路。</p>
-<p>  另外作为数学本科生，感觉现在自己推导证明的能力百孔千疮，这学期打算抽时间好好补补，读读《陶哲轩实分析》，另外努力做到不翘课，好好学习。</p>
-<p>  生活方面的话，上学期后半截几乎就没怎么动，这学期要多运动，减减重；然后趁着独居的机会，争取学会多做几道菜，能有几道拿手菜。</p>
-<p>  先写这些，后面有更进一步的计划再来写。</p>
-<p>&emsp;&emsp;Go.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;  不知不觉寒假已经过完了，上学期说实话过得很糟糕，导致最后成绩也很糟糕。假期开头的时候参加了美赛，然后回老家大年初一就病倒了，在床上躺了几天，病好了之后还是看了一点Andrew Ng的课，后面也捡起《数据结构与算法分析——C语言描述》看了一点（中间的许多时间都被补《权力的
-    
-    </summary>
-    
-      <category term="个人规划" scheme="http://gabrieldrapor.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/"/>
-    
-    
-      <category term="Plans" scheme="http://gabrieldrapor.github.io/tags/Plans/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的2016</title>
-    <link href="http://gabrieldrapor.github.io/2017/01/01/170101_my2016/"/>
-    <id>http://gabrieldrapor.github.io/2017/01/01/170101_my2016/</id>
-    <published>2017-01-01T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:42.024Z</updated>
-    
-    <content type="html"><![CDATA[<p>&emsp;&emsp;2016, 结束了。</p>
-<p>&emsp;&emsp;在此谨记我在2016的所得。</p>
-<a id="more"></a>
-<h5 id="emsp-emsp-技术上，"><a href="#emsp-emsp-技术上，" class="headerlink" title="&emsp;&emsp;技术上，"></a>&emsp;&emsp;技术上，</h5><blockquote>
-<ul>
-<li>阅读了部分《C Primer Plus》和《C Programming Language》，掌握了C的基本语法；</li>
-<li>主要通过<a href="http://www.liaoxuefeng.com/" target="_blank" rel="external">廖雪峰的python教程</a>和Vamei的<a href="http://www.cnblogs.com/vamei/archive/2012/09/13/2682778.html" target="_blank" rel="external">Python快速教程</a>（读着真痛快啊），也熟悉了Python的基本和部分高级的用法；</li>
-<li>在掌握以上两门语言的基本用法之后，去本校的OJ平台上，刷了113道题，虽然有很多是水题，但也算是帮助自己熟悉了两种语言；</li>
-<li>开始用python学着写爬虫，顺便掌握了正则表达式，写了<a href="http://stat.drapor.me" target="_blank" rel="external">人生中第一个爬虫</a>；</li>
-<li>《数据结构与算法分析——C语言描述》看到链表的部分，结果后面一直搁着再没动过；</li>
-</ul>
-<ul>
-<li><p>用Github + Hexo 搭了这个博客， 把自己学到的东西和规划整理写成Markdown发上来；</p>
-</li>
-<li><p>做了几次数学建模，学了点够建模用的MATLAB，也玩过几次Maple，为了来年一月份的美赛，还研究和学习了一发LaTeX；</p>
-</li>
-<li><p>学了一些运维相关的知识（计算机网络，系统，Linux,网络设计等），已经能够自己独立地搭一个服务器，配置一个xAMP环境（ASP和jsp之类的当然也搭过），能写一点HTML/CSS和php，帮着社团上线了纳新用的网站；</p>
-</li>
-</ul>
-<ul>
-<li>上了Andrew Ng在Coursera上的<em>Machine Learning</em>，用到了已经学过的MATLAB和高代的知识，但进度一拖再拖，小半年才上到第五周；</li>
-<li>从网课和周志华教授的《机器学习》学到了关于回归模型（Linear Regression 和 Logistic Regression）以及神经网络模型（BP）的一些基本知识（不得不说，周志华教授的书写得真的好）；</li>
-</ul>
-<ul>
-<li>已经能够熟练拆自己的电脑，对于要拆陌生的电脑这种事情也不再害怕了（但遇到类似TP这种麻烦的机子还是不可避免地要崩掉几个卡扣），修电脑的本事也不断提高（已经开始想以后要不要就开家小店修修电脑过活算了）；</li>
-</ul>
-</blockquote>
-<h5 id="emsp-emsp-生活、学习上，"><a href="#emsp-emsp-生活、学习上，" class="headerlink" title="&emsp;&emsp;生活、学习上，"></a>&emsp;&emsp;生活、学习上，</h5><blockquote>
-<ul>
-<li>清空了微博，成功戒掉了用微博的恶习，变成只是偶尔看看；</li>
-<li>几乎是裸考的四级出乎意料地考了581，免修了一学期的英语课，还顺便收获了一个4.33；</li>
-<li>入了垂涎已久的Surface，虽然只是二手低配的Surface 3， 但毫无疑问这是我2016一整年最值得的一次消费；</li>
-<li>平时上学的时候也不太玩游戏，于是就花了非常多的时间在看剧上，看过/追过/补过的番/剧包括但不限于：《Mr.Robot》《Legal High》《Scorpin》《Elementary》《毛骗》《The Night Of》《S.H.I.E.L.D.》《The Flash》《The Big Bang Theory》《Silcon Valley》《West World》《Game of Thrones》《Black Mirror》《Legends of Tomorrow》《Friends》《逃げるは恥だが役に立つ》《Steins;Gate》……</li>
-<li>完全掉进了小众音乐（伪）的坑，开始越来越喜欢听赵雷、花粥、草东没有派对、燕池、好妹妹乐队和许许多多以前从来没有听过的歌手和组合的音乐；</li>
-<li>在YouTube上听穿了近些年岳云鹏和郭德纲（以及德云社）的几乎所有相声作品；</li>
-<li>用将近三个月的时间，顺利地拿到了C1驾照；</li>
-<li>开始一个人下馆子，一个人去电影院，一个人去看话剧；</li>
-<li>本来能有机会去Kcon黑客大会当志愿者，后由于各种原因没去，在秋天的时候去北航参加了CosCon，见识了一些新的东西，听到了一些不错的观点；<br><img src="http://7xugq7.com1.z0.glb.clouddn.com/coscon.jpg"></li>
-<li>作为NBA球迷：<blockquote>
-<p>更多地观看赛事直播；<br>开始翻看以前的录像，截录像中自己喜欢的片段并整理；<br>开始喜欢看球评和战术分析相关的文章；<br>开始欣赏以前注意不到的比赛细节；<br>主动去了解阵地战术和跑位，收集各种采访视频和球员集锦；<br>开始对高阶数据感兴趣；<br>开始学会拒绝印象流和无脑吹或喷；<br>开始关注更多球员的表现；<br>另外，我有幸目睹了伟大的2015-2016赛季（60分谢幕战，402记3分，73胜，西决1-3逆转，总决赛历史上最伟大的以下克上，G7君临的勒布朗……）以及数位传奇巨星的退役；</p>
-</blockquote>
-</li>
-<li>人生第一次上场打了5v5全场的比赛，球衣号码选的是我最喜欢的21号；<br><img src="http://7xugq7.com1.z0.glb.clouddn.com/collegegame.jpg"></li>
-</ul>
-</blockquote>
-<hr>
-<p>&emsp;&emsp;本来其实不那么想写这篇总结，因为我的2016和某位学长的同时期（<a href="http://aljun.me/post/15" target="_blank" rel="external">我与2015的故事</a>）相比，真的显得弱了很多，完全不值得一写，但考虑再三，觉得其实没有必要和任何人比较，只要和过去的自己比有进步了就可以了，所以还是来写了总结，就当是吹一波自己（其实也没啥好吹的）；<br>&emsp;&emsp;2016里，一个重要的变化是我探索世界的手段更加丰富了，我可以看得更远，知道得更多了；<br>&emsp;&emsp;2016，我知道了一些事情，想清楚了一些事情，也明白和更深刻地理解了一些事情；在旧的一年里，我割舍了一些东西，尝试了一些新的东西，获得了很多以前从未有过的人生体验；<br>&emsp;&emsp;我在2016所获得的成长，不如想象中的迅猛，但在近些年里算是不错的了，也还算是可以吧。<br>&emsp;&emsp;而且真心的要感谢关心过我的家人和朋友们，谢谢你们。<br><br></p>
-<blockquote>
-<p>“Wer viel einst zu verkünden hat, schweigt viel in sich hinein. Wer einst den Blitz zu zünden hat, muß lange Wolke sein.”<br><strong>“谁终将声震人间，必长久深自缄默；谁终将点燃闪电，必长久如云漂泊。”</strong>  &emsp;&emsp;—-Nietzsche</p>
-</blockquote>
-<h4 id="emsp-emsp-2017，加油干吧。"><a href="#emsp-emsp-2017，加油干吧。" class="headerlink" title="&emsp;&emsp;2017，加油干吧。"></a>&emsp;&emsp;<strong>2017，加油干吧。</strong></h4><p><img src="http://7xugq7.com1.z0.glb.clouddn.com/WM2.png"><br><img src="http://7xugq7.com1.z0.glb.clouddn.com/WM1.png"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;emsp;&amp;emsp;2016, 结束了。&lt;/p&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;在此谨记我在2016的所得。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学习记录" scheme="http://gabrieldrapor.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-    
-      <category term="Plans" scheme="http://gabrieldrapor.github.io/tags/Plans/"/>
-    
-      <category term="Paths" scheme="http://gabrieldrapor.github.io/tags/Paths/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Machine Learning Notes 05</title>
-    <link href="http://gabrieldrapor.github.io/2016/12/02/161202_ml_notes5/"/>
-    <id>http://gabrieldrapor.github.io/2016/12/02/161202_ml_notes5/</id>
-    <published>2016-12-02T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:35.729Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h2><p>Overfitting would cause the modle to perform poorly, like this:<br><img src="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG"></p>
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG"></p>
-<p>&emsp;&emsp;As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t always work. Sometims we have too many features which cause that it’s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.</p>
-<a id="more"></a>
-<hr>
-<h2 id="Two-options-to-solve"><a href="#Two-options-to-solve" class="headerlink" title="Two options to solve"></a>Two options to solve</h2><p><strong>1.Reduce the number of features</strong></p>
-<blockquote>
-<p>Manually select which features to keep or throw out<br>Model selection algorithm (help ue to decide which features to keep or throw out automatically)</p>
-<p>Disadvantages: Reduce some information about the problem.</p>
-</blockquote>
-<p><strong>2.Regularization</strong></p>
-<blockquote>
-<p>Keep all the features, but reduce magnitude/values of parameters <span>$\theta_{j}$</span><!-- Has MathJax -->.<br>Works well when we have a lot of features, each of which contributes a bit to predicting <span>$y$</span><!-- Has MathJax -->.</p>
-</blockquote>
-<p>So we can see regularization is a better choice mostly.</p>
-<hr>
-<h2 id="See-the-cost-functinon"><a href="#See-the-cost-functinon" class="headerlink" title="See the cost functinon"></a>See the cost functinon</h2><ul>
-<li>First, consider this. If our hypothesis is like this:</li>
-</ul>
-<center><span>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2}
-+ \theta_{3}x^3 + \theta_{4}x^4$$</span><!-- Has MathJax --></center>
-
-<p>and if we penalize and make <span>$\theta_{3}$</span><!-- Has MathJax --> and <span>$\theta_{4}$</span><!-- Has MathJax --> really small, it means that <span>$\theta_{3}\approx0,\theta_{4}\approx0$</span><!-- Has MathJax -->, that is like as if we ‘re getting rid of these two terms, then we would find that </p>
-<center><span>$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2}$</span><!-- Has MathJax --></center>
-
-<hr>
-<h2 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h2><p>“…having <strong>smaller values of the parameters</strong> corresponds to usually <strong>smoother functions as well for the simpler</strong>. And which are therefore, also, <strong>less prone to overfitting</strong>. ”<br>What we should do is to modify the cost function to shrink all of the parameters like this:</p>
-<center><span>$J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}$</span><!-- Has MathJax --></center>
-
-<p>And the blue terms is called <strong>regularization terms</strong>, <span>$\lambda$</span><!-- Has MathJax --> is called <strong>regularization parameters</strong> which is used to trade off between two different goals:<br><span>$$\begin{cases}
-1. \sum(h_{\theta}(x^{(i)})-y^{(i)})^{2}\:-\:fit\:well\\
-2. \sum{\theta_{j}^{2}}\:-\:keep\:the\:parameters\:small
-   \end{cases}$$</span><!-- Has MathJax --></p>
-<p>By the way, we don’t penalize <span>$\theta_{0}$</span><!-- Has MathJax --> by convention.<br>Besides, about the regularization parameters <span>$\lambda$</span><!-- Has MathJax -->, if <span>$\lambda$</span><!-- Has MathJax --> is too large, it would cause underfitting, and if <span>$\lambda$</span><!-- Has MathJax --> is too small, it may cause the useless regularization.</p>
-<hr>
-<h2 id="Regularized-linear-regression"><a href="#Regularized-linear-regression" class="headerlink" title="Regularized linear regression"></a>Regularized linear regression</h2><ul>
-<li><p>Gradient descent:<br>Old:<br>&emsp;&emsp;&emsp;Repeat{<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,...,n)$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;}</p>
-<font color="blue">New:</font><br>&emsp;&emsp;&emsp;<font color="blue">Repeat{</font><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>${\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;<font color="blue">}</font>
-
-
-
-</li>
-</ul>
-<hr>
-<h2 id="Regularization-logistic-regression"><a href="#Regularization-logistic-regression" class="headerlink" title="Regularization logistic regression"></a>Regularization logistic regression</h2><p>&emsp;&emsp;&emsp;Cost function <span>$J(\theta)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x)){\color{Blue} {+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}}}$</span><!-- Has MathJax --></p>
-<p>&emsp;&emsp;&emsp;<font color="blue">Repeat{</font><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;<font color="blue">}</font><br>Remember that <span>$h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$</span><!-- Has MathJax --></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Overfitting&quot;&gt;&lt;a href=&quot;#Overfitting&quot; class=&quot;headerlink&quot; title=&quot;Overfitting&quot;&gt;&lt;/a&gt;Overfitting&lt;/h2&gt;&lt;p&gt;Overfitting would cause the modle to perform poorly, like this:&lt;br&gt;&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t always work. Sometims we have too many features which cause that it’s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/categories/Machine-Learning/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/tags/Machine-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python Crawler Note 2</title>
-    <link href="http://gabrieldrapor.github.io/2016/12/02/161202_pyCrawler2/"/>
-    <id>http://gabrieldrapor.github.io/2016/12/02/161202_pyCrawler2/</id>
-    <published>2016-12-02T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:41.276Z</updated>
-    
-    <content type="html"><![CDATA[<p>Besides what we have seen in <a href="http://drapor.me/2016/12/01/161201_pyCrawler1/" target="_blank" rel="external">Note 1</a>, we can add some details in our codes:<br>Sometimes  we need to pretend as the browser to obtain the content of the page, we can add headers:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">url = <span class="string">'http://drapor.me'</span></div><div class="line">headers = &#123; <span class="string">'User-Agent'</span> : <span class="string">'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'</span>&#125; </div><div class="line">request = urllib2.Request(url, headers)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>More about headers, you can check <a href="http://drapor.me/2016/04/27/160427_http/" target="_blank" rel="external">this article</a>.</p>
-<hr>
-<p>And if you need to post some data, like your username or password to the sites, try this:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">values = &#123;<span class="string">"username"</span>:<span class="string">"drapor"</span>,<span class="string">"password"</span>:<span class="string">"*****"</span>&#125;</div><div class="line"></div><div class="line">data = urllib.urlencode(values) </div><div class="line">url = <span class="string">"http://www.heibanke.com/lesson/crawler_ex01/"</span> <span class="comment">#This is a crawler game I found before which is quite interesting.</span></div><div class="line">request = urllib2.Request(url,data)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure>
-<hr>
-<p>If you find there’s something wrong with your code, you can try this:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">requset = urllib2.Request(<span class="string">'http://www.xxxxx.com'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    urllib2.urlopen(request)</div><div class="line"><span class="keyword">except</span> urllib2.URLError, e:</div><div class="line">    <span class="keyword">print</span> e.reason</div></pre></td></tr></table></figure></p>
-<p>And you will get the info of the error.</p>
-<hr>
-<p>And if you need to use cookies, try this:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> cookielib</div><div class="line"></div><div class="line">cookie = cookielib.CookieJar() <span class="comment">#Declar a CookieJar object to save cookie</span></div><div class="line">handler = urllib2.HTTPCookieProcessor(cookie) <span class="comment">#use HTTPCookieProcessor object in urllib2 to create cookie processor</span></div><div class="line">opener = urllib2.build_opener(handler) <span class="comment">#build opener by Handler</span></div><div class="line">response = opener.open(<span class="string">'http://drapor.me'</span>) <span class="comment"># this opener.open() is the same as urllib2.urlopen()</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cookie:</div><div class="line">    <span class="keyword">print</span> <span class="string">'Name = '</span>+item.name</div><div class="line">    <span class="keyword">print</span> <span class="string">'Value = '</span>+item.value</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Besides what we have seen in &lt;a href=&quot;http://drapor.me/2016/12/01/161201_pyCrawler1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Note 1&lt;/a&gt;, we can a
-    
-    </summary>
-    
-      <category term="pyCrawler" scheme="http://gabrieldrapor.github.io/categories/pyCrawler/"/>
-    
-    
-      <category term="python" scheme="http://gabrieldrapor.github.io/tags/python/"/>
-    
-      <category term="Crawler" scheme="http://gabrieldrapor.github.io/tags/Crawler/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python Crawler Note 1</title>
-    <link href="http://gabrieldrapor.github.io/2016/12/01/161201_pyCrawler1/"/>
-    <id>http://gabrieldrapor.github.io/2016/12/01/161201_pyCrawler1/</id>
-    <published>2016-12-01T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:38.145Z</updated>
-    
-    <content type="html"><![CDATA[<p>First, let’s start with a easy one:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>The output should be like:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">......</div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>Also, codes below do the same thing,<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">request=urllib2.Request(url)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission" target="_blank" rel="external">Tutorial I recommand</a>) here to help us:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line">content = response.read()              <span class="comment">#First we store the content of whole webpage</span></div><div class="line">content = content.replace(<span class="string">'\n'</span>,<span class="string">''</span>)     <span class="comment">#I use this to delete all the newline character to avoid some troubles</span></div><div class="line"></div><div class="line">pattern = <span class="string">r'&lt;a class="article-title" href=".*?"&gt;.*?&lt;/a&gt;'</span>   <span class="comment">#Then your regex here, remember the 'r'</span></div><div class="line"></div><div class="line">result = re.findall(pattern, content) <span class="comment">#Find all the result</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">"index.html"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:    <span class="comment">#Write the result in a new HTML file</span></div><div class="line">    <span class="keyword">for</span> items <span class="keyword">in</span> result:</div><div class="line">        f.write(items+<span class="string">'&lt;br&gt;'</span>)</div></pre></td></tr></table></figure></p>
-<p><strong>Tip: Don’t use something like ‘+’ or ‘*’ in your zero-width assertion or write your regex like ‘(?&lt;![a-z]+)/d+’, or you will get:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error: look-behind requires fixed-width pattern.</div></pre></td></tr></table></figure></p>
-<p>And open the new HTML file we create with browser, we got this:<br><img src="http://7xugq7.com1.z0.glb.clouddn.com/pycrawler1_out.PNG"></p>
-<p><strong>Wow! How fantastic!!!</strong></p>
-<hr>
-<p><strong>And here’s the first attempt of mine (also my first crawler):</strong></p>
-<blockquote>
-<p>URL: <a href="http://stat.drapor.me/" target="_blank" rel="external">http://stat.drapor.me/</a><br>Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague" target="_blank" rel="external">https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;First, let’s start with a easy one:&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div 
-    
-    </summary>
-    
-      <category term="pyCrawler" scheme="http://gabrieldrapor.github.io/categories/pyCrawler/"/>
-    
-    
-      <category term="python" scheme="http://gabrieldrapor.github.io/tags/python/"/>
-    
-      <category term="Crawler" scheme="http://gabrieldrapor.github.io/tags/Crawler/"/>
     
   </entry>
   
