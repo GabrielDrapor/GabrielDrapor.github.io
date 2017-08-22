@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2017-08-19T07:08:27.690Z</updated>
+  <updated>2017-08-22T07:59:23.301Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -14,6 +14,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在AWS上搭建TensorFlow环境</title>
+    <link href="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/"/>
+    <id>http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/</id>
+    <published>2017-08-22T00:00:00.000Z</published>
+    <updated>2017-08-22T07:59:23.301Z</updated>
+    
+    <content type="html"><![CDATA[<p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1" target="_blank" rel="external">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow" target="_blank" rel="external">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p>
+<a id="more"></a>
+<ul>
+<li><p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p>
+</li>
+<li><p>ssh之前，记得把密钥权限改成600；</p>
+</li>
+<li><p>登陆之后首先确认一下GPU信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span>(local) lspci | grep -i nvidia</div></pre></td></tr></table></figure>
+</li>
+<li><p>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；</p>
+<ul>
+<li>首先是 CUDA Toolkit：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"><span class="meta"></span></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"><span class="meta"></span></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line"><span class="meta">$</span> ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line"><span class="meta">$</span> ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"><span class="meta"></span></div><div class="line">$ vim ~/.bashrc</div><div class="line"><span class="meta"></span></div><div class="line">#增加下面三行</div><div class="line">export CUDA_ROOT=/usr/local/cuda-8.0</div><div class="line">export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64</div><div class="line">export PATH=$PATH:$CUDA_ROOT/bin</div><div class="line"><span class="meta"></span></div><div class="line">$ source ~/.bashrc</div><div class="line"><span class="meta"></span></div><div class="line">#测试一下</div><div class="line"><span class="meta">$</span> nvidia-smi -q | head</div></pre></td></tr></table></figure>
+<ul>
+<li>然后是cuDNN library：</li>
+</ul>
+<p>首先去<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">https://developer.nvidia.com/cudnn</a> 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</div><div class="line"><span class="meta">$</span> cp cuda/lib64/* /usr/local/cuda-8.0/lib64/</div><div class="line"><span class="meta">$</span> cp cuda/include/* /usr/local/cuda-8.0/include/</div></pre></td></tr></table></figure>
+<p>至此，GPU Drivers的部分基本配置完成。</p>
+</li>
+<li><p>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> Install pip and virtualen </div><div class="line"><span class="meta">$</span> sudo apt install python-pip python-dev python-virtualenv # for Python 2.7</div><div class="line"><span class="meta">$</span> sudo apt install python3-pip python3-dev python-virtualenv # for Python 3.n</div><div class="line"><span class="meta"></span></div><div class="line"># Create a virtualenv environment</div><div class="line"><span class="meta">$</span> virtualenv --system-site-packages targetDirectory # for Python 2.7</div><div class="line"><span class="meta">$</span> virtualenv --system-site-packages -p python3 'targetDirectory' # for Python 3.n</div><div class="line"><span class="meta">#</span> 'targetDirectory' specifies the top of the virtualenv tree, which you may choose by yourself.</div><div class="line"><span class="meta"></span></div><div class="line"># Activate the virtualenv environment</div><div class="line"><span class="meta">$</span> source ~/tensorflow/bin/activate # bash, sh, ksh, or zsh</div><div class="line"><span class="meta">$</span> source ~/tensorflow/bin/activate.csh  # csh or tcsh</div><div class="line"><span class="meta"></span></div><div class="line">#现在的命令行前面的标识会变成这个样子：</div><div class="line"><span class="meta">(tensorflow)$</span></div><div class="line"><span class="meta"></span></div><div class="line">#Install TensorFlow, ensure the version of pip &gt;= 8.1</div><div class="line"><span class="meta">(tensorflow)$</span> pip install --upgrade tensorflow      # for Python 2.7</div><div class="line"><span class="meta">(tensorflow)$</span> pip3 install --upgrade tensorflow     # for Python 3.n</div><div class="line"><span class="meta">(tensorflow)$</span> pip install --upgrade tensorflow-gpu  # for Python 2.7 and GPU</div><div class="line"><span class="meta">(tensorflow)$</span> pip3 install --upgrade tensorflow-gpu # for Python 3.n and GPU</div></pre></td></tr></table></figure>
+<p>至此，TensorFlow安装完成</p>
+</li>
+<li><p>激活命令为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh</div><div class="line"><span class="meta">$</span> source ~/tensorflow/bin/activate.csh  # csh or tcsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>退出环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span> deactivate</div></pre></td></tr></table></figure>
+</li>
+<li><p>卸载</p>
+</li>
+</ul>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> rm -r targetDirectory</div></pre></td></tr></table></figure>
+<p>  ​</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于搭建TensorFlow，其实&lt;a href=&quot;https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方的配置指南&lt;/a&gt;其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——&lt;a href=&quot;http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;從AWS搭一個GPU運算環境來玩tensorflow&lt;/a&gt;。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Server" scheme="http://gabrieldrapor.github.io/categories/Server/"/>
+    
+    
+      <category term="TensorFlow" scheme="http://gabrieldrapor.github.io/tags/TensorFlow/"/>
+    
+  </entry>
   
   <entry>
     <title>Codewars上有趣的题（一）</title>
@@ -1183,40 +1242,6 @@
     
     
       <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/tags/Machine-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python Crawler Note 2</title>
-    <link href="http://gabrieldrapor.github.io/2016/12/02/161202_pyCrawler2/"/>
-    <id>http://gabrieldrapor.github.io/2016/12/02/161202_pyCrawler2/</id>
-    <published>2016-12-02T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:41.276Z</updated>
-    
-    <content type="html"><![CDATA[<p>Besides what we have seen in <a href="http://drapor.me/2016/12/01/161201_pyCrawler1/" target="_blank" rel="external">Note 1</a>, we can add some details in our codes:<br>Sometimes  we need to pretend as the browser to obtain the content of the page, we can add headers:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">url = <span class="string">'http://drapor.me'</span></div><div class="line">headers = &#123; <span class="string">'User-Agent'</span> : <span class="string">'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'</span>&#125; </div><div class="line">request = urllib2.Request(url, headers)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>More about headers, you can check <a href="http://drapor.me/2016/04/27/160427_http/" target="_blank" rel="external">this article</a>.</p>
-<hr>
-<p>And if you need to post some data, like your username or password to the sites, try this:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">values = &#123;<span class="string">"username"</span>:<span class="string">"drapor"</span>,<span class="string">"password"</span>:<span class="string">"*****"</span>&#125;</div><div class="line"></div><div class="line">data = urllib.urlencode(values) </div><div class="line">url = <span class="string">"http://www.heibanke.com/lesson/crawler_ex01/"</span> <span class="comment">#This is a crawler game I found before which is quite interesting.</span></div><div class="line">request = urllib2.Request(url,data)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure>
-<hr>
-<p>If you find there’s something wrong with your code, you can try this:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">requset = urllib2.Request(<span class="string">'http://www.xxxxx.com'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    urllib2.urlopen(request)</div><div class="line"><span class="keyword">except</span> urllib2.URLError, e:</div><div class="line">    <span class="keyword">print</span> e.reason</div></pre></td></tr></table></figure></p>
-<p>And you will get the info of the error.</p>
-<hr>
-<p>And if you need to use cookies, try this:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> cookielib</div><div class="line"></div><div class="line">cookie = cookielib.CookieJar() <span class="comment">#Declar a CookieJar object to save cookie</span></div><div class="line">handler = urllib2.HTTPCookieProcessor(cookie) <span class="comment">#use HTTPCookieProcessor object in urllib2 to create cookie processor</span></div><div class="line">opener = urllib2.build_opener(handler) <span class="comment">#build opener by Handler</span></div><div class="line">response = opener.open(<span class="string">'http://drapor.me'</span>) <span class="comment"># this opener.open() is the same as urllib2.urlopen()</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cookie:</div><div class="line">    <span class="keyword">print</span> <span class="string">'Name = '</span>+item.name</div><div class="line">    <span class="keyword">print</span> <span class="string">'Value = '</span>+item.value</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Besides what we have seen in &lt;a href=&quot;http://drapor.me/2016/12/01/161201_pyCrawler1/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Note 1&lt;/a&gt;, we can a
-    
-    </summary>
-    
-      <category term="pyCrawler" scheme="http://gabrieldrapor.github.io/categories/pyCrawler/"/>
-    
-    
-      <category term="python" scheme="http://gabrieldrapor.github.io/tags/python/"/>
-    
-      <category term="Crawler" scheme="http://gabrieldrapor.github.io/tags/Crawler/"/>
     
   </entry>
   

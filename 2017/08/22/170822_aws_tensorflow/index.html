@@ -4,19 +4,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>第一章 引论 | DRAPORLAND</title>
+  <title>在AWS上搭建TensorFlow环境 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="递归的四条基本法则：   基准情形。必须总有某些基准情形，它无需递归就能解出。   不断推进。对于那些需要递归求解的情形，每一次递归调用都必须要使求解状况朝接近基准情形的方向推进。  设计法则。假设所有的递归调用都能运行。   合成效益法则（compound interest rule）。在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。 【5/11:例如求斐波那契数列的和时，比">
-<meta name="keywords" content="《数据结构与算法分析——C语言描述》,笔记">
+  <meta name="description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。">
+<meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一章 引论">
-<meta property="og:url" content="http://gabrieldrapor.github.io/2016/05/13/160513_dsa-ch1/index.html">
+<meta property="og:title" content="在AWS上搭建TensorFlow环境">
+<meta property="og:url" content="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="递归的四条基本法则：   基准情形。必须总有某些基准情形，它无需递归就能解出。   不断推进。对于那些需要递归求解的情形，每一次递归调用都必须要使求解状况朝接近基准情形的方向推进。  设计法则。假设所有的递归调用都能运行。   合成效益法则（compound interest rule）。在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。 【5/11:例如求斐波那契数列的和时，比">
-<meta property="og:updated_time" content="2017-08-06T03:36:32.873Z">
+<meta property="og:description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。">
+<meta property="og:updated_time" content="2017-08-22T07:59:23.301Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一章 引论">
-<meta name="twitter:description" content="递归的四条基本法则：   基准情形。必须总有某些基准情形，它无需递归就能解出。   不断推进。对于那些需要递归求解的情形，每一次递归调用都必须要使求解状况朝接近基准情形的方向推进。  设计法则。假设所有的递归调用都能运行。   合成效益法则（compound interest rule）。在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。 【5/11:例如求斐波那契数列的和时，比">
+<meta name="twitter:title" content="在AWS上搭建TensorFlow环境">
+<meta name="twitter:description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -70,14 +70,14 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-160513_dsa-ch1" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-170822_aws_tensorflow" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/05/13/160513_dsa-ch1/" class="article-date">
-  <time datetime="2016-05-13T00:00:00.000Z" itemprop="datePublished">2016-05-13</time>
+    <a href="/2017/08/22/170822_aws_tensorflow/" class="article-date">
+  <time datetime="2017-08-22T00:00:00.000Z" itemprop="datePublished">2017-08-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/《数据结构与算法分析——C语言描述》/">《数据结构与算法分析——C语言描述》</a>
+    <a class="article-category-link" href="/categories/Server/">Server</a>
   </div>
 
   </div>
@@ -88,7 +88,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      第一章 引论
+      在AWS上搭建TensorFlow环境
     </h1>
   
 
@@ -96,31 +96,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>递归的四条基本法则：</li>
+        <p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1" target="_blank" rel="external">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow" target="_blank" rel="external">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p>
+<a id="more"></a>
+<ul>
+<li><p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p>
+</li>
+<li><p>ssh之前，记得把密钥权限改成600；</p>
+</li>
+<li><p>登陆之后首先确认一下GPU信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span>(local) lspci | grep -i nvidia</div></pre></td></tr></table></figure>
+</li>
+<li><p>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；</p>
+<ul>
+<li>首先是 CUDA Toolkit：</li>
 </ul>
-<ol>
-<li>基准情形。必须总有某些基准情形，它无需递归就能解出。</li>
-</ol>
-<ol>
-<li><p>不断推进。对于那些需要递归求解的情形，每一次递归调用都必须要使求解状况朝接近基准情形的方向推进。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"><span class="meta"></span></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"><span class="meta"></span></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line"><span class="meta">$</span> ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line"><span class="meta">$</span> ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"><span class="meta"></span></div><div class="line">$ vim ~/.bashrc</div><div class="line"><span class="meta"></span></div><div class="line">#增加下面三行</div><div class="line">export CUDA_ROOT=/usr/local/cuda-8.0</div><div class="line">export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64</div><div class="line">export PATH=$PATH:$CUDA_ROOT/bin</div><div class="line"><span class="meta"></span></div><div class="line">$ source ~/.bashrc</div><div class="line"><span class="meta"></span></div><div class="line">#测试一下</div><div class="line"><span class="meta">$</span> nvidia-smi -q | head</div></pre></td></tr></table></figure>
+<ul>
+<li>然后是cuDNN library：</li>
+</ul>
+<p>首先去<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">https://developer.nvidia.com/cudnn</a> 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</div><div class="line"><span class="meta">$</span> cp cuda/lib64/* /usr/local/cuda-8.0/lib64/</div><div class="line"><span class="meta">$</span> cp cuda/include/* /usr/local/cuda-8.0/include/</div></pre></td></tr></table></figure>
+<p>至此，GPU Drivers的部分基本配置完成。</p>
 </li>
-<li><p>设计法则。假设所有的递归调用都能运行。 </p>
+<li><p>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> Install pip and virtualen </div><div class="line"><span class="meta">$</span> sudo apt install python-pip python-dev python-virtualenv # for Python 2.7</div><div class="line"><span class="meta">$</span> sudo apt install python3-pip python3-dev python-virtualenv # for Python 3.n</div><div class="line"><span class="meta"></span></div><div class="line"># Create a virtualenv environment</div><div class="line"><span class="meta">$</span> virtualenv --system-site-packages targetDirectory # for Python 2.7</div><div class="line"><span class="meta">$</span> virtualenv --system-site-packages -p python3 'targetDirectory' # for Python 3.n</div><div class="line"><span class="meta">#</span> 'targetDirectory' specifies the top of the virtualenv tree, which you may choose by yourself.</div><div class="line"><span class="meta"></span></div><div class="line"># Activate the virtualenv environment</div><div class="line"><span class="meta">$</span> source ~/tensorflow/bin/activate # bash, sh, ksh, or zsh</div><div class="line"><span class="meta">$</span> source ~/tensorflow/bin/activate.csh  # csh or tcsh</div><div class="line"><span class="meta"></span></div><div class="line">#现在的命令行前面的标识会变成这个样子：</div><div class="line"><span class="meta">(tensorflow)$</span></div><div class="line"><span class="meta"></span></div><div class="line">#Install TensorFlow, ensure the version of pip &gt;= 8.1</div><div class="line"><span class="meta">(tensorflow)$</span> pip install --upgrade tensorflow      # for Python 2.7</div><div class="line"><span class="meta">(tensorflow)$</span> pip3 install --upgrade tensorflow     # for Python 3.n</div><div class="line"><span class="meta">(tensorflow)$</span> pip install --upgrade tensorflow-gpu  # for Python 2.7 and GPU</div><div class="line"><span class="meta">(tensorflow)$</span> pip3 install --upgrade tensorflow-gpu # for Python 3.n and GPU</div></pre></td></tr></table></figure>
+<p>至此，TensorFlow安装完成</p>
 </li>
-<li>合成效益法则（compound interest rule）。在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。 【5/11:例如求斐波那契数列的和时，比如求Fib(5)其实求了5次Fib(1),3次Fib(2)等等，这是一种极大的浪费】</li>
-</ol>
+<li><p>激活命令为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh</div><div class="line"><span class="meta">$</span> source ~/tensorflow/bin/activate.csh  # csh or tcsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>退出环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span> deactivate</div></pre></td></tr></table></figure>
+</li>
+<li><p>卸载</p>
+</li>
+</ul>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> rm -r targetDirectory</div></pre></td></tr></table></figure>
+<p>  ​</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/05/13/160513_dsa-ch1/" data-id="cj60gqfpc000gz2xu39crpkeb" class="article-share-link" data-share="baidu" data-title="第一章 引论">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/" data-id="cj6naw5j30000wuxu5wajiukh" class="article-share-link" data-share="baidu" data-title="在AWS上搭建TensorFlow环境">分享到</a>
       
 
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/《数据结构与算法分析——C语言描述》/">《数据结构与算法分析——C语言描述》</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li></ul>
 
     </footer>
   </div>
@@ -128,19 +152,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/05/14/160513_dsa-ch2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          第二章 算法分析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/05/03/160503_jsp/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/08/19/170819_funny_codewars/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">jsp搭建JEECMS</div>
+      <div class="article-nav-title">Codewars上有趣的题（一）</div>
     </a>
   
 </nav>
