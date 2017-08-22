@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2017-08-22T08:10:14.598Z</updated>
+  <updated>2017-08-22T08:11:57.792Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/"/>
     <id>http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/</id>
     <published>2017-08-22T00:00:00.000Z</published>
-    <updated>2017-08-22T08:10:14.598Z</updated>
+    <updated>2017-08-22T08:11:57.792Z</updated>
     
     <content type="html"><![CDATA[<p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1" target="_blank" rel="external">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow" target="_blank" rel="external">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p>
 <a id="more"></a>
@@ -55,7 +55,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span> deactivate</div></pre></td></tr></table></figure>
 </li>
 <li><p>卸载</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> rm -r targetDirectory</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ul>

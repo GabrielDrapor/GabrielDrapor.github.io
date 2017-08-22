@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
 <meta property="og:description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。">
-<meta property="og:updated_time" content="2017-08-22T08:10:14.598Z">
+<meta property="og:updated_time" content="2017-08-22T08:11:57.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在AWS上搭建TensorFlow环境">
 <meta name="twitter:description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。">
@@ -129,7 +129,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span> deactivate</div></pre></td></tr></table></figure>
 </li>
 <li><p>卸载</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> rm -r targetDirectory</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ul>
