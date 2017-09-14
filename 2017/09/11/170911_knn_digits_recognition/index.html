@@ -4,20 +4,20 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>用KNN做手写数字识别的探索 | DRAPORLAND</title>
+  <title>Kaggle 0 手写数字识别器的探索 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
-<meta name="keywords" content="KNN">
+  <meta name="description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（9.13:现在要换成CNN来做了）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
+<meta name="keywords" content="Kaggle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用KNN做手写数字识别的探索">
+<meta property="og:title" content="Kaggle 0 手写数字识别器的探索">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/09/11/170911_knn_digits_recognition/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
+<meta property="og:description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（9.13:现在要换成CNN来做了）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
 <meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/first_submission.png">
-<meta property="og:updated_time" content="2017-09-12T13:30:40.472Z">
+<meta property="og:updated_time" content="2017-09-14T16:44:44.851Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用KNN做手写数字识别的探索">
-<meta name="twitter:description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
+<meta name="twitter:title" content="Kaggle 0 手写数字识别器的探索">
+<meta name="twitter:description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（9.13:现在要换成CNN来做了）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
 <meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/first_submission.png">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
@@ -90,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      用KNN做手写数字识别的探索
+      Kaggle 0 手写数字识别器的探索
     </h1>
   
 
@@ -98,7 +98,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/" target="_blank" rel="external">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
+        <p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/" target="_blank" rel="external">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
 <a id="more"></a>
 <h3 id="9-11"><a href="#9-11" class="headerlink" title="9.11"></a>9.11</h3><p>没看书自己实现了一下KNN，算法本身也没什么复杂的，但是实现起来还是费了一番不小的功夫，动手能力还需增强啊…</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">print(<span class="string">'Importing the data...'</span>)</div><div class="line">train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">r = []</div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(len(test_set)):</div><div class="line">        print(<span class="string">'%d/28000'</span> % (t+<span class="number">1</span>))</div><div class="line">    a = np.array(test_set.loc[t])</div><div class="line">    d = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(train_set)):</div><div class="line">        b = np.array(pixel.loc[i])</div><div class="line">        d.append(np.dot((a-b).T,(a-b)))</div><div class="line">    k = list(zip(d,range(len(d))))</div><div class="line">    k.sort()</div><div class="line">    m = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">        m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">    r.append(sum(m)/<span class="number">10</span>)</div></pre></td></tr></table></figure>
@@ -109,18 +109,20 @@
 <p>为了能够快速地完成任务，我又去AWS上租了一个c4.4xlarge，配置是16 vCPU, 2.9 GHz, Intel Xeon E5-2666v3, 30 GiB 内存，在上面把任务分成16个进程进行计算。即便如此，整个任务还是花费了大概三四个小时的时间，但总算最后还是成功地跑出来了。</p>
 <p>将结果按照要求稍微整理一下就可以提交了，初次提交的分数是0.87314，预料之中。虽然准确率看起来还可以，但这个成绩在这项竞赛中的排名是1534／1625，非常的惨淡，不过这也说明改进的空间还很大。之后考虑用Pooling试试。</p>
 <p><img src="http://7xugq7.com1.z0.glb.clouddn.com/first_submission.png"></p>
+<hr>
+<h3 id="9-13"><a href="#9-13" class="headerlink" title="9.13"></a>9.13</h3><p>今天发现其实Pooling并不是一种可以提高精度的办法，只是一种可以降低计算复杂度的方法，如果原算法的精度本身就不高的话，Pooliing之后同样也不高，组长建议我改用CNN。我想了一下，就算调整K的值重新跑一次可能不会使准确率有明显的提升，Google了一下发现大家用KNN做手写识别，精度可能也就追求到0.8。嗯……这两天探索一下Tensorflow+CNN（之前只是知道，并没有深入了解过），尝试用这种方式解决这个问题。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/09/11/170911_knn_digits_recognition/" data-id="cj7hmu6qx0000ymxuytf9r4v3" class="article-share-link" data-share="baidu" data-title="用KNN做手写数字识别的探索">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/09/11/170911_knn_digits_recognition/" data-id="cj7hmu6qx0000ymxuytf9r4v3" class="article-share-link" data-share="baidu" data-title="Kaggle 0 手写数字识别器的探索">分享到</a>
       
 
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KNN/">KNN</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kaggle/">Kaggle</a></li></ul>
 
     </footer>
   </div>
