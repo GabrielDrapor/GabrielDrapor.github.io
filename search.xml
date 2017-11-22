@@ -4,6 +4,34 @@
   
     
     <entry>
+      <title><![CDATA[用python连接SparkThriftServer]]></title>
+      <url>http://gabrieldrapor.github.io/2017/11/22/171122_impala/</url>
+      <content type="html"><![CDATA[<p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
+<a id="more"></a>
+<p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
+<p>安装好之后，只需要</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure>
+<p>即可；</p>
+<p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
+<p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Kaggle 0 手写数字识别器的探索]]></title>
       <url>http://gabrieldrapor.github.io/2017/09/11/170911_knn_digits_recognition/</url>
       <content type="html"><![CDATA[<p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/" target="_blank" rel="external">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
