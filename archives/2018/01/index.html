@@ -4,19 +4,17 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>用python连接SparkThriftServer | DRAPORLAND</title>
+  <title>archive_a: 2018/1 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。">
-<meta name="keywords" content="Python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="用python连接SparkThriftServer">
-<meta property="og:url" content="http://gabrieldrapor.github.io/2017/11/22/171122_impala/index.html">
+  <meta name="description" content="Just record something">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DRAPORLAND">
+<meta property="og:url" content="http://gabrieldrapor.github.io/archives/2018/01/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。">
-<meta property="og:updated_time" content="2017-11-22T06:06:07.291Z">
+<meta property="og:description" content="Just record something">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用python连接SparkThriftServer">
-<meta name="twitter:description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。">
+<meta name="twitter:title" content="DRAPORLAND">
+<meta name="twitter:description" content="Just record something">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -70,78 +68,39 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-171122_impala" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/22/171122_impala/" class="article-date">
-  <time datetime="2017-11-22T00:00:00.000Z" itemprop="datePublished">2017-11-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      用python连接SparkThriftServer
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/01/01/180101_2017/" class="archive-article-date">
+  <time datetime="2018-01-01T00:00:00.000Z" itemprop="datePublished">1月 1</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/01/01/180101_2017/">2017</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
-<a id="more"></a>
-<p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
-<p>安装好之后，只需要</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure>
-<p>即可；</p>
-<p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
-<p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2017/11/22/171122_impala/" data-id="cjaandy8700000xxunuhl8lg5" class="article-share-link" data-share="baidu" data-title="用python连接SparkThriftServer">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/01/01/180101_2017/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          2017
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/09/11/170911_knn_digits_recognition/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Kaggle 0 手写数字识别器的探索</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
       
