@@ -77,7 +77,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[用Impyla连接SparkThriftServer]]></title>
+      <title><![CDATA[用Pymongo连接MongoDB取数]]></title>
       <url>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</url>
       <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
 <a id="more"></a>

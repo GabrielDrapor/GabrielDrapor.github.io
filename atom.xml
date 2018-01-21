@@ -91,11 +91,11 @@
   </entry>
   
   <entry>
-    <title>用Impyla连接SparkThriftServer</title>
+    <title>用Pymongo连接MongoDB取数</title>
     <link href="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/"/>
     <id>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</id>
     <published>2017-11-22T00:00:00.000Z</published>
-    <updated>2018-01-21T15:52:13.138Z</updated>
+    <updated>2018-01-21T15:55:58.006Z</updated>
     
     <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
 <a id="more"></a>
