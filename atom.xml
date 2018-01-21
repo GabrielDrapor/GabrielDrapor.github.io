@@ -91,6 +91,31 @@
   </entry>
   
   <entry>
+    <title>用Impyla连接SparkThriftServer</title>
+    <link href="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/"/>
+    <id>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</id>
+    <published>2017-11-22T00:00:00.000Z</published>
+    <updated>2018-01-21T15:52:13.138Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用python连接SparkThriftServer</title>
     <link href="http://gabrieldrapor.github.io/2017/11/22/171122_impala/"/>
     <id>http://gabrieldrapor.github.io/2017/11/22/171122_impala/</id>
@@ -1125,88 +1150,6 @@
       <category term="Plans" scheme="http://gabrieldrapor.github.io/tags/Plans/"/>
     
       <category term="Paths" scheme="http://gabrieldrapor.github.io/tags/Paths/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>A Concrete Plan</title>
-    <link href="http://gabrieldrapor.github.io/2017/03/05/170305-plans/"/>
-    <id>http://gabrieldrapor.github.io/2017/03/05/170305-plans/</id>
-    <published>2017-03-05T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:33.441Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Maths"><a href="#Maths" class="headerlink" title="Maths"></a>Maths</h3><blockquote>
-<ul>
-<li>《实变函数与泛函分析基础》</li>
-<li>《数学物理方程》</li>
-<li>《概率论与数理统计》</li>
-<li>《复变函数与积分变换》</li>
-<li>《数学模型》/姜启源</li>
-<li>《陶哲轩实分析》</li>
-</ul>
-</blockquote>
-<hr>
-<h3 id="Skills"><a href="#Skills" class="headerlink" title="Skills"></a>Skills</h3><ul>
-<li>Courses:</li>
-</ul>
-<blockquote>
-<ul>
-<li>Machine Learning - Andrew Ng</li>
-<li>Stanford CS229 - Andrew Ng(选)</li>
-<li>机器学习基石、机器学习技法 - 台湾大学</li>
-<li>……</li>
-</ul>
-</blockquote>
-<ul>
-<li>Py:</li>
-</ul>
-<blockquote>
-<ul>
-<li>scikit-learn</li>
-<li>Numpy</li>
-</ul>
-</blockquote>
-<ul>
-<li>SQL advanced</li>
-</ul>
-<ul>
-<li>Books:</li>
-</ul>
-<blockquote>
-<ul>
-<li>Introduction to Data Mining</li>
-<li>Data Structure &amp; Algorithm analysis in C</li>
-<li>PRML(选)</li>
-<li>集体智慧编程</li>
-<li>利用python进行数据分析</li>
-</ul>
-</blockquote>
-<ul>
-<li>Kaggle startup</li>
-</ul>
-<hr>
-<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><ul>
-<li>Cook more</li>
-<li>Read more</li>
-<li>Play puzzles</li>
-<li>……</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Maths&quot;&gt;&lt;a href=&quot;#Maths&quot; class=&quot;headerlink&quot; title=&quot;Maths&quot;&gt;&lt;/a&gt;Maths&lt;/h3&gt;&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;《实变函数与泛函分析基础》&lt;/li&gt;
-&lt;li&gt;《数学物理方程》&lt;/li&gt;
-&lt;l
-    
-    </summary>
-    
-      <category term="个人规划" scheme="http://gabrieldrapor.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/"/>
-    
-    
-      <category term="Plans" scheme="http://gabrieldrapor.github.io/tags/Plans/"/>
     
   </entry>
   

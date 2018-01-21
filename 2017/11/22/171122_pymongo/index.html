@@ -4,17 +4,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>archive_a | DRAPORLAND</title>
+  <title>用Impyla连接SparkThriftServer | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Just record something">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DRAPORLAND">
-<meta property="og:url" content="http://gabrieldrapor.github.io/archives/page/4/index.html">
+  <meta name="description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Impyla连接SparkThriftServer">
+<meta property="og:url" content="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="Just record something">
+<meta property="og:description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。">
+<meta property="og:updated_time" content="2018-01-21T15:52:13.138Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DRAPORLAND">
-<meta name="twitter:description" content="Just record something">
+<meta name="twitter:title" content="用Impyla连接SparkThriftServer">
+<meta name="twitter:description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -68,215 +70,74 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/09/20/160920_plans/" class="archive-article-date">
-  <time datetime="2016-09-20T00:00:00.000Z" itemprop="datePublished">9月 20</time>
+      <section id="main"><article id="post-171122_pymongo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/22/171122_pymongo/" class="article-date">
+  <time datetime="2017-11-22T00:00:00.000Z" itemprop="datePublished">2017-11-22</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/20/160920_plans/">一点规划</a>
+    <h1 class="article-title" itemprop="name">
+      用Impyla连接SparkThriftServer
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/08/10/160810_re/" class="archive-article-date">
-  <time datetime="2016-08-10T00:00:00.000Z" itemprop="datePublished">8月 10</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/10/160810_re/">7.16-8.10</a>
-    </h1>
-  
+        <p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/07/13/160713_re/" class="archive-article-date">
-  <time datetime="2016-07-13T00:00:00.000Z" itemprop="datePublished">7月 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/13/160713_re/">6.26-7.13</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/24/160624_re/" class="archive-article-date">
-  <time datetime="2016-06-24T00:00:00.000Z" itemprop="datePublished">6月 24</time>
-</a>
+    </div>
+    <footer class="article-footer">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/24/160624_re/">5.17-6.24</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/17/160517_re/" class="archive-article-date">
-  <time datetime="2016-05-17T00:00:00.000Z" itemprop="datePublished">5月 17</time>
-</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/" data-id="cjcoypq7l0000hvxut3fxvmlj" class="article-share-link" data-share="baidu" data-title="用Impyla连接SparkThriftServer">分享到</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/17/160517_re/">4.17-5.17</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/14/160513_dsa-ch2/" class="archive-article-date">
-  <time datetime="2016-05-14T00:00:00.000Z" itemprop="datePublished">5月 14</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/14/160513_dsa-ch2/">第二章 算法分析</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/13/160513_dsa-ch1/" class="archive-article-date">
-  <time datetime="2016-05-13T00:00:00.000Z" itemprop="datePublished">5月 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/13/160513_dsa-ch1/">第一章 引论</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/01/180101_2017/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          2017
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/22/171122_impala/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">用python连接SparkThriftServer</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/03/160503_jsp/" class="archive-article-date">
-  <time datetime="2016-05-03T00:00:00.000Z" itemprop="datePublished">5月 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/03/160503_jsp/">jsp搭建JEECMS</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/03/160503_asp/" class="archive-article-date">
-  <time datetime="2016-05-03T00:00:00.000Z" itemprop="datePublished">5月 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/03/160503_asp/">ASP.NET 搭建 Discuz! NT</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/05/03/160503-php/" class="archive-article-date">
-  <time datetime="2016-05-03T00:00:00.000Z" itemprop="datePublished">5月 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/03/160503-php/">php搭建WordPress</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; 上一页</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/5/">下一页 &raquo;</a>
-  </nav>
 </section>
       
       <aside id="sidebar">
