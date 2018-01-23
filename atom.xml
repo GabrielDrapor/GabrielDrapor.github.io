@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2018-01-02T09:39:59.841Z</updated>
+  <updated>2018-01-23T07:17:14.734Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用Flask实现一个简单的带POST的api</title>
+    <link href="http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/"/>
+    <id>http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/</id>
+    <published>2018-01-22T00:00:00.000Z</published>
+    <updated>2018-01-23T07:17:14.734Z</updated>
+    
+    <content type="html"><![CDATA[<p>小记如何用Flask实现一个带POST的api。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">Check the given sql is appropriate</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, Response</div><div class="line"><span class="keyword">from</span> logging <span class="keyword">import</span> FileHandler, INFO, Formatter</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="comment"># log的部分</span></div><div class="line">err_log = FileHandler(<span class="string">'error_log_'</span>+time.strftime(<span class="string">'%Y%m%d'</span>,time.localtime()))</div><div class="line">err_log.setLevel(INFO)  <span class="comment">#设置日志级别</span></div><div class="line">logging_format = Formatter(<span class="string">'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'</span>)</div><div class="line">err_log.setFormatter(logging_format)</div><div class="line">app.logger.addHandler(err_log)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/',methods=['POST','GET'])  #'/'指定了路径</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CERTAIN_FUNCTIOn</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        .....<span class="comment">#如果POST过来的的是Json，则可直接用request.form[]将其解析出来</span></div><div class="line">        <span class="keyword">return</span> Response(json.dumps(xxxx), mimetype=<span class="string">'application/json'</span>)  <span class="comment"># 如果需要回传json的话</span></div><div class="line"><span class="comment">#       return xxx 当然也可直接回传字符串或某个方法 </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(host=<span class="string">'x.x.x.x'</span>,port=<span class="string">'xxxx'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Reference:</p>
+<ul>
+<li><a href="http://docs.jinkan.org/docs/flask/quickstart.html" target="_blank" rel="external">http://docs.jinkan.org/docs/flask/quickstart.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=LGlRYlbawnE" target="_blank" rel="external">https://www.youtube.com/watch?v=LGlRYlbawnE</a></li>
+</ul>
+<ul>
+<li><a href="http://www.cnblogs.com/wanghaonull/p/6537823.html" target="_blank" rel="external">http://www.cnblogs.com/wanghaonull/p/6537823.html</a></li>
+<li><a href="http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html" target="_blank" rel="external">http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</a></li>
+</ul>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>2017</title>
@@ -91,31 +127,6 @@
   </entry>
   
   <entry>
-    <title>用Pymongo连接MongoDB取数</title>
-    <link href="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/"/>
-    <id>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</id>
-    <published>2017-11-22T00:00:00.000Z</published>
-    <updated>2018-01-21T15:55:58.006Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://gabrieldrapor.github.io/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>用python连接SparkThriftServer</title>
     <link href="http://gabrieldrapor.github.io/2017/11/22/171122_impala/"/>
     <id>http://gabrieldrapor.github.io/2017/11/22/171122_impala/</id>
@@ -135,6 +146,31 @@
     <summary type="html">
     
       &lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用Pymongo连接MongoDB取数</title>
+    <link href="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/"/>
+    <id>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</id>
+    <published>2017-11-22T00:00:00.000Z</published>
+    <updated>2018-01-21T15:55:58.006Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。&lt;/p&gt;
     
     </summary>
     
@@ -1120,36 +1156,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>开学已经四周了</title>
-    <link href="http://gabrieldrapor.github.io/2017/03/19/170319-plans/"/>
-    <id>http://gabrieldrapor.github.io/2017/03/19/170319-plans/</id>
-    <published>2017-03-19T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:36.109Z</updated>
-    
-    <content type="html"><![CDATA[<p>&emsp;&emsp;时间过得真快，开学已经四周了……</p>
-<p>&emsp;&emsp;这四周过得并没有想象中的好，被一些事情占据了不少时间，自己也浪费了很多时间，导致总共到现在Coursera的课仅仅推了不到两周的内容………</p>
-<p>&emsp;&emsp;于是，为了改变这种颓废的状态，打算开始实践最近发现的<a href="https://www.zhihu.com/question/31877598/answer/53667346" target="_blank" rel="external">沉浸工作法</a>，并且受<a href="https://github.com/lanshan-studio/weekly" target="_blank" rel="external">https://github.com/lanshan-studio/weekly</a> 的启发，决定开始写周简报督促自己的学习，暂定每周日写吧。周报就放在这好了 <a href="https://github.com/GabrielDrapor/Weekly" target="_blank" rel="external">https://github.com/GabrielDrapor/Weekly</a></p>
-<p>&emsp;&emsp;另外就是，这学期课内的课真的有点难度了，不能再像之前那样堆到期末再来学了，平时也要多看书。【上学期概率论学的不踏实，数理统计真的好难啊……</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;emsp;&amp;emsp;时间过得真快，开学已经四周了……&lt;/p&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;这四周过得并没有想象中的好，被一些事情占据了不少时间，自己也浪费了很多时间，导致总共到现在Coursera的课仅仅推了不到两周的内容………&lt;/p&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;
-    
-    </summary>
-    
-      <category term="个人规划" scheme="http://gabrieldrapor.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/"/>
-    
-    
-      <category term="Plans" scheme="http://gabrieldrapor.github.io/tags/Plans/"/>
-    
-      <category term="Paths" scheme="http://gabrieldrapor.github.io/tags/Paths/"/>
     
   </entry>
   

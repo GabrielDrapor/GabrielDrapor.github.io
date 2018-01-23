@@ -4,6 +4,40 @@
   
     
     <entry>
+      <title><![CDATA[用Flask实现一个简单的带POST的api]]></title>
+      <url>http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/</url>
+      <content type="html"><![CDATA[<p>小记如何用Flask实现一个带POST的api。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">Check the given sql is appropriate</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, Response</div><div class="line"><span class="keyword">from</span> logging <span class="keyword">import</span> FileHandler, INFO, Formatter</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="comment"># log的部分</span></div><div class="line">err_log = FileHandler(<span class="string">'error_log_'</span>+time.strftime(<span class="string">'%Y%m%d'</span>,time.localtime()))</div><div class="line">err_log.setLevel(INFO)  <span class="comment">#设置日志级别</span></div><div class="line">logging_format = Formatter(<span class="string">'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'</span>)</div><div class="line">err_log.setFormatter(logging_format)</div><div class="line">app.logger.addHandler(err_log)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/',methods=['POST','GET'])  #'/'指定了路径</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CERTAIN_FUNCTIOn</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        .....<span class="comment">#如果POST过来的的是Json，则可直接用request.form[]将其解析出来</span></div><div class="line">        <span class="keyword">return</span> Response(json.dumps(xxxx), mimetype=<span class="string">'application/json'</span>)  <span class="comment"># 如果需要回传json的话</span></div><div class="line"><span class="comment">#       return xxx 当然也可直接回传字符串或某个方法 </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(host=<span class="string">'x.x.x.x'</span>,port=<span class="string">'xxxx'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Reference:</p>
+<ul>
+<li><a href="http://docs.jinkan.org/docs/flask/quickstart.html" target="_blank" rel="external">http://docs.jinkan.org/docs/flask/quickstart.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=LGlRYlbawnE" target="_blank" rel="external">https://www.youtube.com/watch?v=LGlRYlbawnE</a></li>
+</ul>
+<ul>
+<li><a href="http://www.cnblogs.com/wanghaonull/p/6537823.html" target="_blank" rel="external">http://www.cnblogs.com/wanghaonull/p/6537823.html</a></li>
+<li><a href="http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html" target="_blank" rel="external">http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</a></li>
+</ul>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[2017]]></title>
       <url>http://gabrieldrapor.github.io/2018/01/01/180101_2017/</url>
       <content type="html"><![CDATA[<p>2017已经接近尾声，在此谨记2017的种种。</p>
@@ -77,11 +111,16 @@
     </entry>
     
     <entry>
-      <title><![CDATA[用Pymongo连接MongoDB取数]]></title>
-      <url>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</url>
-      <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
+      <title><![CDATA[用python连接SparkThriftServer]]></title>
+      <url>http://gabrieldrapor.github.io/2017/11/22/171122_impala/</url>
+      <content type="html"><![CDATA[<p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
 <a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
+<p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
+<p>安装好之后，只需要</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure>
+<p>即可；</p>
+<p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
+<p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
 ]]></content>
       
         <categories>
@@ -100,16 +139,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[用python连接SparkThriftServer]]></title>
-      <url>http://gabrieldrapor.github.io/2017/11/22/171122_impala/</url>
-      <content type="html"><![CDATA[<p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
+      <title><![CDATA[用Pymongo连接MongoDB取数]]></title>
+      <url>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</url>
+      <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
 <a id="more"></a>
-<p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
-<p>安装好之后，只需要</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure>
-<p>即可；</p>
-<p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
-<p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
