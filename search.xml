@@ -2759,26 +2759,22 @@ Email: gabrieldrapor@gmail.com</p>
     <entry>
       <title><![CDATA[2018 Reading List]]></title>
       <url>http://gabrieldrapor.github.io/2018-reading-list/index.html</url>
-      <content type="html"><![CDATA[<p>Have read:</p>
+      <content type="html"><![CDATA[<p><input type="checkbox" id="checkbox14" checked="true"><label for="checkbox14"> </label><a href="https://book.douban.com/subject/1046483/" target="_blank" rel="external">超越爱情的永恒之死</a><br>
+<input type="checkbox" id="checkbox13" checked="true"><label for="checkbox13"> </label><a href="https://book.douban.com/subject/27030788/" target="_blank" rel="external">从柏拉图到维尼熊</a><br>
+<input type="checkbox" id="checkbox12" checked="true"><label for="checkbox12"> </label><a href="https://book.douban.com/subject/1016429/" target="_blank" rel="external">毛姆读书随笔</a><br>
+<input type="checkbox" id="checkbox11" checked="true"><label for="checkbox11"> </label><a href="https://book.douban.com/subject/26610864/" target="_blank" rel="external">浮生六记</a><br>
+<input type="checkbox" id="checkbox10" checked="true"><label for="checkbox10"> </label><a href="https://book.douban.com/subject/25891771/" target="_blank" rel="external">失乐园</a><br>
+<input type="checkbox" id="checkbox9" checked="true"><label for="checkbox9"> </label><a href="https://book.douban.com/subject/27191786/" target="_blank" rel="external">朝闻道</a><br>
+<input type="checkbox" id="checkbox8" checked="true"><label for="checkbox8"> </label><a href="https://book.douban.com/subject/26999709/" target="_blank" rel="external">孤独六讲</a><br>
+<input type="checkbox" id="checkbox7" checked="true"><label for="checkbox7"> </label><a href="https://book.douban.com/subject/26259059/" target="_blank" rel="external">我们仨</a><br>
+<input type="checkbox" id="checkbox6"><label for="checkbox6"> </label><a href="https://book.douban.com/subject/4345965/" target="_blank" rel="external">The Problem of Philosophy</a><br>
+<input type="checkbox" id="checkbox5"><label for="checkbox5"> </label><a href="https://book.douban.com/subject/25759044/" target="_blank" rel="external">乡土中国</a><br>
+<input type="checkbox" id="checkbox4"><label for="checkbox4"> </label><a href="https://book.douban.com/subject/26292964/" target="_blank" rel="external">世界小史</a><br>
+<input type="checkbox" id="checkbox3"><label for="checkbox3"> </label><a href="https://book.douban.com/subject/26870405/" target="_blank" rel="external">龙头凤尾</a><br>
+<input type="checkbox" id="checkbox2"><label for="checkbox2"> </label><a href="https://book.douban.com/subject/26897878/" target="_blank" rel="external">罗生门</a><br>
+<input type="checkbox" id="checkbox1"><label for="checkbox1"> </label><a href="https://book.douban.com/subject/6265745/" target="_blank" rel="external">银河系搭车客指南</a><br>
+<input type="checkbox" id="checkbox0"><label for="checkbox0"> </label><a href="https://book.douban.com/subject/25806628/" target="_blank" rel="external">万物生长</a></p>
 <ul>
-<li><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0"></label><a href="https://book.douban.com/subject/1046483/" target="_blank" rel="external">超越爱情的永恒之死</a></li>
-<li><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1"></label><a href="https://book.douban.com/subject/27030788/" target="_blank" rel="external">从柏拉图到维尼熊</a></li>
-<li><input type="checkbox" id="checkbox2" checked="true"><label for="checkbox2"></label><a href="https://book.douban.com/subject/1016429/" target="_blank" rel="external">毛姆读书随笔</a></li>
-<li><input type="checkbox" id="checkbox3" checked="true"><label for="checkbox3"></label><a href="https://book.douban.com/subject/26610864/" target="_blank" rel="external">浮生六记</a></li>
-<li><input type="checkbox" id="checkbox4" checked="true"><label for="checkbox4"></label><a href="https://book.douban.com/subject/25891771/" target="_blank" rel="external">失乐园</a></li>
-<li><input type="checkbox" id="checkbox5" checked="true"><label for="checkbox5"></label><a href="https://book.douban.com/subject/27191786/" target="_blank" rel="external">朝闻道</a></li>
-<li><input type="checkbox" id="checkbox6" checked="true"><label for="checkbox6"></label><a href="https://book.douban.com/subject/26999709/" target="_blank" rel="external">孤独六讲</a></li>
-<li><input type="checkbox" id="checkbox7" checked="true"><label for="checkbox7"></label><a href="https://book.douban.com/subject/26259059/" target="_blank" rel="external">我们仨</a></li>
-</ul>
-<p>To Read:</p>
-<ul>
-<li><input type="checkbox" id="checkbox8"><label for="checkbox8"></label><a href="https://book.douban.com/subject/4345965/" target="_blank" rel="external">The Problem of Philosophy</a></li>
-<li><input type="checkbox" id="checkbox9"><label for="checkbox9"></label><a href="https://book.douban.com/subject/25759044/" target="_blank" rel="external">乡土中国</a></li>
-<li><input type="checkbox" id="checkbox10"><label for="checkbox10"></label><a href="https://book.douban.com/subject/26292964/" target="_blank" rel="external">世界小史</a></li>
-<li><input type="checkbox" id="checkbox11"><label for="checkbox11"></label><a href="https://book.douban.com/subject/26870405/" target="_blank" rel="external">龙头凤尾</a></li>
-<li><input type="checkbox" id="checkbox12"><label for="checkbox12"></label><a href="https://book.douban.com/subject/26897878/" target="_blank" rel="external">罗生门</a></li>
-<li><input type="checkbox" id="checkbox13"><label for="checkbox13"></label><a href="https://book.douban.com/subject/6265745/" target="_blank" rel="external">银河系搭车客指南</a></li>
-<li><input type="checkbox" id="checkbox14"><label for="checkbox14"></label><a href="https://book.douban.com/subject/25806628/" target="_blank" rel="external">万物生长</a></li>
 <li>…</li>
 </ul>
 ]]></content>
