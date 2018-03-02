@@ -2741,17 +2741,16 @@ Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
       <title><![CDATA[About Me]]></title>
       <url>http://gabrieldrapor.github.io/about-me/index.html</url>
       <content type="html"><![CDATA[<blockquote>
-<p>I am  <strong>Drapor</strong>;
-<strong>Mathematics</strong> undergraduate;
-Dream to be a <strong>Data Mining Engineer</strong> / <strong>Machine Learning Engineer</strong>;
-Enthusiast of <strong>NBA</strong>, <strong>Monster Hunter</strong>, Minecraft, <strong>Google Nexus</strong>, Sudoku,……
-Zhihu: <a href="https://www.zhihu.com/people/drapor/activities" target="_blank" rel="external">@Drapor</a>
-Github: <a href="https://github.com/GabrielDrapor" target="_blank" rel="external">@GabrielDrapor</a>
+<p>I am  <strong>Drapor</strong>;<br>
+<strong>Mathematics</strong> undergraduate;<br>
+Dream to be a <strong>Data Mining Engineer</strong> / <strong>Machine Learning Engineer</strong>;<br>
+Enthusiast of <strong>NBA</strong>, <strong>Monster Hunter</strong>, Minecraft, <strong>Google Nexus</strong>, Sudoku,……<br>
+Zhihu: <a href="https://www.zhihu.com/people/drapor/activities" target="_blank" rel="external">@Drapor</a><br>
+Github: <a href="https://github.com/GabrielDrapor" target="_blank" rel="external">@GabrielDrapor</a><br>
 Email: gabrieldrapor@gmail.com</p>
 </blockquote>
-<p>&lt;br/&gt;</p>
 <blockquote>
-<p><strong>&quot;You can code. They cannot. That is pretty damn cool.&quot;</strong>　　　　－Learn Python The Hard Way</p>
+<p><strong>“You can code. They cannot. That is pretty damn cool.”</strong>　　　　－Learn Python The Hard Way</p>
 </blockquote>
 ]]></content>
     </entry>
