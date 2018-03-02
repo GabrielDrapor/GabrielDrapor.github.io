@@ -6,21 +6,17 @@
   
   <title>Machine Learning Notes 06 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="How biological neural network work  As the following image shown, there are three main parts in each neuron:  Dendrites, Cell Body and Axon. The signals come from the last neuron to the dendrites firs">
+  <meta name="description" content="How biological neural network work As the following image shown, there are three main parts in each neuron:  Dendrites, Cell Body and Axon. The signals come from the last neuron to the dendrites first">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning Notes 06">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="How biological neural network work  As the following image shown, there are three main parts in each neuron:  Dendrites, Cell Body and Axon. The signals come from the last neuron to the dendrites firs">
-<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg">
-<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/perceptron.jpg">
-<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/3lann.jpg">
+<meta property="og:description" content="How biological neural network work As the following image shown, there are three main parts in each neuron:  Dendrites, Cell Body and Axon. The signals come from the last neuron to the dendrites first">
 <meta property="og:updated_time" content="2017-08-06T03:36:38.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Notes 06">
-<meta name="twitter:description" content="How biological neural network work  As the following image shown, there are three main parts in each neuron:  Dendrites, Cell Body and Axon. The signals come from the last neuron to the dendrites firs">
-<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg">
+<meta name="twitter:description" content="How biological neural network work As the following image shown, there are three main parts in each neuron:  Dendrites, Cell Body and Axon. The signals come from the last neuron to the dendrites first">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -102,36 +98,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="How-biological-neural-network-work"><a href="#How-biological-neural-network-work" class="headerlink" title="How biological neural network work"></a>How biological neural network work</h2><p>  As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.</p>
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg"></p>
+        <h2>How biological neural network work</h2>
+<p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that's approximately how biological nerual network run.</p>
+<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg&quot;&gt;</p>
 <hr>
-<a id="more"></a>
-<h2 id="How-artificial-neural-network-work"><a href="#How-artificial-neural-network-work" class="headerlink" title="How artificial neural network work"></a>How artificial neural network work</h2><p><img src="http://7xugq7.com1.z0.glb.clouddn.com/perceptron.jpg" width="500"></p>
-<p>  The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
-<p>  And here’s what a three-layer ann looks like,</p>
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/3lann.jpg" height="200"></p>
-<p>  The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, …, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that’s why we need more). </p>
+<p>&lt;!--more --&gt;</p>
+<h2>How artificial neural network work</h2>
+<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/perceptron.jpg&quot; width=&quot;500&quot;&gt;</p>
+<p>The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
+<p>And here's what a three-layer ann looks like,</p>
+<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/3lann.jpg&quot; height=&quot;200&quot;&gt;</p>
+<p>The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, ..., even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that's why we need more).</p>
 <hr>
-<h2 id="Feedforward-Propagation-Algorithm"><a href="#Feedforward-Propagation-Algorithm" class="headerlink" title="Feedforward Propagation Algorithm"></a>Feedforward Propagation Algorithm</h2><p>  We obtain the output first, by:</p>
+<h2>Feedforward Propagation Algorithm</h2>
+<p>We obtain the output first, by:</p>
 <p>$$y_{j}=g(\sum^{n}_{i=1}\omega_{ji}x_i-\theta),$$</p>
 <p>,and we often choose sigmoid function $g(z)=\frac{1}{1+e^{-z}}$ as our activation function. For the more complex situation, we can also use vectorization:</p>
-<p>$$a_{n+1}=g(a_{n}*\Theta_n)$$ </p>
+<p>$$a_{n+1}=g(a_{n}*\Theta_n)$$</p>
 <p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
 <hr>
-<h2 id="Back-Propagation-Algorithm"><a href="#Back-Propagation-Algorithm" class="headerlink" title="Back Propagation Algorithm"></a>Back Propagation Algorithm</h2><p>  For the training set ${(x^{(1)},y^{(1)}),…,(x^{(m)},y^{(m)}) }$, we first $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). Then we run the following loop:</p>
+<h2>Back Propagation Algorithm</h2>
+<p>For the training set ${(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) }$, we first $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). Then we run the following loop:</p>
 <p>For $i = 1$ to $m$:</p>
-<p>　　Set $a^{(1)}=x^{(i)}$</p>
-<p>　　Perform forward propagation to compute $a^{(l)}$ for $l=2,3,..,L$</p>
-<p>　　Using $y^{(i)}​$, compute $\delta^{L}=a^{(L)}-y^{(i)}​$</p>
-<p>　　Compute $\delta^{(L-1)}, \delta^{(L-2)}, …, \color{red}{\delta^{(2)}}$</p>
-<p>　　$\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i}$</p>
-<p>After that, </p>
-<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
-<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
+<p>Set $a^{(1)}=x^{(i)}$</p>
+<p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,..,L$</p>
+<p>Using $y^{(i)}​$, compute $\delta^{L}=a^{(L)}-y^{(i)}​$</p>
+<p>Compute $\delta^{(L-1)}, \delta^{(L-2)}, ..., \color{red}{\delta^{(2)}}$</p>
+<p>$\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i}$</p>
+<p>After that,</p>
+<p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
+<p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
 <p>And we get:</p>
-<p>　　$$\frac{\partial}{\partial\Theta^{(l)}_{ij}}J(\Theta) = D_{ij}^{(l)}$$</p>
+<p>$$\frac{\partial}{\partial\Theta^{(l)}_{ij}}J(\Theta) = D_{ij}^{(l)}$$</p>
 <hr>
-<h2 id="Process-of-Training-a-Neural-Network"><a href="#Process-of-Training-a-Neural-Network" class="headerlink" title="Process of Training a Neural Network"></a>Process of Training a Neural Network</h2><ol>
+<h2>Process of Training a Neural Network</h2>
+<ol>
 <li>Randomly initialize the weights;</li>
 <li>Implement forward propagation to get $h_{\Theta}(x^{(i)})$ for any $x^{(i)}$;</li>
 <li>Implement the cost function;</li>
@@ -144,7 +145,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/" data-id="cj60gqfsm0028z2xuojf86uwm" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 06">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/" data-id="cje9dtb3a00268rxup7dmkgp8" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 06">分享到</a>
       
 
       

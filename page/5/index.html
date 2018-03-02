@@ -99,16 +99,53 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20</strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/05/03/160503-php/#more">Read More</a>
-          </p>
-        
+<p>&lt;!--more--&gt;</p>
+<p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
+<h5>1．安装Apache，MySQL和php</h5>
+<p>不多赘述，但需要注意的是：</p>
+<ul>
+<li>Apache安装过程，中会有端口设置，默认是80，为避免冲突可将其修改。安装后也可以在httpd.conf中修改监听的端口</li>
+<li>php安装完成后将安装目录下的php-development.ini重命名为php.ini</li>
+<li>在MySQL安装过程中会要求设置管理员账号，设置之后要记住。</li>
+</ul>
+<h5>2.在Apache中添加php模块</h5>
+<ul>
+<li>打开apache安装目录下conf目录中的httpd.conf，具体方法参照http://php.net/manual/zh/install.windows.apache2.php ，我采用的是添加cgi模块的方式，添加的部分如右图
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image052.png&gt;</li>
+</ul>
+<h5>3.在PHP中加载MySQL相关的扩展程序</h5>
+<p>需要在php.ini配置文件中将extension_dir = &quot;ext&quot;和extension=php_mysql.dll前的分号去掉，即取消这两行的注释。这一步的目的可以理解为是将php和MySQL相连。
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image056.png&gt;
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image054.png&gt;</p>
+<h5>4.从WordPress官网https://cn.wordpress.org/下载WordPress的压缩包，解压，将其放在服务器根目录下或者在httpd.conf中将目录设为这个目录。</h5>
+<p>&lt;!--more--&gt;</p>
+<h5>5.配置MySQL</h5>
+<p>打开MySQL目录下的bin文件夹，按住shift右键单击空白处打开命令行。输入mysql –u 用户名 –p，然后按回车输入你的密码。如图。
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image058.png&gt;
+成功登陆之后，我们需要创建一个新的数据库，指令为”CREATE DATABASE 数据库名;”，注意最后有分号。如下图。创建成功后可以通过指令“SHOW DATABASES;”查看当前所有数据库。如右图。更多SQL指令可以参考http://c.biancheng.net/cpp/u/mysql/
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image062.png&gt;
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image060.png&gt;</p>
+<h5>6.配置在浏览器中访问本机，在地址栏中输入127.0.0.1:端口，会出现下图的界面，点击“现在就开始！”，然后会出现如图的界面，按照图中说明填写即可，然后提交。</h5>
+<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image063.png&gt;
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image065.png&gt;
+其中，输入地址之后可能会遇到网页显示Internal Server Error，可以查看Apache的错误日志，查找错误原因。比如你第3步中如果没有进行第一个修改，日志中会记录如图的错误。这个错误在语法检查中不会被查出来，但是却会导致你无法访问自己的服务器。
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image067.png&gt;
+另外，提交之后可能会出现如下图的错误，报错的原因是你没有进行第3步。
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image068.png&gt;</p>
+<h5>7.成功之后会出现如图的界面，相应地进行填写。</h5>
+<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image070.png&gt;</p>
+<h5>8.然后输入用户名和密码登陆即可。</h5>
+<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image072.png&gt;
+登陆之后会显示如图的界面，wordpress提供的图形化界面可以让你自由地个性化你的博客。
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image076.png&gt;
+最后在地址栏中输入ip地址验证一下网站是否已经架设成功。
+&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image074.png&gt;</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/05/03/160503-php/" data-id="cj60gqfoq0007z2xumvjd37nc" class="article-share-link" data-share="baidu" data-title="php搭建WordPress">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/05/03/160503-php/" data-id="cje9dtb0m00098rxuyrf5pyrl" class="article-share-link" data-share="baidu" data-title="php搭建WordPress">分享到</a>
       
 
       
@@ -149,20 +186,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是一次404过程中，客户端和服务器发送请求的头(Headers)<br>先想办法炸出404（如图）</p>
+        <p>这是一次404过程中，客户端和服务器发送请求的头(Headers)
+先想办法炸出404（如图）</p>
 <p><img src="http://7xugq7.com1.z0.glb.clouddn.com/404.png" alt=""></p>
 <p>HTTP Headers的内容如下：</p>
 <blockquote>
-<p><strong>General</strong><br>Request URL:<a href="http://www.xxx.com/xxxxxx.xx" target="_blank" rel="external">http://www.xxx.com/xxxxxx.xx</a>  //请求目的地的地址<br>Request Method: GET                  //请求方式 这里是管服务器要东西<br>Status Code: 404 Not Found HTTP     //HTTP状态码，这里是404，代表没有找到<br>Remote Address: 127.0.0.1:8081      //远程地址，不是ip地址，一般是127.0.0.1</p>
-<p><strong>Response Headers</strong>                 //应答头部字段<br>HTTP/1.1 404 Not Found              //HTTP版本是1.1<br>Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间<br>Server: Apache/2.2.25 (Win32)          //服务器类型<br>Content-Length: 208                //实体内容长度 208<br>Keep-Alive: timeout=5, max=100        //持久连接 超时是5秒，最长100秒<br>Connection: Keep-Alive                //连接类型：持续连接<br>Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 编码类型是iso-8859-1</p>
-<p><strong>Request Headers</strong>                  //请求头部字段<br>GET /index2.php HTTP/1.1            //“我要index2.php，快给我” HTTP版本1.1<br>Host: www.xxx.com                    //要请求的主机的名字<br>Connection: keep-alive                //连接类型： “我要一直连着，不许给我断了“<br>Cache-Control: max-age=0            //缓存控制：”就不让你缓存，要东西现来找我”<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8<br>//“我只要下面这些：文本/HTML，应用/XHTML+XML，应用/xml(这个可以往后放不着急)，图片/webp(这个更不着急)”<br>Upgrade-Insecure-Requests: 1        //这个是？<br>User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36    //浏览器支持类型<br>Accept-Encoding: gzip, deflate, sdch    //”我只看得懂下面这三种编码：gzip, deflate, sdch”<br>Accept-Language: zh-CN,zh;q=0.8     //”我只要中文”</p>
+<p><strong>General</strong>
+Request URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址
+Request Method: GET 	 			//请求方式 这里是管服务器要东西
+Status Code: 404 Not Found HTTP 	//HTTP状态码，这里是404，代表没有找到
+Remote Address: 127.0.0.1:8081  	//远程地址，不是ip地址，一般是127.0.0.1</p>
+</blockquote>
+<blockquote>
+<p><strong>Response Headers</strong> 				//应答头部字段
+HTTP/1.1 404 Not Found  			//HTTP版本是1.1
+Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间
+Server: Apache/2.2.25 (Win32)  		//服务器类型
+Content-Length: 208				//实体内容长度 208
+Keep-Alive: timeout=5, max=100    	//持久连接 超时是5秒，最长100秒
+Connection: Keep-Alive				//连接类型：持续连接
+Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 编码类型是iso-8859-1</p>
+</blockquote>
+<blockquote>
+<p><strong>Request Headers</strong>  				//请求头部字段
+GET /index2.php HTTP/1.1			//“我要index2.php，快给我” HTTP版本1.1
+Host: www.xxx.com					//要请求的主机的名字
+Connection: keep-alive				//连接类型： “我要一直连着，不许给我断了“
+Cache-Control: max-age=0			//缓存控制：”就不让你缓存，要东西现来找我”
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+//“我只要下面这些：文本/HTML，应用/XHTML+XML，应用/xml(这个可以往后放不着急)，图片/webp(这个更不着急)”
+Upgrade-Insecure-Requests: 1		//这个是？
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36	//浏览器支持类型
+Accept-Encoding: gzip, deflate, sdch	//”我只看得懂下面这三种编码：gzip, deflate, sdch”
+Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/04/27/160427_http/" data-id="cj60gqfoh0006z2xuc4n5kxci" class="article-share-link" data-share="baidu" data-title="HTTP Response/Request Headers">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/04/27/160427_http/" data-id="cje9dtb0c00078rxufob7rh3e" class="article-share-link" data-share="baidu" data-title="HTTP Response/Request Headers">分享到</a>
       
 
       
@@ -203,37 +266,48 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、本专业"><a href="#一、本专业" class="headerlink" title="一、本专业"></a>一、本专业</h1><h4 id="过去的三周我"><a href="#过去的三周我" class="headerlink" title="过去的三周我"></a>过去的三周我</h4><blockquote>
+        <h1>一、本专业</h1>
+<h4>过去的三周我</h4>
+<blockquote>
 <ul>
 <li>说实话，最近没有认真地学习数分高代，现在心中充满愧疚和罪恶感</li>
 </ul>
 </blockquote>
-<h4 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h4><blockquote>
+<h4>接下来</h4>
+<blockquote>
 <ul>
 <li>好好看课本，配合MIT的线性代数课程，巩固最近一段时间数分高代的知识</li>
 </ul>
 </blockquote>
-<h1 id="二、编程"><a href="#二、编程" class="headerlink" title="二、编程"></a>二、编程</h1><h4 id="过去的三周我-1"><a href="#过去的三周我-1" class="headerlink" title="过去的三周我"></a>过去的三周我</h4><blockquote>
+<h1>二、编程</h1>
+<h4>过去的三周我</h4>
+<blockquote>
 <ul>
 <li>用C和Python两种编程语言，解决了学校OJ中27道问题，但还没有涉及数据结构和算法的内容</li>
 </ul>
 </blockquote>
-<h4 id="接下来-1"><a href="#接下来-1" class="headerlink" title="接下来"></a>接下来</h4><blockquote>
+<h4>接下来</h4>
+<blockquote>
 <ul>
 <li>开始学习数据结构和算法的内容</li>
 </ul>
 </blockquote>
-<h1 id="三、网络"><a href="#三、网络" class="headerlink" title="三、网络"></a>三、网络</h1><h4 id="过去的三周我-2"><a href="#过去的三周我-2" class="headerlink" title="过去的三周我"></a>过去的三周我</h4><blockquote>
+<h1>三、网络</h1>
+<h4>过去的三周我</h4>
+<blockquote>
 <ul>
 <li>学习了一些关于Apache的基础知识</li>
 </ul>
 </blockquote>
-<h4 id="接下来-2"><a href="#接下来-2" class="headerlink" title="接下来"></a>接下来</h4><blockquote>
+<h4>接下来</h4>
+<blockquote>
 <ul>
 <li>继续学习，同时学习Tomcat和用vps搭建服务器</li>
 </ul>
 </blockquote>
-<h1 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h1><h3 id="过去三周我还在读这些"><a href="#过去三周我还在读这些" class="headerlink" title="过去三周我还在读这些"></a>过去三周我还在读这些</h3><blockquote>
+<h1>四、其他</h1>
+<h3>过去三周我还在读这些</h3>
+<blockquote>
 <ul>
 <li>浪潮之巅/吴军</li>
 <li>空谷幽兰——寻访当代中国隐士/比尔·波特</li>
@@ -247,7 +321,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/04/16/160416_re/" data-id="cj60gqfoc0005z2xuyjtg2ppi" class="article-share-link" data-share="baidu" data-title="3.21-4.16">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/04/16/160416_re/" data-id="cje9dtb0400058rxu02laa5m8" class="article-share-link" data-share="baidu" data-title="3.21-4.16">分享到</a>
       
 
       
@@ -288,8 +362,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、学数学！"><a href="#一、学数学！" class="headerlink" title="一、学数学！"></a>一、学数学！</h1><p><strong>学好数分高代！</strong><br><strong>学好数分高代！</strong><br><strong>学好数分高代！</strong></p>
-<h1 id="二、巩固学习C，学习数据结构和算法"><a href="#二、巩固学习C，学习数据结构和算法" class="headerlink" title="二、巩固学习C，学习数据结构和算法"></a>二、巩固学习C，学习数据结构和算法</h1><h3 id="1-书目"><a href="#1-书目" class="headerlink" title="1.书目"></a>1.书目</h3><blockquote>
+        <h1>一、学数学！</h1>
+<p><strong>学好数分高代！</strong>
+<strong>学好数分高代！</strong>
+<strong>学好数分高代！</strong></p>
+<h1>二、巩固学习C，学习数据结构和算法</h1>
+<h3>1.书目</h3>
+<blockquote>
 <ul>
 <li>《C Primer Plus》</li>
 <li>《C Programming Language》</li>
@@ -309,27 +388,37 @@
 <li>《计算机网络自顶向下方法》</li>
 </ul>
 </blockquote>
-<h3 id="2-练习"><a href="#2-练习" class="headerlink" title="2.练习"></a>2.练习</h3><blockquote>
+<h3>2.练习</h3>
+<blockquote>
 <ul>
 <li>当然是刷OJ</li>
-<li><a href="http://coder.buct.edu.cn" target="_blank" rel="external">http://coder.buct.edu.cn</a></li>
-<li><a href="http://www.bnuoj.com/v3/" target="_blank" rel="external">http://www.bnuoj.com/v3/</a></li>
-<li><a href="http://www.clang.cc/oj/problemset.php" target="_blank" rel="external">http://www.clang.cc/oj/problemset.php</a></li>
+<li>http://coder.buct.edu.cn</li>
+<li>http://www.bnuoj.com/v3/</li>
+<li>http://www.clang.cc/oj/problemset.php</li>
 </ul>
 </blockquote>
-<h3 id="3-目标"><a href="#3-目标" class="headerlink" title="3.目标"></a>3.目标</h3><p>培养自己的算法能力</p>
-<h1 id="三、巩固Python基础，学习写爬虫"><a href="#三、巩固Python基础，学习写爬虫" class="headerlink" title="三、巩固Python基础，学习写爬虫"></a>三、巩固Python基础，学习写爬虫</h1><blockquote>
-<p>Python基础知识 <a href="http://www.liaoxuefeng.com/" target="_blank" rel="external">http://www.liaoxuefeng.com/</a><br>爬虫 <a href="http://cuiqingcai.com/1052.html" target="_blank" rel="external">http://cuiqingcai.com/1052.html</a></p>
+<h3>3.目标</h3>
+<p>培养自己的算法能力</p>
+<h1>三、巩固Python基础，学习写爬虫</h1>
+<blockquote>
+<p>Python基础知识 http://www.liaoxuefeng.com/
+爬虫 http://cuiqingcai.com/1052.html</p>
 </blockquote>
-<h1 id="四、学习使用Linux"><a href="#四、学习使用Linux" class="headerlink" title="四、学习使用Linux"></a>四、学习使用Linux</h1><ul>
+<h1>四、学习使用Linux</h1>
+<ul>
 <li>阅读《鸟哥的Linux私房菜·基础学习篇》</li>
 <li>学习在Linux下配置服务器</li>
 <li>有时间的话搞一搞树莓派（在宿舍搭个ftp给室友之类的）</li>
 <li>在不久的将来，摆脱Windows的束缚，将Linux作为常用系统</li>
 </ul>
-<h1 id="五、学习数据挖掘"><a href="#五、学习数据挖掘" class="headerlink" title="五、学习数据挖掘"></a>五、学习数据挖掘</h1><p>这个目前有些远，没有特别搜集专门的学习路线，只是找到了这个：<br>    <a href="http://www.zhihu.com/question/20757000" target="_blank" rel="external">在数据分析、挖掘方面，有哪些好书值得推荐？</a></p>
-<h1 id="六、还有一些与计算机无关的事情——"><a href="#六、还有一些与计算机无关的事情——" class="headerlink" title="六、还有一些与计算机无关的事情——"></a>六、还有一些与计算机无关的事情——</h1><h2 id="（一）读书"><a href="#（一）读书" class="headerlink" title="（一）读书"></a>（一）读书</h2><p>做好摘抄，做好读书笔记</p>
-<h3 id="1-纸质书单"><a href="#1-纸质书单" class="headerlink" title="1.纸质书单"></a>1.纸质书单</h3><ul>
+<h1>五、学习数据挖掘</h1>
+<p>这个目前有些远，没有特别搜集专门的学习路线，只是找到了这个：
+<a href="http://www.zhihu.com/question/20757000" target="_blank" rel="external">在数据分析、挖掘方面，有哪些好书值得推荐？</a></p>
+<h1>六、还有一些与计算机无关的事情——</h1>
+<h2>（一）读书</h2>
+<p>做好摘抄，做好读书笔记</p>
+<h3>1.纸质书单</h3>
+<ul>
 <li>霍乱时期的爱情/加西亚·马尔克斯</li>
 <li>怎样解题/波利亚</li>
 <li>人生不较劲/周国平</li>
@@ -339,7 +428,8 @@
 <li>中国人民共和国宪法</li>
 <li>…………</li>
 </ul>
-<h3 id="2-Kindle书单"><a href="#2-Kindle书单" class="headerlink" title="2.Kindle书单"></a>2.Kindle书单</h3><ul>
+<h3>2.Kindle书单</h3>
+<ul>
 <li>浪潮之巅/吴军</li>
 <li>空谷幽兰——寻访当代中国隐士/比尔·波特</li>
 <li>人生不较劲/周国平</li>
@@ -350,7 +440,8 @@
 <li>…………</li>
 </ul>
 <p>其实还有很多，不一一列出XD</p>
-<h2 id="（二）电影"><a href="#（二）电影" class="headerlink" title="（二）电影"></a>（二）电影</h2><ul>
+<h2>（二）电影</h2>
+<ul>
 <li>荒野猎人</li>
 <li>秒速五厘米</li>
 <li>辩护人</li>
@@ -360,8 +451,12 @@
 <li>十二怒汉</li>
 <li>…………</li>
 </ul>
-<h2 id="（三）运动"><a href="#（三）运动" class="headerlink" title="（三）运动"></a>（三）运动</h2><p><strong> 跑步!</strong><br><strong> 跑步!</strong><br><strong> 跑步!</strong></p>
-<h2 id="（四）NBA录像"><a href="#（四）NBA录像" class="headerlink" title="（四）NBA录像"></a>（四）NBA录像</h2><ul>
+<h2>（三）运动</h2>
+<p>** 跑步!**
+** 跑步!**
+** 跑步!**</p>
+<h2>（四）NBA录像</h2>
+<ul>
 <li>Bulls@Jazz 1998 NBA Finals Game 6</li>
 <li>Heat@Bostons 2012 East Finals Game 6</li>
 <li>Cavaliers@Pistons 2006 East Finals Game 5 Highlight</li>
@@ -370,13 +465,14 @@
 <li>Bulls@Celtics 1986 April 20th</li>
 <li>…………</li>
 </ul>
-<h2 id="（五）个人情趣"><a href="#（五）个人情趣" class="headerlink" title="（五）个人情趣"></a>（五）个人情趣</h2><p><strong>学习围棋</strong>  <a href="http://www.weiqitv.com/" target="_blank" rel="external">http://www.weiqitv.com/</a></p>
+<h2>（五）个人情趣</h2>
+<p><strong>学习围棋</strong>  http://www.weiqitv.com/</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/03/20/160320_plans/" data-id="cj60gqfo10002z2xueesaajxa" class="article-share-link" data-share="baidu" data-title="未来一段时间">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/03/20/160320_plans/" data-id="cje9dtazo00038rxufjrjn70a" class="article-share-link" data-share="baidu" data-title="未来一段时间">分享到</a>
       
 
       
@@ -417,15 +513,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>南桥和北桥是PC主板芯片组中的两枚芯片。</strong><br><blockquote><p>&emsp;&emsp;“<strong>北桥</strong>（英语：Northbridge）是基于 Intel 处理器的个人电脑主板芯片组两枚芯片中的一枚，<strong>北桥设计用来处理高速信号</strong>，通常处理中央处理器、随机存取存储器、AGP 或 PCI Express 的端口，还有与南桥之间的通信。”</p>
+        <p><strong>南桥和北桥是PC主板芯片组中的两枚芯片。</strong>
+<blockquote><p>  “<strong>北桥</strong>（英语：Northbridge）是基于 Intel 处理器的个人电脑主板芯片组两枚芯片中的一枚，<strong>北桥设计用来处理高速信号</strong>，通常处理中央处理器、随机存取存储器、AGP 或 PCI Express 的端口，还有与南桥之间的通信。”</p>
 <footer><strong>wiki</strong><cite><a href="https://zh.wikipedia.org/zh/%E5%8C%97%E6%A1%A5" target="_blank" rel="external">zh.wikipedia.org/zh/%E5%8C%97%E6%A1%A5</a></cite></footer></blockquote></p>
-<blockquote><p>&emsp;&emsp;“<strong>南桥</strong>是基于个人电脑主板芯片组架构中的其中一枚芯片。<strong>南桥设计用来处理低速信号</strong>，通过北桥与中央处理器联系。……<em>但在部分的芯片组架构中，会将南桥的功能与北桥集成在一起；或者将部分功能移到北桥，而部分的南桥功能则删除，将被删除的界面功能使用额外独立的芯片组提供功能。</em>这样使得整个芯片组架构中只会有单一芯片，而不会另外的有南桥芯片。<br>&emsp;&emsp;南桥包含大多数周边设备界面、多媒体控制器和通讯界面功能。例如PCI控制器、ATA控制器、USB控制器、网络控制器、音效控制器。各世代的南桥性能大多雷同，但偶然听到某些南桥会有较差的Serial ATA或USB性能。”<br>&emsp;&emsp;“<em>现行的主板大多将北桥芯片集成进中央处理器的晶粒（die）中</em>，例如Intel的Sandy Bridge和AMD的Fusion处理器（两者均于2011年发表）。2011年推出的LGA 1156和Socket FM1新一代CPU已包含北桥，因此主板只有南桥。<br>由于系统单片机（SoC）的推行，在2013年发表的Intel Haswell笔记本型处理器甚至移除了PCH。SoC本身已包含CPU、北桥和南桥三者的功能。”</p>
-<footer><strong>wiki</strong><cite><a href="https://zh.wikipedia.org/wiki/%E5%8D%97%E6%A1%A5" target="_blank" rel="external">zh.wikipedia.org/wiki/%E5%8D%97%E6%A1%A5</a></cite></footer></blockquote>
+<p><blockquote><p>  “<strong>南桥</strong>是基于个人电脑主板芯片组架构中的其中一枚芯片。<strong>南桥设计用来处理低速信号</strong>，通过北桥与中央处理器联系。……*但在部分的芯片组架构中，会将南桥的功能与北桥集成在一起；或者将部分功能移到北桥，而部分的南桥功能则删除，将被删除的界面功能使用额外独立的芯片组提供功能。*这样使得整个芯片组架构中只会有单一芯片，而不会另外的有南桥芯片。
+  南桥包含大多数周边设备界面、多媒体控制器和通讯界面功能。例如PCI控制器、ATA控制器、USB控制器、网络控制器、音效控制器。各世代的南桥性能大多雷同，但偶然听到某些南桥会有较差的Serial ATA或USB性能。”
+  “<em>现行的主板大多将北桥芯片集成进中央处理器的晶粒（die）中</em>，例如Intel的Sandy Bridge和AMD的Fusion处理器（两者均于2011年发表）。2011年推出的LGA 1156和Socket FM1新一代CPU已包含北桥，因此主板只有南桥。
+由于系统单片机（SoC）的推行，在2013年发表的Intel Haswell笔记本型处理器甚至移除了PCH。SoC本身已包含CPU、北桥和南桥三者的功能。”</p>
+<footer><strong>wiki</strong><cite><a href="https://zh.wikipedia.org/wiki/%E5%8D%97%E6%A1%A5" target="_blank" rel="external">zh.wikipedia.org/wiki/%E5%8D%97%E6%A1%A5</a></cite></footer></blockquote></p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2015/11/25/151125_hardware/" data-id="cj60gqfnp0000z2xunixsgizt" class="article-share-link" data-share="baidu" data-title="计算机南北桥">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2015/11/25/151125_hardware/" data-id="cje9dtaz800018rxunvwj3fny" class="article-share-link" data-share="baidu" data-title="计算机南北桥">分享到</a>
       
 
       

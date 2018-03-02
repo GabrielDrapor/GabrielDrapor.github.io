@@ -6,17 +6,17 @@
   
   <title>Machine Learning Notes 02 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linear Regression with one variable Hypothesis:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; $h(\theta) = \theta_{0} + \theta_{1}x_{1}$  Cost function:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; $J(\theta_{0},\theta_">
+  <meta name="description" content="Linear Regression with one variable   Hypothesis:        $h(\theta) = \theta_{0} + \theta_{1}x_{1}$   Cost function:        $J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning Notes 02">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2016/10/11/161011_ml_notes2/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="Linear Regression with one variable Hypothesis:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; $h(\theta) = \theta_{0} + \theta_{1}x_{1}$  Cost function:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; $J(\theta_{0},\theta_">
+<meta property="og:description" content="Linear Regression with one variable   Hypothesis:        $h(\theta) = \theta_{0} + \theta_{1}x_{1}$   Cost function:        $J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{">
 <meta property="og:updated_time" content="2017-08-06T03:36:41.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Notes 02">
-<meta name="twitter:description" content="Linear Regression with one variable Hypothesis:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; $h(\theta) = \theta_{0} + \theta_{1}x_{1}$  Cost function:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; $J(\theta_{0},\theta_">
+<meta name="twitter:description" content="Linear Regression with one variable   Hypothesis:        $h(\theta) = \theta_{0} + \theta_{1}x_{1}$   Cost function:        $J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -98,26 +98,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Linear-Regression-with-one-variable"><a href="#Linear-Regression-with-one-variable" class="headerlink" title="Linear Regression with one variable"></a>Linear Regression with one variable</h2><ul>
-<li><p><strong>Hypothesis:</strong><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <span>$h(\theta) = \theta_{0} + \theta_{1}x_{1}$</span><!-- Has MathJax --></p>
+        <h2>Linear Regression with one variable</h2>
+<ul>
+<li>
+<p><strong>Hypothesis:</strong>
+       <span>$h(\theta) = \theta_{0} + \theta_{1}x_{1}$</span><!-- Has MathJax --></p>
 </li>
-<li><p><strong>Cost function:</strong><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <span>$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$</span><!-- Has MathJax --></p>
+<li>
+<p><strong>Cost function:</strong>
+       <span>$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$</span><!-- Has MathJax --></p>
 </li>
 </ul>
 <hr>
-<h2 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a><strong>Gradient descent</strong></h2><p><strong>Target:</strong> minimize <span>$J(\theta_{0},\theta_{1})$</span><!-- Has MathJax --> or <span>$J(\theta_{0},\theta_{1},...,\theta_{n})$</span><!-- Has MathJax --></p>
+<h2><strong>Gradient descent</strong></h2>
+<p><strong>Target:</strong> minimize <span>$J(\theta_{0},\theta_{1})$</span><!-- Has MathJax --> or <span>$J(\theta_{0},\theta_{1},...,\theta_{n})$</span><!-- Has MathJax --></p>
 <ul>
 <li><strong>Gradient algorithm:</strong></li>
 </ul>
-<p>&emsp;&emsp;&emsp;Repeat until convergence{<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})(for \: j=0\:and\:j=1)$</span><!-- Has MathJax --><br>&emsp;&emsp;&emsp;}<br>&emsp;&emsp;&emsp;&emsp;( <span>$:=$</span><!-- Has MathJax --> - <em>Assignment</em>&emsp;&emsp;&emsp;&emsp;<span>$\alpha$</span><!-- Has MathJax --> - <em>Learning rate</em> )<br>&emsp;&emsp;<strong>Warning: </strong><span>$\theta_{0}$</span><!-- Has MathJax --> and <span>$\theta_{1}$</span><!-- Has MathJax -->should be updated <strong>Simultaneously</strong> !!!</p>
-<p>&emsp;&emsp;Especially, when gradient descent for linear regression,</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;<span>$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax -->&emsp;&emsp;when <span>$i=0$</span><!-- Has MathJax -->, we suppose <span>$x^{(0)}=1$</span><!-- Has MathJax --></p>
+<p>   Repeat until convergence{
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})(for \: j=0\:and\:j=1)$</span><!-- Has MathJax -->
+   }
+    ( <span>$:=$</span><!-- Has MathJax --> - <em>Assignment</em>    <span>$\alpha$</span><!-- Has MathJax --> - <em>Learning rate</em> )
+  **Warning: **<span>$\theta_{0}$</span><!-- Has MathJax --> and <span>$\theta_{1}$</span><!-- Has MathJax -->should be updated <strong>Simultaneously</strong> !!!</p>
+<p>  Especially, when gradient descent for linear regression,</p>
+<p>     <span>$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax -->  when <span>$i=0$</span><!-- Has MathJax -->, we suppose <span>$x^{(0)}=1$</span><!-- Has MathJax --></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/10/11/161011_ml_notes2/" data-id="cj60gqfqp0017z2xuw6bllh70" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 02">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/10/11/161011_ml_notes2/" data-id="cje9dtb2100188rxu7s1hxxyg" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 02">分享到</a>
       
 
       

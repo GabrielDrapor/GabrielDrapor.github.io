@@ -6,17 +6,17 @@
   
   <title>在AWS上搭建TensorFlow环境 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。">
+  <meta name="description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。 &amp;lt;!-- more --&amp;gt;   首先是申请一个I">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在AWS上搭建TensorFlow环境">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。">
+<meta property="og:description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。 &amp;lt;!-- more --&amp;gt;   首先是申请一个I">
 <meta property="og:updated_time" content="2017-09-04T17:04:35.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在AWS上搭建TensorFlow环境">
-<meta name="twitter:description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。">
+<meta name="twitter:description" content="关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。 &amp;lt;!-- more --&amp;gt;   首先是申请一个I">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,39 +99,47 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1" target="_blank" rel="external">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow" target="_blank" rel="external">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p>
-<a id="more"></a>
+<p>&lt;!-- more --&gt;</p>
 <ul>
-<li><p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p>
+<li>
+<p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p>
 </li>
-<li><p>ssh之前，记得把密钥权限改成600；</p>
+<li>
+<p>ssh之前，记得把密钥权限改成600；</p>
 </li>
-<li><p>登陆之后首先确认一下GPU信息：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">local</span>) lspci | grep -i nvidia</div></pre></td></tr></table></figure>
+<li>
+<p>登陆之后首先确认一下GPU信息：</p>
+<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">local</span>) lspci | grep -i nvidia</div></pre></td></tr></table></figure></p>
 </li>
-<li><p>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；</p>
+<li>
+<p>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；</p>
 <ul>
 <li>首先是 CUDA Toolkit：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line">$ ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line">$ ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"></div><div class="line">$ vim ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#增加下面三行</span></div><div class="line"><span class="built_in">export</span> CUDA_ROOT=/usr/<span class="built_in">local</span>/cuda-8.0</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda-8.0/lib64</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$CUDA_ROOT</span>/bin</div><div class="line"></div><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#测试一下</span></div><div class="line">$ nvidia-smi -q | head</div></pre></td></tr></table></figure>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line">$ ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line">$ ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"></div><div class="line">$ vim ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#增加下面三行</span></div><div class="line"><span class="built_in">export</span> CUDA_ROOT=/usr/<span class="built_in">local</span>/cuda-8.0</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda-8.0/lib64</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$CUDA_ROOT</span>/bin</div><div class="line"></div><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#测试一下</span></div><div class="line">$ nvidia-smi -q | head</div></pre></td></tr></table></figure></p>
 <ul>
 <li>然后是cuDNN library：</li>
 </ul>
-<p>首先去<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">https://developer.nvidia.com/cudnn</a> 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/lib64/* /usr/<span class="built_in">local</span>/cuda-8.0/lib64/</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/include/* /usr/<span class="built_in">local</span>/cuda-8.0/include/</span></div></pre></td></tr></table></figure>
+<p>首先去https://developer.nvidia.com/cudnn 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/lib64/* /usr/<span class="built_in">local</span>/cuda-8.0/lib64/</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/include/* /usr/<span class="built_in">local</span>/cuda-8.0/include/</span></div></pre></td></tr></table></figure></p>
 <p>至此，GPU Drivers的部分基本配置完成。</p>
 </li>
-<li><p>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Install pip and virtualen </span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python-pip python-dev python-virtualenv <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python3-pip python3-dev python-virtualenv <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Create a virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages targetDirectory <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages -p python3 <span class="string">'targetDirectory'</span> <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> <span class="string">'targetDirectory'</span> specifies the top of the virtualenv tree, <span class="built_in">which</span> you may choose by yourself.</span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Activate the virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">现在的命令行前面的标识会变成这个样子：</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">Install TensorFlow, ensure the version of pip &gt;= 8.1</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow      <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow     <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow-gpu  <span class="comment"># for Python 2.7 and GPU</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow-gpu <span class="comment"># for Python 3.n and GPU</span></span></div></pre></td></tr></table></figure>
+<li>
+<p>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Install pip and virtualen </span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python-pip python-dev python-virtualenv <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python3-pip python3-dev python-virtualenv <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Create a virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages targetDirectory <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages -p python3 <span class="string">'targetDirectory'</span> <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> <span class="string">'targetDirectory'</span> specifies the top of the virtualenv tree, <span class="built_in">which</span> you may choose by yourself.</span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Activate the virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">现在的命令行前面的标识会变成这个样子：</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">Install TensorFlow, ensure the version of pip &gt;= 8.1</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow      <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow     <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow-gpu  <span class="comment"># for Python 2.7 and GPU</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow-gpu <span class="comment"># for Python 3.n and GPU</span></span></div></pre></td></tr></table></figure></p>
 <p>至此，TensorFlow安装完成</p>
 </li>
-<li><p>激活命令为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate      <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div></pre></td></tr></table></figure>
+<li>
+<p>激活命令为</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate      <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div></pre></td></tr></table></figure></p>
 </li>
-<li><p>退出环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> deactivate</span></div></pre></td></tr></table></figure>
+<li>
+<p>退出环境
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> deactivate</span></div></pre></td></tr></table></figure></p>
 </li>
-<li><p>卸载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure>
+<li>
+<p>卸载
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure></p>
 <p>​</p>
 </li>
 </ul>
@@ -140,7 +148,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/" data-id="cj6naw5j30000wuxu5wajiukh" class="article-share-link" data-share="baidu" data-title="在AWS上搭建TensorFlow环境">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/" data-id="cje9dtb4p003h8rxure85id0s" class="article-share-link" data-share="baidu" data-title="在AWS上搭建TensorFlow环境">分享到</a>
       
 
       

@@ -6,18 +6,18 @@
   
   <title>HTTP Response/Request Headers | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是一次404过程中，客户端和服务器发送请求的头(Headers)先想办法炸出404（如图）  HTTP Headers的内容如下：  GeneralRequest URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址Request Method: GET                  //请求方式 这里是管服务器要东西Status Code: 404 No">
+  <meta name="description" content="这是一次404过程中，客户端和服务器发送请求的头(Headers) 先想办法炸出404（如图）  HTTP Headers的内容如下：  General Request URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址 Request Method: GET 	 			//请求方式 这里是管服务器要东西 Status Code: 404 Not Found">
 <meta name="keywords" content="Networks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP Response&#x2F;Request Headers">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2016/04/27/160427_http/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="这是一次404过程中，客户端和服务器发送请求的头(Headers)先想办法炸出404（如图）  HTTP Headers的内容如下：  GeneralRequest URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址Request Method: GET                  //请求方式 这里是管服务器要东西Status Code: 404 No">
+<meta property="og:description" content="这是一次404过程中，客户端和服务器发送请求的头(Headers) 先想办法炸出404（如图）  HTTP Headers的内容如下：  General Request URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址 Request Method: GET 	 			//请求方式 这里是管服务器要东西 Status Code: 404 Not Found">
 <meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/404.png">
 <meta property="og:updated_time" content="2017-08-06T03:36:38.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP Response&#x2F;Request Headers">
-<meta name="twitter:description" content="这是一次404过程中，客户端和服务器发送请求的头(Headers)先想办法炸出404（如图）  HTTP Headers的内容如下：  GeneralRequest URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址Request Method: GET                  //请求方式 这里是管服务器要东西Status Code: 404 No">
+<meta name="twitter:description" content="这是一次404过程中，客户端和服务器发送请求的头(Headers) 先想办法炸出404（如图）  HTTP Headers的内容如下：  General Request URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址 Request Method: GET 	 			//请求方式 这里是管服务器要东西 Status Code: 404 Not Found">
 <meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/404.png">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
@@ -100,20 +100,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是一次404过程中，客户端和服务器发送请求的头(Headers)<br>先想办法炸出404（如图）</p>
+        <p>这是一次404过程中，客户端和服务器发送请求的头(Headers)
+先想办法炸出404（如图）</p>
 <p><img src="http://7xugq7.com1.z0.glb.clouddn.com/404.png" alt=""></p>
 <p>HTTP Headers的内容如下：</p>
 <blockquote>
-<p><strong>General</strong><br>Request URL:<a href="http://www.xxx.com/xxxxxx.xx" target="_blank" rel="external">http://www.xxx.com/xxxxxx.xx</a>  //请求目的地的地址<br>Request Method: GET                  //请求方式 这里是管服务器要东西<br>Status Code: 404 Not Found HTTP     //HTTP状态码，这里是404，代表没有找到<br>Remote Address: 127.0.0.1:8081      //远程地址，不是ip地址，一般是127.0.0.1</p>
-<p><strong>Response Headers</strong>                 //应答头部字段<br>HTTP/1.1 404 Not Found              //HTTP版本是1.1<br>Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间<br>Server: Apache/2.2.25 (Win32)          //服务器类型<br>Content-Length: 208                //实体内容长度 208<br>Keep-Alive: timeout=5, max=100        //持久连接 超时是5秒，最长100秒<br>Connection: Keep-Alive                //连接类型：持续连接<br>Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 编码类型是iso-8859-1</p>
-<p><strong>Request Headers</strong>                  //请求头部字段<br>GET /index2.php HTTP/1.1            //“我要index2.php，快给我” HTTP版本1.1<br>Host: www.xxx.com                    //要请求的主机的名字<br>Connection: keep-alive                //连接类型： “我要一直连着，不许给我断了“<br>Cache-Control: max-age=0            //缓存控制：”就不让你缓存，要东西现来找我”<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8<br>//“我只要下面这些：文本/HTML，应用/XHTML+XML，应用/xml(这个可以往后放不着急)，图片/webp(这个更不着急)”<br>Upgrade-Insecure-Requests: 1        //这个是？<br>User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36    //浏览器支持类型<br>Accept-Encoding: gzip, deflate, sdch    //”我只看得懂下面这三种编码：gzip, deflate, sdch”<br>Accept-Language: zh-CN,zh;q=0.8     //”我只要中文”</p>
+<p><strong>General</strong>
+Request URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址
+Request Method: GET 	 			//请求方式 这里是管服务器要东西
+Status Code: 404 Not Found HTTP 	//HTTP状态码，这里是404，代表没有找到
+Remote Address: 127.0.0.1:8081  	//远程地址，不是ip地址，一般是127.0.0.1</p>
+</blockquote>
+<blockquote>
+<p><strong>Response Headers</strong> 				//应答头部字段
+HTTP/1.1 404 Not Found  			//HTTP版本是1.1
+Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间
+Server: Apache/2.2.25 (Win32)  		//服务器类型
+Content-Length: 208				//实体内容长度 208
+Keep-Alive: timeout=5, max=100    	//持久连接 超时是5秒，最长100秒
+Connection: Keep-Alive				//连接类型：持续连接
+Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 编码类型是iso-8859-1</p>
+</blockquote>
+<blockquote>
+<p><strong>Request Headers</strong>  				//请求头部字段
+GET /index2.php HTTP/1.1			//“我要index2.php，快给我” HTTP版本1.1
+Host: www.xxx.com					//要请求的主机的名字
+Connection: keep-alive				//连接类型： “我要一直连着，不许给我断了“
+Cache-Control: max-age=0			//缓存控制：”就不让你缓存，要东西现来找我”
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+//“我只要下面这些：文本/HTML，应用/XHTML+XML，应用/xml(这个可以往后放不着急)，图片/webp(这个更不着急)”
+Upgrade-Insecure-Requests: 1		//这个是？
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36	//浏览器支持类型
+Accept-Encoding: gzip, deflate, sdch	//”我只看得懂下面这三种编码：gzip, deflate, sdch”
+Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/04/27/160427_http/" data-id="cj60gqfoh0006z2xuc4n5kxci" class="article-share-link" data-share="baidu" data-title="HTTP Response/Request Headers">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/04/27/160427_http/" data-id="cje9dtb0c00078rxufob7rh3e" class="article-share-link" data-share="baidu" data-title="HTTP Response/Request Headers">分享到</a>
       
 
       

@@ -6,17 +6,17 @@
   
   <title>用Pymongo连接MongoDB取数 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。">
+  <meta name="description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。 &amp;lt;!-- more --&amp;gt; 1234567891011from pymongo import MongoClientclient = MongoClient(&apos;mongodb://x.x.x.x:xxxxx&apos;)db = client.[DATABASES_NAME]print(db.col">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Pymongo连接MongoDB取数">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。">
+<meta property="og:description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。 &amp;lt;!-- more --&amp;gt; 1234567891011from pymongo import MongoClientclient = MongoClient(&apos;mongodb://x.x.x.x:xxxxx&apos;)db = client.[DATABASES_NAME]print(db.col">
 <meta property="og:updated_time" content="2018-01-21T15:55:58.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Pymongo连接MongoDB取数">
-<meta name="twitter:description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。">
+<meta name="twitter:description" content="最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。 &amp;lt;!-- more --&amp;gt; 1234567891011from pymongo import MongoClientclient = MongoClient(&apos;mongodb://x.x.x.x:xxxxx&apos;)db = client.[DATABASES_NAME]print(db.col">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,14 +99,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
+<p>&lt;!-- more --&gt;</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/" data-id="cjcoypq7l0000hvxut3fxvmlj" class="article-share-link" data-share="baidu" data-title="用Pymongo连接MongoDB取数">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/" data-id="cje9dtb50003r8rxuumff59ik" class="article-share-link" data-share="baidu" data-title="用Pymongo连接MongoDB取数">分享到</a>
       
 
       

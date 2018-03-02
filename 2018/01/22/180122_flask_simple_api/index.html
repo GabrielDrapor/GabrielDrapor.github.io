@@ -6,17 +6,17 @@
   
   <title>用Flask实现一个简单的带POST的api | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小记如何用Flask实现一个带POST的api。">
+  <meta name="description" content="小记如何用Flask实现一个带POST的api。 &amp;lt;!-- more --&amp;gt; 123456789101112131415161718192021222324252627# -*- coding: utf-8 -*-import jsonfrom flask import Flask, request, Responsefrom logging import FileHandler, I">
 <meta name="keywords" content="Python,Flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Flask实现一个简单的带POST的api">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="小记如何用Flask实现一个带POST的api。">
+<meta property="og:description" content="小记如何用Flask实现一个带POST的api。 &amp;lt;!-- more --&amp;gt; 123456789101112131415161718192021222324252627# -*- coding: utf-8 -*-import jsonfrom flask import Flask, request, Responsefrom logging import FileHandler, I">
 <meta property="og:updated_time" content="2018-01-26T05:15:42.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Flask实现一个简单的带POST的api">
-<meta name="twitter:description" content="小记如何用Flask实现一个带POST的api。">
+<meta name="twitter:description" content="小记如何用Flask实现一个带POST的api。 &amp;lt;!-- more --&amp;gt; 123456789101112131415161718192021222324252627# -*- coding: utf-8 -*-import jsonfrom flask import Flask, request, Responsefrom logging import FileHandler, I">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,17 +99,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>小记如何用Flask实现一个带POST的api。</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, Response</div><div class="line"><span class="keyword">from</span> logging <span class="keyword">import</span> FileHandler, INFO, Formatter</div><div class="line"></div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="comment"># log</span></div><div class="line">err_log = FileHandler(<span class="string">'error_log_'</span>+time.strftime(<span class="string">'%Y%m%d'</span>,time.localtime()))</div><div class="line">err_log.setLevel(INFO)  <span class="comment">#设置日志级别</span></div><div class="line">logging_format = Formatter(<span class="string">'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'</span>)  <span class="comment"># 日志格式</span></div><div class="line">err_log.setFormatter(logging_format)</div><div class="line">app.logger.addHandler(err_log)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@app.route('/',methods=['POST','GET'])  #'/'指定了路径</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CERTAIN_FUNCTION</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        ...  <span class="comment">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span></div><div class="line">        <span class="keyword">return</span> Response(json.dumps(xxxx), mimetype=<span class="string">'application/json'</span>)  <span class="comment"># 如果需要回传json的话</span></div><div class="line"><span class="comment">#       return xxx 当然也可直接回传字符串或某个方法 </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(host=<span class="string">'x.x.x.x'</span>,port=<span class="string">'xxxx'</span>)</div></pre></td></tr></table></figure>
+<p>&lt;!-- more --&gt;</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, Response</div><div class="line"><span class="keyword">from</span> logging <span class="keyword">import</span> FileHandler, INFO, Formatter</div><div class="line"></div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="comment"># log</span></div><div class="line">err_log = FileHandler(<span class="string">'error_log_'</span>+time.strftime(<span class="string">'%Y%m%d'</span>,time.localtime()))</div><div class="line">err_log.setLevel(INFO)  <span class="comment">#设置日志级别</span></div><div class="line">logging_format = Formatter(<span class="string">'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'</span>)  <span class="comment"># 日志格式</span></div><div class="line">err_log.setFormatter(logging_format)</div><div class="line">app.logger.addHandler(err_log)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@app.route('/',methods=['POST','GET'])  #'/'指定了路径</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CERTAIN_FUNCTION</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        ...  <span class="comment">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span></div><div class="line">        <span class="keyword">return</span> Response(json.dumps(xxxx), mimetype=<span class="string">'application/json'</span>)  <span class="comment"># 如果需要回传json的话</span></div><div class="line"><span class="comment">#       return xxx 当然也可直接回传字符串或某个方法 </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(host=<span class="string">'x.x.x.x'</span>,port=<span class="string">'xxxx'</span>)</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Reference:</p>
 <ul>
-<li><a href="http://docs.jinkan.org/docs/flask/quickstart.html" target="_blank" rel="external">http://docs.jinkan.org/docs/flask/quickstart.html</a></li>
-<li><a href="https://www.youtube.com/watch?v=LGlRYlbawnE" target="_blank" rel="external">https://www.youtube.com/watch?v=LGlRYlbawnE</a></li>
+<li>http://docs.jinkan.org/docs/flask/quickstart.html</li>
+<li>https://www.youtube.com/watch?v=LGlRYlbawnE</li>
 </ul>
 <ul>
-<li><a href="http://www.cnblogs.com/wanghaonull/p/6537823.html" target="_blank" rel="external">http://www.cnblogs.com/wanghaonull/p/6537823.html</a></li>
-<li><a href="http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html" target="_blank" rel="external">http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</a></li>
+<li>http://www.cnblogs.com/wanghaonull/p/6537823.html</li>
+<li>http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</li>
 </ul>
 </blockquote>
 
@@ -117,7 +117,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/" data-id="cjcrb6akp0000ndxuqq7qigal" class="article-share-link" data-share="baidu" data-title="用Flask实现一个简单的带POST的api">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/" data-id="cje9dtb56003y8rxukbr6drum" class="article-share-link" data-share="baidu" data-title="用Flask实现一个简单的带POST的api">分享到</a>
       
 
       

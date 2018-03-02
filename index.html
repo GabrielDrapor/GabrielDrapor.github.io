@@ -99,16 +99,25 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>小记如何用Flask实现一个带POST的api。</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/01/22/180122_flask_simple_api/#more">Read More</a>
-          </p>
-        
+<p>&lt;!-- more --&gt;</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, Response</div><div class="line"><span class="keyword">from</span> logging <span class="keyword">import</span> FileHandler, INFO, Formatter</div><div class="line"></div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="comment"># log</span></div><div class="line">err_log = FileHandler(<span class="string">'error_log_'</span>+time.strftime(<span class="string">'%Y%m%d'</span>,time.localtime()))</div><div class="line">err_log.setLevel(INFO)  <span class="comment">#设置日志级别</span></div><div class="line">logging_format = Formatter(<span class="string">'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'</span>)  <span class="comment"># 日志格式</span></div><div class="line">err_log.setFormatter(logging_format)</div><div class="line">app.logger.addHandler(err_log)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@app.route('/',methods=['POST','GET'])  #'/'指定了路径</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CERTAIN_FUNCTION</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        ...  <span class="comment">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span></div><div class="line">        <span class="keyword">return</span> Response(json.dumps(xxxx), mimetype=<span class="string">'application/json'</span>)  <span class="comment"># 如果需要回传json的话</span></div><div class="line"><span class="comment">#       return xxx 当然也可直接回传字符串或某个方法 </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(host=<span class="string">'x.x.x.x'</span>,port=<span class="string">'xxxx'</span>)</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Reference:</p>
+<ul>
+<li>http://docs.jinkan.org/docs/flask/quickstart.html</li>
+<li>https://www.youtube.com/watch?v=LGlRYlbawnE</li>
+</ul>
+<ul>
+<li>http://www.cnblogs.com/wanghaonull/p/6537823.html</li>
+<li>http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</li>
+</ul>
+</blockquote>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/" data-id="cjcrb6akp0000ndxuqq7qigal" class="article-share-link" data-share="baidu" data-title="用Flask实现一个简单的带POST的api">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/" data-id="cje9dtb56003y8rxukbr6drum" class="article-share-link" data-share="baidu" data-title="用Flask实现一个简单的带POST的api">分享到</a>
       
 
       
@@ -150,16 +159,68 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>2017已经接近尾声，在此谨记2017的种种。</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/01/01/180101_2017/#more">Read More</a>
-          </p>
-        
+<p>&lt;!-- more --&gt;</p>
+<p>2017元旦做2016总结的时候，当时在博客的评论区写了一条评论说，明年这个时候一定要写出一篇比今年精彩得多的总结。当时还想着一定要在这篇年终总结中放很多照片和截图来凸显自己这一整年的精彩程度，还为此专门在Dropbox上建了一个叫“My 2017”的文件夹。不过何谓“精彩”似乎很难定义，今年的经历讲给去年的自己听，他想必觉得还算精彩，而今年的自己可能只觉得稀松平常，所以我觉得不如在年终总结的时候列一些具体些的条目，然后明年来打勾。</p>
+<p>技术方面，</p>
+<ul>
+<li>一月参加了MCM2017，没有想象的那么激烈，拿了一个Honorable Mentions，此后还参加了几次小的建模，但我对建模的兴趣已经基本殆尽了；</li>
+</ul>
+<ul>
+<li>
+<p>一拖再拖，四月份的时候上完了Coursera上Andrew Ng的<em>Machine Learning</em>；</p>
+</li>
+<li>
+<p>四月看了《SQL必知必会》，但一直一段时间没用上便遗忘了不少，不过实习之后八九十月几乎每天都在写SQL，SQL的熟练度巨幅提高，达到可以进行各种花式联结和花式聚合的水平；</p>
+</li>
+<li>
+<p>春夏交际的时候读了一部分《利用Python进行数据分析》，后来在实习时做项目的过程中，Numpy和Pandas的熟练度也得到了明显的提升；</p>
+</li>
+<li>
+<p>实习之后手动实现了一些Machine Learning的东西，其间还初探了一下Kaggle，Coding的能力得到了不少锻炼；</p>
+</li>
+<li>
+<p>实习过程中还顺便学写了一点琐碎的小技能；</p>
+</li>
+<li>
+<p>拖了一年多，临近年底的时候终于开始学数据结构了；</p>
+<p>​</p>
+</li>
+</ul>
+<p>其他方面：</p>
+<p>很惭愧，今年读的书太少了。算上从2016开始翻的论语，也才只读了十几本书。不过其中大部分是在最后两个月读的，2018希望可以保持后两个月的阅读状态。</p>
+<p>今年电影看了大概30部，去了4次电影院。电视剧比去年应该是少了，主要原因是年初补完了《权力的游戏》前六季之后，对其他许多剧失去了兴趣。看完之后直至今日，我都常常跟人说《权力的游戏》应该就是我过去二十年里看过最棒的电视剧了，可能没有之一。</p>
+<p>2017年玩游戏的时间不算多，不过还是玩了几部相当不错的游戏，3DS上除了MH X和XX，还玩了一部塞尔达（众神的三角力量2），玩了一部口袋妖怪（究极之月），还玩了一段时间的牧场物语；PC上除了和室友开黑玩的LOL之外，玩了Poly Bridge。2018，希望能玩更多好游戏（十分想入一个Switch）。</p>
+<p>作为NBA球迷，今年彻底成为了大帝的球迷。对比赛的认识应该还是得到了一些长进的。闲的时候翻了一些经典的老录像看。学习了一些战术方面的东西，对一些基本的战术类型，Horns，Hammer之类的有了一些了解。2018希望能了解更多。</p>
+<p>春天的时候开了个微信公众号，半年多过去，在茫茫的无病呻吟和顾影自怜中，所幸还有几篇略有价值的东西，2018希望能多写一些有价值的东西，除了篮球战术和翻译，也许还可以构思个短篇小说什么的。</p>
+<p>2017终于养成了记录的习惯，每周在Github上写周报，每天在Workflowy上记流水账。不可否认，这种依靠记录来获得某种虚幻的成就感从而驱动自己的行为是我身上某种焦虑和空虚的体现。不过其实还好，总比什么也没做强。</p>
+<p>情绪方面，2017年一整年算得上跌宕起伏。春天的时候有一段时间状态非常好，学习和生活充满希冀，那时候觉得自己已经把自己调到了最好的状态。没成想，夏天到来之后，受到了高温和其他因素的影响，整个人变得非常非常低落，开始对生活中的任何事情丧失兴趣，甚至开始觉得活着其实也没什么趣味。所幸6月份有期末考试，这件不大不小的事情还算给了我一点支撑。考完试之后，我失去了唯一的支撑，整个人几乎要垮掉。期间萌生了想要找实习的想法，在拉勾海投了一番，在众多的拒绝中，还是有两家公司给了我面试的机会。于是2017年7月14日，堪称我这一年中的转折点，我收到了洋葱数学的实习Offer。说这一纸Offer救了我毫不过分，在此后的日子里，虽然情绪偶尔还是会出现波动，但只要坐在公司，愉悦感和满足感就会源源不断地从心底涌出。除了写代码，在公司还做了很多别的有趣的事情：做过几页数学书，脑暴一些项目的点子，写对话游戏的本子等等。当然在公司还认识了许多很有趣的人，与有生活丰富的人交谈很少会让人觉得无聊。</p>
+<p>实习之后直接实现了经济独立，于是可以更加放纵地吃吃喝喝，花钱渐渐变得大手大脚，终于在十一月迎来支出顶峰，那时候开始打算做一些理财计划，初步的打算包括做指数基金的定投，截止到目前投了一个月多一点，赚了微不足道的一点点，2018应该会继续保持这个习惯。</p>
+<p>去年期盼的独居生活并没有真正来临，只在这一年中短暂地出现过。不过在有限的独居生活里，我自认为我过得还算可以，一个人在家的时候反而不太容易觉得孤单活着空虚。烹饪方面得到了有限的一点点提升。整年中在家最舒畅的时候，要数3月的那些晚上，冲一壶大红袍，一边听《圆桌派》，拼拼图的时候，彼时彼刻大概算得上一年中最恬静的时刻。后来也就顺理成章地喜欢上了窦文涛以及相关的几位的节目，诸如锵锵、一千零一夜，都嘟之类的今年都没少看。以及拼图。本想着自己独居一年可以拼好多好多副拼图，不过由于居住条件的变化总是难以预料，所以今年其实拼的拼图很少。希望新的一年能拼更多有趣的拼图。</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/IMG_20170305_040225.jpg" alt=""></p>
+<p>今年很多时候依然是一个人，和去年的情况基本一样，唯一不同的大概就是下馆子的次数多了很多</p>
+<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/WechatIMG52.jpeg" alt=""></p>
+<p>2017年曾经有过三次可以脱单的机会，但因为我始终觉得不合适（也许只是我在抗拒），还是拒绝了对方的好意。2018，希望……；</p>
+<p>2017年很遗憾没有像小学初中高中一样，交到可以时常一起玩，三观也大概接近的朋友。2018年能从公司或者哪儿发展一个或几个的话自然是最好，没有当然也没关系，有机会的话和老朋友们聚一聚，其他时间自己玩耍便是。</p>
+<hr>
+<p>列几个明年可以打勾的一些小愿望和小目标：</p>
+<ul>
+<li>ML，Python继续提升，读一些技术书；</li>
+<li>好好学数学；</li>
+<li>变得轻盈；</li>
+<li>坚持读书的习惯；</li>
+<li>拼更多的拼图；</li>
+<li>学一些其他领域的技能，培养一些爱好；</li>
+<li>住进一个有厨房的房子；</li>
+<li>开心；</li>
+</ul>
+<p>当然，2018希望所有的家人朋友们都能健康幸福快乐。</p>
+<p>以上。</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2018/01/01/180101_2017/" data-id="cjbxflikl00007wxuok3lov33" class="article-share-link" data-share="baidu" data-title="2017">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2018/01/01/180101_2017/" data-id="cje9dtb52003v8rxu228ku8bi" class="article-share-link" data-share="baidu" data-title="2017">分享到</a>
       
 
       
@@ -201,16 +262,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/11/22/171122_impala/#more">Read More</a>
-          </p>
-        
+<p>&lt;!-- more --&gt;</p>
+<p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
+<p>安装好之后，只需要</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure></p>
+<p>即可；</p>
+<p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
+<p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/11/22/171122_impala/" data-id="cjaandy8700000xxunuhl8lg5" class="article-share-link" data-share="baidu" data-title="用python连接SparkThriftServer">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/11/22/171122_impala/" data-id="cje9dtb4x003o8rxu7jyvhn0n" class="article-share-link" data-share="baidu" data-title="用python连接SparkThriftServer">分享到</a>
       
 
       
@@ -252,16 +316,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/11/22/171122_pymongo/#more">Read More</a>
-          </p>
-        
+<p>&lt;!-- more --&gt;</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/" data-id="cjcoypq7l0000hvxut3fxvmlj" class="article-share-link" data-share="baidu" data-title="用Pymongo连接MongoDB取数">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/" data-id="cje9dtb50003r8rxuumff59ik" class="article-share-link" data-share="baidu" data-title="用Pymongo连接MongoDB取数">分享到</a>
       
 
       
@@ -303,16 +365,27 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/" target="_blank" rel="external">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/09/11/170911_knn_digits_recognition/#more">Read More</a>
-          </p>
-        
+<p>&lt;!-- more --&gt;</p>
+<h3>9.11</h3>
+<p>没看书自己实现了一下KNN，算法本身也没什么复杂的，但是实现起来还是费了一番不小的功夫，动手能力还需增强啊…</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">print(<span class="string">'Importing the data...'</span>)</div><div class="line">train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">r = []</div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(len(test_set)):</div><div class="line">        print(<span class="string">'%d/28000'</span> % (t+<span class="number">1</span>))</div><div class="line">    a = np.array(test_set.loc[t])</div><div class="line">    d = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(train_set)):</div><div class="line">        b = np.array(pixel.loc[i])</div><div class="line">        d.append(np.dot((a-b).T,(a-b)))</div><div class="line">    k = list(zip(d,range(len(d))))</div><div class="line">    k.sort()</div><div class="line">    m = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">        m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">    r.append(sum(m)/<span class="number">10</span>)</div></pre></td></tr></table></figure></p>
+<p>跑了几个试了试，K选了10，有一些误差，不过效果看起来还可以。但是全量数据一起跑的时候就发现，完成任务需要的时间非常久，大概至少需要三十个小时。这当然是不能接受的，得想办法改进才行。目前初步的打算是用多进程，应该可以明显地缩短完成任务所需的时间。</p>
+<hr>
+<h3>9.12</h3>
+<p>昨天请教了公司的组长之后得知，还可以用Deep Learning中的Pooling来降低计算的复杂度，但还是想先上多线程看看。经过一个晚上和半个上午的研究探索，终于成功地让任务以多进程的方式跑起来了。</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">Description:</div><div class="line">kaggle 0 </div><div class="line"></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> multiprocessing</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="comment">#import matplotlib.pyplot as plt</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">processing</span><span class="params">(test_set)</span>:</span></div><div class="line">    s = []</div><div class="line">    print(<span class="string">"Running... pid:"</span> + str(os.getpid()))</div><div class="line">    <span class="keyword">for</span> idx, df <span class="keyword">in</span> test_set.iterrows():</div><div class="line">        print(<span class="string">'%d/28000, pid %s'</span> % (idx, os.getpid()))</div><div class="line">        a = np.array(df)</div><div class="line">        d = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">42000</span>):</div><div class="line">            b = np.array(pixel.iloc[i])</div><div class="line">            d.append(np.dot((a-b).T,(a-b)))</div><div class="line">        k = list(zip(d,range(len(d))))</div><div class="line">        k.sort()</div><div class="line">        m = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">            m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">        s.append([idx,sum(m)/<span class="number">10</span>])</div><div class="line">    <span class="keyword">return</span> s</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    print(<span class="string">'Importing the data...'</span>)</div><div class="line">    train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">    pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">    label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">    <span class="comment">#plt.imshow(test.reshape(28,28), cmap=plt.cm.gray)</span></div><div class="line">    test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">    pool = multiprocessing.Pool(processes = <span class="number">16</span>)</div><div class="line">    r = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</div><div class="line">        train = test_set.loc[<span class="number">1750</span>*i:<span class="number">1750</span>*(i+<span class="number">1</span>)<span class="number">-1</span>]</div><div class="line">        r.append(pool.apply_async(processing,(train,)))</div><div class="line">    pool.close()</div><div class="line">    pool.join()</div><div class="line">    result  = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> r:</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> i.get():</div><div class="line">            result.append(j)</div><div class="line">    result.sort()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'result.csv'</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> result:</div><div class="line">            f.writelines(str(i[<span class="number">0</span>]+<span class="number">1</span>)+<span class="string">','</span>+str(round(i[<span class="number">1</span>]))[:<span class="number">-2</span>]+<span class="string">'\n'</span>)</div></pre></td></tr></table></figure></p>
+<p>为了能够快速地完成任务，我又去AWS上租了一个c4.4xlarge，配置是16 vCPU, 2.9 GHz, Intel Xeon E5-2666v3, 30 GiB 内存，在上面把任务分成16个进程进行计算。即便如此，整个任务还是花费了大概三四个小时的时间，但总算最后还是成功地跑出来了。</p>
+<p>将结果按照要求稍微整理一下就可以提交了，初次提交的分数是0.87314，预料之中。虽然准确率看起来还可以，但这个成绩在这项竞赛中的排名是1534／1625，非常的惨淡，不过这也说明改进的空间还很大。之后考虑用Pooling试试。</p>
+<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/first_submission.png&quot;&gt;</p>
+<hr>
+<h3>9.13</h3>
+<p>今天发现其实Pooling并不是一种可以提高精度的办法，只是一种可以降低计算复杂度的方法，如果原算法的精度本身就不高的话，Pooliing之后同样也不高，组长建议我改用CNN。我想了一下，就算调整K的值重新跑一次可能不会使准确率有明显的提升，Google了一下发现大家用KNN做手写识别，精度可能也就追求到0.8。嗯……这两天探索一下Tensorflow+CNN（之前只是知道，并没有深入了解过），尝试用这种方式解决这个问题。</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/09/11/170911_knn_digits_recognition/" data-id="cj7hmu6qx0000ymxuytf9r4v3" class="article-share-link" data-share="baidu" data-title="Kaggle 0 手写数字识别器的探索">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/09/11/170911_knn_digits_recognition/" data-id="cje9dtb4r003l8rxuw3i2elez" class="article-share-link" data-share="baidu" data-title="Kaggle 0 手写数字识别器的探索">分享到</a>
       
 
       
@@ -354,16 +427,56 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1" target="_blank" rel="external">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow" target="_blank" rel="external">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/22/170822_aws_tensorflow/#more">Read More</a>
-          </p>
-        
+<p>&lt;!-- more --&gt;</p>
+<ul>
+<li>
+<p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p>
+</li>
+<li>
+<p>ssh之前，记得把密钥权限改成600；</p>
+</li>
+<li>
+<p>登陆之后首先确认一下GPU信息：</p>
+<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">local</span>) lspci | grep -i nvidia</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；</p>
+<ul>
+<li>首先是 CUDA Toolkit：</li>
+</ul>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line">$ ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line">$ ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"></div><div class="line">$ vim ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#增加下面三行</span></div><div class="line"><span class="built_in">export</span> CUDA_ROOT=/usr/<span class="built_in">local</span>/cuda-8.0</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda-8.0/lib64</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$CUDA_ROOT</span>/bin</div><div class="line"></div><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#测试一下</span></div><div class="line">$ nvidia-smi -q | head</div></pre></td></tr></table></figure></p>
+<ul>
+<li>然后是cuDNN library：</li>
+</ul>
+<p>首先去https://developer.nvidia.com/cudnn 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/lib64/* /usr/<span class="built_in">local</span>/cuda-8.0/lib64/</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/include/* /usr/<span class="built_in">local</span>/cuda-8.0/include/</span></div></pre></td></tr></table></figure></p>
+<p>至此，GPU Drivers的部分基本配置完成。</p>
+</li>
+<li>
+<p>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Install pip and virtualen </span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python-pip python-dev python-virtualenv <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python3-pip python3-dev python-virtualenv <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Create a virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages targetDirectory <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages -p python3 <span class="string">'targetDirectory'</span> <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> <span class="string">'targetDirectory'</span> specifies the top of the virtualenv tree, <span class="built_in">which</span> you may choose by yourself.</span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Activate the virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">现在的命令行前面的标识会变成这个样子：</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">Install TensorFlow, ensure the version of pip &gt;= 8.1</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow      <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow     <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow-gpu  <span class="comment"># for Python 2.7 and GPU</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow-gpu <span class="comment"># for Python 3.n and GPU</span></span></div></pre></td></tr></table></figure></p>
+<p>至此，TensorFlow安装完成</p>
+</li>
+<li>
+<p>激活命令为</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate      <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>退出环境
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> deactivate</span></div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>卸载
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure></p>
+<p>​</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/" data-id="cj6naw5j30000wuxu5wajiukh" class="article-share-link" data-share="baidu" data-title="在AWS上搭建TensorFlow环境">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/" data-id="cje9dtb4p003h8rxure85id0s" class="article-share-link" data-share="baidu" data-title="在AWS上搭建TensorFlow环境">分享到</a>
       
 
       
@@ -405,16 +518,68 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/19/170819_funny_codewars/#more">Read More</a>
-          </p>
-        
+<p>&lt;!-- more --&gt;</p>
+<h4><a href="https://www.codewars.com/kata/sum-of-digits-slash-digital-root" target="_blank" rel="external">Sum of Digits / Digital Root</a></h4>
+<p>题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIkipedia）。按照定义来做的话，也其实没什么难的，用python的话，无非就是分拆成字符，再转回数字然后相加，如此往复直到位数为1。然而在做完之后，我在Solutions里发现了这样两个答案：</p>
+<ul>
+<li>
+<p>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &lt; <span class="number">10</span> <span class="keyword">else</span> digital_root(sum(map(int,str(n))))</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>然后我往下翻，又看到了下面这个让我颇为震惊的解法：
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n%<span class="number">9</span> <span class="keyword">or</span> n <span class="keyword">and</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<p>我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：https://www.zhihu.com/question/30972581 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p>
+<ul>
+<li>
+<p>a and b，ab都非零时，结果为b；ab其中一个为0时，结果为0；</p>
+</li>
+<li>
+<p>a or b，ab都非零时，结果为a；ab其中一个为0时，结果为另一个非零的数；</p>
+<p>并且，0 and 0和0 or 0都等于0。另外就是and的运算级要高于or，所以return后面的执行顺序就是先and后or：</p>
+</li>
+</ul>
+<blockquote>
+<p>n != 0且n != 9时，n and 9 == 9，n % 9 or 9 == n % 9；</p>
+<p>n == 0时，n and 9 == 0，n % 9 or 0 == 0；</p>
+<p>n == 9时，n and 9 == 9，n%9 or 9 == 9；</p>
+</blockquote>
+<hr>
+<h4><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don't rely on luck.</a></h4>
+<p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
+<ul>
+<li>在代码框里最开始给的是：
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure></li>
+</ul>
+<p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
+<ul>
+<li>
+<p>首先是：
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
+</li>
+<li>
+<p>然后是这个：
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure></p>
+<p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
+</li>
+<li>
+<p>当然，最让我折服的还是下面这个：
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure></p>
+<p>？？？？？？？？？</p>
+<p>与上面这种解法类似的还有：
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure></p>
+<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/08/19/170819_funny_codewars/" data-id="cj6iyfr1y0000fsxuqnmgjpm2" class="article-share-link" data-share="baidu" data-title="Codewars上有趣的题（一）">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/08/19/170819_funny_codewars/" data-id="cje9dtb4n003e8rxuk830yb54" class="article-share-link" data-share="baidu" data-title="Codewars上有趣的题（一）">分享到</a>
       
 
       
@@ -467,15 +632,15 @@
 <tbody>
 <tr>
 <td>TIMESTAMP</td>
-<td>‘2017-08-08 15:56:31.111’</td>
+<td>'2017-08-08 15:56:31.111'</td>
 </tr>
 <tr>
-<td>STRING(‘yyyyMMdd’)</td>
-<td>‘20170808’</td>
+<td>STRING('yyyyMMdd')</td>
+<td>'20170808'</td>
 </tr>
 <tr>
-<td>DATE(‘yyyy-MM-dd’)</td>
-<td>‘2017-08-08’</td>
+<td>DATE('yyyy-MM-dd')</td>
+<td>'2017-08-08'</td>
 </tr>
 <tr>
 <td>INT</td>
@@ -485,19 +650,19 @@
 </table>
 <p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
 <ul>
-<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyyMMdd’)即可；</li>
+<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp('2017-08-08', ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp('2017-08-08', ‘yyyyMMdd’)即可；</li>
 <li>from_unixtime()函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li>
 </ul>
 <p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用UNIX_TIMESTAMP()转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p>
-<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp(‘2017-08-08’,’yyyy-MM-dd’),’yyyyMMdd’) 即可，反之也是一样的道理。     </p>
+<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp('2017-08-08','yyyy-MM-dd'),'yyyyMMdd') 即可，反之也是一样的道理。</p>
 <p>当然这其中存在很多捷径，比如TO_DATE()可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p>
-<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，’2017-08-08’ = ‘20170808’这个等式并不成立。</p>
+<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，'2017-08-08' = ‘20170808’这个等式并不成立。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/08/08/170808_sql_time_switch/" data-id="cj63bq0hs0000iuxuvqlgrbwe" class="article-share-link" data-share="baidu" data-title="SQL的时间／日期无脑转换">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/08/08/170808_sql_time_switch/" data-id="cje9dtb4l003b8rxurt97mmpk" class="article-share-link" data-share="baidu" data-title="SQL的时间／日期无脑转换">分享到</a>
       
 
       
@@ -537,16 +702,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>具体思路和过程以后有时间再来整理（Flag）。</p>
-<p>原题目的url是<a href="https://www.codewars.com/kata/calculating-running-total" target="_blank" rel="external">https://www.codewars.com/kata/calculating-running-total</a></p>
-<p>参考了一下简单的情况 <a href="http://sql55.com/query/cumulative-amount-1.php" target="_blank" rel="external">http://sql55.com/query/cumulative-amount-1.php</a> ，然后自己建表鼓捣了一会儿，</p>
+<p>原题目的url是https://www.codewars.com/kata/calculating-running-total</p>
+<p>参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，</p>
 <p>终于得(meng)出了一个可行的答案：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/" data-id="cj60gqfty003hz2xuespcsyv5" class="article-share-link" data-share="baidu" data-title="Codewars上一道5 kyu的SQL题">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/" data-id="cje9dtb4j00388rxu6z74k1aj" class="article-share-link" data-share="baidu" data-title="Codewars上一道5 kyu的SQL题">分享到</a>
       
 
       
@@ -584,16 +749,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近几天参加了几次面试，也是人生中的头几次面试，感觉值得一记，故有此篇。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/11/170707-firstinterview-md/#more">Read More</a>
-          </p>
-        
+<p>&lt;!--more --&gt;</p>
+<p><strong>17.7.7：</strong></p>
+<p>昨天下午接到了一家公司HR的电话，问我是不是还在找实习以及有没有时间参加电话面试。于是昨天晚上+今天早上稍微地准备了一下，想着面试官会问关于Python的一些高级的东西比如解释器或者GIL什么的就去补了一波知识，并且对这家公司也做了一些调查，有了一些了解。</p>
+<p>终于等到下午三点开始了面试，形式是电话面试。在得知要写代码之后，我心里其实有点慌，因为我知道自己的数据结构和算法很薄弱，而且动手的时候可能会卡在一些细枝末节的地方。面试官人很好，上来没有让我做自我介绍，直接让我把自己掌握的技术说了一下，并对我在博客上和GIthub上的一些东西以及过往经历提了一些问题。很明显对方在面试前还是做了一点工作的，而且整个面试过程基本没有废话，我很喜欢这种面试风格。后面让我动手写一道算法题，是在数组中找出三个数之和为0的一道题。开始不久我就卡住了，原先以为自己会卡在数据结构或者算法的地方，后来发现不是这样的，我卡在了动手实现上。一些东西我知道思路，但我写不出来。究其原因的话，可能也是我太久没刷OJ了，动手能力退化了不少，另一反面本身基础就不够扎实，编码能力本来也不强，再加上面试时候的紧张， 结果就不太尽如人意。</p>
+<p>面试结果怎样已经没那么重要了，重要的是我的确在这次面试中清楚地认识到了自己还是说得太多看得太多做得太少，导致动手能力很弱，之后还是要在这方面加强才是。很感谢那家公司给我这个面试的机会。</p>
+<hr>
+<p><strong>17.7.8：</strong></p>
+<p>昨天面试的时候表现得比较糟糕，我以为已经铁定没戏了，结果昨天晚些时候HR跟我说还有一轮面试，我以为这次会是关于ML方面的面试，于是又回去翻了翻之前记过的笔记。没想到，今天的面试还是写代码，不过面试官看我昨天表现得那么惨，今天就给了我一个简单的问题，求第n个斐波那契数，我最开始用递归写了一个，后来面试官问我还有没有别的方法，我又把用循环写的那种方式写了一下；之后面试官又问了我一个递进的问题：一只蜗牛一次可以爬１级或２级或３级或……或n级台阶，现在它要爬上n级台阶，问有多少种爬法？起初我以为是一个等差数列问题，愚蠢地说了一个n(n-1)/2。面试官置疑了一下，我发现了根本不对，于是开始拿出纸笔算，在面试官的引导下捣鼓了很久才得出正确的结果【当时是先计算n=1，n=2，n=3的情况然后推广得到通项是2^(n-1)，7.13晚上洗澡的时候突然想到其实除了最后一级台阶，其他所有台阶都有两种可能，迈上或者不迈，于是n-1级台阶就是2^(n-1)种情况…】…后面还聊了一些关于公司技术栈的事情，发现其实技术不太对口，他们目前主要还是做后端，而我还是想找一份数据相关的实习…总之第二轮面试依旧很僵硬，基本已经没有希望了我觉得。。</p>
+<hr>
+<p><strong>17.7.11：</strong></p>
+<p>之前向洋葱数学投了简历，HR联系了我好几次一直没有联系上我，我一度觉得我可能和这家公司没有缘分，但终于我还是联系上了他们的HR，得知真相之后对HR的坚持不懈莫名有些感动…</p>
+<p>于是今天就去面试了 ，到了公司之后最大的感觉就是“哇这办公环境怎么这么好”，坐着观察了一会儿之后感觉这个公司整体的氛围很让我喜欢。之后数据组的组长就来了，首先是做了一下对我基本情况的一些了解，之后先问了一个SQL的问题，我心里很没底，因为我虽然过过一遍SQL的用法但并没有太多的实践经验，导致只说了一个基本思路；他看我SQL不太熟，于是问我如果用pandas的DataFrame怎么做，我同样回答了一个十分笨重但可行的方法；之后他又问了我一个对dict操作的python问题，我同样是用了一个“能解决问题但看起来有些笨拙”的方法做，其中被他指出了一些问题，经指出后还是改正了这些问题。这部分带给我的反思就是：<strong>代码写得太少啦！很多很基本的东西都没有记住！以后一定要多写代码！多写代码！！！！</strong>；再之后面试官问了我这样一个问题：因为他们是做在线教育的，他们现在想做一个类似于Dota里面的天梯系统，让我做一个简单的设计。对于这个问题其实我有一些头绪，但是都很乱，组织不起来，在他的帮助下和一段时间的整理之后，终于大致地把思路理了出来，他还带着我对其中的一个核心部分进行了设计相关的讨论，整个过程他都在引导我一步步地达到核心，面试体验还是相当愉快的。之后又聊了一些别的技术的事情，比如我问了一下他们公司的技术栈，以及我一直不了解的为什么初创公司都爱用MongoDB之类的。和他聊的大概就是以上这些。</p>
+<p>后面又和HR聊了一会儿，聊了很多，方方面面都聊到了，个人目标啊，性格啊，等等等等，于是聊了很久，也询问了一些关于他们公司的事情。【HR还建议我应该找一个活泼开朗的女朋友……</p>
+<p>出来之后我才发现面试竟然持续了两个多小时，而我一点感觉都没有，完全沉浸在其中，没有注意到时间的流逝。总的来说面试体验还是十分不错的，而且技术也非常对口，期待能收到人生第一份实习Offer。</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/07/11/170707-firstinterview-md/" data-id="cj60gqftv003cz2xuemputnu9" class="article-share-link" data-share="baidu" data-title="记录一下最近参加过的面试">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/07/11/170707-firstinterview-md/" data-id="cje9dtb4b00348rxuopaboz3p" class="article-share-link" data-share="baidu" data-title="记录一下最近参加过的面试">分享到</a>
       
 
       
