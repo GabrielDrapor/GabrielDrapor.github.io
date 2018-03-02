@@ -2782,6 +2782,7 @@ Email: gabrieldrapor@gmail.com</p>
       <content type="html"><![CDATA[<ul>
 <li><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">xxx</label></li>
 <li><input type="checkbox" id="checkbox1"><label for="checkbox1">uuu</label></li>
+<li>[v] ddd</li>
 </ul>
 <p>Have read:</p>
 <ul>
