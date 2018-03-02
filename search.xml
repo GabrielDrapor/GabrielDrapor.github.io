@@ -2773,10 +2773,8 @@ Email: gabrieldrapor@gmail.com</p>
 <input type="checkbox" id="checkbox3"><label for="checkbox3"> </label><a href="https://book.douban.com/subject/26870405/" target="_blank" rel="external">龙头凤尾</a><br>
 <input type="checkbox" id="checkbox2"><label for="checkbox2"> </label><a href="https://book.douban.com/subject/26897878/" target="_blank" rel="external">罗生门</a><br>
 <input type="checkbox" id="checkbox1"><label for="checkbox1"> </label><a href="https://book.douban.com/subject/6265745/" target="_blank" rel="external">银河系搭车客指南</a><br>
-<input type="checkbox" id="checkbox0"><label for="checkbox0"> </label><a href="https://book.douban.com/subject/25806628/" target="_blank" rel="external">万物生长</a></p>
-<ul>
-<li>…</li>
-</ul>
+<input type="checkbox" id="checkbox0"><label for="checkbox0"> </label><a href="https://book.douban.com/subject/25806628/" target="_blank" rel="external">万物生长</a><br>
+…</p>
 ]]></content>
     </entry>
     
