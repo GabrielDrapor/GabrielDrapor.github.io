@@ -99,24 +99,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2>Mordern Defination:</h2>
-<p><blockquote><p>  “A computer program is said to <strong>learn</strong> from experience E with respect to some task T and some performance measure P if its performance on T, as measured by P, improves with experience E.”</p>
-<footer><strong>——Tom Mitchell(1998)</strong></footer></blockquote></p>
+<blockquote><p>  “A computer program is said to <strong>learn</strong> from experience E with respect to some task T and some performance measure P if its performance on T, as measured by P, improves with experience E.”</p>
+<footer><strong>——Tom Mitchell(1998)</strong></footer></blockquote>
 <hr>
 <h2>Types of problems and tasks:</h2>
 <p>“<strong>Supervised learning</strong> is the machine learning task of inferring a function from <strong>labeled</strong> training data.The training data consist of a set of training examples.”</p>
 <blockquote>
 <ul>
 <li>Regression</li>
-<li>Classification
+<li>Classification<br>
 ……</li>
 </ul>
 </blockquote>
-<p>&lt;br&gt;</p>
+<br>
 <p>“<strong>Unsupervised learning</strong> is the machine learning task of inferring a function to describe hidden <strong>structure</strong> from unlabeled data.&quot;</p>
 <blockquote>
 <ul>
 <li>Clustering</li>
-<li>...</li>
+<li>…</li>
 </ul>
 </blockquote>
 <p>Besides, there are also <strong>Semi-supervised Learnings</strong> and <strong>Reinforcement learning</strong>.</p>
@@ -561,53 +561,11 @@
 <blockquote>
 <p><strong>最大的子序列和问题</strong>：给定整数A1，A2，……，AN（可能有负数），求∑(k=i)^j A_k  的最大值（为方便起见，如果所有整数均为负数，则最大子序列和为0）</p>
 </blockquote>
-<p>&lt;!--more--&gt;</p>
-<p><strong>• 算法3</strong>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//T(N)=O(N log N) </span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">MaxSubSum</span><span class="params">( <span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> Left,<span class="keyword">int</span> Right )</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> MaxLeftSum,MaxRightSum;</div><div class="line">	<span class="keyword">int</span> MaxLeftBorderSum,MaxRightBorderSum;</div><div class="line">	<span class="keyword">int</span> LeftBorderSum,RightBorderSum;</div><div class="line">	<span class="keyword">int</span> Center,i;</div><div class="line"></div><div class="line">	<span class="keyword">if</span>(Left==Right)   <span class="comment">//Base Case,即'基准情形'</span></div><div class="line">	<span class="keyword">if</span> (A[Left]&gt;<span class="number">0</span>)</div><div class="line">		<span class="keyword">return</span> A[Left];</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">	Center = (Left + Right)/<span class="number">2</span>;</div><div class="line">	MaxLeftSum=MaxSubSum(A,Left,Center);<span class="comment">//左边中最大的子序列和</span></div><div class="line">	MaxRightSum=MaxSubSum(A,Center+<span class="number">1</span>,Right);<span class="comment">//右边中最大的子序列和</span></div><div class="line">	MaxLeftBorderSum = <span class="number">0</span>; LeftBorderSum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=Center;i&gt;=Left;i--)<span class="comment">//从中心开始向左找最大子序列和</span></div><div class="line">	&#123;</div><div class="line">		LeftBorderSum+=A[i];</div><div class="line">		<span class="keyword">if</span>(LeftBorderSum&gt;MaxLeftBorderSum)</div><div class="line">		MaxLeftBorderSum= LeftBorderSum;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	MaxRightBorderSum = <span class="number">0</span>; RightBorderSum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=Center+<span class="number">1</span>;i&lt;=Right;i+　+)<span class="comment">//从中心开始向右找最大子序列和</span></div><div class="line">	&#123;</div><div class="line">		RightBorderSum+=A[i];</div><div class="line">		<span class="keyword">if</span>(RightBorderSum&gt;MaxRightBorderSum)</div><div class="line">		MaxRightBorderSum=RightBorderSum;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum + MaxRightBorderSum);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubsequenceSum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> MaxSubSum(A , <span class="number">0</span> , N - <span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (a&gt;b)</div><div class="line">	<span class="keyword">if</span> (a&gt;c) <span class="keyword">return</span> a;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> c;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	<span class="keyword">if</span> (c&gt;b) <span class="keyword">return</span> c;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> b;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>• 更简单有效的算法4</strong></p>
-<p><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubsequenceSum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> ThisSum,MaxSum,j;</div><div class="line">	</div><div class="line">	ThisSum=MaxSum=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;N;j++)</div><div class="line">	&#123;</div><div class="line">		ThisSum+=A[j];</div><div class="line">		<span class="keyword">if</span>(ThisSum &gt; MaxSum)</div><div class="line">			MaxSum = ThisSum;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ThisSum &lt; <span class="number">0</span>)  <span class="comment">//这一步是关键，如果前j项和是负的，那就可以扔掉不要了</span></div><div class="line">			ThisSum=<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">		<span class="keyword">return</span> MaxSum;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这种算法的附带优点是，只需要扫描一次数据，一旦A[i]被扫入并被处理，它就不再需要被记忆【5/13:数据赋值等操作少】。在任何时刻，算法都能对它已经读入的数据给出子序列问题的正确答案（其他算法不具有这个特性）【5/13:也就是说，假如你输入的是10个数据，在你输入到任何一个的时候，在这种情况下的解已经被算出来了】。具有这种特性的算法叫做<em>联机算法</em>（online algorithm）。</p>
-</blockquote>
-<p><strong>2.4.4运行时间中的对数</strong></p>
-<blockquote>
-<p>除分治算法外，可将对数最常出现的规律概括为下列一般法则：如果一个算法用常数时间（O（1））将问题的大小削减为其一部分（通常是1/2），那么该算法就是O（log N）。另一方面，如果使用常数时间只是把问题减少一个常数（如将问题减少1），那么这种算法就是O（N）的。
-【5/15:可以理解为就是一个循环中，如果这个算法本身能够自己削减循环次数的话，那么就会从O（N）降到O（log N）】</p>
-</blockquote>
-<p><strong>• 对分算法</strong></p>
-<p><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//T(N)=O（log N）</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BinarySearch</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> x,<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> Low,Mid,High;</div><div class="line">	Low=<span class="number">0</span>;High=n<span class="number">-1</span>;</div><div class="line">	<span class="keyword">while</span>(Low &lt;= High)</div><div class="line">	&#123;</div><div class="line">		Mid = (Low+High) /<span class="number">2</span>;</div><div class="line">   	       <span class="keyword">if</span>(A[Mid]&lt;x)</div><div class="line">			Low=Mid+<span class="number">1</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(A[Mid]&gt; x)</div><div class="line">		High=Mid<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> Mid;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> NotFound;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>它提供了在O（log N）时间内的Find（查找）操作。访问次数少，而如果是顺序查找的话就会需要多很多的访问次数。</p>
-<p><strong>• 欧几里德算法</strong>	
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">Gcd</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> M,<span class="keyword">unsigned</span> <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> Rem;</div><div class="line">	<span class="keyword">while</span>( N&gt;<span class="number">0</span> )</div><div class="line">	&#123;</div><div class="line">		Rem = M % N;</div><div class="line">		M = N;</div><div class="line">		N = Rem;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> M;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>定理2.1</strong>：如果M &gt; N , 则M mod N &lt; M/2。T（N）=O（log N） 。</p>
-<p><strong>• 幂运算</strong></p>
-<pre><code class="language-c">	//T(N)=O(log N)
-	long int Pow(int X,unsigned int N)
-	{
-		if( N == 0 )
-			return 1;
-		if( N == 1 )    /**接下来的两行也可以不写**/
-			return X;
-		if( IsEven( N ) )
-			return Pow( X * X, N / 2 );
-		/**
-		以下的修改都是不可取的:
-		return Pow( Pow( X, 2), N / 2);
-		return Pow( Pow( X, N / 2), 2);
-		-以上这两种会产生无限循环，导致程序崩溃
-		return Pow( X, N / 2)* Pow(X, N / 2 );
-		-这种影响程序的效率【运行时间应该是O（N）(?)】
-		**/
-		else
-			return Pow( X * X, N / 2 ) * N;
-		/**
-		如果不写N==1那两行的话，上面这行还可以写成
-		return Pow(X,N-1)*X;
-		**/
-	}
-</code></pre>
-<p><strong>“有时候看一看程序能够进行多大的调整而不影响其正确性倒是很有意思的”</strong></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/05/14/160513_dsa-ch2/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -716,65 +674,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0</strong>
-&lt;!--more--&gt;
-*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
-<ul>
-<li>
-<p>从http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html 下载JDK，并安装。并配置好环境变量。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image078.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image080.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image081.png&gt;</p>
-</li>
-<li>
-<p>从官方http://tomcat.apache.org/下载tomcat压缩包
-下载之后解压
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image083.png&gt;</p>
-</li>
-<li>
-<p>打开apache-tomcat-9.0.0.M4\bin目录下的start.bat
-出现的对话框如果没有自动关闭，且最后一行为Server startup in xxx ms，说明服务器搭建成功(如图)
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image085.png&gt;</p>
-</li>
-<li>
-<p>打开浏览器，访问localhost:8080，出现如图界面说明成功了
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image087.png&gt;</p>
-</li>
-<li>
-<p>从官网http://www.jeecms.com/ 下载jeecms压缩包，下载之后解压
-将其中ROOT目录替换webapps下的ROOT目录
-重新启动服务器，在浏览器中访问localhost:8080，出现如图界面。说明配置正确了。
-勾选“我已经阅读并同意此协议”，点击“下一步”
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image089.png&gt;</p>
-</li>
-<li>
-<p>之后会出现如图界面，填写相应信息即可。
-点击“提交”
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image091.png&gt;
-此时会发现服务器报错了（如图），错误代码500。
-&lt;img  src=http://7xugq7.com1.z0.glb.clouddn.com/image094.png&gt;
-参考http://stackoverflow.com/questions/17484764/java-lang-classnotfoundexception-com-mysql-jdbc-driver-in-eclipse 可以得知是连接器出了问题，应该是MySQL与服务器没有连接好。
-于是我们需要从https://dev.mysql.com/downloads/connector/j/下载Connector，下载好之后解压，将其中的mysql-connector-java-5.1.38-bin.jar 放到Tomcat目录下的lib目录中。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image093.png&gt;</p>
-</li>
-<li>
-<p>重启Tomcat，重新提交数据库信息，然后会出现如下图的界面。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image096.png&gt;</p>
-</li>
-<li>
-<p>按照指示再次重启Tomcat，访问localhost:8080，可以看到如图界面，说明搭建成功。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image098.png&gt;</p>
-</li>
-<li>
-<p>可以登陆管理员账户，账号为admin，密码为password。</p>
-</li>
-</ul>
-<ul>
-<li>还可以尝试后台登陆。访问http://localhost:8080/jeeadmin/jeecms/login.do ，可以看到如图界面。输入账号密码。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image102.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image104.png&gt;</li>
-</ul>
-
+        <p><strong>架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0</strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/03/160503_jsp/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -821,128 +726,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express</strong></p>
-<p>&lt;!--more--&gt;</p>
-<p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
-<h5>1.配置IIS。</h5>
-<p>   IIS是我们的服务器应用程序，我们首先需要打开它。</p>
-<ul>
-<li>首先在控制面板-程序和功能-打开或关闭Windows功能（如图），勾选“Internet Information Services可承载的Web核心”，“Internet信息服务”。</li>
-</ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image004.png&quot;&gt;</p>
-<p>​</p>
-<ul>
-<li>在管理工具中找到“Internet 信息服务(IIS)管理器”，打开它，在左侧的“连接”栏下面找“个人电脑名&gt;网站”，右键点击网站，选择“添加网站”（如图）</li>
-</ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image001.png&quot;&gt;</p>
-<p>在弹出的对话框中，填写必要信息。</p>
-<p>&lt;!--more--&gt;</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image005.png&quot;&gt;</p>
-<p>​</p>
-<pre><code>网站名称----给你的网站起个名字,如这里的&quot;SNC_ASP.NET&quot;
-
-物理路径----选取你网站在本地的目录
-
-绑定-IP地址----选取你服务器的ip地址，这里由于是在校园网环境中，无法搭建到外网的服务器，所以选取内网ip。
-
-端口----默认是80，如果有冲突可以自行修改。查看当前系统所占用的端口可以打开cmd，输入指令“netstat -a”查询（如图）
-</code></pre>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image007.png&quot;&gt;</p>
-<ul>
-<li>
-<p>查看IIS的主界面，找到“默认文档”，打开。</p>
-</li>
-<li>
-<p>在打开的界面中，右键选择添加，添加名称为index.aspx，否则搭建服务器之后由于服务器不认识aspx的首页而打不开它。</p>
-</li>
-</ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image009.png&quot;&gt;</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image011.png&quot;&gt;</p>
-<hr>
-<h5>2.配置SQL Server</h5>
-<p>从https://www.microsoft.com/zh-CN/download/details.aspx?id=42299 下载 Microsoft® SQL Server® 2014 Express，只需下载	“ExpressAndTools 64BIT\SQLEXPRWT_你系统位数_CHS.exe”即可。下载完之后打开，选择提取目录，等待解压。</p>
-<p>打开解压的目录下的SETUP.EXE，在打开的“SQL Server安装中心”中选择“全新SQL Server 独立安装或向现有安装添加功能”，打开“SQL Server 2014安装程序”进行安装。</p>
-<p><strong>需要特别注意的是:</strong></p>
-<ul>
-<li>在“实例配置”中，可以自行命名实例，也可以用系统默认的实例名，但最好把名字记下来</li>
-</ul>
-<ul>
-<li>在“服务器配置”中，需要对SQL Server数据库选择一个用户，可以添加系统中的用户，填写对应的密码。如图。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image013.png&gt;</p>
-<ul>
-<li>在“数据库引擎配置”中，最好选择混合模式，单独设置一个SQL Server系统管理员账户，否则在后面关联用户的时候可能会遇到麻烦。</li>
-</ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image015.png&quot;&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image019.png&gt;</p>
-<p>完成安装后，打开SQL Server 2014 Management Studio，连接到你的服务器。</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image018.png&quot;&gt;</p>
-<p>这里可以选择Windows 身份验证，也可以选择SQL Server身份验证。然后点击“连接”。</p>
-<p>连接后，在右侧的对象资源管理器中，找到“数据库，右键单击，选择“新建数据库”，填写数据库名称，如dnt，然后设置所有者，可以直接选sa即可。</p>
-<p>&lt;figure class=&quot;half&quot;&gt;</p>
-<pre><code>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image021.png&quot;&gt;
-
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image019.png&gt;
-</code></pre>
-<p>&lt;/figure&gt;</p>
-<hr>
-<h5>3.安装Discuz！NT。</h5>
-<p>从官网 http://www.comsenz.com/products/nt 下载Discuz！NT压缩包，将其解压，</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image022.png&gt;</p>
-<p>打开readme目录下的catalog.html可以看见官方所给出的介绍页面，其中就包括了安装指南</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image023.png&gt;</p>
-<p>接下来，我们只需按照安装指南所给的步骤一步步进行</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image026.png&gt;</p>
-<ul>
-<li>这里特别注意划红线的部分，是把upload_files目录里的东西放到服务器的根目录下而不是把upload_files文件夹整个放进服务器根目录。如图。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image028.png&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image032.png&gt;</p>
-<ul>
-<li>我使用的系统是WIN7，但依旧需要修改目录的权限，右键-属性-安全-编辑就可以编辑用户权限了。在IIS管理器中也可以对目录的权限进行设置。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image030.png&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image033.png&gt;</p>
-<ul>
-<li>按照教程要求，我们在浏览器地址栏中输入应输入的内容，然后发现了如下的报错。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image034.png&gt;</p>
-<ul>
-<li>通过阅读错误信息和查看根目录下的web.config配置文件，我们可以大概了解到问题出在Discuz!NT没有获得接管权，而在配置文件中也没有对相关权限的设置。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image036.png&gt;</p>
-<ul>
-<li>此时我们应该做的是，打开控制面板-Windows功能，在应用程序开发功能目录下将下面的ASP.NET功能勾选上。系统会自动将需要的其他功能自动勾选上。</li>
-</ul>
-<p>&lt;figure class=&quot;half&quot;&gt;</p>
-<pre><code>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image037.png&quot;&gt;
-
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image039.png&gt;
-</code></pre>
-<p>&lt;/figure&gt;</p>
-<ul>
-<li>再次运行安装脚本，即访问http://您的域名/install/index.aspx ，会看到如图的界面。 选择&quot;接受&quot;，点击“下一步”。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image041.png&gt;</p>
-<ul>
-<li>通过环境监测后，需要填写数据库信息，填写刚才创建的数据库名称，管理员账号和密码，在数据库服务器一项中填写自己的SQL Server服务器名称。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image045.png&gt;</p>
-<p>点击下一步。</p>
-<ul>
-<li>在出现的“论坛设置信息”界面中，自行设定管理员名称和密码。然后再次点击下一步。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image043.png&gt;</p>
-<ul>
-<li>然后会出现如图界面。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image047.png&gt;</p>
-<ul>
-<li>点击”进入论坛“，可以看到论坛的界面，说明搭建成功。可以尝试登陆管理员账号，也可以通过本机ip访问论坛。</li>
-</ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image049.png&gt;</p>
-<pre><code> 
-</code></pre>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/05/03/160503_asp/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

@@ -6,17 +6,20 @@
   
   <title>Machine Learning Notes 05 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Overfitting Overfitting would cause the modle to perform poorly, like this: &amp;lt;img src=&amp;quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG&amp;quot;&amp;gt; &amp;lt;img src=&amp;quot;http://7xugq7.com1.z0.glb.">
+  <meta name="description" content="Overfitting Overfitting would cause the modle to perform poorly, like this:     As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t alwa">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning Notes 05">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2016/12/02/161202_ml_notes5/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="Overfitting Overfitting would cause the modle to perform poorly, like this: &amp;lt;img src=&amp;quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG&amp;quot;&amp;gt; &amp;lt;img src=&amp;quot;http://7xugq7.com1.z0.glb.">
-<meta property="og:updated_time" content="2017-08-06T03:36:35.729Z">
+<meta property="og:description" content="Overfitting Overfitting would cause the modle to perform poorly, like this:     As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t alwa">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG">
+<meta property="og:updated_time" content="2018-03-02T06:41:27.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Notes 05">
-<meta name="twitter:description" content="Overfitting Overfitting would cause the modle to perform poorly, like this: &amp;lt;img src=&amp;quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG&amp;quot;&amp;gt; &amp;lt;img src=&amp;quot;http://7xugq7.com1.z0.glb.">
+<meta name="twitter:description" content="Overfitting Overfitting would cause the modle to perform poorly, like this:     As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t alwa">
+<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,16 +102,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2>Overfitting</h2>
-<p>Overfitting would cause the modle to perform poorly, like this:
-&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG&quot;&gt;</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG&quot;&gt;</p>
-<p>  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn't always work. Sometims we have too many features which cause that it's difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.</p>
-<p>&lt;!--more--&gt;</p>
+<p>Overfitting would cause the modle to perform poorly, like this:<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG"></p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG">
+<p>  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t always work. Sometims we have too many features which cause that it’s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.</p>
+<a id="more"></a>
 <hr>
 <h2>Two options to solve</h2>
 <p><strong>1.Reduce the number of features</strong></p>
 <blockquote>
-<p>Manually select which features to keep or throw out
+<p>Manually select which features to keep or throw out<br>
 Model selection algorithm (help ue to decide which features to keep or throw out automatically)</p>
 </blockquote>
 <blockquote>
@@ -116,7 +119,7 @@ Model selection algorithm (help ue to decide which features to keep or throw out
 </blockquote>
 <p><strong>2.Regularization</strong></p>
 <blockquote>
-<p>Keep all the features, but reduce magnitude/values of parameters <span>$\theta_{j}$</span><!-- Has MathJax -->.
+<p>Keep all the features, but reduce magnitude/values of parameters <span>$\theta_{j}$</span><!-- Has MathJax -->.<br>
 Works well when we have a lot of features, each of which contributes a bit to predicting <span>$y$</span><!-- Has MathJax -->.</p>
 </blockquote>
 <p>So we can see regularization is a better choice mostly.</p>
@@ -125,43 +128,43 @@ Works well when we have a lot of features, each of which contributes a bit to pr
 <ul>
 <li>First, consider this. If our hypothesis is like this:</li>
 </ul>
-<p>&lt;center&gt;<span>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2}
-+ \theta_{3}x^3 + \theta_{4}x^4$$</span><!-- Has MathJax -->&lt;/center&gt;</p>
-<p>and if we penalize and make <span>$\theta_{3}$</span><!-- Has MathJax --> and <span>$\theta_{4}$</span><!-- Has MathJax --> really small, it means that <span>$\theta_{3}\approx0,\theta_{4}\approx0$</span><!-- Has MathJax -->, that is like as if we 're getting rid of these two terms, then we would find that
-&lt;center&gt;<span>$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2}$</span><!-- Has MathJax -->&lt;/center&gt;</p>
+<center><span>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2}
++ \theta_{3}x^3 + \theta_{4}x^4$$</span><!-- Has MathJax --></center>
+<p>and if we penalize and make <span>$\theta_{3}$</span><!-- Has MathJax --> and <span>$\theta_{4}$</span><!-- Has MathJax --> really small, it means that <span>$\theta_{3}\approx0,\theta_{4}\approx0$</span><!-- Has MathJax -->, that is like as if we 're getting rid of these two terms, then we would find that</p>
+<center><span>$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2}$</span><!-- Has MathJax --></center>
 <hr>
 <h2>Regularization</h2>
-<p>“…having <strong>smaller values of the parameters</strong> corresponds to usually <strong>smoother functions as well for the simpler</strong>. And which are therefore, also, <strong>less prone to overfitting</strong>. ”
-What we should do is to modify the cost function to shrink all of the parameters like this:
-&lt;center&gt;<span>$J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}$</span><!-- Has MathJax -->&lt;/center&gt;</p>
-<p>And the blue terms is called <strong>regularization terms</strong>, <span>$\lambda$</span><!-- Has MathJax --> is called <strong>regularization parameters</strong> which is used to trade off between two different goals:
+<p>“…having <strong>smaller values of the parameters</strong> corresponds to usually <strong>smoother functions as well for the simpler</strong>. And which are therefore, also, <strong>less prone to overfitting</strong>. ”<br>
+What we should do is to modify the cost function to shrink all of the parameters like this:</p>
+<center><span>$J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}$</span><!-- Has MathJax --></center>
+<p>And the blue terms is called <strong>regularization terms</strong>, <span>$\lambda$</span><!-- Has MathJax --> is called <strong>regularization parameters</strong> which is used to trade off between two different goals:</p>
 <span>$$\begin{cases}
 1. \sum(h_{\theta}(x^{(i)})-y^{(i)})^{2}\:-\:fit\:well\\
 2. \sum{\theta_{j}^{2}}\:-\:keep\:the\:parameters\:small
-   \end{cases}$$</span><!-- Has MathJax --></p>
-<p>By the way, we don't penalize <span>$\theta_{0}$</span><!-- Has MathJax --> by convention.
+   \end{cases}$$</span><!-- Has MathJax -->
+<p>By the way, we don’t penalize <span>$\theta_{0}$</span><!-- Has MathJax --> by convention.<br>
 Besides, about the regularization parameters <span>$\lambda$</span><!-- Has MathJax -->, if <span>$\lambda$</span><!-- Has MathJax --> is too large, it would cause underfitting, and if <span>$\lambda$</span><!-- Has MathJax --> is too small, it may cause the useless regularization.</p>
 <hr>
 <h2>Regularized linear regression</h2>
 <ul>
-<li>Gradient descent:
-Old:
-   Repeat{
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,...,n)$</span><!-- Has MathJax -->
+<li>Gradient descent:<br>
+Old:<br>
+   Repeat{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,...,n)$</span><!-- Has MathJax --><br>
    }</li>
 </ul>
-<p>&lt;font color=blue&gt;New:&lt;/font&gt;
-   &lt;font color=blue&gt;Repeat{&lt;/font&gt;
-      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax -->
-      <span>${\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax -->
-   &lt;font color=blue&gt;}&lt;/font&gt;</p>
+<p><font color="blue">New:</font><br>
+   <font color="blue">Repeat{</font><br>
+      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax --><br>
+      <span>${\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax --><br>
+   <font color="blue">}</font></p>
 <hr>
 <h2>Regularization logistic regression</h2>
 <p>   Cost function <span>$J(\theta)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x)){\color{Blue} {+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}}}$</span><!-- Has MathJax --></p>
-<p>   &lt;font color=blue&gt;Repeat{&lt;/font&gt;
-      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax -->
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax -->
-   &lt;font color=blue&gt;}&lt;/font&gt;
+<p>   <font color="blue">Repeat{</font><br>
+      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax --><br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax --><br>
+   <font color="blue">}</font><br>
 Remember that <span>$h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$</span><!-- Has MathJax --></p>
 
       

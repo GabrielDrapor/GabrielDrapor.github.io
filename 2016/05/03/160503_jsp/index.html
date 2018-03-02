@@ -6,17 +6,32 @@
   
   <title>jsp搭建JEECMS | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0 &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可   从http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2">
+  <meta name="description" content="架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0">
 <meta name="keywords" content="Networks,Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsp搭建JEECMS">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2016/05/03/160503_jsp/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0 &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可   从http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2">
-<meta property="og:updated_time" content="2017-08-06T03:36:36.653Z">
+<meta property="og:description" content="架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image078.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image080.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image081.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image083.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image085.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image087.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image089.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image091.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image094.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image093.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image096.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image098.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image102.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image104.png">
+<meta property="og:updated_time" content="2018-03-02T06:41:24.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jsp搭建JEECMS">
-<meta name="twitter:description" content="架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0 &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可   从http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2">
+<meta name="twitter:description" content="架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0">
+<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image078.png">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -98,63 +113,63 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0</strong>
-&lt;!--more--&gt;
-*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
+        <p><strong>架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0</strong></p>
+<a id="more"></a>
+<p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
 <ul>
 <li>
-<p>从http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html 下载JDK，并安装。并配置好环境变量。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image078.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image080.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image081.png&gt;</p>
+<p>从http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html 下载JDK，并安装。并配置好环境变量。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image078.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image080.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image081.png"></p>
 </li>
 <li>
-<p>从官方http://tomcat.apache.org/下载tomcat压缩包
-下载之后解压
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image083.png&gt;</p>
+<p>从官方http://tomcat.apache.org/下载tomcat压缩包<br>
+下载之后解压<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image083.png"></p>
 </li>
 <li>
-<p>打开apache-tomcat-9.0.0.M4\bin目录下的start.bat
-出现的对话框如果没有自动关闭，且最后一行为Server startup in xxx ms，说明服务器搭建成功(如图)
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image085.png&gt;</p>
+<p>打开apache-tomcat-9.0.0.M4\bin目录下的start.bat<br>
+出现的对话框如果没有自动关闭，且最后一行为Server startup in xxx ms，说明服务器搭建成功(如图)<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image085.png"></p>
 </li>
 <li>
-<p>打开浏览器，访问localhost:8080，出现如图界面说明成功了
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image087.png&gt;</p>
+<p>打开浏览器，访问localhost:8080，出现如图界面说明成功了<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image087.png"></p>
 </li>
 <li>
-<p>从官网http://www.jeecms.com/ 下载jeecms压缩包，下载之后解压
-将其中ROOT目录替换webapps下的ROOT目录
-重新启动服务器，在浏览器中访问localhost:8080，出现如图界面。说明配置正确了。
-勾选“我已经阅读并同意此协议”，点击“下一步”
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image089.png&gt;</p>
+<p>从官网http://www.jeecms.com/ 下载jeecms压缩包，下载之后解压<br>
+将其中ROOT目录替换webapps下的ROOT目录<br>
+重新启动服务器，在浏览器中访问localhost:8080，出现如图界面。说明配置正确了。<br>
+勾选“我已经阅读并同意此协议”，点击“下一步”<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image089.png"></p>
 </li>
 <li>
-<p>之后会出现如图界面，填写相应信息即可。
-点击“提交”
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image091.png&gt;
-此时会发现服务器报错了（如图），错误代码500。
-&lt;img  src=http://7xugq7.com1.z0.glb.clouddn.com/image094.png&gt;
-参考http://stackoverflow.com/questions/17484764/java-lang-classnotfoundexception-com-mysql-jdbc-driver-in-eclipse 可以得知是连接器出了问题，应该是MySQL与服务器没有连接好。
-于是我们需要从https://dev.mysql.com/downloads/connector/j/下载Connector，下载好之后解压，将其中的mysql-connector-java-5.1.38-bin.jar 放到Tomcat目录下的lib目录中。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image093.png&gt;</p>
+<p>之后会出现如图界面，填写相应信息即可。<br>
+点击“提交”<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image091.png"><br>
+此时会发现服务器报错了（如图），错误代码500。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image094.png"><br>
+参考http://stackoverflow.com/questions/17484764/java-lang-classnotfoundexception-com-mysql-jdbc-driver-in-eclipse 可以得知是连接器出了问题，应该是MySQL与服务器没有连接好。<br>
+于是我们需要从https://dev.mysql.com/downloads/connector/j/下载Connector，下载好之后解压，将其中的mysql-connector-java-5.1.38-bin.jar 放到Tomcat目录下的lib目录中。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image093.png"></p>
 </li>
 <li>
-<p>重启Tomcat，重新提交数据库信息，然后会出现如下图的界面。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image096.png&gt;</p>
+<p>重启Tomcat，重新提交数据库信息，然后会出现如下图的界面。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image096.png"></p>
 </li>
 <li>
-<p>按照指示再次重启Tomcat，访问localhost:8080，可以看到如图界面，说明搭建成功。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image098.png&gt;</p>
+<p>按照指示再次重启Tomcat，访问localhost:8080，可以看到如图界面，说明搭建成功。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image098.png"></p>
 </li>
 <li>
 <p>可以登陆管理员账户，账号为admin，密码为password。</p>
 </li>
 </ul>
 <ul>
-<li>还可以尝试后台登陆。访问http://localhost:8080/jeeadmin/jeecms/login.do ，可以看到如图界面。输入账号密码。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image102.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image104.png&gt;</li>
+<li>还可以尝试后台登陆。访问http://localhost:8080/jeeadmin/jeecms/login.do ，可以看到如图界面。输入账号密码。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image102.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image104.png"></li>
 </ul>
 
       

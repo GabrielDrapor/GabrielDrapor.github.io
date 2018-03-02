@@ -6,17 +6,32 @@
   
   <title>php搭建WordPress | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20 &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可 1．安装Apache，MySQL和php 不多赘述，但需要注意的是：  Apache安装过程，中会有端口设置，默认是80，为避免冲突可将其修改。安装后也可以在h">
+  <meta name="description" content="架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20">
 <meta name="keywords" content="Networks,Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php搭建WordPress">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2016/05/03/160503-php/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20 &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可 1．安装Apache，MySQL和php 不多赘述，但需要注意的是：  Apache安装过程，中会有端口设置，默认是80，为避免冲突可将其修改。安装后也可以在h">
-<meta property="og:updated_time" content="2017-08-06T03:36:37.765Z">
+<meta property="og:description" content="架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image052.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image056.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image054.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image058.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image062.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image060.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image063.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image065.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image067.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image068.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image070.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image072.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image076.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image074.png">
+<meta property="og:updated_time" content="2018-03-02T06:41:24.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php搭建WordPress">
-<meta name="twitter:description" content="架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20 &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可 1．安装Apache，MySQL和php 不多赘述，但需要注意的是：  Apache安装过程，中会有端口设置，默认是80，为避免冲突可将其修改。安装后也可以在h">
+<meta name="twitter:description" content="架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20">
+<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image052.png">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,7 +114,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20</strong></p>
-<p>&lt;!--more--&gt;</p>
+<a id="more"></a>
 <p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
 <h5>1．安装Apache，MySQL和php</h5>
 <p>不多赘述，但需要注意的是：</p>
@@ -110,36 +125,36 @@
 </ul>
 <h5>2.在Apache中添加php模块</h5>
 <ul>
-<li>打开apache安装目录下conf目录中的httpd.conf，具体方法参照http://php.net/manual/zh/install.windows.apache2.php ，我采用的是添加cgi模块的方式，添加的部分如右图
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image052.png&gt;</li>
+<li>打开apache安装目录下conf目录中的httpd.conf，具体方法参照http://php.net/manual/zh/install.windows.apache2.php ，我采用的是添加cgi模块的方式，添加的部分如右图<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image052.png"></li>
 </ul>
 <h5>3.在PHP中加载MySQL相关的扩展程序</h5>
-<p>需要在php.ini配置文件中将extension_dir = &quot;ext&quot;和extension=php_mysql.dll前的分号去掉，即取消这两行的注释。这一步的目的可以理解为是将php和MySQL相连。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image056.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image054.png&gt;</p>
+<p>需要在php.ini配置文件中将extension_dir = &quot;ext&quot;和extension=php_mysql.dll前的分号去掉，即取消这两行的注释。这一步的目的可以理解为是将php和MySQL相连。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image056.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image054.png"></p>
 <h5>4.从WordPress官网https://cn.wordpress.org/下载WordPress的压缩包，解压，将其放在服务器根目录下或者在httpd.conf中将目录设为这个目录。</h5>
-<p>&lt;!--more--&gt;</p>
+<!--more-->
 <h5>5.配置MySQL</h5>
-<p>打开MySQL目录下的bin文件夹，按住shift右键单击空白处打开命令行。输入mysql –u 用户名 –p，然后按回车输入你的密码。如图。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image058.png&gt;
-成功登陆之后，我们需要创建一个新的数据库，指令为”CREATE DATABASE 数据库名;”，注意最后有分号。如下图。创建成功后可以通过指令“SHOW DATABASES;”查看当前所有数据库。如右图。更多SQL指令可以参考http://c.biancheng.net/cpp/u/mysql/
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image062.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image060.png&gt;</p>
+<p>打开MySQL目录下的bin文件夹，按住shift右键单击空白处打开命令行。输入mysql –u 用户名 –p，然后按回车输入你的密码。如图。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image058.png"><br>
+成功登陆之后，我们需要创建一个新的数据库，指令为”CREATE DATABASE 数据库名;”，注意最后有分号。如下图。创建成功后可以通过指令“SHOW DATABASES;”查看当前所有数据库。如右图。更多SQL指令可以参考http://c.biancheng.net/cpp/u/mysql/<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image062.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image060.png"></p>
 <h5>6.配置在浏览器中访问本机，在地址栏中输入127.0.0.1:端口，会出现下图的界面，点击“现在就开始！”，然后会出现如图的界面，按照图中说明填写即可，然后提交。</h5>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image063.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image065.png&gt;
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image063.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image065.png">
 其中，输入地址之后可能会遇到网页显示Internal Server Error，可以查看Apache的错误日志，查找错误原因。比如你第3步中如果没有进行第一个修改，日志中会记录如图的错误。这个错误在语法检查中不会被查出来，但是却会导致你无法访问自己的服务器。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image067.png&gt;
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image067.png">
 另外，提交之后可能会出现如下图的错误，报错的原因是你没有进行第3步。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image068.png&gt;</p>
-<h5>7.成功之后会出现如图的界面，相应地进行填写。</h5>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image070.png&gt;</p>
-<h5>8.然后输入用户名和密码登陆即可。</h5>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image072.png&gt;
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image068.png">
+##### 7.成功之后会出现如图的界面，相应地进行填写。
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image070.png">
+##### 8.然后输入用户名和密码登陆即可。
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image072.png">
 登陆之后会显示如图的界面，wordpress提供的图形化界面可以让你自由地个性化你的博客。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image076.png&gt;
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image076.png">
 最后在地址栏中输入ip地址验证一下网站是否已经架设成功。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image074.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image074.png"> 
 
       
     </div>

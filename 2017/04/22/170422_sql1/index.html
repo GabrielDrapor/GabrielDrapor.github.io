@@ -6,17 +6,17 @@
   
   <title>SQL Syntax(Ⅰ) | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。 &amp;lt;!--more --&amp;gt; 检索数据 12SELECT column0, column1,... --&apos;\*&apos; for allFROM table_name;  In SQL Server and Access,  12SELECT TOP [num] column0, column1,... FROM ta">
+  <meta name="description" content="这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL Syntax(Ⅰ)">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/04/22/170422_sql1/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。 &amp;lt;!--more --&amp;gt; 检索数据 12SELECT column0, column1,... --&apos;\*&apos; for allFROM table_name;  In SQL Server and Access,  12SELECT TOP [num] column0, column1,... FROM ta">
-<meta property="og:updated_time" content="2017-08-06T03:36:38.868Z">
+<meta property="og:description" content="这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。">
+<meta property="og:updated_time" content="2018-03-02T06:41:28.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL Syntax(Ⅰ)">
-<meta name="twitter:description" content="这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。 &amp;lt;!--more --&amp;gt; 检索数据 12SELECT column0, column1,... --&apos;\*&apos; for allFROM table_name;  In SQL Server and Access,  12SELECT TOP [num] column0, column1,... FROM ta">
+<meta name="twitter:description" content="这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,50 +99,50 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。</p>
-<p>&lt;!--more --&gt;</p>
+<a id="more"></a>
 <h2>检索数据</h2>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... <span class="comment">--'\*' for all</span></div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... <span class="comment">--'\*' for all</span></div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
 <ul>
 <li>In SQL Server and Access,</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TOP [<span class="keyword">num</span>] column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TOP [<span class="keyword">num</span>] column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
 <ul>
 <li>In DB2,</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">FETCH</span> <span class="keyword">FIRST</span> [<span class="keyword">num</span>] <span class="keyword">ROWS</span> <span class="keyword">ONLY</span>;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">FETCH</span> <span class="keyword">FIRST</span> [<span class="keyword">num</span>] <span class="keyword">ROWS</span> <span class="keyword">ONLY</span>;</div></pre></td></tr></table></figure>
 <ul>
 <li>In Oracle,</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= [<span class="keyword">num</span>];</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= [<span class="keyword">num</span>];</div></pre></td></tr></table></figure>
 <ul>
 <li>In MySQL, MariaDB, PostgreSQL and SQLite</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">LIMIT</span> [<span class="keyword">num</span>] &#123;<span class="keyword">OFFSET</span> [<span class="keyword">num</span>]&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">LIMIT</span> [<span class="keyword">num</span>] &#123;<span class="keyword">OFFSET</span> [<span class="keyword">num</span>]&#125;;</div></pre></td></tr></table></figure>
 <ul>
 <li>Select distinct value</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> column_name</div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> column_name</div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
 <ul>
 <li>Annotation</li>
 </ul>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Here is a comment</div><div class="line">SELECT column0 -- Here is also a comment</div><div class="line">FROM table_name;</div><div class="line">/*</div><div class="line">Also a comment~</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Here is a comment</div><div class="line">SELECT column0 -- Here is also a comment</div><div class="line">FROM table_name;</div><div class="line">/*</div><div class="line">Also a comment~</div><div class="line">*/</div></pre></td></tr></table></figure>
 <hr>
 <h2>排列检索数据</h2>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column0, column1, ...;</div><div class="line"><span class="comment">-- Also, you can use order numbers to represent certain column</span></div><div class="line"><span class="comment">-- Use 'DESC' or 'ASC' in the end to assigned the order direction</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column0, column1, ...;</div><div class="line"><span class="comment">-- Also, you can use order numbers to represent certain column</span></div><div class="line"><span class="comment">-- Use 'DESC' or 'ASC' in the end to assigned the order direction</span></div></pre></td></tr></table></figure>
 <hr>
 <h2>过滤数据</h2>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">column</span> = [<span class="keyword">value</span>];</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">column</span> = [<span class="keyword">value</span>];</div></pre></td></tr></table></figure>
 <hr>
 <h2>高级数据过滤</h2>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [clause] <span class="keyword">AND</span>/<span class="keyword">OR</span> [clause];</div><div class="line"><span class="comment">-- The priority of 'AND' is higher than 'OR' when they are used together</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [clause] <span class="keyword">AND</span>/<span class="keyword">OR</span> [clause];</div><div class="line"><span class="comment">-- The priority of 'AND' is higher than 'OR' when they are used together</span></div></pre></td></tr></table></figure>
 <ul>
-<li>Actually, 'OR' is same as 'IN'</li>
+<li>Actually, ‘OR’ is same as ‘IN’</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [column_name] <span class="keyword">IN</span> ([value1],[value2],...);</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [column_name] <span class="keyword">IN</span> ([value1],[value2],...);</div></pre></td></tr></table></figure>
 <ul>
-<li>'NOT'</li>
+<li>‘NOT’</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> xxxx;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> xxxx;</div></pre></td></tr></table></figure>
 <hr>
 <h2>用通配符进行过滤</h2>
 <table>
@@ -163,7 +163,7 @@
 </tr>
 <tr>
 <td style="text-align:center">[]</td>
-<td style="text-align:center">指定一个字符集, 如 [JM] 匹配'J'和'M'（用&quot;^&quot;可以否定）</td>
+<td style="text-align:center">指定一个字符集, 如 [JM] 匹配’J’和’M’（用&quot;^&quot;可以否定）</td>
 </tr>
 </tbody>
 </table>

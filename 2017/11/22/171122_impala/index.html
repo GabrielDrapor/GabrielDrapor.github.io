@@ -6,17 +6,17 @@
   
   <title>用python连接SparkThriftServer | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。 &amp;lt;!-- more --&amp;gt; 其实很简单，只需要一个叫做impyla的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。 安装好之后，只需要 1234567from impala.dbapi imp">
+  <meta name="description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用python连接SparkThriftServer">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/11/22/171122_impala/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。 &amp;lt;!-- more --&amp;gt; 其实很简单，只需要一个叫做impyla的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。 安装好之后，只需要 1234567from impala.dbapi imp">
-<meta property="og:updated_time" content="2017-11-22T06:06:07.291Z">
+<meta property="og:description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。">
+<meta property="og:updated_time" content="2018-03-02T06:41:31.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用python连接SparkThriftServer">
-<meta name="twitter:description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。 &amp;lt;!-- more --&amp;gt; 其实很简单，只需要一个叫做impyla的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。 安装好之后，只需要 1234567from impala.dbapi imp">
+<meta name="twitter:description" content="前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,10 +99,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
-<p>&lt;!-- more --&gt;</p>
+<a id="more"></a>
 <p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
 <p>安装好之后，只需要</p>
-<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure>
 <p>即可；</p>
 <p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
 <p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>

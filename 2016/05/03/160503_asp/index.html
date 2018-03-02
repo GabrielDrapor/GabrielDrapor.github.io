@@ -6,17 +6,42 @@
   
   <title>ASP.NET 搭建 Discuz! NT | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可 1.配置IIS。    IIS是我们的服务器应用程序，我们首先需要打开它。  首先在控制面板-程序和功能-打开或关闭Windows功能（如">
+  <meta name="description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express">
 <meta name="keywords" content="Networks,Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ASP.NET 搭建 Discuz! NT">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2016/05/03/160503_asp/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可 1.配置IIS。    IIS是我们的服务器应用程序，我们首先需要打开它。  首先在控制面板-程序和功能-打开或关闭Windows功能（如">
-<meta property="og:updated_time" content="2017-08-06T03:36:42.388Z">
+<meta property="og:description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image004.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image001.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image005.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image007.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image009.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image011.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image013.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image015.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image019.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image018.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image022.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image023.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image026.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image028.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image032.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image030.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image033.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image034.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image036.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image041.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image045.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image043.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image047.png">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image049.png">
+<meta property="og:updated_time" content="2018-03-02T06:41:24.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASP.NET 搭建 Discuz! NT">
-<meta name="twitter:description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express &amp;lt;!--more--&amp;gt; *由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可 1.配置IIS。    IIS是我们的服务器应用程序，我们首先需要打开它。  首先在控制面板-程序和功能-打开或关闭Windows功能（如">
+<meta name="twitter:description" content="架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express">
+<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/image004.png">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,22 +124,22 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express</strong></p>
-<p>&lt;!--more--&gt;</p>
+<a id="more"></a>
 <p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
 <h5>1.配置IIS。</h5>
 <p>   IIS是我们的服务器应用程序，我们首先需要打开它。</p>
 <ul>
 <li>首先在控制面板-程序和功能-打开或关闭Windows功能（如图），勾选“Internet Information Services可承载的Web核心”，“Internet信息服务”。</li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image004.png&quot;&gt;</p>
+   <img src="http://7xugq7.com1.z0.glb.clouddn.com/image004.png">
 <p>​</p>
 <ul>
 <li>在管理工具中找到“Internet 信息服务(IIS)管理器”，打开它，在左侧的“连接”栏下面找“个人电脑名&gt;网站”，右键点击网站，选择“添加网站”（如图）</li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image001.png&quot;&gt;</p>
+ <img src="http://7xugq7.com1.z0.glb.clouddn.com/image001.png">
 <p>在弹出的对话框中，填写必要信息。</p>
-<p>&lt;!--more--&gt;</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image005.png&quot;&gt;</p>
+<!--more-->
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image005.png">
 <p>​</p>
 <pre><code>网站名称----给你的网站起个名字,如这里的&quot;SNC_ASP.NET&quot;
 
@@ -124,7 +149,7 @@
 
 端口----默认是80，如果有冲突可以自行修改。查看当前系统所占用的端口可以打开cmd，输入指令“netstat -a”查询（如图）
 </code></pre>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image007.png&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image007.png"> 
 <ul>
 <li>
 <p>查看IIS的主界面，找到“默认文档”，打开。</p>
@@ -133,8 +158,8 @@
 <p>在打开的界面中，右键选择添加，添加名称为index.aspx，否则搭建服务器之后由于服务器不认识aspx的首页而打不开它。</p>
 </li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image009.png&quot;&gt;</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image011.png&quot;&gt;</p>
+ <img src="http://7xugq7.com1.z0.glb.clouddn.com/image009.png">
+ <img src="http://7xugq7.com1.z0.glb.clouddn.com/image011.png">
 <hr>
 <h5>2.配置SQL Server</h5>
 <p>从https://www.microsoft.com/zh-CN/download/details.aspx?id=42299 下载 Microsoft® SQL Server® 2014 Express，只需下载	“ExpressAndTools 64BIT\SQLEXPRWT_你系统位数_CHS.exe”即可。下载完之后打开，选择提取目录，等待解压。</p>
@@ -146,78 +171,78 @@
 <ul>
 <li>在“服务器配置”中，需要对SQL Server数据库选择一个用户，可以添加系统中的用户，填写对应的密码。如图。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image013.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image013.png">
 <ul>
 <li>在“数据库引擎配置”中，最好选择混合模式，单独设置一个SQL Server系统管理员账户，否则在后面关联用户的时候可能会遇到麻烦。</li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image015.png&quot;&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image019.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image015.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image019.png">
 <p>完成安装后，打开SQL Server 2014 Management Studio，连接到你的服务器。</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image018.png&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image018.png">
 <p>这里可以选择Windows 身份验证，也可以选择SQL Server身份验证。然后点击“连接”。</p>
 <p>连接后，在右侧的对象资源管理器中，找到“数据库，右键单击，选择“新建数据库”，填写数据库名称，如dnt，然后设置所有者，可以直接选sa即可。</p>
-<p>&lt;figure class=&quot;half&quot;&gt;</p>
+<figure class="half">
 <pre><code>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image021.png&quot;&gt;
 
 &lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image019.png&gt;
 </code></pre>
-<p>&lt;/figure&gt;</p>
+</figure>
 <hr>
 <h5>3.安装Discuz！NT。</h5>
 <p>从官网 http://www.comsenz.com/products/nt 下载Discuz！NT压缩包，将其解压，</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image022.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image022.png">
 <p>打开readme目录下的catalog.html可以看见官方所给出的介绍页面，其中就包括了安装指南</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image023.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image023.png">
 <p>接下来，我们只需按照安装指南所给的步骤一步步进行</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image026.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image026.png">
 <ul>
 <li>这里特别注意划红线的部分，是把upload_files目录里的东西放到服务器的根目录下而不是把upload_files文件夹整个放进服务器根目录。如图。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image028.png&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image032.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image028.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image032.png">
 <ul>
 <li>我使用的系统是WIN7，但依旧需要修改目录的权限，右键-属性-安全-编辑就可以编辑用户权限了。在IIS管理器中也可以对目录的权限进行设置。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image030.png&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image033.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image030.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image033.png"> 
 <ul>
 <li>按照教程要求，我们在浏览器地址栏中输入应输入的内容，然后发现了如下的报错。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image034.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image034.png">
 <ul>
 <li>通过阅读错误信息和查看根目录下的web.config配置文件，我们可以大概了解到问题出在Discuz!NT没有获得接管权，而在配置文件中也没有对相关权限的设置。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image036.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image036.png">
 <ul>
 <li>此时我们应该做的是，打开控制面板-Windows功能，在应用程序开发功能目录下将下面的ASP.NET功能勾选上。系统会自动将需要的其他功能自动勾选上。</li>
 </ul>
-<p>&lt;figure class=&quot;half&quot;&gt;</p>
+<figure class="half">
 <pre><code>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image037.png&quot;&gt;
 
 &lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image039.png&gt;
 </code></pre>
-<p>&lt;/figure&gt;</p>
+</figure>
 <ul>
 <li>再次运行安装脚本，即访问http://您的域名/install/index.aspx ，会看到如图的界面。 选择&quot;接受&quot;，点击“下一步”。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image041.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image041.png">
 <ul>
 <li>通过环境监测后，需要填写数据库信息，填写刚才创建的数据库名称，管理员账号和密码，在数据库服务器一项中填写自己的SQL Server服务器名称。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image045.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image045.png">
 <p>点击下一步。</p>
 <ul>
 <li>在出现的“论坛设置信息”界面中，自行设定管理员名称和密码。然后再次点击下一步。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image043.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image043.png">
 <ul>
 <li>然后会出现如图界面。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image047.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image047.png">
 <ul>
 <li>点击”进入论坛“，可以看到论坛的界面，说明搭建成功。可以尝试登陆管理员账号，也可以通过本机ip访问论坛。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image049.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image049.png">
 <pre><code> 
 </code></pre>
 

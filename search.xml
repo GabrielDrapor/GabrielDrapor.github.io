@@ -8,7 +8,6 @@
       <url>http://gabrieldrapor.github.io/2018/01/22/180122_flask_simple_api/</url>
       <content type="html"><![CDATA[<p>小记如何用Flask实现一个带POST的api。</p>
 <a id="more"></a>
-<!-- more -->
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, Response</div><div class="line"><span class="keyword">from</span> logging <span class="keyword">import</span> FileHandler, INFO, Formatter</div><div class="line"></div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="comment"># log</span></div><div class="line">err_log = FileHandler(<span class="string">'error_log_'</span>+time.strftime(<span class="string">'%Y%m%d'</span>,time.localtime()))</div><div class="line">err_log.setLevel(INFO)  <span class="comment">#设置日志级别</span></div><div class="line">logging_format = Formatter(<span class="string">'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'</span>)  <span class="comment"># 日志格式</span></div><div class="line">err_log.setFormatter(logging_format)</div><div class="line">app.logger.addHandler(err_log)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@app.route('/',methods=['POST','GET'])  #'/'指定了路径</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CERTAIN_FUNCTION</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        ...  <span class="comment">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span></div><div class="line">        <span class="keyword">return</span> Response(json.dumps(xxxx), mimetype=<span class="string">'application/json'</span>)  <span class="comment"># 如果需要回传json的话</span></div><div class="line"><span class="comment">#       return xxx 当然也可直接回传字符串或某个方法 </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(host=<span class="string">'x.x.x.x'</span>,port=<span class="string">'xxxx'</span>)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>Reference:</p>
@@ -44,7 +43,7 @@
       <title><![CDATA[2017]]></title>
       <url>http://gabrieldrapor.github.io/2018/01/01/180101_2017/</url>
       <content type="html"><![CDATA[<p>2017已经接近尾声，在此谨记2017的种种。</p>
-<p>&lt;!-- more --&gt;</p>
+<a id="more"></a>
 <p>2017元旦做2016总结的时候，当时在博客的评论区写了一条评论说，明年这个时候一定要写出一篇比今年精彩得多的总结。当时还想着一定要在这篇年终总结中放很多照片和截图来凸显自己这一整年的精彩程度，还为此专门在Dropbox上建了一个叫“My 2017”的文件夹。不过何谓“精彩”似乎很难定义，今年的经历讲给去年的自己听，他想必觉得还算精彩，而今年的自己可能只觉得稀松平常，所以我觉得不如在年终总结的时候列一些具体些的条目，然后明年来打勾。</p>
 <p>技术方面，</p>
 <ul>
@@ -123,10 +122,10 @@
       <title><![CDATA[用python连接SparkThriftServer]]></title>
       <url>http://gabrieldrapor.github.io/2017/11/22/171122_impala/</url>
       <content type="html"><![CDATA[<p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
-<p>&lt;!-- more --&gt;</p>
+<a id="more"></a>
 <p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
 <p>安装好之后，只需要</p>
-<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure>
 <p>即可；</p>
 <p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
 <p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
@@ -151,8 +150,8 @@
       <title><![CDATA[用Pymongo连接MongoDB取数]]></title>
       <url>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</url>
       <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
-<p>&lt;!-- more --&gt;</p>
-<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -174,18 +173,18 @@
       <title><![CDATA[Kaggle 0 手写数字识别器的探索]]></title>
       <url>http://gabrieldrapor.github.io/2017/09/11/170911_knn_digits_recognition/</url>
       <content type="html"><![CDATA[<p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/" target="_blank" rel="external">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
-<p>&lt;!-- more --&gt;</p>
+<a id="more"></a>
 <h3>9.11</h3>
 <p>没看书自己实现了一下KNN，算法本身也没什么复杂的，但是实现起来还是费了一番不小的功夫，动手能力还需增强啊…</p>
-<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">print(<span class="string">'Importing the data...'</span>)</div><div class="line">train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">r = []</div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(len(test_set)):</div><div class="line">        print(<span class="string">'%d/28000'</span> % (t+<span class="number">1</span>))</div><div class="line">    a = np.array(test_set.loc[t])</div><div class="line">    d = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(train_set)):</div><div class="line">        b = np.array(pixel.loc[i])</div><div class="line">        d.append(np.dot((a-b).T,(a-b)))</div><div class="line">    k = list(zip(d,range(len(d))))</div><div class="line">    k.sort()</div><div class="line">    m = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">        m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">    r.append(sum(m)/<span class="number">10</span>)</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">print(<span class="string">'Importing the data...'</span>)</div><div class="line">train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">r = []</div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(len(test_set)):</div><div class="line">        print(<span class="string">'%d/28000'</span> % (t+<span class="number">1</span>))</div><div class="line">    a = np.array(test_set.loc[t])</div><div class="line">    d = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(train_set)):</div><div class="line">        b = np.array(pixel.loc[i])</div><div class="line">        d.append(np.dot((a-b).T,(a-b)))</div><div class="line">    k = list(zip(d,range(len(d))))</div><div class="line">    k.sort()</div><div class="line">    m = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">        m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">    r.append(sum(m)/<span class="number">10</span>)</div></pre></td></tr></table></figure>
 <p>跑了几个试了试，K选了10，有一些误差，不过效果看起来还可以。但是全量数据一起跑的时候就发现，完成任务需要的时间非常久，大概至少需要三十个小时。这当然是不能接受的，得想办法改进才行。目前初步的打算是用多进程，应该可以明显地缩短完成任务所需的时间。</p>
 <hr>
 <h3>9.12</h3>
 <p>昨天请教了公司的组长之后得知，还可以用Deep Learning中的Pooling来降低计算的复杂度，但还是想先上多线程看看。经过一个晚上和半个上午的研究探索，终于成功地让任务以多进程的方式跑起来了。</p>
-<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">Description:</div><div class="line">kaggle 0 </div><div class="line"></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> multiprocessing</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="comment">#import matplotlib.pyplot as plt</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">processing</span><span class="params">(test_set)</span>:</span></div><div class="line">    s = []</div><div class="line">    print(<span class="string">"Running... pid:"</span> + str(os.getpid()))</div><div class="line">    <span class="keyword">for</span> idx, df <span class="keyword">in</span> test_set.iterrows():</div><div class="line">        print(<span class="string">'%d/28000, pid %s'</span> % (idx, os.getpid()))</div><div class="line">        a = np.array(df)</div><div class="line">        d = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">42000</span>):</div><div class="line">            b = np.array(pixel.iloc[i])</div><div class="line">            d.append(np.dot((a-b).T,(a-b)))</div><div class="line">        k = list(zip(d,range(len(d))))</div><div class="line">        k.sort()</div><div class="line">        m = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">            m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">        s.append([idx,sum(m)/<span class="number">10</span>])</div><div class="line">    <span class="keyword">return</span> s</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    print(<span class="string">'Importing the data...'</span>)</div><div class="line">    train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">    pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">    label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">    <span class="comment">#plt.imshow(test.reshape(28,28), cmap=plt.cm.gray)</span></div><div class="line">    test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">    pool = multiprocessing.Pool(processes = <span class="number">16</span>)</div><div class="line">    r = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</div><div class="line">        train = test_set.loc[<span class="number">1750</span>*i:<span class="number">1750</span>*(i+<span class="number">1</span>)<span class="number">-1</span>]</div><div class="line">        r.append(pool.apply_async(processing,(train,)))</div><div class="line">    pool.close()</div><div class="line">    pool.join()</div><div class="line">    result  = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> r:</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> i.get():</div><div class="line">            result.append(j)</div><div class="line">    result.sort()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'result.csv'</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> result:</div><div class="line">            f.writelines(str(i[<span class="number">0</span>]+<span class="number">1</span>)+<span class="string">','</span>+str(round(i[<span class="number">1</span>]))[:<span class="number">-2</span>]+<span class="string">'\n'</span>)</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">Description:</div><div class="line">kaggle 0 </div><div class="line"></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> multiprocessing</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="comment">#import matplotlib.pyplot as plt</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">processing</span><span class="params">(test_set)</span>:</span></div><div class="line">    s = []</div><div class="line">    print(<span class="string">"Running... pid:"</span> + str(os.getpid()))</div><div class="line">    <span class="keyword">for</span> idx, df <span class="keyword">in</span> test_set.iterrows():</div><div class="line">        print(<span class="string">'%d/28000, pid %s'</span> % (idx, os.getpid()))</div><div class="line">        a = np.array(df)</div><div class="line">        d = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">42000</span>):</div><div class="line">            b = np.array(pixel.iloc[i])</div><div class="line">            d.append(np.dot((a-b).T,(a-b)))</div><div class="line">        k = list(zip(d,range(len(d))))</div><div class="line">        k.sort()</div><div class="line">        m = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">            m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">        s.append([idx,sum(m)/<span class="number">10</span>])</div><div class="line">    <span class="keyword">return</span> s</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    print(<span class="string">'Importing the data...'</span>)</div><div class="line">    train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">    pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">    label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">    <span class="comment">#plt.imshow(test.reshape(28,28), cmap=plt.cm.gray)</span></div><div class="line">    test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">    pool = multiprocessing.Pool(processes = <span class="number">16</span>)</div><div class="line">    r = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</div><div class="line">        train = test_set.loc[<span class="number">1750</span>*i:<span class="number">1750</span>*(i+<span class="number">1</span>)<span class="number">-1</span>]</div><div class="line">        r.append(pool.apply_async(processing,(train,)))</div><div class="line">    pool.close()</div><div class="line">    pool.join()</div><div class="line">    result  = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> r:</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> i.get():</div><div class="line">            result.append(j)</div><div class="line">    result.sort()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'result.csv'</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> result:</div><div class="line">            f.writelines(str(i[<span class="number">0</span>]+<span class="number">1</span>)+<span class="string">','</span>+str(round(i[<span class="number">1</span>]))[:<span class="number">-2</span>]+<span class="string">'\n'</span>)</div></pre></td></tr></table></figure>
 <p>为了能够快速地完成任务，我又去AWS上租了一个c4.4xlarge，配置是16 vCPU, 2.9 GHz, Intel Xeon E5-2666v3, 30 GiB 内存，在上面把任务分成16个进程进行计算。即便如此，整个任务还是花费了大概三四个小时的时间，但总算最后还是成功地跑出来了。</p>
 <p>将结果按照要求稍微整理一下就可以提交了，初次提交的分数是0.87314，预料之中。虽然准确率看起来还可以，但这个成绩在这项竞赛中的排名是1534／1625，非常的惨淡，不过这也说明改进的空间还很大。之后考虑用Pooling试试。</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/first_submission.png&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/first_submission.png">
 <hr>
 <h3>9.13</h3>
 <p>今天发现其实Pooling并不是一种可以提高精度的办法，只是一种可以降低计算复杂度的方法，如果原算法的精度本身就不高的话，Pooliing之后同样也不高，组长建议我改用CNN。我想了一下，就算调整K的值重新跑一次可能不会使准确率有明显的提升，Google了一下发现大家用KNN做手写识别，精度可能也就追求到0.8。嗯……这两天探索一下Tensorflow+CNN（之前只是知道，并没有深入了解过），尝试用这种方式解决这个问题。</p>
@@ -210,7 +209,7 @@
       <title><![CDATA[在AWS上搭建TensorFlow环境]]></title>
       <url>http://gabrieldrapor.github.io/2017/08/22/170822_aws_tensorflow/</url>
       <content type="html"><![CDATA[<p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1" target="_blank" rel="external">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow" target="_blank" rel="external">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p>
-<p>&lt;!-- more --&gt;</p>
+<a id="more"></a>
 <ul>
 <li>
 <p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p>
@@ -220,37 +219,37 @@
 </li>
 <li>
 <p>登陆之后首先确认一下GPU信息：</p>
-<p><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">local</span>) lspci | grep -i nvidia</div></pre></td></tr></table></figure></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">local</span>) lspci | grep -i nvidia</div></pre></td></tr></table></figure>
 </li>
 <li>
 <p>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；</p>
 <ul>
 <li>首先是 CUDA Toolkit：</li>
 </ul>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line">$ ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line">$ ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"></div><div class="line">$ vim ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#增加下面三行</span></div><div class="line"><span class="built_in">export</span> CUDA_ROOT=/usr/<span class="built_in">local</span>/cuda-8.0</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda-8.0/lib64</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$CUDA_ROOT</span>/bin</div><div class="line"></div><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#测试一下</span></div><div class="line">$ nvidia-smi -q | head</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line">$ ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line">$ ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"></div><div class="line">$ vim ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#增加下面三行</span></div><div class="line"><span class="built_in">export</span> CUDA_ROOT=/usr/<span class="built_in">local</span>/cuda-8.0</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda-8.0/lib64</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$CUDA_ROOT</span>/bin</div><div class="line"></div><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#测试一下</span></div><div class="line">$ nvidia-smi -q | head</div></pre></td></tr></table></figure>
 <ul>
 <li>然后是cuDNN library：</li>
 </ul>
 <p>首先去https://developer.nvidia.com/cudnn 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/lib64/* /usr/<span class="built_in">local</span>/cuda-8.0/lib64/</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/include/* /usr/<span class="built_in">local</span>/cuda-8.0/include/</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/lib64/* /usr/<span class="built_in">local</span>/cuda-8.0/lib64/</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/include/* /usr/<span class="built_in">local</span>/cuda-8.0/include/</span></div></pre></td></tr></table></figure>
 <p>至此，GPU Drivers的部分基本配置完成。</p>
 </li>
 <li>
 <p>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Install pip and virtualen </span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python-pip python-dev python-virtualenv <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python3-pip python3-dev python-virtualenv <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Create a virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages targetDirectory <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages -p python3 <span class="string">'targetDirectory'</span> <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> <span class="string">'targetDirectory'</span> specifies the top of the virtualenv tree, <span class="built_in">which</span> you may choose by yourself.</span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Activate the virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">现在的命令行前面的标识会变成这个样子：</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">Install TensorFlow, ensure the version of pip &gt;= 8.1</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow      <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow     <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow-gpu  <span class="comment"># for Python 2.7 and GPU</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow-gpu <span class="comment"># for Python 3.n and GPU</span></span></div></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Install pip and virtualen </span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python-pip python-dev python-virtualenv <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python3-pip python3-dev python-virtualenv <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Create a virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages targetDirectory <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages -p python3 <span class="string">'targetDirectory'</span> <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> <span class="string">'targetDirectory'</span> specifies the top of the virtualenv tree, <span class="built_in">which</span> you may choose by yourself.</span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Activate the virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">现在的命令行前面的标识会变成这个样子：</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">Install TensorFlow, ensure the version of pip &gt;= 8.1</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow      <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow     <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow-gpu  <span class="comment"># for Python 2.7 and GPU</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow-gpu <span class="comment"># for Python 3.n and GPU</span></span></div></pre></td></tr></table></figure>
 <p>至此，TensorFlow安装完成</p>
 </li>
 <li>
 <p>激活命令为</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate      <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate      <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div></pre></td></tr></table></figure>
 </li>
 <li>
-<p>退出环境
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> deactivate</span></div></pre></td></tr></table></figure></p>
+<p>退出环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> deactivate</span></div></pre></td></tr></table></figure>
 </li>
 <li>
-<p>卸载
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure></p>
+<p>卸载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ul>
@@ -275,19 +274,17 @@
       <title><![CDATA[Codewars上有趣的题（一）]]></title>
       <url>http://gabrieldrapor.github.io/2017/08/19/170819_funny_codewars/</url>
       <content type="html"><![CDATA[<p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p>
-<p>&lt;!-- more --&gt;</p>
+<a id="more"></a>
 <h4><a href="https://www.codewars.com/kata/sum-of-digits-slash-digital-root" target="_blank" rel="external">Sum of Digits / Digital Root</a></h4>
 <p>题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIkipedia）。按照定义来做的话，也其实没什么难的，用python的话，无非就是分拆成字符，再转回数字然后相加，如此往复直到位数为1。然而在做完之后，我在Solutions里发现了这样两个答案：</p>
 <ul>
-<li>
-<p>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &lt; <span class="number">10</span> <span class="keyword">else</span> digital_root(sum(map(int,str(n))))</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>然后我往下翻，又看到了下面这个让我颇为震惊的解法：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n%<span class="number">9</span> <span class="keyword">or</span> n <span class="keyword">and</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
-</li>
+<li>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &lt; <span class="number">10</span> <span class="keyword">else</span> digital_root(sum(map(int,str(n))))</div></pre></td></tr></table></figure>
+<ul>
+<li>然后我往下翻，又看到了下面这个让我颇为震惊的解法：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n%<span class="number">9</span> <span class="keyword">or</span> n <span class="keyword">and</span> <span class="number">9</span></div></pre></td></tr></table></figure>
 <p>我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：https://www.zhihu.com/question/30972581 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p>
 <ul>
 <li>
@@ -304,33 +301,31 @@
 <p>n == 9时，n and 9 == 9，n%9 or 9 == 9；</p>
 </blockquote>
 <hr>
-<h4><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don't rely on luck.</a></h4>
+<h4><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don’t rely on luck.</a></h4>
 <p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
 <ul>
-<li>在代码框里最开始给的是：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure></li>
+<li>在代码框里最开始给的是：</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure>
 <p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
 <ul>
-<li>
-<p>首先是：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
-<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
-</li>
-<li>
-<p>然后是这个：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure></p>
-<p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
-</li>
-<li>
-<p>当然，最让我折服的还是下面这个：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure></p>
-<p>？？？？？？？？？</p>
-<p>与上面这种解法类似的还有：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure></p>
-<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
-</li>
+<li>首先是：</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
+<ul>
+<li>然后是这个：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure>
+<p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
+<ul>
+<li>当然，最让我折服的还是下面这个：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure>
+<p>？？？？？？？？？</p>
+<p>与上面这种解法类似的还有：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure>
+<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
 ]]></content>
       
         <categories>
@@ -428,14 +423,14 @@
       <title><![CDATA[记录一下最近参加过的面试]]></title>
       <url>http://gabrieldrapor.github.io/2017/07/11/170707-firstinterview-md/</url>
       <content type="html"><![CDATA[<p>最近几天参加了几次面试，也是人生中的头几次面试，感觉值得一记，故有此篇。</p>
-<p>&lt;!--more --&gt;</p>
+<a id="more"></a>
 <p><strong>17.7.7：</strong></p>
 <p>昨天下午接到了一家公司HR的电话，问我是不是还在找实习以及有没有时间参加电话面试。于是昨天晚上+今天早上稍微地准备了一下，想着面试官会问关于Python的一些高级的东西比如解释器或者GIL什么的就去补了一波知识，并且对这家公司也做了一些调查，有了一些了解。</p>
 <p>终于等到下午三点开始了面试，形式是电话面试。在得知要写代码之后，我心里其实有点慌，因为我知道自己的数据结构和算法很薄弱，而且动手的时候可能会卡在一些细枝末节的地方。面试官人很好，上来没有让我做自我介绍，直接让我把自己掌握的技术说了一下，并对我在博客上和GIthub上的一些东西以及过往经历提了一些问题。很明显对方在面试前还是做了一点工作的，而且整个面试过程基本没有废话，我很喜欢这种面试风格。后面让我动手写一道算法题，是在数组中找出三个数之和为0的一道题。开始不久我就卡住了，原先以为自己会卡在数据结构或者算法的地方，后来发现不是这样的，我卡在了动手实现上。一些东西我知道思路，但我写不出来。究其原因的话，可能也是我太久没刷OJ了，动手能力退化了不少，另一反面本身基础就不够扎实，编码能力本来也不强，再加上面试时候的紧张， 结果就不太尽如人意。</p>
 <p>面试结果怎样已经没那么重要了，重要的是我的确在这次面试中清楚地认识到了自己还是说得太多看得太多做得太少，导致动手能力很弱，之后还是要在这方面加强才是。很感谢那家公司给我这个面试的机会。</p>
 <hr>
 <p><strong>17.7.8：</strong></p>
-<p>昨天面试的时候表现得比较糟糕，我以为已经铁定没戏了，结果昨天晚些时候HR跟我说还有一轮面试，我以为这次会是关于ML方面的面试，于是又回去翻了翻之前记过的笔记。没想到，今天的面试还是写代码，不过面试官看我昨天表现得那么惨，今天就给了我一个简单的问题，求第n个斐波那契数，我最开始用递归写了一个，后来面试官问我还有没有别的方法，我又把用循环写的那种方式写了一下；之后面试官又问了我一个递进的问题：一只蜗牛一次可以爬１级或２级或３级或……或n级台阶，现在它要爬上n级台阶，问有多少种爬法？起初我以为是一个等差数列问题，愚蠢地说了一个n(n-1)/2。面试官置疑了一下，我发现了根本不对，于是开始拿出纸笔算，在面试官的引导下捣鼓了很久才得出正确的结果【当时是先计算n=1，n=2，n=3的情况然后推广得到通项是2^(n-1)，7.13晚上洗澡的时候突然想到其实除了最后一级台阶，其他所有台阶都有两种可能，迈上或者不迈，于是n-1级台阶就是2^(n-1)种情况…】…后面还聊了一些关于公司技术栈的事情，发现其实技术不太对口，他们目前主要还是做后端，而我还是想找一份数据相关的实习…总之第二轮面试依旧很僵硬，基本已经没有希望了我觉得。。</p>
+<p>昨天面试的时候表现得比较糟糕，我以为已经铁定没戏了，结果昨天晚些时候HR跟我说还有一轮面试，我以为这次会是关于ML方面的面试，于是又回去翻了翻之前记过的笔记。没想到，今天的面试还是写代码，不过面试官看我昨天表现得那么惨，今天就给了我一个简单的问题，求第n个斐波那契数，我最开始用递归写了一个，后来面试官问我还有没有别的方法，我又把用循环写的那种方式写了一下；之后面试官又问了我一个递进的问题：一只蜗牛一次可以爬１级或２级或３级或……或n级台阶，现在它要爬上n级台阶，问有多少种爬法？起初我以为是一个等差数列问题，愚蠢地说了一个n(n-1)/2。面试官置疑了一下，我发现了根本不对，于是开始拿出纸笔算，在面试官的引导下捣鼓了很久才得出正确的结果【当时是先计算n=1，n=2，n=3的情况然后推广得到通项是2<sup>(n-1)，7.13晚上洗澡的时候突然想到其实除了最后一级台阶，其他所有台阶都有两种可能，迈上或者不迈，于是n-1级台阶就是2</sup>(n-1)种情况…】…后面还聊了一些关于公司技术栈的事情，发现其实技术不太对口，他们目前主要还是做后端，而我还是想找一份数据相关的实习…总之第二轮面试依旧很僵硬，基本已经没有希望了我觉得。。</p>
 <hr>
 <p><strong>17.7.11：</strong></p>
 <p>之前向洋葱数学投了简历，HR联系了我好几次一直没有联系上我，我一度觉得我可能和这家公司没有缘分，但终于我还是联系上了他们的HR，得知真相之后对HR的坚持不懈莫名有些感动…</p>
@@ -457,7 +452,7 @@
       <title><![CDATA[来写个学期总结吧]]></title>
       <url>http://gabrieldrapor.github.io/2017/07/01/170701_term-summary/</url>
       <content type="html"><![CDATA[<p>这个学期就这样结束了，简单来写个总结吧，顺便做点计划。</p>
-<p>&lt;!-- more --&gt;</p>
+<a id="more"></a>
 <hr>
 <ul>
 <li>看完了Coursera上Andrew Ng的Machine Learning；完成相应作业；</li>
@@ -539,7 +534,7 @@
 <p><strong>尝试发展一些别的兴趣爱好；</strong></p>
 </li>
 <li>
-<p>学学日语；
+<p>学学日语；<br>
 ​</p>
 <p>暂时就想到这些，大概就这样吧；</p>
 </li>
@@ -568,7 +563,7 @@
       <url>http://gabrieldrapor.github.io/2017/06/14/170614-pandas/</url>
       <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。</p>
 <p>并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……</p>
-<p>&lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;/python_data_analysis/pandas.html&quot;&gt;Read More&lt;/a&gt;&lt;/p&gt;</p>
+<p class="article-more-link"><a href="/python_data_analysis/pandas.html">Read More</a></p>
 ]]></content>
       
         <categories>
@@ -599,47 +594,49 @@
 <li>Try decreasing $\lambda$;</li>
 <li>Try increasing $\lambda$;</li>
 </ul>
-<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn't working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
-<p>&lt;!--more --&gt;</p>
+<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn’t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
+<a id="more"></a>
 <hr>
 <h2>Evaluating a hypothesis</h2>
-<p>To evaluating whether a hypothesis is good or bad (and we don't have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p>
+<p>To evaluating whether a hypothesis is good or bad (and we don’t have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p>
 <hr>
 <h2>Model Selection</h2>
-<p>Take linear regression as a example, we use $h_{\theta}(x) = \theta_0 +\theta_1 x + \theta_2 x^2 +... $ as our hypothesis function, and we can add the degree of polynomial to make our hypothe/.sis better, but it may brings the over fitting problem, so we need to find out the best degree.</p>
-<p>To  achieve so, we can compute the $J_{test}$(cost of different degrees $d$ on test set), and choose the best $d$, but it's only fit to the test set. So we divide the data set into three parts:</p>
+<p>Take linear regression as a example, we use $h_{\theta}(x) = \theta_0 +\theta_1 x + \theta_2 x^2 +… $ as our hypothesis function, and we can add the degree of polynomial to make our hypothe/.sis better, but it may brings the over fitting problem, so we need to find out the best degree.</p>
+<p>To  achieve so, we can compute the $J_{test}$(cost of different degrees $d$ on test set), and choose the best $d$, but it’s only fit to the test set. So we divide the data set into three parts:</p>
 <ul>
 <li>training set (60% usually)</li>
 <li>cross validation set (20% usually)</li>
 <li>test set (20% usually)(check if the combo of $\theta$ and $\lambda$ has a good generalization of the problem, avoiding over fitting)</li>
 </ul>
 <p>and three kinds of cost function is $J_{train}$, $J_{cv}$, $J_{test}$.</p>
-<p>Then for different $d(d=1, 2, 3, ...)$, minimize $J(\theta)$ with $J_{train}$ and $J_{test}$, then compute the $J_{cv}$ for each $d$. We choose $d$ who has the lowest $J_{cv}$, and that.s how we do the model selection.</p>
+<p>Then for different $d(d=1, 2, 3, …)$, minimize $J(\theta)$ with $J_{train}$ and $J_{test}$, then compute the $J_{cv}$ for each $d$. We choose $d$ who has the lowest $J_{cv}$, and that.s how we do the model selection.</p>
 <hr>
 <h2>Bias vs. Variance</h2>
 <ul>
-<li>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/bias_vs_var.JPG&quot;&gt;</li>
+<li>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/bias_vs_var.JPG">
+</li>
 </ul>
 <h3>Diagnosing bias vs. variance</h3>
 <ul>
-<li>If $J_{train}$ is high and $J_{cv}\approx J_{train}$, we can tell it's a <strong>bias</strong> problem;</li>
-<li>If $J_{train}$ is low and $J_{cv}\gg J_{train}$, we can tell it's a <strong>variance</strong> problem;</li>
+<li>If $J_{train}$ is high and $J_{cv}\approx J_{train}$, we can tell it’s a <strong>bias</strong> problem;</li>
+<li>If $J_{train}$ is low and $J_{cv}\gg J_{train}$, we can tell it’s a <strong>variance</strong> problem;</li>
 </ul>
 <hr>
 <h2>About regularization</h2>
-<p>As we know, appropriate $\lambda$ (regularization parameter) can help to prevent over fitting, but when the $\lambda$ is too large or too small. it won't work as so:</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/different_lambda.JPG&quot;&gt;</p>
+<p>As we know, appropriate $\lambda$ (regularization parameter) can help to prevent over fitting, but when the $\lambda$ is too large or too small. it won’t work as so:</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/different_lambda.JPG">
 <p>So choosing appropriate value of $\lambda$ is very necessary.</p>
 <p>We can try different $\lambda$, minimize $J(\theta)$, then compute $J_{cv}$ (like what we do the model selection), and we can finf the best $\lambda$.</p>
 <hr>
 <h2>Learning Curves</h2>
-<p>The learning curves describe the relationship of $m$(training set size) and error($J_{cv},J_{train}$), it's look like:</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/learningcurves.JPG&quot; width=&quot;500&quot;&gt;</p>
+<p>The learning curves describe the relationship of $m$(training set size) and error($J_{cv},J_{train}$), it’s look like:</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/learningcurves.JPG" width="500">
 <p>And if the algorithm is suffering from high bias, the learning curve is look like:</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/high_bias_curve.JPG&quot; width=&quot;500&quot;&gt;</p>
-<p>We can see from the graph that the increasing $m$ doesn't help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/high_bias_curve.JPG" width="500">
+<p>We can see from the graph that the increasing $m$ doesn’t help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p>
 <p>While if the algorithm is suffering from high variance, the learning curve is look like:</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/high_var_curve.JPG&quot; width=&quot;500&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/high_var_curve.JPG" width="500">
 <p>From the graph we can see that there is a gap between $J_{cv}$ and $J_{train}$, and as $m$ increasing, the gap diminishes and the bias is also decreasing. So we can conclude that getting more training data is helpful to solve the high-variance problem.</p>
 ]]></content>
       
@@ -661,9 +658,9 @@
     <entry>
       <title><![CDATA[Numpy入门笔记]]></title>
       <url>http://gabrieldrapor.github.io/2017/05/11/170511-numpy/</url>
-      <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。
+      <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。<br>
 并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。</p>
-<p>&lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;http://7xugq7.com1.z0.glb.clouddn.com/NpBasic.html&quot;&gt;Read More&lt;/a&gt;&lt;/p&gt;</p>
+<p class="article-more-link"><a href="http://7xugq7.com1.z0.glb.clouddn.com/NpBasic.html" target="_blank" rel="external">Read More</a></p>
 ]]></content>
       
         <categories>
@@ -685,7 +682,7 @@
       <title><![CDATA[IPython的一些笔记]]></title>
       <url>http://gabrieldrapor.github.io/2017/05/02/170502_ipython/</url>
       <content type="html"><![CDATA[<p>最近在看《利用Python进行数据分析》…</p>
-<p>·&lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;/python_data_analysis/IPython.html&quot;&gt;Read More&lt;/a&gt;&lt;/p&gt;</p>
+<p class="article-more-link"><a href="/python_data_analysis/IPython.html">Read More</a></p>
 ]]></content>
       
         <categories>
@@ -707,30 +704,30 @@
       <title><![CDATA[SQL Syntax(Ⅲ)]]></title>
       <url>http://gabrieldrapor.github.io/2017/04/25/170425_sql3/</url>
       <content type="html"><![CDATA[<p>后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。</p>
-<p>&lt;!--more --&gt;</p>
+<a id="more"></a>
 <hr>
 <h2>联结表</h2>
 <h5>创建联结</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders, Products</div><div class="line"><span class="keyword">WHERE</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure></p>
-<p>简单解释一下，Venders和Products是一个数据库下的两张表，他们都有一个列叫Vend_id, prod_name和prod_price是表Products中的列，vend_name是表Venders中的列。
-需要注意的是，如果在SELECT中添加了共有的列名，需要做完全限定，比如上面的例子中，如果需要把vend_id这个列提取出来，需要用Venders.vend_id或者Products.id来完全限定。
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders, Products</div><div class="line"><span class="keyword">WHERE</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure>
+<p>简单解释一下，Venders和Products是一个数据库下的两张表，他们都有一个列叫Vend_id, prod_name和prod_price是表Products中的列，vend_name是表Venders中的列。<br>
+需要注意的是，如果在SELECT中添加了共有的列名，需要做完全限定，比如上面的例子中，如果需要把vend_id这个列提取出来，需要用Venders.vend_id或者Products.id来完全限定。<br>
 另外就是，WHERE子句非常重要，如果这里不用WHERE子句的话，输出的结果将会是指定的两部分内容的每一行的组合的结果，而忽略其中的逻辑，输出结果的行数将等于第一部分的列乘以第二个部分列的行数。这个结果也被称为<em>笛卡尔积</em>。所以，在联结表时为了避免输出的结果过长，千万不要忘了WHERE子句。</p>
 <p>以上的联结称为等值联结(equijoin)，也称为内联结(inner join)，我们可以用内联结的写法来重新写与上面等价的SQL语句：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Products</div><div class="line"> <span class="keyword">ON</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Products</div><div class="line"> <span class="keyword">ON</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure>
 <p>实际上，联结表的操作也可以用子查询完成，但SQL语句书写起来会麻烦许多。</p>
 <hr>
 <h2>创建高级联结</h2>
 <h5>使用表别名</h5>
 <p>表别名还有以下这种有趣的用法：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contract</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contract</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span></div></pre></td></tr></table></figure>
 <p>P.S.:Oracle中没有AS这个用法</p>
 <h5>其他类型的联结</h5>
 <ul>
-<li>自联结(self-join)
+<li>自联结(self-join)<br>
 使用别名的好处在于可以不止一次地引用同一个表。下面两段SQL语句是等价的：</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cest_id, cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = (<span class="keyword">SELECT</span> cust_name</div><div class="line">                   <span class="keyword">FROM</span> Customers</div><div class="line">                   <span class="keyword">WHERE</span> cust_contact = <span class="string">'Jim Jones'</span>);</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> c1.cust_id, c1.cust_name, c1.cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> c1, Customers <span class="keyword">AS</span> c2</div><div class="line"><span class="keyword">WHERE</span> c1.cust_name = c2.cust_name</div><div class="line"> <span class="keyword">AND</span> c2.cust_contract = <span class="string">'Jim Jones'</span>;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cest_id, cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = (<span class="keyword">SELECT</span> cust_name</div><div class="line">                   <span class="keyword">FROM</span> Customers</div><div class="line">                   <span class="keyword">WHERE</span> cust_contact = <span class="string">'Jim Jones'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> c1.cust_id, c1.cust_name, c1.cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> c1, Customers <span class="keyword">AS</span> c2</div><div class="line"><span class="keyword">WHERE</span> c1.cust_name = c2.cust_name</div><div class="line"> <span class="keyword">AND</span> c2.cust_contract = <span class="string">'Jim Jones'</span>;</div></pre></td></tr></table></figure>
 <p>第一段使用了子查询,而第二段使用了联结，他们的效果是一样的，但在许多DBMS中，处理联结远比子查询快得多。</p>
 <ul>
 <li>
@@ -738,53 +735,53 @@
 <p>标准的联结返回所有的数据，相同的列甚至多次出现。自然联结排除多次出现，使每一列只返回一次。如：</p>
 </li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> C.*, O.order_num, O.order_date,</div><div class="line">       OI.prod_id, OI.quantity, OI.item_price</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span>;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> C.*, O.order_num, O.order_date,</div><div class="line">       OI.prod_id, OI.quantity, OI.item_price</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span>;</div></pre></td></tr></table></figure>
 <ul>
-<li>外联结
+<li>外联结<br>
 包含在相关表中没有关联行的行的联结，称为外联结(outer join)。用法如：</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure>
 <p>注意，OUT JOIN前必须使用RIGHT或者LEFT关键字制定包括其所有行的表（RIGHT指出的是OUTER JOIN了FROM中右边的表，LEFT同理）。</p>
 <ul>
-<li>全外联结
+<li>全外联结<br>
 检索两个表中的所有行并关联那些可以关联的行，这种外联结称为全外联结(full outer join),如：</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure>
 <p>当然，也可以在联结中使用聚集函数。</p>
 <hr>
 <h2>组合查询</h2>
 <p>SQL允许执行多个查询（多条SELECT语句），并将结果作为一个查询结果集返回。这些组合查询通常称为并(union)或复制查询(compound query)</p>
 <h5>使用UNION</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'IL'</span>, <span class="string">'IN'</span>, <span class="string">'MI'</span>)</div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'Fun4All'</span>;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'IL'</span>, <span class="string">'IN'</span>, <span class="string">'MI'</span>)</div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'Fun4All'</span>;</div></pre></td></tr></table></figure>
 <p>当然这里可以用OR达成同样的效果，但对于较复杂的过滤条件，或者从多个表检索数据的情形，使用UNION可能会使处理更简单。另外需要注意,UNION每个查询必须包含相同的列，表达式或聚集函数。</p>
 <p>此外，UNION会默认自动取消重复的行，当然如果有需要，也可以改变它，使用UNION ALL即可。如果需要对组合查询的结果进行排序，只需要在最后加上ORDER BY即可。</p>
 <hr>
 <h2>插入数据</h2>
 <h5>使用INSERT</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure>
 <p>这种用法很简单，但并不安全，应该尽量避免使用。更安全（也更烦琐）的用法应当是：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure>
 <p>Values将以指定的次序匹配指定的列名，不一定按各列出现在表中的实际次序。其优点是，即使表的结构改变，这条INSERT仍然能正确工作。</p>
 <h5>插入检索出的数据</h5>
 <p>INSERT还存在另一种形式，可以利用它将SELECT语句的结果插入表中，这就是所谓的INSERT SELECT，如：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">SELECT</span> column_a,</div><div class="line">       column_b,</div><div class="line">       column_c,</div><div class="line">       ......</div><div class="line"><span class="keyword">FROM</span> another_table_name;</div></pre></td></tr></table></figure></p>
-<p>当然，利用INSERT SELECT，可以实现从一个表复制到另一个表：
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">INTO</span> table1</div><div class="line"><span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">SELECT</span> column_a,</div><div class="line">       column_b,</div><div class="line">       column_c,</div><div class="line">       ......</div><div class="line"><span class="keyword">FROM</span> another_table_name;</div></pre></td></tr></table></figure>
+<p>当然，利用INSERT SELECT，可以实现从一个表复制到另一个表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">INTO</span> table1</div><div class="line"><span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure>
 <p>在MariaDB, MySQL, Oracle, PostgreSQL 和 SQLite 使用的用法稍有不同：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table1 <span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table1 <span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure>
 <hr>
 <h2>更新和删除数据</h2>
 <h5>更新数据</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> table_name</div><div class="line"><span class="keyword">SET</span> column1=value1,</div><div class="line">    column2=value2,</div><div class="line">    ......</div><div class="line"><span class="keyword">WHERE</span> certain_column = certain_value;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> table_name</div><div class="line"><span class="keyword">SET</span> column1=value1,</div><div class="line">    column2=value2,</div><div class="line">    ......</div><div class="line"><span class="keyword">WHERE</span> certain_column = certain_value;</div></pre></td></tr></table></figure>
 <h5>删除数据</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> ......</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> ......</div></pre></td></tr></table></figure>
 <hr>
 <h2>创建和操纵表</h2>
 <h5>创建表</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure>
 <p>其中，NULL是默认设置，可以省略。</p>
 <h5>指定默认值</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure>
 <p>在实际中，常用的默认值会用到当前时间。</p>
 <table>
 <thead>
@@ -820,23 +817,23 @@
 </tr>
 <tr>
 <td style="text-align:center">SQLite</td>
-<td style="text-align:center">date('now')</td>
+<td style="text-align:center">date(‘now’)</td>
 </tr>
 </tbody>
 </table>
 <h5>更新表</h5>
 <p>以下展示了添加和删除列的用法：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">ADD</span> column_name column_type;</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">DROP</span> column_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">ADD</span> column_name column_type;</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">DROP</span> column_name;</div></pre></td></tr></table></figure>
 <h5>删除表</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> table_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> table_name;</div></pre></td></tr></table></figure>
 <hr>
 <h2>使用视图</h2>
 <p>视图(View)，其实就是封装起来的查询操作。【使用视图的好处大约就和贯彻面向对象思想的好处一样多。】</p>
 <h5>创建视图</h5>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name <span class="keyword">AS</span></div><div class="line">.....</div><div class="line">[<span class="keyword">SQL</span> <span class="keyword">Query</span>]</div><div class="line">.....</div></pre></td></tr></table></figure></p>
-<p>之后需要再次执行该查询操作时，只需要直接用
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column1,column2,...</div><div class="line"><span class="keyword">FROM</span> view_name</div><div class="line"><span class="keyword">WHERE</span> ...</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name <span class="keyword">AS</span></div><div class="line">.....</div><div class="line">[<span class="keyword">SQL</span> <span class="keyword">Query</span>]</div><div class="line">.....</div></pre></td></tr></table></figure>
+<p>之后需要再次执行该查询操作时，只需要直接用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column1,column2,...</div><div class="line"><span class="keyword">FROM</span> view_name</div><div class="line"><span class="keyword">WHERE</span> ...</div></pre></td></tr></table></figure>
 <p>即可。</p>
 ]]></content>
       
@@ -859,26 +856,26 @@
       <title><![CDATA[SQL Syntax(Ⅱ)]]></title>
       <url>http://gabrieldrapor.github.io/2017/04/23/170423_sql2/</url>
       <content type="html"><![CDATA[<p>继续。</p>
-<p>&lt;!--more --&gt;</p>
+<a id="more"></a>
 <hr>
 <h2>创建计算字段</h2>
 <p>以下以书中例子呈现相关用法。</p>
 <ul>
 <li>拼接字段</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name || <span class="string">'('</span> || vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure></p>
-<p>以上两种写法是等价的，还可以用RTRIM()去除字符串右边的空格，用LTRIM()去除字符串左边的空格，用TRIM()去除字符串左右两边的空格。
-特别地，在MySQL和MariaDB中需要使用Concat()函数来完成相同的功能：
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># In MySQL and MariaDB</div><div class="line">SELECT Concat(vend_name, '(', vend_country, ')')</div><div class="line">FROM venders</div><div class="line">ORDER BY vender_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name || <span class="string">'('</span> || vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
+<p>以上两种写法是等价的，还可以用RTRIM()去除字符串右边的空格，用LTRIM()去除字符串左边的空格，用TRIM()去除字符串左右两边的空格。<br>
+特别地，在MySQL和MariaDB中需要使用Concat()函数来完成相同的功能：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># In MySQL and MariaDB</div><div class="line">SELECT Concat(vend_name, '(', vend_country, ')')</div><div class="line">FROM venders</div><div class="line">ORDER BY vender_name;</div></pre></td></tr></table></figure>
 <ul>
 <li>为结果使用别名</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">AS</span> vend_title</div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">AS</span> vend_title</div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
 <ul>
 <li>执行算术计算</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> prod_id,</div><div class="line">       quantity,</div><div class="line">       item_price,</div><div class="line">       quantity*item_price <span class="keyword">AS</span> expanded_price</div><div class="line"><span class="keyword">FROM</span> OrderItems</div><div class="line"><span class="keyword">WHERE</span> order_num = <span class="number">20008</span>;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> prod_id,</div><div class="line">       quantity,</div><div class="line">       item_price,</div><div class="line">       quantity*item_price <span class="keyword">AS</span> expanded_price</div><div class="line"><span class="keyword">FROM</span> OrderItems</div><div class="line"><span class="keyword">WHERE</span> order_num = <span class="number">20008</span>;</div></pre></td></tr></table></figure>
 <hr>
 <h2>使用函数处理数据</h2>
 <table>
@@ -916,7 +913,7 @@
 </tbody>
 </table>
 <p>关于SOUNDEX()，</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">SOUNDEX</span>(cust_contact) = <span class="keyword">SOUNDEX</span>(<span class="string">'Michael Green'</span>)</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">SOUNDEX</span>(cust_contact) = <span class="keyword">SOUNDEX</span>(<span class="string">'Michael Green'</span>)</div></pre></td></tr></table></figure>
 <p>【实测了一下，Michelle和Michael，Knuth和Kant的SOUNDEX值都是一样的，但是Bitch和Beach是不一样的，前者的SOUNDEX值是B320，后者则是B200……】</p>
 <hr>
 <h2>汇总数据</h2>
@@ -934,13 +931,13 @@
 <p>组合聚集函数</p>
 </li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_items,</div><div class="line">       <span class="keyword">MIN</span>(prod_price) <span class="keyword">AS</span> price_min,</div><div class="line">       <span class="keyword">MAX</span>(prod_price) <span class="keyword">AS</span> price_max,</div><div class="line">       ACG(prod_price) <span class="keyword">AS</span> price_avg</div><div class="line"><span class="keyword">FROM</span> Products;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_items,</div><div class="line">       <span class="keyword">MIN</span>(prod_price) <span class="keyword">AS</span> price_min,</div><div class="line">       <span class="keyword">MAX</span>(prod_price) <span class="keyword">AS</span> price_max,</div><div class="line">       ACG(prod_price) <span class="keyword">AS</span> price_avg</div><div class="line"><span class="keyword">FROM</span> Products;</div></pre></td></tr></table></figure>
 <hr>
 <h2>分组数据</h2>
 <ul>
 <li>创建分组</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_prods</div><div class="line"><span class="keyword">FROM</span> Products</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> vend_id</div><div class="line"></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		4</div><div class="line">FNG01		2</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_prods</div><div class="line"><span class="keyword">FROM</span> Products</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> vend_id</div><div class="line"></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		4</div><div class="line">FNG01		2</div><div class="line">*/</div></pre></td></tr></table></figure>
 <p>其中，GROUP BY后可以包含任意数目的列以进行更细致的数据分组，还可以在子句中嵌套分组。SELECT语句中的每一列都必须在GROUP BY子句中给出。包含NULL值的行会被作为一个分组返回。GROUP BY子句必须在WHERE子句之后，ORDER BY子句之前。</p>
 <ul>
 <li>
@@ -948,9 +945,9 @@
 <p>即规定包括哪些组，排除哪些组。</p>
 </li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div></pre></td></tr></table></figure>
 <p>这里不能用 WHERE替换HAVING，可以理解为 WHERE 在分组前进行过滤，故排除的行不包括在分组中，而 HAVING  	在数据分组后过滤。当然，两个子句并非不能同时存在，如：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> prod_price &gt;= <span class="number">4</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		2</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> prod_price &gt;= <span class="number">4</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		2</div><div class="line">*/</div></pre></td></tr></table></figure>
 <ul>
 <li>
 <p>分组和排序</p>
@@ -982,8 +979,8 @@
 <hr>
 <h2>使用子查询</h2>
 <p>子查询(Subquery)，即嵌套在其他查询中的查询。在需要多个SQL语句共同完成一个任务且他们之间存在递进关系时，可以使用类似于以下的用法：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> order_num <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_num</div><div class="line">                    <span class="keyword">FROM</span> OrderItems</div><div class="line">                    <span class="keyword">WHERE</span> prod_id = <span class="string">'RGAN01'</span>);</div></pre></td></tr></table></figure></p>
-<p>这其实就是将括号中的 SELECT order_num FROM OrderItems WHERE prod_id = 'RGAN01' 这一句的输出结果传递给外面的 WHERE 查询子句。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> order_num <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_num</div><div class="line">                    <span class="keyword">FROM</span> OrderItems</div><div class="line">                    <span class="keyword">WHERE</span> prod_id = <span class="string">'RGAN01'</span>);</div></pre></td></tr></table></figure>
+<p>这其实就是将括号中的 SELECT order_num FROM OrderItems WHERE prod_id = ‘RGAN01’ 这一句的输出结果传递给外面的 WHERE 查询子句。</p>
 ]]></content>
       
         <categories>
@@ -1005,50 +1002,50 @@
       <title><![CDATA[SQL Syntax(Ⅰ)]]></title>
       <url>http://gabrieldrapor.github.io/2017/04/22/170422_sql1/</url>
       <content type="html"><![CDATA[<p>这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。</p>
-<p>&lt;!--more --&gt;</p>
+<a id="more"></a>
 <h2>检索数据</h2>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... <span class="comment">--'\*' for all</span></div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... <span class="comment">--'\*' for all</span></div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
 <ul>
 <li>In SQL Server and Access,</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TOP [<span class="keyword">num</span>] column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TOP [<span class="keyword">num</span>] column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
 <ul>
 <li>In DB2,</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">FETCH</span> <span class="keyword">FIRST</span> [<span class="keyword">num</span>] <span class="keyword">ROWS</span> <span class="keyword">ONLY</span>;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">FETCH</span> <span class="keyword">FIRST</span> [<span class="keyword">num</span>] <span class="keyword">ROWS</span> <span class="keyword">ONLY</span>;</div></pre></td></tr></table></figure>
 <ul>
 <li>In Oracle,</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= [<span class="keyword">num</span>];</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= [<span class="keyword">num</span>];</div></pre></td></tr></table></figure>
 <ul>
 <li>In MySQL, MariaDB, PostgreSQL and SQLite</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">LIMIT</span> [<span class="keyword">num</span>] &#123;<span class="keyword">OFFSET</span> [<span class="keyword">num</span>]&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">LIMIT</span> [<span class="keyword">num</span>] &#123;<span class="keyword">OFFSET</span> [<span class="keyword">num</span>]&#125;;</div></pre></td></tr></table></figure>
 <ul>
 <li>Select distinct value</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> column_name</div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> column_name</div><div class="line"><span class="keyword">FROM</span> table_name;</div></pre></td></tr></table></figure>
 <ul>
 <li>Annotation</li>
 </ul>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Here is a comment</div><div class="line">SELECT column0 -- Here is also a comment</div><div class="line">FROM table_name;</div><div class="line">/*</div><div class="line">Also a comment~</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Here is a comment</div><div class="line">SELECT column0 -- Here is also a comment</div><div class="line">FROM table_name;</div><div class="line">/*</div><div class="line">Also a comment~</div><div class="line">*/</div></pre></td></tr></table></figure>
 <hr>
 <h2>排列检索数据</h2>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column0, column1, ...;</div><div class="line"><span class="comment">-- Also, you can use order numbers to represent certain column</span></div><div class="line"><span class="comment">-- Use 'DESC' or 'ASC' in the end to assigned the order direction</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column0, column1, ...;</div><div class="line"><span class="comment">-- Also, you can use order numbers to represent certain column</span></div><div class="line"><span class="comment">-- Use 'DESC' or 'ASC' in the end to assigned the order direction</span></div></pre></td></tr></table></figure>
 <hr>
 <h2>过滤数据</h2>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">column</span> = [<span class="keyword">value</span>];</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">column</span> = [<span class="keyword">value</span>];</div></pre></td></tr></table></figure>
 <hr>
 <h2>高级数据过滤</h2>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [clause] <span class="keyword">AND</span>/<span class="keyword">OR</span> [clause];</div><div class="line"><span class="comment">-- The priority of 'AND' is higher than 'OR' when they are used together</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [clause] <span class="keyword">AND</span>/<span class="keyword">OR</span> [clause];</div><div class="line"><span class="comment">-- The priority of 'AND' is higher than 'OR' when they are used together</span></div></pre></td></tr></table></figure>
 <ul>
-<li>Actually, 'OR' is same as 'IN'</li>
+<li>Actually, ‘OR’ is same as ‘IN’</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [column_name] <span class="keyword">IN</span> ([value1],[value2],...);</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> [column_name] <span class="keyword">IN</span> ([value1],[value2],...);</div></pre></td></tr></table></figure>
 <ul>
-<li>'NOT'</li>
+<li>‘NOT’</li>
 </ul>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> xxxx;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column0, column1,... </div><div class="line"><span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> xxxx;</div></pre></td></tr></table></figure>
 <hr>
 <h2>用通配符进行过滤</h2>
 <table>
@@ -1069,7 +1066,7 @@
 </tr>
 <tr>
 <td style="text-align:center">[]</td>
-<td style="text-align:center">指定一个字符集, 如 [JM] 匹配'J'和'M'（用&quot;^&quot;可以否定）</td>
+<td style="text-align:center">指定一个字符集, 如 [JM] 匹配’J’和’M’（用&quot;^&quot;可以否定）</td>
 </tr>
 </tbody>
 </table>
@@ -1094,16 +1091,16 @@
       <title><![CDATA[Machine Learning Notes 06]]></title>
       <url>http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/</url>
       <content type="html"><![CDATA[<h2>How biological neural network work</h2>
-<p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that's approximately how biological nerual network run.</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg&quot;&gt;</p>
+<p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg">
 <hr>
-<p>&lt;!--more --&gt;</p>
+<a id="more"></a>
 <h2>How artificial neural network work</h2>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/perceptron.jpg&quot; width=&quot;500&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/perceptron.jpg" width="500">
 <p>The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
-<p>And here's what a three-layer ann looks like,</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/3lann.jpg&quot; height=&quot;200&quot;&gt;</p>
-<p>The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, ..., even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that's why we need more).</p>
+<p>And here’s what a three-layer ann looks like,</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/3lann.jpg" height="200">
+<p>The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, …, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that’s why we need more).</p>
 <hr>
 <h2>Feedforward Propagation Algorithm</h2>
 <p>We obtain the output first, by:</p>
@@ -1113,13 +1110,13 @@
 <p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
 <hr>
 <h2>Back Propagation Algorithm</h2>
-<p>For the training set ${(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) }$, we first $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). Then we run the following loop:</p>
+<p>For the training set ${(x<sup>{(1)},y</sup>{(1)}),…,(x<sup>{(m)},y</sup>{(m)}) }$, we first $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). Then we run the following loop:</p>
 <p>For $i = 1$ to $m$:</p>
-<p>Set $a^{(1)}=x^{(i)}$</p>
-<p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,..,L$</p>
-<p>Using $y^{(i)}​$, compute $\delta^{L}=a^{(L)}-y^{(i)}​$</p>
-<p>Compute $\delta^{(L-1)}, \delta^{(L-2)}, ..., \color{red}{\delta^{(2)}}$</p>
-<p>$\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i}$</p>
+<p>Set $a<sup>{(1)}=x</sup>{(i)}$</p>
+<p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,…,L$</p>
+<p>Using $y^{(i)}​$, compute $\delta<sup>{L}=a</sup>{(L)}-y^{(i)}​$</p>
+<p>Compute $\delta^{(L-1)}, \delta^{(L-2)}, …, \color{red}{\delta^{(2)}}$</p>
+<p>$\Delta_{ij}<sup>{(l)}:=\Delta_{ij}</sup>{(l)} + a<sup>{(l)}_{j}\delta</sup>{l+1}_{i}$</p>
 <p>After that,</p>
 <p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
 <p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
@@ -1304,7 +1301,7 @@
       <url>http://gabrieldrapor.github.io/2017/01/01/170101_my2016/</url>
       <content type="html"><![CDATA[<p>  2016, 结束了。</p>
 <p>  在此谨记我在2016的所得。</p>
-<p>&lt;!--more --&gt;</p>
+<a id="more"></a>
 <h5>  技术上，</h5>
 <blockquote>
 <ul>
@@ -1347,45 +1344,45 @@
 <li>清空了微博，成功戒掉了用微博的恶习，变成只是偶尔看看；</li>
 <li>几乎是裸考的四级出乎意料地考了581，免修了一学期的英语课，还顺便收获了一个4.33；</li>
 <li>入了垂涎已久的Surface，虽然只是二手低配的Surface 3， 但毫无疑问这是我2016一整年最值得的一次消费；</li>
-<li>平时上学的时候也不太玩游戏，于是就花了非常多的时间在看剧上，看过/追过/补过的番/剧包括但不限于：《Mr.Robot》《Legal High》《Scorpin》《Elementary》《毛骗》《The Night Of》《S.H.I.E.L.D.》《The Flash》《The Big Bang Theory》《Silcon Valley》《West World》《Game of Thrones》《Black Mirror》《Legends of Tomorrow》《Friends》《逃げるは恥だが役に立つ》《Steins;Gate》......</li>
+<li>平时上学的时候也不太玩游戏，于是就花了非常多的时间在看剧上，看过/追过/补过的番/剧包括但不限于：《Mr.Robot》《Legal High》《Scorpin》《Elementary》《毛骗》《The Night Of》《S.H.I.E.L.D.》《The Flash》《The Big Bang Theory》《Silcon Valley》《West World》《Game of Thrones》《Black Mirror》《Legends of Tomorrow》《Friends》《逃げるは恥だが役に立つ》《Steins;Gate》…</li>
 <li>完全掉进了小众音乐（伪）的坑，开始越来越喜欢听赵雷、花粥、草东没有派对、燕池、好妹妹乐队和许许多多以前从来没有听过的歌手和组合的音乐；</li>
 <li>在YouTube上听穿了近些年岳云鹏和郭德纲（以及德云社）的几乎所有相声作品；</li>
 <li>用将近三个月的时间，顺利地拿到了C1驾照；</li>
 <li>开始一个人下馆子，一个人去电影院，一个人去看话剧；</li>
-<li>本来能有机会去Kcon黑客大会当志愿者，后由于各种原因没去，在秋天的时候去北航参加了CosCon，见识了一些新的东西，听到了一些不错的观点；
-&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/coscon.jpg&quot;&gt;</li>
+<li>本来能有机会去Kcon黑客大会当志愿者，后由于各种原因没去，在秋天的时候去北航参加了CosCon，见识了一些新的东西，听到了一些不错的观点；<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/coscon.jpg"></li>
 <li>作为NBA球迷：</li>
 </ul>
 <blockquote>
-<p>更多地观看赛事直播；
-开始翻看以前的录像，截录像中自己喜欢的片段并整理；
-开始喜欢看球评和战术分析相关的文章；
-开始欣赏以前注意不到的比赛细节；
-主动去了解阵地战术和跑位，收集各种采访视频和球员集锦；
-开始对高阶数据感兴趣；
-开始学会拒绝印象流和无脑吹或喷；
-开始关注更多球员的表现；
+<p>更多地观看赛事直播；<br>
+开始翻看以前的录像，截录像中自己喜欢的片段并整理；<br>
+开始喜欢看球评和战术分析相关的文章；<br>
+开始欣赏以前注意不到的比赛细节；<br>
+主动去了解阵地战术和跑位，收集各种采访视频和球员集锦；<br>
+开始对高阶数据感兴趣；<br>
+开始学会拒绝印象流和无脑吹或喷；<br>
+开始关注更多球员的表现；<br>
 另外，我有幸目睹了伟大的2015-2016赛季（60分谢幕战，402记3分，73胜，西决1-3逆转，总决赛历史上最伟大的以下克上，G7君临的勒布朗……）以及数位传奇巨星的退役；</p>
 </blockquote>
 <ul>
-<li>人生第一次上场打了5v5全场的比赛，球衣号码选的是我最喜欢的21号；
-&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/collegegame.jpg&quot;  /&gt;</li>
+<li>人生第一次上场打了5v5全场的比赛，球衣号码选的是我最喜欢的21号；<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/collegegame.jpg"></li>
 </ul>
 </blockquote>
 <hr>
-<p>  本来其实不那么想写这篇总结，因为我的2016和某位学长的同时期（<a href="http://aljun.me/post/15" target="_blank" rel="external">我与2015的故事</a>）相比，真的显得弱了很多，完全不值得一写，但考虑再三，觉得其实没有必要和任何人比较，只要和过去的自己比有进步了就可以了，所以还是来写了总结，就当是吹一波自己（其实也没啥好吹的）；
-  2016里，一个重要的变化是我探索世界的手段更加丰富了，我可以看得更远，知道得更多了；
-  2016，我知道了一些事情，想清楚了一些事情，也明白和更深刻地理解了一些事情；在旧的一年里，我割舍了一些东西，尝试了一些新的东西，获得了很多以前从未有过的人生体验；
-  我在2016所获得的成长，不如想象中的迅猛，但在近些年里算是不错的了，也还算是可以吧。
-  而且真心的要感谢关心过我的家人和朋友们，谢谢你们。
-&lt;br/&gt;</p>
+<p>  本来其实不那么想写这篇总结，因为我的2016和某位学长的同时期（<a href="http://aljun.me/post/15" target="_blank" rel="external">我与2015的故事</a>）相比，真的显得弱了很多，完全不值得一写，但考虑再三，觉得其实没有必要和任何人比较，只要和过去的自己比有进步了就可以了，所以还是来写了总结，就当是吹一波自己（其实也没啥好吹的）；<br>
+  2016里，一个重要的变化是我探索世界的手段更加丰富了，我可以看得更远，知道得更多了；<br>
+  2016，我知道了一些事情，想清楚了一些事情，也明白和更深刻地理解了一些事情；在旧的一年里，我割舍了一些东西，尝试了一些新的东西，获得了很多以前从未有过的人生体验；<br>
+  我在2016所获得的成长，不如想象中的迅猛，但在近些年里算是不错的了，也还算是可以吧。<br>
+  而且真心的要感谢关心过我的家人和朋友们，谢谢你们。<br>
+<br></p>
 <blockquote>
-<p>“Wer viel einst zu verkünden hat, schweigt viel in sich hinein. Wer einst den Blitz zu zünden hat, muß lange Wolke sein.”
-<strong>&quot;谁终将声震人间，必长久深自缄默；谁终将点燃闪电，必长久如云漂泊。&quot;</strong>    ----Nietzsche</p>
+<p>“Wer viel einst zu verkünden hat, schweigt viel in sich hinein. Wer einst den Blitz zu zünden hat, muß lange Wolke sein.”<br>
+<strong>“谁终将声震人间，必长久深自缄默；谁终将点燃闪电，必长久如云漂泊。”</strong>    ----Nietzsche</p>
 </blockquote>
 <h4>  <strong>2017，加油干吧。</strong></h4>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/WM2.png&quot;&gt;
-&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/WM1.png&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/WM2.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/WM1.png">
 ]]></content>
       
         <categories>
@@ -1409,16 +1406,16 @@
       <title><![CDATA[Machine Learning Notes 05]]></title>
       <url>http://gabrieldrapor.github.io/2016/12/02/161202_ml_notes5/</url>
       <content type="html"><![CDATA[<h2>Overfitting</h2>
-<p>Overfitting would cause the modle to perform poorly, like this:
-&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG&quot;&gt;</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG&quot;&gt;</p>
-<p>  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn't always work. Sometims we have too many features which cause that it's difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.</p>
-<p>&lt;!--more--&gt;</p>
+<p>Overfitting would cause the modle to perform poorly, like this:<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG"></p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG">
+<p>  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t always work. Sometims we have too many features which cause that it’s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.</p>
+<a id="more"></a>
 <hr>
 <h2>Two options to solve</h2>
 <p><strong>1.Reduce the number of features</strong></p>
 <blockquote>
-<p>Manually select which features to keep or throw out
+<p>Manually select which features to keep or throw out<br>
 Model selection algorithm (help ue to decide which features to keep or throw out automatically)</p>
 </blockquote>
 <blockquote>
@@ -1426,7 +1423,7 @@ Model selection algorithm (help ue to decide which features to keep or throw out
 </blockquote>
 <p><strong>2.Regularization</strong></p>
 <blockquote>
-<p>Keep all the features, but reduce magnitude/values of parameters <span>$\theta_{j}$</span><!-- Has MathJax -->.
+<p>Keep all the features, but reduce magnitude/values of parameters <span>$\theta_{j}$</span><!-- Has MathJax -->.<br>
 Works well when we have a lot of features, each of which contributes a bit to predicting <span>$y$</span><!-- Has MathJax -->.</p>
 </blockquote>
 <p>So we can see regularization is a better choice mostly.</p>
@@ -1435,43 +1432,43 @@ Works well when we have a lot of features, each of which contributes a bit to pr
 <ul>
 <li>First, consider this. If our hypothesis is like this:</li>
 </ul>
-<p>&lt;center&gt;<span>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2}
-+ \theta_{3}x^3 + \theta_{4}x^4$$</span><!-- Has MathJax -->&lt;/center&gt;</p>
-<p>and if we penalize and make <span>$\theta_{3}$</span><!-- Has MathJax --> and <span>$\theta_{4}$</span><!-- Has MathJax --> really small, it means that <span>$\theta_{3}\approx0,\theta_{4}\approx0$</span><!-- Has MathJax -->, that is like as if we 're getting rid of these two terms, then we would find that
-&lt;center&gt;<span>$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2}$</span><!-- Has MathJax -->&lt;/center&gt;</p>
+<center><span>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2}
++ \theta_{3}x^3 + \theta_{4}x^4$$</span><!-- Has MathJax --></center>
+<p>and if we penalize and make <span>$\theta_{3}$</span><!-- Has MathJax --> and <span>$\theta_{4}$</span><!-- Has MathJax --> really small, it means that <span>$\theta_{3}\approx0,\theta_{4}\approx0$</span><!-- Has MathJax -->, that is like as if we 're getting rid of these two terms, then we would find that</p>
+<center><span>$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2}$</span><!-- Has MathJax --></center>
 <hr>
 <h2>Regularization</h2>
-<p>“…having <strong>smaller values of the parameters</strong> corresponds to usually <strong>smoother functions as well for the simpler</strong>. And which are therefore, also, <strong>less prone to overfitting</strong>. ”
-What we should do is to modify the cost function to shrink all of the parameters like this:
-&lt;center&gt;<span>$J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}$</span><!-- Has MathJax -->&lt;/center&gt;</p>
-<p>And the blue terms is called <strong>regularization terms</strong>, <span>$\lambda$</span><!-- Has MathJax --> is called <strong>regularization parameters</strong> which is used to trade off between two different goals:
+<p>“…having <strong>smaller values of the parameters</strong> corresponds to usually <strong>smoother functions as well for the simpler</strong>. And which are therefore, also, <strong>less prone to overfitting</strong>. ”<br>
+What we should do is to modify the cost function to shrink all of the parameters like this:</p>
+<center><span>$J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}$</span><!-- Has MathJax --></center>
+<p>And the blue terms is called <strong>regularization terms</strong>, <span>$\lambda$</span><!-- Has MathJax --> is called <strong>regularization parameters</strong> which is used to trade off between two different goals:</p>
 <span>$$\begin{cases}
 1. \sum(h_{\theta}(x^{(i)})-y^{(i)})^{2}\:-\:fit\:well\\
 2. \sum{\theta_{j}^{2}}\:-\:keep\:the\:parameters\:small
-   \end{cases}$$</span><!-- Has MathJax --></p>
-<p>By the way, we don't penalize <span>$\theta_{0}$</span><!-- Has MathJax --> by convention.
+   \end{cases}$$</span><!-- Has MathJax -->
+<p>By the way, we don’t penalize <span>$\theta_{0}$</span><!-- Has MathJax --> by convention.<br>
 Besides, about the regularization parameters <span>$\lambda$</span><!-- Has MathJax -->, if <span>$\lambda$</span><!-- Has MathJax --> is too large, it would cause underfitting, and if <span>$\lambda$</span><!-- Has MathJax --> is too small, it may cause the useless regularization.</p>
 <hr>
 <h2>Regularized linear regression</h2>
 <ul>
-<li>Gradient descent:
-Old:
-   Repeat{
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,...,n)$</span><!-- Has MathJax -->
+<li>Gradient descent:<br>
+Old:<br>
+   Repeat{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,...,n)$</span><!-- Has MathJax --><br>
    }</li>
 </ul>
-<p>&lt;font color=blue&gt;New:&lt;/font&gt;
-   &lt;font color=blue&gt;Repeat{&lt;/font&gt;
-      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax -->
-      <span>${\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax -->
-   &lt;font color=blue&gt;}&lt;/font&gt;</p>
+<p><font color="blue">New:</font><br>
+   <font color="blue">Repeat{</font><br>
+      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax --><br>
+      <span>${\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax --><br>
+   <font color="blue">}</font></p>
 <hr>
 <h2>Regularization logistic regression</h2>
 <p>   Cost function <span>$J(\theta)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x)){\color{Blue} {+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}}}$</span><!-- Has MathJax --></p>
-<p>   &lt;font color=blue&gt;Repeat{&lt;/font&gt;
-      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax -->
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax -->
-   &lt;font color=blue&gt;}&lt;/font&gt;
+<p>   <font color="blue">Repeat{</font><br>
+      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax --><br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax --><br>
+   <font color="blue">}</font><br>
 Remember that <span>$h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$</span><!-- Has MathJax --></p>
 ]]></content>
       
@@ -1774,24 +1771,24 @@ More complex;</p>
       <title><![CDATA[Machine Learning Notes 01]]></title>
       <url>http://gabrieldrapor.github.io/2016/10/10/161010_ml_notes1/</url>
       <content type="html"><![CDATA[<h2>Mordern Defination:</h2>
-<p><blockquote><p>  “A computer program is said to <strong>learn</strong> from experience E with respect to some task T and some performance measure P if its performance on T, as measured by P, improves with experience E.”</p>
-<footer><strong>——Tom Mitchell(1998)</strong></footer></blockquote></p>
+<blockquote><p>  “A computer program is said to <strong>learn</strong> from experience E with respect to some task T and some performance measure P if its performance on T, as measured by P, improves with experience E.”</p>
+<footer><strong>——Tom Mitchell(1998)</strong></footer></blockquote>
 <hr>
 <h2>Types of problems and tasks:</h2>
 <p>“<strong>Supervised learning</strong> is the machine learning task of inferring a function from <strong>labeled</strong> training data.The training data consist of a set of training examples.”</p>
 <blockquote>
 <ul>
 <li>Regression</li>
-<li>Classification
+<li>Classification<br>
 ……</li>
 </ul>
 </blockquote>
-<p>&lt;br&gt;</p>
+<br>
 <p>“<strong>Unsupervised learning</strong> is the machine learning task of inferring a function to describe hidden <strong>structure</strong> from unlabeled data.&quot;</p>
 <blockquote>
 <ul>
 <li>Clustering</li>
-<li>...</li>
+<li>…</li>
 </ul>
 </blockquote>
 <p>Besides, there are also <strong>Semi-supervised Learnings</strong> and <strong>Reinforcement learning</strong>.</p>
@@ -2088,51 +2085,33 @@ More complex;</p>
 <blockquote>
 <p><strong>最大的子序列和问题</strong>：给定整数A1，A2，……，AN（可能有负数），求∑(k=i)^j A_k  的最大值（为方便起见，如果所有整数均为负数，则最大子序列和为0）</p>
 </blockquote>
-<p>&lt;!--more--&gt;</p>
-<p><strong>• 算法3</strong>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//T(N)=O(N log N) </span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">MaxSubSum</span><span class="params">( <span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> Left,<span class="keyword">int</span> Right )</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> MaxLeftSum,MaxRightSum;</div><div class="line">	<span class="keyword">int</span> MaxLeftBorderSum,MaxRightBorderSum;</div><div class="line">	<span class="keyword">int</span> LeftBorderSum,RightBorderSum;</div><div class="line">	<span class="keyword">int</span> Center,i;</div><div class="line"></div><div class="line">	<span class="keyword">if</span>(Left==Right)   <span class="comment">//Base Case,即'基准情形'</span></div><div class="line">	<span class="keyword">if</span> (A[Left]&gt;<span class="number">0</span>)</div><div class="line">		<span class="keyword">return</span> A[Left];</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">	Center = (Left + Right)/<span class="number">2</span>;</div><div class="line">	MaxLeftSum=MaxSubSum(A,Left,Center);<span class="comment">//左边中最大的子序列和</span></div><div class="line">	MaxRightSum=MaxSubSum(A,Center+<span class="number">1</span>,Right);<span class="comment">//右边中最大的子序列和</span></div><div class="line">	MaxLeftBorderSum = <span class="number">0</span>; LeftBorderSum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=Center;i&gt;=Left;i--)<span class="comment">//从中心开始向左找最大子序列和</span></div><div class="line">	&#123;</div><div class="line">		LeftBorderSum+=A[i];</div><div class="line">		<span class="keyword">if</span>(LeftBorderSum&gt;MaxLeftBorderSum)</div><div class="line">		MaxLeftBorderSum= LeftBorderSum;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	MaxRightBorderSum = <span class="number">0</span>; RightBorderSum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=Center+<span class="number">1</span>;i&lt;=Right;i+　+)<span class="comment">//从中心开始向右找最大子序列和</span></div><div class="line">	&#123;</div><div class="line">		RightBorderSum+=A[i];</div><div class="line">		<span class="keyword">if</span>(RightBorderSum&gt;MaxRightBorderSum)</div><div class="line">		MaxRightBorderSum=RightBorderSum;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum + MaxRightBorderSum);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubsequenceSum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> MaxSubSum(A , <span class="number">0</span> , N - <span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (a&gt;b)</div><div class="line">	<span class="keyword">if</span> (a&gt;c) <span class="keyword">return</span> a;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> c;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	<span class="keyword">if</span> (c&gt;b) <span class="keyword">return</span> c;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> b;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><strong>• 算法3</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//T(N)=O(N log N) </span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">MaxSubSum</span><span class="params">( <span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> Left,<span class="keyword">int</span> Right )</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> MaxLeftSum,MaxRightSum;</div><div class="line">	<span class="keyword">int</span> MaxLeftBorderSum,MaxRightBorderSum;</div><div class="line">	<span class="keyword">int</span> LeftBorderSum,RightBorderSum;</div><div class="line">	<span class="keyword">int</span> Center,i;</div><div class="line"></div><div class="line">	<span class="keyword">if</span>(Left==Right)   <span class="comment">//Base Case,即'基准情形'</span></div><div class="line">	<span class="keyword">if</span> (A[Left]&gt;<span class="number">0</span>)</div><div class="line">		<span class="keyword">return</span> A[Left];</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">	Center = (Left + Right)/<span class="number">2</span>;</div><div class="line">	MaxLeftSum=MaxSubSum(A,Left,Center);<span class="comment">//左边中最大的子序列和</span></div><div class="line">	MaxRightSum=MaxSubSum(A,Center+<span class="number">1</span>,Right);<span class="comment">//右边中最大的子序列和</span></div><div class="line">	MaxLeftBorderSum = <span class="number">0</span>; LeftBorderSum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=Center;i&gt;=Left;i--)<span class="comment">//从中心开始向左找最大子序列和</span></div><div class="line">	&#123;</div><div class="line">		LeftBorderSum+=A[i];</div><div class="line">		<span class="keyword">if</span>(LeftBorderSum&gt;MaxLeftBorderSum)</div><div class="line">		MaxLeftBorderSum= LeftBorderSum;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	MaxRightBorderSum = <span class="number">0</span>; RightBorderSum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=Center+<span class="number">1</span>;i&lt;=Right;i+　+)<span class="comment">//从中心开始向右找最大子序列和</span></div><div class="line">	&#123;</div><div class="line">		RightBorderSum+=A[i];</div><div class="line">		<span class="keyword">if</span>(RightBorderSum&gt;MaxRightBorderSum)</div><div class="line">		MaxRightBorderSum=RightBorderSum;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum + MaxRightBorderSum);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubsequenceSum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> MaxSubSum(A , <span class="number">0</span> , N - <span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (a&gt;b)</div><div class="line">	<span class="keyword">if</span> (a&gt;c) <span class="keyword">return</span> a;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> c;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	<span class="keyword">if</span> (c&gt;b) <span class="keyword">return</span> c;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
 <p><strong>• 更简单有效的算法4</strong></p>
-<p><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubsequenceSum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> ThisSum,MaxSum,j;</div><div class="line">	</div><div class="line">	ThisSum=MaxSum=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;N;j++)</div><div class="line">	&#123;</div><div class="line">		ThisSum+=A[j];</div><div class="line">		<span class="keyword">if</span>(ThisSum &gt; MaxSum)</div><div class="line">			MaxSum = ThisSum;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ThisSum &lt; <span class="number">0</span>)  <span class="comment">//这一步是关键，如果前j项和是负的，那就可以扔掉不要了</span></div><div class="line">			ThisSum=<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">		<span class="keyword">return</span> MaxSum;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubsequenceSum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> ThisSum,MaxSum,j;</div><div class="line">	</div><div class="line">	ThisSum=MaxSum=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;N;j++)</div><div class="line">	&#123;</div><div class="line">		ThisSum+=A[j];</div><div class="line">		<span class="keyword">if</span>(ThisSum &gt; MaxSum)</div><div class="line">			MaxSum = ThisSum;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ThisSum &lt; <span class="number">0</span>)  <span class="comment">//这一步是关键，如果前j项和是负的，那就可以扔掉不要了</span></div><div class="line">			ThisSum=<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">		<span class="keyword">return</span> MaxSum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>这种算法的附带优点是，只需要扫描一次数据，一旦A[i]被扫入并被处理，它就不再需要被记忆【5/13:数据赋值等操作少】。在任何时刻，算法都能对它已经读入的数据给出子序列问题的正确答案（其他算法不具有这个特性）【5/13:也就是说，假如你输入的是10个数据，在你输入到任何一个的时候，在这种情况下的解已经被算出来了】。具有这种特性的算法叫做<em>联机算法</em>（online algorithm）。</p>
 </blockquote>
+<p>​</p>
 <p><strong>2.4.4运行时间中的对数</strong></p>
 <blockquote>
-<p>除分治算法外，可将对数最常出现的规律概括为下列一般法则：如果一个算法用常数时间（O（1））将问题的大小削减为其一部分（通常是1/2），那么该算法就是O（log N）。另一方面，如果使用常数时间只是把问题减少一个常数（如将问题减少1），那么这种算法就是O（N）的。
+<p>除分治算法外，可将对数最常出现的规律概括为下列一般法则：如果一个算法用常数时间（O（1））将问题的大小削减为其一部分（通常是1/2），那么该算法就是O（log N）。另一方面，如果使用常数时间只是把问题减少一个常数（如将问题减少1），那么这种算法就是O（N）的。<br>
 【5/15:可以理解为就是一个循环中，如果这个算法本身能够自己削减循环次数的话，那么就会从O（N）降到O（log N）】</p>
 </blockquote>
-<p><strong>• 对分算法</strong></p>
-<p><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//T(N)=O（log N）</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BinarySearch</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> x,<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> Low,Mid,High;</div><div class="line">	Low=<span class="number">0</span>;High=n<span class="number">-1</span>;</div><div class="line">	<span class="keyword">while</span>(Low &lt;= High)</div><div class="line">	&#123;</div><div class="line">		Mid = (Low+High) /<span class="number">2</span>;</div><div class="line">   	       <span class="keyword">if</span>(A[Mid]&lt;x)</div><div class="line">			Low=Mid+<span class="number">1</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(A[Mid]&gt; x)</div><div class="line">		High=Mid<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> Mid;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> NotFound;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>它提供了在O（log N）时间内的Find（查找）操作。访问次数少，而如果是顺序查找的话就会需要多很多的访问次数。</p>
-<p><strong>• 欧几里德算法</strong>	
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">Gcd</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> M,<span class="keyword">unsigned</span> <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> Rem;</div><div class="line">	<span class="keyword">while</span>( N&gt;<span class="number">0</span> )</div><div class="line">	&#123;</div><div class="line">		Rem = M % N;</div><div class="line">		M = N;</div><div class="line">		N = Rem;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> M;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>定理2.1</strong>：如果M &gt; N , 则M mod N &lt; M/2。T（N）=O（log N） 。</p>
-<p><strong>• 幂运算</strong></p>
-<pre><code class="language-c">	//T(N)=O(log N)
-	long int Pow(int X,unsigned int N)
-	{
-		if( N == 0 )
-			return 1;
-		if( N == 1 )    /**接下来的两行也可以不写**/
-			return X;
-		if( IsEven( N ) )
-			return Pow( X * X, N / 2 );
-		/**
-		以下的修改都是不可取的:
-		return Pow( Pow( X, 2), N / 2);
-		return Pow( Pow( X, N / 2), 2);
-		-以上这两种会产生无限循环，导致程序崩溃
-		return Pow( X, N / 2)* Pow(X, N / 2 );
-		-这种影响程序的效率【运行时间应该是O（N）(?)】
-		**/
-		else
-			return Pow( X * X, N / 2 ) * N;
-		/**
-		如果不写N==1那两行的话，上面这行还可以写成
-		return Pow(X,N-1)*X;
-		**/
-	}
-</code></pre>
+<p><strong>• 对分算法</strong><br>
+​</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//T(N)=O（log N）</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BinarySearch</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[], <span class="keyword">int</span> x,<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> Low,Mid,High;</div><div class="line">	Low=<span class="number">0</span>;High=n<span class="number">-1</span>;</div><div class="line">	<span class="keyword">while</span>(Low &lt;= High)</div><div class="line">	&#123;</div><div class="line">		Mid = (Low+High) /<span class="number">2</span>;</div><div class="line">   	       <span class="keyword">if</span>(A[Mid]&lt;x)</div><div class="line">			Low=Mid+<span class="number">1</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(A[Mid]&gt; x)</div><div class="line">		High=Mid<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> Mid;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> NotFound;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它提供了在O（log N）时间内的Find（查找）操作。访问次数少，而如果是顺序查找的话就会需要多很多的访问次数。<br>
+​	<br>
+<strong>• 欧几里德算法</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">Gcd</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> M,<span class="keyword">unsigned</span> <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> Rem;</div><div class="line">	<span class="keyword">while</span>( N&gt;<span class="number">0</span> )</div><div class="line">	&#123;</div><div class="line">		Rem = M % N;</div><div class="line">		M = N;</div><div class="line">		N = Rem;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> M;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>定理2.1</strong>：如果M &gt; N , 则M mod N &lt; M/2。T（N）=O（log N） 。<br>
+​	<br>
+<strong>• 幂运算</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//T(N)=O(log N)</span></div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">int</span> <span class="title">Pow</span><span class="params">(<span class="keyword">int</span> X,<span class="keyword">unsigned</span> <span class="keyword">int</span> N)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>( N == <span class="number">0</span> )</div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>( N == <span class="number">1</span> )    <span class="comment">/**接下来的两行也可以不写**/</span></div><div class="line">		<span class="keyword">return</span> X;</div><div class="line">	<span class="keyword">if</span>( IsEven( N ) )</div><div class="line">		<span class="keyword">return</span> Pow( X * X, N / <span class="number">2</span> );</div><div class="line">	<span class="comment">/**</span></div><div class="line">	以下的修改都是不可取的:</div><div class="line">	return Pow( Pow( X, 2), N / 2);</div><div class="line">	return Pow( Pow( X, N / 2), 2);</div><div class="line">	-以上这两种会产生无限循环，导致程序崩溃</div><div class="line">	return Pow( X, N / 2)* Pow(X, N / 2 );</div><div class="line">	-这种影响程序的效率【运行时间应该是O（N）(?)】</div><div class="line">	**/</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> Pow( X * X, N / <span class="number">2</span> ) * N;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	如果不写N==1那两行的话，上面这行还可以写成</div><div class="line">	return Pow(X,N-1)*X;</div><div class="line">	**/</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>“有时候看一看程序能够进行多大的调整而不影响其正确性倒是很有意思的”</strong></p>
 ]]></content>
       
@@ -2191,63 +2170,63 @@ More complex;</p>
     <entry>
       <title><![CDATA[jsp搭建JEECMS]]></title>
       <url>http://gabrieldrapor.github.io/2016/05/03/160503_jsp/</url>
-      <content type="html"><![CDATA[<p><strong>架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0</strong>
-&lt;!--more--&gt;
-*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
+      <content type="html"><![CDATA[<p><strong>架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0</strong></p>
+<a id="more"></a>
+<p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
 <ul>
 <li>
-<p>从http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html 下载JDK，并安装。并配置好环境变量。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image078.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image080.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image081.png&gt;</p>
+<p>从http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html 下载JDK，并安装。并配置好环境变量。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image078.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image080.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image081.png"></p>
 </li>
 <li>
-<p>从官方http://tomcat.apache.org/下载tomcat压缩包
-下载之后解压
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image083.png&gt;</p>
+<p>从官方http://tomcat.apache.org/下载tomcat压缩包<br>
+下载之后解压<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image083.png"></p>
 </li>
 <li>
-<p>打开apache-tomcat-9.0.0.M4\bin目录下的start.bat
-出现的对话框如果没有自动关闭，且最后一行为Server startup in xxx ms，说明服务器搭建成功(如图)
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image085.png&gt;</p>
+<p>打开apache-tomcat-9.0.0.M4\bin目录下的start.bat<br>
+出现的对话框如果没有自动关闭，且最后一行为Server startup in xxx ms，说明服务器搭建成功(如图)<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image085.png"></p>
 </li>
 <li>
-<p>打开浏览器，访问localhost:8080，出现如图界面说明成功了
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image087.png&gt;</p>
+<p>打开浏览器，访问localhost:8080，出现如图界面说明成功了<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image087.png"></p>
 </li>
 <li>
-<p>从官网http://www.jeecms.com/ 下载jeecms压缩包，下载之后解压
-将其中ROOT目录替换webapps下的ROOT目录
-重新启动服务器，在浏览器中访问localhost:8080，出现如图界面。说明配置正确了。
-勾选“我已经阅读并同意此协议”，点击“下一步”
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image089.png&gt;</p>
+<p>从官网http://www.jeecms.com/ 下载jeecms压缩包，下载之后解压<br>
+将其中ROOT目录替换webapps下的ROOT目录<br>
+重新启动服务器，在浏览器中访问localhost:8080，出现如图界面。说明配置正确了。<br>
+勾选“我已经阅读并同意此协议”，点击“下一步”<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image089.png"></p>
 </li>
 <li>
-<p>之后会出现如图界面，填写相应信息即可。
-点击“提交”
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image091.png&gt;
-此时会发现服务器报错了（如图），错误代码500。
-&lt;img  src=http://7xugq7.com1.z0.glb.clouddn.com/image094.png&gt;
-参考http://stackoverflow.com/questions/17484764/java-lang-classnotfoundexception-com-mysql-jdbc-driver-in-eclipse 可以得知是连接器出了问题，应该是MySQL与服务器没有连接好。
-于是我们需要从https://dev.mysql.com/downloads/connector/j/下载Connector，下载好之后解压，将其中的mysql-connector-java-5.1.38-bin.jar 放到Tomcat目录下的lib目录中。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image093.png&gt;</p>
+<p>之后会出现如图界面，填写相应信息即可。<br>
+点击“提交”<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image091.png"><br>
+此时会发现服务器报错了（如图），错误代码500。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image094.png"><br>
+参考http://stackoverflow.com/questions/17484764/java-lang-classnotfoundexception-com-mysql-jdbc-driver-in-eclipse 可以得知是连接器出了问题，应该是MySQL与服务器没有连接好。<br>
+于是我们需要从https://dev.mysql.com/downloads/connector/j/下载Connector，下载好之后解压，将其中的mysql-connector-java-5.1.38-bin.jar 放到Tomcat目录下的lib目录中。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image093.png"></p>
 </li>
 <li>
-<p>重启Tomcat，重新提交数据库信息，然后会出现如下图的界面。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image096.png&gt;</p>
+<p>重启Tomcat，重新提交数据库信息，然后会出现如下图的界面。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image096.png"></p>
 </li>
 <li>
-<p>按照指示再次重启Tomcat，访问localhost:8080，可以看到如图界面，说明搭建成功。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image098.png&gt;</p>
+<p>按照指示再次重启Tomcat，访问localhost:8080，可以看到如图界面，说明搭建成功。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image098.png"></p>
 </li>
 <li>
 <p>可以登陆管理员账户，账号为admin，密码为password。</p>
 </li>
 </ul>
 <ul>
-<li>还可以尝试后台登陆。访问http://localhost:8080/jeeadmin/jeecms/login.do ，可以看到如图界面。输入账号密码。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image102.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image104.png&gt;</li>
+<li>还可以尝试后台登陆。访问http://localhost:8080/jeeadmin/jeecms/login.do ，可以看到如图界面。输入账号密码。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image102.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image104.png"></li>
 </ul>
 ]]></content>
       
@@ -2272,22 +2251,22 @@ More complex;</p>
       <title><![CDATA[ASP.NET 搭建 Discuz! NT]]></title>
       <url>http://gabrieldrapor.github.io/2016/05/03/160503_asp/</url>
       <content type="html"><![CDATA[<p><strong>架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express</strong></p>
-<p>&lt;!--more--&gt;</p>
+<a id="more"></a>
 <p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
 <h5>1.配置IIS。</h5>
 <p>   IIS是我们的服务器应用程序，我们首先需要打开它。</p>
 <ul>
 <li>首先在控制面板-程序和功能-打开或关闭Windows功能（如图），勾选“Internet Information Services可承载的Web核心”，“Internet信息服务”。</li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image004.png&quot;&gt;</p>
+   <img src="http://7xugq7.com1.z0.glb.clouddn.com/image004.png">
 <p>​</p>
 <ul>
 <li>在管理工具中找到“Internet 信息服务(IIS)管理器”，打开它，在左侧的“连接”栏下面找“个人电脑名&gt;网站”，右键点击网站，选择“添加网站”（如图）</li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image001.png&quot;&gt;</p>
+ <img src="http://7xugq7.com1.z0.glb.clouddn.com/image001.png">
 <p>在弹出的对话框中，填写必要信息。</p>
-<p>&lt;!--more--&gt;</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image005.png&quot;&gt;</p>
+<!--more-->
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image005.png">
 <p>​</p>
 <pre><code>网站名称----给你的网站起个名字,如这里的&quot;SNC_ASP.NET&quot;
 
@@ -2297,7 +2276,7 @@ More complex;</p>
 
 端口----默认是80，如果有冲突可以自行修改。查看当前系统所占用的端口可以打开cmd，输入指令“netstat -a”查询（如图）
 </code></pre>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image007.png&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image007.png"> 
 <ul>
 <li>
 <p>查看IIS的主界面，找到“默认文档”，打开。</p>
@@ -2306,8 +2285,8 @@ More complex;</p>
 <p>在打开的界面中，右键选择添加，添加名称为index.aspx，否则搭建服务器之后由于服务器不认识aspx的首页而打不开它。</p>
 </li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image009.png&quot;&gt;</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image011.png&quot;&gt;</p>
+ <img src="http://7xugq7.com1.z0.glb.clouddn.com/image009.png">
+ <img src="http://7xugq7.com1.z0.glb.clouddn.com/image011.png">
 <hr>
 <h5>2.配置SQL Server</h5>
 <p>从https://www.microsoft.com/zh-CN/download/details.aspx?id=42299 下载 Microsoft® SQL Server® 2014 Express，只需下载	“ExpressAndTools 64BIT\SQLEXPRWT_你系统位数_CHS.exe”即可。下载完之后打开，选择提取目录，等待解压。</p>
@@ -2319,78 +2298,78 @@ More complex;</p>
 <ul>
 <li>在“服务器配置”中，需要对SQL Server数据库选择一个用户，可以添加系统中的用户，填写对应的密码。如图。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image013.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image013.png">
 <ul>
 <li>在“数据库引擎配置”中，最好选择混合模式，单独设置一个SQL Server系统管理员账户，否则在后面关联用户的时候可能会遇到麻烦。</li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image015.png&quot;&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image019.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image015.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image019.png">
 <p>完成安装后，打开SQL Server 2014 Management Studio，连接到你的服务器。</p>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image018.png&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image018.png">
 <p>这里可以选择Windows 身份验证，也可以选择SQL Server身份验证。然后点击“连接”。</p>
 <p>连接后，在右侧的对象资源管理器中，找到“数据库，右键单击，选择“新建数据库”，填写数据库名称，如dnt，然后设置所有者，可以直接选sa即可。</p>
-<p>&lt;figure class=&quot;half&quot;&gt;</p>
+<figure class="half">
 <pre><code>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image021.png&quot;&gt;
 
 &lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image019.png&gt;
 </code></pre>
-<p>&lt;/figure&gt;</p>
+</figure>
 <hr>
 <h5>3.安装Discuz！NT。</h5>
 <p>从官网 http://www.comsenz.com/products/nt 下载Discuz！NT压缩包，将其解压，</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image022.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image022.png">
 <p>打开readme目录下的catalog.html可以看见官方所给出的介绍页面，其中就包括了安装指南</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image023.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image023.png">
 <p>接下来，我们只需按照安装指南所给的步骤一步步进行</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image026.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image026.png">
 <ul>
 <li>这里特别注意划红线的部分，是把upload_files目录里的东西放到服务器的根目录下而不是把upload_files文件夹整个放进服务器根目录。如图。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image028.png&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image032.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image028.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image032.png">
 <ul>
 <li>我使用的系统是WIN7，但依旧需要修改目录的权限，右键-属性-安全-编辑就可以编辑用户权限了。在IIS管理器中也可以对目录的权限进行设置。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image030.png&gt;</p>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image033.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image030.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image033.png"> 
 <ul>
 <li>按照教程要求，我们在浏览器地址栏中输入应输入的内容，然后发现了如下的报错。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image034.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image034.png">
 <ul>
 <li>通过阅读错误信息和查看根目录下的web.config配置文件，我们可以大概了解到问题出在Discuz!NT没有获得接管权，而在配置文件中也没有对相关权限的设置。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image036.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image036.png">
 <ul>
 <li>此时我们应该做的是，打开控制面板-Windows功能，在应用程序开发功能目录下将下面的ASP.NET功能勾选上。系统会自动将需要的其他功能自动勾选上。</li>
 </ul>
-<p>&lt;figure class=&quot;half&quot;&gt;</p>
+<figure class="half">
 <pre><code>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/image037.png&quot;&gt;
 
 &lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image039.png&gt;
 </code></pre>
-<p>&lt;/figure&gt;</p>
+</figure>
 <ul>
 <li>再次运行安装脚本，即访问http://您的域名/install/index.aspx ，会看到如图的界面。 选择&quot;接受&quot;，点击“下一步”。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image041.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image041.png">
 <ul>
 <li>通过环境监测后，需要填写数据库信息，填写刚才创建的数据库名称，管理员账号和密码，在数据库服务器一项中填写自己的SQL Server服务器名称。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image045.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image045.png">
 <p>点击下一步。</p>
 <ul>
 <li>在出现的“论坛设置信息”界面中，自行设定管理员名称和密码。然后再次点击下一步。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image043.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image043.png">
 <ul>
 <li>然后会出现如图界面。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image047.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image047.png">
 <ul>
 <li>点击”进入论坛“，可以看到论坛的界面，说明搭建成功。可以尝试登陆管理员账号，也可以通过本机ip访问论坛。</li>
 </ul>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image049.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image049.png">
 <pre><code> 
 </code></pre>
 ]]></content>
@@ -2416,7 +2395,7 @@ More complex;</p>
       <title><![CDATA[php搭建WordPress]]></title>
       <url>http://gabrieldrapor.github.io/2016/05/03/160503-php/</url>
       <content type="html"><![CDATA[<p><strong>架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20</strong></p>
-<p>&lt;!--more--&gt;</p>
+<a id="more"></a>
 <p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
 <h5>1．安装Apache，MySQL和php</h5>
 <p>不多赘述，但需要注意的是：</p>
@@ -2427,36 +2406,36 @@ More complex;</p>
 </ul>
 <h5>2.在Apache中添加php模块</h5>
 <ul>
-<li>打开apache安装目录下conf目录中的httpd.conf，具体方法参照http://php.net/manual/zh/install.windows.apache2.php ，我采用的是添加cgi模块的方式，添加的部分如右图
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image052.png&gt;</li>
+<li>打开apache安装目录下conf目录中的httpd.conf，具体方法参照http://php.net/manual/zh/install.windows.apache2.php ，我采用的是添加cgi模块的方式，添加的部分如右图<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image052.png"></li>
 </ul>
 <h5>3.在PHP中加载MySQL相关的扩展程序</h5>
-<p>需要在php.ini配置文件中将extension_dir = &quot;ext&quot;和extension=php_mysql.dll前的分号去掉，即取消这两行的注释。这一步的目的可以理解为是将php和MySQL相连。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image056.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image054.png&gt;</p>
+<p>需要在php.ini配置文件中将extension_dir = &quot;ext&quot;和extension=php_mysql.dll前的分号去掉，即取消这两行的注释。这一步的目的可以理解为是将php和MySQL相连。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image056.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image054.png"></p>
 <h5>4.从WordPress官网https://cn.wordpress.org/下载WordPress的压缩包，解压，将其放在服务器根目录下或者在httpd.conf中将目录设为这个目录。</h5>
-<p>&lt;!--more--&gt;</p>
+<!--more-->
 <h5>5.配置MySQL</h5>
-<p>打开MySQL目录下的bin文件夹，按住shift右键单击空白处打开命令行。输入mysql –u 用户名 –p，然后按回车输入你的密码。如图。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image058.png&gt;
-成功登陆之后，我们需要创建一个新的数据库，指令为”CREATE DATABASE 数据库名;”，注意最后有分号。如下图。创建成功后可以通过指令“SHOW DATABASES;”查看当前所有数据库。如右图。更多SQL指令可以参考http://c.biancheng.net/cpp/u/mysql/
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image062.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image060.png&gt;</p>
+<p>打开MySQL目录下的bin文件夹，按住shift右键单击空白处打开命令行。输入mysql –u 用户名 –p，然后按回车输入你的密码。如图。<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image058.png"><br>
+成功登陆之后，我们需要创建一个新的数据库，指令为”CREATE DATABASE 数据库名;”，注意最后有分号。如下图。创建成功后可以通过指令“SHOW DATABASES;”查看当前所有数据库。如右图。更多SQL指令可以参考http://c.biancheng.net/cpp/u/mysql/<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image062.png"><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image060.png"></p>
 <h5>6.配置在浏览器中访问本机，在地址栏中输入127.0.0.1:端口，会出现下图的界面，点击“现在就开始！”，然后会出现如图的界面，按照图中说明填写即可，然后提交。</h5>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image063.png&gt;
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image065.png&gt;
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image063.png">
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image065.png">
 其中，输入地址之后可能会遇到网页显示Internal Server Error，可以查看Apache的错误日志，查找错误原因。比如你第3步中如果没有进行第一个修改，日志中会记录如图的错误。这个错误在语法检查中不会被查出来，但是却会导致你无法访问自己的服务器。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image067.png&gt;
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image067.png">
 另外，提交之后可能会出现如下图的错误，报错的原因是你没有进行第3步。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image068.png&gt;</p>
-<h5>7.成功之后会出现如图的界面，相应地进行填写。</h5>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image070.png&gt;</p>
-<h5>8.然后输入用户名和密码登陆即可。</h5>
-<p>&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image072.png&gt;
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image068.png">
+##### 7.成功之后会出现如图的界面，相应地进行填写。
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image070.png">
+##### 8.然后输入用户名和密码登陆即可。
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image072.png">
 登陆之后会显示如图的界面，wordpress提供的图形化界面可以让你自由地个性化你的博客。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image076.png&gt;
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image076.png">
 最后在地址栏中输入ip地址验证一下网站是否已经架设成功。
-&lt;img src=http://7xugq7.com1.z0.glb.clouddn.com/image074.png&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/image074.png"> 
 ]]></content>
       
         <categories>

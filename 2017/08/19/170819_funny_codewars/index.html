@@ -6,17 +6,17 @@
   
   <title>Codewars上有趣的题（一） | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。 &amp;lt;!-- more --&amp;gt; Sum of Digits / Digital Root 题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIki">
+  <meta name="description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。">
 <meta name="keywords" content="Codewars">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codewars上有趣的题（一）">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/08/19/170819_funny_codewars/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。 &amp;lt;!-- more --&amp;gt; Sum of Digits / Digital Root 题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIki">
-<meta property="og:updated_time" content="2017-08-19T07:08:27.690Z">
+<meta property="og:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。">
+<meta property="og:updated_time" content="2018-03-02T06:41:30.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codewars上有趣的题（一）">
-<meta name="twitter:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。 &amp;lt;!-- more --&amp;gt; Sum of Digits / Digital Root 题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIki">
+<meta name="twitter:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -99,19 +99,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p>
-<p>&lt;!-- more --&gt;</p>
+<a id="more"></a>
 <h4><a href="https://www.codewars.com/kata/sum-of-digits-slash-digital-root" target="_blank" rel="external">Sum of Digits / Digital Root</a></h4>
 <p>题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIkipedia）。按照定义来做的话，也其实没什么难的，用python的话，无非就是分拆成字符，再转回数字然后相加，如此往复直到位数为1。然而在做完之后，我在Solutions里发现了这样两个答案：</p>
 <ul>
-<li>
-<p>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &lt; <span class="number">10</span> <span class="keyword">else</span> digital_root(sum(map(int,str(n))))</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>然后我往下翻，又看到了下面这个让我颇为震惊的解法：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n%<span class="number">9</span> <span class="keyword">or</span> n <span class="keyword">and</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
-</li>
+<li>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &lt; <span class="number">10</span> <span class="keyword">else</span> digital_root(sum(map(int,str(n))))</div></pre></td></tr></table></figure>
+<ul>
+<li>然后我往下翻，又看到了下面这个让我颇为震惊的解法：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n%<span class="number">9</span> <span class="keyword">or</span> n <span class="keyword">and</span> <span class="number">9</span></div></pre></td></tr></table></figure>
 <p>我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：https://www.zhihu.com/question/30972581 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p>
 <ul>
 <li>
@@ -128,33 +126,31 @@
 <p>n == 9时，n and 9 == 9，n%9 or 9 == 9；</p>
 </blockquote>
 <hr>
-<h4><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don't rely on luck.</a></h4>
+<h4><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don’t rely on luck.</a></h4>
 <p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
 <ul>
-<li>在代码框里最开始给的是：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure></li>
+<li>在代码框里最开始给的是：</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure>
 <p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
 <ul>
-<li>
-<p>首先是：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
-<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
-</li>
-<li>
-<p>然后是这个：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure></p>
-<p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
-</li>
-<li>
-<p>当然，最让我折服的还是下面这个：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure></p>
-<p>？？？？？？？？？</p>
-<p>与上面这种解法类似的还有：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure></p>
-<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
-</li>
+<li>首先是：</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
+<ul>
+<li>然后是这个：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure>
+<p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
+<ul>
+<li>当然，最让我折服的还是下面这个：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure>
+<p>？？？？？？？？？</p>
+<p>与上面这种解法类似的还有：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure>
+<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
 
       
     </div>
