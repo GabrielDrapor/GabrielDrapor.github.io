@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2018-04-03T04:06:15.677Z</updated>
+  <updated>2018-04-03T04:09:05.638Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://gabrieldrapor.github.io/2018/03/19/180319_star_operator/"/>
     <id>http://gabrieldrapor.github.io/2018/03/19/180319_star_operator/</id>
     <published>2018-03-19T00:00:00.000Z</published>
-    <updated>2018-04-03T04:06:15.677Z</updated>
+    <updated>2018-04-03T04:09:05.638Z</updated>
     
-    <content type="html"><![CDATA[<p>最近才了解到<em>和</em>*运算符的用法，特此小记。</p>
+    <content type="html"><![CDATA[<p>最近才了解到*和**运算符的用法，特此小记。</p>
 <a id="more"></a>
 <p>最开始遇到的情形是这样的：我再另一个地方得到了一个tuple a</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = (<span class="number">1</span>,<span class="number">2</span>)</div></pre></td></tr></table></figure>
@@ -30,10 +30,10 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">f(a[<span class="number">0</span>], a[<span class="number">1</span>])</div></pre></td></tr></table></figure>
 <p>但这样的写法实在是看起来很蠢，而且当这里的参数不是两个而是很多的时候，这样写也太麻烦了。Google了一下之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f(*a)</div></pre></td></tr></table></figure>
-<p>在官方文档中也有相关的说明：</p>
+<p>在<a href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists" target="_blank" rel="external">官方文档</a>中也有相关的说明：</p>
 <blockquote>
-<p>4.7.4. Unpacking Argument Lists<br>
-The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</p>
+<p>4.7.4. Unpacking Argument Lists</p>
+<p>The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(<span class="number">3</span>, <span class="number">6</span>))            <span class="comment"># normal call with separate arguments</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>args = [<span class="number">3</span>, <span class="number">6</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(*args))            <span class="comment"># call with arguments unpacked from a list</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure>
 <p>文档中还提了**的用法：</p>
@@ -45,7 +45,7 @@ The reverse situation occurs when the arguments are already in a list or tuple b
     
     <summary type="html">
     
-      &lt;p&gt;最近才了解到&lt;em&gt;和&lt;/em&gt;*运算符的用法，特此小记。&lt;/p&gt;
+      &lt;p&gt;最近才了解到*和**运算符的用法，特此小记。&lt;/p&gt;
     
     </summary>
     
