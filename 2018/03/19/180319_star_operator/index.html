@@ -4,17 +4,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>archive_a: 2017/8 | DRAPORLAND</title>
+  <title>关于*和**运算符 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Just record something">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DRAPORLAND">
-<meta property="og:url" content="http://gabrieldrapor.github.io/archives/2017/08/index.html">
+  <meta name="description" content="最近才了解到和*运算符的用法，特此小记。">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于*和**运算符">
+<meta property="og:url" content="http://gabrieldrapor.github.io/2018/03/19/180319_star_operator/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="Just record something">
+<meta property="og:description" content="最近才了解到和*运算符的用法，特此小记。">
+<meta property="og:updated_time" content="2018-04-03T04:06:15.677Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DRAPORLAND">
-<meta name="twitter:description" content="Just record something">
+<meta name="twitter:title" content="关于*和**运算符">
+<meta name="twitter:description" content="最近才了解到和*运算符的用法，特此小记。">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -70,77 +72,80 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/08/22/170822_aws_tensorflow/" class="archive-article-date">
-  <time datetime="2017-08-22T00:00:00.000Z" itemprop="datePublished">8月 22</time>
+      <section id="main"><article id="post-180319_star_operator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/19/180319_star_operator/" class="article-date">
+  <time datetime="2018-03-19T00:00:00.000Z" itemprop="datePublished">2018-03-19</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/22/170822_aws_tensorflow/">在AWS上搭建TensorFlow环境</a>
+    <h1 class="article-title" itemprop="name">
+      关于*和**运算符
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/08/19/170819_funny_codewars/" class="archive-article-date">
-  <time datetime="2017-08-19T00:00:00.000Z" itemprop="datePublished">8月 19</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/19/170819_funny_codewars/">Codewars上有趣的题（一）</a>
-    </h1>
-  
+        <p>最近才了解到<em>和</em>*运算符的用法，特此小记。</p>
+<a id="more"></a>
+<p>最开始遇到的情形是这样的：我再另一个地方得到了一个tuple a</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = (<span class="number">1</span>,<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>想把这个tuple里的值作为另一个函数f的参数传给它，理论上完全可以用[]把每个值取出来再一个一个传给函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">f(a[<span class="number">0</span>], a[<span class="number">1</span>])</div></pre></td></tr></table></figure>
+<p>但这样的写法实在是看起来很蠢，而且当这里的参数不是两个而是很多的时候，这样写也太麻烦了。Google了一下之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f(*a)</div></pre></td></tr></table></figure>
+<p>在官方文档中也有相关的说明：</p>
+<blockquote>
+<p>4.7.4. Unpacking Argument Lists<br>
+The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(<span class="number">3</span>, <span class="number">6</span>))            <span class="comment"># normal call with separate arguments</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>args = [<span class="number">3</span>, <span class="number">6</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(*args))            <span class="comment"># call with arguments unpacked from a list</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure>
+<p>文档中还提了**的用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def parrot(voltage, state=&apos;a stiff&apos;, action=&apos;voom&apos;):</div><div class="line">...     print(&quot;-- This parrot wouldn&apos;t&quot;, action, end=&apos; &apos;)</div><div class="line">...     print(&quot;if you put&quot;, voltage, &quot;volts through it.&quot;, end=&apos; &apos;)</div><div class="line">...     print(&quot;E&apos;s&quot;, state, &quot;!&quot;)</div><div class="line">...</div><div class="line">&gt;&gt;&gt; d = &#123;&quot;voltage&quot;: &quot;four million&quot;, &quot;state&quot;: &quot;bleedin&apos; demised&quot;, &quot;action&quot;: &quot;VOOM&quot;&#125;</div><div class="line">&gt;&gt;&gt; parrot(**d)</div><div class="line">-- This parrot wouldn&apos;t VOOM if you put four million volts through it. E&apos;s bleedin&apos; demised !</div></pre></td></tr></table></figure>
+<p>在自己尝试的过程中也发现了两个有意思的用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(*a)</div><div class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,a,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>], <span class="number">7</span>, <span class="number">8</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,*a,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/08/08/170808_sql_time_switch/" class="archive-article-date">
-  <time datetime="2017-08-08T00:00:00.000Z" itemprop="datePublished">8月 8</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/08/170808_sql_time_switch/">SQL的时间／日期无脑转换</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2018/03/19/180319_star_operator/" data-id="cjfj561zz0000rzxuxh6bk2ps" class="article-share-link" data-share="baidu" data-title="关于*和**运算符">分享到</a>
+      
 
-    </header>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/22/180122_flask_simple_api/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">用Flask实现一个简单的带POST的api</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
       

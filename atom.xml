@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gabrieldrapor.github.io/"/>
-  <updated>2018-03-02T06:41:31.623Z</updated>
+  <updated>2018-04-03T04:06:15.677Z</updated>
   <id>http://gabrieldrapor.github.io/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于*和**运算符</title>
+    <link href="http://gabrieldrapor.github.io/2018/03/19/180319_star_operator/"/>
+    <id>http://gabrieldrapor.github.io/2018/03/19/180319_star_operator/</id>
+    <published>2018-03-19T00:00:00.000Z</published>
+    <updated>2018-04-03T04:06:15.677Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近才了解到<em>和</em>*运算符的用法，特此小记。</p>
+<a id="more"></a>
+<p>最开始遇到的情形是这样的：我再另一个地方得到了一个tuple a</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = (<span class="number">1</span>,<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>想把这个tuple里的值作为另一个函数f的参数传给它，理论上完全可以用[]把每个值取出来再一个一个传给函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">f(a[<span class="number">0</span>], a[<span class="number">1</span>])</div></pre></td></tr></table></figure>
+<p>但这样的写法实在是看起来很蠢，而且当这里的参数不是两个而是很多的时候，这样写也太麻烦了。Google了一下之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f(*a)</div></pre></td></tr></table></figure>
+<p>在官方文档中也有相关的说明：</p>
+<blockquote>
+<p>4.7.4. Unpacking Argument Lists<br>
+The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(<span class="number">3</span>, <span class="number">6</span>))            <span class="comment"># normal call with separate arguments</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>args = [<span class="number">3</span>, <span class="number">6</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(*args))            <span class="comment"># call with arguments unpacked from a list</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure>
+<p>文档中还提了**的用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def parrot(voltage, state=&apos;a stiff&apos;, action=&apos;voom&apos;):</div><div class="line">...     print(&quot;-- This parrot wouldn&apos;t&quot;, action, end=&apos; &apos;)</div><div class="line">...     print(&quot;if you put&quot;, voltage, &quot;volts through it.&quot;, end=&apos; &apos;)</div><div class="line">...     print(&quot;E&apos;s&quot;, state, &quot;!&quot;)</div><div class="line">...</div><div class="line">&gt;&gt;&gt; d = &#123;&quot;voltage&quot;: &quot;four million&quot;, &quot;state&quot;: &quot;bleedin&apos; demised&quot;, &quot;action&quot;: &quot;VOOM&quot;&#125;</div><div class="line">&gt;&gt;&gt; parrot(**d)</div><div class="line">-- This parrot wouldn&apos;t VOOM if you put four million volts through it. E&apos;s bleedin&apos; demised !</div></pre></td></tr></table></figure>
+<p>在自己尝试的过程中也发现了两个有意思的用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(*a)</div><div class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,a,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>], <span class="number">7</span>, <span class="number">8</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,*a,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近才了解到&lt;em&gt;和&lt;/em&gt;*运算符的用法，特此小记。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>用Flask实现一个简单的带POST的api</title>
@@ -135,6 +176,31 @@
   </entry>
   
   <entry>
+    <title>用Pymongo连接MongoDB取数</title>
+    <link href="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/"/>
+    <id>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</id>
+    <published>2017-11-22T00:00:00.000Z</published>
+    <updated>2018-03-02T06:41:31.183Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用python连接SparkThriftServer</title>
     <link href="http://gabrieldrapor.github.io/2017/11/22/171122_impala/"/>
     <id>http://gabrieldrapor.github.io/2017/11/22/171122_impala/</id>
@@ -154,31 +220,6 @@
     <summary type="html">
     
       &lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://gabrieldrapor.github.io/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://gabrieldrapor.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用Pymongo连接MongoDB取数</title>
-    <link href="http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/"/>
-    <id>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</id>
-    <published>2017-11-22T00:00:00.000Z</published>
-    <updated>2018-03-02T06:41:31.183Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。&lt;/p&gt;
     
     </summary>
     
@@ -1226,33 +1267,6 @@
     
     
       <category term="Machine Learning" scheme="http://gabrieldrapor.github.io/tags/Machine-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一条置顶声明（已经不是了）</title>
-    <link href="http://gabrieldrapor.github.io/2017/03/21/170507_notice/"/>
-    <id>http://gabrieldrapor.github.io/2017/03/21/170507_notice/</id>
-    <published>2017-03-21T00:00:00.000Z</published>
-    <updated>2017-08-06T03:36:41.652Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于在2017.3.21，&lt;a href=&quot;http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241&quot;&gt;多说官方&lt;/a&gt;发布了重要通知：</p>
-<blockquote>
-<p>因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。</p>
-</blockquote>
-<p>且在博客评论领域中覆盖率最广的Disqus并不支持国内访问，其他评论系统我都并不太喜欢，再加上本身其实也没多少人会来看我的博客……所以打算关闭评论系统了…</p>
-<p>另外在评论系统正式关闭之前…我暂时还不会主动关掉它…先留着吧…毕竟看一天少一天了……</p>
-<p>……不知道除了我还有谁会看见这条声明：）</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;由于在2017.3.21，&amp;lt;a href=&amp;quot;http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241&amp;quot;&amp;gt;多说官方&amp;lt;/a&amp;gt;发布了重要通知：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p
-    
-    </summary>
-    
     
   </entry>
   
