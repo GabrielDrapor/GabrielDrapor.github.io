@@ -2806,10 +2806,10 @@ Email: gabrieldrapor@gmail.com</p>
 <input type="checkbox" id="checkbox8" checked="true"><label for="checkbox8"> </label><a href="https://book.douban.com/subject/26999709/" target="_blank" rel="external">孤独六讲</a><br>
 <input type="checkbox" id="checkbox7" checked="true"><label for="checkbox7"> </label><a href="https://book.douban.com/subject/26259059/" target="_blank" rel="external">我们仨</a><br>
 <input type="checkbox" id="checkbox6" checked="true"><label for="checkbox6"> </label><a href="https://book.douban.com/subject/26897878/" target="_blank" rel="external">罗生门</a><br>
-<input type="checkbox" id="checkbox5"><label for="checkbox5"> </label><a href="https://book.douban.com/subject/4345965/" target="_blank" rel="external">The Problem of Philosophy</a><br>
-<input type="checkbox" id="checkbox4"><label for="checkbox4"> </label><a href="https://book.douban.com/subject/25759044/" target="_blank" rel="external">乡土中国</a><br>
-<input type="checkbox" id="checkbox3"><label for="checkbox3"> </label><a href="https://book.douban.com/subject/26292964/" target="_blank" rel="external">世界小史</a><br>
-<input type="checkbox" id="checkbox2"><label for="checkbox2"> </label><a href="https://book.douban.com/subject/26870405/" target="_blank" rel="external">龙头凤尾</a><br>
+<input type="checkbox" id="checkbox5" checked="true"><label for="checkbox5"> </label><a href="https://book.douban.com/subject/26870405/" target="_blank" rel="external">龙头凤尾</a><br>
+<input type="checkbox" id="checkbox4" checked="true"><label for="checkbox4"> </label><a href="https://book.douban.com/subject/25759044/" target="_blank" rel="external">乡土中国</a><br>
+<input type="checkbox" id="checkbox3"><label for="checkbox3"> </label><a href="https://book.douban.com/subject/4345965/" target="_blank" rel="external">The Problem of Philosophy</a><br>
+<input type="checkbox" id="checkbox2"><label for="checkbox2"> </label><a href="https://book.douban.com/subject/26292964/" target="_blank" rel="external">世界小史</a><br>
 <input type="checkbox" id="checkbox1"><label for="checkbox1"> </label><a href="https://book.douban.com/subject/6265745/" target="_blank" rel="external">银河系搭车客指南</a><br>
 <input type="checkbox" id="checkbox0"><label for="checkbox0"> </label><a href="https://book.douban.com/subject/25806628/" target="_blank" rel="external">万物生长</a><br>
 …</p>
