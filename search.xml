@@ -1155,7 +1155,7 @@
 <p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,…,L$</p>
 <p>Using $y^{(i)}​$, compute <span>$\delta^{L}=a^{(L)}-y^{(i)}&NegativeMediumSpace;$</span><!-- Has MathJax --></p>
 <p>Compute $\delta^{(L-1)}, \delta^{(L-2)}, …, \color{red}{\delta^{(2)}}$</p>
-<p>$ \Delta_{ij}<sup>{(l)}:=\Delta_{ij}</sup>{(l)} + a<sup>{(l)}_{j}\delta</sup>{l+1}_{i} $</p>
+<p><span>$\Delta\_{ij}^{(l)}:=\Delta\_{ij}^{(l)} + a^{(l)}\_{j}\delta^{l+1}\_{i}$</span><!-- Has MathJax --></p>
 <p>After that,</p>
 <p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
 <p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
