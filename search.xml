@@ -397,15 +397,15 @@
 <tbody>
 <tr>
 <td>TIMESTAMP</td>
-<td>'2017-08-08 15:56:31.111'</td>
+<td>‘2017-08-08 15:56:31.111’</td>
 </tr>
 <tr>
-<td>STRING('yyyyMMdd')</td>
-<td>'20170808'</td>
+<td>STRING(‘yyyyMMdd’)</td>
+<td>‘20170808’</td>
 </tr>
 <tr>
-<td>DATE('yyyy-MM-dd')</td>
-<td>'2017-08-08'</td>
+<td>DATE(‘yyyy-MM-dd’)</td>
+<td>‘2017-08-08’</td>
 </tr>
 <tr>
 <td>INT</td>
@@ -415,13 +415,13 @@
 </table>
 <p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
 <ul>
-<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp('2017-08-08', ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp('2017-08-08', ‘yyyyMMdd’)即可；</li>
+<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyyMMdd’)即可；</li>
 <li>from_unixtime()函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li>
 </ul>
 <p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用UNIX_TIMESTAMP()转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p>
-<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp('2017-08-08','yyyy-MM-dd'),'yyyyMMdd') 即可，反之也是一样的道理。</p>
+<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp(‘2017-08-08’,‘yyyy-MM-dd’),‘yyyyMMdd’) 即可，反之也是一样的道理。</p>
 <p>当然这其中存在很多捷径，比如TO_DATE()可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p>
-<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，'2017-08-08' = ‘20170808’这个等式并不成立。</p>
+<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，‘2017-08-08’ = ‘20170808’这个等式并不成立。</p>
 ]]></content>
       
         <categories>
@@ -440,7 +440,7 @@
 <p>原题目的url是https://www.codewars.com/kata/calculating-running-total</p>
 <p>参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，</p>
 <p>终于得(meng)出了一个可行的答案：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -1191,7 +1191,7 @@
     <entry>
       <title><![CDATA[一条置顶声明（已经不是了）]]></title>
       <url>http://gabrieldrapor.github.io/2017/03/21/170507_notice/</url>
-      <content type="html"><![CDATA[<p>由于在2017.3.21，&lt;a href=&quot;http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241&quot;&gt;多说官方&lt;/a&gt;发布了重要通知：</p>
+      <content type="html"><![CDATA[<p>由于在2017.3.21，<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说官方</a>发布了重要通知：</p>
 <blockquote>
 <p>因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。</p>
 </blockquote>
@@ -1289,7 +1289,7 @@
 <li>Cook more</li>
 <li>Read more</li>
 <li>Play puzzles</li>
-<li>......</li>
+<li>…</li>
 </ul>
 ]]></content>
       
@@ -1444,20 +1444,20 @@
     <entry>
       <title><![CDATA[Python Crawler Note 2]]></title>
       <url>http://gabrieldrapor.github.io/2016/12/02/161202_pyCrawler2/</url>
-      <content type="html"><![CDATA[<p>Besides what we have seen in <a href="http://drapor.me/2016/12/01/161201_pyCrawler1/" target="_blank" rel="external">Note 1</a>, we can add some details in our codes:
-Sometimes  we need to pretend as the browser to obtain the content of the page, we can add headers:
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">url = <span class="string">'http://drapor.me'</span></div><div class="line">headers = &#123; <span class="string">'User-Agent'</span> : <span class="string">'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'</span>&#125; </div><div class="line">request = urllib2.Request(url, headers)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<p>Besides what we have seen in <a href="http://drapor.me/2016/12/01/161201_pyCrawler1/" target="_blank" rel="external">Note 1</a>, we can add some details in our codes:<br>
+Sometimes  we need to pretend as the browser to obtain the content of the page, we can add headers:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">url = <span class="string">'http://drapor.me'</span></div><div class="line">headers = &#123; <span class="string">'User-Agent'</span> : <span class="string">'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'</span>&#125; </div><div class="line">request = urllib2.Request(url, headers)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure>
 <p>More about headers, you can check <a href="http://drapor.me/2016/04/27/160427_http/" target="_blank" rel="external">this article</a>.</p>
 <hr>
 <p>And if you need to post some data, like your username or password to the sites, try this:</p>
-<p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">values = &#123;<span class="string">"username"</span>:<span class="string">"drapor"</span>,<span class="string">"password"</span>:<span class="string">"*****"</span>&#125;</div><div class="line"></div><div class="line">data = urllib.urlencode(values) </div><div class="line">url = <span class="string">"http://www.heibanke.com/lesson/crawler_ex01/"</span> <span class="comment">#This is a crawler game I found before which is quite interesting.</span></div><div class="line">request = urllib2.Request(url,data)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">values = &#123;<span class="string">"username"</span>:<span class="string">"drapor"</span>,<span class="string">"password"</span>:<span class="string">"*****"</span>&#125;</div><div class="line"></div><div class="line">data = urllib.urlencode(values) </div><div class="line">url = <span class="string">"http://www.heibanke.com/lesson/crawler_ex01/"</span> <span class="comment">#This is a crawler game I found before which is quite interesting.</span></div><div class="line">request = urllib2.Request(url,data)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure>
 <hr>
-<p>If you find there's something wrong with your code, you can try this:
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">requset = urllib2.Request(<span class="string">'http://www.xxxxx.com'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    urllib2.urlopen(request)</div><div class="line"><span class="keyword">except</span> urllib2.URLError, e:</div><div class="line">    <span class="keyword">print</span> e.reason</div></pre></td></tr></table></figure></p>
+<p>If you find there’s something wrong with your code, you can try this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">requset = urllib2.Request(<span class="string">'http://www.xxxxx.com'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    urllib2.urlopen(request)</div><div class="line"><span class="keyword">except</span> urllib2.URLError, e:</div><div class="line">    <span class="keyword">print</span> e.reason</div></pre></td></tr></table></figure>
 <p>And you will get the info of the error.</p>
 <hr>
-<p>And if you need to use cookies, try this:
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> cookielib</div><div class="line"></div><div class="line">cookie = cookielib.CookieJar() <span class="comment">#Declar a CookieJar object to save cookie</span></div><div class="line">handler = urllib2.HTTPCookieProcessor(cookie) <span class="comment">#use HTTPCookieProcessor object in urllib2 to create cookie processor</span></div><div class="line">opener = urllib2.build_opener(handler) <span class="comment">#build opener by Handler</span></div><div class="line">response = opener.open(<span class="string">'http://drapor.me'</span>) <span class="comment"># this opener.open() is the same as urllib2.urlopen()</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cookie:</div><div class="line">    <span class="keyword">print</span> <span class="string">'Name = '</span>+item.name</div><div class="line">    <span class="keyword">print</span> <span class="string">'Value = '</span>+item.value</div></pre></td></tr></table></figure></p>
+<p>And if you need to use cookies, try this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> cookielib</div><div class="line"></div><div class="line">cookie = cookielib.CookieJar() <span class="comment">#Declar a CookieJar object to save cookie</span></div><div class="line">handler = urllib2.HTTPCookieProcessor(cookie) <span class="comment">#use HTTPCookieProcessor object in urllib2 to create cookie processor</span></div><div class="line">opener = urllib2.build_opener(handler) <span class="comment">#build opener by Handler</span></div><div class="line">response = opener.open(<span class="string">'http://drapor.me'</span>) <span class="comment"># this opener.open() is the same as urllib2.urlopen()</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cookie:</div><div class="line">    <span class="keyword">print</span> <span class="string">'Name = '</span>+item.name</div><div class="line">    <span class="keyword">print</span> <span class="string">'Value = '</span>+item.value</div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -1565,23 +1565,23 @@ Remember that <span>$h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$</span><!-- Has 
     <entry>
       <title><![CDATA[Python Crawler Note 1]]></title>
       <url>http://gabrieldrapor.github.io/2016/12/01/161201_pyCrawler1/</url>
-      <content type="html"><![CDATA[<p>First, let's start with a easy one:
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>The output should be like:
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">......</div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>Also, codes below do the same thing,
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">request=urllib2.Request(url)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure></p>
-<p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission" target="_blank" rel="external">Tutorial I recommand</a>) here to help us:
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line">content = response.read()              <span class="comment">#First we store the content of whole webpage</span></div><div class="line">content = content.replace(<span class="string">'\n'</span>,<span class="string">''</span>)     <span class="comment">#I use this to delete all the newline character to avoid some troubles</span></div><div class="line"></div><div class="line">pattern = <span class="string">r'&lt;a class="article-title" href=".*?"&gt;.*?&lt;/a&gt;'</span>   <span class="comment">#Then your regex here, remember the 'r'</span></div><div class="line"></div><div class="line">result = re.findall(pattern, content) <span class="comment">#Find all the result</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">"index.html"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:    <span class="comment">#Write the result in a new HTML file</span></div><div class="line">    <span class="keyword">for</span> items <span class="keyword">in</span> result:</div><div class="line">        f.write(items+<span class="string">'&lt;br&gt;'</span>)</div></pre></td></tr></table></figure></p>
-<p><em><em>Tip: Don't use something like '+' or '</em>' in your zero-width assertion or write your regex like '(?&lt;![a-z]+)/d+', or you will get:</em>*
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error: look-behind requires fixed-width pattern.</div></pre></td></tr></table></figure></p>
-<p>And open the new HTML file we create with browser, we got this:
-&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/pycrawler1_out.PNG&quot;&gt;</p>
+      <content type="html"><![CDATA[<p>First, let’s start with a easy one:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure>
+<p>The output should be like:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">......</div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Also, codes below do the same thing,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">request=urllib2.Request(url)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure>
+<p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission" target="_blank" rel="external">Tutorial I recommand</a>) here to help us:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line">content = response.read()              <span class="comment">#First we store the content of whole webpage</span></div><div class="line">content = content.replace(<span class="string">'\n'</span>,<span class="string">''</span>)     <span class="comment">#I use this to delete all the newline character to avoid some troubles</span></div><div class="line"></div><div class="line">pattern = <span class="string">r'&lt;a class="article-title" href=".*?"&gt;.*?&lt;/a&gt;'</span>   <span class="comment">#Then your regex here, remember the 'r'</span></div><div class="line"></div><div class="line">result = re.findall(pattern, content) <span class="comment">#Find all the result</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">"index.html"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:    <span class="comment">#Write the result in a new HTML file</span></div><div class="line">    <span class="keyword">for</span> items <span class="keyword">in</span> result:</div><div class="line">        f.write(items+<span class="string">'&lt;br&gt;'</span>)</div></pre></td></tr></table></figure>
+<p><em><em>Tip: Don’t use something like ‘+’ or '</em>’ in your zero-width assertion or write your regex like ‘(?&lt;![a-z]+)/d+’, or you will get:</em>*</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error: look-behind requires fixed-width pattern.</div></pre></td></tr></table></figure>
+<p>And open the new HTML file we create with browser, we got this:<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/pycrawler1_out.PNG"></p>
 <p><strong>Wow! How fantastic!!!</strong></p>
 <hr>
-<p><strong>And here's the first attempt of mine (also my first crawler):</strong></p>
+<p><strong>And here’s the first attempt of mine (also my first crawler):</strong></p>
 <blockquote>
-<p>URL: http://stat.drapor.me/
+<p>URL: http://stat.drapor.me/<br>
 Code: https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</p>
 </blockquote>
 ]]></content>
@@ -1607,56 +1607,56 @@ Code: https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</p>
       <title><![CDATA[Machine Learning Notes 04]]></title>
       <url>http://gabrieldrapor.github.io/2016/11/21/161121_ml_notes4/</url>
       <content type="html"><![CDATA[<h2>Classification</h2>
-<p>  For the binary classification, <span>$y\in\left\{ 0,1 \right \}$</span><!-- Has MathJax --> (Also maybe, <span>$y\in \left \{ 0,1,2,3,... \right \}$</span><!-- Has MathJax -->, that's called a <strong>multiclass classification problem</strong>, we will discuss it later.)
+<p>  For the binary classification, <span>$y\in\left\{ 0,1 \right \}$</span><!-- Has MathJax --> (Also maybe, <span>$y\in \left \{ 0,1,2,3,... \right \}$</span><!-- Has MathJax -->, that’s called a <strong>multiclass classification problem</strong>, we will discuss it later.)<br>
   So, we use a model called <strong>Logisitic Regression</strong>, and we can see the hypothesis <span>$h_{\theta}(x)$</span><!-- Has MathJax --> should value in the range of 0 and 1. This is to say, <span>$0\leq h_{\theta}(x)\leq 1$</span><!-- Has MathJax -->.</p>
 <hr>
 <h2>Hypothesis Representation</h2>
 <ul>
 <li>
-<p><strong>Logistic Regression:</strong>
+<p><strong>Logistic Regression:</strong><br>
     <span>$h_{\theta}(x)=g(\theta^{T}x)$</span><!-- Has MathJax -->, <span>$g(z)=\frac{1}{1+e^{-z}}$</span><!-- Has MathJax --></p>
 </li>
 <li>
-<p>**Interpretation of Hypothesis Output **
-The value of <span>$h_{\theta}(x)$</span><!-- Has MathJax --> equals to the estimated probability that y=1 (on input x, parameterized by <span>$\theta$</span><!-- Has MathJax --> ). This is to say,
+<p>**Interpretation of Hypothesis Output **<br>
+The value of <span>$h_{\theta}(x)$</span><!-- Has MathJax --> equals to the estimated probability that y=1 (on input x, parameterized by <span>$\theta$</span><!-- Has MathJax --> ). This is to say,<br>
 $$h_{\theta}(x)=P(y=1\mid x ; \theta)$$</p>
 </li>
 <li>
-<p><strong>Decision Boundary</strong>
+<p><strong>Decision Boundary</strong><br>
 The decision boundaries are like this:</p>
 </li>
 </ul>
-<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/decision_boundary.png&quot;&gt;</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/decision_boundary.png">
 <p>  <strong>Emphasis: Decision boundary is the property of hypothesis function, but not the property of training set and its parameters.</strong></p>
 <hr>
-<h2>**Logistic Regression **---How to fit the parameters of theta</h2>
+<h2>**Logistic Regression **—How to fit the parameters of theta</h2>
 <ul>
 <li>
-<p><strong>Cost Function of Logistic Regression:</strong>
+<p><strong>Cost Function of Logistic Regression:</strong></p>
 <span>$$Cost(h_{\theta}, y)=\begin{cases}
   -log(h_{\theta}(x)) &amp; \text{ if } y=1 \\ 
   -log(1-h_{\theta}(x))  &amp; \text{ if } y=0 
   \end{cases}$$</span><!-- Has MathJax -->
-Also, we can write it as:
-&lt;center&gt;<span>$Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))$</span><!-- Has MathJax -->&lt;/center&gt;</p>
+<p>Also, we can write it as:</p>
+<center><span>$Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))$</span><!-- Has MathJax --></center>
 </li>
 <li>
-<p><strong>Gradient Descent:</strong>
+<p><strong>Gradient Descent:</strong><br>
 To minimize <span>$J_{\theta}$</span><!-- Has MathJax --></p>
 </li>
 </ul>
-<p>   Repeat{
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax -->
+<p>   Repeat{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>
    }</p>
-<p>  <strong>And we can see that this algortithm looks identical to linear regression!
-  But actually, the hypothesis of them are different.</strong>
+<p>  <strong>And we can see that this algortithm looks identical to linear regression!<br>
+  But actually, the hypothesis of them are different.</strong></p>
 <span>$$\begin{cases}
 Linear\:Regression: h_{\theta}(x)=\theta^{T}x\\
 Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}
-\end{cases}$$</span><!-- Has MathJax --></p>
+\end{cases}$$</span><!-- Has MathJax -->
 <p>Besides,</p>
 <blockquote>
-<p>&quot;use a vector rise implementation, so that a vector rise implementation can update all of these until parameters all in one fell swoop.&quot;</p>
+<p>“use a vector rise implementation, so that a vector rise implementation can update all of these until parameters all in one fell swoop.”</p>
 </blockquote>
 <hr>
 <h2>Advanced Optimization</h2>
@@ -1671,19 +1671,19 @@ Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}
 </blockquote>
 <ul>
 <li>
-<p><strong>Adcantages:</strong>
-No need to manually pick <span>$\alpha$</span><!-- Has MathJax --> ;
+<p><strong>Adcantages:</strong><br>
+No need to manually pick <span>$\alpha$</span><!-- Has MathJax --> ;<br>
 Often faster than gradient descent;</p>
 </li>
 <li>
-<p><strong>Disadvantages:</strong>
+<p><strong>Disadvantages:</strong><br>
 More complex;</p>
 </li>
 </ul>
 <hr>
 <h2>Multi-class classification: One-vs-all</h2>
 <ul>
-<li>For example, to slove the three-class problem, we can <em>&quot;turn this into three seperate two-class classification problems.&quot;</em></li>
+<li>For example, to slove the three-class problem, we can <em>“turn this into three seperate two-class classification problems.”</em></li>
 <li>On a new input <span>$x$</span><!-- Has MathJax -->, to make a prediction, pick the class i that maximizes.</li>
 </ul>
 ]]></content>
@@ -1708,7 +1708,7 @@ More complex;</p>
       <url>http://gabrieldrapor.github.io/2016/10/18/161018_ml_notes3/</url>
       <content type="html"><![CDATA[<h2>Multivariate Linear Regression</h2>
 <ul>
-<li><strong>Hypothesis:</strong>
+<li><strong>Hypothesis:</strong><br>
        <span>$h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i}$</span><!-- Has MathJax --></li>
 </ul>
 <p>      <span>$X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax -->  <span>$\theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax --></p>
@@ -1718,16 +1718,16 @@ More complex;</p>
 <ul>
 <li><strong>Algorithm:</strong></li>
 </ul>
-<p>   Repeat{
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax -->
+<p>   Repeat{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>
    }</p>
 <hr>
 <h2>Feature Scaling</h2>
 <ul>
 <li><strong>Idea</strong>: Make sure fretures are on a similar scale.</li>
-<li><strong>Mean normalization</strong>
-  Replace <span>$x_{i}$</span><!-- Has MathJax --> with <span>$x_{i}-\mu_{i}$</span><!-- Has MathJax --> to make features have approximately zero mean(Do not apply to <span>$x_{0}$</span><!-- Has MathJax -->, Which we suppose equals 1)
-      <span>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</span><!-- Has MathJax -->
+<li><strong>Mean normalization</strong><br>
+  Replace <span>$x_{i}$</span><!-- Has MathJax --> with <span>$x_{i}-\mu_{i}$</span><!-- Has MathJax --> to make features have approximately zero mean(Do not apply to <span>$x_{0}$</span><!-- Has MathJax -->, Which we suppose equals 1)<br>
+      <span>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</span><!-- Has MathJax --><br>
       (<span>$\mu_{i}$</span><!-- Has MathJax --> :Average value of <span>$x_{i}$</span><!-- Has MathJax --> in training set, <span>$s_{i}$</span><!-- Has MathJax --> :range(=max-min)(or standard deviation))</li>
 </ul>
 <hr>
@@ -1737,14 +1737,14 @@ More complex;</p>
 <li>If <span>$\alpha$</span><!-- Has MathJax --> is too large: <span>$J(\theta)$</span><!-- Has MathJax --> may not decrese on every iteration, may not converge(slow converge also possible);</li>
 </ul>
 <hr>
-<h2>Normal Equation ---Solve for <span>$\theta$</span><!-- Has MathJax --> analytically</h2>
+<h2>Normal Equation —Solve for <span>$\theta$</span><!-- Has MathJax --> analytically</h2>
 <ul>
 <li>For the input X, add a column on the left in X filled with 1, make up a new X;</li>
-<li>then,
+<li>then,<br>
    <span>$\theta = (X^{ T}X)^{-1}X^{ T}y$</span><!-- Has MathJax --></li>
 </ul>
-<p><strong>The difference between Gradient Descent and Normal Equation:</strong>
-&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png&quot;&gt;</p>
+<p><strong>The difference between Gradient Descent and Normal Equation:</strong><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png"></p>
 ]]></content>
       
         <categories>
@@ -1768,11 +1768,11 @@ More complex;</p>
       <content type="html"><![CDATA[<h2>Linear Regression with one variable</h2>
 <ul>
 <li>
-<p><strong>Hypothesis:</strong>
+<p><strong>Hypothesis:</strong><br>
        <span>$h(\theta) = \theta_{0} + \theta_{1}x_{1}$</span><!-- Has MathJax --></p>
 </li>
 <li>
-<p><strong>Cost function:</strong>
+<p><strong>Cost function:</strong><br>
        <span>$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$</span><!-- Has MathJax --></p>
 </li>
 </ul>
@@ -1782,10 +1782,10 @@ More complex;</p>
 <ul>
 <li><strong>Gradient algorithm:</strong></li>
 </ul>
-<p>   Repeat until convergence{
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})(for \: j=0\:and\:j=1)$</span><!-- Has MathJax -->
-   }
-    ( <span>$:=$</span><!-- Has MathJax --> - <em>Assignment</em>    <span>$\alpha$</span><!-- Has MathJax --> - <em>Learning rate</em> )
+<p>   Repeat until convergence{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})(for \: j=0\:and\:j=1)$</span><!-- Has MathJax --><br>
+   }<br>
+    ( <span>$:=$</span><!-- Has MathJax --> - <em>Assignment</em>    <span>$\alpha$</span><!-- Has MathJax --> - <em>Learning rate</em> )<br>
   **Warning: **<span>$\theta_{0}$</span><!-- Has MathJax --> and <span>$\theta_{1}$</span><!-- Has MathJax -->should be updated <strong>Simultaneously</strong> !!!</p>
 <p>  Especially, when gradient descent for linear regression,</p>
 <p>     <span>$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax -->  when <span>$i=0$</span><!-- Has MathJax -->, we suppose <span>$x^{(0)}=1$</span><!-- Has MathJax --></p>
@@ -1851,7 +1851,7 @@ More complex;</p>
     <entry>
       <title><![CDATA[一点规划]]></title>
       <url>http://gabrieldrapor.github.io/2016/09/20/160920_plans/</url>
-      <content type="html"><![CDATA[<p>&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/20160920%20Personal%20Plans.jpeg&quot;&gt;</p>
+      <content type="html"><![CDATA[<img src="http://7xugq7.com1.z0.glb.clouddn.com/20160920%20Personal%20Plans.jpeg">
 <p>    <strong>“彼方始有荣光在。”</strong></p>
 ]]></content>
       
@@ -2497,38 +2497,38 @@ More complex;</p>
     <entry>
       <title><![CDATA[HTTP Response/Request Headers]]></title>
       <url>http://gabrieldrapor.github.io/2016/04/27/160427_http/</url>
-      <content type="html"><![CDATA[<p>这是一次404过程中，客户端和服务器发送请求的头(Headers)
+      <content type="html"><![CDATA[<p>这是一次404过程中，客户端和服务器发送请求的头(Headers)<br>
 先想办法炸出404（如图）</p>
 <p><img src="http://7xugq7.com1.z0.glb.clouddn.com/404.png" alt=""></p>
 <p>HTTP Headers的内容如下：</p>
 <blockquote>
-<p><strong>General</strong>
-Request URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址
-Request Method: GET 	 			//请求方式 这里是管服务器要东西
-Status Code: 404 Not Found HTTP 	//HTTP状态码，这里是404，代表没有找到
+<p><strong>General</strong><br>
+Request URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址<br>
+Request Method: GET 	 			//请求方式 这里是管服务器要东西<br>
+Status Code: 404 Not Found HTTP 	//HTTP状态码，这里是404，代表没有找到<br>
 Remote Address: 127.0.0.1:8081  	//远程地址，不是ip地址，一般是127.0.0.1</p>
 </blockquote>
 <blockquote>
-<p><strong>Response Headers</strong> 				//应答头部字段
-HTTP/1.1 404 Not Found  			//HTTP版本是1.1
-Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间
-Server: Apache/2.2.25 (Win32)  		//服务器类型
-Content-Length: 208				//实体内容长度 208
-Keep-Alive: timeout=5, max=100    	//持久连接 超时是5秒，最长100秒
-Connection: Keep-Alive				//连接类型：持续连接
+<p><strong>Response Headers</strong> 				//应答头部字段<br>
+HTTP/1.1 404 Not Found  			//HTTP版本是1.1<br>
+Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间<br>
+Server: Apache/2.2.25 (Win32)  		//服务器类型<br>
+Content-Length: 208				//实体内容长度 208<br>
+Keep-Alive: timeout=5, max=100    	//持久连接 超时是5秒，最长100秒<br>
+Connection: Keep-Alive				//连接类型：持续连接<br>
 Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 编码类型是iso-8859-1</p>
 </blockquote>
 <blockquote>
-<p><strong>Request Headers</strong>  				//请求头部字段
-GET /index2.php HTTP/1.1			//“我要index2.php，快给我” HTTP版本1.1
-Host: www.xxx.com					//要请求的主机的名字
-Connection: keep-alive				//连接类型： “我要一直连着，不许给我断了“
-Cache-Control: max-age=0			//缓存控制：”就不让你缓存，要东西现来找我”
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
-//“我只要下面这些：文本/HTML，应用/XHTML+XML，应用/xml(这个可以往后放不着急)，图片/webp(这个更不着急)”
-Upgrade-Insecure-Requests: 1		//这个是？
-User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36	//浏览器支持类型
-Accept-Encoding: gzip, deflate, sdch	//”我只看得懂下面这三种编码：gzip, deflate, sdch”
+<p><strong>Request Headers</strong>  				//请求头部字段<br>
+GET /index2.php HTTP/1.1			//“我要index2.php，快给我” HTTP版本1.1<br>
+Host: www.xxx.com					//要请求的主机的名字<br>
+Connection: keep-alive				//连接类型： “我要一直连着，不许给我断了“<br>
+Cache-Control: max-age=0			//缓存控制：”就不让你缓存，要东西现来找我”<br>
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8<br>
+//“我只要下面这些：文本/HTML，应用/XHTML+XML，应用/xml(这个可以往后放不着急)，图片/webp(这个更不着急)”<br>
+Upgrade-Insecure-Requests: 1		//这个是？<br>
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36	//浏览器支持类型<br>
+Accept-Encoding: gzip, deflate, sdch	//”我只看得懂下面这三种编码：gzip, deflate, sdch”<br>
 Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
 </blockquote>
 ]]></content>
@@ -2624,8 +2624,8 @@ Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
       <title><![CDATA[未来一段时间]]></title>
       <url>http://gabrieldrapor.github.io/2016/03/20/160320_plans/</url>
       <content type="html"><![CDATA[<h1>一、学数学！</h1>
-<p><strong>学好数分高代！</strong>
-<strong>学好数分高代！</strong>
+<p><strong>学好数分高代！</strong><br>
+<strong>学好数分高代！</strong><br>
 <strong>学好数分高代！</strong></p>
 <h1>二、巩固学习C，学习数据结构和算法</h1>
 <h3>1.书目</h3>
@@ -2662,7 +2662,7 @@ Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
 <p>培养自己的算法能力</p>
 <h1>三、巩固Python基础，学习写爬虫</h1>
 <blockquote>
-<p>Python基础知识 http://www.liaoxuefeng.com/
+<p>Python基础知识 http://www.liaoxuefeng.com/<br>
 爬虫 http://cuiqingcai.com/1052.html</p>
 </blockquote>
 <h1>四、学习使用Linux</h1>
@@ -2673,7 +2673,7 @@ Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
 <li>在不久的将来，摆脱Windows的束缚，将Linux作为常用系统</li>
 </ul>
 <h1>五、学习数据挖掘</h1>
-<p>这个目前有些远，没有特别搜集专门的学习路线，只是找到了这个：
+<p>这个目前有些远，没有特别搜集专门的学习路线，只是找到了这个：<br>
 <a href="http://www.zhihu.com/question/20757000" target="_blank" rel="external">在数据分析、挖掘方面，有哪些好书值得推荐？</a></p>
 <h1>六、还有一些与计算机无关的事情——</h1>
 <h2>（一）读书</h2>
@@ -2713,8 +2713,8 @@ Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
 <li>…………</li>
 </ul>
 <h2>（三）运动</h2>
-<p>** 跑步!**
-** 跑步!**
+<p>** 跑步!**<br>
+** 跑步!**<br>
 ** 跑步!**</p>
 <h2>（四）NBA录像</h2>
 <ul>
@@ -2748,15 +2748,14 @@ Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
     <entry>
       <title><![CDATA[计算机南北桥]]></title>
       <url>http://gabrieldrapor.github.io/2015/11/25/151125_hardware/</url>
-      <content type="html"><![CDATA[<p><strong>南桥和北桥是PC主板芯片组中的两枚芯片。</strong>
+      <content type="html"><![CDATA[<p><strong>南桥和北桥是PC主板芯片组中的两枚芯片。</strong></p>
 <blockquote><p>  “<strong>北桥</strong>（英语：Northbridge）是基于 Intel 处理器的个人电脑主板芯片组两枚芯片中的一枚，<strong>北桥设计用来处理高速信号</strong>，通常处理中央处理器、随机存取存储器、AGP 或 PCI Express 的端口，还有与南桥之间的通信。”</p>
-<footer><strong>wiki</strong><cite><a href="https://zh.wikipedia.org/zh/%E5%8C%97%E6%A1%A5" target="_blank" rel="external">zh.wikipedia.org/zh/%E5%8C%97%E6%A1%A5</a></cite></footer></blockquote></p>
-<p><blockquote><p>  “<strong>南桥</strong>是基于个人电脑主板芯片组架构中的其中一枚芯片。<strong>南桥设计用来处理低速信号</strong>，通过北桥与中央处理器联系。……*但在部分的芯片组架构中，会将南桥的功能与北桥集成在一起；或者将部分功能移到北桥，而部分的南桥功能则删除，将被删除的界面功能使用额外独立的芯片组提供功能。*这样使得整个芯片组架构中只会有单一芯片，而不会另外的有南桥芯片。
-  南桥包含大多数周边设备界面、多媒体控制器和通讯界面功能。例如PCI控制器、ATA控制器、USB控制器、网络控制器、音效控制器。各世代的南桥性能大多雷同，但偶然听到某些南桥会有较差的Serial ATA或USB性能。”
-  “<em>现行的主板大多将北桥芯片集成进中央处理器的晶粒（die）中</em>，例如Intel的Sandy Bridge和AMD的Fusion处理器（两者均于2011年发表）。2011年推出的LGA 1156和Socket FM1新一代CPU已包含北桥，因此主板只有南桥。
+<footer><strong>wiki</strong><cite><a href="https://zh.wikipedia.org/zh/%E5%8C%97%E6%A1%A5" target="_blank" rel="external">zh.wikipedia.org/zh/%E5%8C%97%E6%A1%A5</a></cite></footer></blockquote>
+<blockquote><p>  “<strong>南桥</strong>是基于个人电脑主板芯片组架构中的其中一枚芯片。<strong>南桥设计用来处理低速信号</strong>，通过北桥与中央处理器联系。……*但在部分的芯片组架构中，会将南桥的功能与北桥集成在一起；或者将部分功能移到北桥，而部分的南桥功能则删除，将被删除的界面功能使用额外独立的芯片组提供功能。*这样使得整个芯片组架构中只会有单一芯片，而不会另外的有南桥芯片。<br>
+  南桥包含大多数周边设备界面、多媒体控制器和通讯界面功能。例如PCI控制器、ATA控制器、USB控制器、网络控制器、音效控制器。各世代的南桥性能大多雷同，但偶然听到某些南桥会有较差的Serial ATA或USB性能。”<br>
+  “<em>现行的主板大多将北桥芯片集成进中央处理器的晶粒（die）中</em>，例如Intel的Sandy Bridge和AMD的Fusion处理器（两者均于2011年发表）。2011年推出的LGA 1156和Socket FM1新一代CPU已包含北桥，因此主板只有南桥。<br>
 由于系统单片机（SoC）的推行，在2013年发表的Intel Haswell笔记本型处理器甚至移除了PCH。SoC本身已包含CPU、北桥和南桥三者的功能。”</p>
-<footer><strong>wiki</strong><cite><a href="https://zh.wikipedia.org/wiki/%E5%8D%97%E6%A1%A5" target="_blank" rel="external">zh.wikipedia.org/wiki/%E5%8D%97%E6%A1%A5</a></cite></footer></blockquote></p>
-]]></content>
+<footer><strong>wiki</strong><cite><a href="https://zh.wikipedia.org/wiki/%E5%8D%97%E6%A1%A5" target="_blank" rel="external">zh.wikipedia.org/wiki/%E5%8D%97%E6%A1%A5</a></cite></footer></blockquote>]]></content>
       
         <categories>
             
@@ -2777,24 +2776,6 @@ Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
   
     
     <entry>
-      <title><![CDATA[About Me]]></title>
-      <url>http://gabrieldrapor.github.io/about-me/index.html</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>I am  <strong>Drapor</strong>;<br>
-<strong>Mathematics</strong> undergraduate;<br>
-Dream to be a <strong>Data Mining Engineer</strong> / <strong>Machine Learning Engineer</strong>;<br>
-Enthusiast of <strong>NBA</strong>, <strong>Monster Hunter</strong>, Minecraft, <strong>Google Nexus</strong>, Sudoku,……<br>
-Zhihu: <a href="https://www.zhihu.com/people/drapor/activities" target="_blank" rel="external">@Drapor</a><br>
-Github: <a href="https://github.com/GabrielDrapor" target="_blank" rel="external">@GabrielDrapor</a><br>
-Email: gabrieldrapor@gmail.com</p>
-</blockquote>
-<blockquote>
-<p><strong>“You can code. They cannot. That is pretty damn cool.”</strong>　　　　－Learn Python The Hard Way</p>
-</blockquote>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[2018 Reading List]]></title>
       <url>http://gabrieldrapor.github.io/2018-reading-list/index.html</url>
       <content type="html"><![CDATA[<p><input type="checkbox" id="checkbox14" checked="true"><label for="checkbox14"> </label><a href="https://book.douban.com/subject/1046483/" target="_blank" rel="external">超越爱情的永恒之死</a><br>
@@ -2813,6 +2794,24 @@ Email: gabrieldrapor@gmail.com</p>
 <input type="checkbox" id="checkbox1"><label for="checkbox1"> </label><a href="https://book.douban.com/subject/26292964/" target="_blank" rel="external">世界小史</a><br>
 <input type="checkbox" id="checkbox0"><label for="checkbox0"> </label><a href="https://book.douban.com/subject/25806628/" target="_blank" rel="external">万物生长</a><br>
 …</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[About Me]]></title>
+      <url>http://gabrieldrapor.github.io/about-me/index.html</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>I am  <strong>Drapor</strong>;<br>
+<strong>Mathematics</strong> undergraduate;<br>
+Dream to be a <strong>Data Mining Engineer</strong> / <strong>Machine Learning Engineer</strong>;<br>
+Enthusiast of <strong>NBA</strong>, <strong>Monster Hunter</strong>, Minecraft, <strong>Google Nexus</strong>, Sudoku,……<br>
+Zhihu: <a href="https://www.zhihu.com/people/drapor/activities" target="_blank" rel="external">@Drapor</a><br>
+Github: <a href="https://github.com/GabrielDrapor" target="_blank" rel="external">@GabrielDrapor</a><br>
+Email: gabrieldrapor@gmail.com</p>
+</blockquote>
+<blockquote>
+<p><strong>“You can code. They cannot. That is pretty damn cool.”</strong>　　　　－Learn Python The Hard Way</p>
+</blockquote>
 ]]></content>
     </entry>
     

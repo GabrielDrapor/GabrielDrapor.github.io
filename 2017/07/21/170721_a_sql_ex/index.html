@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
 <meta property="og:description" content="具体思路和过程以后有时间再来整理（Flag）。 原题目的url是https://www.codewars.com/kata/calculating-running-total 参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿， 终于得(meng)出了一个可行的答案： 1234567SELECT CAST(">
-<meta property="og:updated_time" content="2017-08-19T05:57:04.671Z">
+<meta property="og:updated_time" content="2018-03-02T06:41:30.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codewars上一道5 kyu的SQL题">
 <meta name="twitter:description" content="具体思路和过程以后有时间再来整理（Flag）。 原题目的url是https://www.codewars.com/kata/calculating-running-total 参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿， 终于得(meng)出了一个可行的答案： 1234567SELECT CAST(">
@@ -102,13 +102,13 @@
 <p>原题目的url是https://www.codewars.com/kata/calculating-running-total</p>
 <p>参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，</p>
 <p>终于得(meng)出了一个可行的答案：</p>
-<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/" data-id="cje9dtb4j00388rxu6z74k1aj" class="article-share-link" data-share="baidu" data-title="Codewars上一道5 kyu的SQL题">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/" data-id="cjjdzgmj3003i2gxux2o0hrh0" class="article-share-link" data-share="baidu" data-title="Codewars上一道5 kyu的SQL题">分享到</a>
       
 
       

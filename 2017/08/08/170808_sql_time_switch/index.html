@@ -6,16 +6,16 @@
   
   <title>SQL的时间／日期无脑转换 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。 其实主要涉及的几种日期格式就是以下几种：    类型 示例     TIMESTAMP &apos;2017-08-08 15:56:31.111&apos;   STRING(&apos;yyyyMMdd&apos;) &apos;2">
+  <meta name="description" content="最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。 其实主要涉及的几种日期格式就是以下几种：    类型 示例     TIMESTAMP ‘2017-08-08 15:56:31.111’   STRING(‘yyyyMMdd’) ‘2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL的时间／日期无脑转换">
 <meta property="og:url" content="http://gabrieldrapor.github.io/2017/08/08/170808_sql_time_switch/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。 其实主要涉及的几种日期格式就是以下几种：    类型 示例     TIMESTAMP &apos;2017-08-08 15:56:31.111&apos;   STRING(&apos;yyyyMMdd&apos;) &apos;2">
-<meta property="og:updated_time" content="2017-08-19T05:50:48.099Z">
+<meta property="og:description" content="最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。 其实主要涉及的几种日期格式就是以下几种：    类型 示例     TIMESTAMP ‘2017-08-08 15:56:31.111’   STRING(‘yyyyMMdd’) ‘2">
+<meta property="og:updated_time" content="2018-03-02T06:41:30.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL的时间／日期无脑转换">
-<meta name="twitter:description" content="最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。 其实主要涉及的几种日期格式就是以下几种：    类型 示例     TIMESTAMP &apos;2017-08-08 15:56:31.111&apos;   STRING(&apos;yyyyMMdd&apos;) &apos;2">
+<meta name="twitter:description" content="最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。 其实主要涉及的几种日期格式就是以下几种：    类型 示例     TIMESTAMP ‘2017-08-08 15:56:31.111’   STRING(‘yyyyMMdd’) ‘2">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -109,15 +109,15 @@
 <tbody>
 <tr>
 <td>TIMESTAMP</td>
-<td>'2017-08-08 15:56:31.111'</td>
+<td>‘2017-08-08 15:56:31.111’</td>
 </tr>
 <tr>
-<td>STRING('yyyyMMdd')</td>
-<td>'20170808'</td>
+<td>STRING(‘yyyyMMdd’)</td>
+<td>‘20170808’</td>
 </tr>
 <tr>
-<td>DATE('yyyy-MM-dd')</td>
-<td>'2017-08-08'</td>
+<td>DATE(‘yyyy-MM-dd’)</td>
+<td>‘2017-08-08’</td>
 </tr>
 <tr>
 <td>INT</td>
@@ -127,19 +127,19 @@
 </table>
 <p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
 <ul>
-<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp('2017-08-08', ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp('2017-08-08', ‘yyyyMMdd’)即可；</li>
+<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyyMMdd’)即可；</li>
 <li>from_unixtime()函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li>
 </ul>
 <p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用UNIX_TIMESTAMP()转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p>
-<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp('2017-08-08','yyyy-MM-dd'),'yyyyMMdd') 即可，反之也是一样的道理。</p>
+<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp(‘2017-08-08’,‘yyyy-MM-dd’),‘yyyyMMdd’) 即可，反之也是一样的道理。</p>
 <p>当然这其中存在很多捷径，比如TO_DATE()可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p>
-<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，'2017-08-08' = ‘20170808’这个等式并不成立。</p>
+<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，‘2017-08-08’ = ‘20170808’这个等式并不成立。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/08/08/170808_sql_time_switch/" data-id="cje9dtb4l003b8rxurt97mmpk" class="article-share-link" data-share="baidu" data-title="SQL的时间／日期无脑转换">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2017/08/08/170808_sql_time_switch/" data-id="cjjdzgmjc003l2gxuejhlmscf" class="article-share-link" data-share="baidu" data-title="SQL的时间／日期无脑转换">分享到</a>
       
 
       

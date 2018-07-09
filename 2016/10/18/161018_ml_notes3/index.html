@@ -13,10 +13,12 @@
 <meta property="og:url" content="http://gabrieldrapor.github.io/2016/10/18/161018_ml_notes3/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
 <meta property="og:description" content="Multivariate Linear Regression  Hypothesis:        $h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i}$        $X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$  $\theta=\be">
-<meta property="og:updated_time" content="2017-08-06T03:36:41.472Z">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png">
+<meta property="og:updated_time" content="2018-03-02T06:41:26.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Notes 03">
 <meta name="twitter:description" content="Multivariate Linear Regression  Hypothesis:        $h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i}$        $X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$  $\theta=\be">
+<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -100,7 +102,7 @@
       
         <h2>Multivariate Linear Regression</h2>
 <ul>
-<li><strong>Hypothesis:</strong>
+<li><strong>Hypothesis:</strong><br>
        <span>$h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i}$</span><!-- Has MathJax --></li>
 </ul>
 <p>      <span>$X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax -->  <span>$\theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax --></p>
@@ -110,16 +112,16 @@
 <ul>
 <li><strong>Algorithm:</strong></li>
 </ul>
-<p>   Repeat{
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax -->
+<p>   Repeat{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>
    }</p>
 <hr>
 <h2>Feature Scaling</h2>
 <ul>
 <li><strong>Idea</strong>: Make sure fretures are on a similar scale.</li>
-<li><strong>Mean normalization</strong>
-  Replace <span>$x_{i}$</span><!-- Has MathJax --> with <span>$x_{i}-\mu_{i}$</span><!-- Has MathJax --> to make features have approximately zero mean(Do not apply to <span>$x_{0}$</span><!-- Has MathJax -->, Which we suppose equals 1)
-      <span>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</span><!-- Has MathJax -->
+<li><strong>Mean normalization</strong><br>
+  Replace <span>$x_{i}$</span><!-- Has MathJax --> with <span>$x_{i}-\mu_{i}$</span><!-- Has MathJax --> to make features have approximately zero mean(Do not apply to <span>$x_{0}$</span><!-- Has MathJax -->, Which we suppose equals 1)<br>
+      <span>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</span><!-- Has MathJax --><br>
       (<span>$\mu_{i}$</span><!-- Has MathJax --> :Average value of <span>$x_{i}$</span><!-- Has MathJax --> in training set, <span>$s_{i}$</span><!-- Has MathJax --> :range(=max-min)(or standard deviation))</li>
 </ul>
 <hr>
@@ -129,20 +131,20 @@
 <li>If <span>$\alpha$</span><!-- Has MathJax --> is too large: <span>$J(\theta)$</span><!-- Has MathJax --> may not decrese on every iteration, may not converge(slow converge also possible);</li>
 </ul>
 <hr>
-<h2>Normal Equation ---Solve for <span>$\theta$</span><!-- Has MathJax --> analytically</h2>
+<h2>Normal Equation —Solve for <span>$\theta$</span><!-- Has MathJax --> analytically</h2>
 <ul>
 <li>For the input X, add a column on the left in X filled with 1, make up a new X;</li>
-<li>then,
+<li>then,<br>
    <span>$\theta = (X^{ T}X)^{-1}X^{ T}y$</span><!-- Has MathJax --></li>
 </ul>
-<p><strong>The difference between Gradient Descent and Normal Equation:</strong>
-&lt;img src=&quot;http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png&quot;&gt;</p>
+<p><strong>The difference between Gradient Descent and Normal Equation:</strong><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png"></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/10/18/161018_ml_notes3/" data-id="cje9dtb26001b8rxunuqrri9c" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 03">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2016/10/18/161018_ml_notes3/" data-id="cjjdzgmc2001c2gxujrwf123h" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 03">分享到</a>
       
 
       
