@@ -1208,7 +1208,7 @@
     <link href="http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/"/>
     <id>http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/</id>
     <published>2017-04-05T00:00:00.000Z</published>
-    <updated>2018-07-09T09:03:28.027Z</updated>
+    <updated>2018-07-09T09:07:26.619Z</updated>
     
     <content type="html"><![CDATA[<h2>How biological neural network work</h2>
 <p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.</p>
@@ -1236,7 +1236,7 @@
 <p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,…,L$</p>
 <p>Using $y^{(i)}​$, compute <span>$\delta^{L}=a^{(L)}-y^{(i)}&NegativeMediumSpace;$</span><!-- Has MathJax --></p>
 <p>Compute $\delta^{(L-1)}, \delta^{(L-2)}, …, \color{red}{\delta^{(2)}}$</p>
-<p><span>$\Delta\_{ij}^{(l)}:=\Delta\_{ij}^{(l)} + a^{(l)}\_{j}\delta^{l+1}\_{i}$</span><!-- Has MathJax --></p>
+<p><span>$\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i}$</span><!-- Has MathJax --></p>
 <p>After that,</p>
 <p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
 <p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
