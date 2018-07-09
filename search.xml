@@ -1149,7 +1149,7 @@
 <p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
 <hr>
 <h2>Back Propagation Algorithm</h2>
-<p>For the training set ${(x<sup>{(1)},y</sup>{(1)}),…,(x<sup>{(m)},y</sup>{(m)}) }$, we first $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). Then we run the following loop:</p>
+<p>For the training set ${(x<sup>{(1)},y</sup>{(1)}),…,(x<sup>{(m)},y</sup>{(m)}) } $, $\Delta_{ij}^{(l)}=0 $ (for all $l,i,j$). Then we run the following loop:</p>
 <p>For $i = 1$ to $m$:</p>
 <p>Set $a<sup>{(1)}=x</sup>{(i)}$</p>
 <p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,…,L$</p>

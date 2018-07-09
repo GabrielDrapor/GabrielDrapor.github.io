@@ -1208,7 +1208,7 @@
     <link href="http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/"/>
     <id>http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/</id>
     <published>2017-04-05T00:00:00.000Z</published>
-    <updated>2018-07-09T07:59:16.536Z</updated>
+    <updated>2018-07-09T08:54:06.295Z</updated>
     
     <content type="html"><![CDATA[<h2>How biological neural network work</h2>
 <p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.</p>
@@ -1230,7 +1230,7 @@
 <p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
 <hr>
 <h2>Back Propagation Algorithm</h2>
-<p>For the training set ${(x<sup>{(1)},y</sup>{(1)}),…,(x<sup>{(m)},y</sup>{(m)}) }$, we first $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). Then we run the following loop:</p>
+<p>For the training set ${(x<sup>{(1)},y</sup>{(1)}),…,(x<sup>{(m)},y</sup>{(m)}) } $, $\Delta_{ij}^{(l)}=0 $ (for all $l,i,j$). Then we run the following loop:</p>
 <p>For $i = 1$ to $m$:</p>
 <p>Set $a<sup>{(1)}=x</sup>{(i)}$</p>
 <p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,…,L$</p>
