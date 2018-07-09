@@ -1208,7 +1208,7 @@
     <link href="http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/"/>
     <id>http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/</id>
     <published>2017-04-05T00:00:00.000Z</published>
-    <updated>2018-07-09T08:58:42.205Z</updated>
+    <updated>2018-07-09T09:01:10.466Z</updated>
     
     <content type="html"><![CDATA[<h2>How biological neural network work</h2>
 <p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.</p>
@@ -1232,9 +1232,9 @@
 <h2>Back Propagation Algorithm</h2>
 <p>For the training set <span>$\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) \}$</span><!-- Has MathJax -->, $\Delta_{ij}^{(l)}=0 $ (for all $l,i,j$). Then we run the following loop:</p>
 <p>For $i = 1$ to $m$:</p>
-<p>Set $a<sup>{(1)}=x</sup>{(i)}$</p>
+<p>Set <span>$a^{(1)}=x^{(i)}$</span><!-- Has MathJax --></p>
 <p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,…,L$</p>
-<p>Using $y^{(i)}​$, compute $\delta<sup>{L}=a</sup>{(L)}-y^{(i)}​$</p>
+<p>Using $y^{(i)}​$, compute <span>$\delta^{L}=a^{(L)}-y^{(i)}&NegativeMediumSpace;$</span><!-- Has MathJax --></p>
 <p>Compute $\delta^{(L-1)}, \delta^{(L-2)}, …, \color{red}{\delta^{(2)}}$</p>
 <p>$ \Delta_{ij}<sup>{(l)}:=\Delta_{ij}</sup>{(l)} + a<sup>{(l)}_{j}\delta</sup>{l+1}_{i} $</p>
 <p>After that,</p>

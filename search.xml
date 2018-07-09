@@ -1151,9 +1151,9 @@
 <h2>Back Propagation Algorithm</h2>
 <p>For the training set <span>$\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) \}$</span><!-- Has MathJax -->, $\Delta_{ij}^{(l)}=0 $ (for all $l,i,j$). Then we run the following loop:</p>
 <p>For $i = 1$ to $m$:</p>
-<p>Set $a<sup>{(1)}=x</sup>{(i)}$</p>
+<p>Set <span>$a^{(1)}=x^{(i)}$</span><!-- Has MathJax --></p>
 <p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,…,L$</p>
-<p>Using $y^{(i)}​$, compute $\delta<sup>{L}=a</sup>{(L)}-y^{(i)}​$</p>
+<p>Using $y^{(i)}​$, compute <span>$\delta^{L}=a^{(L)}-y^{(i)}&NegativeMediumSpace;$</span><!-- Has MathJax --></p>
 <p>Compute $\delta^{(L-1)}, \delta^{(L-2)}, …, \color{red}{\delta^{(2)}}$</p>
 <p>$ \Delta_{ij}<sup>{(l)}:=\Delta_{ij}</sup>{(l)} + a<sup>{(l)}_{j}\delta</sup>{l+1}_{i} $</p>
 <p>After that,</p>
