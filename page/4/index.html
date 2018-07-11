@@ -72,6 +72,91 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-161018_ml_notes3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/18/161018_ml_notes3/" class="article-date">
+  <time datetime="2016-10-18T00:00:00.000Z" itemprop="datePublished">2016-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/18/161018_ml_notes3/">Machine Learning Notes 03</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2>Multivariate Linear Regression</h2>
+<ul>
+<li><strong>Hypothesis:</strong><br>
+       <span>$h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i}$</span><!-- Has MathJax --></li>
+</ul>
+<p>      <span>$X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax -->  <span>$\theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax --></p>
+<p>  <strong>Also</strong>, <span>$h(\theta) = \theta ^{ T} X$</span><!-- Has MathJax --></p>
+<hr>
+<h2><strong>Gradient descent</strong></h2>
+<ul>
+<li><strong>Algorithm:</strong></li>
+</ul>
+<p>   Repeat{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>
+   }</p>
+<hr>
+<h2>Feature Scaling</h2>
+<ul>
+<li><strong>Idea</strong>: Make sure fretures are on a similar scale.</li>
+<li><strong>Mean normalization</strong><br>
+  Replace <span>$x_{i}$</span><!-- Has MathJax --> with <span>$x_{i}-\mu_{i}$</span><!-- Has MathJax --> to make features have approximately zero mean(Do not apply to <span>$x_{0}$</span><!-- Has MathJax -->, Which we suppose equals 1)<br>
+      <span>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</span><!-- Has MathJax --><br>
+      (<span>$\mu_{i}$</span><!-- Has MathJax --> :Average value of <span>$x_{i}$</span><!-- Has MathJax --> in training set, <span>$s_{i}$</span><!-- Has MathJax --> :range(=max-min)(or standard deviation))</li>
+</ul>
+<hr>
+<h2>Learning Rate</h2>
+<ul>
+<li>If <span>$\alpha$</span><!-- Has MathJax --> is too small: slow convergence;</li>
+<li>If <span>$\alpha$</span><!-- Has MathJax --> is too large: <span>$J(\theta)$</span><!-- Has MathJax --> may not decrese on every iteration, may not converge(slow converge also possible);</li>
+</ul>
+<hr>
+<h2>Normal Equation —Solve for <span>$\theta$</span><!-- Has MathJax --> analytically</h2>
+<ul>
+<li>For the input X, add a column on the left in X filled with 1, make up a new X;</li>
+<li>then,<br>
+   <span>$\theta = (X^{ T}X)^{-1}X^{ T}y$</span><!-- Has MathJax --></li>
+</ul>
+<p><strong>The difference between Gradient Descent and Normal Equation:</strong><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2016/10/18/161018_ml_notes3/" data-id="cjje0ynlq001c9rxu8xjpa852" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 03">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-161011_ml_notes2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/11/161011_ml_notes2/" class="article-date">
@@ -718,57 +803,6 @@
 
 
   
-    <article id="post-160503_jsp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/03/160503_jsp/" class="article-date">
-  <time datetime="2016-05-03T00:00:00.000Z" itemprop="datePublished">2016-05-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/03/160503_jsp/">jsp搭建JEECMS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0</strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/05/03/160503_jsp/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2016/05/03/160503_jsp/" data-id="cjje0ynht000e9rxudgv1fiku" class="article-share-link" data-share="baidu" data-title="jsp搭建JEECMS">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Networks/">Networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -782,7 +816,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">按标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Codewars/" style="font-size: 11.43px;">Codewars</a> <a href="/tags/Crawler/" style="font-size: 11.43px;">Crawler</a> <a href="/tags/Data-Structures-and-Algorithms/" style="font-size: 11.43px;">Data Structures and Algorithms</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Hardware/" style="font-size: 10px;">Hardware</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Machine-Learning/" style="font-size: 15.71px;">Machine Learning</a> <a href="/tags/Networks/" style="font-size: 14.29px;">Networks</a> <a href="/tags/Paths/" style="font-size: 18.57px;">Paths</a> <a href="/tags/Plans/" style="font-size: 20px;">Plans</a> <a href="/tags/Python/" style="font-size: 17.14px;">Python</a> <a href="/tags/SQL/" style="font-size: 12.86px;">SQL</a> <a href="/tags/Server/" style="font-size: 12.86px;">Server</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a>
+      <a href="/tags/Codewars/" style="font-size: 11.43px;">Codewars</a> <a href="/tags/Crawler/" style="font-size: 11.43px;">Crawler</a> <a href="/tags/Data-Structures-and-Algorithms/" style="font-size: 11.43px;">Data Structures and Algorithms</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Hardware/" style="font-size: 10px;">Hardware</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Machine-Learning/" style="font-size: 15.71px;">Machine Learning</a> <a href="/tags/MongoDB/" style="font-size: 11.43px;">MongoDB</a> <a href="/tags/Networks/" style="font-size: 14.29px;">Networks</a> <a href="/tags/Paths/" style="font-size: 18.57px;">Paths</a> <a href="/tags/Plans/" style="font-size: 20px;">Plans</a> <a href="/tags/Python/" style="font-size: 17.14px;">Python</a> <a href="/tags/SQL/" style="font-size: 12.86px;">SQL</a> <a href="/tags/Server/" style="font-size: 12.86px;">Server</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a>
     </div>
   </div>
 
@@ -791,7 +825,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

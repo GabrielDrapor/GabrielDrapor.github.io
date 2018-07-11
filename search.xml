@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[MongoDB常用查询]]></title>
+      <url>http://gabrieldrapor.github.io/2018/05/15/180515_MongoDB_common_query/</url>
+      <content type="html"><![CDATA[<p>总结了一下自己经常用到的一些MongoDB查询。</p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">db.collection.find()</div><div class="line"><span class="comment">// SELECT * FROM xxx</span></div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &lt;value1&gt;, ... &#125; ) </div><div class="line">// SELECT * FROM xxx WHERE field1 = value1</div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &lt;value1&gt;, ... &#125;, &#123; &lt;field1&gt;: 1, &lt;field2&gt;: 0, ... &#125; ) </div><div class="line">// SELECT _id, field1 FROM xxx WHERE field1 = value1</div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &#123; $lt: &lt;value1&gt; &#125; &#125; ) </div><div class="line">//SELECT * FROM xxx WHERE field1 &lt; value1 </div><div class="line">//Besides $lt, other commmon comparison operators is $lte, $gt, $gte, $in, $nin, $neq</div><div class="line"></div><div class="line">db.collection.find( &#123; $or: [ &#123; &lt;condition1&gt; &#125;, &#123; &lt;condition2&gt; &#125;, ... ] &#125; ) </div><div class="line">//SELECT * FROM xxx WHERE condition1 OR &lt;condition2 </div><div class="line"></div><div class="line">db.collection.findOne() </div><div class="line">//SELECT * FROM xxx LIMIT 1</div><div class="line">//When there is sub-field, use dot notation like "field.subfield" to access it</div><div class="line"></div><div class="line">db.collection.find( &#123; ... &#125; ).count() </div><div class="line">//SELECT COUNT(1) FROM xxx WHERE ...</div><div class="line"></div><div class="line">db.collection.distinct(field, query, options) </div><div class="line">//SELECT DISTINCT field FROM xxx WHERE ...</div><div class="line"></div><div class="line">db.collection.dataSize()</div><div class="line">//Calculate the size of the dump BSON file</div><div class="line"></div><div class="line">                          </div><div class="line">db.collection.aggregate( [</div><div class="line">						  &#123; $match: &#123;...&#125; &#125;,</div><div class="line">                          &#123; $group: &#123; _id: "$cust_id", total: &#123; $sum: "$amount" &#125; &#125; &#125;</div><div class="line">					   ] )</div><div class="line">//SELECT cust_id, SUM(amount) AS total</div><div class="line">//FROM xxx</div><div class="line">//WHERE ...</div><div class="line">//GROUP BY id</div><div class="line">                     </div><div class="line">//More abount Aggregation: https://docs.mongodb.com/manual/aggregation/</div></pre></td></tr></table></figure>
+<ul>
+<li>Reference: https://docs.mongodb.com/manual/</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> MongoDB </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> MongoDB </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于*和**运算符]]></title>
       <url>http://gabrieldrapor.github.io/2018/03/19/180319_star_operator/</url>
       <content type="html"><![CDATA[<p>最近才了解到*和**运算符的用法，特此小记。</p>
@@ -160,7 +186,7 @@
     <entry>
       <title><![CDATA[用Pymongo连接MongoDB取数]]></title>
       <url>http://gabrieldrapor.github.io/2017/11/22/171122_pymongo/</url>
-      <content type="html"><![CDATA[<p>最近需要用python从MongoDB上取数的需求，于是研究了一下PyMongo，在此做个小记。</p>
+      <content type="html"><![CDATA[<p>最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。</p>
 <a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
 ]]></content>
@@ -175,6 +201,8 @@
         <tags>
             
             <tag> Python </tag>
+            
+            <tag> MongoDB </tag>
             
         </tags>
         
