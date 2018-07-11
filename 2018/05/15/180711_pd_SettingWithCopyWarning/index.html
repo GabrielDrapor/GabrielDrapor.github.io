@@ -4,18 +4,21 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>一条置顶声明（已经不是了） | DRAPORLAND</title>
+  <title>关于SettingWithCopyWarning | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于在2017.3.21，多说官方发布了重要通知：  因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。  且在博客评论领域中覆盖率最广的Disqus并不支持国内访问，其他评论系统我都并不太喜欢，再加上本身其实也没多少人会来看我的博客……所">
+  <meta name="description" content="在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：  Google了一番，最后在stack overflow上找到了最恰当的用法。">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一条置顶声明（已经不是了）">
-<meta property="og:url" content="http://gabrieldrapor.github.io/2017/03/21/170507_notice/index.html">
+<meta property="og:title" content="关于SettingWithCopyWarning">
+<meta property="og:url" content="http://gabrieldrapor.github.io/2018/05/15/180711_pd_SettingWithCopyWarning/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="由于在2017.3.21，多说官方发布了重要通知：  因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。  且在博客评论领域中覆盖率最广的Disqus并不支持国内访问，其他评论系统我都并不太喜欢，再加上本身其实也没多少人会来看我的博客……所">
-<meta property="og:updated_time" content="2018-03-02T06:41:29.007Z">
+<meta property="og:description" content="在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：  Google了一番，最后在stack overflow上找到了最恰当的用法。">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/SettingWithCopyWarning.png">
+<meta property="og:updated_time" content="2018-07-11T10:35:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一条置顶声明（已经不是了）">
-<meta name="twitter:description" content="由于在2017.3.21，多说官方发布了重要通知：  因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。  且在博客评论领域中覆盖率最广的Disqus并不支持国内访问，其他评论系统我都并不太喜欢，再加上本身其实也没多少人会来看我的博客……所">
+<meta name="twitter:title" content="关于SettingWithCopyWarning">
+<meta name="twitter:description" content="在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：  Google了一番，最后在stack overflow上找到了最恰当的用法。">
+<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/SettingWithCopyWarning.png">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -71,12 +74,16 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-170507_notice" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-180711_pd_SettingWithCopyWarning" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/21/170507_notice/" class="article-date">
-  <time datetime="2017-03-21T00:00:00.000Z" itemprop="datePublished">2017-03-21</time>
+    <a href="/2018/05/15/180711_pd_SettingWithCopyWarning/" class="article-date">
+  <time datetime="2018-05-15T00:00:00.000Z" itemprop="datePublished">2018-05-15</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -85,7 +92,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      一条置顶声明（已经不是了）
+      关于SettingWithCopyWarning
     </h1>
   
 
@@ -93,43 +100,48 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>由于在2017.3.21，<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说官方</a>发布了重要通知：</p>
-<blockquote>
-<p>因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。</p>
-</blockquote>
-<p>且在博客评论领域中覆盖率最广的Disqus并不支持国内访问，其他评论系统我都并不太喜欢，再加上本身其实也没多少人会来看我的博客……所以打算关闭评论系统了…</p>
-<p>另外在评论系统正式关闭之前…我暂时还不会主动关掉它…先留着吧…毕竟看一天少一天了……</p>
-<p>……不知道除了我还有谁会看见这条声明：）</p>
+        <p>在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/SettingWithCopyWarning.png">
+<p>Google了一番，最后在stack overflow上找到了最恰当的用法。</p>
+<a id="more"></a>
+<ul>
+<li>我使用的pandas的版本：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">pd._version.get_versions()</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">&#123;'dirty': False,</div><div class="line"> 'error': None,</div><div class="line"> 'full-revisionid': 'a00154dcfe5057cb3fd86653172e74b6893e337d',</div><div class="line"> 'version': '0.22.0'&#125;</div><div class="line">"""</div></pre></td></tr></table></figure>
+<ul>
+<li>在探索过程中尝试了以下两种写法，但均不能避免SettingWithCopyWarning：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_column'</span>] = ...</div><div class="line">df.loc[:, <span class="string">'new_column'</span>] = ...</div></pre></td></tr></table></figure>
+<ul>
+<li>正确姿势：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df.assign(new_column = ...)</div></pre></td></tr></table></figure>
+<ul>
+<li>Reference: <a href="https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas" target="_blank" rel="external">https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2017/03/21/170507_notice/" data-id="cjje0ynqy002u9rxu6wa1tyok" class="article-share-link" data-share="baidu" data-title="一条置顶声明（已经不是了）">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2018/05/15/180711_pd_SettingWithCopyWarning/" data-id="cjjgzqmfr00000cxub8jz1tr1" class="article-share-link" data-share="baidu" data-title="关于SettingWithCopyWarning">分享到</a>
       
 
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/04/05/170406_ml_notes6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Machine Learning Notes 06
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/19/170319-plans/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/05/15/180515_MongoDB_common_query/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">开学已经四周了</div>
+      <div class="article-nav-title">MongoDB常用查询</div>
     </a>
   
 </nav>

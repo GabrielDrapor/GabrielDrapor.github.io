@@ -72,6 +72,57 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-170422_sql1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/22/170422_sql1/" class="article-date">
+  <time datetime="2017-04-22T00:00:00.000Z" itemprop="datePublished">2017-04-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/22/170422_sql1/">SQL Syntax(Ⅰ)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/22/170422_sql1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://gabrieldrapor.github.io/2017/04/22/170422_sql1/" data-id="cjje0ynpv002e9rxuylkhehes" class="article-share-link" data-share="baidu" data-title="SQL Syntax(Ⅰ)">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-170406_ml_notes6" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/05/170406_ml_notes6/" class="article-date">
@@ -613,132 +664,6 @@ Code: https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</p>
 
 
   
-    <article id="post-161121_ml_notes4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/21/161121_ml_notes4/" class="article-date">
-  <time datetime="2016-11-21T00:00:00.000Z" itemprop="datePublished">2016-11-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/21/161121_ml_notes4/">Machine Learning Notes 04</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2>Classification</h2>
-<p>  For the binary classification, <span>$y\in\left\{ 0,1 \right \}$</span><!-- Has MathJax --> (Also maybe, <span>$y\in \left \{ 0,1,2,3,... \right \}$</span><!-- Has MathJax -->, that’s called a <strong>multiclass classification problem</strong>, we will discuss it later.)<br>
-  So, we use a model called <strong>Logisitic Regression</strong>, and we can see the hypothesis <span>$h_{\theta}(x)$</span><!-- Has MathJax --> should value in the range of 0 and 1. This is to say, <span>$0\leq h_{\theta}(x)\leq 1$</span><!-- Has MathJax -->.</p>
-<hr>
-<h2>Hypothesis Representation</h2>
-<ul>
-<li>
-<p><strong>Logistic Regression:</strong><br>
-    <span>$h_{\theta}(x)=g(\theta^{T}x)$</span><!-- Has MathJax -->, <span>$g(z)=\frac{1}{1+e^{-z}}$</span><!-- Has MathJax --></p>
-</li>
-<li>
-<p>**Interpretation of Hypothesis Output **<br>
-The value of <span>$h_{\theta}(x)$</span><!-- Has MathJax --> equals to the estimated probability that y=1 (on input x, parameterized by <span>$\theta$</span><!-- Has MathJax --> ). This is to say,<br>
-$$h_{\theta}(x)=P(y=1\mid x ; \theta)$$</p>
-</li>
-<li>
-<p><strong>Decision Boundary</strong><br>
-The decision boundaries are like this:</p>
-</li>
-</ul>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/decision_boundary.png">
-<p>  <strong>Emphasis: Decision boundary is the property of hypothesis function, but not the property of training set and its parameters.</strong></p>
-<hr>
-<h2>**Logistic Regression **—How to fit the parameters of theta</h2>
-<ul>
-<li>
-<p><strong>Cost Function of Logistic Regression:</strong></p>
-<span>$$Cost(h_{\theta}, y)=\begin{cases}
-  -log(h_{\theta}(x)) &amp; \text{ if } y=1 \\ 
-  -log(1-h_{\theta}(x))  &amp; \text{ if } y=0 
-  \end{cases}$$</span><!-- Has MathJax -->
-<p>Also, we can write it as:</p>
-<center><span>$Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))$</span><!-- Has MathJax --></center>
-</li>
-<li>
-<p><strong>Gradient Descent:</strong><br>
-To minimize <span>$J_{\theta}$</span><!-- Has MathJax --></p>
-</li>
-</ul>
-<p>   Repeat{<br>
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>
-   }</p>
-<p>  <strong>And we can see that this algortithm looks identical to linear regression!<br>
-  But actually, the hypothesis of them are different.</strong></p>
-<span>$$\begin{cases}
-Linear\:Regression: h_{\theta}(x)=\theta^{T}x\\
-Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}
-\end{cases}$$</span><!-- Has MathJax -->
-<p>Besides,</p>
-<blockquote>
-<p>“use a vector rise implementation, so that a vector rise implementation can update all of these until parameters all in one fell swoop.”</p>
-</blockquote>
-<hr>
-<h2>Advanced Optimization</h2>
-<blockquote>
-<ul>
-<li>Gradient Descent</li>
-<li>Conjngate Gradient</li>
-<li>BFGS</li>
-<li>L-BFGS</li>
-<li>……</li>
-</ul>
-</blockquote>
-<ul>
-<li>
-<p><strong>Adcantages:</strong><br>
-No need to manually pick <span>$\alpha$</span><!-- Has MathJax --> ;<br>
-Often faster than gradient descent;</p>
-</li>
-<li>
-<p><strong>Disadvantages:</strong><br>
-More complex;</p>
-</li>
-</ul>
-<hr>
-<h2>Multi-class classification: One-vs-all</h2>
-<ul>
-<li>For example, to slove the three-class problem, we can <em>“turn this into three seperate two-class classification problems.”</em></li>
-<li>On a new input <span>$x$</span><!-- Has MathJax -->, to make a prediction, pick the class i that maximizes.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2016/11/21/161121_ml_notes4/" data-id="cjje0ynlt001f9rxupgca8if7" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 04">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -752,7 +677,7 @@ More complex;</p>
   <div class="widget-wrap">
     <h3 class="widget-title">按标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Codewars/" style="font-size: 11.43px;">Codewars</a> <a href="/tags/Crawler/" style="font-size: 11.43px;">Crawler</a> <a href="/tags/Data-Structures-and-Algorithms/" style="font-size: 11.43px;">Data Structures and Algorithms</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Hardware/" style="font-size: 10px;">Hardware</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Machine-Learning/" style="font-size: 15.71px;">Machine Learning</a> <a href="/tags/MongoDB/" style="font-size: 11.43px;">MongoDB</a> <a href="/tags/Networks/" style="font-size: 14.29px;">Networks</a> <a href="/tags/Paths/" style="font-size: 18.57px;">Paths</a> <a href="/tags/Plans/" style="font-size: 20px;">Plans</a> <a href="/tags/Python/" style="font-size: 17.14px;">Python</a> <a href="/tags/SQL/" style="font-size: 12.86px;">SQL</a> <a href="/tags/Server/" style="font-size: 12.86px;">Server</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a>
+      <a href="/tags/Codewars/" style="font-size: 11.67px;">Codewars</a> <a href="/tags/Crawler/" style="font-size: 11.67px;">Crawler</a> <a href="/tags/Data-Structures-and-Algorithms/" style="font-size: 11.67px;">Data Structures and Algorithms</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Hardware/" style="font-size: 10px;">Hardware</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MongoDB/" style="font-size: 11.67px;">MongoDB</a> <a href="/tags/Networks/" style="font-size: 15px;">Networks</a> <a href="/tags/Paths/" style="font-size: 18.33px;">Paths</a> <a href="/tags/Plans/" style="font-size: 20px;">Plans</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/SQL/" style="font-size: 13.33px;">SQL</a> <a href="/tags/Server/" style="font-size: 13.33px;">Server</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a>
     </div>
   </div>
 
@@ -761,7 +686,7 @@ More complex;</p>
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

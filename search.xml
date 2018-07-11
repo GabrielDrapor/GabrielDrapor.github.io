@@ -4,6 +4,45 @@
   
     
     <entry>
+      <title><![CDATA[关于SettingWithCopyWarning]]></title>
+      <url>http://gabrieldrapor.github.io/2018/05/15/180711_pd_SettingWithCopyWarning/</url>
+      <content type="html"><![CDATA[<p>在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/SettingWithCopyWarning.png">
+<p>Google了一番，最后在stack overflow上找到了最恰当的用法。</p>
+<a id="more"></a>
+<ul>
+<li>我使用的pandas的版本：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">pd._version.get_versions()</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">&#123;'dirty': False,</div><div class="line"> 'error': None,</div><div class="line"> 'full-revisionid': 'a00154dcfe5057cb3fd86653172e74b6893e337d',</div><div class="line"> 'version': '0.22.0'&#125;</div><div class="line">"""</div></pre></td></tr></table></figure>
+<ul>
+<li>在探索过程中尝试了以下两种写法，但均不能避免SettingWithCopyWarning：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_column'</span>] = ...</div><div class="line">df.loc[:, <span class="string">'new_column'</span>] = ...</div></pre></td></tr></table></figure>
+<ul>
+<li>正确姿势：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df.assign(new_column = ...)</div></pre></td></tr></table></figure>
+<ul>
+<li>Reference: <a href="https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas" target="_blank" rel="external">https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MongoDB常用查询]]></title>
       <url>http://gabrieldrapor.github.io/2018/05/15/180515_MongoDB_common_query/</url>
       <content type="html"><![CDATA[<p>总结了一下自己经常用到的一些MongoDB查询。</p>
