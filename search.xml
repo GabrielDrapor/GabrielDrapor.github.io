@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[关于SettingWithCopyWarning]]></title>
-      <url>http://gabrieldrapor.github.io/2018/05/15/180711_pd_SettingWithCopyWarning/</url>
+      <url>http://gabrieldrapor.github.io/2018/07/11/180711_pd_SettingWithCopyWarning/</url>
       <content type="html"><![CDATA[<p>在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：</p>
 <img src="http://7xugq7.com1.z0.glb.clouddn.com/SettingWithCopyWarning.png">
 <p>Google了一番，最后在stack overflow上找到了最恰当的用法。</p>

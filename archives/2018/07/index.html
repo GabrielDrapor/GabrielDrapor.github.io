@@ -4,19 +4,17 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Codewars上一道5 kyu的SQL题 | DRAPORLAND</title>
+  <title>archive_a: 2018/7 | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="具体思路和过程以后有时间再来整理（Flag）。 原题目的url是https://www.codewars.com/kata/calculating-running-total 参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿， 终于得(meng)出了一个可行的答案： 1234567SELECT CAST(">
-<meta name="keywords" content="Codewars">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Codewars上一道5 kyu的SQL题">
-<meta property="og:url" content="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/index.html">
+  <meta name="description" content="Just record something">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DRAPORLAND">
+<meta property="og:url" content="http://gabrieldrapor.github.io/archives/2018/07/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="具体思路和过程以后有时间再来整理（Flag）。 原题目的url是https://www.codewars.com/kata/calculating-running-total 参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿， 终于得(meng)出了一个可行的答案： 1234567SELECT CAST(">
-<meta property="og:updated_time" content="2018-03-02T06:41:30.135Z">
+<meta property="og:description" content="Just record something">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Codewars上一道5 kyu的SQL题">
-<meta name="twitter:description" content="具体思路和过程以后有时间再来整理（Flag）。 原题目的url是https://www.codewars.com/kata/calculating-running-total 参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿， 终于得(meng)出了一个可行的答案： 1234567SELECT CAST(">
+<meta name="twitter:title" content="DRAPORLAND">
+<meta name="twitter:description" content="Just record something">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -72,75 +70,39 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-170721_a_sql_ex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/21/170721_a_sql_ex/" class="article-date">
-  <time datetime="2017-07-21T00:00:00.000Z" itemprop="datePublished">2017-07-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SQL/">SQL</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Codewars上一道5 kyu的SQL题
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/07/11/180711_pd_SettingWithCopyWarning/" class="archive-article-date">
+  <time datetime="2018-07-11T00:00:00.000Z" itemprop="datePublished">7月 11</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/11/180711_pd_SettingWithCopyWarning/">关于SettingWithCopyWarning</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>具体思路和过程以后有时间再来整理（Flag）。</p>
-<p>原题目的url是https://www.codewars.com/kata/calculating-running-total</p>
-<p>参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，</p>
-<p>终于得(meng)出了一个可行的答案：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://gabrieldrapor.github.io/2017/07/21/170721_a_sql_ex/" data-id="cjje0ynsj003i9rxu8azmp733" class="article-share-link" data-share="baidu" data-title="Codewars上一道5 kyu的SQL题">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Codewars/">Codewars</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/08/08/170808_sql_time_switch/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          SQL的时间／日期无脑转换
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/07/11/170707-firstinterview-md/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">记录一下最近参加过的面试</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
       
