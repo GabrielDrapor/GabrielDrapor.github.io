@@ -1,20 +1,108 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>未来一段时间 • DRAPORLAND</title><meta name="description" content="未来一段时间 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">未来一段时间</h1><div class="post-info"><a></a>2016-03-20</div><div class="post-content"><h1>一、学数学！</h1>
+<p><strong>学好数分高代！</strong><br>
+<strong>学好数分高代！</strong><br>
+<strong>学好数分高代！</strong></p>
+<h1>二、巩固学习C，学习数据结构和算法</h1>
+<h3>1.书目</h3>
+<blockquote>
+<ul>
+<li>《C Primer Plus》</li>
+<li>《C Programming Language》</li>
+<li>《数据结构》</li>
+<li>《编程珠玑》</li>
+<li>《算法导论》</li>
+<li>《C Reference Manual》</li>
+<li>《Pointers and C》</li>
+<li>《C Traps and Pitfalls》</li>
+<li>《Expert C Programming》</li>
+</ul>
+</blockquote>
+<p>除此之外，还有与编程可能关系不太大的一些书：</p>
+<blockquote>
+<ul>
+<li>《深入理解计算机系统》</li>
+<li>《计算机网络自顶向下方法》</li>
+</ul>
+</blockquote>
+<h3>2.练习</h3>
+<blockquote>
+<ul>
+<li>当然是刷OJ</li>
+<li>http://coder.buct.edu.cn</li>
+<li>http://www.bnuoj.com/v3/</li>
+<li>http://www.clang.cc/oj/problemset.php</li>
+</ul>
+</blockquote>
+<h3>3.目标</h3>
+<p>培养自己的算法能力</p>
+<h1>三、巩固Python基础，学习写爬虫</h1>
+<blockquote>
+<p>Python基础知识 http://www.liaoxuefeng.com/<br>
+爬虫 http://cuiqingcai.com/1052.html</p>
+</blockquote>
+<h1>四、学习使用Linux</h1>
+<ul>
+<li>阅读《鸟哥的Linux私房菜·基础学习篇》</li>
+<li>学习在Linux下配置服务器</li>
+<li>有时间的话搞一搞树莓派（在宿舍搭个ftp给室友之类的）</li>
+<li>在不久的将来，摆脱Windows的束缚，将Linux作为常用系统</li>
+</ul>
+<h1>五、学习数据挖掘</h1>
+<p>这个目前有些远，没有特别搜集专门的学习路线，只是找到了这个：<br>
+<a href="http://www.zhihu.com/question/20757000" target="_blank" rel="external">在数据分析、挖掘方面，有哪些好书值得推荐？</a></p>
+<h1>六、还有一些与计算机无关的事情——</h1>
+<h2>（一）读书</h2>
+<p>做好摘抄，做好读书笔记</p>
+<h3>1.纸质书单</h3>
+<ul>
+<li>霍乱时期的爱情/加西亚·马尔克斯</li>
+<li>怎样解题/波利亚</li>
+<li>人生不较劲/周国平</li>
+<li>撒哈拉的故事/三毛</li>
+<li>诗经</li>
+<li>经济学原理：微观经济学分册/曼昆</li>
+<li>中国人民共和国宪法</li>
+<li>…………</li>
+</ul>
+<h3>2.Kindle书单</h3>
+<ul>
+<li>浪潮之巅/吴军</li>
+<li>空谷幽兰——寻访当代中国隐士/比尔·波特</li>
+<li>人生不较劲/周国平</li>
+<li>皮囊/菜崇达</li>
+<li>伶人往事/章诒和</li>
+<li>乌合之众/古斯塔夫·勒庞</li>
+<li>中国人民共和国宪法</li>
+<li>…………</li>
+</ul>
+<p>其实还有很多，不一一列出XD</p>
+<h2>（二）电影</h2>
+<ul>
+<li>荒野猎人</li>
+<li>秒速五厘米</li>
+<li>辩护人</li>
+<li>乱世佳人</li>
+<li>被遗弃的松子的一生</li>
+<li>机械姬</li>
+<li>十二怒汉</li>
+<li>…………</li>
+</ul>
+<h2>（三）运动</h2>
+<p>** 跑步!**<br>
+** 跑步!**<br>
+** 跑步!**</p>
+<h2>（四）NBA录像</h2>
+<ul>
+<li>Bulls@Jazz 1998 NBA Finals Game 6</li>
+<li>Heat@Bostons 2012 East Finals Game 6</li>
+<li>Cavaliers@Pistons 2006 East Finals Game 5 Highlight</li>
+<li>Warriors@Thunder February 28th 2016</li>
+<li>Bulls@Cavaliers 1989 Eastern Conference First Round Game 5</li>
+<li>Bulls@Celtics 1986 April 20th</li>
+<li>…………</li>
+</ul>
+<h2>（五）个人情趣</h2>
+<p><strong>学习围棋</strong>  http://www.weiqitv.com/</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/04/16/160416_re/">prev</a><a class="next" href="/2015/11/25/151125_hardware/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

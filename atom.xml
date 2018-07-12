@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>DRAPORLAND</title>
+  <icon>https://www.gravatar.com/avatar/901511db705017fbe90d70a6e9769d92</icon>
   <subtitle>“Witness me.”</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -22,26 +23,7 @@
     <published>2018-07-11T00:00:00.000Z</published>
     <updated>2018-07-11T10:40:13.029Z</updated>
     
-    <content type="html"><![CDATA[<p>在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：</p>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/SettingWithCopyWarning.png">
-<p>Google了一番，最后在stack overflow上找到了最恰当的用法。</p>
-<a id="more"></a>
-<ul>
-<li>我使用的pandas的版本：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">pd._version.get_versions()</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">&#123;'dirty': False,</div><div class="line"> 'error': None,</div><div class="line"> 'full-revisionid': 'a00154dcfe5057cb3fd86653172e74b6893e337d',</div><div class="line"> 'version': '0.22.0'&#125;</div><div class="line">"""</div></pre></td></tr></table></figure>
-<ul>
-<li>在探索过程中尝试了以下两种写法，但均不能避免SettingWithCopyWarning：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_column'</span>] = ...</div><div class="line">df.loc[:, <span class="string">'new_column'</span>] = ...</div></pre></td></tr></table></figure>
-<ul>
-<li>正确姿势：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df.assign(new_column = ...)</div></pre></td></tr></table></figure>
-<ul>
-<li>Reference: <a href="https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas" target="_blank" rel="external">https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas</a></li>
-</ul>
-]]></content>
+    <content type="html"><![CDATA[<p>在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：</p><img src="http://7xugq7.com1.z0.glb.clouddn.com/SettingWithCopyWarning.png"><p>Google了一番，最后在stack overflow上找到了最恰当的用法。</p><a id="more"></a><ul><li>我使用的pandas的版本：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">pd._version.get_versions()</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">&#123;'dirty': False,</div><div class="line"> 'error': None,</div><div class="line"> 'full-revisionid': 'a00154dcfe5057cb3fd86653172e74b6893e337d',</div><div class="line"> 'version': '0.22.0'&#125;</div><div class="line">"""</div></pre></td></tr></table></figure><ul><li>在探索过程中尝试了以下两种写法，但均不能避免SettingWithCopyWarning：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_column'</span>] = ...</div><div class="line">df.loc[:, <span class="string">'new_column'</span>] = ...</div></pre></td></tr></table></figure><ul><li>正确姿势：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df.assign(new_column = ...)</div></pre></td></tr></table></figure><ul><li>Reference: <a href="https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas" target="_blank" rel="external">https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas</a></li></ul>]]></content>
     
     <summary type="html">
     
@@ -65,13 +47,7 @@
     <published>2018-05-15T00:00:00.000Z</published>
     <updated>2018-07-11T08:11:36.645Z</updated>
     
-    <content type="html"><![CDATA[<p>总结了一下自己经常用到的一些MongoDB查询。</p>
-<a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">db.collection.find()</div><div class="line"><span class="comment">// SELECT * FROM xxx</span></div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &lt;value1&gt;, ... &#125; ) </div><div class="line">// SELECT * FROM xxx WHERE field1 = value1</div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &lt;value1&gt;, ... &#125;, &#123; &lt;field1&gt;: 1, &lt;field2&gt;: 0, ... &#125; ) </div><div class="line">// SELECT _id, field1 FROM xxx WHERE field1 = value1</div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &#123; $lt: &lt;value1&gt; &#125; &#125; ) </div><div class="line">//SELECT * FROM xxx WHERE field1 &lt; value1 </div><div class="line">//Besides $lt, other commmon comparison operators is $lte, $gt, $gte, $in, $nin, $neq</div><div class="line"></div><div class="line">db.collection.find( &#123; $or: [ &#123; &lt;condition1&gt; &#125;, &#123; &lt;condition2&gt; &#125;, ... ] &#125; ) </div><div class="line">//SELECT * FROM xxx WHERE condition1 OR &lt;condition2 </div><div class="line"></div><div class="line">db.collection.findOne() </div><div class="line">//SELECT * FROM xxx LIMIT 1</div><div class="line">//When there is sub-field, use dot notation like "field.subfield" to access it</div><div class="line"></div><div class="line">db.collection.find( &#123; ... &#125; ).count() </div><div class="line">//SELECT COUNT(1) FROM xxx WHERE ...</div><div class="line"></div><div class="line">db.collection.distinct(field, query, options) </div><div class="line">//SELECT DISTINCT field FROM xxx WHERE ...</div><div class="line"></div><div class="line">db.collection.dataSize()</div><div class="line">//Calculate the size of the dump BSON file</div><div class="line"></div><div class="line">                          </div><div class="line">db.collection.aggregate( [	</div><div class="line">			  &#123; $match: &#123;...&#125; &#125;,</div><div class="line">                          &#123; $group: &#123; _id: "$cust_id", total: &#123; $sum: "$amount" &#125; &#125; &#125;</div><div class="line">					   ] )</div><div class="line">//SELECT cust_id, SUM(amount) AS total</div><div class="line">//FROM xxx</div><div class="line">//WHERE ...</div><div class="line">//GROUP BY id</div><div class="line">                     </div><div class="line">//More abount Aggregation: https://docs.mongodb.com/manual/aggregation/</div></pre></td></tr></table></figure>
-<ul>
-<li>Reference: <a href="https://docs.mongodb.com/manual/" target="_blank" rel="external">MongoDB Documentation</a></li>
-</ul>
-]]></content>
+    <content type="html"><![CDATA[<p>总结了一下自己经常用到的一些MongoDB查询。</p><a id="more"></a><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">db.collection.find()</div><div class="line"><span class="comment">// SELECT * FROM xxx</span></div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &lt;value1&gt;, ... &#125; ) </div><div class="line">// SELECT * FROM xxx WHERE field1 = value1</div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &lt;value1&gt;, ... &#125;, &#123; &lt;field1&gt;: 1, &lt;field2&gt;: 0, ... &#125; ) </div><div class="line">// SELECT _id, field1 FROM xxx WHERE field1 = value1</div><div class="line"></div><div class="line">db.collection.find( &#123; &lt;field1&gt;: &#123; $lt: &lt;value1&gt; &#125; &#125; ) </div><div class="line">//SELECT * FROM xxx WHERE field1 &lt; value1 </div><div class="line">//Besides $lt, other commmon comparison operators is $lte, $gt, $gte, $in, $nin, $neq</div><div class="line"></div><div class="line">db.collection.find( &#123; $or: [ &#123; &lt;condition1&gt; &#125;, &#123; &lt;condition2&gt; &#125;, ... ] &#125; ) </div><div class="line">//SELECT * FROM xxx WHERE condition1 OR &lt;condition2 </div><div class="line"></div><div class="line">db.collection.findOne() </div><div class="line">//SELECT * FROM xxx LIMIT 1</div><div class="line">//When there is sub-field, use dot notation like "field.subfield" to access it</div><div class="line"></div><div class="line">db.collection.find( &#123; ... &#125; ).count() </div><div class="line">//SELECT COUNT(1) FROM xxx WHERE ...</div><div class="line"></div><div class="line">db.collection.distinct(field, query, options) </div><div class="line">//SELECT DISTINCT field FROM xxx WHERE ...</div><div class="line"></div><div class="line">db.collection.dataSize()</div><div class="line">//Calculate the size of the dump BSON file</div><div class="line"></div><div class="line">                          </div><div class="line">db.collection.aggregate( [</div><div class="line">  &#123; $match: &#123;...&#125; &#125;,</div><div class="line">                          &#123; $group: &#123; _id: "$cust_id", total: &#123; $sum: "$amount" &#125; &#125; &#125;</div><div class="line">   ] )</div><div class="line">//SELECT cust_id, SUM(amount) AS total</div><div class="line">//FROM xxx</div><div class="line">//WHERE ...</div><div class="line">//GROUP BY id</div><div class="line">                     </div><div class="line">//More abount Aggregation: https://docs.mongodb.com/manual/aggregation/</div></pre></td></tr></table></figure><ul><li>Reference: <a href="https://docs.mongodb.com/manual/" target="_blank" rel="external">MongoDB Documentation</a></li></ul>]]></content>
     
     <summary type="html">
     
@@ -93,26 +69,7 @@
     <published>2018-03-19T00:00:00.000Z</published>
     <updated>2018-04-03T04:09:05.638Z</updated>
     
-    <content type="html"><![CDATA[<p>最近才了解到*和**运算符的用法，特此小记。</p>
-<a id="more"></a>
-<p>最开始遇到的情形是这样的：我再另一个地方得到了一个tuple a</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = (<span class="number">1</span>,<span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p>想把这个tuple里的值作为另一个函数f的参数传给它，理论上完全可以用[]把每个值取出来再一个一个传给函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">f(a[<span class="number">0</span>], a[<span class="number">1</span>])</div></pre></td></tr></table></figure>
-<p>但这样的写法实在是看起来很蠢，而且当这里的参数不是两个而是很多的时候，这样写也太麻烦了。Google了一下之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f(*a)</div></pre></td></tr></table></figure>
-<p>在<a href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists" target="_blank" rel="external">官方文档</a>中也有相关的说明：</p>
-<blockquote>
-<p>4.7.4. Unpacking Argument Lists</p>
-<p>The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(<span class="number">3</span>, <span class="number">6</span>))            <span class="comment"># normal call with separate arguments</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>args = [<span class="number">3</span>, <span class="number">6</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(*args))            <span class="comment"># call with arguments unpacked from a list</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure>
-<p>文档中还提了**的用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def parrot(voltage, state=&apos;a stiff&apos;, action=&apos;voom&apos;):</div><div class="line">...     print(&quot;-- This parrot wouldn&apos;t&quot;, action, end=&apos; &apos;)</div><div class="line">...     print(&quot;if you put&quot;, voltage, &quot;volts through it.&quot;, end=&apos; &apos;)</div><div class="line">...     print(&quot;E&apos;s&quot;, state, &quot;!&quot;)</div><div class="line">...</div><div class="line">&gt;&gt;&gt; d = &#123;&quot;voltage&quot;: &quot;four million&quot;, &quot;state&quot;: &quot;bleedin&apos; demised&quot;, &quot;action&quot;: &quot;VOOM&quot;&#125;</div><div class="line">&gt;&gt;&gt; parrot(**d)</div><div class="line">-- This parrot wouldn&apos;t VOOM if you put four million volts through it. E&apos;s bleedin&apos; demised !</div></pre></td></tr></table></figure>
-<p>在自己尝试的过程中也发现了两个有意思的用法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(*a)</div><div class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,a,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>], <span class="number">7</span>, <span class="number">8</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,*a,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
-]]></content>
+    <content type="html"><![CDATA[<p>最近才了解到*和**运算符的用法，特此小记。</p><a id="more"></a><p>最开始遇到的情形是这样的：我再另一个地方得到了一个tuple a</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = (<span class="number">1</span>,<span class="number">2</span>)</div></pre></td></tr></table></figure><p>想把这个tuple里的值作为另一个函数f的参数传给它，理论上完全可以用[]把每个值取出来再一个一个传给函数：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">f(a[<span class="number">0</span>], a[<span class="number">1</span>])</div></pre></td></tr></table></figure><p>但这样的写法实在是看起来很蠢，而且当这里的参数不是两个而是很多的时候，这样写也太麻烦了。Google了一下之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f(*a)</div></pre></td></tr></table></figure><p>在<a href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists" target="_blank" rel="external">官方文档</a>中也有相关的说明：</p><blockquote><p>4.7.4. Unpacking Argument Lists</p><p>The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</p></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(<span class="number">3</span>, <span class="number">6</span>))            <span class="comment"># normal call with separate arguments</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>args = [<span class="number">3</span>, <span class="number">6</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(*args))            <span class="comment"># call with arguments unpacked from a list</span></div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure><p>文档中还提了**的用法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def parrot(voltage, state=&apos;a stiff&apos;, action=&apos;voom&apos;):</div><div class="line">...     print(&quot;-- This parrot wouldn&apos;t&quot;, action, end=&apos; &apos;)</div><div class="line">...     print(&quot;if you put&quot;, voltage, &quot;volts through it.&quot;, end=&apos; &apos;)</div><div class="line">...     print(&quot;E&apos;s&quot;, state, &quot;!&quot;)</div><div class="line">...</div><div class="line">&gt;&gt;&gt; d = &#123;&quot;voltage&quot;: &quot;four million&quot;, &quot;state&quot;: &quot;bleedin&apos; demised&quot;, &quot;action&quot;: &quot;VOOM&quot;&#125;</div><div class="line">&gt;&gt;&gt; parrot(**d)</div><div class="line">-- This parrot wouldn&apos;t VOOM if you put four million volts through it. E&apos;s bleedin&apos; demised !</div></pre></td></tr></table></figure><p>在自己尝试的过程中也发现了两个有意思的用法：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(*a)</div><div class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></div></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,a,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>], <span class="number">7</span>, <span class="number">8</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,*a,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -134,21 +91,7 @@
     <published>2018-01-22T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:31.623Z</updated>
     
-    <content type="html"><![CDATA[<p>小记如何用Flask实现一个带POST的api。</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, Response</div><div class="line"><span class="keyword">from</span> logging <span class="keyword">import</span> FileHandler, INFO, Formatter</div><div class="line"></div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="comment"># log</span></div><div class="line">err_log = FileHandler(<span class="string">'error_log_'</span>+time.strftime(<span class="string">'%Y%m%d'</span>,time.localtime()))</div><div class="line">err_log.setLevel(INFO)  <span class="comment">#设置日志级别</span></div><div class="line">logging_format = Formatter(<span class="string">'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'</span>)  <span class="comment"># 日志格式</span></div><div class="line">err_log.setFormatter(logging_format)</div><div class="line">app.logger.addHandler(err_log)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@app.route('/',methods=['POST','GET'])  #'/'指定了路径</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CERTAIN_FUNCTION</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        ...  <span class="comment">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span></div><div class="line">        <span class="keyword">return</span> Response(json.dumps(xxxx), mimetype=<span class="string">'application/json'</span>)  <span class="comment"># 如果需要回传json的话</span></div><div class="line"><span class="comment">#       return xxx 当然也可直接回传字符串或某个方法 </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(host=<span class="string">'x.x.x.x'</span>,port=<span class="string">'xxxx'</span>)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>Reference:</p>
-<ul>
-<li>http://docs.jinkan.org/docs/flask/quickstart.html</li>
-<li>https://www.youtube.com/watch?v=LGlRYlbawnE</li>
-</ul>
-<ul>
-<li>http://www.cnblogs.com/wanghaonull/p/6537823.html</li>
-<li>http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</li>
-</ul>
-</blockquote>
-]]></content>
+    <content type="html"><![CDATA[<p>小记如何用Flask实现一个带POST的api。</p><a id="more"></a><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, Response</div><div class="line"><span class="keyword">from</span> logging <span class="keyword">import</span> FileHandler, INFO, Formatter</div><div class="line"></div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="comment"># log</span></div><div class="line">err_log = FileHandler(<span class="string">'error_log_'</span>+time.strftime(<span class="string">'%Y%m%d'</span>,time.localtime()))</div><div class="line">err_log.setLevel(INFO)  <span class="comment">#设置日志级别</span></div><div class="line">logging_format = Formatter(<span class="string">'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'</span>)  <span class="comment"># 日志格式</span></div><div class="line">err_log.setFormatter(logging_format)</div><div class="line">app.logger.addHandler(err_log)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@app.route('/',methods=['POST','GET'])  #'/'指定了路径</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CERTAIN_FUNCTION</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        ...  <span class="comment">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span></div><div class="line">        <span class="keyword">return</span> Response(json.dumps(xxxx), mimetype=<span class="string">'application/json'</span>)  <span class="comment"># 如果需要回传json的话</span></div><div class="line"><span class="comment">#       return xxx 当然也可直接回传字符串或某个方法 </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(host=<span class="string">'x.x.x.x'</span>,port=<span class="string">'xxxx'</span>)</div></pre></td></tr></table></figure><blockquote><p>Reference:</p><ul><li>http://docs.jinkan.org/docs/flask/quickstart.html</li><li>https://www.youtube.com/watch?v=LGlRYlbawnE</li></ul><ul><li>http://www.cnblogs.com/wanghaonull/p/6537823.html</li><li>http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</li></ul></blockquote>]]></content>
     
     <summary type="html">
     
@@ -172,64 +115,7 @@
     <published>2018-01-01T00:00:00.000Z</published>
     <updated>2018-03-13T11:07:19.660Z</updated>
     
-    <content type="html"><![CDATA[<p>2017已经接近尾声，在此谨记2017的种种。</p>
-<a id="more"></a>
-<p>2017元旦做2016总结的时候，当时在博客的评论区写了一条评论说，明年这个时候一定要写出一篇比今年精彩得多的总结。当时还想着一定要在这篇年终总结中放很多照片和截图来凸显自己这一整年的精彩程度，还为此专门在Dropbox上建了一个叫“My 2017”的文件夹。不过何谓“精彩”似乎很难定义，今年的经历讲给去年的自己听，他想必觉得还算精彩，而今年的自己可能只觉得稀松平常，所以我觉得不如在年终总结的时候列一些具体些的条目，然后明年来打勾。</p>
-<p>技术方面，</p>
-<ul>
-<li>一月参加了MCM2017，没有想象的那么激烈，拿了一个Honorable Mentions，此后还参加了几次小的建模，但我对建模的兴趣已经基本殆尽了；</li>
-</ul>
-<ul>
-<li>
-<p>一拖再拖，四月份的时候上完了Coursera上Andrew Ng的<em>Machine Learning</em>；</p>
-</li>
-<li>
-<p>四月看了《SQL必知必会》，但一直一段时间没用上便遗忘了不少，不过实习之后八九十月几乎每天都在写SQL，SQL的熟练度巨幅提高，达到可以进行各种花式联结和花式聚合的水平；</p>
-</li>
-<li>
-<p>春夏交际的时候读了一部分《利用Python进行数据分析》，后来在实习时做项目的过程中，Numpy和Pandas的熟练度也得到了明显的提升；</p>
-</li>
-<li>
-<p>实习之后手动实现了一些Machine Learning的东西，其间还初探了一下Kaggle，Coding的能力得到了不少锻炼；</p>
-</li>
-<li>
-<p>实习过程中还顺便学写了一点琐碎的小技能；</p>
-</li>
-<li>
-<p>拖了一年多，临近年底的时候终于开始学数据结构了；</p>
-<p>​</p>
-</li>
-</ul>
-<p>其他方面：</p>
-<p>很惭愧，今年读的书太少了。算上从2016开始翻的论语，也才只读了十几本书。不过其中大部分是在最后两个月读的，2018希望可以保持后两个月的阅读状态。</p>
-<p>今年电影看了大概30部，去了4次电影院。电视剧比去年应该是少了，主要原因是年初补完了《权力的游戏》前六季之后，对其他许多剧失去了兴趣。看完之后直至今日，我都常常跟人说《权力的游戏》应该就是我过去二十年里看过最棒的电视剧了，可能没有之一。</p>
-<p>2017年玩游戏的时间不算多，不过还是玩了几部相当不错的游戏，3DS上除了MH X和XX，还玩了一部塞尔达（众神的三角力量2），玩了一部口袋妖怪（究极之月），还玩了一段时间的牧场物语；PC上除了和室友开黑玩的LOL之外，玩了Poly Bridge。2018，希望能玩更多好游戏（十分想入一个Switch）。</p>
-<p>作为NBA球迷，今年彻底成为了大帝的球迷。对比赛的认识应该还是得到了一些长进的。闲的时候翻了一些经典的老录像看。学习了一些战术方面的东西，对一些基本的战术类型，Horns，Hammer之类的有了一些了解。2018希望能了解更多。</p>
-<p>春天的时候开了个微信公众号，半年多过去，在茫茫的无病呻吟和顾影自怜中，所幸还有几篇略有价值的东西，2018希望能多写一些有价值的东西，除了篮球战术和翻译，也许还可以构思个短篇小说什么的。</p>
-<p>2017终于养成了记录的习惯，每周在Github上写周报，每天在Workflowy上记流水账。不可否认，这种依靠记录来获得某种虚幻的成就感从而驱动自己的行为是我身上某种焦虑和空虚的体现。不过其实还好，总比什么也没做强。</p>
-<p>情绪方面，2017年一整年算得上跌宕起伏。春天的时候有一段时间状态非常好，学习和生活充满希冀，那时候觉得自己已经把自己调到了最好的状态。没成想，夏天到来之后，受到了高温和其他因素的影响，整个人变得非常非常低落，开始对生活中的任何事情丧失兴趣，甚至开始觉得活着其实也没什么趣味。所幸6月份有期末考试，这件不大不小的事情还算给了我一点支撑。考完试之后，我失去了唯一的支撑，整个人几乎要垮掉。期间萌生了想要找实习的想法，在拉勾海投了一番，在众多的拒绝中，还是有两家公司给了我面试的机会。于是2017年7月14日，堪称我这一年中的转折点，我收到了洋葱数学的实习Offer。说这一纸Offer救了我毫不过分，在此后的日子里，虽然情绪偶尔还是会出现波动，但只要坐在公司，愉悦感和满足感就会源源不断地从心底涌出。除了写代码，在公司还做了很多别的有趣的事情：做过几页数学书，脑暴一些项目的点子，写对话游戏的本子等等。当然在公司还认识了许多很有趣的人，跟生活丰富的人交谈很少会让人觉得无聊。</p>
-<p>实习之后直接实现了经济独立，于是可以更加放纵地吃吃喝喝，花钱渐渐变得大手大脚，终于在十一月迎来支出顶峰，那时候开始打算做一些理财计划，初步的打算包括做指数基金的定投，截止到目前投了一个月多一点，赚了微不足道的一点点，2018应该会继续保持这个习惯。</p>
-<p>去年期盼的独居生活并没有真正来临，只在这一年中短暂地出现过。不过在有限的独居生活里，我自认为我过得还算可以，一个人在家的时候反而不太容易觉得孤单活着空虚。烹饪方面得到了有限的一点点提升。整年中在家最舒畅的时候，要数3月的那些晚上，冲一壶大红袍，一边听《圆桌派》，拼拼图的时候，彼时彼刻大概算得上一年中最恬静的时刻。后来也就顺理成章地喜欢上了窦文涛以及相关的几位的节目，诸如锵锵、一千零一夜，都嘟之类的今年都没少看。以及拼图。本想着自己独居一年可以拼好多好多副拼图，不过由于居住条件的变化总是难以预料，所以今年其实拼的拼图很少。希望新的一年能拼更多有趣的拼图。</p>
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/IMG_20170305_040225.jpg" alt=""></p>
-<p>今年很多时候依然是一个人，和去年的情况基本一样，唯一不同的大概就是下馆子的次数多了很多</p>
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/WechatIMG52.jpeg" alt=""></p>
-<p>2017年曾经有过三次可以脱单的机会，但因为我始终觉得不合适（也许只是我在抗拒），还是拒绝了对方的好意。2018，希望……；</p>
-<p>2017年很遗憾没有像小学初中高中一样，交到可以时常一起玩，三观也大概接近的朋友。2018年能从公司或者哪儿发展一个或几个的话自然是最好，没有当然也没关系，有机会的话和老朋友们聚一聚，其他时间自己玩耍便是。</p>
-<hr>
-<p>列几个明年可以打勾的一些小愿望和小目标：</p>
-<ul>
-<li>ML，Python继续提升，读一些技术书；</li>
-<li>好好学数学；</li>
-<li>变得轻盈；</li>
-<li>坚持读书的习惯；</li>
-<li>拼更多的拼图；</li>
-<li>学一些其他领域的技能，培养一些爱好；</li>
-<li>住进一个有厨房的房子；</li>
-<li>开心；</li>
-</ul>
-<p>当然，2018希望所有的家人朋友们都能健康幸福快乐。</p>
-<p>以上。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>2017已经接近尾声，在此谨记2017的种种。</p><a id="more"></a><p>2017元旦做2016总结的时候，当时在博客的评论区写了一条评论说，明年这个时候一定要写出一篇比今年精彩得多的总结。当时还想着一定要在这篇年终总结中放很多照片和截图来凸显自己这一整年的精彩程度，还为此专门在Dropbox上建了一个叫“My 2017”的文件夹。不过何谓“精彩”似乎很难定义，今年的经历讲给去年的自己听，他想必觉得还算精彩，而今年的自己可能只觉得稀松平常，所以我觉得不如在年终总结的时候列一些具体些的条目，然后明年来打勾。</p><p>技术方面，</p><ul><li>一月参加了MCM2017，没有想象的那么激烈，拿了一个Honorable Mentions，此后还参加了几次小的建模，但我对建模的兴趣已经基本殆尽了；</li></ul><ul><li><p>一拖再拖，四月份的时候上完了Coursera上Andrew Ng的<em>Machine Learning</em>；</p></li><li><p>四月看了《SQL必知必会》，但一直一段时间没用上便遗忘了不少，不过实习之后八九十月几乎每天都在写SQL，SQL的熟练度巨幅提高，达到可以进行各种花式联结和花式聚合的水平；</p></li><li><p>春夏交际的时候读了一部分《利用Python进行数据分析》，后来在实习时做项目的过程中，Numpy和Pandas的熟练度也得到了明显的提升；</p></li><li><p>实习之后手动实现了一些Machine Learning的东西，其间还初探了一下Kaggle，Coding的能力得到了不少锻炼；</p></li><li><p>实习过程中还顺便学写了一点琐碎的小技能；</p></li><li><p>拖了一年多，临近年底的时候终于开始学数据结构了；</p><p>​</p></li></ul><p>其他方面：</p><p>很惭愧，今年读的书太少了。算上从2016开始翻的论语，也才只读了十几本书。不过其中大部分是在最后两个月读的，2018希望可以保持后两个月的阅读状态。</p><p>今年电影看了大概30部，去了4次电影院。电视剧比去年应该是少了，主要原因是年初补完了《权力的游戏》前六季之后，对其他许多剧失去了兴趣。看完之后直至今日，我都常常跟人说《权力的游戏》应该就是我过去二十年里看过最棒的电视剧了，可能没有之一。</p><p>2017年玩游戏的时间不算多，不过还是玩了几部相当不错的游戏，3DS上除了MH X和XX，还玩了一部塞尔达（众神的三角力量2），玩了一部口袋妖怪（究极之月），还玩了一段时间的牧场物语；PC上除了和室友开黑玩的LOL之外，玩了Poly Bridge。2018，希望能玩更多好游戏（十分想入一个Switch）。</p><p>作为NBA球迷，今年彻底成为了大帝的球迷。对比赛的认识应该还是得到了一些长进的。闲的时候翻了一些经典的老录像看。学习了一些战术方面的东西，对一些基本的战术类型，Horns，Hammer之类的有了一些了解。2018希望能了解更多。</p><p>春天的时候开了个微信公众号，半年多过去，在茫茫的无病呻吟和顾影自怜中，所幸还有几篇略有价值的东西，2018希望能多写一些有价值的东西，除了篮球战术和翻译，也许还可以构思个短篇小说什么的。</p><p>2017终于养成了记录的习惯，每周在Github上写周报，每天在Workflowy上记流水账。不可否认，这种依靠记录来获得某种虚幻的成就感从而驱动自己的行为是我身上某种焦虑和空虚的体现。不过其实还好，总比什么也没做强。</p><p>情绪方面，2017年一整年算得上跌宕起伏。春天的时候有一段时间状态非常好，学习和生活充满希冀，那时候觉得自己已经把自己调到了最好的状态。没成想，夏天到来之后，受到了高温和其他因素的影响，整个人变得非常非常低落，开始对生活中的任何事情丧失兴趣，甚至开始觉得活着其实也没什么趣味。所幸6月份有期末考试，这件不大不小的事情还算给了我一点支撑。考完试之后，我失去了唯一的支撑，整个人几乎要垮掉。期间萌生了想要找实习的想法，在拉勾海投了一番，在众多的拒绝中，还是有两家公司给了我面试的机会。于是2017年7月14日，堪称我这一年中的转折点，我收到了洋葱数学的实习Offer。说这一纸Offer救了我毫不过分，在此后的日子里，虽然情绪偶尔还是会出现波动，但只要坐在公司，愉悦感和满足感就会源源不断地从心底涌出。除了写代码，在公司还做了很多别的有趣的事情：做过几页数学书，脑暴一些项目的点子，写对话游戏的本子等等。当然在公司还认识了许多很有趣的人，跟生活丰富的人交谈很少会让人觉得无聊。</p><p>实习之后直接实现了经济独立，于是可以更加放纵地吃吃喝喝，花钱渐渐变得大手大脚，终于在十一月迎来支出顶峰，那时候开始打算做一些理财计划，初步的打算包括做指数基金的定投，截止到目前投了一个月多一点，赚了微不足道的一点点，2018应该会继续保持这个习惯。</p><p>去年期盼的独居生活并没有真正来临，只在这一年中短暂地出现过。不过在有限的独居生活里，我自认为我过得还算可以，一个人在家的时候反而不太容易觉得孤单活着空虚。烹饪方面得到了有限的一点点提升。整年中在家最舒畅的时候，要数3月的那些晚上，冲一壶大红袍，一边听《圆桌派》，拼拼图的时候，彼时彼刻大概算得上一年中最恬静的时刻。后来也就顺理成章地喜欢上了窦文涛以及相关的几位的节目，诸如锵锵、一千零一夜，都嘟之类的今年都没少看。以及拼图。本想着自己独居一年可以拼好多好多副拼图，不过由于居住条件的变化总是难以预料，所以今年其实拼的拼图很少。希望新的一年能拼更多有趣的拼图。</p><p><img src="http://7xugq7.com1.z0.glb.clouddn.com/IMG_20170305_040225.jpg" alt=""></p><p>今年很多时候依然是一个人，和去年的情况基本一样，唯一不同的大概就是下馆子的次数多了很多</p><p><img src="http://7xugq7.com1.z0.glb.clouddn.com/WechatIMG52.jpeg" alt=""></p><p>2017年曾经有过三次可以脱单的机会，但因为我始终觉得不合适（也许只是我在抗拒），还是拒绝了对方的好意。2018，希望……；</p><p>2017年很遗憾没有像小学初中高中一样，交到可以时常一起玩，三观也大概接近的朋友。2018年能从公司或者哪儿发展一个或几个的话自然是最好，没有当然也没关系，有机会的话和老朋友们聚一聚，其他时间自己玩耍便是。</p><hr><p>列几个明年可以打勾的一些小愿望和小目标：</p><ul><li>ML，Python继续提升，读一些技术书；</li><li>好好学数学；</li><li>变得轻盈；</li><li>坚持读书的习惯；</li><li>拼更多的拼图；</li><li>学一些其他领域的技能，培养一些爱好；</li><li>住进一个有厨房的房子；</li><li>开心；</li></ul><p>当然，2018希望所有的家人朋友们都能健康幸福快乐。</p><p>以上。</p>]]></content>
     
     <summary type="html">
     
@@ -253,10 +139,7 @@
     <published>2017-11-22T00:00:00.000Z</published>
     <updated>2018-07-11T07:10:20.000Z</updated>
     
-    <content type="html"><![CDATA[<p>最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>
-]]></content>
+    <content type="html"><![CDATA[<p>最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。</p><a id="more"></a><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line">client = MongoClient(<span class="string">'mongodb://x.x.x.x:xxxxx'</span>)</div><div class="line"></div><div class="line">db = client.[DATABASES_NAME]</div><div class="line"></div><div class="line">print(db.collection_names())  <span class="comment"># show the names of all the collections in selected database</span></div><div class="line"></div><div class="line">collections = db[COLLECTION_NAME]</div><div class="line"></div><div class="line">collections.find(<span class="string">'&#123;xxx:xxxxx,xxx:xxx&#125;'</span>)  <span class="comment"># Execute the query, which is equivalent to db.getCollection('xxx').find(&#123;&#125;)</span></div><div class="line">collections.find_one  <span class="comment">#same as db.getCollection('xxx').findOne(&#123;&#125;)</span></div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -280,15 +163,7 @@
     <published>2017-11-22T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:31.011Z</updated>
     
-    <content type="html"><![CDATA[<p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
-<a id="more"></a>
-<p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
-<p>安装好之后，只需要</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure>
-<p>即可；</p>
-<p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
-<p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p><a id="more"></a><p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p><p>安装好之后，只需要</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure><p>即可；</p><p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p><p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>]]></content>
     
     <summary type="html">
     
@@ -310,23 +185,7 @@
     <published>2017-09-11T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:30.843Z</updated>
     
-    <content type="html"><![CDATA[<p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/" target="_blank" rel="external">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
-<a id="more"></a>
-<h3>9.11</h3>
-<p>没看书自己实现了一下KNN，算法本身也没什么复杂的，但是实现起来还是费了一番不小的功夫，动手能力还需增强啊…</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">print(<span class="string">'Importing the data...'</span>)</div><div class="line">train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">r = []</div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(len(test_set)):</div><div class="line">        print(<span class="string">'%d/28000'</span> % (t+<span class="number">1</span>))</div><div class="line">    a = np.array(test_set.loc[t])</div><div class="line">    d = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(train_set)):</div><div class="line">        b = np.array(pixel.loc[i])</div><div class="line">        d.append(np.dot((a-b).T,(a-b)))</div><div class="line">    k = list(zip(d,range(len(d))))</div><div class="line">    k.sort()</div><div class="line">    m = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">        m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">    r.append(sum(m)/<span class="number">10</span>)</div></pre></td></tr></table></figure>
-<p>跑了几个试了试，K选了10，有一些误差，不过效果看起来还可以。但是全量数据一起跑的时候就发现，完成任务需要的时间非常久，大概至少需要三十个小时。这当然是不能接受的，得想办法改进才行。目前初步的打算是用多进程，应该可以明显地缩短完成任务所需的时间。</p>
-<hr>
-<h3>9.12</h3>
-<p>昨天请教了公司的组长之后得知，还可以用Deep Learning中的Pooling来降低计算的复杂度，但还是想先上多线程看看。经过一个晚上和半个上午的研究探索，终于成功地让任务以多进程的方式跑起来了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">Description:</div><div class="line">kaggle 0 </div><div class="line"></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> multiprocessing</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="comment">#import matplotlib.pyplot as plt</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">processing</span><span class="params">(test_set)</span>:</span></div><div class="line">    s = []</div><div class="line">    print(<span class="string">"Running... pid:"</span> + str(os.getpid()))</div><div class="line">    <span class="keyword">for</span> idx, df <span class="keyword">in</span> test_set.iterrows():</div><div class="line">        print(<span class="string">'%d/28000, pid %s'</span> % (idx, os.getpid()))</div><div class="line">        a = np.array(df)</div><div class="line">        d = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">42000</span>):</div><div class="line">            b = np.array(pixel.iloc[i])</div><div class="line">            d.append(np.dot((a-b).T,(a-b)))</div><div class="line">        k = list(zip(d,range(len(d))))</div><div class="line">        k.sort()</div><div class="line">        m = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">            m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">        s.append([idx,sum(m)/<span class="number">10</span>])</div><div class="line">    <span class="keyword">return</span> s</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    print(<span class="string">'Importing the data...'</span>)</div><div class="line">    train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">    pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">    label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">    <span class="comment">#plt.imshow(test.reshape(28,28), cmap=plt.cm.gray)</span></div><div class="line">    test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">    pool = multiprocessing.Pool(processes = <span class="number">16</span>)</div><div class="line">    r = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</div><div class="line">        train = test_set.loc[<span class="number">1750</span>*i:<span class="number">1750</span>*(i+<span class="number">1</span>)<span class="number">-1</span>]</div><div class="line">        r.append(pool.apply_async(processing,(train,)))</div><div class="line">    pool.close()</div><div class="line">    pool.join()</div><div class="line">    result  = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> r:</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> i.get():</div><div class="line">            result.append(j)</div><div class="line">    result.sort()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'result.csv'</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> result:</div><div class="line">            f.writelines(str(i[<span class="number">0</span>]+<span class="number">1</span>)+<span class="string">','</span>+str(round(i[<span class="number">1</span>]))[:<span class="number">-2</span>]+<span class="string">'\n'</span>)</div></pre></td></tr></table></figure>
-<p>为了能够快速地完成任务，我又去AWS上租了一个c4.4xlarge，配置是16 vCPU, 2.9 GHz, Intel Xeon E5-2666v3, 30 GiB 内存，在上面把任务分成16个进程进行计算。即便如此，整个任务还是花费了大概三四个小时的时间，但总算最后还是成功地跑出来了。</p>
-<p>将结果按照要求稍微整理一下就可以提交了，初次提交的分数是0.87314，预料之中。虽然准确率看起来还可以，但这个成绩在这项竞赛中的排名是1534／1625，非常的惨淡，不过这也说明改进的空间还很大。之后考虑用Pooling试试。</p>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/first_submission.png">
-<hr>
-<h3>9.13</h3>
-<p>今天发现其实Pooling并不是一种可以提高精度的办法，只是一种可以降低计算复杂度的方法，如果原算法的精度本身就不高的话，Pooliing之后同样也不高，组长建议我改用CNN。我想了一下，就算调整K的值重新跑一次可能不会使准确率有明显的提升，Google了一下发现大家用KNN做手写识别，精度可能也就追求到0.8。嗯……这两天探索一下Tensorflow+CNN（之前只是知道，并没有深入了解过），尝试用这种方式解决这个问题。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/" target="_blank" rel="external">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p><a id="more"></a><h3>9.11</h3><p>没看书自己实现了一下KNN，算法本身也没什么复杂的，但是实现起来还是费了一番不小的功夫，动手能力还需增强啊…</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">print(<span class="string">'Importing the data...'</span>)</div><div class="line">train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">r = []</div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(len(test_set)):</div><div class="line">        print(<span class="string">'%d/28000'</span> % (t+<span class="number">1</span>))</div><div class="line">    a = np.array(test_set.loc[t])</div><div class="line">    d = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(train_set)):</div><div class="line">        b = np.array(pixel.loc[i])</div><div class="line">        d.append(np.dot((a-b).T,(a-b)))</div><div class="line">    k = list(zip(d,range(len(d))))</div><div class="line">    k.sort()</div><div class="line">    m = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">        m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">    r.append(sum(m)/<span class="number">10</span>)</div></pre></td></tr></table></figure><p>跑了几个试了试，K选了10，有一些误差，不过效果看起来还可以。但是全量数据一起跑的时候就发现，完成任务需要的时间非常久，大概至少需要三十个小时。这当然是不能接受的，得想办法改进才行。目前初步的打算是用多进程，应该可以明显地缩短完成任务所需的时间。</p><hr><h3>9.12</h3><p>昨天请教了公司的组长之后得知，还可以用Deep Learning中的Pooling来降低计算的复杂度，但还是想先上多线程看看。经过一个晚上和半个上午的研究探索，终于成功地让任务以多进程的方式跑起来了。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">"""</span></div><div class="line">Description:</div><div class="line">kaggle 0 </div><div class="line"></div><div class="line">@author: drapor</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> multiprocessing</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="comment">#import matplotlib.pyplot as plt</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">processing</span><span class="params">(test_set)</span>:</span></div><div class="line">    s = []</div><div class="line">    print(<span class="string">"Running... pid:"</span> + str(os.getpid()))</div><div class="line">    <span class="keyword">for</span> idx, df <span class="keyword">in</span> test_set.iterrows():</div><div class="line">        print(<span class="string">'%d/28000, pid %s'</span> % (idx, os.getpid()))</div><div class="line">        a = np.array(df)</div><div class="line">        d = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">42000</span>):</div><div class="line">            b = np.array(pixel.iloc[i])</div><div class="line">            d.append(np.dot((a-b).T,(a-b)))</div><div class="line">        k = list(zip(d,range(len(d))))</div><div class="line">        k.sort()</div><div class="line">        m = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> k[:<span class="number">10</span>]:</div><div class="line">            m.append(label.loc[i[<span class="number">1</span>]])</div><div class="line">        s.append([idx,sum(m)/<span class="number">10</span>])</div><div class="line">    <span class="keyword">return</span> s</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    print(<span class="string">'Importing the data...'</span>)</div><div class="line">    train_set = pd.read_csv(<span class="string">'train.csv'</span>)</div><div class="line">    pixel = train_set.iloc[:,<span class="number">1</span>:<span class="number">785</span>]</div><div class="line">    label = train_set.iloc[:,<span class="number">0</span>]</div><div class="line">    <span class="comment">#plt.imshow(test.reshape(28,28), cmap=plt.cm.gray)</span></div><div class="line">    test_set = pd.read_csv(<span class="string">'test.csv'</span>)</div><div class="line">    pool = multiprocessing.Pool(processes = <span class="number">16</span>)</div><div class="line">    r = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</div><div class="line">        train = test_set.loc[<span class="number">1750</span>*i:<span class="number">1750</span>*(i+<span class="number">1</span>)<span class="number">-1</span>]</div><div class="line">        r.append(pool.apply_async(processing,(train,)))</div><div class="line">    pool.close()</div><div class="line">    pool.join()</div><div class="line">    result  = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> r:</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> i.get():</div><div class="line">            result.append(j)</div><div class="line">    result.sort()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'result.csv'</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> result:</div><div class="line">            f.writelines(str(i[<span class="number">0</span>]+<span class="number">1</span>)+<span class="string">','</span>+str(round(i[<span class="number">1</span>]))[:<span class="number">-2</span>]+<span class="string">'\n'</span>)</div></pre></td></tr></table></figure><p>为了能够快速地完成任务，我又去AWS上租了一个c4.4xlarge，配置是16 vCPU, 2.9 GHz, Intel Xeon E5-2666v3, 30 GiB 内存，在上面把任务分成16个进程进行计算。即便如此，整个任务还是花费了大概三四个小时的时间，但总算最后还是成功地跑出来了。</p><p>将结果按照要求稍微整理一下就可以提交了，初次提交的分数是0.87314，预料之中。虽然准确率看起来还可以，但这个成绩在这项竞赛中的排名是1534／1625，非常的惨淡，不过这也说明改进的空间还很大。之后考虑用Pooling试试。</p><img src="http://7xugq7.com1.z0.glb.clouddn.com/first_submission.png"><hr><h3>9.13</h3><p>今天发现其实Pooling并不是一种可以提高精度的办法，只是一种可以降低计算复杂度的方法，如果原算法的精度本身就不高的话，Pooliing之后同样也不高，组长建议我改用CNN。我想了一下，就算调整K的值重新跑一次可能不会使准确率有明显的提升，Google了一下发现大家用KNN做手写识别，精度可能也就追求到0.8。嗯……这两天探索一下Tensorflow+CNN（之前只是知道，并没有深入了解过），尝试用这种方式解决这个问题。</p>]]></content>
     
     <summary type="html">
     
@@ -348,52 +207,7 @@
     <published>2017-08-22T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:30.667Z</updated>
     
-    <content type="html"><![CDATA[<p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1" target="_blank" rel="external">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow" target="_blank" rel="external">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p>
-<a id="more"></a>
-<ul>
-<li>
-<p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p>
-</li>
-<li>
-<p>ssh之前，记得把密钥权限改成600；</p>
-</li>
-<li>
-<p>登陆之后首先确认一下GPU信息：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">local</span>) lspci | grep -i nvidia</div></pre></td></tr></table></figure>
-</li>
-<li>
-<p>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；</p>
-<ul>
-<li>首先是 CUDA Toolkit：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line">$ ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line">$ ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"></div><div class="line">$ vim ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#增加下面三行</span></div><div class="line"><span class="built_in">export</span> CUDA_ROOT=/usr/<span class="built_in">local</span>/cuda-8.0</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda-8.0/lib64</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$CUDA_ROOT</span>/bin</div><div class="line"></div><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#测试一下</span></div><div class="line">$ nvidia-smi -q | head</div></pre></td></tr></table></figure>
-<ul>
-<li>然后是cuDNN library：</li>
-</ul>
-<p>首先去https://developer.nvidia.com/cudnn 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/lib64/* /usr/<span class="built_in">local</span>/cuda-8.0/lib64/</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/include/* /usr/<span class="built_in">local</span>/cuda-8.0/include/</span></div></pre></td></tr></table></figure>
-<p>至此，GPU Drivers的部分基本配置完成。</p>
-</li>
-<li>
-<p>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Install pip and virtualen </span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python-pip python-dev python-virtualenv <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python3-pip python3-dev python-virtualenv <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Create a virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages targetDirectory <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages -p python3 <span class="string">'targetDirectory'</span> <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> <span class="string">'targetDirectory'</span> specifies the top of the virtualenv tree, <span class="built_in">which</span> you may choose by yourself.</span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Activate the virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">现在的命令行前面的标识会变成这个样子：</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">Install TensorFlow, ensure the version of pip &gt;= 8.1</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow      <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow     <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow-gpu  <span class="comment"># for Python 2.7 and GPU</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow-gpu <span class="comment"># for Python 3.n and GPU</span></span></div></pre></td></tr></table></figure>
-<p>至此，TensorFlow安装完成</p>
-</li>
-<li>
-<p>激活命令为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate      <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div></pre></td></tr></table></figure>
-</li>
-<li>
-<p>退出环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> deactivate</span></div></pre></td></tr></table></figure>
-</li>
-<li>
-<p>卸载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
-]]></content>
+    <content type="html"><![CDATA[<p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1" target="_blank" rel="external">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow" target="_blank" rel="external">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p><a id="more"></a><ul><li><p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p></li><li><p>ssh之前，记得把密钥权限改成600；</p></li><li><p>登陆之后首先确认一下GPU信息：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">local</span>) lspci | grep -i nvidia</div></pre></td></tr></table></figure></li><li><p>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；</p><ul><li>首先是 CUDA Toolkit：</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ chmod 755 cuda_8.0.44_linux-run</div><div class="line"></div><div class="line">$ ./cuda_8.0.44_linux-run -extract=/root</div><div class="line">$ ./NVIDIA-Linux-x86_64-367.48.run -s</div><div class="line">$ ./cuda-linux64-rel-8.0.44-21122537.run -noprompt</div><div class="line"></div><div class="line">$ vim ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#增加下面三行</span></div><div class="line"><span class="built_in">export</span> CUDA_ROOT=/usr/<span class="built_in">local</span>/cuda-8.0</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda-8.0/lib64</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$CUDA_ROOT</span>/bin</div><div class="line"></div><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment">#测试一下</span></div><div class="line">$ nvidia-smi -q | head</div></pre></td></tr></table></figure><ul><li>然后是cuDNN library：</li></ul><p>首先去https://developer.nvidia.com/cudnn 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/lib64/* /usr/<span class="built_in">local</span>/cuda-8.0/lib64/</span></div><div class="line"><span class="meta">$</span><span class="bash"> cp cuda/include/* /usr/<span class="built_in">local</span>/cuda-8.0/include/</span></div></pre></td></tr></table></figure><p>至此，GPU Drivers的部分基本配置完成。</p></li><li><p>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Install pip and virtualen </span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python-pip python-dev python-virtualenv <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> sudo apt install python3-pip python3-dev python-virtualenv <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Create a virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages targetDirectory <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> virtualenv --system-site-packages -p python3 <span class="string">'targetDirectory'</span> <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> <span class="string">'targetDirectory'</span> specifies the top of the virtualenv tree, <span class="built_in">which</span> you may choose by yourself.</span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> Activate the virtualenv environment</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">现在的命令行前面的标识会变成这个样子：</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">Install TensorFlow, ensure the version of pip &gt;= 8.1</span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow      <span class="comment"># for Python 2.7</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow     <span class="comment"># for Python 3.n</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip install --upgrade tensorflow-gpu  <span class="comment"># for Python 2.7 and GPU</span></span></div><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> pip3 install --upgrade tensorflow-gpu <span class="comment"># for Python 3.n and GPU</span></span></div></pre></td></tr></table></figure><p>至此，TensorFlow安装完成</p></li><li><p>激活命令为</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate      <span class="comment"># bash, sh, ksh, or zsh</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span></div></pre></td></tr></table></figure></li><li><p>退出环境</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">(tensorflow)$</span><span class="bash"> deactivate</span></div></pre></td></tr></table></figure></li><li><p>卸载</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -r targetDirectory</div></pre></td></tr></table></figure><p>​</p></li></ul>]]></content>
     
     <summary type="html">
     
@@ -415,60 +229,7 @@
     <published>2017-08-19T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:30.487Z</updated>
     
-    <content type="html"><![CDATA[<p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p>
-<a id="more"></a>
-<h4><a href="https://www.codewars.com/kata/sum-of-digits-slash-digital-root" target="_blank" rel="external">Sum of Digits / Digital Root</a></h4>
-<p>题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIkipedia）。按照定义来做的话，也其实没什么难的，用python的话，无非就是分拆成字符，再转回数字然后相加，如此往复直到位数为1。然而在做完之后，我在Solutions里发现了这样两个答案：</p>
-<ul>
-<li>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &lt; <span class="number">10</span> <span class="keyword">else</span> digital_root(sum(map(int,str(n))))</div></pre></td></tr></table></figure>
-<ul>
-<li>然后我往下翻，又看到了下面这个让我颇为震惊的解法：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n%<span class="number">9</span> <span class="keyword">or</span> n <span class="keyword">and</span> <span class="number">9</span></div></pre></td></tr></table></figure>
-<p>我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：https://www.zhihu.com/question/30972581 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p>
-<ul>
-<li>
-<p>a and b，ab都非零时，结果为b；ab其中一个为0时，结果为0；</p>
-</li>
-<li>
-<p>a or b，ab都非零时，结果为a；ab其中一个为0时，结果为另一个非零的数；</p>
-<p>并且，0 and 0和0 or 0都等于0。另外就是and的运算级要高于or，所以return后面的执行顺序就是先and后or：</p>
-</li>
-</ul>
-<blockquote>
-<p>n != 0且n != 9时，n and 9 == 9，n % 9 or 9 == n % 9；</p>
-<p>n == 0时，n and 9 == 0，n % 9 or 0 == 0；</p>
-<p>n == 9时，n and 9 == 9，n%9 or 9 == 9；</p>
-</blockquote>
-<hr>
-<h4><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don’t rely on luck.</a></h4>
-<p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
-<ul>
-<li>在代码框里最开始给的是：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure>
-<p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
-<ul>
-<li>首先是：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure>
-<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
-<ul>
-<li>然后是这个：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure>
-<p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
-<ul>
-<li>当然，最让我折服的还是下面这个：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure>
-<p>？？？？？？？？？</p>
-<p>与上面这种解法类似的还有：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure>
-<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
-]]></content>
+    <content type="html"><![CDATA[<p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p><a id="more"></a><h4><a href="https://www.codewars.com/kata/sum-of-digits-slash-digital-root" target="_blank" rel="external">Sum of Digits / Digital Root</a></h4><p>题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIkipedia）。按照定义来做的话，也其实没什么难的，用python的话，无非就是分拆成字符，再转回数字然后相加，如此往复直到位数为1。然而在做完之后，我在Solutions里发现了这样两个答案：</p><ul><li>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &lt; <span class="number">10</span> <span class="keyword">else</span> digital_root(sum(map(int,str(n))))</div></pre></td></tr></table></figure><ul><li>然后我往下翻，又看到了下面这个让我颇为震惊的解法：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">digital_root</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n%<span class="number">9</span> <span class="keyword">or</span> n <span class="keyword">and</span> <span class="number">9</span></div></pre></td></tr></table></figure><p>我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：https://www.zhihu.com/question/30972581 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p><ul><li><p>a and b，ab都非零时，结果为b；ab其中一个为0时，结果为0；</p></li><li><p>a or b，ab都非零时，结果为a；ab其中一个为0时，结果为另一个非零的数；</p><p>并且，0 and 0和0 or 0都等于0。另外就是and的运算级要高于or，所以return后面的执行顺序就是先and后or：</p></li></ul><blockquote><p>n != 0且n != 9时，n and 9 == 9，n % 9 or 9 == n % 9；</p><p>n == 0时，n and 9 == 0，n % 9 or 0 == 0；</p><p>n == 9时，n and 9 == 9，n%9 or 9 == 9；</p></blockquote><hr><h4><a href="https://www.codewars.com/kata/dont-rely-on-luck" target="_blank" rel="external">Don’t rely on luck.</a></h4><p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p><ul><li>在代码框里最开始给的是：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">guess =</div></pre></td></tr></table></figure><p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p><ul><li>首先是：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,seed</div><div class="line">seed(<span class="number">1</span>)</div><div class="line">guess = randint(<span class="number">1</span>,<span class="number">100</span>)</div><div class="line">seed(<span class="number">1</span>)</div></pre></td></tr></table></figure><p>强行改seed让randint()输出一样的数，可以，很厉害。</p><ul><li>然后是这个：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheatingNumber</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">guess = CheatingNumber()</div></pre></td></tr></table></figure><p>前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p><ul><li>当然，最让我折服的还是下面这个：</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randint</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span></div><div class="line">guess = <span class="number">10</span></div></pre></td></tr></table></figure><p>？？？？？？？？？</p><p>与上面这种解法类似的还有：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">randint,guess = <span class="keyword">lambda</span> x,y:<span class="number">666</span>,<span class="number">666</span></div></pre></td></tr></table></figure><p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>]]></content>
     
     <summary type="html">
     
@@ -490,49 +251,15 @@
     <published>2017-08-08T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:30.311Z</updated>
     
-    <content type="html"><![CDATA[<p>最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。</p>
-<p>其实主要涉及的几种日期格式就是以下几种：</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>‘2017-08-08 15:56:31.111’</td>
-</tr>
-<tr>
-<td>STRING(‘yyyyMMdd’)</td>
-<td>‘20170808’</td>
-</tr>
-<tr>
-<td>DATE(‘yyyy-MM-dd’)</td>
-<td>‘2017-08-08’</td>
-</tr>
-<tr>
-<td>INT</td>
-<td>20170808</td>
-</tr>
-</tbody>
-</table>
-<p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
-<ul>
-<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyyMMdd’)即可；</li>
-<li>from_unixtime()函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li>
-</ul>
-<p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用UNIX_TIMESTAMP()转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p>
-<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp(‘2017-08-08’,‘yyyy-MM-dd’),‘yyyyMMdd’) 即可，反之也是一样的道理。</p>
-<p>当然这其中存在很多捷径，比如TO_DATE()可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p>
-<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，‘2017-08-08’ = ‘20170808’这个等式并不成立。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。</p><p>其实主要涉及的几种日期格式就是以下几种：</p><table><thead><tr><th>类型</th><th>示例</th></tr></thead><tbody><tr><td>TIMESTAMP</td><td>‘2017-08-08 15:56:31.111’</td></tr><tr><td>STRING(‘yyyyMMdd’)</td><td>‘20170808’</td></tr><tr><td>DATE(‘yyyy-MM-dd’)</td><td>‘2017-08-08’</td></tr><tr><td>INT</td><td>20170808</td></tr></tbody></table><p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p><ul><li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyyMMdd’)即可；</li><li>from_unixtime()函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li></ul><p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用UNIX_TIMESTAMP()转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p><p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp(‘2017-08-08’,‘yyyy-MM-dd’),‘yyyyMMdd’) 即可，反之也是一样的道理。</p><p>当然这其中存在很多捷径，比如TO_DATE()可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p><p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，‘2017-08-08’ = ‘20170808’这个等式并不成立。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。&lt;/p&gt;
+      
+      
+        &lt;p&gt;最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。&lt;/p&gt;
 &lt;p&gt;其实主要涉及的几种日期格式就是以下几种：&lt;/p
+      
     
     </summary>
     
@@ -548,18 +275,16 @@
     <published>2017-07-21T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:30.135Z</updated>
     
-    <content type="html"><![CDATA[<p>具体思路和过程以后有时间再来整理（Flag）。</p>
-<p>原题目的url是https://www.codewars.com/kata/calculating-running-total</p>
-<p>参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，</p>
-<p>终于得(meng)出了一个可行的答案：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>
-]]></content>
+    <content type="html"><![CDATA[<p>具体思路和过程以后有时间再来整理（Flag）。</p><p>原题目的url是https://www.codewars.com/kata/calculating-running-total</p><p>参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，</p><p>终于得(meng)出了一个可行的答案：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">CAST</span>(p1.created_at <span class="keyword">AS</span> <span class="built_in">DATE</span>) <span class="keyword">AS</span> <span class="built_in">date</span>,</div><div class="line">       <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> <span class="keyword">count</span>,</div><div class="line">       <span class="keyword">COUNT</span>(p2.title)/<span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> p1.title) <span class="keyword">AS</span> total</div><div class="line"><span class="keyword">FROM</span> posts p1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> posts p2</div><div class="line">  <span class="keyword">ON</span> to_char(p1.created_at, <span class="string">'YYYY-MM-DD'</span>) &gt;= to_char(p2.created_at, <span class="string">'YYYY-MM-DD'</span>)</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">date</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">date</span></div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;具体思路和过程以后有时间再来整理（Flag）。&lt;/p&gt;
+      
+      
+        &lt;p&gt;具体思路和过程以后有时间再来整理（Flag）。&lt;/p&gt;
 &lt;p&gt;原题目的url是https://www.codewars.com/kata/calculating-running-total&lt;/p&gt;
 &lt;p&gt;参考了一下简单的情况 http://sql55.com/query/c
+      
     
     </summary>
     
@@ -577,22 +302,7 @@
     <published>2017-07-11T00:00:00.000Z</published>
     <updated>2018-07-09T08:10:58.569Z</updated>
     
-    <content type="html"><![CDATA[<p>最近几天参加了几次面试，也是人生中的头几次面试，感觉值得一记，故有此篇。</p>
-<a id="more"></a>
-<p><strong>17.7.7：</strong></p>
-<p>昨天下午接到了一家公司HR的电话，问我是不是还在找实习以及有没有时间参加电话面试。于是昨天晚上+今天早上稍微地准备了一下，想着面试官会问关于Python的一些高级的东西比如解释器或者GIL什么的就去补了一波知识，并且对这家公司也做了一些调查，有了一些了解。</p>
-<p>终于等到下午三点开始了面试，形式是电话面试。在得知要写代码之后，我心里其实有点慌，因为我知道自己的数据结构和算法很薄弱，而且动手的时候可能会卡在一些细枝末节的地方。面试官人很好，上来没有让我做自我介绍，直接让我把自己掌握的技术说了一下，并对我在博客上和GIthub上的一些东西以及过往经历提了一些问题。很明显对方在面试前还是做了一点工作的，而且整个面试过程基本没有废话，我很喜欢这种面试风格。后面让我动手写一道算法题，是在数组中找出三个数之和为0的一道题。开始不久我就卡住了，原先以为自己会卡在数据结构或者算法的地方，后来发现不是这样的，我卡在了动手实现上。一些东西我知道思路，但我写不出来。究其原因的话，可能也是我太久没刷OJ了，动手能力退化了不少，另一反面本身基础就不够扎实，编码能力本来也不强，再加上面试时候的紧张， 结果就不太尽如人意。</p>
-<p>面试结果怎样已经没那么重要了，重要的是我的确在这次面试中清楚地认识到了自己还是说得太多看得太多做得太少，导致动手能力很弱，之后还是要在这方面加强才是。很感谢那家公司给我这个面试的机会。</p>
-<hr>
-<p><strong>17.7.8：</strong></p>
-<p>昨天面试的时候表现得比较糟糕，我以为已经铁定没戏了，结果昨天晚些时候HR跟我说还有一轮面试，我以为这次会是关于ML方面的面试，于是又回去翻了翻之前记过的笔记。没想到，今天的面试还是写代码，不过面试官看我昨天表现得那么惨，今天就给了我一个简单的问题，求第n个斐波那契数，我最开始用递归写了一个，后来面试官问我还有没有别的方法，我又把用循环写的那种方式写了一下；之后面试官又问了我一个递进的问题：一只蜗牛一次可以爬１级或２级或３级或……或n级台阶，现在它要爬上n级台阶，问有多少种爬法？起初我以为是一个等差数列问题，愚蠢地说了一个n(n-1)/2。面试官置疑了一下，我发现了根本不对，于是开始拿出纸笔算，在面试官的引导下捣鼓了很久才得出正确的结果【当时是先计算n=1，n=2，n=3的情况然后推广得到通项是2^(n-1)，7.13晚上洗澡的时候突然想到其实除了最后一级台阶，其他所有台阶都有两种可能，迈上或者不迈，于是n-1级台阶就是2^(n-1)种情况…】…后面还聊了一些关于公司技术栈的事情，发现其实技术不太对口，他们目前主要还是做后端，而我还是想找一份数据相关的实习…总之第二轮面试依旧很僵硬，基本已经没有希望了我觉得。。</p>
-<hr>
-<p><strong>17.7.11：</strong></p>
-<p>之前向洋葱数学投了简历，HR联系了我好几次一直没有联系上我，我一度觉得我可能和这家公司没有缘分，但终于我还是联系上了他们的HR，得知真相之后对HR的坚持不懈莫名有些感动…</p>
-<p>于是今天就去面试了 ，到了公司之后最大的感觉就是“哇这办公环境怎么这么好”，坐着观察了一会儿之后感觉这个公司整体的氛围很让我喜欢。之后数据组的组长就来了，首先是做了一下对我基本情况的一些了解，之后先问了一个SQL的问题，我心里很没底，因为我虽然过过一遍SQL的用法但并没有太多的实践经验，导致只说了一个基本思路；他看我SQL不太熟，于是问我如果用pandas的DataFrame怎么做，我同样回答了一个十分笨重但可行的方法；之后他又问了我一个对dict操作的python问题，我同样是用了一个“能解决问题但看起来有些笨拙”的方法做，其中被他指出了一些问题，经指出后还是改正了这些问题。这部分带给我的反思就是：<strong>代码写得太少啦！很多很基本的东西都没有记住！以后一定要多写代码！多写代码！！！！</strong>；再之后面试官问了我这样一个问题：因为他们是做在线教育的，他们现在想做一个类似于Dota里面的天梯系统，让我做一个简单的设计。对于这个问题其实我有一些头绪，但是都很乱，组织不起来，在他的帮助下和一段时间的整理之后，终于大致地把思路理了出来，他还带着我对其中的一个核心部分进行了设计相关的讨论，整个过程他都在引导我一步步地达到核心，面试体验还是相当愉快的。之后又聊了一些别的技术的事情，比如我问了一下他们公司的技术栈，以及我一直不了解的为什么初创公司都爱用MongoDB之类的。和他聊的大概就是以上这些。</p>
-<p>后面又和HR聊了一会儿，聊了很多，方方面面都聊到了，个人目标啊，性格啊，等等等等，于是聊了很久，也询问了一些关于他们公司的事情。【HR还建议我应该找一个活泼开朗的女朋友……</p>
-<p>出来之后我才发现面试竟然持续了两个多小时，而我一点感觉都没有，完全沉浸在其中，没有注意到时间的流逝。总的来说面试体验还是十分不错的，而且技术也非常对口，期待能收到人生第一份实习Offer。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>最近几天参加了几次面试，也是人生中的头几次面试，感觉值得一记，故有此篇。</p><a id="more"></a><p><strong>17.7.7：</strong></p><p>昨天下午接到了一家公司HR的电话，问我是不是还在找实习以及有没有时间参加电话面试。于是昨天晚上+今天早上稍微地准备了一下，想着面试官会问关于Python的一些高级的东西比如解释器或者GIL什么的就去补了一波知识，并且对这家公司也做了一些调查，有了一些了解。</p><p>终于等到下午三点开始了面试，形式是电话面试。在得知要写代码之后，我心里其实有点慌，因为我知道自己的数据结构和算法很薄弱，而且动手的时候可能会卡在一些细枝末节的地方。面试官人很好，上来没有让我做自我介绍，直接让我把自己掌握的技术说了一下，并对我在博客上和GIthub上的一些东西以及过往经历提了一些问题。很明显对方在面试前还是做了一点工作的，而且整个面试过程基本没有废话，我很喜欢这种面试风格。后面让我动手写一道算法题，是在数组中找出三个数之和为0的一道题。开始不久我就卡住了，原先以为自己会卡在数据结构或者算法的地方，后来发现不是这样的，我卡在了动手实现上。一些东西我知道思路，但我写不出来。究其原因的话，可能也是我太久没刷OJ了，动手能力退化了不少，另一反面本身基础就不够扎实，编码能力本来也不强，再加上面试时候的紧张， 结果就不太尽如人意。</p><p>面试结果怎样已经没那么重要了，重要的是我的确在这次面试中清楚地认识到了自己还是说得太多看得太多做得太少，导致动手能力很弱，之后还是要在这方面加强才是。很感谢那家公司给我这个面试的机会。</p><hr><p><strong>17.7.8：</strong></p><p>昨天面试的时候表现得比较糟糕，我以为已经铁定没戏了，结果昨天晚些时候HR跟我说还有一轮面试，我以为这次会是关于ML方面的面试，于是又回去翻了翻之前记过的笔记。没想到，今天的面试还是写代码，不过面试官看我昨天表现得那么惨，今天就给了我一个简单的问题，求第n个斐波那契数，我最开始用递归写了一个，后来面试官问我还有没有别的方法，我又把用循环写的那种方式写了一下；之后面试官又问了我一个递进的问题：一只蜗牛一次可以爬１级或２级或３级或……或n级台阶，现在它要爬上n级台阶，问有多少种爬法？起初我以为是一个等差数列问题，愚蠢地说了一个n(n-1)/2。面试官置疑了一下，我发现了根本不对，于是开始拿出纸笔算，在面试官的引导下捣鼓了很久才得出正确的结果【当时是先计算n=1，n=2，n=3的情况然后推广得到通项是2^(n-1)，7.13晚上洗澡的时候突然想到其实除了最后一级台阶，其他所有台阶都有两种可能，迈上或者不迈，于是n-1级台阶就是2^(n-1)种情况…】…后面还聊了一些关于公司技术栈的事情，发现其实技术不太对口，他们目前主要还是做后端，而我还是想找一份数据相关的实习…总之第二轮面试依旧很僵硬，基本已经没有希望了我觉得。。</p><hr><p><strong>17.7.11：</strong></p><p>之前向洋葱数学投了简历，HR联系了我好几次一直没有联系上我，我一度觉得我可能和这家公司没有缘分，但终于我还是联系上了他们的HR，得知真相之后对HR的坚持不懈莫名有些感动…</p><p>于是今天就去面试了 ，到了公司之后最大的感觉就是“哇这办公环境怎么这么好”，坐着观察了一会儿之后感觉这个公司整体的氛围很让我喜欢。之后数据组的组长就来了，首先是做了一下对我基本情况的一些了解，之后先问了一个SQL的问题，我心里很没底，因为我虽然过过一遍SQL的用法但并没有太多的实践经验，导致只说了一个基本思路；他看我SQL不太熟，于是问我如果用pandas的DataFrame怎么做，我同样回答了一个十分笨重但可行的方法；之后他又问了我一个对dict操作的python问题，我同样是用了一个“能解决问题但看起来有些笨拙”的方法做，其中被他指出了一些问题，经指出后还是改正了这些问题。这部分带给我的反思就是：<strong>代码写得太少啦！很多很基本的东西都没有记住！以后一定要多写代码！多写代码！！！！</strong>；再之后面试官问了我这样一个问题：因为他们是做在线教育的，他们现在想做一个类似于Dota里面的天梯系统，让我做一个简单的设计。对于这个问题其实我有一些头绪，但是都很乱，组织不起来，在他的帮助下和一段时间的整理之后，终于大致地把思路理了出来，他还带着我对其中的一个核心部分进行了设计相关的讨论，整个过程他都在引导我一步步地达到核心，面试体验还是相当愉快的。之后又聊了一些别的技术的事情，比如我问了一下他们公司的技术栈，以及我一直不了解的为什么初创公司都爱用MongoDB之类的。和他聊的大概就是以上这些。</p><p>后面又和HR聊了一会儿，聊了很多，方方面面都聊到了，个人目标啊，性格啊，等等等等，于是聊了很久，也询问了一些关于他们公司的事情。【HR还建议我应该找一个活泼开朗的女朋友……</p><p>出来之后我才发现面试竟然持续了两个多小时，而我一点感觉都没有，完全沉浸在其中，没有注意到时间的流逝。总的来说面试体验还是十分不错的，而且技术也非常对口，期待能收到人生第一份实习Offer。</p>]]></content>
     
     <summary type="html">
     
@@ -612,95 +322,7 @@
     <published>2017-07-01T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:29.775Z</updated>
     
-    <content type="html"><![CDATA[<p>这个学期就这样结束了，简单来写个总结吧，顺便做点计划。</p>
-<a id="more"></a>
-<hr>
-<ul>
-<li>看完了Coursera上Andrew Ng的Machine Learning；完成相应作业；</li>
-<li>读周志华先生的《机器学习》，但还有几章没读完；</li>
-<li>为了解决一些疑问，用Python写过几个小爬虫；</li>
-<li>看完了《SQL必知必会》，细致地学习了一波SQL；</li>
-<li>《利用Python进行数据分析》看了小半本，学习了一些Numpy和pandas的用法，用Jupyter Notebook做了笔记；</li>
-<li>学了一点PyQt5；</li>
-</ul>
-<ul>
-<li>学习了数理统计、偏微分方程、实变函数与泛函分析、数学模型和复变函数与积分变换这几门课，总的来说每门课都还是很有意思的，惭愧的是我下的工夫还是太少；</li>
-</ul>
-<ul>
-<li>开始学习日语，背完了五十音图；</li>
-</ul>
-<ul>
-<li>参加了一次校赛建模，本来是想用numpy和pandas替代MATLAB，结果发现还是不行，于是就顺便增强了一下MATLAB方面的技能，但做得很随意，最后得了二等奖；</li>
-<li>报名参加了2017中国高校计算机大赛—大数据挑战赛；</li>
-</ul>
-<ul>
-<li>刷了几波实习信息，也投了一波简历，结果最后发现了一些意外的情况（其实是操作失误），导致估计假期的实习期待落空了；</li>
-<li>这两天考完试把双系统弄好了，Ubuntu+Win10，尽量把和编程开发有关的事情都移到Ubuntu里做，WIn10留作娱乐，希望下一次换系统是Mac OS；</li>
-</ul>
-<hr>
-<ul>
-<li>《Planet Earth II》</li>
-<li>《嫌疑人X的献身》（中国版）</li>
-<li>《人民的名义》</li>
-<li>《驴得水》</li>
-<li>《看不见的客人》</li>
-<li>《百鸟朝凤》</li>
-<li>《摔跤吧！爸爸 Dangal》</li>
-<li>《TBBT Season 10》</li>
-<li>《和食双神：最后的约定》</li>
-<li>《四重奏》</li>
-<li>《辩护人》</li>
-<li>《求婚大作战》</li>
-<li>《Silcon Valley Season 4》</li>
-<li>《伊斯坦布尔的猫/Kedi》</li>
-<li>《Elementary Season 5》</li>
-<li>《The Flash Season 3》</li>
-<li>《S.H.I.E.L.D. Season 4》</li>
-</ul>
-<ul>
-<li>机器之心 GMIS全球机器智能峰会；</li>
-<li>Microsoft Build Tour 2017；</li>
-</ul>
-<ul>
-<li>读+摘抄完了杨伯峻先生的《论语译注》；</li>
-<li>读了一半《巨人的陨落》；</li>
-</ul>
-<ul>
-<li>入了SONY 100ABN；</li>
-<li>开了一个微信公众号没事写点无病呻吟的东西；</li>
-</ul>
-<p>干的事情还是感觉很少，效率还是极大地受到了情绪的影响。学期中之前感觉精神状态一直都还比较稳定，五月中旬到期末这段时间非常非常非常丧，生活失去了期待。但是还好有后面的期末考试（我第一次这么感激期末复习的到来），整个人还好没有这么堕落下去。</p>
-<hr>
-<p>既然不能去实习，那就还是按照原先想的那样，继续让自己变得更好吧，把数据结构和算法弄一弄，再多了解和熟悉一下python，机器学习的部分也还需要继续提高。所以接下来的小学期和暑假，主要就是</p>
-<ul>
-<li>
-<p>《数据结构与算法分析：C语言描述》+ MOOC，把数据结构和算法弄一下；</p>
-</li>
-<li>
-<p>考虑看看《流畅的Python》;</p>
-</li>
-<li>
-<p>《机器学习基石》；</p>
-</li>
-<li>
-<p>《集体智慧编程》、《机器学习实战》</p>
-</li>
-<li>
-<p>复习数理统计，考虑看看课本和陈希孺的书；</p>
-</li>
-<li>
-<p>看看《陶哲轩实分析》；</p>
-</li>
-<li>
-<p><strong>尝试发展一些别的兴趣爱好；</strong></p>
-</li>
-<li>
-<p>学学日语；<br>
-​</p>
-<p>暂时就想到这些，大概就这样吧；</p>
-</li>
-</ul>
-]]></content>
+    <content type="html"><![CDATA[<p>这个学期就这样结束了，简单来写个总结吧，顺便做点计划。</p><a id="more"></a><hr><ul><li>看完了Coursera上Andrew Ng的Machine Learning；完成相应作业；</li><li>读周志华先生的《机器学习》，但还有几章没读完；</li><li>为了解决一些疑问，用Python写过几个小爬虫；</li><li>看完了《SQL必知必会》，细致地学习了一波SQL；</li><li>《利用Python进行数据分析》看了小半本，学习了一些Numpy和pandas的用法，用Jupyter Notebook做了笔记；</li><li>学了一点PyQt5；</li></ul><ul><li>学习了数理统计、偏微分方程、实变函数与泛函分析、数学模型和复变函数与积分变换这几门课，总的来说每门课都还是很有意思的，惭愧的是我下的工夫还是太少；</li></ul><ul><li>开始学习日语，背完了五十音图；</li></ul><ul><li>参加了一次校赛建模，本来是想用numpy和pandas替代MATLAB，结果发现还是不行，于是就顺便增强了一下MATLAB方面的技能，但做得很随意，最后得了二等奖；</li><li>报名参加了2017中国高校计算机大赛—大数据挑战赛；</li></ul><ul><li>刷了几波实习信息，也投了一波简历，结果最后发现了一些意外的情况（其实是操作失误），导致估计假期的实习期待落空了；</li><li>这两天考完试把双系统弄好了，Ubuntu+Win10，尽量把和编程开发有关的事情都移到Ubuntu里做，WIn10留作娱乐，希望下一次换系统是Mac OS；</li></ul><hr><ul><li>《Planet Earth II》</li><li>《嫌疑人X的献身》（中国版）</li><li>《人民的名义》</li><li>《驴得水》</li><li>《看不见的客人》</li><li>《百鸟朝凤》</li><li>《摔跤吧！爸爸 Dangal》</li><li>《TBBT Season 10》</li><li>《和食双神：最后的约定》</li><li>《四重奏》</li><li>《辩护人》</li><li>《求婚大作战》</li><li>《Silcon Valley Season 4》</li><li>《伊斯坦布尔的猫/Kedi》</li><li>《Elementary Season 5》</li><li>《The Flash Season 3》</li><li>《S.H.I.E.L.D. Season 4》</li></ul><ul><li>机器之心 GMIS全球机器智能峰会；</li><li>Microsoft Build Tour 2017；</li></ul><ul><li>读+摘抄完了杨伯峻先生的《论语译注》；</li><li>读了一半《巨人的陨落》；</li></ul><ul><li>入了SONY 100ABN；</li><li>开了一个微信公众号没事写点无病呻吟的东西；</li></ul><p>干的事情还是感觉很少，效率还是极大地受到了情绪的影响。学期中之前感觉精神状态一直都还比较稳定，五月中旬到期末这段时间非常非常非常丧，生活失去了期待。但是还好有后面的期末考试（我第一次这么感激期末复习的到来），整个人还好没有这么堕落下去。</p><hr><p>既然不能去实习，那就还是按照原先想的那样，继续让自己变得更好吧，把数据结构和算法弄一弄，再多了解和熟悉一下python，机器学习的部分也还需要继续提高。所以接下来的小学期和暑假，主要就是</p><ul><li><p>《数据结构与算法分析：C语言描述》+ MOOC，把数据结构和算法弄一下；</p></li><li><p>考虑看看《流畅的Python》;</p></li><li><p>《机器学习基石》；</p></li><li><p>《集体智慧编程》、《机器学习实战》</p></li><li><p>复习数理统计，考虑看看课本和陈希孺的书；</p></li><li><p>看看《陶哲轩实分析》；</p></li><li><p><strong>尝试发展一些别的兴趣爱好；</strong></p></li><li><p>学学日语；<br>​</p><p>暂时就想到这些，大概就这样吧；</p></li></ul>]]></content>
     
     <summary type="html">
     
@@ -724,16 +346,16 @@
     <published>2017-06-14T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:29.591Z</updated>
     
-    <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。</p>
-<p>并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……</p>
-<p class="article-more-link"><a href="/python_data_analysis/pandas.html">Read More</a></p>
-]]></content>
+    <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。</p><p>并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……</p><p class="article-more-link"><a href="/python_data_analysis/pandas.html">Read More</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;/p&gt;
+      
+      
+        &lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;/p&gt;
 &lt;p&gt;并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……&lt;/p&gt;
 &lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;/python_data_analysis/pandas
+      
     
     </summary>
     
@@ -751,61 +373,7 @@
     <published>2017-06-01T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:29.395Z</updated>
     
-    <content type="html"><![CDATA[<h2>What should we do if we have a bad predictions?</h2>
-<p>The following options may be feasible:</p>
-<ul>
-<li>Get more training examples;</li>
-<li>Try smaller sets of features;</li>
-<li>Try getting additional features;</li>
-<li>Try adding polynomial features (increasing degree of polynomial);</li>
-<li>Try decreasing $\lambda$;</li>
-<li>Try increasing $\lambda$;</li>
-</ul>
-<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn’t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
-<a id="more"></a>
-<hr>
-<h2>Evaluating a hypothesis</h2>
-<p>To evaluating whether a hypothesis is good or bad (and we don’t have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p>
-<hr>
-<h2>Model Selection</h2>
-<p>Take linear regression as a example, we use $h_{\theta}(x) = \theta_0 +\theta_1 x + \theta_2 x^2 +… $ as our hypothesis function, and we can add the degree of polynomial to make our hypothe/.sis better, but it may brings the over fitting problem, so we need to find out the best degree.</p>
-<p>To  achieve so, we can compute the $J_{test}$(cost of different degrees $d$ on test set), and choose the best $d$, but it’s only fit to the test set. So we divide the data set into three parts:</p>
-<ul>
-<li>training set (60% usually)</li>
-<li>cross validation set (20% usually)</li>
-<li>test set (20% usually)(check if the combo of $\theta$ and $\lambda$ has a good generalization of the problem, avoiding over fitting)</li>
-</ul>
-<p>and three kinds of cost function is $J_{train}$, $J_{cv}$, $J_{test}$.</p>
-<p>Then for different $d(d=1, 2, 3, …)$, minimize $J(\theta)$ with $J_{train}$ and $J_{test}$, then compute the $J_{cv}$ for each $d$. We choose $d$ who has the lowest $J_{cv}$, and that.s how we do the model selection.</p>
-<hr>
-<h2>Bias vs. Variance</h2>
-<ul>
-<li>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/bias_vs_var.JPG">
-</li>
-</ul>
-<h3>Diagnosing bias vs. variance</h3>
-<ul>
-<li>If $J_{train}$ is high and $J_{cv}\approx J_{train}$, we can tell it’s a <strong>bias</strong> problem;</li>
-<li>If $J_{train}$ is low and $J_{cv}\gg J_{train}$, we can tell it’s a <strong>variance</strong> problem;</li>
-</ul>
-<hr>
-<h2>About regularization</h2>
-<p>As we know, appropriate $\lambda$ (regularization parameter) can help to prevent over fitting, but when the $\lambda$ is too large or too small. it won’t work as so:</p>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/different_lambda.JPG">
-<p>So choosing appropriate value of $\lambda$ is very necessary.</p>
-<p>We can try different $\lambda$, minimize $J(\theta)$, then compute $J_{cv}$ (like what we do the model selection), and we can finf the best $\lambda$.</p>
-<hr>
-<h2>Learning Curves</h2>
-<p>The learning curves describe the relationship of $m$(training set size) and error($J_{cv},J_{train}$), it’s look like:</p>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/learningcurves.JPG" width="500">
-<p>And if the algorithm is suffering from high bias, the learning curve is look like:</p>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/high_bias_curve.JPG" width="500">
-<p>We can see from the graph that the increasing $m$ doesn’t help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p>
-<p>While if the algorithm is suffering from high variance, the learning curve is look like:</p>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/high_var_curve.JPG" width="500">
-<p>From the graph we can see that there is a gap between $J_{cv}$ and $J_{train}$, and as $m$ increasing, the gap diminishes and the bias is also decreasing. So we can conclude that getting more training data is helpful to solve the high-variance problem.</p>
-]]></content>
+    <content type="html"><![CDATA[<h2>What should we do if we have a bad predictions?</h2><p>The following options may be feasible:</p><ul><li>Get more training examples;</li><li>Try smaller sets of features;</li><li>Try getting additional features;</li><li>Try adding polynomial features (increasing degree of polynomial);</li><li>Try decreasing $\lambda$;</li><li>Try increasing $\lambda$;</li></ul><p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn’t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p><a id="more"></a><hr><h2>Evaluating a hypothesis</h2><p>To evaluating whether a hypothesis is good or bad (and we don’t have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p><hr><h2>Model Selection</h2><p>Take linear regression as a example, we use $h_{\theta}(x) = \theta_0 +\theta_1 x + \theta_2 x^2 +… $ as our hypothesis function, and we can add the degree of polynomial to make our hypothe/.sis better, but it may brings the over fitting problem, so we need to find out the best degree.</p><p>To  achieve so, we can compute the $J_{test}$(cost of different degrees $d$ on test set), and choose the best $d$, but it’s only fit to the test set. So we divide the data set into three parts:</p><ul><li>training set (60% usually)</li><li>cross validation set (20% usually)</li><li>test set (20% usually)(check if the combo of $\theta$ and $\lambda$ has a good generalization of the problem, avoiding over fitting)</li></ul><p>and three kinds of cost function is $J_{train}$, $J_{cv}$, $J_{test}$.</p><p>Then for different $d(d=1, 2, 3, …)$, minimize $J(\theta)$ with $J_{train}$ and $J_{test}$, then compute the $J_{cv}$ for each $d$. We choose $d$ who has the lowest $J_{cv}$, and that.s how we do the model selection.</p><hr><h2>Bias vs. Variance</h2><ul><li><img src="http://7xugq7.com1.z0.glb.clouddn.com/bias_vs_var.JPG"></li></ul><h3>Diagnosing bias vs. variance</h3><ul><li>If $J_{train}$ is high and $J_{cv}\approx J_{train}$, we can tell it’s a <strong>bias</strong> problem;</li><li>If $J_{train}$ is low and $J_{cv}\gg J_{train}$, we can tell it’s a <strong>variance</strong> problem;</li></ul><hr><h2>About regularization</h2><p>As we know, appropriate $\lambda$ (regularization parameter) can help to prevent over fitting, but when the $\lambda$ is too large or too small. it won’t work as so:</p><img src="http://7xugq7.com1.z0.glb.clouddn.com/different_lambda.JPG"><p>So choosing appropriate value of $\lambda$ is very necessary.</p><p>We can try different $\lambda$, minimize $J(\theta)$, then compute $J_{cv}$ (like what we do the model selection), and we can finf the best $\lambda$.</p><hr><h2>Learning Curves</h2><p>The learning curves describe the relationship of $m$(training set size) and error($J_{cv},J_{train}$), it’s look like:</p><img src="http://7xugq7.com1.z0.glb.clouddn.com/learningcurves.JPG" width="500"><p>And if the algorithm is suffering from high bias, the learning curve is look like:</p><img src="http://7xugq7.com1.z0.glb.clouddn.com/high_bias_curve.JPG" width="500"><p>We can see from the graph that the increasing $m$ doesn’t help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p><p>While if the algorithm is suffering from high variance, the learning curve is look like:</p><img src="http://7xugq7.com1.z0.glb.clouddn.com/high_var_curve.JPG" width="500"><p>From the graph we can see that there is a gap between $J_{cv}$ and $J_{train}$, and as $m$ increasing, the gap diminishes and the bias is also decreasing. So we can conclude that getting more training data is helpful to solve the high-variance problem.</p>]]></content>
     
     <summary type="html">
     
@@ -837,16 +405,16 @@
     <published>2017-05-11T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:29.207Z</updated>
     
-    <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。<br>
-并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。</p>
-<p class="article-more-link"><a href="http://7xugq7.com1.z0.glb.clouddn.com/NpBasic.html" target="_blank" rel="external">Read More</a></p>
-]]></content>
+    <content type="html"><![CDATA[<p>看书时顺手用Jupyter Notebook做的笔记。<br>并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。</p><p class="article-more-link"><a href="http://7xugq7.com1.z0.glb.clouddn.com/NpBasic.html" target="_blank" rel="external">Read More</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;br&gt;
+      
+      
+        &lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;br&gt;
 并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。&lt;/p&gt;
 &lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;http://7xugq7.com1.z0.glb.clouddn
+      
     
     </summary>
     
@@ -864,15 +432,16 @@
     <published>2017-05-02T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:28.819Z</updated>
     
-    <content type="html"><![CDATA[<p>最近在看《利用Python进行数据分析》…</p>
-<p class="article-more-link"><a href="/python_data_analysis/IPython.html">Read More</a></p>
-]]></content>
+    <content type="html"><![CDATA[<p>最近在看《利用Python进行数据分析》…</p><p class="article-more-link"><a href="/python_data_analysis/IPython.html">Read More</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;最近在看《利用Python进行数据分析》…&lt;/p&gt;
+      
+      
+        &lt;p&gt;最近在看《利用Python进行数据分析》…&lt;/p&gt;
 &lt;p class=&quot;article-more-link&quot;&gt;&lt;a href=&quot;/python_data_analysis/IPython.html&quot;&gt;Read More&lt;/a&gt;&lt;/p&gt;
 
+      
     
     </summary>
     
@@ -890,139 +459,7 @@
     <published>2017-04-25T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:28.635Z</updated>
     
-    <content type="html"><![CDATA[<p>后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。</p>
-<a id="more"></a>
-<hr>
-<h2>联结表</h2>
-<h5>创建联结</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders, Products</div><div class="line"><span class="keyword">WHERE</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure>
-<p>简单解释一下，Venders和Products是一个数据库下的两张表，他们都有一个列叫Vend_id, prod_name和prod_price是表Products中的列，vend_name是表Venders中的列。<br>
-需要注意的是，如果在SELECT中添加了共有的列名，需要做完全限定，比如上面的例子中，如果需要把vend_id这个列提取出来，需要用Venders.vend_id或者Products.id来完全限定。<br>
-另外就是，WHERE子句非常重要，如果这里不用WHERE子句的话，输出的结果将会是指定的两部分内容的每一行的组合的结果，而忽略其中的逻辑，输出结果的行数将等于第一部分的列乘以第二个部分列的行数。这个结果也被称为<em>笛卡尔积</em>。所以，在联结表时为了避免输出的结果过长，千万不要忘了WHERE子句。</p>
-<p>以上的联结称为等值联结(equijoin)，也称为内联结(inner join)，我们可以用内联结的写法来重新写与上面等价的SQL语句：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Products</div><div class="line"> <span class="keyword">ON</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure>
-<p>实际上，联结表的操作也可以用子查询完成，但SQL语句书写起来会麻烦许多。</p>
-<hr>
-<h2>创建高级联结</h2>
-<h5>使用表别名</h5>
-<p>表别名还有以下这种有趣的用法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contract</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span></div></pre></td></tr></table></figure>
-<p>P.S.:Oracle中没有AS这个用法</p>
-<h5>其他类型的联结</h5>
-<ul>
-<li>自联结(self-join)<br>
-使用别名的好处在于可以不止一次地引用同一个表。下面两段SQL语句是等价的：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cest_id, cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = (<span class="keyword">SELECT</span> cust_name</div><div class="line">                   <span class="keyword">FROM</span> Customers</div><div class="line">                   <span class="keyword">WHERE</span> cust_contact = <span class="string">'Jim Jones'</span>);</div></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> c1.cust_id, c1.cust_name, c1.cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> c1, Customers <span class="keyword">AS</span> c2</div><div class="line"><span class="keyword">WHERE</span> c1.cust_name = c2.cust_name</div><div class="line"> <span class="keyword">AND</span> c2.cust_contract = <span class="string">'Jim Jones'</span>;</div></pre></td></tr></table></figure>
-<p>第一段使用了子查询,而第二段使用了联结，他们的效果是一样的，但在许多DBMS中，处理联结远比子查询快得多。</p>
-<ul>
-<li>
-<p>自然联结(natural join)</p>
-<p>标准的联结返回所有的数据，相同的列甚至多次出现。自然联结排除多次出现，使每一列只返回一次。如：</p>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> C.*, O.order_num, O.order_date,</div><div class="line">       OI.prod_id, OI.quantity, OI.item_price</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span>;</div></pre></td></tr></table></figure>
-<ul>
-<li>外联结<br>
-包含在相关表中没有关联行的行的联结，称为外联结(outer join)。用法如：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure>
-<p>注意，OUT JOIN前必须使用RIGHT或者LEFT关键字制定包括其所有行的表（RIGHT指出的是OUTER JOIN了FROM中右边的表，LEFT同理）。</p>
-<ul>
-<li>全外联结<br>
-检索两个表中的所有行并关联那些可以关联的行，这种外联结称为全外联结(full outer join),如：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure>
-<p>当然，也可以在联结中使用聚集函数。</p>
-<hr>
-<h2>组合查询</h2>
-<p>SQL允许执行多个查询（多条SELECT语句），并将结果作为一个查询结果集返回。这些组合查询通常称为并(union)或复制查询(compound query)</p>
-<h5>使用UNION</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'IL'</span>, <span class="string">'IN'</span>, <span class="string">'MI'</span>)</div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'Fun4All'</span>;</div></pre></td></tr></table></figure>
-<p>当然这里可以用OR达成同样的效果，但对于较复杂的过滤条件，或者从多个表检索数据的情形，使用UNION可能会使处理更简单。另外需要注意,UNION每个查询必须包含相同的列，表达式或聚集函数。</p>
-<p>此外，UNION会默认自动取消重复的行，当然如果有需要，也可以改变它，使用UNION ALL即可。如果需要对组合查询的结果进行排序，只需要在最后加上ORDER BY即可。</p>
-<hr>
-<h2>插入数据</h2>
-<h5>使用INSERT</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure>
-<p>这种用法很简单，但并不安全，应该尽量避免使用。更安全（也更烦琐）的用法应当是：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure>
-<p>Values将以指定的次序匹配指定的列名，不一定按各列出现在表中的实际次序。其优点是，即使表的结构改变，这条INSERT仍然能正确工作。</p>
-<h5>插入检索出的数据</h5>
-<p>INSERT还存在另一种形式，可以利用它将SELECT语句的结果插入表中，这就是所谓的INSERT SELECT，如：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">SELECT</span> column_a,</div><div class="line">       column_b,</div><div class="line">       column_c,</div><div class="line">       ......</div><div class="line"><span class="keyword">FROM</span> another_table_name;</div></pre></td></tr></table></figure>
-<p>当然，利用INSERT SELECT，可以实现从一个表复制到另一个表：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">INTO</span> table1</div><div class="line"><span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure>
-<p>在MariaDB, MySQL, Oracle, PostgreSQL 和 SQLite 使用的用法稍有不同：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table1 <span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure>
-<hr>
-<h2>更新和删除数据</h2>
-<h5>更新数据</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> table_name</div><div class="line"><span class="keyword">SET</span> column1=value1,</div><div class="line">    column2=value2,</div><div class="line">    ......</div><div class="line"><span class="keyword">WHERE</span> certain_column = certain_value;</div></pre></td></tr></table></figure>
-<h5>删除数据</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> ......</div></pre></td></tr></table></figure>
-<hr>
-<h2>创建和操纵表</h2>
-<h5>创建表</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_name	column_type		<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>其中，NULL是默认设置，可以省略。</p>
-<h5>指定默认值</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>在实际中，常用的默认值会用到当前时间。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">DBMS</th>
-<th style="text-align:center">函数/变量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Access</td>
-<td style="text-align:center">NOW()</td>
-</tr>
-<tr>
-<td style="text-align:center">DB2</td>
-<td style="text-align:center">CURRENT_DATE</td>
-</tr>
-<tr>
-<td style="text-align:center">MySQL</td>
-<td style="text-align:center">CURRENT_DATE()</td>
-</tr>
-<tr>
-<td style="text-align:center">Oracle</td>
-<td style="text-align:center">SYSDATE</td>
-</tr>
-<tr>
-<td style="text-align:center">PostgreSQL</td>
-<td style="text-align:center">CURRENT_DATE</td>
-</tr>
-<tr>
-<td style="text-align:center">SQL Server</td>
-<td style="text-align:center">GETDATE()</td>
-</tr>
-<tr>
-<td style="text-align:center">SQLite</td>
-<td style="text-align:center">date(‘now’)</td>
-</tr>
-</tbody>
-</table>
-<h5>更新表</h5>
-<p>以下展示了添加和删除列的用法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">ADD</span> column_name column_type;</div></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">DROP</span> column_name;</div></pre></td></tr></table></figure>
-<h5>删除表</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> table_name;</div></pre></td></tr></table></figure>
-<hr>
-<h2>使用视图</h2>
-<p>视图(View)，其实就是封装起来的查询操作。【使用视图的好处大约就和贯彻面向对象思想的好处一样多。】</p>
-<h5>创建视图</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name <span class="keyword">AS</span></div><div class="line">.....</div><div class="line">[<span class="keyword">SQL</span> <span class="keyword">Query</span>]</div><div class="line">.....</div></pre></td></tr></table></figure>
-<p>之后需要再次执行该查询操作时，只需要直接用</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column1,column2,...</div><div class="line"><span class="keyword">FROM</span> view_name</div><div class="line"><span class="keyword">WHERE</span> ...</div></pre></td></tr></table></figure>
-<p>即可。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。</p><a id="more"></a><hr><h2>联结表</h2><h5>创建联结</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders, Products</div><div class="line"><span class="keyword">WHERE</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure><p>简单解释一下，Venders和Products是一个数据库下的两张表，他们都有一个列叫Vend_id, prod_name和prod_price是表Products中的列，vend_name是表Venders中的列。<br>需要注意的是，如果在SELECT中添加了共有的列名，需要做完全限定，比如上面的例子中，如果需要把vend_id这个列提取出来，需要用Venders.vend_id或者Products.id来完全限定。<br>另外就是，WHERE子句非常重要，如果这里不用WHERE子句的话，输出的结果将会是指定的两部分内容的每一行的组合的结果，而忽略其中的逻辑，输出结果的行数将等于第一部分的列乘以第二个部分列的行数。这个结果也被称为<em>笛卡尔积</em>。所以，在联结表时为了避免输出的结果过长，千万不要忘了WHERE子句。</p><p>以上的联结称为等值联结(equijoin)，也称为内联结(inner join)，我们可以用内联结的写法来重新写与上面等价的SQL语句：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name, prod_name, prod_price</div><div class="line"><span class="keyword">FROM</span> Venders <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Products</div><div class="line"> <span class="keyword">ON</span> Venders.vend_id = Products.id</div></pre></td></tr></table></figure><p>实际上，联结表的操作也可以用子查询完成，但SQL语句书写起来会麻烦许多。</p><hr><h2>创建高级联结</h2><h5>使用表别名</h5><p>表别名还有以下这种有趣的用法：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contract</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span></div></pre></td></tr></table></figure><p>P.S.:Oracle中没有AS这个用法</p><h5>其他类型的联结</h5><ul><li>自联结(self-join)<br>使用别名的好处在于可以不止一次地引用同一个表。下面两段SQL语句是等价的：</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cest_id, cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = (<span class="keyword">SELECT</span> cust_name</div><div class="line">                   <span class="keyword">FROM</span> Customers</div><div class="line">                   <span class="keyword">WHERE</span> cust_contact = <span class="string">'Jim Jones'</span>);</div></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> c1.cust_id, c1.cust_name, c1.cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> c1, Customers <span class="keyword">AS</span> c2</div><div class="line"><span class="keyword">WHERE</span> c1.cust_name = c2.cust_name</div><div class="line"> <span class="keyword">AND</span> c2.cust_contract = <span class="string">'Jim Jones'</span>;</div></pre></td></tr></table></figure><p>第一段使用了子查询,而第二段使用了联结，他们的效果是一样的，但在许多DBMS中，处理联结远比子查询快得多。</p><ul><li><p>自然联结(natural join)</p><p>标准的联结返回所有的数据，相同的列甚至多次出现。自然联结排除多次出现，使每一列只返回一次。如：</p></li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> C.*, O.order_num, O.order_date,</div><div class="line">       OI.prod_id, OI.quantity, OI.item_price</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">AS</span> C, Orders <span class="keyword">AS</span> O, OrderItems <span class="keyword">AS</span> OI</div><div class="line"><span class="keyword">WHERE</span> C.cust_id = O.cust_id</div><div class="line"> <span class="keyword">AND</span> OI.order_num = O.order_num</div><div class="line"> <span class="keyword">AND</span> prod_id = <span class="string">'RGAN01'</span>;</div></pre></td></tr></table></figure><ul><li>外联结<br>包含在相关表中没有关联行的行的联结，称为外联结(outer join)。用法如：</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure><p>注意，OUT JOIN前必须使用RIGHT或者LEFT关键字制定包括其所有行的表（RIGHT指出的是OUTER JOIN了FROM中右边的表，LEFT同理）。</p><ul><li>全外联结<br>检索两个表中的所有行并关联那些可以关联的行，这种外联结称为全外联结(full outer join),如：</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> Customers.cust_id, Orders.order_num</div><div class="line"><span class="keyword">FROM</span> Customers <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders</div><div class="line"> <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</div></pre></td></tr></table></figure><p>当然，也可以在联结中使用聚集函数。</p><hr><h2>组合查询</h2><p>SQL允许执行多个查询（多条SELECT语句），并将结果作为一个查询结果集返回。这些组合查询通常称为并(union)或复制查询(compound query)</p><h5>使用UNION</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_state <span class="keyword">IN</span> (<span class="string">'IL'</span>, <span class="string">'IN'</span>, <span class="string">'MI'</span>)</div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact, cust_email</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> cust_name = <span class="string">'Fun4All'</span>;</div></pre></td></tr></table></figure><p>当然这里可以用OR达成同样的效果，但对于较复杂的过滤条件，或者从多个表检索数据的情形，使用UNION可能会使处理更简单。另外需要注意,UNION每个查询必须包含相同的列，表达式或聚集函数。</p><p>此外，UNION会默认自动取消重复的行，当然如果有需要，也可以改变它，使用UNION ALL即可。如果需要对组合查询的结果进行排序，只需要在最后加上ORDER BY即可。</p><hr><h2>插入数据</h2><h5>使用INSERT</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure><p>这种用法很简单，但并不安全，应该尽量避免使用。更安全（也更烦琐）的用法应当是：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">VALUES</span>(<span class="keyword">Value</span> <span class="number">1</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">2</span>,</div><div class="line">       <span class="keyword">Value</span> <span class="number">3</span>,</div><div class="line">       ......);</div></pre></td></tr></table></figure><p>Values将以指定的次序匹配指定的列名，不一定按各列出现在表中的实际次序。其优点是，即使表的结构改变，这条INSERT仍然能正确工作。</p><h5>插入检索出的数据</h5><p>INSERT还存在另一种形式，可以利用它将SELECT语句的结果插入表中，这就是所谓的INSERT SELECT，如：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1,</div><div class="line">                       column2,</div><div class="line">                       column3,</div><div class="line">                       ......)</div><div class="line"><span class="keyword">SELECT</span> column_a,</div><div class="line">       column_b,</div><div class="line">       column_c,</div><div class="line">       ......</div><div class="line"><span class="keyword">FROM</span> another_table_name;</div></pre></td></tr></table></figure><p>当然，利用INSERT SELECT，可以实现从一个表复制到另一个表：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">INTO</span> table1</div><div class="line"><span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure><p>在MariaDB, MySQL, Oracle, PostgreSQL 和 SQLite 使用的用法稍有不同：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table1 <span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> table2;</div></pre></td></tr></table></figure><hr><h2>更新和删除数据</h2><h5>更新数据</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> table_name</div><div class="line"><span class="keyword">SET</span> column1=value1,</div><div class="line">    column2=value2,</div><div class="line">    ......</div><div class="line"><span class="keyword">WHERE</span> certain_column = certain_value;</div></pre></td></tr></table></figure><h5>删除数据</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name</div><div class="line"><span class="keyword">WHERE</span> ......</div></pre></td></tr></table></figure><hr><h2>创建和操纵表</h2><h5>创建表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_namecolumn_type<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_namecolumn_type<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    column2_namecolumn_type<span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure><p>其中，NULL是默认设置，可以省略。</p><h5>指定默认值</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name</div><div class="line">(</div><div class="line">    column1_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    column2_name  column_type  <span class="literal">NULL</span>/<span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> [<span class="keyword">value</span>],</div><div class="line">    ......</div><div class="line">);</div></pre></td></tr></table></figure><p>在实际中，常用的默认值会用到当前时间。</p><table><thead><tr><th style="text-align:center">DBMS</th><th style="text-align:center">函数/变量</th></tr></thead><tbody><tr><td style="text-align:center">Access</td><td style="text-align:center">NOW()</td></tr><tr><td style="text-align:center">DB2</td><td style="text-align:center">CURRENT_DATE</td></tr><tr><td style="text-align:center">MySQL</td><td style="text-align:center">CURRENT_DATE()</td></tr><tr><td style="text-align:center">Oracle</td><td style="text-align:center">SYSDATE</td></tr><tr><td style="text-align:center">PostgreSQL</td><td style="text-align:center">CURRENT_DATE</td></tr><tr><td style="text-align:center">SQL Server</td><td style="text-align:center">GETDATE()</td></tr><tr><td style="text-align:center">SQLite</td><td style="text-align:center">date(‘now’)</td></tr></tbody></table><h5>更新表</h5><p>以下展示了添加和删除列的用法：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">ADD</span> column_name column_type;</div></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</div><div class="line"><span class="keyword">DROP</span> column_name;</div></pre></td></tr></table></figure><h5>删除表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> table_name;</div></pre></td></tr></table></figure><hr><h2>使用视图</h2><p>视图(View)，其实就是封装起来的查询操作。【使用视图的好处大约就和贯彻面向对象思想的好处一样多。】</p><h5>创建视图</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name <span class="keyword">AS</span></div><div class="line">.....</div><div class="line">[<span class="keyword">SQL</span> <span class="keyword">Query</span>]</div><div class="line">.....</div></pre></td></tr></table></figure><p>之后需要再次执行该查询操作时，只需要直接用</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column1,column2,...</div><div class="line"><span class="keyword">FROM</span> view_name</div><div class="line"><span class="keyword">WHERE</span> ...</div></pre></td></tr></table></figure><p>即可。</p>]]></content>
     
     <summary type="html">
     
@@ -1044,133 +481,7 @@
     <published>2017-04-23T00:00:00.000Z</published>
     <updated>2018-03-02T06:41:28.459Z</updated>
     
-    <content type="html"><![CDATA[<p>继续。</p>
-<a id="more"></a>
-<hr>
-<h2>创建计算字段</h2>
-<p>以下以书中例子呈现相关用法。</p>
-<ul>
-<li>拼接字段</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name || <span class="string">'('</span> || vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
-<p>以上两种写法是等价的，还可以用RTRIM()去除字符串右边的空格，用LTRIM()去除字符串左边的空格，用TRIM()去除字符串左右两边的空格。<br>
-特别地，在MySQL和MariaDB中需要使用Concat()函数来完成相同的功能：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># In MySQL and MariaDB</div><div class="line">SELECT Concat(vend_name, '(', vend_country, ')')</div><div class="line">FROM venders</div><div class="line">ORDER BY vender_name;</div></pre></td></tr></table></figure>
-<ul>
-<li>为结果使用别名</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">AS</span> vend_title</div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
-<ul>
-<li>执行算术计算</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> prod_id,</div><div class="line">       quantity,</div><div class="line">       item_price,</div><div class="line">       quantity*item_price <span class="keyword">AS</span> expanded_price</div><div class="line"><span class="keyword">FROM</span> OrderItems</div><div class="line"><span class="keyword">WHERE</span> order_num = <span class="number">20008</span>;</div></pre></td></tr></table></figure>
-<hr>
-<h2>使用函数处理数据</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">函数</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">LEFT()（或使用子字符串函数）</td>
-<td style="text-align:center">返回字符串左边的字符</td>
-</tr>
-<tr>
-<td style="text-align:center">LENGTH()（也使用DATALENGTH()或LEN()）</td>
-<td style="text-align:center">返回字符串的长度</td>
-</tr>
-<tr>
-<td style="text-align:center">LOWER()（Access使用LCASE()）</td>
-<td style="text-align:center">将字符串转换为小写</td>
-</tr>
-<tr>
-<td style="text-align:center">SOUNDEX()</td>
-<td style="text-align:center">返回字符串的SOUNDEX值（Access和PostgreSQL不支持，SQLite需要编译支持）</td>
-</tr>
-<tr>
-<td style="text-align:center">UPPER()</td>
-<td style="text-align:center">将字符串转换为大写</td>
-</tr>
-<tr>
-<td style="text-align:center">DATEPART()</td>
-<td style="text-align:center">返回日期类型中的年、月或日</td>
-</tr>
-</tbody>
-</table>
-<p>关于SOUNDEX()，</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">SOUNDEX</span>(cust_contact) = <span class="keyword">SOUNDEX</span>(<span class="string">'Michael Green'</span>)</div></pre></td></tr></table></figure>
-<p>【实测了一下，Michelle和Michael，Knuth和Kant的SOUNDEX值都是一样的，但是Bitch和Beach是不一样的，前者的SOUNDEX值是B320，后者则是B200……】</p>
-<hr>
-<h2>汇总数据</h2>
-<ul>
-<li>
-<p>聚集函数</p>
-<p>常用的函数包括AVG(), COUNT(), MAX(), MIN(), SUM()等，可以使用WHERE过滤，这些函数默认会忽略值为NULL的行，用*则可以不忽略；</p>
-</li>
-<li>
-<p>聚集不同值</p>
-<p>ALL代表对所有行进行运算，是默认行为，不需要指定；</p>
-<p>DISTINCT只对不同的行进行操作；</p>
-</li>
-<li>
-<p>组合聚集函数</p>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_items,</div><div class="line">       <span class="keyword">MIN</span>(prod_price) <span class="keyword">AS</span> price_min,</div><div class="line">       <span class="keyword">MAX</span>(prod_price) <span class="keyword">AS</span> price_max,</div><div class="line">       ACG(prod_price) <span class="keyword">AS</span> price_avg</div><div class="line"><span class="keyword">FROM</span> Products;</div></pre></td></tr></table></figure>
-<hr>
-<h2>分组数据</h2>
-<ul>
-<li>创建分组</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_prods</div><div class="line"><span class="keyword">FROM</span> Products</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> vend_id</div><div class="line"></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		4</div><div class="line">FNG01		2</div><div class="line">*/</div></pre></td></tr></table></figure>
-<p>其中，GROUP BY后可以包含任意数目的列以进行更细致的数据分组，还可以在子句中嵌套分组。SELECT语句中的每一列都必须在GROUP BY子句中给出。包含NULL值的行会被作为一个分组返回。GROUP BY子句必须在WHERE子句之后，ORDER BY子句之前。</p>
-<ul>
-<li>
-<p>过滤分组</p>
-<p>即规定包括哪些组，排除哪些组。</p>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div></pre></td></tr></table></figure>
-<p>这里不能用 WHERE替换HAVING，可以理解为 WHERE 在分组前进行过滤，故排除的行不包括在分组中，而 HAVING  	在数据分组后过滤。当然，两个子句并非不能同时存在，如：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> prod_price &gt;= <span class="number">4</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		2</div><div class="line">*/</div></pre></td></tr></table></figure>
-<ul>
-<li>
-<p>分组和排序</p>
-<p>下表列出了 ORDER BY 和 GROUP BY 的区别</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">ORDER BY</th>
-<th style="text-align:center">GROUP BY</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">对产生的输出进行排序</td>
-<td style="text-align:center">对行分组，但输出可能不是分组的顺序【所以可以在后面再使用ORDER BY对输出进行排序】</td>
-</tr>
-<tr>
-<td style="text-align:center">任意列都可以使用（甚至非选择的列也可以使用）</td>
-<td style="text-align:center">只可能使用选择列或表达式列，而且必须使用每个选择列表达式</td>
-</tr>
-<tr>
-<td style="text-align:center">不一定需要</td>
-<td style="text-align:center">如果与聚集函数一起使用列（或表达式），则必须使用</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2>使用子查询</h2>
-<p>子查询(Subquery)，即嵌套在其他查询中的查询。在需要多个SQL语句共同完成一个任务且他们之间存在递进关系时，可以使用类似于以下的用法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> order_num <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_num</div><div class="line">                    <span class="keyword">FROM</span> OrderItems</div><div class="line">                    <span class="keyword">WHERE</span> prod_id = <span class="string">'RGAN01'</span>);</div></pre></td></tr></table></figure>
-<p>这其实就是将括号中的 SELECT order_num FROM OrderItems WHERE prod_id = ‘RGAN01’ 这一句的输出结果传递给外面的 WHERE 查询子句。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>继续。</p><a id="more"></a><hr><h2>创建计算字段</h2><p>以下以书中例子呈现相关用法。</p><ul><li>拼接字段</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name || <span class="string">'('</span> || vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure><p>以上两种写法是等价的，还可以用RTRIM()去除字符串右边的空格，用LTRIM()去除字符串左边的空格，用TRIM()去除字符串左右两边的空格。<br>特别地，在MySQL和MariaDB中需要使用Concat()函数来完成相同的功能：</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># In MySQL and MariaDB</div><div class="line">SELECT Concat(vend_name, '(', vend_country, ')')</div><div class="line">FROM venders</div><div class="line">ORDER BY vender_name;</div></pre></td></tr></table></figure><ul><li>为结果使用别名</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">AS</span> vend_title</div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure><ul><li>执行算术计算</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> prod_id,</div><div class="line">       quantity,</div><div class="line">       item_price,</div><div class="line">       quantity*item_price <span class="keyword">AS</span> expanded_price</div><div class="line"><span class="keyword">FROM</span> OrderItems</div><div class="line"><span class="keyword">WHERE</span> order_num = <span class="number">20008</span>;</div></pre></td></tr></table></figure><hr><h2>使用函数处理数据</h2><table><thead><tr><th style="text-align:center">函数</th><th style="text-align:center">说明</th></tr></thead><tbody><tr><td style="text-align:center">LEFT()（或使用子字符串函数）</td><td style="text-align:center">返回字符串左边的字符</td></tr><tr><td style="text-align:center">LENGTH()（也使用DATALENGTH()或LEN()）</td><td style="text-align:center">返回字符串的长度</td></tr><tr><td style="text-align:center">LOWER()（Access使用LCASE()）</td><td style="text-align:center">将字符串转换为小写</td></tr><tr><td style="text-align:center">SOUNDEX()</td><td style="text-align:center">返回字符串的SOUNDEX值（Access和PostgreSQL不支持，SQLite需要编译支持）</td></tr><tr><td style="text-align:center">UPPER()</td><td style="text-align:center">将字符串转换为大写</td></tr><tr><td style="text-align:center">DATEPART()</td><td style="text-align:center">返回日期类型中的年、月或日</td></tr></tbody></table><p>关于SOUNDEX()，</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">SOUNDEX</span>(cust_contact) = <span class="keyword">SOUNDEX</span>(<span class="string">'Michael Green'</span>)</div></pre></td></tr></table></figure><p>【实测了一下，Michelle和Michael，Knuth和Kant的SOUNDEX值都是一样的，但是Bitch和Beach是不一样的，前者的SOUNDEX值是B320，后者则是B200……】</p><hr><h2>汇总数据</h2><ul><li><p>聚集函数</p><p>常用的函数包括AVG(), COUNT(), MAX(), MIN(), SUM()等，可以使用WHERE过滤，这些函数默认会忽略值为NULL的行，用*则可以不忽略；</p></li><li><p>聚集不同值</p><p>ALL代表对所有行进行运算，是默认行为，不需要指定；</p><p>DISTINCT只对不同的行进行操作；</p></li><li><p>组合聚集函数</p></li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_items,</div><div class="line">       <span class="keyword">MIN</span>(prod_price) <span class="keyword">AS</span> price_min,</div><div class="line">       <span class="keyword">MAX</span>(prod_price) <span class="keyword">AS</span> price_max,</div><div class="line">       ACG(prod_price) <span class="keyword">AS</span> price_avg</div><div class="line"><span class="keyword">FROM</span> Products;</div></pre></td></tr></table></figure><hr><h2>分组数据</h2><ul><li>创建分组</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_prods</div><div class="line"><span class="keyword">FROM</span> Products</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> vend_id</div><div class="line"></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_idnum_prods</div><div class="line">----------------</div><div class="line">BRS013</div><div class="line">DLL014</div><div class="line">FNG012</div><div class="line">*/</div></pre></td></tr></table></figure><p>其中，GROUP BY后可以包含任意数目的列以进行更细致的数据分组，还可以在子句中嵌套分组。SELECT语句中的每一列都必须在GROUP BY子句中给出。包含NULL值的行会被作为一个分组返回。GROUP BY子句必须在WHERE子句之后，ORDER BY子句之前。</p><ul><li><p>过滤分组</p><p>即规定包括哪些组，排除哪些组。</p></li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div></pre></td></tr></table></figure><p>这里不能用 WHERE替换HAVING，可以理解为 WHERE 在分组前进行过滤，故排除的行不包括在分组中，而 HAVING  在数据分组后过滤。当然，两个子句并非不能同时存在，如：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> prod_price &gt;= <span class="number">4</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_idnum_prods</div><div class="line">----------------</div><div class="line">BRS013</div><div class="line">DLL012</div><div class="line">*/</div></pre></td></tr></table></figure><ul><li><p>分组和排序</p><p>下表列出了 ORDER BY 和 GROUP BY 的区别</p></li></ul><table><thead><tr><th style="text-align:center">ORDER BY</th><th style="text-align:center">GROUP BY</th></tr></thead><tbody><tr><td style="text-align:center">对产生的输出进行排序</td><td style="text-align:center">对行分组，但输出可能不是分组的顺序【所以可以在后面再使用ORDER BY对输出进行排序】</td></tr><tr><td style="text-align:center">任意列都可以使用（甚至非选择的列也可以使用）</td><td style="text-align:center">只可能使用选择列或表达式列，而且必须使用每个选择列表达式</td></tr><tr><td style="text-align:center">不一定需要</td><td style="text-align:center">如果与聚集函数一起使用列（或表达式），则必须使用</td></tr></tbody></table><hr><h2>使用子查询</h2><p>子查询(Subquery)，即嵌套在其他查询中的查询。在需要多个SQL语句共同完成一个任务且他们之间存在递进关系时，可以使用类似于以下的用法：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> order_num <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_num</div><div class="line">                    <span class="keyword">FROM</span> OrderItems</div><div class="line">                    <span class="keyword">WHERE</span> prod_id = <span class="string">'RGAN01'</span>);</div></pre></td></tr></table></figure><p>这其实就是将括号中的 SELECT order_num FROM OrderItems WHERE prod_id = ‘RGAN01’ 这一句的输出结果传递给外面的 WHERE 查询子句。</p>]]></content>
     
     <summary type="html">
     

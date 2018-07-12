@@ -1,20 +1,7 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>开学已经四周了 • DRAPORLAND</title><meta name="description" content="开学已经四周了 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">开学已经四周了</h1><div class="post-info"><a></a>2017-03-19</div><div class="post-content"><p>  时间过得真快，开学已经四周了……</p>
+<p>  这四周过得并没有想象中的好，被一些事情占据了不少时间，自己也浪费了很多时间，导致总共到现在Coursera的课仅仅推了不到两周的内容………</p>
+<p>  于是，为了改变这种颓废的状态，打算开始实践最近发现的<a href="https://www.zhihu.com/question/31877598/answer/53667346" target="_blank" rel="external">沉浸工作法</a>，并且受https://github.com/lanshan-studio/weekly 的启发，决定开始写周简报督促自己的学习，暂定每周日写吧。周报就放在这好了 https://github.com/GabrielDrapor/Weekly</p>
+<p>  另外就是，这学期课内的课真的有点难度了，不能再像之前那样堆到期末再来学了，平时也要多看书。【上学期概率论学的不踏实，数理统计真的好难啊……</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/03/21/170507_notice/">prev</a><a class="next" href="/2017/03/05/170305-plans/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

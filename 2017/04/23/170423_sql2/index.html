@@ -1,20 +1,129 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>SQL Syntax(Ⅱ) • DRAPORLAND</title><meta name="description" content="SQL Syntax(Ⅱ) - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">SQL Syntax(Ⅱ)</h1><div class="post-info"><a></a>2017-04-23</div><div class="post-content"><p>继续。</p>
+<a id="more"></a>
+<hr>
+<h2>创建计算字段</h2>
+<p>以下以书中例子呈现相关用法。</p>
+<ul>
+<li>拼接字段</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name || <span class="string">'('</span> || vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
+<p>以上两种写法是等价的，还可以用RTRIM()去除字符串右边的空格，用LTRIM()去除字符串左边的空格，用TRIM()去除字符串左右两边的空格。<br>
+特别地，在MySQL和MariaDB中需要使用Concat()函数来完成相同的功能：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># In MySQL and MariaDB</div><div class="line">SELECT Concat(vend_name, '(', vend_country, ')')</div><div class="line">FROM venders</div><div class="line">ORDER BY vender_name;</div></pre></td></tr></table></figure>
+<ul>
+<li>为结果使用别名</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_name + <span class="string">'('</span> + vend_country+ <span class="string">')'</span></div><div class="line"><span class="keyword">AS</span> vend_title</div><div class="line"><span class="keyword">FROM</span> venders</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vender_name;</div></pre></td></tr></table></figure>
+<ul>
+<li>执行算术计算</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> prod_id,</div><div class="line">       quantity,</div><div class="line">       item_price,</div><div class="line">       quantity*item_price <span class="keyword">AS</span> expanded_price</div><div class="line"><span class="keyword">FROM</span> OrderItems</div><div class="line"><span class="keyword">WHERE</span> order_num = <span class="number">20008</span>;</div></pre></td></tr></table></figure>
+<hr>
+<h2>使用函数处理数据</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">LEFT()（或使用子字符串函数）</td>
+<td style="text-align:center">返回字符串左边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">LENGTH()（也使用DATALENGTH()或LEN()）</td>
+<td style="text-align:center">返回字符串的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">LOWER()（Access使用LCASE()）</td>
+<td style="text-align:center">将字符串转换为小写</td>
+</tr>
+<tr>
+<td style="text-align:center">SOUNDEX()</td>
+<td style="text-align:center">返回字符串的SOUNDEX值（Access和PostgreSQL不支持，SQLite需要编译支持）</td>
+</tr>
+<tr>
+<td style="text-align:center">UPPER()</td>
+<td style="text-align:center">将字符串转换为大写</td>
+</tr>
+<tr>
+<td style="text-align:center">DATEPART()</td>
+<td style="text-align:center">返回日期类型中的年、月或日</td>
+</tr>
+</tbody>
+</table>
+<p>关于SOUNDEX()，</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_name, cust_contact</div><div class="line"><span class="keyword">FROM</span> Customers</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">SOUNDEX</span>(cust_contact) = <span class="keyword">SOUNDEX</span>(<span class="string">'Michael Green'</span>)</div></pre></td></tr></table></figure>
+<p>【实测了一下，Michelle和Michael，Knuth和Kant的SOUNDEX值都是一样的，但是Bitch和Beach是不一样的，前者的SOUNDEX值是B320，后者则是B200……】</p>
+<hr>
+<h2>汇总数据</h2>
+<ul>
+<li>
+<p>聚集函数</p>
+<p>常用的函数包括AVG(), COUNT(), MAX(), MIN(), SUM()等，可以使用WHERE过滤，这些函数默认会忽略值为NULL的行，用*则可以不忽略；</p>
+</li>
+<li>
+<p>聚集不同值</p>
+<p>ALL代表对所有行进行运算，是默认行为，不需要指定；</p>
+<p>DISTINCT只对不同的行进行操作；</p>
+</li>
+<li>
+<p>组合聚集函数</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_items,</div><div class="line">       <span class="keyword">MIN</span>(prod_price) <span class="keyword">AS</span> price_min,</div><div class="line">       <span class="keyword">MAX</span>(prod_price) <span class="keyword">AS</span> price_max,</div><div class="line">       ACG(prod_price) <span class="keyword">AS</span> price_avg</div><div class="line"><span class="keyword">FROM</span> Products;</div></pre></td></tr></table></figure>
+<hr>
+<h2>分组数据</h2>
+<ul>
+<li>创建分组</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> vend_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_prods</div><div class="line"><span class="keyword">FROM</span> Products</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> vend_id</div><div class="line"></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		4</div><div class="line">FNG01		2</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>其中，GROUP BY后可以包含任意数目的列以进行更细致的数据分组，还可以在子句中嵌套分组。SELECT语句中的每一列都必须在GROUP BY子句中给出。包含NULL值的行会被作为一个分组返回。GROUP BY子句必须在WHERE子句之后，ORDER BY子句之前。</p>
+<ul>
+<li>
+<p>过滤分组</p>
+<p>即规定包括哪些组，排除哪些组。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div></pre></td></tr></table></figure>
+<p>这里不能用 WHERE替换HAVING，可以理解为 WHERE 在分组前进行过滤，故排除的行不包括在分组中，而 HAVING  	在数据分组后过滤。当然，两个子句并非不能同时存在，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> orders</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> prod_price &gt;= <span class="number">4</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</div><div class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="number">2</span></div><div class="line"><span class="comment">/*output:</span></div><div class="line">vend_id		num_prods</div><div class="line">-------		---------</div><div class="line">BRS01		3</div><div class="line">DLL01		2</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>分组和排序</p>
+<p>下表列出了 ORDER BY 和 GROUP BY 的区别</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ORDER BY</th>
+<th style="text-align:center">GROUP BY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">对产生的输出进行排序</td>
+<td style="text-align:center">对行分组，但输出可能不是分组的顺序【所以可以在后面再使用ORDER BY对输出进行排序】</td>
+</tr>
+<tr>
+<td style="text-align:center">任意列都可以使用（甚至非选择的列也可以使用）</td>
+<td style="text-align:center">只可能使用选择列或表达式列，而且必须使用每个选择列表达式</td>
+</tr>
+<tr>
+<td style="text-align:center">不一定需要</td>
+<td style="text-align:center">如果与聚集函数一起使用列（或表达式），则必须使用</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>使用子查询</h2>
+<p>子查询(Subquery)，即嵌套在其他查询中的查询。在需要多个SQL语句共同完成一个任务且他们之间存在递进关系时，可以使用类似于以下的用法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> cust_id</div><div class="line"><span class="keyword">FROM</span> Orders</div><div class="line"><span class="keyword">WHERE</span> order_num <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_num</div><div class="line">                    <span class="keyword">FROM</span> OrderItems</div><div class="line">                    <span class="keyword">WHERE</span> prod_id = <span class="string">'RGAN01'</span>);</div></pre></td></tr></table></figure>
+<p>这其实就是将括号中的 SELECT order_num FROM OrderItems WHERE prod_id = ‘RGAN01’ 这一句的输出结果传递给外面的 WHERE 查询子句。</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/04/25/170425_sql3/">prev</a><a class="next" href="/2017/04/22/170422_sql1/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

@@ -1,20 +1,68 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>4.17-5.17 • DRAPORLAND</title><meta name="description" content="4.17-5.17 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">4.17-5.17</h1><div class="post-info"><a></a>2016-05-17</div><div class="post-content"><h1>一、本专业</h1>
+<h4>过去的这段时间里</h4>
+<blockquote>
+<ul>
+<li>期中考试高代70，数分没及格，数分上还要多下功夫。期末考试两门都不能挂</li>
+</ul>
+</blockquote>
+<h1>二、编程</h1>
+<h4>过去的这段时间里</h4>
+<blockquote>
+<ul>
+<li>用C和Python两种编程语言，解决了学校OJ中34道问题（虽然有水题）</li>
+<li>捡起还没看完的《C Primer Plus》接着看，感觉还是很受益的。</li>
+<li>开始读《数据结构与算法分析——C语言描述》，学了基础的算法分析，学习了一点链表的内容，并做了相应的笔记。</li>
+</ul>
+</blockquote>
+<h3>接下来</h3>
+<blockquote>
+<ul>
+<li>到六月份前配合着MIT的算法导论课，继续自由学习数据结构和算法的内容</li>
+</ul>
+</blockquote>
+<h1>三、网络</h1>
+<h4>过去的这段时间里我</h4>
+<blockquote>
+<ul>
+<li>学会了用IIS+MS SQL Server架设一个叫做Discuz！NT的ASP.NET网站</li>
+<li>学会了用Apache+PHP+MySQL架设了一个叫做WordPress的php网站</li>
+<li>学会了用Tomcat+JDK+MySQL架设了一个叫做Jeecms的Jsp网站</li>
+</ul>
+</blockquote>
+<h4>接下来</h4>
+<blockquote>
+<ul>
+<li>学习远程配置vps（要学一点Linux），有选择性地学习一些网络知识（协议等）</li>
+</ul>
+</blockquote>
+<h1>四、其他</h1>
+<h4>过去的这段时间我还</h4>
+<blockquote>
+<ul>
+<li>能够独立地拆自己十分难拆的笔记本</li>
+<li>看完了《Mr.Robot》 —— 感觉挺有共鸣的</li>
+<li>看完了《Legal High》第一季 —— 对法律有了一点新的感想</li>
+<li>看完了两季《Silicon Valley》，对创业有了新的看法</li>
+</ul>
+</blockquote>
+<h1>五、接下来的一点小计划</h1>
+<blockquote>
+<ul>
+<li>发现算法和数据结构还是蛮有意思的，而且很有益处，尽力学</li>
+<li>读完《C Primer Plus》，查漏补缺（书中涉及数据结构的部分也许可以先不看）</li>
+<li>把Python基础语法的尾收完</li>
+<li>边做上面的事情看看有没有合适的OJ题能做，还是要多实践</li>
+<li>接下来可能有3-5天电脑送修，利用这段时间看看曼昆和费曼的书，总之看看书</li>
+<li>6月中旬考四级，上了500分大学就可以不用再上英语课啦</li>
+<li>期末考试要认真准备</li>
+<li>希望能搭个博客，现在还在犹豫是选Github Pages还是自己租vps搭个WordPress之类的</li>
+<li>了解一下数据挖掘的路是走怎么走的</li>
+<li>*学爬虫，扒下自己的全部微博，注销之。</li>
+<li>要是感觉学习太枯燥了可以学一点Kali Linux</li>
+</ul>
+</blockquote>
+<hr>
+<p><strong>总之，学习不止。</strong></p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/06/24/160624_re/">prev</a><a class="next" href="/2016/05/14/160513_dsa-ch2/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

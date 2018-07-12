@@ -1,20 +1,27 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>Machine Learning Notes 02 • DRAPORLAND</title><meta name="description" content="Machine Learning Notes 02 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Machine Learning Notes 02</h1><div class="post-info"><a></a>2016-10-11</div><div class="post-content"><h2>Linear Regression with one variable</h2>
+<ul>
+<li>
+<p><strong>Hypothesis:</strong><br>
+       <span>$h(\theta) = \theta_{0} + \theta_{1}x_{1}$</span><!-- Has MathJax --></p>
+</li>
+<li>
+<p><strong>Cost function:</strong><br>
+       <span>$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$</span><!-- Has MathJax --></p>
+</li>
+</ul>
+<hr>
+<h2><strong>Gradient descent</strong></h2>
+<p><strong>Target:</strong> minimize <span>$J(\theta_{0},\theta_{1})$</span><!-- Has MathJax --> or <span>$J(\theta_{0},\theta_{1},...,\theta_{n})$</span><!-- Has MathJax --></p>
+<ul>
+<li><strong>Gradient algorithm:</strong></li>
+</ul>
+<p>   Repeat until convergence{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})(for \: j=0\:and\:j=1)$</span><!-- Has MathJax --><br>
+   }<br>
+    ( <span>$:=$</span><!-- Has MathJax --> - <em>Assignment</em>    <span>$\alpha$</span><!-- Has MathJax --> - <em>Learning rate</em> )<br>
+  **Warning: **<span>$\theta_{0}$</span><!-- Has MathJax --> and <span>$\theta_{1}$</span><!-- Has MathJax -->should be updated <strong>Simultaneously</strong> !!!</p>
+<p>  Especially, when gradient descent for linear regression,</p>
+<p>     <span>$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax -->  when <span>$i=0$</span><!-- Has MathJax -->, we suppose <span>$x^{(0)}=1$</span><!-- Has MathJax --></p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/10/18/161018_ml_notes3/">prev</a><a class="next" href="/2016/10/10/161010_ml_notes1/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

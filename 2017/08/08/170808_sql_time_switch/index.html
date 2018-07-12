@@ -1,20 +1,40 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>SQL的时间／日期无脑转换 • DRAPORLAND</title><meta name="description" content="SQL的时间／日期无脑转换 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">SQL的时间／日期无脑转换</h1><div class="post-info"><a></a>2017-08-08</div><div class="post-content"><p>最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。</p>
+<p>其实主要涉及的几种日期格式就是以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIMESTAMP</td>
+<td>‘2017-08-08 15:56:31.111’</td>
+</tr>
+<tr>
+<td>STRING(‘yyyyMMdd’)</td>
+<td>‘20170808’</td>
+</tr>
+<tr>
+<td>DATE(‘yyyy-MM-dd’)</td>
+<td>‘2017-08-08’</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>20170808</td>
+</tr>
+</tbody>
+</table>
+<p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
+<ul>
+<li>unix_timestamp()函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyy-MM-dd’)【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将‘20170808’转为unix时间戳的话，应该写成unix_timestamp(‘2017-08-08’, ‘yyyyMMdd’)即可；</li>
+<li>from_unixtime()函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li>
+</ul>
+<p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用UNIX_TIMESTAMP()转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p>
+<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接from_unixtime(unix_timestamp(‘2017-08-08’,‘yyyy-MM-dd’),‘yyyyMMdd’) 即可，反之也是一样的道理。</p>
+<p>当然这其中存在很多捷径，比如TO_DATE()可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p>
+<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，‘2017-08-08’ = ‘20170808’这个等式并不成立。</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/08/19/170819_funny_codewars/">prev</a><a class="next" href="/2017/07/21/170721_a_sql_ex/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

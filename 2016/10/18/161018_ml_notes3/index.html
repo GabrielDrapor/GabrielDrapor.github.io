@@ -1,20 +1,42 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>Machine Learning Notes 03 • DRAPORLAND</title><meta name="description" content="Machine Learning Notes 03 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Machine Learning Notes 03</h1><div class="post-info"><a></a>2016-10-18</div><div class="post-content"><h2>Multivariate Linear Regression</h2>
+<ul>
+<li><strong>Hypothesis:</strong><br>
+       <span>$h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i}$</span><!-- Has MathJax --></li>
+</ul>
+<p>      <span>$X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax -->  <span>$\theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$</span><!-- Has MathJax --></p>
+<p>  <strong>Also</strong>, <span>$h(\theta) = \theta ^{ T} X$</span><!-- Has MathJax --></p>
+<hr>
+<h2><strong>Gradient descent</strong></h2>
+<ul>
+<li><strong>Algorithm:</strong></li>
+</ul>
+<p>   Repeat{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>
+   }</p>
+<hr>
+<h2>Feature Scaling</h2>
+<ul>
+<li><strong>Idea</strong>: Make sure fretures are on a similar scale.</li>
+<li><strong>Mean normalization</strong><br>
+  Replace <span>$x_{i}$</span><!-- Has MathJax --> with <span>$x_{i}-\mu_{i}$</span><!-- Has MathJax --> to make features have approximately zero mean(Do not apply to <span>$x_{0}$</span><!-- Has MathJax -->, Which we suppose equals 1)<br>
+      <span>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</span><!-- Has MathJax --><br>
+      (<span>$\mu_{i}$</span><!-- Has MathJax --> :Average value of <span>$x_{i}$</span><!-- Has MathJax --> in training set, <span>$s_{i}$</span><!-- Has MathJax --> :range(=max-min)(or standard deviation))</li>
+</ul>
+<hr>
+<h2>Learning Rate</h2>
+<ul>
+<li>If <span>$\alpha$</span><!-- Has MathJax --> is too small: slow convergence;</li>
+<li>If <span>$\alpha$</span><!-- Has MathJax --> is too large: <span>$J(\theta)$</span><!-- Has MathJax --> may not decrese on every iteration, may not converge(slow converge also possible);</li>
+</ul>
+<hr>
+<h2>Normal Equation —Solve for <span>$\theta$</span><!-- Has MathJax --> analytically</h2>
+<ul>
+<li>For the input X, add a column on the left in X filled with 1, make up a new X;</li>
+<li>then,<br>
+   <span>$\theta = (X^{ T}X)^{-1}X^{ T}y$</span><!-- Has MathJax --></li>
+</ul>
+<p><strong>The difference between Gradient Descent and Normal Equation:</strong><br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/gd@nrml.png"></p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/11/21/161121_ml_notes4/">prev</a><a class="next" href="/2016/10/11/161011_ml_notes2/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

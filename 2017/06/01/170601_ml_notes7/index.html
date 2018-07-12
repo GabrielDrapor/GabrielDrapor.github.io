@@ -1,20 +1,57 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>Machine Learning Notes 07 • DRAPORLAND</title><meta name="description" content="Machine Learning Notes 07 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Machine Learning Notes 07</h1><div class="post-info"><a></a>2017-06-01</div><div class="post-content"><h2>What should we do if we have a bad predictions?</h2>
+<p>The following options may be feasible:</p>
+<ul>
+<li>Get more training examples;</li>
+<li>Try smaller sets of features;</li>
+<li>Try getting additional features;</li>
+<li>Try adding polynomial features (increasing degree of polynomial);</li>
+<li>Try decreasing $\lambda$;</li>
+<li>Try increasing $\lambda$;</li>
+</ul>
+<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn’t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
+<a id="more"></a>
+<hr>
+<h2>Evaluating a hypothesis</h2>
+<p>To evaluating whether a hypothesis is good or bad (and we don’t have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p>
+<hr>
+<h2>Model Selection</h2>
+<p>Take linear regression as a example, we use $h_{\theta}(x) = \theta_0 +\theta_1 x + \theta_2 x^2 +… $ as our hypothesis function, and we can add the degree of polynomial to make our hypothe/.sis better, but it may brings the over fitting problem, so we need to find out the best degree.</p>
+<p>To  achieve so, we can compute the $J_{test}$(cost of different degrees $d$ on test set), and choose the best $d$, but it’s only fit to the test set. So we divide the data set into three parts:</p>
+<ul>
+<li>training set (60% usually)</li>
+<li>cross validation set (20% usually)</li>
+<li>test set (20% usually)(check if the combo of $\theta$ and $\lambda$ has a good generalization of the problem, avoiding over fitting)</li>
+</ul>
+<p>and three kinds of cost function is $J_{train}$, $J_{cv}$, $J_{test}$.</p>
+<p>Then for different $d(d=1, 2, 3, …)$, minimize $J(\theta)$ with $J_{train}$ and $J_{test}$, then compute the $J_{cv}$ for each $d$. We choose $d$ who has the lowest $J_{cv}$, and that.s how we do the model selection.</p>
+<hr>
+<h2>Bias vs. Variance</h2>
+<ul>
+<li>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/bias_vs_var.JPG">
+</li>
+</ul>
+<h3>Diagnosing bias vs. variance</h3>
+<ul>
+<li>If $J_{train}$ is high and $J_{cv}\approx J_{train}$, we can tell it’s a <strong>bias</strong> problem;</li>
+<li>If $J_{train}$ is low and $J_{cv}\gg J_{train}$, we can tell it’s a <strong>variance</strong> problem;</li>
+</ul>
+<hr>
+<h2>About regularization</h2>
+<p>As we know, appropriate $\lambda$ (regularization parameter) can help to prevent over fitting, but when the $\lambda$ is too large or too small. it won’t work as so:</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/different_lambda.JPG">
+<p>So choosing appropriate value of $\lambda$ is very necessary.</p>
+<p>We can try different $\lambda$, minimize $J(\theta)$, then compute $J_{cv}$ (like what we do the model selection), and we can finf the best $\lambda$.</p>
+<hr>
+<h2>Learning Curves</h2>
+<p>The learning curves describe the relationship of $m$(training set size) and error($J_{cv},J_{train}$), it’s look like:</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/learningcurves.JPG" width="500">
+<p>And if the algorithm is suffering from high bias, the learning curve is look like:</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/high_bias_curve.JPG" width="500">
+<p>We can see from the graph that the increasing $m$ doesn’t help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p>
+<p>While if the algorithm is suffering from high variance, the learning curve is look like:</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/high_var_curve.JPG" width="500">
+<p>From the graph we can see that there is a gap between $J_{cv}$ and $J_{train}$, and as $m$ increasing, the gap diminishes and the bias is also decreasing. So we can conclude that getting more training data is helpful to solve the high-variance problem.</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/06/14/170614-pandas/">prev</a><a class="next" href="/2017/05/11/170511-numpy/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

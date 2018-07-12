@@ -1,20 +1,45 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>Machine Learning Notes 06 • DRAPORLAND</title><meta name="description" content="Machine Learning Notes 06 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Machine Learning Notes 06</h1><div class="post-info"><a></a>2017-04-05</div><div class="post-content"><h2>How biological neural network work</h2>
+<p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that’s approximately how biological nerual network run.</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/neuron.jpg">
+<hr>
+<a id="more"></a>
+<h2>How artificial neural network work</h2>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/perceptron.jpg" width="500">
+<p>The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
+<p>And here’s what a three-layer ann looks like,</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/3lann.jpg" height="200">
+<p>The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, …, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that’s why we need more).</p>
+<hr>
+<h2>Feedforward Propagation Algorithm</h2>
+<p>We obtain the output first, by:</p>
+<p>$$y_{j}=g(\sum^{n}_{i=1}\omega_{ji}x_i-\theta),$$</p>
+<p>,and we often choose sigmoid function $g(z)=\frac{1}{1+e^{-z}}$ as our activation function. For the more complex situation, we can also use vectorization:</p>
+<p>$$a_{n+1}=g(a_{n}*\Theta_n)$$</p>
+<p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
+<hr>
+<h2>Back Propagation Algorithm</h2>
+<p>For the training set <span>$\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) \}$</span><!-- Has MathJax -->, $\Delta_{ij}^{(l)}=0 $ (for all $l,i,j$). Then we run the following loop:</p>
+<p>For $i = 1$ to $m$:</p>
+<p>Set <span>$a^{(1)}=x^{(i)}$</span><!-- Has MathJax --></p>
+<p>Perform forward propagation to compute $a^{(l)}$ for $l=2,3,…,L$</p>
+<p>Using $y^{(i)}​$, compute <span>$\delta^{L}=a^{(L)}-y^{(i)}&NegativeMediumSpace;$</span><!-- Has MathJax --></p>
+<p>Compute $\delta^{(L-1)}, \delta^{(L-2)}, …, \color{red}{\delta^{(2)}}$</p>
+<p><span>$\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i}$</span><!-- Has MathJax --></p>
+<p>After that,</p>
+<p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
+<p>$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
+<p>And we get:</p>
+<p>$$\frac{\partial}{\partial\Theta^{(l)}_{ij}}J(\Theta) = D_{ij}^{(l)}$$</p>
+<hr>
+<h2>Process of Training a Neural Network</h2>
+<ol>
+<li>Randomly initialize the weights;</li>
+<li>Implement forward propagation to get $h_{\Theta}(x^{(i)})$ for any $x^{(i)}$;</li>
+<li>Implement the cost function;</li>
+<li>Implement backpropagation to compute partial derivatives;</li>
+<li>Use gradient checking to confirm that your backpropagation works. Then disable gradient checking;</li>
+<li>Use gradient descent or a built-in optimization function to minimize the cost function with the weights in theta;</li>
+</ol>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/04/22/170422_sql1/">prev</a><a class="next" href="/2017/03/21/170507_notice/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

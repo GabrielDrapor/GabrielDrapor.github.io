@@ -1,20 +1,62 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>A Concrete Plan • DRAPORLAND</title><meta name="description" content="A Concrete Plan - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">A Concrete Plan</h1><div class="post-info"><a></a>2017-03-05</div><div class="post-content"><h3>Maths</h3>
+<blockquote>
+<ul>
+<li>《实变函数与泛函分析基础》</li>
+<li>《数学物理方程》</li>
+<li>《概率论与数理统计》</li>
+<li>《复变函数与积分变换》</li>
+<li>《数学模型》/姜启源</li>
+<li>《陶哲轩实分析》</li>
+</ul>
+</blockquote>
+<hr>
+<h3>Skills</h3>
+<ul>
+<li>Courses:</li>
+</ul>
+<blockquote>
+<ul>
+<li>Machine Learning - Andrew Ng</li>
+<li>Stanford CS229 - Andrew Ng(选)</li>
+<li>机器学习基石、机器学习技法 - 台湾大学</li>
+<li>……</li>
+</ul>
+</blockquote>
+<ul>
+<li>Py:</li>
+</ul>
+<blockquote>
+<ul>
+<li>scikit-learn</li>
+<li>Numpy</li>
+</ul>
+</blockquote>
+<ul>
+<li>SQL advanced</li>
+</ul>
+<ul>
+<li>Books:</li>
+</ul>
+<blockquote>
+<ul>
+<li>Introduction to Data Mining</li>
+<li>Data Structure &amp; Algorithm analysis in C</li>
+<li>PRML(选)</li>
+<li>集体智慧编程</li>
+<li>利用python进行数据分析</li>
+</ul>
+</blockquote>
+<ul>
+<li>Kaggle startup</li>
+</ul>
+<hr>
+<h3>Others</h3>
+<ul>
+<li>Cook more</li>
+<li>Read more</li>
+<li>Play puzzles</li>
+<li>…</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/03/19/170319-plans/">prev</a><a class="next" href="/2017/02/19/170219_plans/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

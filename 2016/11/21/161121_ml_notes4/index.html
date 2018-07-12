@@ -1,20 +1,83 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>Machine Learning Notes 04 • DRAPORLAND</title><meta name="description" content="Machine Learning Notes 04 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Machine Learning Notes 04</h1><div class="post-info"><a></a>2016-11-21</div><div class="post-content"><h2>Classification</h2>
+<p>  For the binary classification, <span>$y\in\left\{ 0,1 \right \}$</span><!-- Has MathJax --> (Also maybe, <span>$y\in \left \{ 0,1,2,3,... \right \}$</span><!-- Has MathJax -->, that’s called a <strong>multiclass classification problem</strong>, we will discuss it later.)<br>
+  So, we use a model called <strong>Logisitic Regression</strong>, and we can see the hypothesis <span>$h_{\theta}(x)$</span><!-- Has MathJax --> should value in the range of 0 and 1. This is to say, <span>$0\leq h_{\theta}(x)\leq 1$</span><!-- Has MathJax -->.</p>
+<hr>
+<h2>Hypothesis Representation</h2>
+<ul>
+<li>
+<p><strong>Logistic Regression:</strong><br>
+    <span>$h_{\theta}(x)=g(\theta^{T}x)$</span><!-- Has MathJax -->, <span>$g(z)=\frac{1}{1+e^{-z}}$</span><!-- Has MathJax --></p>
+</li>
+<li>
+<p>**Interpretation of Hypothesis Output **<br>
+The value of <span>$h_{\theta}(x)$</span><!-- Has MathJax --> equals to the estimated probability that y=1 (on input x, parameterized by <span>$\theta$</span><!-- Has MathJax --> ). This is to say,<br>
+$$h_{\theta}(x)=P(y=1\mid x ; \theta)$$</p>
+</li>
+<li>
+<p><strong>Decision Boundary</strong><br>
+The decision boundaries are like this:</p>
+</li>
+</ul>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/decision_boundary.png">
+<p>  <strong>Emphasis: Decision boundary is the property of hypothesis function, but not the property of training set and its parameters.</strong></p>
+<hr>
+<h2>**Logistic Regression **—How to fit the parameters of theta</h2>
+<ul>
+<li>
+<p><strong>Cost Function of Logistic Regression:</strong></p>
+<span>$$Cost(h_{\theta}, y)=\begin{cases}
+  -log(h_{\theta}(x)) &amp; \text{ if } y=1 \\ 
+  -log(1-h_{\theta}(x))  &amp; \text{ if } y=0 
+  \end{cases}$$</span><!-- Has MathJax -->
+<p>Also, we can write it as:</p>
+<center><span>$Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))$</span><!-- Has MathJax --></center>
+</li>
+<li>
+<p><strong>Gradient Descent:</strong><br>
+To minimize <span>$J_{\theta}$</span><!-- Has MathJax --></p>
+</li>
+</ul>
+<p>   Repeat{<br>
+      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</span><!-- Has MathJax --><br>
+   }</p>
+<p>  <strong>And we can see that this algortithm looks identical to linear regression!<br>
+  But actually, the hypothesis of them are different.</strong></p>
+<span>$$\begin{cases}
+Linear\:Regression: h_{\theta}(x)=\theta^{T}x\\
+Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}
+\end{cases}$$</span><!-- Has MathJax -->
+<p>Besides,</p>
+<blockquote>
+<p>“use a vector rise implementation, so that a vector rise implementation can update all of these until parameters all in one fell swoop.”</p>
+</blockquote>
+<hr>
+<h2>Advanced Optimization</h2>
+<blockquote>
+<ul>
+<li>Gradient Descent</li>
+<li>Conjngate Gradient</li>
+<li>BFGS</li>
+<li>L-BFGS</li>
+<li>……</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p><strong>Adcantages:</strong><br>
+No need to manually pick <span>$\alpha$</span><!-- Has MathJax --> ;<br>
+Often faster than gradient descent;</p>
+</li>
+<li>
+<p><strong>Disadvantages:</strong><br>
+More complex;</p>
+</li>
+</ul>
+<hr>
+<h2>Multi-class classification: One-vs-all</h2>
+<ul>
+<li>For example, to slove the three-class problem, we can <em>“turn this into three seperate two-class classification problems.”</em></li>
+<li>On a new input <span>$x$</span><!-- Has MathJax -->, to make a prediction, pick the class i that maximizes.</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/12/01/161201_pyCrawler1/">prev</a><a class="next" href="/2016/10/18/161018_ml_notes3/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

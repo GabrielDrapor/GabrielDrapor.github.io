@@ -1,20 +1,22 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>Python Crawler Note 1 • DRAPORLAND</title><meta name="description" content="Python Crawler Note 1 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Python Crawler Note 1</h1><div class="post-info"><a></a>2016-12-01</div><div class="post-content"><p>First, let’s start with a easy one:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure>
+<p>The output should be like:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">......</div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Also, codes below do the same thing,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line">request=urllib2.Request(url)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">print</span> response.read()</div></pre></td></tr></table></figure>
+<p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission" target="_blank" rel="external">Tutorial I recommand</a>) here to help us:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://drapor.me'</span>)</div><div class="line">content = response.read()              <span class="comment">#First we store the content of whole webpage</span></div><div class="line">content = content.replace(<span class="string">'\n'</span>,<span class="string">''</span>)     <span class="comment">#I use this to delete all the newline character to avoid some troubles</span></div><div class="line"></div><div class="line">pattern = <span class="string">r'&lt;a class="article-title" href=".*?"&gt;.*?&lt;/a&gt;'</span>   <span class="comment">#Then your regex here, remember the 'r'</span></div><div class="line"></div><div class="line">result = re.findall(pattern, content) <span class="comment">#Find all the result</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">"index.html"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:    <span class="comment">#Write the result in a new HTML file</span></div><div class="line">    <span class="keyword">for</span> items <span class="keyword">in</span> result:</div><div class="line">        f.write(items+<span class="string">'&lt;br&gt;'</span>)</div></pre></td></tr></table></figure>
+<p><em><em>Tip: Don’t use something like ‘+’ or '</em>’ in your zero-width assertion or write your regex like ‘(?&lt;![a-z]+)/d+’, or you will get:</em>*</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error: look-behind requires fixed-width pattern.</div></pre></td></tr></table></figure>
+<p>And open the new HTML file we create with browser, we got this:<br>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/pycrawler1_out.PNG"></p>
+<p><strong>Wow! How fantastic!!!</strong></p>
+<hr>
+<p><strong>And here’s the first attempt of mine (also my first crawler):</strong></p>
+<blockquote>
+<p>URL: http://stat.drapor.me/<br>
+Code: https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/12/02/161202_ml_notes5/">prev</a><a class="next" href="/2016/11/21/161121_ml_notes4/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

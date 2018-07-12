@@ -1,20 +1,11 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>用python连接SparkThriftServer • DRAPORLAND</title><meta name="description" content="用python连接SparkThriftServer - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">用python连接SparkThriftServer</h1><div class="post-info"><a></a>2017-11-22</div><div class="post-content"><p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
+<a id="more"></a>
+<p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla" target="_blank" rel="external">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
+<p>安装好之后，只需要</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> impala.dbapi <span class="keyword">import</span> connect</div><div class="line"></div><div class="line">sql = <span class="string">'SELECT ......'</span></div><div class="line">conn = connect(host=<span class="string">'xx.xx.xx.xx'</span>, port=xxxxx, auth_mechanism=<span class="string">'PLAIN'</span>, database=<span class="string">'DATABASE'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(sql)</div><div class="line">result = cursor.fetchall()</div></pre></td></tr></table></figure>
+<p>即可；</p>
+<p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
+<p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/11/22/171122_pymongo/">prev</a><a class="next" href="/2017/09/11/170911_knn_digits_recognition/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

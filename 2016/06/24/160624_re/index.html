@@ -1,20 +1,23 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>5.17-6.24 • DRAPORLAND</title><meta name="description" content="5.17-6.24 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">5.17-6.24</h1><div class="post-info"><a></a>2016-06-24</div><div class="post-content"><h1>过去的一个多月里</h1>
+<blockquote>
+<ul>
+<li>借助 Hexo 和 Github Pages 搭了自己的博客，也就是现在这个 darpor.me</li>
+<li>进入六月本想着好好准备期末考试和四级，但是其实还是浪费了很多时间，导致最后一周爆了一周的肝，总归是把所有的课都过了。</li>
+</ul>
+</blockquote>
+<h1>接下来的小学期</h1>
+<blockquote>
+<ul>
+<li>学习MATLAB，完成一次建模。</li>
+<li>学习正则表达式；</li>
+<li>学习python爬虫；</li>
+<li>开始看Andrew Ng的<em>Machine Learning</em>课程；</li>
+<li>继续看《数据结构与算法分析——C语言描述》，每一个知识点自己动手实现一遍；</li>
+<li>继续看Coursera上PKU的《计算机组成》的课程；</li>
+<li>挑选数据挖掘的课程，可以考虑开始看《数据挖掘导论》</li>
+<li>有空余时间的话可以读读《福尔摩斯探案集》</li>
+</ul>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/07/13/160713_re/">prev</a><a class="next" href="/2016/05/17/160517_re/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

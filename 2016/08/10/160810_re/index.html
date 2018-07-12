@@ -1,20 +1,49 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>7.16-8.10 • DRAPORLAND</title><meta name="description" content="7.16-8.10 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">7.16-8.10</h1><div class="post-info"><a></a>2016-08-10</div><div class="post-content"><p>这段日子参加了学校SNC组织的暑期学校，所得不少，主要包含以下：</p>
+<h2>第一阶段：</h2>
+<blockquote>
+<ul>
+<li>运维方向的综述、计算机硬件组成、操作系统的安装（引导方式、分区表）；</li>
+<li>程序和系统的相关概念（进程、线程、内核空间等）；</li>
+<li>服务器的管理（储存管理、远程管理、安全管理）；</li>
+<li>Web服务器和FTP服务器的搭建（限制IP访问，权限配置）；</li>
+<li>Apache的配置（虚拟主机、目录权限、日志切割、防盗链、MIME、认证、HTTPS等）；</li>
+<li>MySQL基本操作（增删查改、库备份还原、账户管理等）；</li>
+<li>PHP基础语法；</li>
+<li>HTML+CSS+PHP实现动态留言板；</li>
+<li>Web安全（XSS、SQL注入）；</li>
+</ul>
+</blockquote>
+<h2>第二阶段（计算机网络）：</h2>
+<blockquote>
+<ul>
+<li>物理层（信号在介质中的传输方式，网络的通信方式，常见的传输媒体，以及宽带接入技术）；</li>
+<li>数据链路层（三个问题、PPP协议、以太网帧的构成、交换机的工作特点WLAN）；</li>
+<li>网络层（IP协议、数据报文的传输、IP协议族中的ARP协议、ICMP协议、IGMP协议和ICMPv6协议，VPN和PPPoE原理）；</li>
+<li>Wireshark抓包、网线制作；</li>
+<li>传输层（TCP协议、UDP协议）；</li>
+<li>应用层（HTTP、HTTPS、FTP、TELNET、DHCP）；</li>
+<li>电子邮件发信原理（SMTP、POP3、IMAP）；</li>
+</ul>
+</blockquote>
+<h2>第三阶段（Linux）：</h2>
+<blockquote>
+<ul>
+<li>Linux基础操作（路径切换、权限设置）；</li>
+<li>Vim使用（模式切换，删除、替换、查找、复制粘贴等常用操作）；</li>
+<li>LAMP环境搭建；</li>
+<li>Linux储存管理（LVM）和防火墙管理（iptables）；</li>
+</ul>
+</blockquote>
+<h1>网络设计相关：</h1>
+<blockquote>
+<ul>
+<li>组网硬件（交换机、路由器）；</li>
+<li>相关协议（STP、OSPF）；</li>
+<li>相关概念（VLAN、ACL、NAT策略）；</li>
+<li>用GNS3/Cisco Packet Tracer模拟搭建校园网络；</li>
+</ul>
+</blockquote>
+<p>感谢SNC，感谢暑期学校。</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/09/20/160920_plans/">prev</a><a class="next" href="/2016/07/13/160713_re/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

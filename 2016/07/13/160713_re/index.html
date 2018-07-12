@@ -1,20 +1,31 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>6.26-7.13 • DRAPORLAND</title><meta name="description" content="6.26-7.13 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">6.26-7.13</h1><div class="post-info"><a></a>2016-07-13</div><div class="post-content"><p>小学期结束了，也来写个总结吧。</p>
+<h1>一、本专业</h1>
+<p><strong>过去的三周是学校的小学期，我</strong></p>
+<blockquote>
+<ul>
+<li>学习了Matlab的基础语法。</li>
+<li>本以为是只有一次数学建模，没想到是两次。</li>
+<li>本以为不是很难，结果一做才知道翻文献的时候经常连别人的模型都看不懂。</li>
+</ul>
+</blockquote>
+<p><strong>尽量抽点时间看看下学期的课，想把概率论提前学了。</strong></p>
+<h1>二、职业</h1>
+<p><strong>过去的三周我</strong></p>
+<blockquote>
+<ul>
+<li>本想把爬虫学完，结果由于数学建模占用了时间，也浪费了一些时间，导致只学习了基础的一部分内容，看完了正则表达式。</li>
+<li>开始在Coursera上看Andrew Ng的Machine Learning课程，恰好能用到刚刚学的Matlab。</li>
+</ul>
+</blockquote>
+<p><strong>接下来</strong></p>
+<blockquote>
+<ul>
+<li>要参加SNC的暑期学校的培训，可能不能继续学习爬虫了，但是Coursera的课程可以抽空继续上。</li>
+<li>算法什么的等暑期学校结束之后再规划吧。</li>
+</ul>
+</blockquote>
+<p><strong>得到的启示：在干自己不那么想干而又不是很容易做的事情的时候，整个人的效率低到了一个惊人的水平。。</strong></p>
+<p>大概如此，想到再来补吧。</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2016/08/10/160810_re/">prev</a><a class="next" href="/2016/06/24/160624_re/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

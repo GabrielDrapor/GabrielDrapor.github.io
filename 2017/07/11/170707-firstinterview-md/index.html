@@ -1,20 +1,18 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>记录一下最近参加过的面试 • DRAPORLAND</title><meta name="description" content="记录一下最近参加过的面试 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">记录一下最近参加过的面试</h1><div class="post-info"><a></a>2017-07-11</div><div class="post-content"><p>最近几天参加了几次面试，也是人生中的头几次面试，感觉值得一记，故有此篇。</p>
+<a id="more"></a>
+<p><strong>17.7.7：</strong></p>
+<p>昨天下午接到了一家公司HR的电话，问我是不是还在找实习以及有没有时间参加电话面试。于是昨天晚上+今天早上稍微地准备了一下，想着面试官会问关于Python的一些高级的东西比如解释器或者GIL什么的就去补了一波知识，并且对这家公司也做了一些调查，有了一些了解。</p>
+<p>终于等到下午三点开始了面试，形式是电话面试。在得知要写代码之后，我心里其实有点慌，因为我知道自己的数据结构和算法很薄弱，而且动手的时候可能会卡在一些细枝末节的地方。面试官人很好，上来没有让我做自我介绍，直接让我把自己掌握的技术说了一下，并对我在博客上和GIthub上的一些东西以及过往经历提了一些问题。很明显对方在面试前还是做了一点工作的，而且整个面试过程基本没有废话，我很喜欢这种面试风格。后面让我动手写一道算法题，是在数组中找出三个数之和为0的一道题。开始不久我就卡住了，原先以为自己会卡在数据结构或者算法的地方，后来发现不是这样的，我卡在了动手实现上。一些东西我知道思路，但我写不出来。究其原因的话，可能也是我太久没刷OJ了，动手能力退化了不少，另一反面本身基础就不够扎实，编码能力本来也不强，再加上面试时候的紧张， 结果就不太尽如人意。</p>
+<p>面试结果怎样已经没那么重要了，重要的是我的确在这次面试中清楚地认识到了自己还是说得太多看得太多做得太少，导致动手能力很弱，之后还是要在这方面加强才是。很感谢那家公司给我这个面试的机会。</p>
+<hr>
+<p><strong>17.7.8：</strong></p>
+<p>昨天面试的时候表现得比较糟糕，我以为已经铁定没戏了，结果昨天晚些时候HR跟我说还有一轮面试，我以为这次会是关于ML方面的面试，于是又回去翻了翻之前记过的笔记。没想到，今天的面试还是写代码，不过面试官看我昨天表现得那么惨，今天就给了我一个简单的问题，求第n个斐波那契数，我最开始用递归写了一个，后来面试官问我还有没有别的方法，我又把用循环写的那种方式写了一下；之后面试官又问了我一个递进的问题：一只蜗牛一次可以爬１级或２级或３级或……或n级台阶，现在它要爬上n级台阶，问有多少种爬法？起初我以为是一个等差数列问题，愚蠢地说了一个n(n-1)/2。面试官置疑了一下，我发现了根本不对，于是开始拿出纸笔算，在面试官的引导下捣鼓了很久才得出正确的结果【当时是先计算n=1，n=2，n=3的情况然后推广得到通项是2^(n-1)，7.13晚上洗澡的时候突然想到其实除了最后一级台阶，其他所有台阶都有两种可能，迈上或者不迈，于是n-1级台阶就是2^(n-1)种情况…】…后面还聊了一些关于公司技术栈的事情，发现其实技术不太对口，他们目前主要还是做后端，而我还是想找一份数据相关的实习…总之第二轮面试依旧很僵硬，基本已经没有希望了我觉得。。</p>
+<hr>
+<p><strong>17.7.11：</strong></p>
+<p>之前向洋葱数学投了简历，HR联系了我好几次一直没有联系上我，我一度觉得我可能和这家公司没有缘分，但终于我还是联系上了他们的HR，得知真相之后对HR的坚持不懈莫名有些感动…</p>
+<p>于是今天就去面试了 ，到了公司之后最大的感觉就是“哇这办公环境怎么这么好”，坐着观察了一会儿之后感觉这个公司整体的氛围很让我喜欢。之后数据组的组长就来了，首先是做了一下对我基本情况的一些了解，之后先问了一个SQL的问题，我心里很没底，因为我虽然过过一遍SQL的用法但并没有太多的实践经验，导致只说了一个基本思路；他看我SQL不太熟，于是问我如果用pandas的DataFrame怎么做，我同样回答了一个十分笨重但可行的方法；之后他又问了我一个对dict操作的python问题，我同样是用了一个“能解决问题但看起来有些笨拙”的方法做，其中被他指出了一些问题，经指出后还是改正了这些问题。这部分带给我的反思就是：<strong>代码写得太少啦！很多很基本的东西都没有记住！以后一定要多写代码！多写代码！！！！</strong>；再之后面试官问了我这样一个问题：因为他们是做在线教育的，他们现在想做一个类似于Dota里面的天梯系统，让我做一个简单的设计。对于这个问题其实我有一些头绪，但是都很乱，组织不起来，在他的帮助下和一段时间的整理之后，终于大致地把思路理了出来，他还带着我对其中的一个核心部分进行了设计相关的讨论，整个过程他都在引导我一步步地达到核心，面试体验还是相当愉快的。之后又聊了一些别的技术的事情，比如我问了一下他们公司的技术栈，以及我一直不了解的为什么初创公司都爱用MongoDB之类的。和他聊的大概就是以上这些。</p>
+<p>后面又和HR聊了一会儿，聊了很多，方方面面都聊到了，个人目标啊，性格啊，等等等等，于是聊了很久，也询问了一些关于他们公司的事情。【HR还建议我应该找一个活泼开朗的女朋友……</p>
+<p>出来之后我才发现面试竟然持续了两个多小时，而我一点感觉都没有，完全沉浸在其中，没有注意到时间的流逝。总的来说面试体验还是十分不错的，而且技术也非常对口，期待能收到人生第一份实习Offer。</p>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/07/21/170721_a_sql_ex/">prev</a><a class="next" href="/2017/07/01/170701_term-summary/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>

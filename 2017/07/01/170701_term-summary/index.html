@@ -1,20 +1,91 @@
-extends partial/layout.pug
-
-block site_title
-    != page.title + ' • ' + config.title
-
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
-
-block container
-    include mixins/post.pug
-    +post(page)
-
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
-
-block copyright
-    include partial/copyright.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index, follow"><title>来写个学期总结吧 • DRAPORLAND</title><meta name="description" content="来写个学期总结吧 - Gabriel Drapor"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset@3.0.1/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="DRAPORLAND"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="DRAPORLAND"><img class="logo-image" src="/logo.svg" alt="logo"></a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about-me" target="_self">ABOUT</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/2018-reading-list" target="_self">READING LIST</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">ARCHIVES</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/atom.xml" target="_self">RSS</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">来写个学期总结吧</h1><div class="post-info"><a></a>2017-07-01</div><div class="post-content"><p>这个学期就这样结束了，简单来写个总结吧，顺便做点计划。</p>
+<a id="more"></a>
+<hr>
+<ul>
+<li>看完了Coursera上Andrew Ng的Machine Learning；完成相应作业；</li>
+<li>读周志华先生的《机器学习》，但还有几章没读完；</li>
+<li>为了解决一些疑问，用Python写过几个小爬虫；</li>
+<li>看完了《SQL必知必会》，细致地学习了一波SQL；</li>
+<li>《利用Python进行数据分析》看了小半本，学习了一些Numpy和pandas的用法，用Jupyter Notebook做了笔记；</li>
+<li>学了一点PyQt5；</li>
+</ul>
+<ul>
+<li>学习了数理统计、偏微分方程、实变函数与泛函分析、数学模型和复变函数与积分变换这几门课，总的来说每门课都还是很有意思的，惭愧的是我下的工夫还是太少；</li>
+</ul>
+<ul>
+<li>开始学习日语，背完了五十音图；</li>
+</ul>
+<ul>
+<li>参加了一次校赛建模，本来是想用numpy和pandas替代MATLAB，结果发现还是不行，于是就顺便增强了一下MATLAB方面的技能，但做得很随意，最后得了二等奖；</li>
+<li>报名参加了2017中国高校计算机大赛—大数据挑战赛；</li>
+</ul>
+<ul>
+<li>刷了几波实习信息，也投了一波简历，结果最后发现了一些意外的情况（其实是操作失误），导致估计假期的实习期待落空了；</li>
+<li>这两天考完试把双系统弄好了，Ubuntu+Win10，尽量把和编程开发有关的事情都移到Ubuntu里做，WIn10留作娱乐，希望下一次换系统是Mac OS；</li>
+</ul>
+<hr>
+<ul>
+<li>《Planet Earth II》</li>
+<li>《嫌疑人X的献身》（中国版）</li>
+<li>《人民的名义》</li>
+<li>《驴得水》</li>
+<li>《看不见的客人》</li>
+<li>《百鸟朝凤》</li>
+<li>《摔跤吧！爸爸 Dangal》</li>
+<li>《TBBT Season 10》</li>
+<li>《和食双神：最后的约定》</li>
+<li>《四重奏》</li>
+<li>《辩护人》</li>
+<li>《求婚大作战》</li>
+<li>《Silcon Valley Season 4》</li>
+<li>《伊斯坦布尔的猫/Kedi》</li>
+<li>《Elementary Season 5》</li>
+<li>《The Flash Season 3》</li>
+<li>《S.H.I.E.L.D. Season 4》</li>
+</ul>
+<ul>
+<li>机器之心 GMIS全球机器智能峰会；</li>
+<li>Microsoft Build Tour 2017；</li>
+</ul>
+<ul>
+<li>读+摘抄完了杨伯峻先生的《论语译注》；</li>
+<li>读了一半《巨人的陨落》；</li>
+</ul>
+<ul>
+<li>入了SONY 100ABN；</li>
+<li>开了一个微信公众号没事写点无病呻吟的东西；</li>
+</ul>
+<p>干的事情还是感觉很少，效率还是极大地受到了情绪的影响。学期中之前感觉精神状态一直都还比较稳定，五月中旬到期末这段时间非常非常非常丧，生活失去了期待。但是还好有后面的期末考试（我第一次这么感激期末复习的到来），整个人还好没有这么堕落下去。</p>
+<hr>
+<p>既然不能去实习，那就还是按照原先想的那样，继续让自己变得更好吧，把数据结构和算法弄一弄，再多了解和熟悉一下python，机器学习的部分也还需要继续提高。所以接下来的小学期和暑假，主要就是</p>
+<ul>
+<li>
+<p>《数据结构与算法分析：C语言描述》+ MOOC，把数据结构和算法弄一下；</p>
+</li>
+<li>
+<p>考虑看看《流畅的Python》;</p>
+</li>
+<li>
+<p>《机器学习基石》；</p>
+</li>
+<li>
+<p>《集体智慧编程》、《机器学习实战》</p>
+</li>
+<li>
+<p>复习数理统计，考虑看看课本和陈希孺的书；</p>
+</li>
+<li>
+<p>看看《陶哲轩实分析》；</p>
+</li>
+<li>
+<p><strong>尝试发展一些别的兴趣爱好；</strong></p>
+</li>
+<li>
+<p>学学日语；<br>
+​</p>
+<p>暂时就想到这些，大概就这样吧；</p>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/07/11/170707-firstinterview-md/">prev</a><a class="next" href="/2017/06/14/170614-pandas/">next</a></div><div class="copyright"><p>&copy; 2015 - 2018 <a href="https://drapor.me">Drapor</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>
