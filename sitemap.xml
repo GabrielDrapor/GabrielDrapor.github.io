@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gabrieldrapor.github.io/2018-reading-list/index.html</loc>
+    
+    <lastmod>2018-07-24T03:25:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://gabrieldrapor.github.io/2018/07/11/180711_pd_SettingWithCopyWarning/</loc>
     
     <lastmod>2018-07-11T10:40:13.029Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://gabrieldrapor.github.io/2017/04/05/170406_ml_notes6/</loc>
     
     <lastmod>2018-07-09T09:07:26.619Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gabrieldrapor.github.io/2018-reading-list/index.html</loc>
-    
-    <lastmod>2018-07-09T08:48:13.386Z</lastmod>
     
   </url>
   
