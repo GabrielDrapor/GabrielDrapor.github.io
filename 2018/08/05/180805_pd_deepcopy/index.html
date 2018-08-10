@@ -13,10 +13,12 @@
 <meta property="og:url" content="http://gabrieldrapor.github.io/2018/08/05/180805_pd_deepcopy/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
 <meta property="og:description" content="最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；">
-<meta property="og:updated_time" content="2018-08-05T09:34:00.000Z">
+<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/pd_issues.png">
+<meta property="og:updated_time" content="2018-08-10T04:22:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于pandas.DataFrame.copy()的小坑">
 <meta name="twitter:description" content="最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；">
+<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/pd_issues.png">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -121,7 +123,10 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">a = pd.DataFrame([[<span class="number">1</span>]])</div><div class="line">print(a.loc[<span class="number">0</span>][<span class="number">0</span>])</div><div class="line"></div><div class="line">b = a.copy()</div><div class="line">b.loc[<span class="number">0</span>,<span class="number">0</span>] = <span class="number">2</span></div><div class="line">print(b.loc[<span class="number">0</span>, <span class="number">0</span>])  <span class="comment"># 2</span></div><div class="line">print(a.loc[<span class="number">0</span>, <span class="number">0</span>])  <span class="comment"># 1</span></div><div class="line"></div><div class="line">print(a.loc[<span class="number">0</span>,<span class="number">0</span>] <span class="keyword">is</span> b.loc[<span class="number">0</span>,<span class="number">0</span>]) <span class="comment"># False</span></div><div class="line">print(id(a.loc[<span class="number">0</span>,<span class="number">0</span>]) == id(b.loc[<span class="number">0</span>,<span class="number">0</span>])) <span class="comment">#True</span></div><div class="line"></div><div class="line"><span class="comment"># ------</span></div><div class="line"></div><div class="line">a = pd.DataFrame([[[<span class="number">1</span>]]])</div><div class="line">print(a.loc[<span class="number">0</span>][<span class="number">0</span>])</div><div class="line"></div><div class="line">b = a.copy()</div><div class="line">b.loc[<span class="number">0</span>,<span class="number">0</span>][<span class="number">0</span>] = <span class="number">2</span></div><div class="line">print(b.loc[<span class="number">0</span>, <span class="number">0</span>]) <span class="comment"># [2]</span></div><div class="line">print(a.loc[<span class="number">0</span>, <span class="number">0</span>]) <span class="comment"># [2]</span></div><div class="line"></div><div class="line">print(a.loc[<span class="number">0</span>,<span class="number">0</span>] <span class="keyword">is</span> b.loc[<span class="number">0</span>,<span class="number">0</span>])  <span class="comment"># True</span></div><div class="line">print(id(a.loc[<span class="number">0</span>,<span class="number">0</span>]) == id(b.loc[<span class="number">0</span>,<span class="number">0</span>])) <span class="comment"># True</span></div></pre></td></tr></table></figure>
 <p>神奇…</p>
-
+<hr>
+<p><strong>18.8.10：</strong></p>
+<p>​    之前发现了问题之后去GitHub上提了Issues，前几天收到了一位主要开发者的回复：</p>
+<img src="http://7xugq7.com1.z0.glb.clouddn.com/pd_issues.png">
       
     </div>
     <footer class="article-footer">
