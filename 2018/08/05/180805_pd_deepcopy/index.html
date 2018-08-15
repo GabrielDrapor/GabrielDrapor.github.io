@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="DRAPORLAND">
 <meta property="og:description" content="最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；">
 <meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/pd_issues.png">
-<meta property="og:updated_time" content="2018-08-10T04:22:14.000Z">
+<meta property="og:updated_time" content="2018-08-13T04:34:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于pandas.DataFrame.copy()的小坑">
 <meta name="twitter:description" content="最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；">
@@ -127,8 +127,31 @@
 <p>神奇…</p>
 <hr>
 <p><strong>18.8.10：</strong></p>
-<p>​    之前发现了问题之后去GitHub上提了Issues，前几天收到了一位主要开发者的回复：</p>
+<p>​    之前发现了问题之后去GitHub上提了<a href="https://github.com/pandas-dev/pandas/issues/22203" target="_blank" rel="external">Issues</a>，前几天收到了一位pandas的contributor的回复：</p>
 <img src="http://7xugq7.com1.z0.glb.clouddn.com/pd_issues.png">
+<hr>
+<p><strong>18.8.13:</strong></p>
+<p>​    又得到了另一位开发者的回复，他指出首先.copy(deep=True)在<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.copy.html" target="_blank" rel="external">官方文档</a>上已经写到了这一点：</p>
+<blockquote>
+<p>When deep=True, data is copied but actual Python objects will not be copied recursively, only the reference to the object. This is in contrast to copy.deepcopy in the Standard Library, which recursively copies object data (see examples below).</p>
+</blockquote>
+<p>他还指出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id(a.loc[<span class="number">0</span>,<span class="number">0</span>]) == id(b.loc[<span class="number">0</span>,<span class="number">0</span>])</div></pre></td></tr></table></figure>
+<p>这个语句中，</p>
+<blockquote>
+<p>the Python interpreter could perform the following steps:</p>
+<ol>
+<li>Evaluate <code>a.loc[0, 0]</code>; then</li>
+<li>Get the id of the temporary object created in step 1; then</li>
+<li>Evaluate <code>b.loc[0, 0]</code>; then</li>
+<li>Get the id of the temporary object created in step 3.</li>
+</ol>
+<p>If the temporary object created in step 1 is GC’ed in between, the temporary object created in step 3 may be created at the same address. (In CPython, the <code>id</code> function <a href="https://docs.python.org/3/library/functions.html#id" target="_blank" rel="external">returns the memory address</a> of an object, although this is considered a CPython implementation detail.)</p>
+<p>One case see examples of this just using plain old Python objects:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; In [13]: id(object()), id(object())</div><div class="line">&gt; Out[13]: (4763425312, 4763425312)</div><div class="line">&gt;</div><div class="line">&gt; In [19]: print(object() is object())</div><div class="line">&gt; False</div><div class="line">&gt;</div><div class="line">&gt; In [20]: print(id(object()) == id(object()))</div><div class="line">&gt; True</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>后来，我又去尝试了一下copy.deepcopy()，发现即使是这个方法，依然不能达到我想要的效果。再次Google之后得到的答案是，只能乖乖地把index和value分别做deepcopy，然后再构造一个新的DataFrame。</p>
+
       
     </div>
     <footer class="article-footer">
@@ -146,6 +169,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/08/13/180813_py_udf/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          用python实现Hive UDF
+        
+      </div>
+    </a>
   
   
     <a href="/2018/07/11/180711_pd_SettingWithCopyWarning/" id="article-nav-older" class="article-nav-link-wrap">
@@ -175,7 +207,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">　</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

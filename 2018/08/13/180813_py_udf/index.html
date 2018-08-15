@@ -4,22 +4,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Machine Learning Notes 05 | DRAPORLAND</title>
+  <title>用python实现Hive UDF | DRAPORLAND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Overfitting Overfitting would cause the modle to perform poorly, like this:     As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t alwa">
-<meta name="keywords" content="Machine Learning">
+  <meta name="description" content="因为项目需要，最近研究了一下如何用python写udf；">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Machine Learning Notes 05">
-<meta property="og:url" content="http://gabrieldrapor.github.io/2016/12/02/161202_ml_notes5/index.html">
+<meta property="og:title" content="用python实现Hive UDF">
+<meta property="og:url" content="http://gabrieldrapor.github.io/2018/08/13/180813_py_udf/index.html">
 <meta property="og:site_name" content="DRAPORLAND">
-<meta property="og:description" content="Overfitting Overfitting would cause the modle to perform poorly, like this:     As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t alwa">
-<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG">
-<meta property="og:image" content="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG">
-<meta property="og:updated_time" content="2018-03-02T06:41:27.055Z">
+<meta property="og:description" content="因为项目需要，最近研究了一下如何用python写udf；">
+<meta property="og:updated_time" content="2018-08-13T06:53:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machine Learning Notes 05">
-<meta name="twitter:description" content="Overfitting Overfitting would cause the modle to perform poorly, like this:     As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t alwa">
-<meta name="twitter:image" content="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG">
+<meta name="twitter:title" content="用python实现Hive UDF">
+<meta name="twitter:description" content="因为项目需要，最近研究了一下如何用python写udf；">
   
     <link rel="alternate" href="/atom.xml" title="DRAPORLAND" type="application/atom+xml">
   
@@ -75,14 +72,14 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-161202_ml_notes5" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-180813_py_udf" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/02/161202_ml_notes5/" class="article-date">
-  <time datetime="2016-12-02T00:00:00.000Z" itemprop="datePublished">2016-12-02</time>
+    <a href="/2018/08/13/180813_py_udf/" class="article-date">
+  <time datetime="2018-08-13T00:00:00.000Z" itemprop="datePublished">2018-08-13</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
   </div>
 
   </div>
@@ -93,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Machine Learning Notes 05
+      用python实现Hive UDF
     </h1>
   
 
@@ -101,83 +98,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2>Overfitting</h2>
-<p>Overfitting would cause the modle to perform poorly, like this:<br>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp1.PNG"></p>
-<img src="http://7xugq7.com1.z0.glb.clouddn.com/reg_exmp2.PNG">
-<p>  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn’t always work. Sometims we have too many features which cause that it’s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.</p>
+        <p>因为项目需要，最近研究了一下如何用python写udf；</p>
 <a id="more"></a>
-<hr>
-<h2>Two options to solve</h2>
-<p><strong>1.Reduce the number of features</strong></p>
-<blockquote>
-<p>Manually select which features to keep or throw out<br>
-Model selection algorithm (help ue to decide which features to keep or throw out automatically)</p>
-</blockquote>
-<blockquote>
-<p>Disadvantages: Reduce some information about the problem.</p>
-</blockquote>
-<p><strong>2.Regularization</strong></p>
-<blockquote>
-<p>Keep all the features, but reduce magnitude/values of parameters <span>$\theta_{j}$</span><!-- Has MathJax -->.<br>
-Works well when we have a lot of features, each of which contributes a bit to predicting <span>$y$</span><!-- Has MathJax -->.</p>
-</blockquote>
-<p>So we can see regularization is a better choice mostly.</p>
-<hr>
-<h2>See the cost functinon</h2>
 <ul>
-<li>First, consider this. If our hypothesis is like this:</li>
+<li>python部分：（通过stdin和stdout进行数据交互)</li>
 </ul>
-<center><span>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2}
-+ \theta_{3}x^3 + \theta_{4}x^4$$</span><!-- Has MathJax --></center>
-<p>and if we penalize and make <span>$\theta_{3}$</span><!-- Has MathJax --> and <span>$\theta_{4}$</span><!-- Has MathJax --> really small, it means that <span>$\theta_{3}\approx0,\theta_{4}\approx0$</span><!-- Has MathJax -->, that is like as if we 're getting rid of these two terms, then we would find that</p>
-<center><span>$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2}$</span><!-- Has MathJax --></center>
-<hr>
-<h2>Regularization</h2>
-<p>“…having <strong>smaller values of the parameters</strong> corresponds to usually <strong>smoother functions as well for the simpler</strong>. And which are therefore, also, <strong>less prone to overfitting</strong>. ”<br>
-What we should do is to modify the cost function to shrink all of the parameters like this:</p>
-<center><span>$J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}$</span><!-- Has MathJax --></center>
-<p>And the blue terms is called <strong>regularization terms</strong>, <span>$\lambda$</span><!-- Has MathJax --> is called <strong>regularization parameters</strong> which is used to trade off between two different goals:</p>
-<span>$$\begin{cases}
-1. \sum(h_{\theta}(x^{(i)})-y^{(i)})^{2}\:-\:fit\:well\\
-2. \sum{\theta_{j}^{2}}\:-\:keep\:the\:parameters\:small
-   \end{cases}$$</span><!-- Has MathJax -->
-<p>By the way, we don’t penalize <span>$\theta_{0}$</span><!-- Has MathJax --> by convention.<br>
-Besides, about the regularization parameters <span>$\lambda$</span><!-- Has MathJax -->, if <span>$\lambda$</span><!-- Has MathJax --> is too large, it would cause underfitting, and if <span>$\lambda$</span><!-- Has MathJax --> is too small, it may cause the useless regularization.</p>
-<hr>
-<h2>Regularized linear regression</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:</div><div class="line">    print(...)</div></pre></td></tr></table></figure>
 <ul>
-<li>Gradient descent:<br>
-Old:<br>
-   Repeat{<br>
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,...,n)$</span><!-- Has MathJax --><br>
-   }</li>
+<li>将写好的脚本上传到HDFS：</li>
 </ul>
-<p><font color="blue">New:</font><br>
-   <font color="blue">Repeat{</font><br>
-      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax --><br>
-      <span>${\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax --><br>
-   <font color="blue">}</font></p>
-<hr>
-<h2>Regularization logistic regression</h2>
-<p>   Cost function <span>$J(\theta)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x)){\color{Blue} {+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}}}$</span><!-- Has MathJax --></p>
-<p>   <font color="blue">Repeat{</font><br>
-      <span>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</span><!-- Has MathJax --><br>
-      <span>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</span><!-- Has MathJax --><br>
-   <font color="blue">}</font><br>
-Remember that <span>$h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$</span><!-- Has MathJax --></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hadoop fs -put -f xxx.py [PATH]</div></pre></td></tr></table></figure>
+<ul>
+<li>在HIVE上：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ADD FILE hdfs:///[PATH];</div><div class="line"><span class="built_in">set</span> hive.execution.engine=mr;</div><div class="line">SELECT TRANSFORM(...)</div><div class="line">USING <span class="string">'python jr_collect_list_udf.py'</span></div><div class="line">AS (...)</div><div class="line">FROM</div><div class="line">    ...`</div></pre></td></tr></table></figure>
+<ul>
+<li>P.S.:
+<ul>
+<li>在python脚本中，接收到的数据为str类型，如果TRANSFROM(…)中有多个字段，则接收到的是用\t分隔的字符串；</li>
+<li>无论返回的是什么类型的数据，写在表里都是str；</li>
+<li>需要返回多个字段的话在return时用\t.join()就可以；</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://gabrieldrapor.github.io/2016/12/02/161202_ml_notes5/" data-id="cjjhxob78001nk3xuvicr36mu" class="article-share-link" data-share="baidu" data-title="Machine Learning Notes 05">分享到</a>
+        <a data-url="http://gabrieldrapor.github.io/2018/08/13/180813_py_udf/" data-id="cjkumo5wl00000vxuiq603ld3" class="article-share-link" data-share="baidu" data-title="用python实现Hive UDF">分享到</a>
       
 
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
     </footer>
   </div>
@@ -185,19 +140,10 @@ Remember that <span>$h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$</span><!-- Has 
     
 <nav id="article-nav">
   
-    <a href="/2017/01/01/170101_my2016/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          我的2016
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/02/161202_pyCrawler2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/08/05/180805_pd_deepcopy/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Python Crawler Note 2</div>
+      <div class="article-nav-title">关于pandas.DataFrame.copy()的小坑</div>
     </a>
   
 </nav>
