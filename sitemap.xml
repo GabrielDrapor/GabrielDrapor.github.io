@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gabrieldrapor.github.io/2018-reading-list/index.html</loc>
+    
+    <lastmod>2018-08-15T04:25:32.415Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://gabrieldrapor.github.io/2018/08/13/180813_py_udf/</loc>
     
     <lastmod>2018-08-13T06:53:55.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://gabrieldrapor.github.io/2018/08/05/180805_pd_deepcopy/</loc>
     
     <lastmod>2018-08-13T04:34:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gabrieldrapor.github.io/2018-reading-list/index.html</loc>
-    
-    <lastmod>2018-08-05T08:43:03.000Z</lastmod>
     
   </url>
   
