@@ -529,23 +529,5 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>About Me</title>
-      <link>https://drapor.me/posts/about/</link>
-      <pubDate>Fri, 18 Apr 1997 00:00:00 +0000</pubDate>
-      
-      <guid>https://drapor.me/posts/about/</guid>
-      <description>I am Drapor;
-Mathematics undergraduate;
-Callow Data Mining Engineer / Machine Learning Engineer;
-Enthusiast of NBA, Monster Hunter, Sudoku,……
-Zhihu: @Drapor
-GitHub: @GabrielDrapor
-Email: gabrieldrapor@gmail.com
-
- &amp;ldquo;You can code. They cannot. That is pretty damn cool.&amp;rdquo; &amp;ndash;Learn Python The Hard Way
- </description>
-    </item>
-    
   </channel>
 </rss>
