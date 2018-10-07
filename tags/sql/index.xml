@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sql on DRAPORLAND</title>
+    <link>https://drapor.me/tags/sql/</link>
+    <description>Recent content in Sql on DRAPORLAND</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Copyright notice</copyright>
+    <lastBuildDate>Tue, 25 Apr 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://drapor.me/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SQL Syntax(Ⅲ)</title>
+      <link>https://drapor.me/posts/170425_sql3/</link>
+      <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/170425_sql3/</guid>
+      <description>&lt;p&gt;后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL Syntax(Ⅱ)</title>
+      <link>https://drapor.me/posts/170423_sql2/</link>
+      <pubDate>Sun, 23 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/170423_sql2/</guid>
+      <description>&lt;p&gt;继续。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL Syntax(Ⅰ)</title>
+      <link>https://drapor.me/posts/170422_sql1/</link>
+      <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/170422_sql1/</guid>
+      <description>这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。
+
+检索数据 SELECT column0, column1,... --&amp;#39;\*&amp;#39; for all FROM table_name; - In SQL Server and Access,
+SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0, column1,... FROM table_name FETCH FIRST [num] ROWS ONLY;  In Oracle,  SELECT column0, column1,... FROM table_name WHERE ROWNUM &amp;lt;= [num];  In MySQL, MariaDB, PostgreSQL and SQLite  SELECT column0, column1,... FROM table_name LIMIT [num] {OFFSET [num]};  Select distinct value  SELECT DISTINCT column_name FROM table_name;  Annotation  # Here is a comment SELECT column0 -- Here is also a comment FROM table_name; /* Also a comment~ */ 排列检索数据 SELECT column0, column1,.</description>
+    </item>
+    
+  </channel>
+</rss>
