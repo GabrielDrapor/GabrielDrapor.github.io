@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://drapor.me/2018-reading-list/</loc>
+    <lastmod>2018-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://drapor.me/posts/180813_py_udf/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
   </url>
@@ -282,7 +287,7 @@
   
   <url>
     <loc>https://drapor.me/</loc>
-    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

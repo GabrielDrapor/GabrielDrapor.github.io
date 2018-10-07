@@ -6,7 +6,7 @@
     <description>Recent content in Python on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; Copyright notice</copyright>
+    <copyright>Copyright &amp;copy; 2018 Drapor |  Powered by Hugo</copyright>
     <lastBuildDate>Mon, 13 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://drapor.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
@@ -55,14 +55,9 @@
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180319_star_operator/</guid>
-      <description>最近才了解到*和**运算符的用法，特此小记。
-最开始遇到的情形是这样的：我再另一个地方得到了一个tuple a：
-a = (1,2)
-想把这个tuple里的值作为另一个函数f的参数传给它，理论上完全可以用[]把每个值取出来再一个一个传给函数： def f(x, y): return x + y f(a[0], a[1])
-但这样的写法实在是看起来很蠢，而且当这里的参数不是两个而是很多的时候，这样写也太麻烦了。Google了一下之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为： f(\*a)
-在官方文档中也有相关的说明：
- 4.7.4. Unpacking Argument Lists
-The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</description>
+      <description>&lt;p&gt;最近了解到*和**运算符的用法，特此小记。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
