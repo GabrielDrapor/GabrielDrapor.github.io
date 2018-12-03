@@ -18,7 +18,7 @@
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/2018-reading-list/</guid>
-      <description>超越爱情的永恒之死 从柏拉图到维尼熊 毛姆读书随笔 浮生六记 失乐园 朝闻道 孤独六讲 我们仨 罗生门 龙头凤尾 乡土中国 银河系搭车客指南 浪客行 世界小史 思维的乐趣 The Problem of Philosophy 万寿寺 汪曾祺散文 小径分叉的花园 现代艺术150年 薩提爾的對話練習 万物生长  &amp;hellip;&amp;hellip;</description>
+      <description>超越爱情的永恒之死 从柏拉图到维尼熊 毛姆读书随笔 浮生六记 失乐园 朝闻道 孤独六讲 我们仨 罗生门 龙头凤尾 乡土中国 银河系搭车客指南 浪客行 世界小史 思维的乐趣 The Problem of Philosophy 万寿寺 汪曾祺散文 小径分叉的花园 现代艺术150年 薩提爾的對話練習 存在主义心理治疗 万物生长  &amp;hellip;&amp;hellip;</description>
     </item>
     
     <item>
@@ -65,6 +65,17 @@
       
       <guid>https://drapor.me/posts/180515_mongodb_common_query/</guid>
       <description>&lt;p&gt;总结了一下自己经常用到的一些MongoDB查询。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用python处理声音</title>
+      <link>https://drapor.me/posts/180428_pysound/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/180428_pysound/</guid>
+      <description>&lt;p&gt;最近在用python处理一些音频数据，特此小记。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

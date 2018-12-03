@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>2018 Reading List</title>
-  <meta property="og:title" content="2018 Reading List" />
-  <meta name="twitter:title" content="2018 Reading List" />
+  <title>用python处理声音</title>
+  <meta property="og:title" content="用python处理声音" />
+  <meta name="twitter:title" content="用python处理声音" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="DRAPORLAND" />
-  <meta property="og:url" content="https://drapor.me/2018-reading-list/" />
+  <meta property="og:url" content="https://drapor.me/posts/180428_pysound/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -128,47 +128,55 @@ code.has-jax {
 
 <article class="p-article">
   <header>
-    <h1>2018 Reading List</h1>
+    <h1>用python处理声音</h1>
     <div>
       <div class="c-time">
           
-        <time datetime="2018-10-07T00:00:00Z">
-          Oct 7, 2018
+        <time datetime="2018-04-28T00:00:00Z">
+          Apr 28, 2018
         </time>
       </div>
+      
+      <a href="https://drapor.me/tags/python" class="c-tag">Python</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <ul>
-<li><a href="https://book.douban.com/subject/1046483/">超越爱情的永恒之死</a></li>
-<li><a href="https://book.douban.com/subject/27030788/">从柏拉图到维尼熊</a></li>
-<li><a href="https://book.douban.com/subject/1016429/">毛姆读书随笔</a></li>
-<li><a href="https://book.douban.com/subject/26610864/">浮生六记</a></li>
-<li><a href="https://book.douban.com/subject/25891771/">失乐园</a></li>
-<li><a href="https://book.douban.com/subject/27191786/">朝闻道</a></li>
-<li><a href="https://book.douban.com/subject/26999709/">孤独六讲</a></li>
-<li><a href="https://book.douban.com/subject/26259059/">我们仨</a></li>
-<li><a href="https://book.douban.com/subject/26897878/">罗生门</a></li>
-<li><a href="https://book.douban.com/subject/26870405/">龙头凤尾</a></li>
-<li><a href="https://book.douban.com/subject/25759044/">乡土中国</a></li>
-<li><a href="https://book.douban.com/subject/6265745/">银河系搭车客指南</a></li>
-<li><a href="https://book.douban.com/subject/26344130/">浪客行</a></li>
-<li><a href="https://book.douban.com/subject/26292964/">世界小史</a></li>
-<li><a href="https://book.douban.com/subject/1815640/">思维的乐趣</a></li>
-<li><a href="https://book.douban.com/subject/4345965/">The Problem of Philosophy</a></li>
-<li><a href="https://book.douban.com/subject/1822859/">万寿寺</a></li>
-<li><a href="https://book.douban.com/subject/3919409/">汪曾祺散文</a></li>
-<li><a href="https://book.douban.com/subject/25796120">小径分叉的花园</a></li>
-<li><a href="https://book.douban.com/subject/26854318/">现代艺术150年</a></li>
-<li><a href="https://book.douban.com/subject/27203508/">薩提爾的對話練習</a></li>
-<li><a href="https://book.douban.com/subject/26304954/">存在主义心理治疗</a></li>
-<li><a href="https://book.douban.com/subject/25806628/">万物生长</a></li>
+    <p>最近在用python处理一些音频数据，特此小记。</p>
+
+<p></p>
+
+<p>主要用到了两个库：pydub和librosa：</p>
+
+<h3 id="pydub-https-github-com-jiaaro-pydub"><a href="https://github.com/jiaaro/pydub">Pydub</a></h3>
+
+<ul>
+<li>原repo中提及的基本使用：</li>
 </ul>
 
-<p>&hellip;&hellip;</p>
+<pre><code class="language-python">from pydub import AudioSegment
 
+# 读取音频文件
+song = AudioSegment.from_wav(&quot;xxx.wav&quot;)
+song = AudioSegment.from_mp3(&quot;xxx.mp3&quot;)
+song = AudioSegment.from_file(&quot;xxx.wav&quot;)
+
+# 切分音频
+song[:10*1000]  #last ten seconds
+
+# 设置采样率
+song.set_frame_rate(16000) # set sample rate as 16000
+
+# 调整音量
+song = song + 6 # boost volume by 6dB
+
+# 拼接音频
+song = song1 + song2
+
+# 导出音频
+song.export('test2.wav', format='wav')
+</code></pre>
   </section>
   <footer>
     
@@ -176,11 +184,12 @@ code.has-jax {
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
+          <a href="https://drapor.me/posts/180515_mongodb_common_query/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://drapor.me/posts/180813_py_udf/">Older</a>
+          <a href="https://drapor.me/posts/180319_star_operator/">Older</a>
           
         </div>
       </div>
