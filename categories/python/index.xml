@@ -50,17 +50,6 @@
     </item>
     
     <item>
-      <title>用python处理声音</title>
-      <link>https://drapor.me/posts/180428_pysound/</link>
-      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://drapor.me/posts/180428_pysound/</guid>
-      <description>&lt;p&gt;最近在用python处理一些音频数据，特此小记。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>关于*和**运算符</title>
       <link>https://drapor.me/posts/180319_star_operator/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
