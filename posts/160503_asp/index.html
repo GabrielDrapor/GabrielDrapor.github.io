@@ -157,7 +157,7 @@ code.has-jax {
 <li>首先在控制面板-程序和功能-打开或关闭Windows功能（如图），勾选“Internet Information Services可承载的Web核心”，“Internet信息服务”。</li>
 </ul>
 
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image004.png"></p>
+<p><img src="/article_imgs/image004.png"></p>
 
 <p>​</p>
 
@@ -165,13 +165,13 @@ code.has-jax {
 <li>在管理工具中找到“Internet 信息服务(IIS)管理器”，打开它，在左侧的“连接”栏下面找“个人电脑名&gt;网站”，右键点击网站，选择“添加网站”（如图）</li>
 </ul>
 
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image001.png"></p>
+<p><img src="/article_imgs/image001.png"></p>
 
 <p>在弹出的对话框中，填写必要信息。</p>
 
 <!--more-->
 
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image005.png"></p>
+<p><img src="/article_imgs/image005.png"></p>
 
 <p>​</p>
 
@@ -184,7 +184,7 @@ code.has-jax {
 端口----默认是80，如果有冲突可以自行修改。查看当前系统所占用的端口可以打开cmd，输入指令“netstat -a”查询（如图）
 </code></pre>
 
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image007.png"></p>
+<p><img src="/article_imgs/image007.png"></p>
 
 <ul>
 <li><p>查看IIS的主界面，找到“默认文档”，打开。</p></li>
@@ -192,9 +192,9 @@ code.has-jax {
 <li><p>在打开的界面中，右键选择添加，添加名称为index.aspx，否则搭建服务器之后由于服务器不认识aspx的首页而打不开它。</p></li>
 </ul>
 
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image009.png"></p>
+<p><img src="/article_imgs/image009.png"></p>
 
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image011.png"></p>
+<p><img src="/article_imgs/image011.png"></p>
 
 <hr />
 
@@ -212,19 +212,19 @@ code.has-jax {
 <li><p>在“服务器配置”中，需要对SQL Server数据库选择一个用户，可以添加系统中的用户，填写对应的密码。如图。</p></li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image013.png></p>
+<p><img src=/article_imgs/image013.png></p>
 
 <ul>
 <li>在“数据库引擎配置”中，最好选择混合模式，单独设置一个SQL Server系统管理员账户，否则在后面关联用户的时候可能会遇到麻烦。</li>
 </ul>
 
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image015.png"></p>
+<p><img src="/article_imgs/image015.png"></p>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image019.png></p>
+<p><img src=/article_imgs/image019.png></p>
 
 <p>完成安装后，打开SQL Server 2014 Management Studio，连接到你的服务器。</p>
 
-<p><img src="http://7xugq7.com1.z0.glb.clouddn.com/image018.png"></p>
+<p><img src="/article_imgs/image018.png"></p>
 
 <p>这里可以选择Windows 身份验证，也可以选择SQL Server身份验证。然后点击“连接”。</p>
 
@@ -232,9 +232,9 @@ code.has-jax {
 
 <figure class="half">
 
-    <img src="http://7xugq7.com1.z0.glb.clouddn.com/image021.png">
+    <img src="/article_imgs/image021.png">
 
-    <img src=http://7xugq7.com1.z0.glb.clouddn.com/image019.png>
+    <img src=/article_imgs/image019.png>
 
 </figure>
 
@@ -244,43 +244,43 @@ code.has-jax {
 
 <p>从官网 <a href="http://www.comsenz.com/products/nt">http://www.comsenz.com/products/nt</a> 下载Discuz！NT压缩包，将其解压，</p>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image022.png></p>
+<p><img src=/article_imgs/image022.png></p>
 
 <p>打开readme目录下的catalog.html可以看见官方所给出的介绍页面，其中就包括了安装指南</p>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image023.png></p>
+<p><img src=/article_imgs/image023.png></p>
 
 <p>接下来，我们只需按照安装指南所给的步骤一步步进行</p>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image026.png></p>
+<p><img src=/article_imgs/image026.png></p>
 
 <ul>
 <li>这里特别注意划红线的部分，是把upload_files目录里的东西放到服务器的根目录下而不是把upload_files文件夹整个放进服务器根目录。如图。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image028.png></p>
+<p><img src=/article_imgs/image028.png></p>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image032.png></p>
+<p><img src=/article_imgs/image032.png></p>
 
 <ul>
 <li>我使用的系统是WIN7，但依旧需要修改目录的权限，右键-属性-安全-编辑就可以编辑用户权限了。在IIS管理器中也可以对目录的权限进行设置。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image030.png></p>
+<p><img src=/article_imgs/image030.png></p>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image033.png> </p>
+<p><img src=/article_imgs/image033.png> </p>
 
 <ul>
 <li>按照教程要求，我们在浏览器地址栏中输入应输入的内容，然后发现了如下的报错。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image034.png></p>
+<p><img src=/article_imgs/image034.png></p>
 
 <ul>
 <li>通过阅读错误信息和查看根目录下的web.config配置文件，我们可以大概了解到问题出在Discuz!NT没有获得接管权，而在配置文件中也没有对相关权限的设置。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image036.png></p>
+<p><img src=/article_imgs/image036.png></p>
 
 <ul>
 <li>此时我们应该做的是，打开控制面板-Windows功能，在应用程序开发功能目录下将下面的ASP.NET功能勾选上。系统会自动将需要的其他功能自动勾选上。</li>
@@ -288,9 +288,9 @@ code.has-jax {
 
 <figure class="half">
 
-    <img src="http://7xugq7.com1.z0.glb.clouddn.com/image037.png">
+    <img src="/article_imgs/image037.png">
 
-    <img src=http://7xugq7.com1.z0.glb.clouddn.com/image039.png>
+    <img src=/article_imgs/image039.png>
 
 </figure>
 
@@ -298,13 +298,13 @@ code.has-jax {
 <li>再次运行安装脚本，即访问http://您的域名/install/index.aspx ，会看到如图的界面。 选择&rdquo;接受&rdquo;，点击“下一步”。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image041.png></p>
+<p><img src=/article_imgs/image041.png></p>
 
 <ul>
 <li>通过环境监测后，需要填写数据库信息，填写刚才创建的数据库名称，管理员账号和密码，在数据库服务器一项中填写自己的SQL Server服务器名称。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image045.png></p>
+<p><img src=/article_imgs/image045.png></p>
 
 <p>点击下一步。</p>
 
@@ -312,19 +312,19 @@ code.has-jax {
 <li>在出现的“论坛设置信息”界面中，自行设定管理员名称和密码。然后再次点击下一步。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image043.png></p>
+<p><img src=/article_imgs/image043.png></p>
 
 <ul>
 <li>然后会出现如图界面。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image047.png></p>
+<p><img src=/article_imgs/image047.png></p>
 
 <ul>
 <li>点击”进入论坛“，可以看到论坛的界面，说明搭建成功。可以尝试登陆管理员账号，也可以通过本机ip访问论坛。</li>
 </ul>
 
-<p><img src=http://7xugq7.com1.z0.glb.clouddn.com/image049.png></p>
+<p><img src=/article_imgs/image049.png></p>
 
 <pre><code> 
 </code></pre>

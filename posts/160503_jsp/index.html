@@ -151,45 +151,45 @@ code.has-jax {
 
 <p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong>
 - 从<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a> 下载JDK，并安装。并配置好环境变量。
-  <img src=http://7xugq7.com1.z0.glb.clouddn.com/image078.png>
-  <img src=http://7xugq7.com1.z0.glb.clouddn.com/image080.png>
-  <img src=http://7xugq7.com1.z0.glb.clouddn.com/image081.png></p>
+  <img src=/article_imgs/image078.png>
+  <img src=/article_imgs/image080.png>
+  <img src=/article_imgs/image081.png></p>
 
 <ul>
 <li>从官方<a href="http://tomcat.apache.org/下载tomcat压缩包">http://tomcat.apache.org/下载tomcat压缩包</a>
 下载之后解压
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image083.png></li>
+<img src=/article_imgs/image083.png></li>
 <li>打开apache-tomcat-9.0.0.M4\bin目录下的start.bat
 出现的对话框如果没有自动关闭，且最后一行为Server startup in xxx ms，说明服务器搭建成功(如图)
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image085.png></li>
+<img src=/article_imgs/image085.png></li>
 <li>打开浏览器，访问localhost:8080，出现如图界面说明成功了
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image087.png></li>
+<img src=/article_imgs/image087.png></li>
 <li>从官网<a href="http://www.jeecms.com/">http://www.jeecms.com/</a> 下载jeecms压缩包，下载之后解压
 将其中ROOT目录替换webapps下的ROOT目录
 重新启动服务器，在浏览器中访问localhost:8080，出现如图界面。说明配置正确了。
 勾选“我已经阅读并同意此协议”，点击“下一步”
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image089.png></li>
+<img src=/article_imgs/image089.png></li>
 
 <li><p>之后会出现如图界面，填写相应信息即可。
 点击“提交”
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image091.png>
+<img src=/article_imgs/image091.png>
 此时会发现服务器报错了（如图），错误代码500。
-<img  src=http://7xugq7.com1.z0.glb.clouddn.com/image094.png>
+<img  src=/article_imgs/image094.png>
 参考<a href="http://stackoverflow.com/questions/17484764/java-lang-classnotfoundexception-com-mysql-jdbc-driver-in-eclipse">http://stackoverflow.com/questions/17484764/java-lang-classnotfoundexception-com-mysql-jdbc-driver-in-eclipse</a> 可以得知是连接器出了问题，应该是MySQL与服务器没有连接好。
 于是我们需要从<a href="https://dev.mysql.com/downloads/connector/j/下载Connector，下载好之后解压，将其中的mysql-connector-java-5.1.38-bin.jar">https://dev.mysql.com/downloads/connector/j/下载Connector，下载好之后解压，将其中的mysql-connector-java-5.1.38-bin.jar</a> 放到Tomcat目录下的lib目录中。
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image093.png></p></li>
+<img src=/article_imgs/image093.png></p></li>
 
 <li><p>重启Tomcat，重新提交数据库信息，然后会出现如下图的界面。
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image096.png></p></li>
+<img src=/article_imgs/image096.png></p></li>
 
 <li><p>按照指示再次重启Tomcat，访问localhost:8080，可以看到如图界面，说明搭建成功。
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image098.png></p></li>
+<img src=/article_imgs/image098.png></p></li>
 
 <li><p>可以登陆管理员账户，账号为admin，密码为password。</p></li>
 
 <li><p>还可以尝试后台登陆。访问<a href="http://localhost:8080/jeeadmin/jeecms/login.do">http://localhost:8080/jeeadmin/jeecms/login.do</a> ，可以看到如图界面。输入账号密码。
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image102.png>
-<img src=http://7xugq7.com1.z0.glb.clouddn.com/image104.png></p></li>
+<img src=/article_imgs/image102.png>
+<img src=/article_imgs/image104.png></p></li>
 </ul>
   </section>
   <footer>
