@@ -28,7 +28,7 @@
   <meta property="og:type" content="website" />
   
   
-  <meta name="generator" content="Hugo 0.48" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.51" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="https://drapor.me/css/style.css" />
   <link href="https://drapor.me/index.xml" rel="alternate" type="application/rss+xml" title="DRAPORLAND" />
   
@@ -141,7 +141,6 @@ code.has-jax {
   <div class="c-article__summary">
     前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。
 
-
   </div>
   
   <a href="https://drapor.me/posts/171122_impala/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -163,7 +162,6 @@ code.has-jax {
   </header>
   <div class="c-article__summary">
     最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（9.13:现在要换成CNN来做了）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。
-
 
   </div>
   
@@ -187,7 +185,6 @@ code.has-jax {
   <div class="c-article__summary">
     关于搭建TensorFlow，其实官方的配置指南其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——從AWS搭一個GPU運算環境來玩tensorflow。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。
 
-
   </div>
   
   <a href="https://drapor.me/posts/170822_aws_tensorflow/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -209,7 +206,6 @@ code.has-jax {
   </header>
   <div class="c-article__summary">
     最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。
-
 
   </div>
   
@@ -233,7 +229,6 @@ code.has-jax {
   <div class="c-article__summary">
     最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。
 
-
   </div>
   
   <a href="https://drapor.me/posts/170808_sql_time_switch/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -254,11 +249,12 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    
-
+    具体思路和过程以后有时间再来整理（Flag）。
+原题目的url是https://www.codewars.com/kata/calculating-running-total
+参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，
+终于得(meng)出了一个可行的答案：
+SELECT CAST(p1.created_at AS DATE) AS date, COUNT(DISTINCT p1.title) AS count, COUNT(p2.title)/COUNT(DISTINCT p1.title) AS total FROM posts p1 INNER JOIN posts p2 ON to_char(p1.created_at, &#39;YYYY-MM-DD&#39;) &gt;= to_char(p2.created_at, &#39;YYYY-MM-DD&#39;) GROUP BY date ORDER BY date
   </div>
-  
-  <a href="https://drapor.me/posts/170721_a_sql_ex/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -277,7 +273,6 @@ code.has-jax {
   </header>
   <div class="c-article__summary">
     最近几天参加了几次面试，也是人生中的头几次面试，感觉值得一记，故有此篇。
-
 
   </div>
   
@@ -301,7 +296,6 @@ code.has-jax {
   <div class="c-article__summary">
     这个学期就这样结束了，简单来写个总结吧，顺便做点计划。
 
-
   </div>
   
   <a href="https://drapor.me/posts/170701_term-summary/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -323,7 +317,8 @@ code.has-jax {
   </header>
   <div class="c-article__summary">
     看书时顺手用Jupyter Notebook做的笔记。
-并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧…… 
+并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……
+
   </div>
   
   <a href="https://drapor.me/posts/170614-pandas/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -344,8 +339,8 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    
-
+    What should we do if we have a bad predictions? The following options may be feasible:
+ Get more training examples; Try smaller sets of features; Try getting additional features; Try adding polynomial features (increasing degree of polynomial); Try decreasing $\lambda$; Try increasing $\lambda$;  So we can take a kind of test called machine learning diagnostic to insight what is/isn&rsquo;t working with a learning algorithm, and gain guidance as to how best to improve its performance.
   </div>
   
   <a href="https://drapor.me/posts/170601_ml_notes7/" class="c-article__btn p-list-article__btn">Read more</a>

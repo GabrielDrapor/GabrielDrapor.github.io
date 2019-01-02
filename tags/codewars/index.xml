@@ -18,9 +18,7 @@
       <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170819_funny_codewars/</guid>
-      <description>&lt;p&gt;最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,7 +27,11 @@
       <pubDate>Fri, 21 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170721_a_sql_ex/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>具体思路和过程以后有时间再来整理（Flag）。
+原题目的url是https://www.codewars.com/kata/calculating-running-total
+参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，
+终于得(meng)出了一个可行的答案：
+SELECT CAST(p1.created_at AS DATE) AS date, COUNT(DISTINCT p1.title) AS count, COUNT(p2.title)/COUNT(DISTINCT p1.title) AS total FROM posts p1 INNER JOIN posts p2 ON to_char(p1.created_at, &amp;#39;YYYY-MM-DD&amp;#39;) &amp;gt;= to_char(p2.created_at, &amp;#39;YYYY-MM-DD&amp;#39;) GROUP BY date ORDER BY date</description>
     </item>
     
   </channel>

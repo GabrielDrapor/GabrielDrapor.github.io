@@ -18,9 +18,7 @@
       <pubDate>Mon, 24 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/181224_mongodb_query_optimization/</guid>
-      <description>&lt;p&gt;部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,9 +27,7 @@
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180813_py_udf/</guid>
-      <description>&lt;p&gt;因为项目需要，最近研究了一下如何用python写udf；&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;因为项目需要，最近研究了一下如何用python写udf；&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -40,9 +36,7 @@
       <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180805_pd_deepcopy/</guid>
-      <description>&lt;p&gt;最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -55,9 +49,7 @@
 
 &lt;p&gt;&lt;img src=&#34;https://drapor.me/article_imgs/SettingWithCopyWarning.png&#34;&gt;&lt;/p&gt;
 
-&lt;p&gt;Google了一番，最后在stack overflow上找到了最恰当的用法。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Google了一番，最后在stack overflow上找到了最恰当的用法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -66,9 +58,7 @@
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180319_star_operator/</guid>
-      <description>&lt;p&gt;最近了解到*和**运算符的用法，特此小记。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近了解到*和**运算符的用法，特此小记。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -77,9 +67,7 @@
       <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180122_flask_simple_api/</guid>
-      <description>&lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -88,9 +76,7 @@
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/171122_pymongo/</guid>
-      <description>&lt;p&gt;最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -99,9 +85,7 @@
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/171122_impala/</guid>
-      <description>&lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -112,8 +96,7 @@
       <guid>https://drapor.me/posts/170614-pandas/</guid>
       <description>&lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;/p&gt;
 
-&lt;p&gt;并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……
-&lt;/p&gt;</description>
+&lt;p&gt;并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -123,9 +106,7 @@
       
       <guid>https://drapor.me/posts/170511-numpy/</guid>
       <description>&lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。
-并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -134,9 +115,7 @@
       <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170502_ipython/</guid>
-      <description>&lt;p&gt;最近在看《利用Python进行数据分析》…&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近在看《利用Python进行数据分析》…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -145,7 +124,9 @@
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161202_pycrawler2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Besides what we have seen in Note 1, we can add some details in our codes: Sometimes we need to pretend as the browser to obtain the content of the page, we can add headers:
+import urllib2 url = &amp;#39;http://drapor.me&amp;#39; headers = { &amp;#39;User-Agent&amp;#39; : &amp;#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&amp;#39;} request = urllib2.Request(url, headers) response = urllib2.urlopen(request) print response.read() More about headers, you can check this article.
+And if you need to post some data, like your username or password to the sites, try this:</description>
     </item>
     
     <item>
@@ -154,7 +135,9 @@
       <pubDate>Thu, 01 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161201_pycrawler1/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>First, let&amp;rsquo;s start with a easy one:
+import urllib2 response = urllib2.urlopen(&amp;#39;http://drapor.me&amp;#39;) print response.read() The output should be like: &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; ...... &amp;lt;/html&amp;gt; Also, codes below do the same thing, import urllib2 request=urllib2.Request(url) response = urllib2.urlopen(request) print response.read()
+However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add Regex(Tutorial I recommand) here to help us: import urllib2 import re response = urllib2.</description>
     </item>
     
   </channel>

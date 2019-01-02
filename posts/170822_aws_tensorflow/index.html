@@ -29,7 +29,7 @@
   
   
   
-  <meta name="generator" content="Hugo 0.48" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.51" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="https://drapor.me/css/style.css" />
   <script type="text/javascript" src="https://drapor.mejs/bundle.js"></script>
   
@@ -145,8 +145,6 @@ code.has-jax {
   <section id="js-article" class="p-article__body">
     <p>关于搭建TensorFlow，其实<a href="https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1">官方的配置指南</a>其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——<a href="http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow">從AWS搭一個GPU運算環境來玩tensorflow</a>。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。</p>
 
-<p></p>
-
 <ul>
 <li><p>首先是申请一个Instance，初次申请记得提交case上调Instance Limit；</p></li>
 
@@ -175,15 +173,15 @@ code.has-jax {
 
   $ vim ~/.bashrc
 
-  <span style="color:#75715e">#增加下面三行
-</span><span style="color:#75715e"></span>  export CUDA_ROOT<span style="color:#f92672">=</span>/usr/local/cuda-8.0
+  <span style="color:#75715e">#增加下面三行</span>
+  export CUDA_ROOT<span style="color:#f92672">=</span>/usr/local/cuda-8.0
   export LD_LIBRARY_PATH<span style="color:#f92672">=</span>/usr/local/cuda-8.0/lib64
   export PATH<span style="color:#f92672">=</span>$PATH:$CUDA_ROOT/bin
 
   $ source ~/.bashrc
 
-  <span style="color:#75715e">#测试一下
-</span><span style="color:#75715e"></span>  $ nvidia-smi -q | head</code></pre></div>
+  <span style="color:#75715e">#测试一下</span>
+  $ nvidia-smi -q | head</code></pre></div>
 
 <ul>
 <li>然后是cuDNN library：</li>
@@ -201,34 +199,34 @@ code.has-jax {
 <li>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</li>
 </ul>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  <span style="color:#75715e"># Install pip and virtualen 
-</span><span style="color:#75715e"></span>  $ sudo apt install python-pip python-dev python-virtualenv <span style="color:#75715e"># for Python 2.7
-</span><span style="color:#75715e"></span>  $ sudo apt install python3-pip python3-dev python-virtualenv <span style="color:#75715e"># for Python 3.n
-</span><span style="color:#75715e"></span>
-  <span style="color:#75715e"># Create a virtualenv environment
-</span><span style="color:#75715e"></span>  $ virtualenv --system-site-packages targetDirectory <span style="color:#75715e"># for Python 2.7
-</span><span style="color:#75715e"></span>  $ virtualenv --system-site-packages -p python3 <span style="color:#e6db74">&#39;targetDirectory&#39;</span> <span style="color:#75715e"># for Python 3.n
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># &#39;targetDirectory&#39; specifies the top of the virtualenv tree, which you may choose by yourself.
-</span><span style="color:#75715e"></span>
-  <span style="color:#75715e"># Activate the virtualenv environment
-</span><span style="color:#75715e"></span>  $ source ~/tensorflow/bin/activate <span style="color:#75715e"># bash, sh, ksh, or zsh
-</span><span style="color:#75715e"></span>  $ source ~/tensorflow/bin/activate.csh  <span style="color:#75715e"># csh or tcsh
-</span><span style="color:#75715e"></span>
-  <span style="color:#75715e">#现在的命令行前面的标识会变成这个样子：
-</span><span style="color:#75715e"></span>  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  <span style="color:#75715e"># Install pip and virtualen</span> 
+  $ sudo apt install python-pip python-dev python-virtualenv <span style="color:#75715e"># for Python 2.7</span>
+  $ sudo apt install python3-pip python3-dev python-virtualenv <span style="color:#75715e"># for Python 3.n</span>
 
-  <span style="color:#75715e">#Install TensorFlow, ensure the version of pip &gt;= 8.1
-</span><span style="color:#75715e"></span>  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ pip install --upgrade tensorflow      <span style="color:#75715e"># for Python 2.7
-</span><span style="color:#75715e"></span>  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ pip3 install --upgrade tensorflow     <span style="color:#75715e"># for Python 3.n
-</span><span style="color:#75715e"></span>  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ pip install --upgrade tensorflow-gpu  <span style="color:#75715e"># for Python 2.7 and GPU
-</span><span style="color:#75715e"></span>  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ pip3 install --upgrade tensorflow-gpu # <span style="color:#66d9ef">for</span> Python <span style="color:#ae81ff">3</span>.n and GPU</code></pre></div>
+  <span style="color:#75715e"># Create a virtualenv environment</span>
+  $ virtualenv --system-site-packages targetDirectory <span style="color:#75715e"># for Python 2.7</span>
+  $ virtualenv --system-site-packages -p python3 <span style="color:#e6db74">&#39;targetDirectory&#39;</span> <span style="color:#75715e"># for Python 3.n</span>
+  <span style="color:#75715e"># &#39;targetDirectory&#39; specifies the top of the virtualenv tree, which you may choose by yourself.</span>
+
+  <span style="color:#75715e"># Activate the virtualenv environment</span>
+  $ source ~/tensorflow/bin/activate <span style="color:#75715e"># bash, sh, ksh, or zsh</span>
+  $ source ~/tensorflow/bin/activate.csh  <span style="color:#75715e"># csh or tcsh</span>
+
+  <span style="color:#75715e">#现在的命令行前面的标识会变成这个样子：</span>
+  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$
+
+  <span style="color:#75715e">#Install TensorFlow, ensure the version of pip &gt;= 8.1</span>
+  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ pip install --upgrade tensorflow      <span style="color:#75715e"># for Python 2.7</span>
+  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ pip3 install --upgrade tensorflow     <span style="color:#75715e"># for Python 3.n</span>
+  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ pip install --upgrade tensorflow-gpu  <span style="color:#75715e"># for Python 2.7 and GPU</span>
+  <span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ pip3 install --upgrade tensorflow-gpu <span style="color:#75715e"># for Python 3.n and GPU</span></code></pre></div>
 
 <p>至此，TensorFlow安装完成</p>
 
 <ul>
 <li><p>激活命令为<br />
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ source ~/tensorflow/bin/activate      <span style="color:#75715e"># bash, sh, ksh, or zsh
-</span><span style="color:#75715e"></span>$ source ~/tensorflow/bin/activate.csh  # csh or tcsh</code></pre></div></p></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ source ~/tensorflow/bin/activate      <span style="color:#75715e"># bash, sh, ksh, or zsh</span>
+$ source ~/tensorflow/bin/activate.csh  <span style="color:#75715e"># csh or tcsh</span></code></pre></div></p></li>
 
 <li><p>退出环境<br />
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>tensorflow<span style="color:#f92672">)</span>$ deactivate </code></pre></div></p></li>

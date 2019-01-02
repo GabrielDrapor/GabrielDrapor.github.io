@@ -18,9 +18,7 @@
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/20190101_2018/</guid>
-      <description>&lt;p&gt;2018，生活有了不小的变化，谨此一记。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;2018，生活有了不小的变化，谨此一记。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,9 +27,7 @@
       <pubDate>Mon, 24 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/181224_mongodb_query_optimization/</guid>
-      <description>&lt;p&gt;部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -40,9 +36,7 @@
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180813_py_udf/</guid>
-      <description>&lt;p&gt;因为项目需要，最近研究了一下如何用python写udf；&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;因为项目需要，最近研究了一下如何用python写udf；&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -51,9 +45,7 @@
       <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180805_pd_deepcopy/</guid>
-      <description>&lt;p&gt;最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -66,9 +58,7 @@
 
 &lt;p&gt;&lt;img src=&#34;https://drapor.me/article_imgs/SettingWithCopyWarning.png&#34;&gt;&lt;/p&gt;
 
-&lt;p&gt;Google了一番，最后在stack overflow上找到了最恰当的用法。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Google了一番，最后在stack overflow上找到了最恰当的用法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -77,9 +67,7 @@
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180515_mongodb_common_query/</guid>
-      <description>&lt;p&gt;总结了一下自己经常用到的一些MongoDB查询。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;总结了一下自己经常用到的一些MongoDB查询。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -88,9 +76,7 @@
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180319_star_operator/</guid>
-      <description>&lt;p&gt;最近了解到*和**运算符的用法，特此小记。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近了解到*和**运算符的用法，特此小记。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -99,9 +85,7 @@
       <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180122_flask_simple_api/</guid>
-      <description>&lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -110,9 +94,7 @@
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180101_2017/</guid>
-      <description>&lt;p&gt;2017已经接近尾声，在此谨记2017的种种。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;2017已经接近尾声，在此谨记2017的种种。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -121,9 +103,7 @@
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/171122_pymongo/</guid>
-      <description>&lt;p&gt;最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -132,9 +112,7 @@
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/171122_impala/</guid>
-      <description>&lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -143,9 +121,7 @@
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170911_knn_digits_recognition/</guid>
-      <description>&lt;p&gt;最近打算开始玩Kaggle，作为入门选了一个入门级的任务&lt;a href=&#34;https://www.kaggle.com/c/digit-recognizer/&#34;&gt;Digit-Recognizer&lt;/a&gt;。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（&lt;strong&gt;9.13:现在要换成CNN来做了&lt;/strong&gt;）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近打算开始玩Kaggle，作为入门选了一个入门级的任务&lt;a href=&#34;https://www.kaggle.com/c/digit-recognizer/&#34;&gt;Digit-Recognizer&lt;/a&gt;。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（&lt;strong&gt;9.13:现在要换成CNN来做了&lt;/strong&gt;）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -154,9 +130,7 @@
       <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170822_aws_tensorflow/</guid>
-      <description>&lt;p&gt;关于搭建TensorFlow，其实&lt;a href=&#34;https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1&#34;&gt;官方的配置指南&lt;/a&gt;其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——&lt;a href=&#34;http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow&#34;&gt;從AWS搭一個GPU運算環境來玩tensorflow&lt;/a&gt;。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;关于搭建TensorFlow，其实&lt;a href=&#34;https://www.tensorflow.org/install/install_linux#uninstalling_tensorflow_1&#34;&gt;官方的配置指南&lt;/a&gt;其实写得已经很清楚了，但是其中并没有比较详细的GPU相关的配置方法，于是在Google一番之后，发现了一篇写得非常详细的教程——&lt;a href=&#34;http://terrence.logdown.com/posts/1267063-from-the-aws-a-gpu-environment-to-play-tensorflow&#34;&gt;從AWS搭一個GPU運算環境來玩tensorflow&lt;/a&gt;。在此对两篇教程中提及的步骤以及涉及的命令做个简单的总结，方便以后再有类似需求的时候，可以快速地完成环境搭建。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -165,9 +139,7 @@
       <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170819_funny_codewars/</guid>
-      <description>&lt;p&gt;最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -176,9 +148,7 @@
       <pubDate>Tue, 08 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170808_sql_time_switch/</guid>
-      <description>&lt;p&gt;最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -187,7 +157,11 @@
       <pubDate>Fri, 21 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170721_a_sql_ex/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>具体思路和过程以后有时间再来整理（Flag）。
+原题目的url是https://www.codewars.com/kata/calculating-running-total
+参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，
+终于得(meng)出了一个可行的答案：
+SELECT CAST(p1.created_at AS DATE) AS date, COUNT(DISTINCT p1.title) AS count, COUNT(p2.title)/COUNT(DISTINCT p1.title) AS total FROM posts p1 INNER JOIN posts p2 ON to_char(p1.created_at, &amp;#39;YYYY-MM-DD&amp;#39;) &amp;gt;= to_char(p2.created_at, &amp;#39;YYYY-MM-DD&amp;#39;) GROUP BY date ORDER BY date</description>
     </item>
     
     <item>
@@ -196,9 +170,7 @@
       <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170707-firstinterview-md/</guid>
-      <description>&lt;p&gt;最近几天参加了几次面试，也是人生中的头几次面试，感觉值得一记，故有此篇。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近几天参加了几次面试，也是人生中的头几次面试，感觉值得一记，故有此篇。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -207,9 +179,7 @@
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170701_term-summary/</guid>
-      <description>&lt;p&gt;这个学期就这样结束了，简单来写个总结吧，顺便做点计划。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;这个学期就这样结束了，简单来写个总结吧，顺便做点计划。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -220,8 +190,7 @@
       <guid>https://drapor.me/posts/170614-pandas/</guid>
       <description>&lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;/p&gt;
 
-&lt;p&gt;并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……
-&lt;/p&gt;</description>
+&lt;p&gt;并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -230,7 +199,8 @@
       <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170601_ml_notes7/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>What should we do if we have a bad predictions? The following options may be feasible:
+ Get more training examples; Try smaller sets of features; Try getting additional features; Try adding polynomial features (increasing degree of polynomial); Try decreasing $\lambda$; Try increasing $\lambda$;  So we can take a kind of test called machine learning diagnostic to insight what is/isn&amp;rsquo;t working with a learning algorithm, and gain guidance as to how best to improve its performance.</description>
     </item>
     
     <item>
@@ -240,9 +210,7 @@
       
       <guid>https://drapor.me/posts/170511-numpy/</guid>
       <description>&lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。
-并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -251,9 +219,7 @@
       <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170502_ipython/</guid>
-      <description>&lt;p&gt;最近在看《利用Python进行数据分析》…&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近在看《利用Python进行数据分析》…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -262,9 +228,7 @@
       <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170425_sql3/</guid>
-      <description>&lt;p&gt;后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -273,9 +237,7 @@
       <pubDate>Sun, 23 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170423_sql2/</guid>
-      <description>&lt;p&gt;继续。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;继续。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -296,7 +258,9 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170406_ml_notes6/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>How biological neural network work  As the following image shown, there are three main parts in each neuron: Dendrites, Cell Body and Axon. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that&amp;rsquo;s approximately how biological nerual network run.
+
+How artificial neural network work  The pictures above shows a basic unit of the artificial nerual network, we usually call it as perceptron, which you can consider it as the neuron of the neural network.</description>
     </item>
     
     <item>
@@ -305,7 +269,11 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170507_notice/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>由于在2017.3.21，多说官方发布了重要通知：
+ 因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。
+ 且在博客评论领域中覆盖率最广的Disqus并不支持国内访问，其他评论系统我都并不太喜欢，再加上本身其实也没多少人会来看我的博客……所以打算关闭评论系统了…
+另外在评论系统正式关闭之前…我暂时还不会主动关掉它…先留着吧…毕竟看一天少一天了……
+……不知道除了我还有谁会看见这条声明：）</description>
     </item>
     
     <item>
@@ -314,7 +282,10 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Sun, 19 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170319-plans/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>时间过得真快，开学已经四周了……
+&amp;emsp;&amp;emsp;这四周过得并没有想象中的好，被一些事情占据了不少时间，自己也浪费了很多时间，导致总共到现在Coursera的课仅仅推了不到两周的内容………
+&amp;emsp;&amp;emsp;于是，为了改变这种颓废的状态，打算开始实践最近发现的沉浸工作法，并且受https://github.com/lanshan-studio/weekly 的启发，决定开始写周简报督促自己的学习，暂定每周日写吧。周报就放在这好了 https://github.com/GabrielDrapor/Weekly
+&amp;emsp;&amp;emsp;另外就是，这学期课内的课真的有点难度了，不能再像之前那样堆到期末再来学了，平时也要多看书。【上学期概率论学的不踏实，数理统计真的好难啊……</description>
     </item>
     
     <item>
@@ -323,7 +294,9 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170305-plans/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Maths   《实变函数与泛函分析基础》 《数学物理方程》 《概率论与数理统计》 《复变函数与积分变换》 《数学模型》/姜启源 《陶哲轩实分析》   Skills  Courses:    Machine Learning - Andrew Ng Stanford CS229 - Andrew Ng(选) 机器学习基石、机器学习技法 - 台湾大学 ……    Py:    scikit-learn Numpy    SQL advanced
+ Books:
+    Introduction to Data Mining Data Structure &amp;amp; Algorithm analysis in C PRML(选) 集体智慧编程 利用python进行数据分析    Kaggle startup  Others  Cook more Read more Play puzzles &amp;hellip;&amp;hellip; </description>
     </item>
     
     <item>
@@ -332,7 +305,13 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Sun, 19 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170219_plans/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>不知不觉寒假已经过完了，上学期说实话过得很糟糕，导致最后成绩也很糟糕。假期开头的时候参加了美赛，然后回老家大年初一就病倒了，在床上躺了几天，病好了之后还是看了一点Andrew Ng的课，后面也捡起《数据结构与算法分析——C语言描述》看了一点（中间的许多时间都被补《权力的游戏》占掉了，没有办法，实在是太好看了……）。新学期开始了，总觉得还是来应该来写点什么，列个简短的计划啥的骗骗自己也好。嗯。
+ 这学期，父母也都因为种种原因不能在身边了，算是真的开始独居了。独居的忧愁参半：更自由了，也可以更多地邀请朋友来家玩了，但对自律的要求也更高了；是个提升厨艺的好机会，还可以有更多机会逛菜市场，但总是不愿洗碗……总之，这应该还算是个不错的机会，能够让我学会更独立地生活。
+ 技术方面，上学期过得实在是堕落，进步得实在太少了…Andrew Ng的课拖了那么久也没上完，这学期还是把它结了吧；数据结构和算法先把那本书啃完，一定要动手亲自实现，然后适当做做题什么的练练手；Python的经典教材有机会也翻翻，爬虫也可以往深了玩一玩；机器学习和爬虫的笔记有时间的话也整理几篇markdown发出来吧。数据挖掘方向的学习路线，参考知乎和各种文章，找出一条适合自己的路。
+ 另外作为数学本科生，感觉现在自己推导证明的能力百孔千疮，这学期打算抽时间好好补补，读读《陶哲轩实分析》，另外努力做到不翘课，好好学习。
+ 生活方面的话，上学期后半截几乎就没怎么动，这学期要多运动，减减重；然后趁着独居的机会，争取学会多做几道菜，能有几道拿手菜。
+ 先写这些，后面有更进一步的计划再来写。
+&amp;emsp;&amp;emsp;Go.</description>
     </item>
     
     <item>
@@ -341,10 +320,9 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170101_my2016/</guid>
-      <description>&lt;p&gt;2016, 结束了。&lt;br /&gt;
-      在此谨记我在2016的所得。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;pre&gt;&lt;code&gt;  2016, 结束了。  
+  在此谨记我在2016的所得。  
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -353,7 +331,8 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161202_ml_notes5/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Overfitting Overfitting would cause the modle to perform poorly, like this:  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn&amp;rsquo;t always work. Sometims we have too many features which cause that it&amp;rsquo;s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.
+Two options to solve 1.</description>
     </item>
     
     <item>
@@ -362,7 +341,9 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161202_pycrawler2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Besides what we have seen in Note 1, we can add some details in our codes: Sometimes we need to pretend as the browser to obtain the content of the page, we can add headers:
+import urllib2 url = &amp;#39;http://drapor.me&amp;#39; headers = { &amp;#39;User-Agent&amp;#39; : &amp;#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&amp;#39;} request = urllib2.Request(url, headers) response = urllib2.urlopen(request) print response.read() More about headers, you can check this article.
+And if you need to post some data, like your username or password to the sites, try this:</description>
     </item>
     
     <item>
@@ -371,7 +352,9 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Thu, 01 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161201_pycrawler1/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>First, let&amp;rsquo;s start with a easy one:
+import urllib2 response = urllib2.urlopen(&amp;#39;http://drapor.me&amp;#39;) print response.read() The output should be like: &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; ...... &amp;lt;/html&amp;gt; Also, codes below do the same thing, import urllib2 request=urllib2.Request(url) response = urllib2.urlopen(request) print response.read()
+However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add Regex(Tutorial I recommand) here to help us: import urllib2 import re response = urllib2.</description>
     </item>
     
     <item>
@@ -380,7 +363,10 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Mon, 21 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161121_ml_notes4/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Classification  For the binary classification, $y\in \{0,1 \}$(Also maybe, $y\in \{ 0,1,2,3,... \}$, that&amp;rsquo;s called a multiclass classification problem, we will discuss it later.).
+So, we use a model called Logisitic Regression, and we can see the hypothesis $h_{\theta}(x)$ should value in the range of 0 and 1. This is to say, $0\leq h_{\theta}(x)\leq 1$.
+Hypothesis Representation  Logistic Regression: $$h_{\theta}(x)=g(\theta^{T}x)$, $g(z)=\frac{1}{1+e^{-z}}$$
+ **Interpretation of Hypothesis Output. The value of $h_{\theta}(x)$ equals to the estimated probability that y=1 (on input x, parameterized by $\theta$ ).</description>
     </item>
     
     <item>
@@ -389,7 +375,14 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Tue, 18 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161018_ml_notes3/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Multivariate Linear Regression  Hypothesis: $$ h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i} $$  $$ X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1} \;, \theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$$
+ Also, $h(\theta) = \theta ^{ T} X$
+Gradient descent  Algorithm:  &amp;emsp;&amp;emsp;&amp;emsp;Repeat{
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$
+&amp;emsp;&amp;emsp;&amp;emsp;}
+Feature Scaling  Idea: Make sure fretures are on a similar scale.
+ Mean normalization
+&amp;emsp;&amp;emsp;Replace $x_{i}$ with $x_{i}-\mu_{i}$ to make features have approximately zero mean(Do not apply to $x_{0}$, Which we suppose equals 1)</description>
     </item>
     
     <item>
@@ -398,7 +391,18 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161011_ml_notes2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Linear Regression with one variable  Hypothesis:
+$$h(\theta) = {\theta}_{0} + {\theta}_{1} x_{1}$$
+ Cost function: $$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$$
+  Gradient descent Target: minimize $J(\theta_{0},\theta_{1})$ or $J(\theta_{0},\theta_{1},&amp;hellip;,\theta_{n})$
+ Gradient algorithm:  &amp;emsp;&amp;emsp;&amp;emsp;Repeat until convergence{
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})\;(for \: j=0\:and\:j=1)$
+&amp;emsp;&amp;emsp;&amp;emsp;}
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;( $:=$ - Assignment&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; $\alpha$ - Learning rate )
+Warning: $\theta_{0}$ and $\theta_{1}$should be updated Simultaneously !!!
+&amp;emsp;&amp;emsp;Especially, when gradient descent for linear regression,
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$&amp;emsp;&amp;emsp;
+when $i=0$, we suppose $x^{(0)}=1$</description>
     </item>
     
     <item>
@@ -407,7 +411,9 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161010_ml_notes1/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Mordern Defination:   “A computer program is said to learn from experience E with respect to some task T and some performance measure P if its performance on T, as measured by P, improves with experience E.”
+​ ——Tom Mitchell(1998)
+ Types of problems and tasks: “Supervised learning is the machine learning task of inferring a function from labeled training data.The training data consist of a set of training examples.</description>
     </item>
     
     <item>
@@ -416,7 +422,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Tue, 20 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160920_plans/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>“彼方始有荣光在。”</description>
     </item>
     
     <item>
@@ -425,7 +431,8 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Wed, 10 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160810_re/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>这段日子参加了学校SNC组织的暑期学校，所得不少，主要包含以下：
+第一阶段：   运维方向的综述、计算机硬件组成、操作系统的安装（引导方式、分区表）； 程序和系统的相关概念（进程、线程、内核空间等）； 服务器的管理（储存管理、远程管理、安全管理）； Web服务器和FTP服务器的搭建（限制IP访问，权限配置）； Apache的配置（虚拟主机、目录权限、日志切割、防盗链、MIME、认证、HTTPS等）； MySQL基本操作（增删查改、库备份还原、账户管理等）； PHP基础语法； HTML+CSS+PHP实现动态留言板； Web安全（XSS、SQL注入）；   第二阶段（计算机网络）：   物理层（信号在介质中的传输方式，网络的通信方式，常见的传输媒体，以及宽带接入技术）； 数据链路层（三个问题、PPP协议、以太网帧的构成、交换机的工作特点WLAN）； 网络层（IP协议、数据报文的传输、IP协议族中的ARP协议、ICMP协议、IGMP协议和ICMPv6协议，VPN和PPPoE原理）； Wireshark抓包、网线制作； 传输层（TCP协议、UDP协议）； 应用层（HTTP、HTTPS、FTP、TELNET、DHCP）； 电子邮件发信原理（SMTP、POP3、IMAP）；   第三阶段（Linux）：   Linux基础操作（路径切换、权限设置）； Vim使用（模式切换，删除、替换、查找、复制粘贴等常用操作）； LAMP环境搭建； Linux储存管理（LVM）和防火墙管理（iptables）；   网络设计相关：   组网硬件（交换机、路由器）； 相关协议（STP、OSPF）； 相关概念（VLAN、ACL、NAT策略）； 用GNS3/Cisco Packet Tracer模拟搭建校园网络；   感谢SNC，感谢暑期学校。</description>
     </item>
     
     <item>
@@ -434,9 +441,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Wed, 13 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160713_re/</guid>
-      <description>&lt;p&gt;小学期结束了，也来写个总结吧。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;小学期结束了，也来写个总结吧。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -445,7 +450,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160624_re/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>过去的一个多月里   借助 Hexo 和 Github Pages 搭了自己的博客，也就是现在这个 darpor.me 进入六月本想着好好准备期末考试和四级，但是其实还是浪费了很多时间，导致最后一周爆了一周的肝，总归是把所有的课都过了。   接下来的小学期   学习MATLAB，完成一次建模。 学习正则表达式； 学习python爬虫； 开始看Andrew Ng的*Machine Learning*课程； 继续看《数据结构与算法分析——C语言描述》，每一个知识点自己动手实现一遍； 继续看Coursera上PKU的《计算机组成》的课程； 挑选数据挖掘的课程，可以考虑开始看《数据挖掘导论》 有空余时间的话可以读读《福尔摩斯探案集》  </description>
     </item>
     
     <item>
@@ -454,7 +459,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Tue, 17 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160517_re/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>一、本专业 过去的这段时间里   期中考试高代70，数分没及格，数分上还要多下功夫。期末考试两门都不能挂   二、编程 过去的这段时间里   用C和Python两种编程语言，解决了学校OJ中34道问题（虽然有水题） 捡起还没看完的《C Primer Plus》接着看，感觉还是很受益的。 开始读《数据结构与算法分析——C语言描述》，学了基础的算法分析，学习了一点链表的内容，并做了相应的笔记。   接下来   到六月份前配合着MIT的算法导论课，继续自由学习数据结构和算法的内容   三、网络 过去的这段时间里我   学会了用IIS+MS SQL Server架设一个叫做Discuz！NT的ASP.NET网站 学会了用Apache+PHP+MySQL架设了一个叫做WordPress的php网站 学会了用Tomcat+JDK+MySQL架设了一个叫做Jeecms的Jsp网站   接下来   学习远程配置vps（要学一点Linux），有选择性地学习一些网络知识（协议等）   四、其他 过去的这段时间我还   能够独立地拆自己十分难拆的笔记本 看完了《Mr.Robot》 —— 感觉挺有共鸣的 看完了《Legal High》第一季 —— 对法律有了一点新的感想 看完了两季《Silicon Valley》，对创业有了新的看法   五、接下来的一点小计划   发现算法和数据结构还是蛮有意思的，而且很有益处，尽力学 读完《C Primer Plus》，查漏补缺（书中涉及数据结构的部分也许可以先不看） 把Python基础语法的尾收完 边做上面的事情看看有没有合适的OJ题能做，还是要多实践 接下来可能有3-5天电脑送修，利用这段时间看看曼昆和费曼的书，总之看看书 6月中旬考四级，上了500分大学就可以不用再上英语课啦 期末考试要认真准备 希望能搭个博客，现在还在犹豫是选Github Pages还是自己租vps搭个WordPress之类的 了解一下数据挖掘的路是走怎么走的 *学爬虫，扒下自己的全部微博，注销之。 要是感觉学习太枯燥了可以学一点Kali Linux   总之，学习不止。</description>
     </item>
     
     <item>
@@ -463,7 +468,11 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Sat, 14 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160513_dsa-ch2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>2.4.3最大子序列和问题的解
+ 最大的子序列和问题：给定整数A1，A2，……，AN（可能有负数），求∑(k=i)^j A_k 的最大值（为方便起见，如果所有整数均为负数，则最大子序列和为0）
+ 
+• 算法3
+//T(N)=O(N log N) static int MaxSubSum( const int A[], int Left,int Right ) { int MaxLeftSum,MaxRightSum; int MaxLeftBorderSum,MaxRightBorderSum; int LeftBorderSum,RightBorderSum; int Center,i; if(Left==Right) //Base Case,即&#39;基准情形&#39; if (A[Left]&amp;gt;0) return A[Left]; else return 0; Center = (Left + Right)/2; MaxLeftSum=MaxSubSum(A,Left,Center);//左边中最大的子序列和 MaxRightSum=MaxSubSum(A,Center+1,Right);//右边中最大的子序列和 MaxLeftBorderSum = 0; LeftBorderSum = 0; for(i=Center;i&amp;gt;=Left;i--)//从中心开始向左找最大子序列和 { LeftBorderSum+=A[i]; if(LeftBorderSum&amp;gt;MaxLeftBorderSum) MaxLeftBorderSum= LeftBorderSum; } MaxRightBorderSum = 0; RightBorderSum = 0; for(i=Center+1;i&amp;lt;=Right;i+　+)//从中心开始向右找最大子序列和 { RightBorderSum+=A[i]; if(RightBorderSum&amp;gt;MaxRightBorderSum) MaxRightBorderSum=RightBorderSum; } return Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum + MaxRightBorderSum); } int MaxSubsequenceSum(const int A[], int N) { return MaxSubSum(A , 0 , N - 1); } int Max3(int a,int b,int c) { if (a&amp;gt;b) if (a&amp;gt;c) return a; else return c; else if (c&amp;gt;b) return c; else return b; }  ​</description>
     </item>
     
     <item>
@@ -472,7 +481,11 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Fri, 13 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160513_dsa-ch1/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description> 递归的四条基本法则：   基准情形。必须总有某些基准情形，它无需递归就能解出。
+ 不断推进。对于那些需要递归求解的情形，每一次递归调用都必须要使求解状况朝接近基准情形的方向推进。
+ 设计法则。假设所有的递归调用都能运行。
+ 合成效益法则（compound interest rule）。在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。 【5/11:例如求斐波那契数列的和时，比如求Fib(5)其实求了5次Fib(1),3次Fib(2)等等，这是一种极大的浪费】
+ </description>
     </item>
     
     <item>
@@ -481,9 +494,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160503_asp/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -492,9 +503,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160503_jsp/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -503,9 +512,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160503-php/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -514,7 +521,24 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160427_http/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>这是一次404过程中，客户端和服务器发送请求的头(Headers) 先想办法炸出404（如图）
+HTTP Headers的内容如下：
+ General
+Request URL:http://www.xxx.com/xxxxxx.xx //请求目的地的地址
+Request Method: GET //请求方式 这里是管服务器要东西
+Status Code: 404 Not Found HTTP //HTTP状态码，这里是404，代表没有找到
+Remote Address: 127.0.0.1:8081 //远程地址，不是ip地址，一般是127.0.0.1
+ 
+ Response Headers //应答头部字段
+HTTP/1.1 404 Not Found //HTTP版本是1.1
+Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间
+Server: Apache/2.2.25 (Win32) //服务器类型
+Content-Length: 208 //实体内容长度 208
+Keep-Alive: timeout=5, max=100 //持久连接 超时是5秒，最长100秒
+Connection: Keep-Alive //连接类型：持续连接
+Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 编码类型是iso-8859-1
+ 
+ Request Headers //请求头部字段</description>
     </item>
     
     <item>
@@ -523,7 +547,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Sat, 16 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160416_re/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>一、本专业 过去的三周我   说实话，最近没有认真地学习数分高代，现在心中充满愧疚和罪恶感   接下来   好好看课本，配合MIT的线性代数课程，巩固最近一段时间数分高代的知识   二、编程 过去的三周我   用C和Python两种编程语言，解决了学校OJ中27道问题，但还没有涉及数据结构和算法的内容   接下来   开始学习数据结构和算法的内容   三、网络 过去的三周我   学习了一些关于Apache的基础知识   接下来   继续学习，同时学习Tomcat和用vps搭建服务器   四、其他 过去三周我还在读这些   浪潮之巅/吴军 空谷幽兰——寻访当代中国隐士/比尔·波特 人生不较劲/周国平 经济学原理：微观经济学分册/曼昆 怎样解题/波利亚  </description>
     </item>
     
     <item>
@@ -532,7 +556,13 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Sun, 20 Mar 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160320_plans/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>一、学数学！ 学好数分高代！ 学好数分高代！ 学好数分高代！
+二、巩固学习C，学习数据结构和算法 1.书目   《C Primer Plus》 《C Programming Language》 《数据结构》 《编程珠玑》 《算法导论》 《C Reference Manual》 《Pointers and C》 《C Traps and Pitfalls》 《Expert C Programming》   除此之外，还有与编程可能关系不太大的一些书： &amp;gt;* 《深入理解计算机系统》 &amp;gt;* 《计算机网络自顶向下方法》
+2.练习   当然是刷OJ http://coder.buct.edu.cn http://www.bnuoj.com/v3/ http://www.clang.cc/oj/problemset.php   3.目标 培养自己的算法能力
+三、巩固Python基础，学习写爬虫  Python基础知识 http://www.liaoxuefeng.com/ 爬虫 http://cuiqingcai.com/1052.html
+ 四、学习使用Linux  阅读《鸟哥的Linux私房菜·基础学习篇》 学习在Linux下配置服务器 有时间的话搞一搞树莓派（在宿舍搭个ftp给室友之类的） 在不久的将来，摆脱Windows的束缚，将Linux作为常用系统  五、学习数据挖掘 这个目前有些远，没有特别搜集专门的学习路线，只是找到了这个： 在数据分析、挖掘方面，有哪些好书值得推荐？
+六、还有一些与计算机无关的事情—— （一）读书 做好摘抄，做好读书笔记
+1.纸质书单  霍乱时期的爱情/加西亚·马尔克斯 怎样解题/波利亚 人生不较劲/周国平 撒哈拉的故事/三毛 诗经 经济学原理：微观经济学分册/曼昆 中国人民共和国宪法 …………  2.</description>
     </item>
     
     <item>
@@ -541,9 +571,7 @@ SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0,
       <pubDate>Wed, 25 Nov 2015 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/151125_hardware/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;南桥和北桥是PC主板芯片组中的两枚芯片。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;南桥和北桥是PC主板芯片组中的两枚芯片。&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

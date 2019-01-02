@@ -28,7 +28,7 @@
   <meta property="og:type" content="website" />
   
   
-  <meta name="generator" content="Hugo 0.48" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.51" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="https://drapor.me/css/style.css" />
   <script type="text/javascript" src="https://drapor.mejs/bundle.js"></script>
   
@@ -140,7 +140,6 @@ code.has-jax {
   <div class="c-article__summary">
     最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。
 
-
   </div>
   
   <a href="https://drapor.me/posts/170819_funny_codewars/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -161,11 +160,12 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    
-
+    具体思路和过程以后有时间再来整理（Flag）。
+原题目的url是https://www.codewars.com/kata/calculating-running-total
+参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，
+终于得(meng)出了一个可行的答案：
+SELECT CAST(p1.created_at AS DATE) AS date, COUNT(DISTINCT p1.title) AS count, COUNT(p2.title)/COUNT(DISTINCT p1.title) AS total FROM posts p1 INNER JOIN posts p2 ON to_char(p1.created_at, &#39;YYYY-MM-DD&#39;) &gt;= to_char(p2.created_at, &#39;YYYY-MM-DD&#39;) GROUP BY date ORDER BY date
   </div>
-  
-  <a href="https://drapor.me/posts/170721_a_sql_ex/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

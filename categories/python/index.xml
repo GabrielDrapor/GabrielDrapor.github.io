@@ -18,9 +18,7 @@
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180813_py_udf/</guid>
-      <description>&lt;p&gt;因为项目需要，最近研究了一下如何用python写udf；&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;因为项目需要，最近研究了一下如何用python写udf；&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,9 +27,7 @@
       <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180805_pd_deepcopy/</guid>
-      <description>&lt;p&gt;最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,9 +40,7 @@
 
 &lt;p&gt;&lt;img src=&#34;https://drapor.me/article_imgs/SettingWithCopyWarning.png&#34;&gt;&lt;/p&gt;
 
-&lt;p&gt;Google了一番，最后在stack overflow上找到了最恰当的用法。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Google了一番，最后在stack overflow上找到了最恰当的用法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -55,9 +49,7 @@
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180319_star_operator/</guid>
-      <description>&lt;p&gt;最近了解到*和**运算符的用法，特此小记。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近了解到*和**运算符的用法，特此小记。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -66,9 +58,7 @@
       <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/180122_flask_simple_api/</guid>
-      <description>&lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -77,9 +67,7 @@
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/171122_pymongo/</guid>
-      <description>&lt;p&gt;最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -88,9 +76,7 @@
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/171122_impala/</guid>
-      <description>&lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -18,7 +18,9 @@
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161202_pycrawler2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>Besides what we have seen in Note 1, we can add some details in our codes: Sometimes we need to pretend as the browser to obtain the content of the page, we can add headers:
+import urllib2 url = &amp;#39;http://drapor.me&amp;#39; headers = { &amp;#39;User-Agent&amp;#39; : &amp;#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&amp;#39;} request = urllib2.Request(url, headers) response = urllib2.urlopen(request) print response.read() More about headers, you can check this article.
+And if you need to post some data, like your username or password to the sites, try this:</description>
     </item>
     
     <item>
@@ -27,7 +29,9 @@
       <pubDate>Thu, 01 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161201_pycrawler1/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>First, let&amp;rsquo;s start with a easy one:
+import urllib2 response = urllib2.urlopen(&amp;#39;http://drapor.me&amp;#39;) print response.read() The output should be like: &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; ...... &amp;lt;/html&amp;gt; Also, codes below do the same thing, import urllib2 request=urllib2.Request(url) response = urllib2.urlopen(request) print response.read()
+However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add Regex(Tutorial I recommand) here to help us: import urllib2 import re response = urllib2.</description>
     </item>
     
   </channel>
