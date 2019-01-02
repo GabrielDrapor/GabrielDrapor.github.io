@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>SQL Syntax(Ⅰ)</title>
-  <meta property="og:title" content="SQL Syntax(Ⅰ)" />
-  <meta name="twitter:title" content="SQL Syntax(Ⅰ)" />
+  <title>MongoDB查询优化</title>
+  <meta property="og:title" content="MongoDB查询优化" />
+  <meta name="twitter:title" content="MongoDB查询优化" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="DRAPORLAND" />
-  <meta property="og:url" content="https://drapor.me/posts/170422_sql1/" />
+  <meta property="og:url" content="https://drapor.me/posts/181224_mongodb_query_optimization/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -128,147 +128,66 @@ code.has-jax {
 
 <article class="p-article">
   <header>
-    <h1>SQL Syntax(Ⅰ)</h1>
+    <h1>MongoDB查询优化</h1>
     <div>
       <div class="c-time">
           
-        <time datetime="2017-04-22T00:00:00Z">
-          Apr 22, 2017
+        <time datetime="2018-12-24T00:00:00Z">
+          Dec 24, 2018
         </time>
       </div>
       
-      <a href="https://drapor.me/tags/sql" class="c-tag">SQL</a>
+      <a href="https://drapor.me/tags/mongodb" class="c-tag">mongodb</a>
+      
+      <a href="https://drapor.me/tags/python" class="c-tag">Python</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    
+    <p>部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。</p>
 
-<p>这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。</p>
+<p></p>
 
-<p><escape><!-- more --></escape></p>
+<h4 id="一-关于索引">一、关于索引</h4>
 
-<h2 id="检索数据">检索数据</h2>
+<h5 id="1-建索引">1. 建索引</h5>
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... <span style="color:#75715e">--&#39;\*&#39; for all
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;</code></pre></div>
-- In SQL Server and Access,</p>
+<p>在Collection上建立索引是非常有必要的，特别是需要在海量的数据中根据某个键查出一条数据时，索引就显得更加重要了。</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> TOP [num] column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;</code></pre></div>
+<p>举个栗子：</p>
 
-<ul>
-<li>In DB2,</li>
-</ul>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">FIRST</span> [num] <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">ONLY</span>;</code></pre></div>
+<p>有一张记录用户行为历史的Collection，数据量在百万级，查询同一条记录，</p>
 
 <ul>
-<li>In Oracle,</li>
+<li>无索引：</li>
 </ul>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">WHERE</span> ROWNUM <span style="color:#f92672">&lt;=</span> [num];</code></pre></div>
+<p><img src="/article_imgs/without_index.png"></p>
 
 <ul>
-<li>In MySQL, MariaDB, PostgreSQL and SQLite</li>
+<li>有索引：</li>
 </ul>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">LIMIT</span> [num] <span style="color:#960050;background-color:#1e0010">{</span><span style="color:#66d9ef">OFFSET</span> [num]<span style="color:#960050;background-color:#1e0010">}</span>;</code></pre></div>
+<p><img src="/article_imgs/without_index.png"></p>
 
-<ul>
-<li>Select distinct value</li>
-</ul>
+<p>可以明显地看出，有索引带来的速度提升是非常巨大的。</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DISTINCT</span> <span style="color:#66d9ef">column_name</span>
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;</code></pre></div>
+<h5 id="2-关于组合索引">2. 关于组合索引</h5>
 
-<ul>
-<li>Annotation</li>
-</ul>
+<p>当查询需要匹配多个键时，使用复合索引和建立“组合”索引（即将两个键拼成一个键）的查询速度差距不大。</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> Here <span style="color:#66d9ef">is</span> a <span style="color:#66d9ef">comment</span>
-<span style="color:#66d9ef">SELECT</span> column0 <span style="color:#75715e">-- Here is also a comment
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;
-<span style="color:#75715e">/*
-</span><span style="color:#75715e">Also a comment~
-</span><span style="color:#75715e">*/</span></code></pre></div>
+<h4 id="二-关于查询方式">二、关于查询方式</h4>
 
-<hr />
+<h5 id="1-将多次查询合并到一次中">1.  将多次查询合并到一次中</h5>
 
-<h2 id="排列检索数据">排列检索数据</h2>
+<p>再举个栗子：
+现在需要以一个DataFrame中某一列的每个值进行匹配查询，此时，和用pd.Series.apply()方法挨个做查询相比，使用mongodb的条件操作符$in一起查询，然后再merge回原来的DataFrame会更快一些：
+<img src="/article_imgs/traverse_or_not.png"></p>
 
-<h2 id="hahahugoshortcode-0xc000a30100-8-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> column0, column1, ...;
-<span style="color:#75715e">-- Also, you can use order numbers to represent certain column
-</span><span style="color:#75715e">-- Use &#39;DESC&#39; or &#39;ASC&#39; in the end to assigned the order direction</span></code></pre></div></h2>
+<h5 id="2-find-和find-one">2. find()和find_one()</h5>
 
-<h2 id="过滤数据">过滤数据</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">column</span> <span style="color:#f92672">=</span> [value];</code></pre></div>
-
-<hr />
-
-<h2 id="高级数据过滤">高级数据过滤</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">WHERE</span> [clause] <span style="color:#66d9ef">AND</span><span style="color:#f92672">/</span><span style="color:#66d9ef">OR</span> [clause];
-<span style="color:#75715e">-- The priority of &#39;AND&#39; is higher than &#39;OR&#39; when they are used together</span></code></pre></div>
-
-<ul>
-<li>Actually, &lsquo;OR&rsquo; is same as &lsquo;IN&rsquo;</li>
-</ul>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">WHERE</span> [<span style="color:#66d9ef">column_name</span>] <span style="color:#66d9ef">IN</span> ([value1],[value2],...);</code></pre></div>
-
-<ul>
-<li>&lsquo;NOT&rsquo;</li>
-</ul>
-
-<h2 id="hahahugoshortcode-0xc000a30100-12-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">  <span style="color:#66d9ef">SELECT</span> column0, column1,... 
-  <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-  <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">NOT</span> xxxx;</code></pre></div></h2>
-
-<h2 id="用通配符进行过滤">用通配符进行过滤</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">通配符</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">%(* in Access)</td>
-<td align="center">任意字符任意次数</td>
-</tr>
-
-<tr>
-<td align="center">_</td>
-<td align="center">任意字符一次</td>
-</tr>
-
-<tr>
-<td align="center">[]</td>
-<td align="center">指定一个字符集, 如 [JM] 匹配&rsquo;J&rsquo;和&rsquo;M&rsquo;（用&rdquo;^&ldquo;可以否定）</td>
-</tr>
-</tbody>
-</table>
-
+<p>在已知查询记录只有一条时，可以用find_one()替代find()来减少一次slice操作（但其实很快），但经过测试，发现find()和find_one()的速度并没有很大的差距；</p>
   </section>
   <footer>
     
