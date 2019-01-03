@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>SQL Syntax(Ⅰ)</title>
-  <meta property="og:title" content="SQL Syntax(Ⅰ)" />
-  <meta name="twitter:title" content="SQL Syntax(Ⅰ)" />
+  <title>Server</title>
+  <meta property="og:title" content="Server" />
+  <meta name="twitter:title" content="Server" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="DRAPORLAND" />
-  <meta property="og:url" content="https://drapor.me/posts/170422_sql1/" />
+  <meta property="og:url" content="https://drapor.me/tags/server/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -25,8 +25,7 @@
   
 
   
-  <meta property="og:type" content="article" />
-  
+  <meta property="og:type" content="website" />
   
   
   <meta name="generator" content="Hugo 0.51" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
@@ -114,7 +113,7 @@ code.has-jax {
 
   <header class="l-header">
     
-    <p class="c-title p-title"><a href="https://drapor.me" class="p-title__link">DRAPORLAND</a></p>
+    <h1 class="c-title p-title"><a href="https://drapor.me" class="p-title__link">DRAPORLAND</a></h1>
     
     
     <p class="p-subtitle">
@@ -125,156 +124,87 @@ code.has-jax {
   </header>
   <main id="main" class="l-main">
 
+<h2 class="c-title p-tag-title">Server</h2>
 
-<article class="p-article">
+
+<article class="c-article p-list-article">
   <header>
-    <h1>SQL Syntax(Ⅰ)</h1>
-    <div>
-      <div class="c-time">
-          
-        <time datetime="2017-04-22T00:00:00Z">
-          Apr 22, 2017
-        </time>
-      </div>
-      
-      <a href="https://drapor.me/tags/sql" class="c-tag">SQL</a>
+    <h2 class="c-title c-article__title"><a href="https://drapor.me/posts/160503_asp/">ASP.NET 搭建 Discuz! NT</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2016-05-03T00:00:00Z">
+        May 3, 2016
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express
+
+  </div>
+  
+  <a href="https://drapor.me/posts/160503_asp/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://drapor.me/posts/160503_jsp/">jsp搭建JEECMS</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2016-05-03T00:00:00Z">
+        May 3, 2016
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0
+
+  </div>
+  
+  <a href="https://drapor.me/posts/160503_jsp/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://drapor.me/posts/160503-php/">php搭建WordPress</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2016-05-03T00:00:00Z">
+        May 3, 2016
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20
+
+  </div>
+  
+  <a href="https://drapor.me/posts/160503-php/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+<nav class="c-pagination p-pagination">
+  <div class="c-pagination__ctrl">
+    <div class="c-pagination__newer">
       
     </div>
-  </header>
-  
-  <section id="js-article" class="p-article__body">
-    <p>　　这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。</p>
-
-<h2 id="检索数据">检索数据</h2>
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... <span style="color:#75715e">--&#39;\*&#39; for all
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;</code></pre></div>
-- In SQL Server and Access,</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> TOP [num] column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;</code></pre></div>
-
-<ul>
-<li>In DB2,</li>
-</ul>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">FIRST</span> [num] <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">ONLY</span>;</code></pre></div>
-
-<ul>
-<li>In Oracle,</li>
-</ul>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">WHERE</span> ROWNUM <span style="color:#f92672">&lt;=</span> [num];</code></pre></div>
-
-<ul>
-<li>In MySQL, MariaDB, PostgreSQL and SQLite</li>
-</ul>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">LIMIT</span> [num] <span style="color:#960050;background-color:#1e0010">{</span><span style="color:#66d9ef">OFFSET</span> [num]<span style="color:#960050;background-color:#1e0010">}</span>;</code></pre></div>
-
-<ul>
-<li>Select distinct value</li>
-</ul>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DISTINCT</span> <span style="color:#66d9ef">column_name</span>
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;</code></pre></div>
-
-<ul>
-<li>Annotation</li>
-</ul>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> Here <span style="color:#66d9ef">is</span> a <span style="color:#66d9ef">comment</span>
-<span style="color:#66d9ef">SELECT</span> column0 <span style="color:#75715e">-- Here is also a comment
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;
-<span style="color:#75715e">/*
-</span><span style="color:#75715e">Also a comment~
-</span><span style="color:#75715e">*/</span></code></pre></div>
-
-<hr />
-
-<h2 id="排列检索数据">排列检索数据</h2>
-
-<h2 id="hahahugoshortcode-0xc000908500-8-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> column0, column1, ...;
-<span style="color:#75715e">-- Also, you can use order numbers to represent certain column
-</span><span style="color:#75715e">-- Use &#39;DESC&#39; or &#39;ASC&#39; in the end to assigned the order direction</span></code></pre></div></h2>
-
-<h2 id="过滤数据">过滤数据</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">column</span> <span style="color:#f92672">=</span> [value];</code></pre></div>
-
-<hr />
-
-<h2 id="高级数据过滤">高级数据过滤</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">WHERE</span> [clause] <span style="color:#66d9ef">AND</span><span style="color:#f92672">/</span><span style="color:#66d9ef">OR</span> [clause];
-<span style="color:#75715e">-- The priority of &#39;AND&#39; is higher than &#39;OR&#39; when they are used together</span></code></pre></div>
-
-<ul>
-<li>Actually, &lsquo;OR&rsquo; is same as &lsquo;IN&rsquo;</li>
-</ul>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column0, column1,... 
-<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">WHERE</span> [<span style="color:#66d9ef">column_name</span>] <span style="color:#66d9ef">IN</span> ([value1],[value2],...);</code></pre></div>
-
-<ul>
-<li>&lsquo;NOT&rsquo;</li>
-</ul>
-
-<h2 id="hahahugoshortcode-0xc000908500-12-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">  <span style="color:#66d9ef">SELECT</span> column0, column1,... 
-  <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-  <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">NOT</span> xxxx;</code></pre></div></h2>
-
-<h2 id="用通配符进行过滤">用通配符进行过滤</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">通配符</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">%(* in Access)</td>
-<td align="center">任意字符任意次数</td>
-</tr>
-
-<tr>
-<td align="center">_</td>
-<td align="center">任意字符一次</td>
-</tr>
-
-<tr>
-<td align="center">[]</td>
-<td align="center">指定一个字符集, 如 [JM] 匹配&rsquo;J&rsquo;和&rsquo;M&rsquo;（用&rdquo;^&ldquo;可以否定）</td>
-</tr>
-</tbody>
-</table>
-  </section>
-  <footer>
-    
-
-    
+    <div class="c-pagination__older">
+      
+    </div>
+  </div>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+</nav>
 
 
-    
 
-  </footer>
-</article>
   </main>
   
 <nav class="l-nav p-menu">
