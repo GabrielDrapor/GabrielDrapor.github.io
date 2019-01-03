@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
@@ -161,11 +161,10 @@ code.has-jax {
   </header>
   <div class="c-article__summary">
     具体思路和过程以后有时间再来整理（Flag）。
-原题目的url是https://www.codewars.com/kata/calculating-running-total
-参考了一下简单的情况 http://sql55.com/query/cumulative-amount-1.php ，然后自己建表鼓捣了一会儿，
-终于得(meng)出了一个可行的答案：
-SELECT CAST(p1.created_at AS DATE) AS date, COUNT(DISTINCT p1.title) AS count, COUNT(p2.title)/COUNT(DISTINCT p1.title) AS total FROM posts p1 INNER JOIN posts p2 ON to_char(p1.created_at, &#39;YYYY-MM-DD&#39;) &gt;= to_char(p2.created_at, &#39;YYYY-MM-DD&#39;) GROUP BY date ORDER BY date
+
   </div>
+  
+  <a href="https://drapor.me/posts/170721_a_sql_ex/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

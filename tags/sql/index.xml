@@ -5,7 +5,7 @@
     <link>https://drapor.me/tags/sql/</link>
     <description>Recent content in Sql on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2018 Drapor |  Powered by Hugo</copyright>
     <lastBuildDate>Tue, 25 Apr 2017 00:00:00 +0000</lastBuildDate>
     
@@ -36,10 +36,7 @@
       <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170422_sql1/</guid>
-      <description>这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。
-
-检索数据 SELECT column0, column1,... --&amp;#39;\*&amp;#39; for all FROM table_name; - In SQL Server and Access,
-SELECT TOP [num] column0, column1,... FROM table_name;  In DB2,  SELECT column0, column1,... FROM table_name FETCH FIRST [num] ROWS ONLY;  In Oracle,  SELECT column0, column1,... FROM table_name WHERE ROWNUM &amp;lt;= [num];  In MySQL, MariaDB, PostgreSQL and SQLite  SELECT column0, column1,... FROM table_name LIMIT [num] {OFFSET [num]};  Select distinct value  SELECT DISTINCT column_name FROM table_name;  Annotation  # Here is a comment SELECT column0 -- Here is also a comment FROM table_name; /* Also a comment~ */ 排列检索数据 SELECT column0, column1,.</description>
+      <description>&lt;p&gt;　　这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。&lt;/p&gt;</description>
     </item>
     
   </channel>

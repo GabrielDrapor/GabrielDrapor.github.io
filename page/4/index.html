@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
@@ -160,8 +160,8 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    Overfitting Overfitting would cause the modle to perform poorly, like this:  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn&rsquo;t always work. Sometims we have too many features which cause that it&rsquo;s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.
-Two options to solve 1.
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/161202_ml_notes5/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -182,9 +182,8 @@ Two options to solve 1.
     </p>
   </header>
   <div class="c-article__summary">
-    Besides what we have seen in Note 1, we can add some details in our codes: Sometimes we need to pretend as the browser to obtain the content of the page, we can add headers:
-import urllib2 url = &#39;http://drapor.me&#39; headers = { &#39;User-Agent&#39; : &#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#39;} request = urllib2.Request(url, headers) response = urllib2.urlopen(request) print response.read() More about headers, you can check this article.
-And if you need to post some data, like your username or password to the sites, try this:
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/161202_pycrawler2/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -205,9 +204,8 @@ And if you need to post some data, like your username or password to the sites, 
     </p>
   </header>
   <div class="c-article__summary">
-    First, let&rsquo;s start with a easy one:
-import urllib2 response = urllib2.urlopen(&#39;http://drapor.me&#39;) print response.read() The output should be like: &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; ...... &lt;/html&gt; Also, codes below do the same thing, import urllib2 request=urllib2.Request(url) response = urllib2.urlopen(request) print response.read()
-However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add Regex(Tutorial I recommand) here to help us: import urllib2 import re response = urllib2.
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/161201_pycrawler1/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -228,10 +226,8 @@ However, there are too many things in the output result, we want to filter out t
     </p>
   </header>
   <div class="c-article__summary">
-    Classification  For the binary classification, $y\in \{0,1 \}$(Also maybe, $y\in \{ 0,1,2,3,... \}$, that&rsquo;s called a multiclass classification problem, we will discuss it later.).
-So, we use a model called Logisitic Regression, and we can see the hypothesis $h_{\theta}(x)$ should value in the range of 0 and 1. This is to say, $0\leq h_{\theta}(x)\leq 1$.
-Hypothesis Representation  Logistic Regression: $$h_{\theta}(x)=g(\theta^{T}x)$, $g(z)=\frac{1}{1+e^{-z}}$$
- **Interpretation of Hypothesis Output. The value of $h_{\theta}(x)$ equals to the estimated probability that y=1 (on input x, parameterized by $\theta$ ).
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/161121_ml_notes4/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -252,14 +248,8 @@ Hypothesis Representation  Logistic Regression: $$h_{\theta}(x)=g(\theta^{T}x)$,
     </p>
   </header>
   <div class="c-article__summary">
-    Multivariate Linear Regression  Hypothesis: $$ h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i} $$  $$ X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1} \;, \theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$$
- Also, $h(\theta) = \theta ^{ T} X$
-Gradient descent  Algorithm:  &emsp;&emsp;&emsp;Repeat{
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$
-&emsp;&emsp;&emsp;}
-Feature Scaling  Idea: Make sure fretures are on a similar scale.
- Mean normalization
-&emsp;&emsp;Replace $x_{i}$ with $x_{i}-\mu_{i}$ to make features have approximately zero mean(Do not apply to $x_{0}$, Which we suppose equals 1)
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/161018_ml_notes3/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -280,19 +270,11 @@ Feature Scaling  Idea: Make sure fretures are on a similar scale.
     </p>
   </header>
   <div class="c-article__summary">
-    Linear Regression with one variable  Hypothesis:
-$$h(\theta) = {\theta}_{0} + {\theta}_{1} x_{1}$$
- Cost function: $$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$$
-  Gradient descent Target: minimize $J(\theta_{0},\theta_{1})$ or $J(\theta_{0},\theta_{1},&hellip;,\theta_{n})$
- Gradient algorithm:  &emsp;&emsp;&emsp;Repeat until convergence{
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})\;(for \: j=0\:and\:j=1)$
-&emsp;&emsp;&emsp;}
-&emsp;&emsp;&emsp;&emsp;( $:=$ - Assignment&emsp;&emsp;&emsp;&emsp; $\alpha$ - Learning rate )
-Warning: $\theta_{0}$ and $\theta_{1}$should be updated Simultaneously !!!
-&emsp;&emsp;Especially, when gradient descent for linear regression,
-&emsp;&emsp;&emsp;&emsp;&emsp;$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$&emsp;&emsp;
-when $i=0$, we suppose $x^{(0)}=1$
+    &nbsp;
+
   </div>
+  
+  <a href="https://drapor.me/posts/161011_ml_notes2/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -310,9 +292,8 @@ when $i=0$, we suppose $x^{(0)}=1$
     </p>
   </header>
   <div class="c-article__summary">
-    Mordern Defination:   “A computer program is said to learn from experience E with respect to some task T and some performance measure P if its performance on T, as measured by P, improves with experience E.”
-​ ——Tom Mitchell(1998)
- Types of problems and tasks: “Supervised learning is the machine learning task of inferring a function from labeled training data.The training data consist of a set of training examples.
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/161010_ml_notes1/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -353,8 +334,10 @@ when $i=0$, we suppose $x^{(0)}=1$
   </header>
   <div class="c-article__summary">
     这段日子参加了学校SNC组织的暑期学校，所得不少，主要包含以下：
-第一阶段：   运维方向的综述、计算机硬件组成、操作系统的安装（引导方式、分区表）； 程序和系统的相关概念（进程、线程、内核空间等）； 服务器的管理（储存管理、远程管理、安全管理）； Web服务器和FTP服务器的搭建（限制IP访问，权限配置）； Apache的配置（虚拟主机、目录权限、日志切割、防盗链、MIME、认证、HTTPS等）； MySQL基本操作（增删查改、库备份还原、账户管理等）； PHP基础语法； HTML+CSS+PHP实现动态留言板； Web安全（XSS、SQL注入）；   第二阶段（计算机网络）：   物理层（信号在介质中的传输方式，网络的通信方式，常见的传输媒体，以及宽带接入技术）； 数据链路层（三个问题、PPP协议、以太网帧的构成、交换机的工作特点WLAN）； 网络层（IP协议、数据报文的传输、IP协议族中的ARP协议、ICMP协议、IGMP协议和ICMPv6协议，VPN和PPPoE原理）； Wireshark抓包、网线制作； 传输层（TCP协议、UDP协议）； 应用层（HTTP、HTTPS、FTP、TELNET、DHCP）； 电子邮件发信原理（SMTP、POP3、IMAP）；   第三阶段（Linux）：   Linux基础操作（路径切换、权限设置）； Vim使用（模式切换，删除、替换、查找、复制粘贴等常用操作）； LAMP环境搭建； Linux储存管理（LVM）和防火墙管理（iptables）；   网络设计相关：   组网硬件（交换机、路由器）； 相关协议（STP、OSPF）； 相关概念（VLAN、ACL、NAT策略）； 用GNS3/Cisco Packet Tracer模拟搭建校园网络；   感谢SNC，感谢暑期学校。
+
   </div>
+  
+  <a href="https://drapor.me/posts/160810_re/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

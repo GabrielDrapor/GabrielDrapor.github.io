@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
@@ -161,8 +161,11 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    过去的一个多月里   借助 Hexo 和 Github Pages 搭了自己的博客，也就是现在这个 darpor.me 进入六月本想着好好准备期末考试和四级，但是其实还是浪费了很多时间，导致最后一周爆了一周的肝，总归是把所有的课都过了。   接下来的小学期   学习MATLAB，完成一次建模。 学习正则表达式； 学习python爬虫； 开始看Andrew Ng的*Machine Learning*课程； 继续看《数据结构与算法分析——C语言描述》，每一个知识点自己动手实现一遍； 继续看Coursera上PKU的《计算机组成》的课程； 挑选数据挖掘的课程，可以考虑开始看《数据挖掘导论》 有空余时间的话可以读读《福尔摩斯探案集》  
+    &nbsp;
+
   </div>
+  
+  <a href="https://drapor.me/posts/160624_re/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -180,8 +183,11 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    一、本专业 过去的这段时间里   期中考试高代70，数分没及格，数分上还要多下功夫。期末考试两门都不能挂   二、编程 过去的这段时间里   用C和Python两种编程语言，解决了学校OJ中34道问题（虽然有水题） 捡起还没看完的《C Primer Plus》接着看，感觉还是很受益的。 开始读《数据结构与算法分析——C语言描述》，学了基础的算法分析，学习了一点链表的内容，并做了相应的笔记。   接下来   到六月份前配合着MIT的算法导论课，继续自由学习数据结构和算法的内容   三、网络 过去的这段时间里我   学会了用IIS+MS SQL Server架设一个叫做Discuz！NT的ASP.NET网站 学会了用Apache+PHP+MySQL架设了一个叫做WordPress的php网站 学会了用Tomcat+JDK+MySQL架设了一个叫做Jeecms的Jsp网站   接下来   学习远程配置vps（要学一点Linux），有选择性地学习一些网络知识（协议等）   四、其他 过去的这段时间我还   能够独立地拆自己十分难拆的笔记本 看完了《Mr.Robot》 —— 感觉挺有共鸣的 看完了《Legal High》第一季 —— 对法律有了一点新的感想 看完了两季《Silicon Valley》，对创业有了新的看法   五、接下来的一点小计划   发现算法和数据结构还是蛮有意思的，而且很有益处，尽力学 读完《C Primer Plus》，查漏补缺（书中涉及数据结构的部分也许可以先不看） 把Python基础语法的尾收完 边做上面的事情看看有没有合适的OJ题能做，还是要多实践 接下来可能有3-5天电脑送修，利用这段时间看看曼昆和费曼的书，总之看看书 6月中旬考四级，上了500分大学就可以不用再上英语课啦 期末考试要认真准备 希望能搭个博客，现在还在犹豫是选Github Pages还是自己租vps搭个WordPress之类的 了解一下数据挖掘的路是走怎么走的 *学爬虫，扒下自己的全部微博，注销之。 要是感觉学习太枯燥了可以学一点Kali Linux   总之，学习不止。
+    &nbsp;
+
   </div>
+  
+  <a href="https://drapor.me/posts/160517_re/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -199,11 +205,8 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    2.4.3最大子序列和问题的解
- 最大的子序列和问题：给定整数A1，A2，……，AN（可能有负数），求∑(k=i)^j A_k 的最大值（为方便起见，如果所有整数均为负数，则最大子序列和为0）
- 
-• 算法3
-//T(N)=O(N log N) static int MaxSubSum( const int A[], int Left,int Right ) { int MaxLeftSum,MaxRightSum; int MaxLeftBorderSum,MaxRightBorderSum; int LeftBorderSum,RightBorderSum; int Center,i; if(Left==Right) //Base Case,即'基准情形' if (A[Left]&gt;0) return A[Left]; else return 0; Center = (Left + Right)/2; MaxLeftSum=MaxSubSum(A,Left,Center);//左边中最大的子序列和 MaxRightSum=MaxSubSum(A,Center+1,Right);//右边中最大的子序列和 MaxLeftBorderSum = 0; LeftBorderSum = 0; for(i=Center;i&gt;=Left;i--)//从中心开始向左找最大子序列和 { LeftBorderSum+=A[i]; if(LeftBorderSum&gt;MaxLeftBorderSum) MaxLeftBorderSum= LeftBorderSum; } MaxRightBorderSum = 0; RightBorderSum = 0; for(i=Center+1;i&lt;=Right;i+　+)//从中心开始向右找最大子序列和 { RightBorderSum+=A[i]; if(RightBorderSum&gt;MaxRightBorderSum) MaxRightBorderSum=RightBorderSum; } return Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum + MaxRightBorderSum); } int MaxSubsequenceSum(const int A[], int N) { return MaxSubSum(A , 0 , N - 1); } int Max3(int a,int b,int c) { if (a&gt;b) if (a&gt;c) return a; else return c; else if (c&gt;b) return c; else return b; }  ​
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/160513_dsa-ch2/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -224,12 +227,11 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-     递归的四条基本法则：   基准情形。必须总有某些基准情形，它无需递归就能解出。
- 不断推进。对于那些需要递归求解的情形，每一次递归调用都必须要使求解状况朝接近基准情形的方向推进。
- 设计法则。假设所有的递归调用都能运行。
- 合成效益法则（compound interest rule）。在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。 【5/11:例如求斐波那契数列的和时，比如求Fib(5)其实求了5次Fib(1),3次Fib(2)等等，这是一种极大的浪费】
- 
+    &nbsp;
+
   </div>
+  
+  <a href="https://drapor.me/posts/160513_dsa-ch1/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -313,24 +315,8 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    这是一次404过程中，客户端和服务器发送请求的头(Headers) 先想办法炸出404（如图）
-HTTP Headers的内容如下：
- General
-Request URL:http://www.xxx.com/xxxxxx.xx //请求目的地的地址
-Request Method: GET //请求方式 这里是管服务器要东西
-Status Code: 404 Not Found HTTP //HTTP状态码，这里是404，代表没有找到
-Remote Address: 127.0.0.1:8081 //远程地址，不是ip地址，一般是127.0.0.1
- 
- Response Headers //应答头部字段
-HTTP/1.1 404 Not Found //HTTP版本是1.1
-Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间
-Server: Apache/2.2.25 (Win32) //服务器类型
-Content-Length: 208 //实体内容长度 208
-Keep-Alive: timeout=5, max=100 //持久连接 超时是5秒，最长100秒
-Connection: Keep-Alive //连接类型：持续连接
-Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 编码类型是iso-8859-1
- 
- Request Headers //请求头部字段
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/160427_http/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -351,8 +337,11 @@ Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 �
     </p>
   </header>
   <div class="c-article__summary">
-    一、本专业 过去的三周我   说实话，最近没有认真地学习数分高代，现在心中充满愧疚和罪恶感   接下来   好好看课本，配合MIT的线性代数课程，巩固最近一段时间数分高代的知识   二、编程 过去的三周我   用C和Python两种编程语言，解决了学校OJ中27道问题，但还没有涉及数据结构和算法的内容   接下来   开始学习数据结构和算法的内容   三、网络 过去的三周我   学习了一些关于Apache的基础知识   接下来   继续学习，同时学习Tomcat和用vps搭建服务器   四、其他 过去三周我还在读这些   浪潮之巅/吴军 空谷幽兰——寻访当代中国隐士/比尔·波特 人生不较劲/周国平 经济学原理：微观经济学分册/曼昆 怎样解题/波利亚  
+    &nbsp;
+
   </div>
+  
+  <a href="https://drapor.me/posts/160416_re/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 

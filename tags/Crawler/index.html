@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
@@ -138,9 +138,8 @@ code.has-jax {
     </p>
   </header>
   <div class="c-article__summary">
-    Besides what we have seen in Note 1, we can add some details in our codes: Sometimes we need to pretend as the browser to obtain the content of the page, we can add headers:
-import urllib2 url = &#39;http://drapor.me&#39; headers = { &#39;User-Agent&#39; : &#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#39;} request = urllib2.Request(url, headers) response = urllib2.urlopen(request) print response.read() More about headers, you can check this article.
-And if you need to post some data, like your username or password to the sites, try this:
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/161202_pycrawler2/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -161,9 +160,8 @@ And if you need to post some data, like your username or password to the sites, 
     </p>
   </header>
   <div class="c-article__summary">
-    First, let&rsquo;s start with a easy one:
-import urllib2 response = urllib2.urlopen(&#39;http://drapor.me&#39;) print response.read() The output should be like: &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; ...... &lt;/html&gt; Also, codes below do the same thing, import urllib2 request=urllib2.Request(url) response = urllib2.urlopen(request) print response.read()
-However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add Regex(Tutorial I recommand) here to help us: import urllib2 import re response = urllib2.
+    &nbsp;
+
   </div>
   
   <a href="https://drapor.me/posts/161201_pycrawler1/" class="c-article__btn p-list-article__btn">Read more</a>

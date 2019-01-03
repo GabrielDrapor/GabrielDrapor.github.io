@@ -5,7 +5,7 @@
     <link>https://drapor.me/categories/machine-learning/</link>
     <description>Recent content in Machine Learning on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2018 Drapor |  Powered by Hugo</copyright>
     <lastBuildDate>Mon, 11 Sep 2017 00:00:00 +0000</lastBuildDate>
     
@@ -27,8 +27,7 @@
       <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170601_ml_notes7/</guid>
-      <description>What should we do if we have a bad predictions? The following options may be feasible:
- Get more training examples; Try smaller sets of features; Try getting additional features; Try adding polynomial features (increasing degree of polynomial); Try decreasing $\lambda$; Try increasing $\lambda$;  So we can take a kind of test called machine learning diagnostic to insight what is/isn&amp;rsquo;t working with a learning algorithm, and gain guidance as to how best to improve its performance.</description>
+      <description>&lt;h2 id=&#34;what-should-we-do-if-we-have-a-bad-predictions&#34;&gt;What should we do if we have a bad predictions?&lt;/h2&gt;</description>
     </item>
     
     <item>
@@ -37,9 +36,7 @@
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170406_ml_notes6/</guid>
-      <description>How biological neural network work  As the following image shown, there are three main parts in each neuron: Dendrites, Cell Body and Axon. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that&amp;rsquo;s approximately how biological nerual network run.
-
-How artificial neural network work  The pictures above shows a basic unit of the artificial nerual network, we usually call it as perceptron, which you can consider it as the neuron of the neural network.</description>
+      <description>&lt;h2 id=&#34;how-biological-neural-network-work&#34;&gt;How biological neural network work&lt;/h2&gt;</description>
     </item>
     
     <item>
@@ -48,8 +45,7 @@ How artificial neural network work  The pictures above shows a basic unit of t
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161202_ml_notes5/</guid>
-      <description>Overfitting Overfitting would cause the modle to perform poorly, like this:  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn&amp;rsquo;t always work. Sometims we have too many features which cause that it&amp;rsquo;s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.
-Two options to solve 1.</description>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -58,10 +54,7 @@ Two options to solve 1.</description>
       <pubDate>Mon, 21 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161121_ml_notes4/</guid>
-      <description>Classification  For the binary classification, $y\in \{0,1 \}$(Also maybe, $y\in \{ 0,1,2,3,... \}$, that&amp;rsquo;s called a multiclass classification problem, we will discuss it later.).
-So, we use a model called Logisitic Regression, and we can see the hypothesis $h_{\theta}(x)$ should value in the range of 0 and 1. This is to say, $0\leq h_{\theta}(x)\leq 1$.
-Hypothesis Representation  Logistic Regression: $$h_{\theta}(x)=g(\theta^{T}x)$, $g(z)=\frac{1}{1+e^{-z}}$$
- **Interpretation of Hypothesis Output. The value of $h_{\theta}(x)$ equals to the estimated probability that y=1 (on input x, parameterized by $\theta$ ).</description>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -70,14 +63,7 @@ Hypothesis Representation  Logistic Regression: $$h_{\theta}(x)=g(\theta^{T}x)$,
       <pubDate>Tue, 18 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161018_ml_notes3/</guid>
-      <description>Multivariate Linear Regression  Hypothesis: $$ h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i} $$  $$ X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1} \;, \theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$$
- Also, $h(\theta) = \theta ^{ T} X$
-Gradient descent  Algorithm:  &amp;emsp;&amp;emsp;&amp;emsp;Repeat{
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$
-&amp;emsp;&amp;emsp;&amp;emsp;}
-Feature Scaling  Idea: Make sure fretures are on a similar scale.
- Mean normalization
-&amp;emsp;&amp;emsp;Replace $x_{i}$ with $x_{i}-\mu_{i}$ to make features have approximately zero mean(Do not apply to $x_{0}$, Which we suppose equals 1)</description>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -86,18 +72,7 @@ Feature Scaling  Idea: Make sure fretures are on a similar scale.
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161011_ml_notes2/</guid>
-      <description>Linear Regression with one variable  Hypothesis:
-$$h(\theta) = {\theta}_{0} + {\theta}_{1} x_{1}$$
- Cost function: $$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$$
-  Gradient descent Target: minimize $J(\theta_{0},\theta_{1})$ or $J(\theta_{0},\theta_{1},&amp;hellip;,\theta_{n})$
- Gradient algorithm:  &amp;emsp;&amp;emsp;&amp;emsp;Repeat until convergence{
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})\;(for \: j=0\:and\:j=1)$
-&amp;emsp;&amp;emsp;&amp;emsp;}
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;( $:=$ - Assignment&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; $\alpha$ - Learning rate )
-Warning: $\theta_{0}$ and $\theta_{1}$should be updated Simultaneously !!!
-&amp;emsp;&amp;emsp;Especially, when gradient descent for linear regression,
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$&amp;emsp;&amp;emsp;
-when $i=0$, we suppose $x^{(0)}=1$</description>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -106,9 +81,7 @@ when $i=0$, we suppose $x^{(0)}=1$</description>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/161010_ml_notes1/</guid>
-      <description>Mordern Defination:   “A computer program is said to learn from experience E with respect to some task T and some performance measure P if its performance on T, as measured by P, improves with experience E.”
-​ ——Tom Mitchell(1998)
- Types of problems and tasks: “Supervised learning is the machine learning task of inferring a function from labeled training data.The training data consist of a set of training examples.</description>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
     </item>
     
   </channel>

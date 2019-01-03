@@ -5,7 +5,7 @@
     <link>https://drapor.me/tags/data-structures-and-algorithms/</link>
     <description>Recent content in Data Structures and Algorithms on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2018 Drapor |  Powered by Hugo</copyright>
     <lastBuildDate>Sat, 14 May 2016 00:00:00 +0000</lastBuildDate>
     
@@ -18,11 +18,7 @@
       <pubDate>Sat, 14 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160513_dsa-ch2/</guid>
-      <description>2.4.3最大子序列和问题的解
- 最大的子序列和问题：给定整数A1，A2，……，AN（可能有负数），求∑(k=i)^j A_k 的最大值（为方便起见，如果所有整数均为负数，则最大子序列和为0）
- 
-• 算法3
-//T(N)=O(N log N) static int MaxSubSum( const int A[], int Left,int Right ) { int MaxLeftSum,MaxRightSum; int MaxLeftBorderSum,MaxRightBorderSum; int LeftBorderSum,RightBorderSum; int Center,i; if(Left==Right) //Base Case,即&#39;基准情形&#39; if (A[Left]&amp;gt;0) return A[Left]; else return 0; Center = (Left + Right)/2; MaxLeftSum=MaxSubSum(A,Left,Center);//左边中最大的子序列和 MaxRightSum=MaxSubSum(A,Center+1,Right);//右边中最大的子序列和 MaxLeftBorderSum = 0; LeftBorderSum = 0; for(i=Center;i&amp;gt;=Left;i--)//从中心开始向左找最大子序列和 { LeftBorderSum+=A[i]; if(LeftBorderSum&amp;gt;MaxLeftBorderSum) MaxLeftBorderSum= LeftBorderSum; } MaxRightBorderSum = 0; RightBorderSum = 0; for(i=Center+1;i&amp;lt;=Right;i+　+)//从中心开始向右找最大子序列和 { RightBorderSum+=A[i]; if(RightBorderSum&amp;gt;MaxRightBorderSum) MaxRightBorderSum=RightBorderSum; } return Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum + MaxRightBorderSum); } int MaxSubsequenceSum(const int A[], int N) { return MaxSubSum(A , 0 , N - 1); } int Max3(int a,int b,int c) { if (a&amp;gt;b) if (a&amp;gt;c) return a; else return c; else if (c&amp;gt;b) return c; else return b; }  ​</description>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -31,11 +27,7 @@
       <pubDate>Fri, 13 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160513_dsa-ch1/</guid>
-      <description> 递归的四条基本法则：   基准情形。必须总有某些基准情形，它无需递归就能解出。
- 不断推进。对于那些需要递归求解的情形，每一次递归调用都必须要使求解状况朝接近基准情形的方向推进。
- 设计法则。假设所有的递归调用都能运行。
- 合成效益法则（compound interest rule）。在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。 【5/11:例如求斐波那契数列的和时，比如求Fib(5)其实求了5次Fib(1),3次Fib(2)等等，这是一种极大的浪费】
- </description>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
     </item>
     
   </channel>
