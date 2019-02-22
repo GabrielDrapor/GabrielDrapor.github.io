@@ -7,17 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2018 Drapor |  Powered by Hugo</copyright>
-    <lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://drapor.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>配置kcptun</title>
+      <link>https://drapor.me/posts/190221_kcp_tun/</link>
+      <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/190221_kcp_tun/</guid>
+      <description>&lt;p&gt;因为种种原因，最近自己的几个ss/ssr服务基本都失联了，最近两天被推荐了&lt;a href=&#34;https://github.com/xtaci/kcptun&#34;&gt;kcptun&lt;/a&gt;，配了一下发现可以用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>2018</title>
-      <link>https://drapor.me/posts/20190101_2018/</link>
+      <link>https://drapor.me/posts/190101_2018/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/posts/20190101_2018/</guid>
+      <guid>https://drapor.me/posts/190101_2018/</guid>
       <description>&lt;p&gt;2018，生活有了不小的变化，谨此一记。&lt;/p&gt;
 
 &lt;p&gt;写得颇乱，见谅。&lt;/p&gt;</description>
@@ -517,13 +526,13 @@
       <guid>https://drapor.me/about/</guid>
       <description>I am Drapor;
 Mathematics undergraduate;
-Data Mining / Machine Learning Para-Engineer;
+Data Mining / Machine Learning Junior Engineer;
 Enthusiast of NBA, Monster Hunter, Sudoku, etc.
 Zhihu: @Drapor
 GitHub: @GabrielDrapor
 Email: gabrieldrapor@gmail.com
 
- &amp;ldquo;You can code. They cannot. That is pretty damn cool.&amp;rdquo; &amp;ndash;Learn Python The Hard Way
+ &amp;ldquo;You can code. They cannot. That is pretty damn cool.&amp;rdquo; &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;ndash;Learn Python The Hard Way
  </description>
     </item>
     

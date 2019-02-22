@@ -3,7 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://drapor.me/posts/20190101_2018/</loc>
+    <loc>https://drapor.me/posts/190221_kcp_tun/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/posts/190101_2018/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -302,7 +307,7 @@
   
   <url>
     <loc>https://drapor.me/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -337,26 +342,26 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/categories/machine-learning/</loc>
-    <lastmod>2017-09-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://drapor.me/tags/machine-learning/</loc>
     <lastmod>2017-06-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://drapor.me/categories/mongodb/</loc>
-    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
+    <loc>https://drapor.me/categories/machine-learning/</loc>
+    <lastmod>2017-09-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://drapor.me/tags/mongodb/</loc>
     <lastmod>2018-12-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/categories/mongodb/</loc>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -392,7 +397,7 @@
   
   <url>
     <loc>https://drapor.me/posts/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -403,20 +408,14 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/categories/python/</loc>
-    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://drapor.me/tags/python/</loc>
     <lastmod>2018-12-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://drapor.me/categories/server/</loc>
-    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+    <loc>https://drapor.me/categories/python/</loc>
+    <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -427,14 +426,26 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/categories/sql/</loc>
-    <lastmod>2017-08-08T00:00:00+00:00</lastmod>
+    <loc>https://drapor.me/categories/server/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/tags/shadowsocks/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://drapor.me/tags/sql/</loc>
     <lastmod>2017-04-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/categories/sql/</loc>
+    <lastmod>2017-08-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
