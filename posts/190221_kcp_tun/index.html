@@ -155,7 +155,11 @@ $ ssserver -p <span style="color:#f92672">[</span>SS_PORT<span style="color:#f92
 $ tar zxf LATEST.tar.gz
 $ cd libsodium-stable
 $ ./configure
-$ sudo make <span style="color:#f92672">&amp;&amp;</span> sudo make install</code></pre></div>
+$ sudo make <span style="color:#f92672">&amp;&amp;</span> sudo make install
+
+$ su
+$ echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf
+$ ldconfig</code></pre></div>
 然后配置kcptun：
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh
 $ chmod +x ./kcptun.sh
