@@ -29,7 +29,7 @@
   
   
   
-  <meta name="generator" content="Hugo 0.51" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.54.0" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="https://drapor.me/css/style.css" />
   <script type="text/javascript" src="https://drapor.mejs/bundle.js"></script>
   
@@ -145,7 +145,7 @@ code.has-jax {
   <section id="js-article" class="p-article__body">
     <p>最近了解到*和**运算符的用法，特此小记。</p>
 
-<p>最开始遇到的情形是这样的：我再另一个地方得到了一个tuple a：<br />
+<p>最开始遇到的情形是这样的：我从另一个地方得到了一个tuple a：<br />
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)</code></pre></div></p>
 
 <p>想把这个tuple里的值作为另一个函数f的参数传给它，理论上完全可以用[]把每个值取出来再一个一个传给函数：
@@ -153,7 +153,7 @@ code.has-jax {
     <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> y
 f(a[<span style="color:#ae81ff">0</span>], a[<span style="color:#ae81ff">1</span>])</code></pre></div></p>
 
-<p>但这样的写法实在是看起来很蠢，而且当这里的参数不是两个而是很多的时候，这样写也太麻烦了。Google了一下之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：
+<p>但这样写也太蠢了，而且当这里参数的个数不是两个而是很多的时候，这样写也太麻烦了。Google一番之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f(<span style="color:#f92672">*</span>a)</code></pre></div></p>
 
 <p>在<a href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists">官方文档</a>中也有相关的说明：</p>

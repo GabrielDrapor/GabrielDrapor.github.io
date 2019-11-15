@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2018 Drapor |  Powered by Hugo</copyright>
-    <lastBuildDate>Mon, 24 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://drapor.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在Python中调用C/C&#43;&#43;动态库</title>
+      <link>https://drapor.me/posts/190801_py_with_c/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/190801_py_with_c/</guid>
+      <description>&lt;p&gt;最近项目中需要用Python调用C/C++的动态库，研究了一下Ctypes。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MongoDB查询优化</title>

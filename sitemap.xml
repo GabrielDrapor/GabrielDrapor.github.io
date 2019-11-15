@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://drapor.me/posts/190801_py_with_c/</loc>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://drapor.me/posts/190221_kcp_tun/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
   </url>
@@ -307,7 +312,7 @@
   
   <url>
     <loc>https://drapor.me/</loc>
-    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -397,7 +402,7 @@
   
   <url>
     <loc>https://drapor.me/posts/</loc>
-    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -409,7 +414,7 @@
   
   <url>
     <loc>https://drapor.me/tags/python/</loc>
-    <lastmod>2018-12-24T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

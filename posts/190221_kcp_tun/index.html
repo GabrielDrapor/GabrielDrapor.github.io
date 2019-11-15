@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>配置kcptun</title>
-  <meta property="og:title" content="配置kcptun" />
-  <meta name="twitter:title" content="配置kcptun" />
+  <title>kcptun&#43;shadowsocks</title>
+  <meta property="og:title" content="kcptun&#43;shadowsocks" />
+  <meta name="twitter:title" content="kcptun&#43;shadowsocks" />
   
 
   
@@ -29,7 +29,7 @@
   
   
   
-  <meta name="generator" content="Hugo 0.51" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.54.0" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="https://drapor.me/css/style.css" />
   <script type="text/javascript" src="https://drapor.mejs/bundle.js"></script>
   
@@ -128,7 +128,7 @@ code.has-jax {
 
 <article class="p-article">
   <header>
-    <h1>配置kcptun</h1>
+    <h1>kcptun&#43;shadowsocks</h1>
     <div>
       <div class="c-time">
           
@@ -143,24 +143,25 @@ code.has-jax {
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>因为种种原因，最近自己的几个ss/ssr服务基本都失联了，最近两天被推荐了<a href="https://github.com/xtaci/kcptun">kcptun</a>，配了一下发现可以用。</p>
+    <p>因为种种原因，自己的几个ss/ssr服务基本都失联了，最近被推荐了<a href="https://github.com/xtaci/kcptun">kcptun</a>，原来觉得kcptun只是用于加速，没想到由于它本身的设计，现在居然可以用于绕过高墙。</p>
 
 <h5 id="一-服务端">一、服务端</h5>
 
 <p>首先配置ss：
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip install shadowsocks
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip install shadowsocks <span style="color:#75715e"># 如果安完之后找不到ssserver，sudo之后可以解决；</span>
 $ ssserver -p <span style="color:#f92672">[</span>SS_PORT<span style="color:#f92672">]</span> -k <span style="color:#f92672">[</span>SS_KEY<span style="color:#f92672">]</span> -m <span style="color:#f92672">[</span>ENRYPT_METHOD<span style="color:#f92672">]</span> --user nobody -d start</code></pre></div>
 如果报了Exception: libsodium not found:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
 $ tar zxf LATEST.tar.gz
 $ cd libsodium-stable
 $ ./configure
-$ sudo make <span style="color:#f92672">&amp;&amp;</span> sudo make install
+$ sudo make <span style="color:#f92672">&amp;&amp;</span> sudo make install</code></pre></div></p>
 
-$ su
-$ echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf
-$ ldconfig</code></pre></div>
-然后配置kcptun：
+<p>如果依然报错，su之后；
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf
+$ ldconfig</code></pre></div></p>
+
+<p>然后配置kcptun：
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh
 $ chmod +x ./kcptun.sh
 $ ./kcp.sh</code></pre></div>

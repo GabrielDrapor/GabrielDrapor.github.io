@@ -7,18 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2018 Drapor |  Powered by Hugo</copyright>
-    <lastBuildDate>Thu, 21 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://drapor.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>配置kcptun</title>
+      <title>在Python中调用C/C&#43;&#43;动态库</title>
+      <link>https://drapor.me/posts/190801_py_with_c/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/190801_py_with_c/</guid>
+      <description>&lt;p&gt;最近项目中需要用Python调用C/C++的动态库，研究了一下Ctypes。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kcptun&#43;shadowsocks</title>
       <link>https://drapor.me/posts/190221_kcp_tun/</link>
       <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/190221_kcp_tun/</guid>
-      <description>&lt;p&gt;因为种种原因，最近自己的几个ss/ssr服务基本都失联了，最近两天被推荐了&lt;a href=&#34;https://github.com/xtaci/kcptun&#34;&gt;kcptun&lt;/a&gt;，配了一下发现可以用。&lt;/p&gt;</description>
+      <description>&lt;p&gt;因为种种原因，自己的几个ss/ssr服务基本都失联了，最近被推荐了&lt;a href=&#34;https://github.com/xtaci/kcptun&#34;&gt;kcptun&lt;/a&gt;，原来觉得kcptun只是用于加速，没想到由于它本身的设计，现在居然可以用于绕过高墙。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -38,7 +47,7 @@
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/2019-reading-list/</guid>
-      <description>动物园 血疫 菊与刀 存在主义心理治疗 万物生长  &amp;hellip;&amp;hellip;</description>
+      <description>语文闲谈(初编) 棋王·树王·孩子王 动物园 血疫 菊与刀 存在主义心理治疗 万物生长  &amp;hellip;&amp;hellip;</description>
     </item>
     
     <item>
@@ -526,7 +535,7 @@
       <guid>https://drapor.me/about/</guid>
       <description>I am Drapor;
 Mathematics undergraduate;
-Data Mining / Machine Learning Junior Engineer;
+Junior Engineer;
 Enthusiast of NBA, Monster Hunter, Sudoku, etc.
 Zhihu: @Drapor
 GitHub: @GabrielDrapor

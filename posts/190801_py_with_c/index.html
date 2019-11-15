@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Tags</title>
-  <meta property="og:title" content="Tags" />
-  <meta name="twitter:title" content="Tags" />
+  <title>在Python中调用C/C&#43;&#43;动态库</title>
+  <meta property="og:title" content="在Python中调用C/C&#43;&#43;动态库" />
+  <meta name="twitter:title" content="在Python中调用C/C&#43;&#43;动态库" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content=""/>
   <meta property="og:site_name" content="DRAPORLAND" />
-  <meta property="og:url" content="https://drapor.me/tags/" />
+  <meta property="og:url" content="https://drapor.me/posts/190801_py_with_c/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -25,7 +25,8 @@
   
 
   
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
+  
   
   
   <meta name="generator" content="Hugo 0.54.0" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
@@ -113,7 +114,7 @@ code.has-jax {
 
   <header class="l-header">
     
-    <h1 class="c-title p-title"><a href="https://drapor.me" class="p-title__link">DRAPORLAND</a></h1>
+    <p class="c-title p-title"><a href="https://drapor.me" class="p-title__link">DRAPORLAND</a></p>
     
     
     <p class="p-subtitle">
@@ -125,45 +126,75 @@ code.has-jax {
   <main id="main" class="l-main">
 
 
-<section>
-  <h2>Tags</h2>
-  <ul>
+<article class="p-article">
+  <header>
+    <h1>在Python中调用C/C&#43;&#43;动态库</h1>
+    <div>
+      <div class="c-time">
+          
+        <time datetime="2019-08-01T00:00:00Z">
+          Aug 1, 2019
+        </time>
+      </div>
+      
+      <a href="https://drapor.me/tags/python" class="c-tag">Python</a>
+      
+    </div>
+  </header>
+  
+  <section id="js-article" class="p-article__body">
+    <p>最近项目中需要用Python调用C/C++的动态库，研究了一下Ctypes。</p>
+
+<p>上游给出的是编译好的.so文件，以下是用Ctypes调用的方式：</p>
+
+<pre><code class="language-python">from ctypes import *
+lib = cdll.LoadLibrary('./xxx.so')
+
+#假设xxx.so定义了一个init函数
+init = lib.init
+init()
+
+#关于类型和参数：
+i = c_int(2)
+# int size
+
+pChar = (c_char_p * 4)(addressof(create_string_buffer(8))) 
+# char * pChar = new char[8];
+
+c_char_p(&quot;CERTAIN_STRING&quot;.encode(&quot;utf-8&quot;))
+# &quot;CERTAIN_STRING&quot;.c_str()
+
+data = [1,2,3,4,5]
+p_data = (c_ubyte * len(data))(*data)
+# unsigned char * data
+
+int_list = [1,2,3,4]
+p_int_list = pointer((c_int*(4))(*int_list))
+# int * int_list
+
+#关于返回：
+#API int* rec(int* p)
+p = pointer(c_int(0))
+rec = lib.rec
+rec.restype = POINTER(c_int)
+
+rs = rec(p)
+for i in range(p.contents.value):
+    ...
+rs[0]
+
+</code></pre>
+  </section>
+  <footer>
     
+
     
-    <li><a href="https://drapor.me/tags/codewars">codewars</a> (2)</li>
+
+
     
-    <li><a href="https://drapor.me/tags/crawler">crawler</a> (2)</li>
-    
-    <li><a href="https://drapor.me/tags/data-structures-and-algorithms">data-structures-and-algorithms</a> (2)</li>
-    
-    <li><a href="https://drapor.me/tags/flask">flask</a> (1)</li>
-    
-    <li><a href="https://drapor.me/tags/hardware">hardware</a> (1)</li>
-    
-    <li><a href="https://drapor.me/tags/kaggle">kaggle</a> (1)</li>
-    
-    <li><a href="https://drapor.me/tags/machine-learning">machine-learning</a> (7)</li>
-    
-    <li><a href="https://drapor.me/tags/mongodb">mongodb</a> (3)</li>
-    
-    <li><a href="https://drapor.me/tags/networks">networks</a> (3)</li>
-    
-    <li><a href="https://drapor.me/tags/paths">paths</a> (11)</li>
-    
-    <li><a href="https://drapor.me/tags/plans">plans</a> (13)</li>
-    
-    <li><a href="https://drapor.me/tags/python">python</a> (14)</li>
-    
-    <li><a href="https://drapor.me/tags/server">server</a> (3)</li>
-    
-    <li><a href="https://drapor.me/tags/shadowsocks">shadowsocks</a> (1)</li>
-    
-    <li><a href="https://drapor.me/tags/sql">sql</a> (3)</li>
-    
-    <li><a href="https://drapor.me/tags/tensorflow">tensorflow</a> (1)</li>
-    
-  </ul>
-</section>
+
+  </footer>
+</article>
   </main>
   
 <nav class="l-nav p-menu">
