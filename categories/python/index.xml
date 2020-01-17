@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on DRAPORLAND</title>
+    <link>https://drapor.me/categories/python/</link>
+    <description>Recent content in Python on DRAPORLAND</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
+    <lastBuildDate>Mon, 13 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://drapor.me/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用python实现Hive UDF</title>
+      <link>https://drapor.me/posts/180813_py_udf/</link>
+      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/180813_py_udf/</guid>
+      <description>&lt;p&gt;因为项目需要，最近研究了一下如何用python写udf；&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于pandas.DataFrame.copy()的小坑</title>
+      <link>https://drapor.me/posts/180805_pd_deepcopy/</link>
+      <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/180805_pd_deepcopy/</guid>
+      <description>&lt;p&gt;最近发现了一个关于pandas.DataFrame.copy()的小坑，特此小记；&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于SettingWithCopyWarning</title>
+      <link>https://drapor.me/posts/180711_pd_settingwithcopywarning/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/180711_pd_settingwithcopywarning/</guid>
+      <description>&lt;p&gt;在对DataFrame添加新列的时候时常会遇到SettingWithCopyWarning：&lt;/p&gt;
+&lt;img src=&#34;https://drapor.me/article_imgs/SettingWithCopyWarning.png&#34;&gt;
+&lt;p&gt;Google了一番，最后在stack overflow上找到了最恰当的用法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用python处理声音</title>
+      <link>https://drapor.me/posts/180428_pysound/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/180428_pysound/</guid>
+      <description>&lt;p&gt;最近在用python处理一些音频数据，特此小记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于*和**运算符</title>
+      <link>https://drapor.me/posts/180319_star_operator/</link>
+      <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/180319_star_operator/</guid>
+      <description>&lt;p&gt;最近了解到*和**运算符的用法，特此小记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用Flask实现一个简单的带POST的api</title>
+      <link>https://drapor.me/posts/180122_flask_simple_api/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/180122_flask_simple_api/</guid>
+      <description>&lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用Pymongo连接MongoDB取数</title>
+      <link>https://drapor.me/posts/171122_pymongo/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/171122_pymongo/</guid>
+      <description>&lt;p&gt;最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用python连接SparkThriftServer</title>
+      <link>https://drapor.me/posts/171122_impala/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/171122_impala/</guid>
+      <description>&lt;p&gt;前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

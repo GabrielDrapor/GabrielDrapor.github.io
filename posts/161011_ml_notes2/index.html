@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+Machine Learning Notes 02 - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Machine Learning Notes 02"/>
+<meta name="twitter:description" content=" "/>
+
+<meta property="og:title" content="Machine Learning Notes 02" />
+<meta property="og:description" content=" " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/161011_ml_notes2/" />
+<meta property="article:published_time" content="2016-10-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-10-11T00:00:00+00:00" />
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        Machine Learning Notes 02
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">Machine Learning Notes 02</div>
+
+        
+<div class="section" id="content">
+    Tue Oct 11, 2016
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/machine-learning">
+                #Machine Learning
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p> </p>
+<h2 id="linear-regression-with-one-variable">Linear Regression with one variable</h2>
+<ul>
+<li>
+<p><strong>Hypothesis:</strong><br>
+$$h(\theta) = {\theta}_{0} + {\theta}_{1} x_{1}$$</p>
+</li>
+<li>
+<p><strong>Cost function:</strong>
+$$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$$</p>
+</li>
+</ul>
+<hr>
+<h2 id="gradient-descent"><strong>Gradient descent</strong></h2>
+<p><strong>Target:</strong> minimize $J(\theta_{0},\theta_{1})$ or $J(\theta_{0},\theta_{1},&hellip;,\theta_{n})$</p>
+<ul>
+<li><strong>Gradient algorithm:</strong></li>
+</ul>
+<p>   Repeat until convergence{<br>
+      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})\;(for \: j=0\:and\:j=1)$</code><br>
+   }<br>
+    ( $:=$ -   <em>Assignment</em>     $\alpha$ - <em>Learning rate</em> )</p>
+<p><strong>Warning:</strong> <code>$\theta_{0}$</code> and <code>$\theta_{1}$</code>should be updated <strong>Simultaneously</strong> !!!</p>
+<p>  Especially, when gradient descent for linear regression,</p>
+<p>     <code>$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</code>  <br>
+when <code>$i=0$</code>, we suppose <code>$x^{(0)}=1$</code></p>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer"></div>
+    </div>
+</body>
+
+</html>

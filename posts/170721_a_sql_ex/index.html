@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+Codewars上一道5 kyu的SQL题 - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Codewars上一道5 kyu的SQL题"/>
+<meta name="twitter:description" content="具体思路和过程以后有时间再来整理（Flag）。"/>
+
+<meta property="og:title" content="Codewars上一道5 kyu的SQL题" />
+<meta property="og:description" content="具体思路和过程以后有时间再来整理（Flag）。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/170721_a_sql_ex/" />
+<meta property="article:published_time" content="2017-07-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-07-21T00:00:00+00:00" />
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        Codewars上一道5 kyu的SQL题
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">Codewars上一道5 kyu的SQL题</div>
+
+        
+<div class="section" id="content">
+    Fri Jul 21, 2017
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/codewars">
+                #Codewars
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p>具体思路和过程以后有时间再来整理（Flag）。</p>
+<p>原题目的url是https://www.codewars.com/kata/calculating-running-total</p>
+<p>参考了一下简单的情况 <a href="http://sql55.com/query/cumulative-amount-1.php">http://sql55.com/query/cumulative-amount-1.php</a> ，然后自己建表鼓捣了一会儿，</p>
+<p>终于得(meng)出了一个可行的答案：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">CAST</span>(p1.created_at <span style="color:#ff79c6">AS</span> <span style="color:#8be9fd;font-style:italic">DATE</span>) <span style="color:#ff79c6">AS</span> <span style="color:#8be9fd;font-style:italic">date</span>,
+       <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">DISTINCT</span> p1.title) <span style="color:#ff79c6">AS</span> <span style="color:#ff79c6">count</span>,
+       <span style="color:#ff79c6">COUNT</span>(p2.title)<span style="color:#ff79c6">/</span><span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">DISTINCT</span> p1.title) <span style="color:#ff79c6">AS</span> total
+<span style="color:#ff79c6">FROM</span> posts p1 <span style="color:#ff79c6">INNER</span> <span style="color:#ff79c6">JOIN</span> posts p2
+  <span style="color:#ff79c6">ON</span> to_char(p1.created_at, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">YYYY-MM-DD</span><span style="color:#f1fa8c">&#39;</span>) <span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">=</span> to_char(p2.created_at, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">YYYY-MM-DD</span><span style="color:#f1fa8c">&#39;</span>)
+<span style="color:#ff79c6">GROUP</span> <span style="color:#ff79c6">BY</span> <span style="color:#8be9fd;font-style:italic">date</span>
+<span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> <span style="color:#8be9fd;font-style:italic">date</span></code></pre></div>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer"></div>
+    </div>
+</body>
+
+</html>

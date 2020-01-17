@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shadowsocks on DRAPORLAND</title>
+    <link>https://drapor.me/tags/shadowsocks/</link>
+    <description>Recent content in Shadowsocks on DRAPORLAND</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
+    <lastBuildDate>Thu, 21 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://drapor.me/tags/shadowsocks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kcptun&#43;shadowsocks</title>
+      <link>https://drapor.me/posts/190221_kcp_tun/</link>
+      <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/190221_kcp_tun/</guid>
+      <description>&lt;p&gt;因为种种原因，自己的几个ss/ssr服务基本都失联了，最近被推荐了&lt;a href=&#34;https://github.com/xtaci/kcptun&#34;&gt;kcptun&lt;/a&gt;，原来觉得kcptun只是用于加速，没想到由于它本身的设计，现在居然可以用于绕过高墙。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

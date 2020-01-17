@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+Machine Learning Notes 04 - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Machine Learning Notes 04"/>
+<meta name="twitter:description" content=" "/>
+
+<meta property="og:title" content="Machine Learning Notes 04" />
+<meta property="og:description" content=" " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/161121_ml_notes4/" />
+<meta property="article:published_time" content="2016-11-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-11-21T00:00:00+00:00" />
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        Machine Learning Notes 04
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">Machine Learning Notes 04</div>
+
+        
+<div class="section" id="content">
+    Mon Nov 21, 2016
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/machine-learning">
+                #Machine Learning
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p> </p>
+<h2 id="classification">Classification</h2>
+<p>  For the binary classification, <code>$y\in \{0,1 \}$</code>(Also maybe, <code>$y\in \{ 0,1,2,3,... \}$</code>, that's called a <strong>multiclass classification problem</strong>, we will discuss it later.).<br>
+  So, we use a model called <strong>Logisitic Regression</strong>, and we can see the hypothesis <code>$h_{\theta}(x)$</code> should value in the range of 0 and 1. This is to say, $0\leq h_{\theta}(x)\leq 1$.</p>
+<hr>
+<h2 id="hypothesis-representation">Hypothesis Representation</h2>
+<ul>
+<li>
+<p><strong>Logistic Regression:</strong>
+    <code>$$h_{\theta}(x)=g(\theta^{T}x)$, $g(z)=\frac{1}{1+e^{-z}}$$</code></p>
+</li>
+<li>
+<p>**Interpretation of Hypothesis Output.
+The value of <code>$h_{\theta}(x)$</code> equals to the estimated probability that y=1 (on input x, parameterized by $\theta$ ). This is to say,
+<code>$$h_{\theta}(x)=P(y=1\mid x ; \theta)$$</code></p>
+</li>
+<li>
+<p><strong>Decision Boundary</strong><br>
+The decision boundaries are like this:</p>
+</li>
+</ul>
+<img src="/article_imgs/decision_boundary.png">  
+<p>  <strong>Emphasis: Decision boundary is the property of hypothesis function, but not the property of training set and its parameters.</strong></p>
+<hr>
+<h2 id="logistic-regression---how-to-fit-the-parameters-of-theta"><strong>Logistic Regression</strong>&mdash;How to fit the parameters of theta</h2>
+<ul>
+<li>
+<p><strong>Cost Function of Logistic Regression:</strong><br>
+<code>$Cost(h_{\theta}, y)=\begin{cases} -log(h_{\theta}(x)) &amp; \text{ if } y=1 \\  -log(1-h_{\theta}(x))  &amp; \text{ if } y=0    \end{cases}$</code><br>
+Also, we can write it as:<br>
+<code>$$Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))$$</code></p>
+</li>
+<li>
+<p><strong>Gradient Descent:</strong><br>
+To minimize <code>$J_{\theta}$</code></p>
+</li>
+</ul>
+<p>   Repeat{<br>
+      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</code><br>
+   }</p>
+<p>  <strong>And we can see that this algortithm looks identical to linear regression!<br>
+  But actually, the hypothesis of them are different.</strong><br>
+<code>$$\begin{cases} Linear\:Regression: h_{\theta}(x)=\theta^{T}x\\ Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}} \end{cases}$$</code></p>
+<p>Besides,</p>
+<blockquote>
+<p>&ldquo;&hellip;use a vector rise implementation, so that a vector rise implementation can update all of these until parameters all in one fell swoop.&rdquo;</p>
+</blockquote>
+<hr>
+<h2 id="advanced-optimization">Advanced Optimization</h2>
+<blockquote>
+<ul>
+<li>Gradient Descent</li>
+<li>Conjngate Gradient</li>
+<li>BFGS</li>
+<li>L-BFGS</li>
+<li>……</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p><strong>Adcantages:</strong>
+No need to manually pick $\alpha$ ;
+Often faster than gradient descent;</p>
+</li>
+<li>
+<p><strong>Disadvantages:</strong>
+More complex;</p>
+</li>
+</ul>
+<hr>
+<h2 id="multi-class-classification-one-vs-all">Multi-class classification: One-vs-all</h2>
+<ul>
+<li>For example, to slove the three-class problem, we can <em>&ldquo;turn this into three seperate two-class classification problems.&quot;</em></li>
+<li>On a new input $x$, to make a prediction, pick the class i that maximizes.</li>
+</ul>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer"></div>
+    </div>
+</body>
+
+</html>

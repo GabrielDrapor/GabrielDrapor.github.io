@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+Machine Learning Notes 06 - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Machine Learning Notes 06"/>
+<meta name="twitter:description" content="How biological neural network work"/>
+
+<meta property="og:title" content="Machine Learning Notes 06" />
+<meta property="og:description" content="How biological neural network work" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/170406_ml_notes6/" />
+<meta property="article:published_time" content="2017-04-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-04-05T00:00:00+00:00" />
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        Machine Learning Notes 06
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">Machine Learning Notes 06</div>
+
+        
+<div class="section" id="content">
+    Wed Apr 05, 2017
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/machine-learning">
+                #Machine Learning
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <h2 id="how-biological-neural-network-work">How biological neural network work</h2>
+<p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that's approximately how biological nerual network run.</p>
+<img src="/article_imgs/neuron.jpg">
+<hr>
+<p><escape><!-- more --></escape></p>
+<h2 id="how-artificial-neural-network-work">How artificial neural network work</h2>
+<img src="/article_imgs/perceptron.jpg" width="500">
+<p>  The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
+<p>  And here's what a three-layer ann looks like,</p>
+<img src="/article_imgs/3lann.jpg" height="200">
+<p>  The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, &hellip;, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that's why we need more).</p>
+<hr>
+<h2 id="feedforward-propagation-algorithm">Feedforward Propagation Algorithm</h2>
+<p>  We obtain the output first, by:</p>
+<p>$$y_{j}=g(\sum^{n}_{i=1}\omega_{ji}x_i-\theta),$$</p>
+<p>,and we often choose sigmoid function $g(z)=\frac{1}{1+e^{-z}}$ as our activation function. For the more complex situation, we can also use vectorization:</p>
+<p>$$a_{n+1}=g(a_{n}*\Theta_n)$$</p>
+<p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
+<hr>
+<h2 id="back-propagation-algorithm">Back Propagation Algorithm</h2>
+<p>For the training set <code>$\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) \}$</code>, <code>$\Delta_{ij}^{(l)}=0 $</code> (for all $l,i,j$). Then we run the following loop:</p>
+<p>For $i = 1$ to $m$:</p>
+<p>　　Set <code>$a^{(1)}=x^{(i)}$</code></p>
+<p>　　Perform forward propagation to compute <code>$a^{(l)}$ for $l=2,3,..,L$</code></p>
+<p>　　Using <code>$y^{(i)}$</code>, compute <code>$\delta^{L}=a^{(L)}-y^{(i)}$</code></p>
+<p>　　Compute $\delta^{(L-1)}, \delta^{(L-2)}, &hellip;, \color{red}{\delta^{(2)}}$</p>
+<p>　　<code>$ \Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i} $</code></p>
+<p>After that,</p>
+<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
+<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
+<p>And we get:</p>
+<p>　　$$\frac{\partial}{\partial\Theta^{(l)}_{ij}}J(\Theta) = D_{ij}^{(l)}$$</p>
+<hr>
+<h2 id="process-of-training-a-neural-network">Process of Training a Neural Network</h2>
+<ol>
+<li>Randomly initialize the weights;</li>
+<li>Implement forward propagation to get $h_{\Theta}(x^{(i)})$ for any $x^{(i)}$;</li>
+<li>Implement the cost function;</li>
+<li>Implement backpropagation to compute partial derivatives;</li>
+<li>Use gradient checking to confirm that your backpropagation works. Then disable gradient checking;</li>
+<li>Use gradient descent or a built-in optimization function to minimize the cost function with the weights in theta;</li>
+</ol>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer"></div>
+    </div>
+</body>
+
+</html>

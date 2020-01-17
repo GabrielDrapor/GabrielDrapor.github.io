@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+ASP.NET 搭建 Discuz! NT - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ASP.NET 搭建 Discuz! NT"/>
+<meta name="twitter:description" content="架设环境选择：Windows 7 32bit &#43; IIS 7.0 &#43; Microsoft SQL Server 2014 Express"/>
+
+<meta property="og:title" content="ASP.NET 搭建 Discuz! NT" />
+<meta property="og:description" content="架设环境选择：Windows 7 32bit &#43; IIS 7.0 &#43; Microsoft SQL Server 2014 Express" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/160503_asp/" />
+<meta property="article:published_time" content="2016-05-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-05-03T00:00:00+00:00" />
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        ASP.NET 搭建 Discuz! NT
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">ASP.NET 搭建 Discuz! NT</div>
+
+        
+<div class="section" id="content">
+    Tue May 03, 2016
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/server">
+                #Server
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p><strong>架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express</strong></p>
+<p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
+<h5 id="1配置iis">1.配置IIS。</h5>
+<p>   IIS是我们的服务器应用程序，我们首先需要打开它。</p>
+<ul>
+<li>
+<p>首先在控制面板-程序和功能-打开或关闭Windows功能（如图），勾选“Internet Information Services可承载的Web核心”，“Internet信息服务”。</p>
+ <img src="/article_imgs/image004.png">
+</li>
+</ul>
+<p>​</p>
+<ul>
+<li>在管理工具中找到“Internet 信息服务(IIS)管理器”，打开它，在左侧的“连接”栏下面找“个人电脑名&gt;网站”，右键点击网站，选择“添加网站”（如图）</li>
+</ul>
+ <img src="/article_imgs/image001.png">
+<p>在弹出的对话框中，填写必要信息。</p>
+<!--more-->
+<img src="/article_imgs/image005.png">
+<p>​</p>
+<pre><code>网站名称----给你的网站起个名字,如这里的&quot;SNC_ASP.NET&quot;
+
+物理路径----选取你网站在本地的目录
+
+绑定-IP地址----选取你服务器的ip地址，这里由于是在校园网环境中，无法搭建到外网的服务器，所以选取内网ip。
+
+端口----默认是80，如果有冲突可以自行修改。查看当前系统所占用的端口可以打开cmd，输入指令“netstat -a”查询（如图）
+</code></pre>
+<img src="/article_imgs/image007.png"> 
+<ul>
+<li>
+<p>查看IIS的主界面，找到“默认文档”，打开。</p>
+</li>
+<li>
+<p>在打开的界面中，右键选择添加，添加名称为index.aspx，否则搭建服务器之后由于服务器不认识aspx的首页而打不开它。</p>
+</li>
+</ul>
+ <img src="/article_imgs/image009.png">
+ <img src="/article_imgs/image011.png">
+<hr>
+<h5 id="2配置sql-server">2.配置SQL Server</h5>
+<p>从https://www.microsoft.com/zh-CN/download/details.aspx?id=42299 下载 Microsoft® SQL Server® 2014 Express，只需下载	“ExpressAndTools 64BIT\SQLEXPRWT_你系统位数_CHS.exe”即可。下载完之后打开，选择提取目录，等待解压。</p>
+<p>打开解压的目录下的SETUP.EXE，在打开的“SQL Server安装中心”中选择“全新SQL Server 独立安装或向现有安装添加功能”，打开“SQL Server 2014安装程序”进行安装。</p>
+<p><strong>需要特别注意的是:</strong></p>
+<ul>
+<li>
+<p>在“实例配置”中，可以自行命名实例，也可以用系统默认的实例名，但最好把名字记下来</p>
+</li>
+<li>
+<p>在“服务器配置”中，需要对SQL Server数据库选择一个用户，可以添加系统中的用户，填写对应的密码。如图。</p>
+</li>
+</ul>
+<img src=/article_imgs/image013.png>
+<ul>
+<li>在“数据库引擎配置”中，最好选择混合模式，单独设置一个SQL Server系统管理员账户，否则在后面关联用户的时候可能会遇到麻烦。</li>
+</ul>
+<img src="/article_imgs/image015.png">
+<img src=/article_imgs/image019.png>
+<p>完成安装后，打开SQL Server 2014 Management Studio，连接到你的服务器。</p>
+<img src="/article_imgs/image018.png">
+<p>这里可以选择Windows 身份验证，也可以选择SQL Server身份验证。然后点击“连接”。</p>
+<p>连接后，在右侧的对象资源管理器中，找到“数据库，右键单击，选择“新建数据库”，填写数据库名称，如dnt，然后设置所有者，可以直接选sa即可。</p>
+<figure class="half">
+<pre><code>&lt;img src=&quot;/article_imgs/image021.png&quot;&gt;
+
+&lt;img src=/article_imgs/image019.png&gt;
+</code></pre>
+</figure>
+<hr>
+<h5 id="3安装discuznt">3.安装Discuz！NT。</h5>
+<p>从官网 <a href="http://www.comsenz.com/products/nt">http://www.comsenz.com/products/nt</a> 下载Discuz！NT压缩包，将其解压，</p>
+<img src=/article_imgs/image022.png>
+<p>打开readme目录下的catalog.html可以看见官方所给出的介绍页面，其中就包括了安装指南</p>
+<img src=/article_imgs/image023.png>
+<p>接下来，我们只需按照安装指南所给的步骤一步步进行</p>
+<img src=/article_imgs/image026.png>
+<ul>
+<li>这里特别注意划红线的部分，是把upload_files目录里的东西放到服务器的根目录下而不是把upload_files文件夹整个放进服务器根目录。如图。</li>
+</ul>
+<img src=/article_imgs/image028.png>
+<img src=/article_imgs/image032.png>
+<ul>
+<li>我使用的系统是WIN7，但依旧需要修改目录的权限，右键-属性-安全-编辑就可以编辑用户权限了。在IIS管理器中也可以对目录的权限进行设置。</li>
+</ul>
+<img src=/article_imgs/image030.png>
+<p><img src=/article_imgs/image033.png> </p>
+<ul>
+<li>按照教程要求，我们在浏览器地址栏中输入应输入的内容，然后发现了如下的报错。</li>
+</ul>
+<img src=/article_imgs/image034.png>
+<ul>
+<li>通过阅读错误信息和查看根目录下的web.config配置文件，我们可以大概了解到问题出在Discuz!NT没有获得接管权，而在配置文件中也没有对相关权限的设置。</li>
+</ul>
+<img src=/article_imgs/image036.png>
+<ul>
+<li>此时我们应该做的是，打开控制面板-Windows功能，在应用程序开发功能目录下将下面的ASP.NET功能勾选上。系统会自动将需要的其他功能自动勾选上。</li>
+</ul>
+<figure class="half">
+<pre><code>&lt;img src=&quot;/article_imgs/image037.png&quot;&gt;
+
+&lt;img src=/article_imgs/image039.png&gt;
+</code></pre>
+</figure>
+<ul>
+<li>再次运行安装脚本，即访问http://您的域名/install/index.aspx ，会看到如图的界面。 选择&quot;接受&rdquo;，点击“下一步”。</li>
+</ul>
+<img src=/article_imgs/image041.png>
+<ul>
+<li>通过环境监测后，需要填写数据库信息，填写刚才创建的数据库名称，管理员账号和密码，在数据库服务器一项中填写自己的SQL Server服务器名称。</li>
+</ul>
+<img src=/article_imgs/image045.png>
+<p>点击下一步。</p>
+<ul>
+<li>在出现的“论坛设置信息”界面中，自行设定管理员名称和密码。然后再次点击下一步。</li>
+</ul>
+<img src=/article_imgs/image043.png>
+<ul>
+<li>然后会出现如图界面。</li>
+</ul>
+<img src=/article_imgs/image047.png>
+<ul>
+<li>点击”进入论坛“，可以看到论坛的界面，说明搭建成功。可以尝试登陆管理员账号，也可以通过本机ip访问论坛。</li>
+</ul>
+<img src=/article_imgs/image049.png>
+<pre><code> 
+</code></pre>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer"></div>
+    </div>
+</body>
+
+</html>

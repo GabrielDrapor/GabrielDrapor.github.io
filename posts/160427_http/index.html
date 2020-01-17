@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+HTTP Response/Request Headers - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTTP Response/Request Headers"/>
+<meta name="twitter:description" content=" "/>
+
+<meta property="og:title" content="HTTP Response/Request Headers" />
+<meta property="og:description" content=" " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/160427_http/" />
+<meta property="article:published_time" content="2016-04-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-04-27T00:00:00+00:00" />
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        HTTP Response/Request Headers
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">HTTP Response/Request Headers</div>
+
+        
+<div class="section" id="content">
+    Wed Apr 27, 2016
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/networks">
+                #Networks
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p> </p>
+<p>这是一次404过程中，客户端和服务器发送请求的头(Headers)
+先想办法炸出404（如图）</p>
+<p><img src="/article_imgs/404.png" alt=""></p>
+<p>HTTP Headers的内容如下：</p>
+<blockquote>
+<p><strong>General</strong><br>
+Request URL:http://www.xxx.com/xxxxxx.xx  //请求目的地的地址<br>
+Request Method: GET 	 			//请求方式 这里是管服务器要东西<br>
+Status Code: 404 Not Found HTTP 	//HTTP状态码，这里是404，代表没有找到<br>
+Remote Address: 127.0.0.1:8081  	//远程地址，不是ip地址，一般是127.0.0.1</p>
+</blockquote>
+<br>
+<blockquote>
+<p><strong>Response Headers</strong> 				//应答头部字段<br>
+HTTP/1.1 404 Not Found  			//HTTP版本是1.1<br>
+Date: Wed, 27 Apr 2016 10:58:04 GMT //时间，采用格林尼治标准时间<br>
+Server: Apache/2.2.25 (Win32)  		//服务器类型<br>
+Content-Length: 208				//实体内容长度 208<br>
+Keep-Alive: timeout=5, max=100    	//持久连接 超时是5秒，最长100秒<br>
+Connection: Keep-Alive				//连接类型：持续连接<br>
+Content-Type: text/html; charset=iso-8859-1 //实体内容种类:文本/网页 编码类型是iso-8859-1</p>
+</blockquote>
+<br>
+<blockquote>
+<p><strong>Request Headers</strong>  				//请求头部字段<br>
+GET /index2.php HTTP/1.1			//“我要index2.php，快给我” HTTP版本1.1<br>
+Host: <a href="http://www.xxx.com">www.xxx.com</a>					//要请求的主机的名字<br>
+Connection: keep-alive				//连接类型： “我要一直连着，不许给我断了“<br>
+Cache-Control: max-age=0			//缓存控制：”就不让你缓存，要东西现来找我”<br>
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8<br>
+//“我只要下面这些：文本/HTML，应用/XHTML+XML，应用/xml(这个可以往后放不着急)，图片/webp(这个更不着急)”<br>
+Upgrade-Insecure-Requests: 1		//这个是？<br>
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36	//浏览器支持类型<br>
+Accept-Encoding: gzip, deflate, sdch	//”我只看得懂下面这三种编码：gzip, deflate, sdch”<br>
+Accept-Language: zh-CN,zh;q=0.8 	//”我只要中文”</p>
+</blockquote>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer"></div>
+    </div>
+</body>
+
+</html>
