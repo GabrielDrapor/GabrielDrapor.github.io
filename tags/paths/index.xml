@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
->>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Paths on DRAPORLAND</title>
@@ -32,10 +28,6 @@
       
       <guid>https://drapor.me/posts/190101_2018/</guid>
       <description>&lt;p&gt;2018，生活有了不小的变化，谨此一记。&lt;/p&gt;
-<<<<<<< HEAD
-=======
-
->>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
 &lt;p&gt;写得颇乱，见谅。&lt;/p&gt;</description>
     </item>
     
@@ -72,11 +64,7 @@
       <pubDate>Sun, 19 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/170319-plans/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt; &lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
->>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
     </item>
     
     <item>
@@ -114,11 +102,7 @@
       <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160624_re/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt; &lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
->>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
     </item>
     
     <item>
@@ -127,11 +111,7 @@
       <pubDate>Tue, 17 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160517_re/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt; &lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
->>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
     </item>
     
     <item>
@@ -140,11 +120,7 @@
       <pubDate>Sat, 16 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160416_re/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt; &lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
->>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
     </item>
     
   </channel>

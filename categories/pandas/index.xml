@@ -1,18 +1,9 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>pandas on DRAPORLAND</title>
     <link>https://drapor.me/categories/pandas/</link>
     <description>Recent content in pandas on DRAPORLAND</description>
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pandas on DRAPORLAND</title>
-    <link>https://drapor.me/categories/pandas/</link>
-    <description>Recent content in Pandas on DRAPORLAND</description>
->>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
@@ -28,10 +19,6 @@
       
       <guid>https://drapor.me/posts/170614-pandas/</guid>
       <description>&lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;/p&gt;
-<<<<<<< HEAD
-=======
-
->>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
 &lt;p&gt;并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……&lt;/p&gt;</description>
     </item>
     

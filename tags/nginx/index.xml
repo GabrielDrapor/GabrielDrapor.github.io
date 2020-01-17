@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on DRAPORLAND</title>
+    <link>https://drapor.me/tags/nginx/</link>
+    <description>Recent content in Nginx on DRAPORLAND</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
+    <lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://drapor.me/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nginx中proxy_pass的斜杠问题</title>
+      <link>https://drapor.me/posts/200113_proxy_pass_slash/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/200113_proxy_pass_slash/</guid>
+      <description>&lt;p&gt;在Nginx中配置proxy_pass时，需要注意斜杠的问题。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
