@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SQL on DRAPORLAND</title>
     <link>https://drapor.me/tags/sql/</link>
     <description>Recent content in SQL on DRAPORLAND</description>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sql on DRAPORLAND</title>
+    <link>https://drapor.me/tags/sql/</link>
+    <description>Recent content in Sql on DRAPORLAND</description>
+>>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>

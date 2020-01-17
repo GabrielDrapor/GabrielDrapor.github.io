@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MongoDB on DRAPORLAND</title>
     <link>https://drapor.me/categories/mongodb/</link>
     <description>Recent content in MongoDB on DRAPORLAND</description>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mongodb on DRAPORLAND</title>
+    <link>https://drapor.me/categories/mongodb/</link>
+    <description>Recent content in Mongodb on DRAPORLAND</description>
+>>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>

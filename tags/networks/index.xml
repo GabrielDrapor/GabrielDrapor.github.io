@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+>>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Networks on DRAPORLAND</title>
@@ -36,7 +40,11 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/posts/160427_http/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt; &lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
+>>>>>>> f6ede83f35145f574dd97d1c86e379a4b3929471
     </item>
     
   </channel>
