@@ -44,6 +44,7 @@
 <meta property="article:modified_time" content="2018-04-28T00:00:00+00:00" />
 
 
+
     
 
     
@@ -105,7 +106,10 @@ song<span style="color:#ff79c6">.</span>export(<span style="color:#f1fa8c"></spa
 </code></pre></div><ul>
 <li>以及在使用过程中和其他处发现的用法：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#会有损失的一种变速方法</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># 生成</span>
+
+<span style="color:#6272a4"># 会有损失的一种变速方法 </span>
+<span style="color:#6272a4"># https://stackoverflow.com/questions/51434897/how-to-change-audio-playback-speed-using-pydub</span>
 <span style="color:#ff79c6">from</span> pydub <span style="color:#ff79c6">import</span> AudioSegment
 
 <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">speed_change</span>(sound, speed<span style="color:#ff79c6">=</span><span style="color:#bd93f9">1.0</span>):
@@ -120,7 +124,13 @@ song<span style="color:#ff79c6">.</span>export(<span style="color:#f1fa8c"></spa
     <span style="color:#6272a4"># know how to play audio at standard frame rate (like 44.1k)</span>
     <span style="color:#ff79c6">return</span> sound_with_altered_frame_rate<span style="color:#ff79c6">.</span>set_frame_rate(sound<span style="color:#ff79c6">.</span>frame_rate)
 
-sound <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_file(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">...</span><span style="color:#f1fa8c">&#39;</span>)</code></pre></div>
+sound <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_file(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">...</span><span style="color:#f1fa8c">&#39;</span>)
+
+speed_change(sound, <span style="color:#bd93f9">0.9</span>)</code></pre></div>
+<h3 id="librosahttpslibrosagithubiolibrosa"><a href="https://librosa.github.io/librosa/">LibROSA</a></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+
+</code></pre></div>
 </div>
 
 
@@ -149,6 +159,9 @@ sound <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c
             <a href="/scribble">Scribbles</a>
         
             &#183; 
+            <a href="https://o3o.ca/web/accounts/614">Feed</a>
+        
+            &#183; 
             <a href="/about">About Me</a>
         
     
@@ -161,7 +174,27 @@ sound <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c
 </div>
 
 
-        <div class="section footer"></div>
+<div id="lv-container" data-id="city" data-uid="MTAyMC80OTQwNi8yNTg5OA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+
+
+
+
+        <div class="section footer">Copyright © 2020 Gabriel Drapor, All Rights Reserved.</div>
     </div>
 </body>
 

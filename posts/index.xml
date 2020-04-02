@@ -31,6 +31,15 @@
     </item>
     
     <item>
+      <title>gRPC基本使用</title>
+      <link>https://drapor.me/posts/191101_grpc/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/191101_grpc/</guid>
+      <description>&lt;p&gt;以Python做Server，Golang做Client为例。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>在Python中调用C/C&#43;&#43;动态库</title>
       <link>https://drapor.me/posts/190801_py_with_c/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>

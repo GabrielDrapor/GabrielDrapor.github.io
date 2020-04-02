@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://drapor.me/scribble/jw_01/</loc>
+    <lastmod>2020-01-17T14:52:34+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://drapor.me/scribble/start/</loc>
     <lastmod>2020-01-17T14:52:34+08:00</lastmod>
   </url>
@@ -45,6 +50,16 @@
   <url>
     <loc>https://drapor.me/tags/paths/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/tags/grpc/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/posts/191101_grpc/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
