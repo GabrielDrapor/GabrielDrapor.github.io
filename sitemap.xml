@@ -4,7 +4,17 @@
   
   <url>
     <loc>https://drapor.me/</loc>
-    <lastmod>2020-01-17T14:52:34+08:00</lastmod>
+    <lastmod>2020-04-03T16:00:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/posts/</loc>
+    <lastmod>2020-04-03T16:00:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/posts/20110403_comments_and_sns/</loc>
+    <lastmod>2020-04-03T16:00:59+08:00</lastmod>
   </url>
   
   <url>
@@ -29,11 +39,6 @@
   
   <url>
     <loc>https://drapor.me/posts/200113_proxy_pass_slash/</loc>
-    <lastmod>2020-01-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drapor.me/posts/</loc>
     <lastmod>2020-01-13T00:00:00+00:00</lastmod>
   </url>
   

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+评论插件与SNS探索 - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="评论插件与SNS探索"/>
+<meta name="twitter:description" content="在多说关闭服务将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。"/>
+
+<meta property="og:title" content="评论插件与SNS探索" />
+<meta property="og:description" content="在多说关闭服务将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/20110403_comments_and_sns/" />
+<meta property="article:published_time" content="2020-04-03T16:00:59+08:00" />
+<meta property="article:modified_time" content="2020-04-03T16:00:59+08:00" />
+
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        评论插件与SNS探索
+        
+    </title>
+    <style>
+        #container .reply-content {
+    	    margin-bottom: 10px;
+            margin-top: 8px;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">评论插件与SNS探索</div>
+
+        
+<div class="section" id="content">
+    Fri Apr 03, 2020
+    
+    <hr/>
+    <p>在<a href="https://drapor.me/posts/170507_notice/">多说关闭服务</a>将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。</p>
+<h4 id="评论插件">评论插件</h4>
+<p>多说的替代品不算少，但在各个方面能比得上多说的寥寥无几。这些替代品大致可以分为几类：一类是搜狐畅言*、*网易云跟贴（也已关闭）之类的国内门户网站提供的服务，它们的评论插件样式中带有强烈的品牌特征，嵌入到个人博客中难免风格不匹配；一类是Disqus、HyperComments和Livere一类的外国第三方服务，他们优劣各有不同，通常的问题是从国内的网络访问服务可能会比较缓慢，甚至根本无法从国内访问到，再者是由于是外国提供的服务，在SNS登陆的支持上通常选择的也是Twitter和Facebook之类的国外SNS，有些优质的服务价格不菲（对于我博客的用量而言），有些样式需要自己花工夫修改和增补CSS；还有一类是基于GitHub Issues的评论服务，依托Github Issues做评论数据的存储和Github的账号服务，这类服务的优劣也很明显：需要Github账号，国内网络访问也会受到一定程度的影响。</p>
+<p>我其实一开始打算直接用LiveRe（即来必力）来着，LiveRe对国内的SNS也算是不错了，访问速度略慢但是等一会儿还是可以的。让我比较烦恼的问题是，LiveRe的样式，在我博客的底色上，颜色和样式都有点不太融洽，我尝试自己写CSS修改，但囿于个人的配色能力，改来改去还是觉得不满意。后来转念一想，会看我博客的人大概都是圈内的人，也大多都有GitHub账号，索性直接从基于Github Issues的评论服务中挑一个好看的好了，于是最后决定采用<a href="%5Bhttps://gitalk.github.io/%5D(https://gitalk.github.io/)">Gitalk</a>。配置方法不再赘述，非常简单方便。</p>
+<hr>
+<h4 id="sns">SNS</h4>
+<p>很长时间以来，我对SNS的态度摇摆不定，一方面，我对日常生活确实有表达欲，很想po一些内容，但另一方面，每个SNS都似乎不能让我畅快地抒发心情。在此之前的一小段时间里一直在用即刻的内测版Jellow，但逐渐地，中心化的SNS社区依然会让我感到不适。于是开始考虑自建SNS是否可行，以及是否有某种替代方案。新的方案希望最好是去中心化的，可自动化的，同时po内容也足够便利。经过一番探索。最终，我发现了<a href="%5Bhttps://joinmastodon.org/%5D(https://joinmastodon.org/)">Mastodon</a>。</p>
+<p>简单说，Mastodon就是可以自建的SNS，任何人都可以用开源的代码部署一套Mastodon，创建一个新的Mastodon instance，而且通常情况下，这些Mastodon宇宙（不同的instance）之间也是可以互联的。我发现自己一年前注册的<a href="https://o3o.ca/">https://o3o.ca/</a> 其实也是Mastodon的一个instance；</p>
+<p>App方面，我下了Mastodon官网推荐的Tusky。原想这类开源生态中的免费app大概只能提供可用的基本功能，不能过多奢望UI和产品设计。意外的是，Tusky的UI和Twitter的app非常像。更妙的是Tusky还支持在下拉菜单中添加Shortcut按钮，点击按钮可以直接进入Compose页，而Twitter都并没有做过类似（哪怕是桌面Widget）的支持。</p>
+<img src="/tusky.jpg">
+<p>此外，利用Mastodon提供的API，还可以用IFTTT做Applet，把其他地方的动态也同步到Mastodon上。比如利用我的豆瓣RSS更新作为Trigger，用Webhooks把豆瓣广播转发到Mastodon上。</p>
+<img src="/ifttt_mastodon.jpg">
+<p>不出意外的话，自建Mastodon应该就是我用SNS的终点了。</p>
+<p>不禁感叹：<strong>开源力量真是大啊！</strong></p>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="https://o3o.ca/@drapor">Feed</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+
+        <div class="section footer">Copyright © 2020 Gabriel Drapor, All Rights Reserved.</div>
+
+
+	
+     <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+      clientID: 'b33898060f51f3637cdb',
+      clientSecret: '264aa9f9ab82c827765c14f5df4d8195bfd26a0d',
+      repo: 'gabrieldrapor.github.io',
+      owner: 'GabrielDrapor',
+      admin: ['GabrielDrapor'],
+      id: location.pathname,      
+      distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+</body>
+
+</html>
