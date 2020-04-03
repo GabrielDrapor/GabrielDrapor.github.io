@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MongoDB on DRAPORLAND</title>
+    <link>https://drapor.me/tags/mongodb/</link>
+    <description>Recent content in MongoDB on DRAPORLAND</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
+    <lastBuildDate>Mon, 24 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://drapor.me/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MongoDB查询优化</title>
+      <link>https://drapor.me/posts/181224_mongodb_query_optimization/</link>
+      <pubDate>Mon, 24 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/181224_mongodb_query_optimization/</guid>
+      <description>&lt;p&gt;部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MongoDB常用查询</title>
+      <link>https://drapor.me/posts/180515_mongodb_common_query/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/180515_mongodb_common_query/</guid>
+      <description>&lt;p&gt;总结了一下自己经常用到的一些MongoDB查询。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用Pymongo连接MongoDB取数</title>
+      <link>https://drapor.me/posts/171122_pymongo/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/171122_pymongo/</guid>
+      <description>&lt;p&gt;最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
