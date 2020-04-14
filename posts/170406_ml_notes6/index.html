@@ -24,7 +24,7 @@ Machine Learning Notes 06 - DRAPORLAND
 
 
 
-<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
 
 
 
@@ -84,16 +84,16 @@ Machine Learning Notes 06 - DRAPORLAND
     
     <hr/>
     <h2 id="how-biological-neural-network-work">How biological neural network work</h2>
-<p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that's approximately how biological nerual network run.</p>
+<p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that&rsquo;s approximately how biological nerual network run.</p>
 <img src="/article_imgs/neuron.jpg">
 <hr>
 <p><escape><!-- more --></escape></p>
 <h2 id="how-artificial-neural-network-work">How artificial neural network work</h2>
 <img src="/article_imgs/perceptron.jpg" width="500">
 <p>  The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
-<p>  And here's what a three-layer ann looks like,</p>
+<p>  And here&rsquo;s what a three-layer ann looks like,</p>
 <img src="/article_imgs/3lann.jpg" height="200">
-<p>  The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, &hellip;, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that's why we need more).</p>
+<p>  The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, &hellip;, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that&rsquo;s why we need more).</p>
 <hr>
 <h2 id="feedforward-propagation-algorithm">Feedforward Propagation Algorithm</h2>
 <p>  We obtain the output first, by:</p>

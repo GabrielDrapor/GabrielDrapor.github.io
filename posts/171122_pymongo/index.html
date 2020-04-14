@@ -24,7 +24,7 @@
 
 
 
-<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
 
 
 
@@ -91,7 +91,7 @@
     <hr/>
     <p>最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> pymongo <span style="color:#ff79c6">import</span> MongoClient
-client <span style="color:#ff79c6">=</span> MongoClient(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">mongodb://x.x.x.x:xxxxx</span><span style="color:#f1fa8c">&#39;</span>)
+client <span style="color:#ff79c6">=</span> MongoClient(<span style="color:#f1fa8c">&#39;mongodb://x.x.x.x:xxxxx&#39;</span>)
 
 db <span style="color:#ff79c6">=</span> client<span style="color:#ff79c6">.</span>[DATABASES_NAME]
 
@@ -99,7 +99,7 @@ db <span style="color:#ff79c6">=</span> client<span style="color:#ff79c6">.</spa
 
 collections <span style="color:#ff79c6">=</span> db[COLLECTION_NAME]
 
-collections<span style="color:#ff79c6">.</span>find(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">{xxx:xxxxx,xxx:xxx}</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># Execute the query, which is equivalent to db.getCollection(&#39;xxx&#39;).find({})</span>
+collections<span style="color:#ff79c6">.</span>find(<span style="color:#f1fa8c">&#39;{xxx:xxxxx,xxx:xxx}&#39;</span>)  <span style="color:#6272a4"># Execute the query, which is equivalent to db.getCollection(&#39;xxx&#39;).find({})</span>
 collections<span style="color:#ff79c6">.</span>find_one  <span style="color:#6272a4">#same as db.getCollection(&#39;xxx&#39;).findOne({})</span></code></pre></div>
 </div>
 

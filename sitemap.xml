@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://drapor.me/</loc>
-    <lastmod>2020-04-03T16:00:59+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://drapor.me/posts/</loc>
     <lastmod>2020-04-03T16:00:59+08:00</lastmod>
   </url>
@@ -94,6 +89,11 @@
   
   <url>
     <loc>https://drapor.me/2019-reading-list/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   

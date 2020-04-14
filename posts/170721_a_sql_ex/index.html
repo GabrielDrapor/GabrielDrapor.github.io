@@ -24,7 +24,7 @@ Codewars上一道5 kyu的SQL题 - DRAPORLAND
 
 
 
-<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
 
 
 
@@ -91,7 +91,7 @@ Codewars上一道5 kyu的SQL题 - DRAPORLAND
        <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">DISTINCT</span> p1.title) <span style="color:#ff79c6">AS</span> <span style="color:#ff79c6">count</span>,
        <span style="color:#ff79c6">COUNT</span>(p2.title)<span style="color:#ff79c6">/</span><span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">DISTINCT</span> p1.title) <span style="color:#ff79c6">AS</span> total
 <span style="color:#ff79c6">FROM</span> posts p1 <span style="color:#ff79c6">INNER</span> <span style="color:#ff79c6">JOIN</span> posts p2
-  <span style="color:#ff79c6">ON</span> to_char(p1.created_at, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">YYYY-MM-DD</span><span style="color:#f1fa8c">&#39;</span>) <span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">=</span> to_char(p2.created_at, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">YYYY-MM-DD</span><span style="color:#f1fa8c">&#39;</span>)
+  <span style="color:#ff79c6">ON</span> to_char(p1.created_at, <span style="color:#f1fa8c">&#39;YYYY-MM-DD&#39;</span>) <span style="color:#ff79c6">&gt;=</span> to_char(p2.created_at, <span style="color:#f1fa8c">&#39;YYYY-MM-DD&#39;</span>)
 <span style="color:#ff79c6">GROUP</span> <span style="color:#ff79c6">BY</span> <span style="color:#8be9fd;font-style:italic">date</span>
 <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> <span style="color:#8be9fd;font-style:italic">date</span></code></pre></div>
 </div>

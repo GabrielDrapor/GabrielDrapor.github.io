@@ -24,7 +24,7 @@ SQL Syntax(Ⅰ) - DRAPORLAND
 
 
 
-<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
 
 
 
@@ -103,7 +103,7 @@ SQL Syntax(Ⅰ) - DRAPORLAND
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
 <span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-<span style="color:#ff79c6">WHERE</span> ROWNUM <span style="color:#ff79c6">&lt;</span><span style="color:#ff79c6">=</span> [num];</code></pre></div>
+<span style="color:#ff79c6">WHERE</span> ROWNUM <span style="color:#ff79c6">&lt;=</span> [num];</code></pre></div>
 <ul>
 <li>In MySQL, MariaDB, PostgreSQL and SQLite</li>
 </ul>
@@ -121,16 +121,16 @@ SQL Syntax(Ⅰ) - DRAPORLAND
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">#</span> Here <span style="color:#ff79c6">is</span> a <span style="color:#ff79c6">comment</span>
 <span style="color:#ff79c6">SELECT</span> column0 <span style="color:#6272a4">-- Here is also a comment
 </span><span style="color:#6272a4"></span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;
-<span style="color:#6272a4">/*</span><span style="color:#6272a4">
+<span style="color:#6272a4">/*
 </span><span style="color:#6272a4">Also a comment~
-</span><span style="color:#6272a4"></span><span style="color:#6272a4">*/</span></code></pre></div>
+</span><span style="color:#6272a4">*/</span></code></pre></div>
 <hr>
 <h2 id="排列检索数据">排列检索数据</h2>
 <h2 id="hahahugoshortcode-s7-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
 <span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
 <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> column0, column1, ...;
 <span style="color:#6272a4">-- Also, you can use order numbers to represent certain column
-</span><span style="color:#6272a4"></span><span style="color:#6272a4">-- Use &#39;DESC&#39; or &#39;ASC&#39; in the end to assigned the order direction</span></code></pre></div></h2>
+</span><span style="color:#6272a4">-- Use &#39;DESC&#39; or &#39;ASC&#39; in the end to assigned the order direction</span></code></pre></div></h2>
 <h2 id="过滤数据">过滤数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
 <span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
@@ -172,7 +172,7 @@ SQL Syntax(Ⅰ) - DRAPORLAND
 </tr>
 <tr>
 <td align="center">[]</td>
-<td align="center">指定一个字符集, 如 [JM] 匹配'J'和'M&rsquo;（用&quot;^&quot;可以否定）</td>
+<td align="center">指定一个字符集, 如 [JM] 匹配&rsquo;J&rsquo;和&rsquo;M&rsquo;（用&quot;^&quot;可以否定）</td>
 </tr>
 </tbody>
 </table>

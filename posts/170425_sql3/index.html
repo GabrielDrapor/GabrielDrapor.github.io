@@ -24,7 +24,7 @@ SQL Syntax(Ⅲ) - DRAPORLAND
 
 
 
-<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
 
 
 
@@ -106,7 +106,7 @@ SQL Syntax(Ⅲ) - DRAPORLAND
 <span style="color:#ff79c6">FROM</span> Customers <span style="color:#ff79c6">AS</span> <span style="color:#ff79c6">C</span>, Orders <span style="color:#ff79c6">AS</span> O, OrderItems <span style="color:#ff79c6">AS</span> OI
 <span style="color:#ff79c6">WHERE</span> <span style="color:#ff79c6">C</span>.cust_id <span style="color:#ff79c6">=</span> O.cust_id
  <span style="color:#ff79c6">AND</span> OI.order_num <span style="color:#ff79c6">=</span> O.order_num
- <span style="color:#ff79c6">AND</span> prod_id <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">RGAN01</span><span style="color:#f1fa8c">&#39;</span></code></pre></div>
+ <span style="color:#ff79c6">AND</span> prod_id <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;RGAN01&#39;</span></code></pre></div>
 P.S.:Oracle中没有AS这个用法</p>
 <h5 id="其他类型的联结">其他类型的联结</h5>
 <ul>
@@ -117,11 +117,11 @@ P.S.:Oracle中没有AS这个用法</p>
 <span style="color:#ff79c6">FROM</span> Customers
 <span style="color:#ff79c6">WHERE</span> cust_name <span style="color:#ff79c6">=</span> (<span style="color:#ff79c6">SELECT</span> cust_name
                    <span style="color:#ff79c6">FROM</span> Customers
-                   <span style="color:#ff79c6">WHERE</span> cust_contact <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">Jim Jones</span><span style="color:#f1fa8c">&#39;</span>);</code></pre></div>
+                   <span style="color:#ff79c6">WHERE</span> cust_contact <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;Jim Jones&#39;</span>);</code></pre></div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> c1.cust_id, c1.cust_name, c1.cust_contact
 <span style="color:#ff79c6">FROM</span> Customers <span style="color:#ff79c6">AS</span> c1, Customers <span style="color:#ff79c6">AS</span> c2
 <span style="color:#ff79c6">WHERE</span> c1.cust_name <span style="color:#ff79c6">=</span> c2.cust_name
- <span style="color:#ff79c6">AND</span> c2.cust_contract <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">Jim Jones</span><span style="color:#f1fa8c">&#39;</span>;</code></pre></div>
+ <span style="color:#ff79c6">AND</span> c2.cust_contract <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;Jim Jones&#39;</span>;</code></pre></div>
 　　第一段使用了子查询,而第二段使用了联结，他们的效果是一样的，但在许多DBMS中，处理联结远比子查询快得多。
 　　</p>
 <ul>
@@ -135,7 +135,7 @@ P.S.:Oracle中没有AS这个用法</p>
 <span style="color:#ff79c6">FROM</span> Customers <span style="color:#ff79c6">AS</span> <span style="color:#ff79c6">C</span>, Orders <span style="color:#ff79c6">AS</span> O, OrderItems <span style="color:#ff79c6">AS</span> OI
 <span style="color:#ff79c6">WHERE</span> <span style="color:#ff79c6">C</span>.cust_id <span style="color:#ff79c6">=</span> O.cust_id
  <span style="color:#ff79c6">AND</span> OI.order_num <span style="color:#ff79c6">=</span> O.order_num
- <span style="color:#ff79c6">AND</span> prod_id <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">RGAN01</span><span style="color:#f1fa8c">&#39;</span>;</code></pre></div>
+ <span style="color:#ff79c6">AND</span> prod_id <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;RGAN01&#39;</span>;</code></pre></div>
 <ul>
 <li>外联结
 包含在相关表中没有关联行的行的联结，称为外联结(outer join)。用法如：</li>
@@ -158,11 +158,11 @@ P.S.:Oracle中没有AS这个用法</p>
 <h5 id="使用union">使用UNION</h5>
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> cust_name, cust_contact, cust_email
 <span style="color:#ff79c6">FROM</span> Customers
-<span style="color:#ff79c6">WHERE</span> cust_state <span style="color:#ff79c6">IN</span> (<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">IL</span><span style="color:#f1fa8c">&#39;</span>, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">IN</span><span style="color:#f1fa8c">&#39;</span>, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">MI</span><span style="color:#f1fa8c">&#39;</span>)
+<span style="color:#ff79c6">WHERE</span> cust_state <span style="color:#ff79c6">IN</span> (<span style="color:#f1fa8c">&#39;IL&#39;</span>, <span style="color:#f1fa8c">&#39;IN&#39;</span>, <span style="color:#f1fa8c">&#39;MI&#39;</span>)
 <span style="color:#ff79c6">UNION</span>
 <span style="color:#ff79c6">SELECT</span> cust_name, cust_contact, cust_email
 <span style="color:#ff79c6">FROM</span> Customers
-<span style="color:#ff79c6">WHERE</span> cust_name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">Fun4All</span><span style="color:#f1fa8c">&#39;</span>;</code></pre></div>
+<span style="color:#ff79c6">WHERE</span> cust_name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;Fun4All&#39;</span>;</code></pre></div>
 　　当然这里可以用OR达成同样的效果，但对于较复杂的过滤条件，或者从多个表检索数据的情形，使用UNION可能会使处理更简单。另外需要注意,UNION每个查询必须包含相同的列，表达式或聚集函数。</p>
 <p>　　此外，UNION会默认自动取消重复的行，当然如果有需要，也可以改变它，使用UNION ALL即可。如果需要对组合查询的结果进行排序，只需要在最后加上ORDER BY即可。</p>
 <hr>

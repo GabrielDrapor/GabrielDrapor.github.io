@@ -24,7 +24,7 @@ Machine Learning Notes 07 - DRAPORLAND
 
 
 
-<link rel="stylesheet" href="/css/main.min.8838e9b23ac21efd16a4bff8ff077840765452fb485b7a4141652c7d2bc7799b.css" integrity="sha256-iDjpsjrCHv0WpL/4/wd4QHZUUvtIW3pBQWUsfSvHeZs=" crossorigin="anonymous" media="screen">
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
 
 
 
@@ -93,15 +93,15 @@ Machine Learning Notes 07 - DRAPORLAND
 <li>Try decreasing $\lambda$;</li>
 <li>Try increasing $\lambda$;</li>
 </ul>
-<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn't working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
+<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn&rsquo;t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
 <p><escape><!-- more --></escape></p>
 <hr>
 <h2 id="evaluating-a-hypothesis">Evaluating a hypothesis</h2>
-<p>To evaluating whether a hypothesis is good or bad (and we don't have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p>
+<p>To evaluating whether a hypothesis is good or bad (and we don&rsquo;t have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p>
 <hr>
 <h2 id="model-selection">Model Selection</h2>
 <p>Take linear regression as a example, we use $h_{\theta}(x) = \theta_0 +\theta_1 x + \theta_2 x^2 +&hellip; $ as our hypothesis function, and we can add the degree of polynomial to make our hypothe/.sis better, but it may brings the over fitting problem, so we need to find out the best degree.</p>
-<p>To  achieve so, we can compute the $J_{test}$(cost of different degrees $d$ on test set), and choose the best $d$, but it's only fit to the test set. So we divide the data set into three parts:</p>
+<p>To  achieve so, we can compute the $J_{test}$(cost of different degrees $d$ on test set), and choose the best $d$, but it&rsquo;s only fit to the test set. So we divide the data set into three parts:</p>
 <ul>
 <li>training set (60% usually)</li>
 <li>cross validation set (20% usually)</li>
@@ -118,22 +118,22 @@ Machine Learning Notes 07 - DRAPORLAND
 </ul>
 <h3 id="diagnosing-bias-vs-variance">Diagnosing bias vs. variance</h3>
 <ul>
-<li>If $J_{train}$ is high and $J_{cv}\approx J_{train}$, we can tell it's a <strong>bias</strong> problem;</li>
-<li>If $J_{train}$ is low and $J_{cv}\gg J_{train}$, we can tell it's a <strong>variance</strong> problem;</li>
+<li>If $J_{train}$ is high and $J_{cv}\approx J_{train}$, we can tell it&rsquo;s a <strong>bias</strong> problem;</li>
+<li>If $J_{train}$ is low and $J_{cv}\gg J_{train}$, we can tell it&rsquo;s a <strong>variance</strong> problem;</li>
 </ul>
 <hr>
 <h2 id="about-regularization">About regularization</h2>
-<p>As we know, appropriate $\lambda$ (regularization parameter) can help to prevent over fitting, but when the $\lambda$ is too large or too small. it won't work as so:</p>
+<p>As we know, appropriate $\lambda$ (regularization parameter) can help to prevent over fitting, but when the $\lambda$ is too large or too small. it won&rsquo;t work as so:</p>
 <img src="/article_imgs/different_lambda.JPG">
 <p>So choosing appropriate value of $\lambda$ is very necessary.</p>
 <p>We can try different $\lambda$, minimize $J(\theta)$, then compute $J_{cv}$ (like what we do the model selection), and we can finf the best $\lambda$.</p>
 <hr>
 <h2 id="learning-curves">Learning Curves</h2>
-<p>The learning curves describe the relationship of $m$(training set size) and error($J_{cv},J_{train}$), it's look like:</p>
+<p>The learning curves describe the relationship of $m$(training set size) and error($J_{cv},J_{train}$), it&rsquo;s look like:</p>
 <img src="/article_imgs/learningcurves.JPG" width="500">
 <p>And if the algorithm is suffering from high bias, the learning curve is look like:</p>
 <img src="/article_imgs/high_bias_curve.JPG" width="500">
-<p>We can see from the graph that the increasing $m$ doesn't help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p>
+<p>We can see from the graph that the increasing $m$ doesn&rsquo;t help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p>
 <p>While if the algorithm is suffering from high variance, the learning curve is look like:</p>
 <img src="/article_imgs/high_var_curve.JPG" width="500">
 <p>From the graph we can see that there is a gap between $J_{cv}$ and $J_{train}$, and as $m$ increasing, the gap diminishes and the bias is also decreasing. So we can conclude that getting more training data is helpful to solve the high-variance problem.</p>
