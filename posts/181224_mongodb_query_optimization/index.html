@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+MongoDB查询优化 - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MongoDB查询优化"/>
+<meta name="twitter:description" content="部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。"/>
+
+<meta property="og:title" content="MongoDB查询优化" />
+<meta property="og:description" content="部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/181224_mongodb_query_optimization/" />
+<meta property="article:published_time" content="2018-12-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-12-24T00:00:00+00:00" />
+
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        MongoDB查询优化
+        
+    </title>
+    <style>
+        #container .reply-content {
+    	    margin-bottom: 10px;
+            margin-top: 8px;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">MongoDB查询优化</div>
+
+        
+<div class="section" id="content">
+    Mon Dec 24, 2018
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/mongodb">
+                #mongodb
+            </a>
+        </span>
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/python">
+                #Python
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p>部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。</p>
+<h4 id="一关于索引">一、关于索引</h4>
+<h5 id="1-建索引">1. 建索引</h5>
+<p>在Collection上建立索引是非常有必要的，特别是需要在海量的数据中根据某个键查出一条数据时，索引就显得更加重要了。</p>
+<p>举个栗子：</p>
+<p>有一张记录用户行为历史的Collection，数据量在百万级，查询同一条记录，</p>
+<ul>
+<li>无索引：</li>
+</ul>
+<img src="/article_imgs/without_index.png">
+<ul>
+<li>有索引：</li>
+</ul>
+<img src="/article_imgs/with_index.png">
+<p>可以明显地看出，有索引带来的速度提升是非常巨大的。</p>
+<h5 id="2-关于组合索引">2. 关于组合索引</h5>
+<p>当查询需要匹配多个键时，使用复合索引和建立“组合”索引（即将两个键拼成一个键）的查询速度差距不大。</p>
+<h4 id="二关于查询方式">二、关于查询方式</h4>
+<h5 id="1--将多次查询合并到一次中">1.  将多次查询合并到一次中</h5>
+<p>再举个栗子：
+现在需要以一个DataFrame中某一列的每个值进行匹配查询，此时，和用pd.Series.apply()方法挨个做查询相比，使用mongodb的条件操作符$in一起查询，然后再merge回原来的DataFrame会更快一些：
+<img src="/article_imgs/traverse_or_not.png"></p>
+<h5 id="2-find和find_one">2. find()和find_one()</h5>
+<p>在已知查询记录只有一条时，可以用find_one()替代find()来减少一次slice操作（但其实很快），但经过测试，发现find()和find_one()的速度并没有很大的差距；</p>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="https://o3o.ca/@drapor">Feed</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+
+        <div class="section footer">Copyright © 2020 Gabriel Drapor, All Rights Reserved.</div>
+
+
+	
+     <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+      clientID: 'b33898060f51f3637cdb',
+      clientSecret: '264aa9f9ab82c827765c14f5df4d8195bfd26a0d',
+      repo: 'gabrieldrapor.github.io',
+      owner: 'GabrielDrapor',
+      admin: ['GabrielDrapor'],
+      id: location.pathname,      
+      distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pandas on DRAPORLAND</title>
+    <link>https://drapor.me/categories/pandas/</link>
+    <description>Recent content in pandas on DRAPORLAND</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
+    <lastBuildDate>Wed, 14 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://drapor.me/categories/pandas/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>pandas笔记</title>
+      <link>https://drapor.me/posts/170614-pandas/</link>
+      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://drapor.me/posts/170614-pandas/</guid>
+      <description>&lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&lt;/p&gt;
+&lt;p&gt;并不是全部，后面还有一些用法实在是不想啃了，等用到再来学吧……&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

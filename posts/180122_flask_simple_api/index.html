@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+用Flask实现一个简单的带POST的api - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用Flask实现一个简单的带POST的api"/>
+<meta name="twitter:description" content="小记如何用Flask实现一个带POST的api。"/>
+
+<meta property="og:title" content="用Flask实现一个简单的带POST的api" />
+<meta property="og:description" content="小记如何用Flask实现一个带POST的api。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/180122_flask_simple_api/" />
+<meta property="article:published_time" content="2018-01-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-01-22T00:00:00+00:00" />
+
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        用Flask实现一个简单的带POST的api
+        
+    </title>
+    <style>
+        #container .reply-content {
+    	    margin-bottom: 10px;
+            margin-top: 8px;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">用Flask实现一个简单的带POST的api</div>
+
+        
+<div class="section" id="content">
+    Mon Jan 22, 2018
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/python">
+                #Python
+            </a>
+        </span>
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/flask">
+                #Flask
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p>小记如何用Flask实现一个带POST的api。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
+
+<span style="color:#ff79c6">import</span> json
+<span style="color:#ff79c6">from</span> flask <span style="color:#ff79c6">import</span> Flask, request, Response
+<span style="color:#ff79c6">from</span> logging <span style="color:#ff79c6">import</span> FileHandler, INFO, Formatter
+
+
+app <span style="color:#ff79c6">=</span> Flask(__name__)
+
+<span style="color:#6272a4"># log</span>
+err_log <span style="color:#ff79c6">=</span> FileHandler(<span style="color:#f1fa8c">&#39;error_log_&#39;</span><span style="color:#ff79c6">+</span>time<span style="color:#ff79c6">.</span>strftime(<span style="color:#f1fa8c">&#39;%Y%m</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">&#39;</span>,time<span style="color:#ff79c6">.</span>localtime()))
+err_log<span style="color:#ff79c6">.</span>setLevel(INFO)  <span style="color:#6272a4">#设置日志级别</span>
+logging_format <span style="color:#ff79c6">=</span> Formatter(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%(asctime)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(levelname)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(filename)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(funcName)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(lineno)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(message)s</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># 日志格式</span>
+err_log<span style="color:#ff79c6">.</span>setFormatter(logging_format)
+app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span>addHandler(err_log)
+
+
+@app.route(<span style="color:#f1fa8c">&#39;/&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;POST&#39;</span>,<span style="color:#f1fa8c">&#39;GET&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">CERTAIN_FUNCTION</span>():
+    <span style="color:#ff79c6">if</span> request<span style="color:#ff79c6">.</span>method <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;POST&#39;</span>:
+        <span style="color:#ff79c6">...</span>  <span style="color:#6272a4">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
+        <span style="color:#ff79c6">return</span> Response(json<span style="color:#ff79c6">.</span>dumps(xxxx), mimetype<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;application/json&#39;</span>)  <span style="color:#6272a4"># 如果需要回传json的话</span>
+<span style="color:#6272a4">#       return xxx 当然也可直接回传字符串或某个方法 </span>
+
+
+<span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
+    app<span style="color:#ff79c6">.</span>run(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;x.x.x.x&#39;</span>,port<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;xxxx&#39;</span>)</code></pre></div>
+<blockquote>
+<p>Reference:</p>
+<ul>
+<li>
+<p><a href="http://docs.jinkan.org/docs/flask/quickstart.html">http://docs.jinkan.org/docs/flask/quickstart.html</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=LGlRYlbawnE">https://www.youtube.com/watch?v=LGlRYlbawnE</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/wanghaonull/p/6537823.html">http://www.cnblogs.com/wanghaonull/p/6537823.html</a></p>
+</li>
+<li>
+<p><a href="http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html">http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</a></p>
+</li>
+</ul>
+</blockquote>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="https://o3o.ca/@drapor">Feed</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+
+        <div class="section footer">Copyright © 2020 Gabriel Drapor, All Rights Reserved.</div>
+
+
+	
+     <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+      clientID: 'b33898060f51f3637cdb',
+      clientSecret: '264aa9f9ab82c827765c14f5df4d8195bfd26a0d',
+      repo: 'gabrieldrapor.github.io',
+      owner: 'GabrielDrapor',
+      admin: ['GabrielDrapor'],
+      id: location.pathname,      
+      distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+</body>
+
+</html>
