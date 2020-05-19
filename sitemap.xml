@@ -3,12 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://drapor.me/posts/</loc>
-    <lastmod>2020-04-03T16:00:59+08:00</lastmod>
+    <loc>https://drapor.me/posts/200413_insomnia/</loc>
+    <lastmod>2020-04-14T12:37:05+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/20110403_comments_and_sns/</loc>
+    <loc>https://drapor.me/</loc>
+    <lastmod>2020-04-14T12:37:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/posts/</loc>
+    <lastmod>2020-04-14T12:37:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/tags/</loc>
+    <lastmod>2020-04-14T12:37:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/tags/tools/</loc>
+    <lastmod>2020-04-14T12:37:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/posts/200403_comments_and_sns/</loc>
     <lastmod>2020-04-03T16:00:59+08:00</lastmod>
   </url>
   
@@ -34,11 +54,6 @@
   
   <url>
     <loc>https://drapor.me/posts/200113_proxy_pass_slash/</loc>
-    <lastmod>2020-01-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drapor.me/tags/</loc>
     <lastmod>2020-01-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -89,11 +104,6 @@
   
   <url>
     <loc>https://drapor.me/2019-reading-list/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drapor.me/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   

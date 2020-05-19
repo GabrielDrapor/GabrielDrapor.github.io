@@ -7,17 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
-    <lastBuildDate>Fri, 03 Apr 2020 16:00:59 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2020 12:37:05 +0800</lastBuildDate>
     
 	<atom:link href="https://drapor.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Alternative to Postman: Insomnia</title>
+      <link>https://drapor.me/posts/200413_insomnia/</link>
+      <pubDate>Tue, 14 Apr 2020 12:37:05 +0800</pubDate>
+      
+      <guid>https://drapor.me/posts/200413_insomnia/</guid>
+      <description>&lt;p&gt;I gradually dissatisfied with Postman recently for many reasons, then I found a open source alternative &amp;mdash; &lt;a href=&#34;https://insomnia.rest/&#34;&gt;Insomnia&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>评论插件与SNS探索</title>
-      <link>https://drapor.me/posts/20110403_comments_and_sns/</link>
+      <link>https://drapor.me/posts/200403_comments_and_sns/</link>
       <pubDate>Fri, 03 Apr 2020 16:00:59 +0800</pubDate>
       
-      <guid>https://drapor.me/posts/20110403_comments_and_sns/</guid>
+      <guid>https://drapor.me/posts/200403_comments_and_sns/</guid>
       <description>&lt;p&gt;在&lt;a href=&#34;https://drapor.me/posts/170507_notice/&#34;&gt;多说关闭服务&lt;/a&gt;将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。&lt;/p&gt;</description>
     </item>
     

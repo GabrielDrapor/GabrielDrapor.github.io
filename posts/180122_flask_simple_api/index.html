@@ -100,23 +100,23 @@
 app <span style="color:#ff79c6">=</span> Flask(__name__)
 
 <span style="color:#6272a4"># log</span>
-err_log <span style="color:#ff79c6">=</span> FileHandler(<span style="color:#f1fa8c">&#39;error_log_&#39;</span><span style="color:#ff79c6">+</span>time<span style="color:#ff79c6">.</span>strftime(<span style="color:#f1fa8c">&#39;%Y%m</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">&#39;</span>,time<span style="color:#ff79c6">.</span>localtime()))
+err_log <span style="color:#ff79c6">=</span> FileHandler(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">error_log_</span><span style="color:#f1fa8c">&#39;</span><span style="color:#ff79c6">+</span>time<span style="color:#ff79c6">.</span>strftime(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%</span><span style="color:#f1fa8c">Y</span><span style="color:#f1fa8c">%</span><span style="color:#f1fa8c">m</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">&#39;</span>,time<span style="color:#ff79c6">.</span>localtime()))
 err_log<span style="color:#ff79c6">.</span>setLevel(INFO)  <span style="color:#6272a4">#设置日志级别</span>
-logging_format <span style="color:#ff79c6">=</span> Formatter(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%(asctime)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(levelname)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(filename)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(funcName)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(lineno)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(message)s</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># 日志格式</span>
+logging_format <span style="color:#ff79c6">=</span> Formatter(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%(asctime)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(levelname)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(filename)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(funcName)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(lineno)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(message)s</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># 日志格式</span>
 err_log<span style="color:#ff79c6">.</span>setFormatter(logging_format)
 app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span>addHandler(err_log)
 
 
-@app.route(<span style="color:#f1fa8c">&#39;/&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;POST&#39;</span>,<span style="color:#f1fa8c">&#39;GET&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
+@app.route(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">/</span><span style="color:#f1fa8c">&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">POST</span><span style="color:#f1fa8c">&#39;</span>,<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">GET</span><span style="color:#f1fa8c">&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
 <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">CERTAIN_FUNCTION</span>():
-    <span style="color:#ff79c6">if</span> request<span style="color:#ff79c6">.</span>method <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;POST&#39;</span>:
-        <span style="color:#ff79c6">...</span>  <span style="color:#6272a4">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
-        <span style="color:#ff79c6">return</span> Response(json<span style="color:#ff79c6">.</span>dumps(xxxx), mimetype<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;application/json&#39;</span>)  <span style="color:#6272a4"># 如果需要回传json的话</span>
+    <span style="color:#ff79c6">if</span> request<span style="color:#ff79c6">.</span>method <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">POST</span><span style="color:#f1fa8c">&#39;</span>:
+        <span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span>  <span style="color:#6272a4">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
+        <span style="color:#ff79c6">return</span> Response(json<span style="color:#ff79c6">.</span>dumps(xxxx), mimetype<span style="color:#ff79c6">=</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">application/json</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># 如果需要回传json的话</span>
 <span style="color:#6272a4">#       return xxx 当然也可直接回传字符串或某个方法 </span>
 
 
-<span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
-    app<span style="color:#ff79c6">.</span>run(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;x.x.x.x&#39;</span>,port<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;xxxx&#39;</span>)</code></pre></div>
+<span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">__main__</span><span style="color:#f1fa8c">&#39;</span>:
+    app<span style="color:#ff79c6">.</span>run(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">x.x.x.x</span><span style="color:#f1fa8c">&#39;</span>,port<span style="color:#ff79c6">=</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">xxxx</span><span style="color:#f1fa8c">&#39;</span>)</code></pre></div>
 <blockquote>
 <p>Reference:</p>
 <ul>

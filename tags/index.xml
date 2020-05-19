@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
-    <lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2020 12:37:05 +0800</lastBuildDate>
     
 	<atom:link href="https://drapor.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tools</title>
+      <link>https://drapor.me/tags/tools/</link>
+      <pubDate>Tue, 14 Apr 2020 12:37:05 +0800</pubDate>
+      
+      <guid>https://drapor.me/tags/tools/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Nginx</title>

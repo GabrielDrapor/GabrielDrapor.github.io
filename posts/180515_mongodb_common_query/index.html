@@ -87,22 +87,22 @@ MongoDB常用查询 - DRAPORLAND
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">db.collection.find()
 <span style="color:#6272a4">// SELECT * FROM xxx
 </span><span style="color:#6272a4"></span>
-db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... } ) 
+db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... } ) 
 <span style="color:#6272a4">// SELECT * FROM xxx WHERE field1 = value1
 </span><span style="color:#6272a4"></span>
-db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... }, { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#bd93f9">1</span>, <span style="color:#ff79c6">&lt;</span>field2<span style="color:#ff79c6">&gt;:</span> <span style="color:#bd93f9">0</span>, ... } ) 
+db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... }, { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>, <span style="color:#ff79c6">&lt;</span>field2<span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">:</span> <span style="color:#bd93f9">0</span>, ... } ) 
 <span style="color:#6272a4">// SELECT _id, field1 FROM xxx WHERE field1 = value1
 </span><span style="color:#6272a4"></span>
-db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> { $lt<span style="color:#ff79c6">:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span> } } ) 
+db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">:</span> { $lt<span style="color:#ff79c6">:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span> } } ) 
 <span style="color:#6272a4">//SELECT * FROM xxx WHERE field1 &lt; value1 
-</span><span style="color:#6272a4">//Besides $lt, other commmon comparison operators is $lte, $gt, $gte, $in, $nin, $neq
+</span><span style="color:#6272a4"></span><span style="color:#6272a4">//Besides $lt, other commmon comparison operators is $lte, $gt, $gte, $in, $nin, $neq
 </span><span style="color:#6272a4"></span>
 db.collection.find( { $or<span style="color:#ff79c6">:</span> [ { <span style="color:#ff79c6">&lt;</span>condition1<span style="color:#ff79c6">&gt;</span> }, { <span style="color:#ff79c6">&lt;</span>condition2<span style="color:#ff79c6">&gt;</span> }, ... ] } ) 
 <span style="color:#6272a4">//SELECT * FROM xxx WHERE condition1 OR &lt;condition2 
 </span><span style="color:#6272a4"></span>
 db.collection.findOne() 
 <span style="color:#6272a4">//SELECT * FROM xxx LIMIT 1
-</span><span style="color:#6272a4">//When there is sub-field, use dot notation like &#34;field.subfield&#34; to access it
+</span><span style="color:#6272a4"></span><span style="color:#6272a4">//When there is sub-field, use dot notation like &#34;field.subfield&#34; to access it
 </span><span style="color:#6272a4"></span>
 db.collection.find( { ... } ).count() 
 <span style="color:#6272a4">//SELECT COUNT(1) FROM xxx WHERE ...
@@ -119,9 +119,9 @@ db.collection.aggregate( [
 	                      { $group<span style="color:#ff79c6">:</span> { _id<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;$cust_id&#34;</span>, total<span style="color:#ff79c6">:</span> { $sum<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;$amount&#34;</span> } } }
 					   ] )
 <span style="color:#6272a4">//SELECT cust_id, SUM(amount) AS total
-</span><span style="color:#6272a4">//FROM xxx
-</span><span style="color:#6272a4">//WHERE ...
-</span><span style="color:#6272a4">//GROUP BY id
+</span><span style="color:#6272a4"></span><span style="color:#6272a4">//FROM xxx
+</span><span style="color:#6272a4"></span><span style="color:#6272a4">//WHERE ...
+</span><span style="color:#6272a4"></span><span style="color:#6272a4">//GROUP BY id
 </span><span style="color:#6272a4"></span>​                     
 <span style="color:#6272a4">//More abount Aggregation: https://docs.mongodb.com/manual/aggregation/   
 </span></code></pre></div>

@@ -86,7 +86,7 @@
     <p>最近项目中需要用Python调用C/C++的动态库，研究了一下Ctypes。</p>
 <p>上游给出的是编译好的.so文件，以下是用Ctypes调用的方式：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> ctypes <span style="color:#ff79c6">import</span> <span style="color:#ff79c6">*</span>
-lib <span style="color:#ff79c6">=</span> cdll<span style="color:#ff79c6">.</span>LoadLibrary(<span style="color:#f1fa8c">&#39;./xxx.so&#39;</span>)
+lib <span style="color:#ff79c6">=</span> cdll<span style="color:#ff79c6">.</span>LoadLibrary(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">./xxx.so</span><span style="color:#f1fa8c">&#39;</span>)
 
 <span style="color:#6272a4">#假设xxx.so定义了一个init函数</span>
 init <span style="color:#ff79c6">=</span> lib<span style="color:#ff79c6">.</span>init
@@ -99,7 +99,7 @@ i <span style="color:#ff79c6">=</span> c_int(<span style="color:#bd93f9">2</span
 pChar <span style="color:#ff79c6">=</span> (c_char_p <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">4</span>)(addressof(create_string_buffer(<span style="color:#bd93f9">8</span>))) 
 <span style="color:#6272a4"># char * pChar = new char[8];</span>
 
-c_char_p(<span style="color:#f1fa8c">&#34;CERTAIN_STRING&#34;</span><span style="color:#ff79c6">.</span>encode(<span style="color:#f1fa8c">&#34;utf-8&#34;</span>))
+c_char_p(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">CERTAIN_STRING</span><span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">.</span>encode(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">utf-8</span><span style="color:#f1fa8c">&#34;</span>))
 <span style="color:#6272a4"># &#34;CERTAIN_STRING&#34;.c_str()</span>
 
 data <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">3</span>,<span style="color:#bd93f9">4</span>,<span style="color:#bd93f9">5</span>]
@@ -118,7 +118,7 @@ rec<span style="color:#ff79c6">.</span>restype <span style="color:#ff79c6">=</sp
 
 rs <span style="color:#ff79c6">=</span> rec(p)
 <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(p<span style="color:#ff79c6">.</span>contents<span style="color:#ff79c6">.</span>value):
-    <span style="color:#ff79c6">...</span>
+    <span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span>
 rs[<span style="color:#bd93f9">0</span>]
 
 </code></pre></div>

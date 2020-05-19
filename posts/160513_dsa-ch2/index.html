@@ -99,7 +99,7 @@
 		<span style="color:#8be9fd">int</span> LeftBorderSum,RightBorderSum;
 		<span style="color:#8be9fd">int</span> Center,i;
 
-		<span style="color:#ff79c6">if</span>(Left<span style="color:#ff79c6">==</span>Right)   <span style="color:#6272a4">//Base Case,即&#39;基准情形&#39;
+		<span style="color:#ff79c6">if</span>(Left<span style="color:#ff79c6">=</span><span style="color:#ff79c6">=</span>Right)   <span style="color:#6272a4">//Base Case,即&#39;基准情形&#39;
 </span><span style="color:#6272a4"></span>		<span style="color:#ff79c6">if</span> (A[Left]<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">0</span>)
 			<span style="color:#ff79c6">return</span> A[Left];
 		<span style="color:#ff79c6">else</span>
@@ -109,17 +109,17 @@
 		MaxLeftSum<span style="color:#ff79c6">=</span>MaxSubSum(A,Left,Center);<span style="color:#6272a4">//左边中最大的子序列和
 </span><span style="color:#6272a4"></span>		MaxRightSum<span style="color:#ff79c6">=</span>MaxSubSum(A,Center<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>,Right);<span style="color:#6272a4">//右边中最大的子序列和
 </span><span style="color:#6272a4"></span>		MaxLeftBorderSum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; LeftBorderSum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
-		<span style="color:#ff79c6">for</span>(i<span style="color:#ff79c6">=</span>Center;i<span style="color:#ff79c6">&gt;=</span>Left;i<span style="color:#ff79c6">--</span>)<span style="color:#6272a4">//从中心开始向左找最大子序列和
+		<span style="color:#ff79c6">for</span>(i<span style="color:#ff79c6">=</span>Center;i<span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">=</span>Left;i<span style="color:#ff79c6">-</span><span style="color:#ff79c6">-</span>)<span style="color:#6272a4">//从中心开始向左找最大子序列和
 </span><span style="color:#6272a4"></span>		{
-			LeftBorderSum<span style="color:#ff79c6">+=</span>A[i];
+			LeftBorderSum<span style="color:#ff79c6">+</span><span style="color:#ff79c6">=</span>A[i];
 			<span style="color:#ff79c6">if</span>(LeftBorderSum<span style="color:#ff79c6">&gt;</span>MaxLeftBorderSum)
 			MaxLeftBorderSum<span style="color:#ff79c6">=</span> LeftBorderSum;
 		}
 
 		MaxRightBorderSum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; RightBorderSum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
-		<span style="color:#ff79c6">for</span>(i<span style="color:#ff79c6">=</span>Center<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>;i<span style="color:#ff79c6">&lt;=</span>Right;i<span style="color:#ff79c6">+</span>　<span style="color:#ff79c6">+</span>)<span style="color:#6272a4">//从中心开始向右找最大子序列和
+		<span style="color:#ff79c6">for</span>(i<span style="color:#ff79c6">=</span>Center<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>;i<span style="color:#ff79c6">&lt;</span><span style="color:#ff79c6">=</span>Right;i<span style="color:#ff79c6">+</span>　<span style="color:#ff79c6">+</span>)<span style="color:#6272a4">//从中心开始向右找最大子序列和
 </span><span style="color:#6272a4"></span>		{
-			RightBorderSum<span style="color:#ff79c6">+=</span>A[i];
+			RightBorderSum<span style="color:#ff79c6">+</span><span style="color:#ff79c6">=</span>A[i];
 			<span style="color:#ff79c6">if</span>(RightBorderSum<span style="color:#ff79c6">&gt;</span>MaxRightBorderSum)
 			MaxRightBorderSum<span style="color:#ff79c6">=</span>RightBorderSum;
 		}
@@ -150,9 +150,9 @@
 		<span style="color:#8be9fd">int</span> ThisSum,MaxSum,j;
 		
 		ThisSum<span style="color:#ff79c6">=</span>MaxSum<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;
-		<span style="color:#ff79c6">for</span>(j<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;j<span style="color:#ff79c6">&lt;</span>N;j<span style="color:#ff79c6">++</span>)
+		<span style="color:#ff79c6">for</span>(j<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;j<span style="color:#ff79c6">&lt;</span>N;j<span style="color:#ff79c6">+</span><span style="color:#ff79c6">+</span>)
 		{
-			ThisSum<span style="color:#ff79c6">+=</span>A[j];
+			ThisSum<span style="color:#ff79c6">+</span><span style="color:#ff79c6">=</span>A[j];
 			<span style="color:#ff79c6">if</span>(ThisSum <span style="color:#ff79c6">&gt;</span> MaxSum)
 				MaxSum <span style="color:#ff79c6">=</span> ThisSum;
 			<span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span>(ThisSum <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">0</span>)  <span style="color:#6272a4">//这一步是关键，如果前j项和是负的，那就可以扔掉不要了
@@ -176,7 +176,7 @@
 	{
 		<span style="color:#8be9fd">int</span> Low,Mid,High;
 		Low<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;High<span style="color:#ff79c6">=</span>n<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
-		<span style="color:#ff79c6">while</span>(Low <span style="color:#ff79c6">&lt;=</span> High)
+		<span style="color:#ff79c6">while</span>(Low <span style="color:#ff79c6">&lt;</span><span style="color:#ff79c6">=</span> High)
 		{
 			Mid <span style="color:#ff79c6">=</span> (Low<span style="color:#ff79c6">+</span>High) <span style="color:#ff79c6">/</span><span style="color:#bd93f9">2</span>;
 	   	       <span style="color:#ff79c6">if</span>(A[Mid]<span style="color:#ff79c6">&lt;</span>x)
@@ -210,9 +210,9 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O(log N)
 </span><span style="color:#6272a4"></span>	<span style="color:#8be9fd">long</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">Pow</span>(<span style="color:#8be9fd">int</span> X,<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> N)
 	{
-		<span style="color:#ff79c6">if</span>( N <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> )
+		<span style="color:#ff79c6">if</span>( N <span style="color:#ff79c6">=</span><span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span> )
 			<span style="color:#ff79c6">return</span> <span style="color:#bd93f9">1</span>;
-		<span style="color:#ff79c6">if</span>( N <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">1</span> )    <span style="color:#6272a4">/**接下来的两行也可以不写**/</span>
+		<span style="color:#ff79c6">if</span>( N <span style="color:#ff79c6">=</span><span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span> )    <span style="color:#6272a4">/**接下来的两行也可以不写**/</span>
 			<span style="color:#ff79c6">return</span> X;
 		<span style="color:#ff79c6">if</span>( IsEven( N ) )
 			<span style="color:#ff79c6">return</span> Pow( X <span style="color:#ff79c6">*</span> X, N <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span> );

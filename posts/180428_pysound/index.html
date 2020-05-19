@@ -92,9 +92,9 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> pydub <span style="color:#ff79c6">import</span> AudioSegment
 
 <span style="color:#6272a4"># 读取音频文件</span>
-song <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_wav(<span style="color:#f1fa8c">&#34;xxx.wav&#34;</span>)
-song <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_mp3(<span style="color:#f1fa8c">&#34;xxx.mp3&#34;</span>)
-song <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_file(<span style="color:#f1fa8c">&#34;xxx.wav&#34;</span>)
+song <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_wav(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">xxx.wav</span><span style="color:#f1fa8c">&#34;</span>)
+song <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_mp3(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">xxx.mp3</span><span style="color:#f1fa8c">&#34;</span>)
+song <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_file(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">xxx.wav</span><span style="color:#f1fa8c">&#34;</span>)
 
 <span style="color:#6272a4"># 切分音频</span>
 song[:<span style="color:#bd93f9">10</span><span style="color:#ff79c6">*</span><span style="color:#bd93f9">1000</span>]  <span style="color:#6272a4">#last ten seconds</span>
@@ -109,7 +109,7 @@ song <span style="color:#ff79c6">=</span> song <span style="color:#ff79c6">+</sp
 song <span style="color:#ff79c6">=</span> song1 <span style="color:#ff79c6">+</span> song2
 
 <span style="color:#6272a4"># 导出音频</span>
-song<span style="color:#ff79c6">.</span>export(<span style="color:#f1fa8c">&#39;test2.wav&#39;</span>, format<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;wav&#39;</span>)
+song<span style="color:#ff79c6">.</span>export(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">test2.wav</span><span style="color:#f1fa8c">&#39;</span>, format<span style="color:#ff79c6">=</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">wav</span><span style="color:#f1fa8c">&#39;</span>)
 </code></pre></div><ul>
 <li>以及在使用过程中和其他处发现的用法：</li>
 </ul>
@@ -123,7 +123,7 @@ song<span style="color:#ff79c6">.</span>export(<span style="color:#f1fa8c">&#39;
     <span style="color:#6272a4"># Manually override the frame_rate. This tells the computer how many</span>
     <span style="color:#6272a4"># samples to play per second</span>
     sound_with_altered_frame_rate <span style="color:#ff79c6">=</span> sound<span style="color:#ff79c6">.</span>_spawn(sound<span style="color:#ff79c6">.</span>raw_data, overrides<span style="color:#ff79c6">=</span>{
-        <span style="color:#f1fa8c">&#34;frame_rate&#34;</span>: <span style="color:#8be9fd;font-style:italic">int</span>(sound<span style="color:#ff79c6">.</span>frame_rate <span style="color:#ff79c6">*</span> speed)
+        <span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">frame_rate</span><span style="color:#f1fa8c">&#34;</span>: <span style="color:#8be9fd;font-style:italic">int</span>(sound<span style="color:#ff79c6">.</span>frame_rate <span style="color:#ff79c6">*</span> speed)
     })
 
     <span style="color:#6272a4"># convert the sound with altered frame rate to a standard frame rate</span>
@@ -131,7 +131,7 @@ song<span style="color:#ff79c6">.</span>export(<span style="color:#f1fa8c">&#39;
     <span style="color:#6272a4"># know how to play audio at standard frame rate (like 44.1k)</span>
     <span style="color:#ff79c6">return</span> sound_with_altered_frame_rate<span style="color:#ff79c6">.</span>set_frame_rate(sound<span style="color:#ff79c6">.</span>frame_rate)
 
-sound <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_file(<span style="color:#f1fa8c">&#39;...&#39;</span>)
+sound <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_file(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">...</span><span style="color:#f1fa8c">&#39;</span>)
 
 speed_change(sound, <span style="color:#bd93f9">0.9</span>)</code></pre></div>
 <h3 id="librosahttpslibrosagithubiolibrosa"><a href="https://librosa.github.io/librosa/">LibROSA</a></h3>

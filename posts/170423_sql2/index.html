@@ -90,22 +90,22 @@ SQL Syntax(Ⅱ) - DRAPORLAND
 <ul>
 <li>拼接字段</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> vend_name <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;(&#39;</span> <span style="color:#ff79c6">+</span> vend_country<span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;)&#39;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> vend_name <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">(</span><span style="color:#f1fa8c">&#39;</span> <span style="color:#ff79c6">+</span> vend_country<span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">)</span><span style="color:#f1fa8c">&#39;</span>
 <span style="color:#ff79c6">FROM</span> venders
 <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> vender_name;</code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> vend_name <span style="color:#ff79c6">||</span> <span style="color:#f1fa8c">&#39;(&#39;</span> <span style="color:#ff79c6">||</span> vend_country<span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;)&#39;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> vend_name <span style="color:#ff79c6">|</span><span style="color:#ff79c6">|</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">(</span><span style="color:#f1fa8c">&#39;</span> <span style="color:#ff79c6">|</span><span style="color:#ff79c6">|</span> vend_country<span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">)</span><span style="color:#f1fa8c">&#39;</span>
 <span style="color:#ff79c6">FROM</span> venders
 <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> vender_name;</code></pre></div>
 <p>以上两种写法是等价的，还可以用RTRIM()去除字符串右边的空格，用LTRIM()去除字符串左边的空格，用TRIM()去除字符串左右两边的空格。
 特别地，在MySQL和MariaDB中需要使用Concat()函数来完成相同的功能：
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">#</span> <span style="color:#ff79c6">In</span> MySQL <span style="color:#ff79c6">and</span> MariaDB
-<span style="color:#ff79c6">SELECT</span> Concat(vend_name, <span style="color:#f1fa8c">&#39;(&#39;</span>, vend_country, <span style="color:#f1fa8c">&#39;)&#39;</span>)
+<span style="color:#ff79c6">SELECT</span> Concat(vend_name, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">(</span><span style="color:#f1fa8c">&#39;</span>, vend_country, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">)</span><span style="color:#f1fa8c">&#39;</span>)
 <span style="color:#ff79c6">FROM</span> venders
 <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> vender_name;</code></pre></div></p>
 <ul>
 <li>为结果使用别名</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> vend_name <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;(&#39;</span> <span style="color:#ff79c6">+</span> vend_country<span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;)&#39;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> vend_name <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">(</span><span style="color:#f1fa8c">&#39;</span> <span style="color:#ff79c6">+</span> vend_country<span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">)</span><span style="color:#f1fa8c">&#39;</span>
 <span style="color:#ff79c6">AS</span> vend_title
 <span style="color:#ff79c6">FROM</span> venders
 <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> vender_name;</code></pre></div>
@@ -157,7 +157,7 @@ SQL Syntax(Ⅱ) - DRAPORLAND
 <p>关于SOUNDEX()，</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> cust_name, cust_contact
 <span style="color:#ff79c6">FROM</span> Customers
-<span style="color:#ff79c6">WHERE</span> SOUNDEX(cust_contact) <span style="color:#ff79c6">=</span> SOUNDEX(<span style="color:#f1fa8c">&#39;Michael Green&#39;</span>)</code></pre></div>
+<span style="color:#ff79c6">WHERE</span> SOUNDEX(cust_contact) <span style="color:#ff79c6">=</span> SOUNDEX(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">Michael Green</span><span style="color:#f1fa8c">&#39;</span>)</code></pre></div>
 <p>【实测了一下，Michelle和Michael，Knuth和Kant的SOUNDEX值都是一样的，但是Bitch和Beach是不一样的，前者的SOUNDEX值是B320，后者则是B200……】</p>
 <hr>
 <h2 id="汇总数据">汇总数据</h2>
@@ -189,13 +189,13 @@ SQL Syntax(Ⅱ) - DRAPORLAND
 <span style="color:#ff79c6">FROM</span> Products
 <span style="color:#ff79c6">GROUP</span> <span style="color:#ff79c6">BY</span> vend_id
 
-<span style="color:#6272a4">/*output:
+<span style="color:#6272a4">/*</span><span style="color:#6272a4">output:
 </span><span style="color:#6272a4">vend_id		num_prods
 </span><span style="color:#6272a4">-------		---------
 </span><span style="color:#6272a4">BRS01		3
 </span><span style="color:#6272a4">DLL01		4
 </span><span style="color:#6272a4">FNG01		2
-</span><span style="color:#6272a4">*/</span></code></pre></div>
+</span><span style="color:#6272a4"></span><span style="color:#6272a4">*/</span></code></pre></div>
 其中，GROUP BY后可以包含任意数目的列以进行更细致的数据分组，还可以在子句中嵌套分组。SELECT语句中的每一列都必须在GROUP BY子句中给出。包含NULL值的行会被作为一个分组返回。GROUP BY子句必须在WHERE子句之后，ORDER BY子句之前。</p>
 <ul>
 <li>
@@ -206,19 +206,19 @@ SQL Syntax(Ⅱ) - DRAPORLAND
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> cust_id, <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">AS</span> orders
 <span style="color:#ff79c6">FROM</span> Orders
 <span style="color:#ff79c6">GROUP</span> <span style="color:#ff79c6">BY</span> cust_id
-<span style="color:#ff79c6">HAVING</span> <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">&gt;=</span> <span style="color:#bd93f9">2</span></code></pre></div>
+<span style="color:#ff79c6">HAVING</span> <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span></code></pre></div>
 <p>这里不能用 WHERE替换HAVING，可以理解为 WHERE 在分组前进行过滤，故排除的行不包括在分组中，而 HAVING  	在数据分组后过滤。当然，两个子句并非不能同时存在，如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> cust_id, <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">AS</span> orders
 <span style="color:#ff79c6">FROM</span> Orders
-<span style="color:#ff79c6">WHERE</span> prod_price <span style="color:#ff79c6">&gt;=</span> <span style="color:#bd93f9">4</span>
+<span style="color:#ff79c6">WHERE</span> prod_price <span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">=</span> <span style="color:#bd93f9">4</span>
 <span style="color:#ff79c6">GROUP</span> <span style="color:#ff79c6">BY</span> cust_id
-<span style="color:#ff79c6">HAVING</span> <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">&gt;=</span> <span style="color:#bd93f9">2</span>
-<span style="color:#6272a4">/*output:
+<span style="color:#ff79c6">HAVING</span> <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">&gt;</span><span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>
+<span style="color:#6272a4">/*</span><span style="color:#6272a4">output:
 </span><span style="color:#6272a4">vend_id		num_prods
 </span><span style="color:#6272a4">-------		---------
 </span><span style="color:#6272a4">BRS01		3
 </span><span style="color:#6272a4">DLL01		2
-</span><span style="color:#6272a4">*/</span></code></pre></div>
+</span><span style="color:#6272a4"></span><span style="color:#6272a4">*/</span></code></pre></div>
 <ul>
 <li>
 <p>分组和排序</p>
@@ -254,7 +254,7 @@ SQL Syntax(Ⅱ) - DRAPORLAND
 <span style="color:#ff79c6">FROM</span> Orders
 <span style="color:#ff79c6">WHERE</span> order_num <span style="color:#ff79c6">IN</span> (<span style="color:#ff79c6">SELECT</span> order_num
                     <span style="color:#ff79c6">FROM</span> OrderItems
-                    <span style="color:#ff79c6">WHERE</span> prod_id <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;RGAN01&#39;</span>);</code></pre></div>
+                    <span style="color:#ff79c6">WHERE</span> prod_id <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">RGAN01</span><span style="color:#f1fa8c">&#39;</span>);</code></pre></div>
 这其实就是将括号中的 SELECT order_num FROM OrderItems WHERE prod_id = &lsquo;RGAN01&rsquo; 这一句的输出结果传递给外面的 WHERE 查询子句。</p>
 </div>
 

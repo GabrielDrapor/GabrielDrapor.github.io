@@ -90,10 +90,10 @@ Python Crawler Note 1 - DRAPORLAND
     
     <hr/>
     <p> </p>
-<p>First, let&rsquo;s start with a easy one:</p>
+<p>First, let's start with a easy one:</p>
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
 
-response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>)
+response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">http://drapor.me</span><span style="color:#f1fa8c">&#39;</span>)
 <span style="color:#ff79c6">print</span> response<span style="color:#ff79c6">.</span>read()</code></pre></div>
 The output should be like:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#ff79c6">&lt;!DOCTYPE html&gt;</span>
@@ -111,24 +111,24 @@ response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6"
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
 <span style="color:#ff79c6">import</span> re
 
-response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>)
+response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">http://drapor.me</span><span style="color:#f1fa8c">&#39;</span>)
 content <span style="color:#ff79c6">=</span> response<span style="color:#ff79c6">.</span>read()              <span style="color:#6272a4">#First we store the content of whole webpage</span>
-content <span style="color:#ff79c6">=</span> content<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#39;</span>,<span style="color:#f1fa8c">&#39;&#39;</span>)     <span style="color:#6272a4">#I use this to delete all the newline character to avoid some troubles</span>
+content <span style="color:#ff79c6">=</span> content<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#39;</span>,<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">&#39;</span>)     <span style="color:#6272a4">#I use this to delete all the newline character to avoid some troubles</span>
 
-pattern <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">r</span><span style="color:#f1fa8c">&#39;&lt;a class=&#34;article-title&#34; href=&#34;.*?&#34;&gt;.*?&lt;/a&gt;&#39;</span>   <span style="color:#6272a4">#Then your regex here, remember the &#39;r&#39;</span>
+pattern <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">r</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">&lt;a class=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">article-title</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c"> href=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">.*?</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">&gt;.*?&lt;/a&gt;</span><span style="color:#f1fa8c">&#39;</span>   <span style="color:#6272a4">#Then your regex here, remember the &#39;r&#39;</span>
 
 result <span style="color:#ff79c6">=</span> re<span style="color:#ff79c6">.</span>findall(pattern, content) <span style="color:#6272a4">#Find all the result</span>
 
-<span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#34;index.html&#34;</span>, <span style="color:#f1fa8c">&#34;w&#34;</span>) <span style="color:#ff79c6">as</span> f:    <span style="color:#6272a4">#Write the result in a new HTML file</span>
+<span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">index.html</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">w</span><span style="color:#f1fa8c">&#34;</span>) <span style="color:#ff79c6">as</span> f:    <span style="color:#6272a4">#Write the result in a new HTML file</span>
     <span style="color:#ff79c6">for</span> items <span style="color:#ff79c6">in</span> result:
-        f<span style="color:#ff79c6">.</span>write(items<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;&lt;br&gt;&#39;</span>)</code></pre></div>
-<strong>Tip: Don&rsquo;t use something like &lsquo;+&rsquo; or &lsquo;*&rsquo; in your zero-width assertion or write your regex like &lsquo;(?&lt;![a-z]+)/d+&rsquo;, or you will get:</strong>
+        f<span style="color:#ff79c6">.</span>write(items<span style="color:#ff79c6">+</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">&lt;br&gt;</span><span style="color:#f1fa8c">&#39;</span>)</code></pre></div>
+<strong>Tip: Don't use something like &lsquo;+&rsquo; or &lsquo;*&rsquo; in your zero-width assertion or write your regex like &lsquo;(?&lt;![a-z]+)/d+&rsquo;, or you will get:</strong>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">error: look<span style="color:#ff79c6">-</span>behind requires fixed<span style="color:#ff79c6">-</span>width pattern<span style="color:#ff79c6">.</span></code></pre></div></p>
 <p>And open the new HTML file we create with browser, we got this:
 <img src="/article_imgs/pycrawler1_out.PNG"></p>
 <p><strong>Wow! How fantastic!!!</strong></p>
 <hr>
-<p><strong>And here&rsquo;s the first attempt of mine (also my first crawler):</strong></p>
+<p><strong>And here's the first attempt of mine (also my first crawler):</strong></p>
 <blockquote>
 <p>URL: <a href="http://stat.drapor.me/">http://stat.drapor.me/</a>
 Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague">https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</a></p>

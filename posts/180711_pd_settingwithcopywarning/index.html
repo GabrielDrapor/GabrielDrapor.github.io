@@ -96,21 +96,21 @@ Google了一番，最后在stack overflow上找到了最恰当的用法。" />
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
 pd<span style="color:#ff79c6">.</span>_version<span style="color:#ff79c6">.</span>get_versions()
 
-<span style="color:#f1fa8c">&#34;&#34;&#34;
-</span><span style="color:#f1fa8c">{&#39;dirty&#39;: False,
-</span><span style="color:#f1fa8c"> &#39;error&#39;: None,
-</span><span style="color:#f1fa8c"> &#39;full-revisionid&#39;: &#39;a00154dcfe5057cb3fd86653172e74b6893e337d&#39;,
-</span><span style="color:#f1fa8c"> &#39;version&#39;: &#39;0.22.0&#39;}
-</span><span style="color:#f1fa8c">&#34;&#34;&#34;</span></code></pre></div>
+<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;&#34;&#34;</span><span style="color:#f1fa8c">
+</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c">{</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">dirty</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">: False,</span><span style="color:#f1fa8c">
+</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">error</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">: None,</span><span style="color:#f1fa8c">
+</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">full-revisionid</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">: </span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">a00154dcfe5057cb3fd86653172e74b6893e337d</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">,</span><span style="color:#f1fa8c">
+</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">version</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">: </span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">0.22.0</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">
+</span><span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#34;&#34;&#34;</span></code></pre></div>
 <ul>
 <li>在探索过程中尝试了以下两种写法，但均不能避免SettingWithCopyWarning：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#f1fa8c">&#39;new_column&#39;</span>] <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>
-df<span style="color:#ff79c6">.</span>loc[:, <span style="color:#f1fa8c">&#39;new_column&#39;</span>] <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">new_column</span><span style="color:#f1fa8c">&#39;</span>] <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span>
+df<span style="color:#ff79c6">.</span>loc[:, <span style="color:#f1fa8c"></span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">new_column</span><span style="color:#f1fa8c">&#39;</span>] <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span></code></pre></div>
 <ul>
 <li>正确姿势：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#ff79c6">=</span> df<span style="color:#ff79c6">.</span>assign(new_column <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>)</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#ff79c6">=</span> df<span style="color:#ff79c6">.</span>assign(new_column <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span><span style="color:#ff79c6">.</span>)</code></pre></div>
 <ul>
 <li>Reference: <a href="https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas">https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas</a></li>
 </ul>
