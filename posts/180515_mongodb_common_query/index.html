@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+MongoDB常用查询 - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.81bbafc4df93b11c1c3e2449464373c384aa4903731b4fc7a77dfcdd979e184f.css" integrity="sha256-gbuvxN&#43;TsRwcPiRJRkNzw4SqSQNzG0/Hp3383ZeeGE8=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MongoDB常用查询"/>
+<meta name="twitter:description" content="总结了一下自己经常用到的一些MongoDB查询。"/>
+
+<meta property="og:title" content="MongoDB常用查询" />
+<meta property="og:description" content="总结了一下自己经常用到的一些MongoDB查询。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/180515_mongodb_common_query/" />
+<meta property="article:published_time" content="2018-05-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-05-15T00:00:00+00:00" />
+
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        MongoDB常用查询
+        
+    </title>
+    <style>
+        #container .reply-content {
+    	    margin-bottom: 10px;
+            margin-top: 8px;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">MongoDB常用查询</div>
+
+        
+<div class="section" id="content">
+    Tue May 15, 2018
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/mongodb">
+                #MongoDB
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p>总结了一下自己经常用到的一些MongoDB查询。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">db.collection.find()
+<span style="color:#6272a4">// SELECT * FROM xxx
+</span><span style="color:#6272a4"></span>
+db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... } ) 
+<span style="color:#6272a4">// SELECT * FROM xxx WHERE field1 = value1
+</span><span style="color:#6272a4"></span>
+db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... }, { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#bd93f9">1</span>, <span style="color:#ff79c6">&lt;</span>field2<span style="color:#ff79c6">&gt;:</span> <span style="color:#bd93f9">0</span>, ... } ) 
+<span style="color:#6272a4">// SELECT _id, field1 FROM xxx WHERE field1 = value1
+</span><span style="color:#6272a4"></span>
+db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> { $lt<span style="color:#ff79c6">:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span> } } ) 
+<span style="color:#6272a4">//SELECT * FROM xxx WHERE field1 &lt; value1 
+</span><span style="color:#6272a4">//Besides $lt, other commmon comparison operators is $lte, $gt, $gte, $in, $nin, $neq
+</span><span style="color:#6272a4"></span>
+db.collection.find( { $or<span style="color:#ff79c6">:</span> [ { <span style="color:#ff79c6">&lt;</span>condition1<span style="color:#ff79c6">&gt;</span> }, { <span style="color:#ff79c6">&lt;</span>condition2<span style="color:#ff79c6">&gt;</span> }, ... ] } ) 
+<span style="color:#6272a4">//SELECT * FROM xxx WHERE condition1 OR &lt;condition2 
+</span><span style="color:#6272a4"></span>
+db.collection.findOne() 
+<span style="color:#6272a4">//SELECT * FROM xxx LIMIT 1
+</span><span style="color:#6272a4">//When there is sub-field, use dot notation like &#34;field.subfield&#34; to access it
+</span><span style="color:#6272a4"></span>
+db.collection.find( { ... } ).count() 
+<span style="color:#6272a4">//SELECT COUNT(1) FROM xxx WHERE ...
+</span><span style="color:#6272a4"></span>
+db.collection.distinct(field, query, options) 
+<span style="color:#6272a4">//SELECT DISTINCT field FROM xxx WHERE ...
+</span><span style="color:#6272a4"></span>
+db.collection.dataSize()
+<span style="color:#6272a4">//Calculate the size of the dump BSON file
+</span><span style="color:#6272a4"></span>
+
+db.collection.aggregate( [	
+			  { $match<span style="color:#ff79c6">:</span> {...} },
+	                      { $group<span style="color:#ff79c6">:</span> { _id<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;$cust_id&#34;</span>, total<span style="color:#ff79c6">:</span> { $sum<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;$amount&#34;</span> } } }
+					   ] )
+<span style="color:#6272a4">//SELECT cust_id, SUM(amount) AS total
+</span><span style="color:#6272a4">//FROM xxx
+</span><span style="color:#6272a4">//WHERE ...
+</span><span style="color:#6272a4">//GROUP BY id
+</span><span style="color:#6272a4"></span>​                     
+<span style="color:#6272a4">//More abount Aggregation: https://docs.mongodb.com/manual/aggregation/   
+</span></code></pre></div>
+<ul>
+<li>Reference: <a href="https://docs.mongodb.com/manual/">MongoDB Documentation</a></li>
+</ul>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+
+        <div class="section footer">Copyright © 2020 Gabriel Drapor, All Rights Reserved.</div>
+
+
+	
+     <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+      clientID: 'b33898060f51f3637cdb',
+      clientSecret: '264aa9f9ab82c827765c14f5df4d8195bfd26a0d',
+      repo: 'gabrieldrapor.github.io',
+      owner: 'GabrielDrapor',
+      admin: ['GabrielDrapor'],
+      id: location.pathname,      
+      distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+</body>
+
+</html>

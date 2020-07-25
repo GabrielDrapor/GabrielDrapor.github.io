@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+Codewars上有趣的题（一） - DRAPORLAND
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.81bbafc4df93b11c1c3e2449464373c384aa4903731b4fc7a77dfcdd979e184f.css" integrity="sha256-gbuvxN&#43;TsRwcPiRJRkNzw4SqSQNzG0/Hp3383ZeeGE8=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Codewars上有趣的题（一）"/>
+<meta name="twitter:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。"/>
+
+<meta property="og:title" content="Codewars上有趣的题（一）" />
+<meta property="og:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drapor.me/posts/170819_funny_codewars/" />
+<meta property="article:published_time" content="2017-08-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-08-19T00:00:00+00:00" />
+
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        Codewars上有趣的题（一）
+        
+    </title>
+    <style>
+        #container .reply-content {
+    	    margin-bottom: 10px;
+            margin-top: 8px;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">Codewars上有趣的题（一）</div>
+
+        
+<div class="section" id="content">
+    Sat Aug 19, 2017
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="https://drapor.me/tags/codewars">
+                #Codewars
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p>
+<h4 id="sum-of-digits--digital-roothttpswwwcodewarscomkatasum-of-digits-slash-digital-root"><a href="https://www.codewars.com/kata/sum-of-digits-slash-digital-root">Sum of Digits / Digital Root</a></h4>
+<p>题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIkipedia）。按照定义来做的话，也其实没什么难的，用python的话，无非就是分拆成字符，再转回数字然后相加，如此往复直到位数为1。然而在做完之后，我在Solutions里发现了这样两个答案：</p>
+<ul>
+<li>
+<p>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">digital_root</span>(n):
+    <span style="color:#ff79c6">return</span> n <span style="color:#ff79c6">if</span> n <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">else</span> digital_root(<span style="color:#8be9fd;font-style:italic">sum</span>(<span style="color:#8be9fd;font-style:italic">map</span>(<span style="color:#8be9fd;font-style:italic">int</span>,<span style="color:#8be9fd;font-style:italic">str</span>(n))))</code></pre></div></p>
+</li>
+<li>
+<p>然后我往下翻，又看到了下面这个让我颇为震惊的解法：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">digital_root</span>(n):
+    <span style="color:#ff79c6">return</span> n<span style="color:#ff79c6">%</span><span style="color:#bd93f9">9</span> <span style="color:#ff79c6">or</span> n <span style="color:#ff79c6">and</span> <span style="color:#bd93f9">9</span> </code></pre></div>
+我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：https://www.zhihu.com/question/30972581 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p>
+</li>
+<li>
+<p>a and b，ab都非零时，结果为b；ab其中一个为0时，结果为0；</p>
+</li>
+<li>
+<p>a or b，ab都非零时，结果为a；ab其中一个为0时，结果为另一个非零的数；</p>
+<p>并且，0 and 0和0 or 0都等于0。另外就是and的运算级要高于or，所以return后面的执行顺序就是先and后or：</p>
+</li>
+</ul>
+<blockquote>
+<p>n != 0且n != 9时，n and 9 == 9，n % 9 or 9 == n % 9；</p>
+<p>n == 0时，n and 9 == 0，n % 9 or 0 == 0；</p>
+<p>n == 9时，n and 9 == 9，n%9 or 9 == 9；</p>
+</blockquote>
+<hr>
+<h4 id="dont-rely-on-luckhttpswwwcodewarscomkatadont-rely-on-luck"><a href="https://www.codewars.com/kata/dont-rely-on-luck">Don&rsquo;t rely on luck.</a></h4>
+<p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
+<ul>
+<li>在代码框里最开始给的是：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint
+guess <span style="color:#ff79c6">=</span> </code></pre></div></li>
+</ul>
+<p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
+<ul>
+<li>
+<p>首先是：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint,seed
+seed(<span style="color:#bd93f9">1</span>)
+guess <span style="color:#ff79c6">=</span> randint(<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">100</span>)
+seed(<span style="color:#bd93f9">1</span>)</code></pre></div></p>
+<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
+</li>
+<li>
+<p>然后是这个：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint
+<span style="color:#ff79c6">class</span> <span style="color:#50fa7b">CheatingNumber</span>:
+    <span style="color:#ff79c6">def</span> __eq__(self, x):
+        <span style="color:#ff79c6">return</span> True
+
+guess <span style="color:#ff79c6">=</span> CheatingNumber()</code></pre></div>
+前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
+</li>
+<li>
+<p>当然，最让我折服的还是下面这个：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">randint</span>(a, b):
+    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">10</span>
+guess <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span></code></pre></div></p>
+<p>？？？？？？？？？</p>
+<p>与上面这种解法类似的还有：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">randint,guess <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">lambda</span> x,y:<span style="color:#bd93f9">666</span>,<span style="color:#bd93f9">666</span></code></pre></div></p>
+<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
+</li>
+</ul>
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/posts">Posts</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/scribble">Scribbles</a>
+        
+            &#183; 
+            <a href="/about">About Me</a>
+        
+    
+    &#183; 
+    <a href="https://drapor.me">
+        
+    </a>
+
+</p>
+</div>
+
+
+
+        <div class="section footer">Copyright © 2020 Gabriel Drapor, All Rights Reserved.</div>
+
+
+	
+     <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+      clientID: 'b33898060f51f3637cdb',
+      clientSecret: '264aa9f9ab82c827765c14f5df4d8195bfd26a0d',
+      repo: 'gabrieldrapor.github.io',
+      owner: 'GabrielDrapor',
+      admin: ['GabrielDrapor'],
+      id: location.pathname,      
+      distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+</body>
+
+</html>
