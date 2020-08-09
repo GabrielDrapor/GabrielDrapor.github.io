@@ -11,6 +11,8 @@ nnoremap gi :GitGutterSignsToggle<CR>
 nnoremap gn :set number! number?<cr>
 nnoremap gu :GitGutter<CR>
 nnoremap gb :Black<CR>
+nnoremap zz zA
+nnoremap r zR
 
 call plug#begin()
 Plug 'preservim/nerdtree'
@@ -28,6 +30,7 @@ set backspace=indent,eol,start
 set hlsearch
 set expandtab
 set autoindent
+set foldmethod=indent
 
 
 autocmd BufReadPost *
