@@ -31,6 +31,7 @@ set hlsearch
 set expandtab
 set autoindent
 set foldmethod=indent
+set noswapfile
 
 
 autocmd BufReadPost *
