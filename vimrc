@@ -19,6 +19,7 @@ Plug 'preservim/nerdtree'
 Plug 'universal-ctags/ctags'
 Plug 'airblade/vim-gitgutter'
 Plug 'psf/black'
+Plug 'valloric/youcompleteme'
 call plug#end()
 
 
@@ -32,7 +33,7 @@ set expandtab
 set autoindent
 set foldmethod=indent
 set noswapfile
-
+set completeopt-=preview
 
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -40,3 +41,4 @@ autocmd BufReadPost *
      \ endif
 
 au BufNewFile *.py 0r ~/.vim/skeleton/py_skeleton
+source ~/.vim/autotag.vim
