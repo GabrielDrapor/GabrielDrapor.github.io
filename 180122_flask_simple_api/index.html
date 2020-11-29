@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用Flask实现一个简单的带POST的api // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="用Flask实现一个简单的带POST的api" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/180122_flask_simple_api/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">用Flask实现一个简单的带POST的api</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/180122_flask_simple_api/" class="article-date">
+                <time datetime='2018-01-22T00:00:00.000&#43;00:00' itemprop="datePublished">2018-01-22</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>小记如何用Flask实现一个带POST的api。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, request, Response
+<span style="color:#f92672">from</span> logging <span style="color:#f92672">import</span> FileHandler, INFO, Formatter
+
+
+app <span style="color:#f92672">=</span> Flask(__name__)
+
+<span style="color:#75715e"># log</span>
+err_log <span style="color:#f92672">=</span> FileHandler(<span style="color:#e6db74">&#39;error_log_&#39;</span><span style="color:#f92672">+</span>time<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y%m</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>,time<span style="color:#f92672">.</span>localtime()))
+err_log<span style="color:#f92672">.</span>setLevel(INFO)  <span style="color:#75715e">#设置日志级别</span>
+logging_format <span style="color:#f92672">=</span> Formatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(levelname)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(filename)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(funcName)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(lineno)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>)  <span style="color:#75715e"># 日志格式</span>
+err_log<span style="color:#f92672">.</span>setFormatter(logging_format)
+app<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>addHandler(err_log)
+
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>,methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>,<span style="color:#e6db74">&#39;GET&#39;</span>])  <span style="color:#75715e">#&#39;/&#39;指定了路径</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CERTAIN_FUNCTION</span>():
+    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;POST&#39;</span>:
+        <span style="color:#f92672">...</span>  <span style="color:#75715e">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
+        <span style="color:#66d9ef">return</span> Response(json<span style="color:#f92672">.</span>dumps(xxxx), mimetype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;application/json&#39;</span>)  <span style="color:#75715e"># 如果需要回传json的话</span>
+<span style="color:#75715e">#       return xxx 当然也可直接回传字符串或某个方法 </span>
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    app<span style="color:#f92672">.</span>run(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;x.x.x.x&#39;</span>,port<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;xxxx&#39;</span>)</code></pre></div>
+<blockquote>
+<p>Reference:</p>
+<ul>
+<li>
+<p><a href="http://docs.jinkan.org/docs/flask/quickstart.html">http://docs.jinkan.org/docs/flask/quickstart.html</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=LGlRYlbawnE">https://www.youtube.com/watch?v=LGlRYlbawnE</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/wanghaonull/p/6537823.html">http://www.cnblogs.com/wanghaonull/p/6537823.html</a></p>
+</li>
+<li>
+<p><a href="http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html">http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</a></p>
+</li>
+</ul>
+</blockquote>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents"></nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/python">Python
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/flask">Flask
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/180319_star_operator/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            关于*和**运算符
+        </div>
+    </a>
+    
+    
+    <a href="/180101_2017/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">2017&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

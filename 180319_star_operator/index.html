@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>关于*和**运算符 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="关于*和**运算符" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/180319_star_operator/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">关于*和**运算符</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/180319_star_operator/" class="article-date">
+                <time datetime='2018-03-19T00:00:00.000&#43;00:00' itemprop="datePublished">2018-03-19</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>最近了解到*和**运算符的用法，特此小记。</p>
+<p>最开始遇到的情形是这样的：我从另一个地方得到了一个tuple a：<br>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)</code></pre></div></p>
+<p>想把这个tuple里的值作为另一个函数f的参数传给它，理论上完全可以用[]把每个值取出来再一个一个传给函数：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(x, y):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> y
+f(a[<span style="color:#ae81ff">0</span>], a[<span style="color:#ae81ff">1</span>])</code></pre></div></p>
+<p>但这样写也太蠢了，而且当这里参数的个数不是两个而是很多的时候，这样写也太麻烦了。Google一番之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f(<span style="color:#f92672">*</span>a)</code></pre></div></p>
+<p>在<a href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists">官方文档</a>中也有相关的说明：</p>
+<blockquote>
+<p><strong>4.7.4. Unpacking Argument Lists</strong></p>
+<p>The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> list(range(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>))            <span style="color:#75715e"># normal call with separate arguments</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]  
+<span style="color:#f92672">&gt;&gt;&gt;</span> args <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> list(range(\<span style="color:#f92672">*</span>args))            <span style="color:#75715e"># call with arguments unpacked from a list</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]   </code></pre></div>
+<p>文档中还提了**的用法：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parrot</span>(voltage, state<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;a stiff&#39;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;voom&#39;</span>):
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">...</span>     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-- This parrot wouldn&#39;t&#34;</span>, action, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39; &#39;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">...</span>     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;if you put&#34;</span>, voltage, <span style="color:#e6db74">&#34;volts through it.&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39; &#39;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">...</span>     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;E&#39;s&#34;</span>, state, <span style="color:#e6db74">&#34;!&#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">...</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> d <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;voltage&#34;</span>: <span style="color:#e6db74">&#34;four million&#34;</span>, <span style="color:#e6db74">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;bleedin&#39; demised&#34;</span>, <span style="color:#e6db74">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;VOOM&#34;</span>}
+<span style="color:#f92672">&gt;&gt;&gt;</span> parrot(<span style="color:#f92672">**</span>d)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">--</span> This parrot wouldn<span style="color:#e6db74">&#39;t VOOM if you put four million volts through it. E&#39;</span>s bleedin<span style="color:#e6db74">&#39; demised !</span></code></pre></div></p>
+<p>在自己尝试的过程中也发现了两个有意思的用法：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">print</span>(a)
+<span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">print</span>(<span style="color:#f92672">*</span>a)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span></code></pre></div></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,a,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#f92672">*</span>a,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]</code></pre></div>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents"></nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/python">Python
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/180428_pysound/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            用python处理声音
+        </div>
+    </a>
+    
+    
+    <a href="/180122_flask_simple_api/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">用Flask实现一个简单的带POST的api&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

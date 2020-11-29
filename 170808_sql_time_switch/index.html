@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQL的时间／日期无脑转换 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="SQL的时间／日期无脑转换" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/170808_sql_time_switch/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">SQL的时间／日期无脑转换</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/170808_sql_time_switch/" class="article-date">
+                <time datetime='2017-08-08T00:00:00.000&#43;00:00' itemprop="datePublished">2017-08-08</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。</p>
+<p>其实主要涉及的几种日期格式就是以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIMESTAMP</td>
+<td>&lsquo;2017-08-08 15:56:31.111&rsquo;</td>
+</tr>
+<tr>
+<td>STRING(&lsquo;yyyyMMdd&rsquo;)</td>
+<td>&lsquo;20170808&rsquo;</td>
+</tr>
+<tr>
+<td>DATE(&lsquo;yyyy-MM-dd&rsquo;)</td>
+<td>&lsquo;2017-08-08&rsquo;</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>20170808</td>
+</tr>
+</tbody>
+</table>
+<p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
+<ul>
+<li><code>unix_timestamp()</code>函数是将其他格式的时间转化为unix时间戳(e.g.:1502179397)，如果输入的时间已经是TIMESTAMP，则无需指定其他参数；如果输入的时间为DATE，则需要再多加一项参数标明格式，比如如果需要将‘2017-08-08’转为unix时间戳的话，应该写成<code>unix_timestamp('2017-08-08', ‘yyyy-MM-dd’)</code>【<strong>特别注意：MM代表月，mm代表的是分钟</strong>】即可；同样如果需要将<code>‘20170808’</code>转为unix时间戳的话，应该写成<code>unix_timestamp('2017-08-08', ‘yyyyMMdd’)</code>即可；</li>
+<li><code>from_unixtime()</code>函数则是将unix时间戳格式的时间转换为其他格式，默认是转化为TIMESTAMP，如果需要转化为特定格式则仿照上面添加第二个参数标明格式即可；</li>
+</ul>
+<p>于是，在遇到时间格式转换的问题时，我们可以这样做：首先将原格式用<code>UNIX_TIMESTAMP()</code>转换为UNIX时间戳，再用unix_timestamp()转成所需的格式即可，这种方法个人感觉非常无脑但确实有效。</p>
+<p>比如需要将‘2017-08-08’转换为‘20170808’，按照上面的无脑思路，直接<code>from_unixtime(unix_timestamp('2017-08-08','yyyy-MM-dd'),'yyyyMMdd') </code>即可，反之也是一样的道理。</p>
+<p>当然这其中存在很多捷径，比如<code>TO_DATE()</code>可以直接将TIMESTAMP转为DATE，当然要比以上说的这种无脑方法方便很多，但是个人觉得记忆起来很麻烦，而且这些函数各自也都具有一些局限性，只能将某些特定格式转换为另一些特定格式。</p>
+<p>最后还应注意一点，也是我最近时常遇到的问题，就是在做表的联结的时候，以日期相等作为联结条件时，一定要确保等式两边的格式和类型都是一样的，<code>'2017-08-08' = ‘20170808’</code>这个等式并不成立。</p>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents"></nav>
+        </div>
+        
+        
+
+        
+
+
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/170819_funny_codewars/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            Codewars上有趣的题（一）
+        </div>
+    </a>
+    
+    
+    <a href="/170721_a_sql_ex/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Codewars上一道5 kyu的SQL题&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

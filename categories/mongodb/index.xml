@@ -6,7 +6,6 @@
     <description>Recent content in MongoDB on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
     <lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://drapor.me/categories/mongodb/index.xml" rel="self" type="application/rss+xml" />
@@ -14,10 +13,10 @@
     
     <item>
       <title>MongoDB常用查询</title>
-      <link>https://drapor.me/posts/180515_mongodb_common_query/</link>
+      <link>https://drapor.me/180515_mongodb_common_query/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/posts/180515_mongodb_common_query/</guid>
+      <guid>https://drapor.me/180515_mongodb_common_query/</guid>
       <description>&lt;p&gt;总结了一下自己经常用到的一些MongoDB查询。&lt;/p&gt;</description>
     </item>
     

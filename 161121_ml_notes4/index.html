@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Notes 04 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="Machine Learning Notes 04" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/161121_ml_notes4/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">Machine Learning Notes 04</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/161121_ml_notes4/" class="article-date">
+                <time datetime='2016-11-21T00:00:00.000&#43;00:00' itemprop="datePublished">2016-11-21</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p> </p>
+<h2 id="classification">Classification</h2>
+<p>  For the binary classification, <code>$y\in \{0,1 \}$</code>(Also maybe, <code>$y\in \{ 0,1,2,3,... \}$</code>, that&rsquo;s called a <strong>multiclass classification problem</strong>, we will discuss it later.).<br>
+  So, we use a model called <strong>Logisitic Regression</strong>, and we can see the hypothesis <code>$h_{\theta}(x)$</code> should value in the range of 0 and 1. This is to say, $0\leq h_{\theta}(x)\leq 1$.</p>
+<hr>
+<h2 id="hypothesis-representation">Hypothesis Representation</h2>
+<ul>
+<li>
+<p><strong>Logistic Regression:</strong>
+    <code>$$h_{\theta}(x)=g(\theta^{T}x)$, $g(z)=\frac{1}{1+e^{-z}}$$</code></p>
+</li>
+<li>
+<p>**Interpretation of Hypothesis Output.
+The value of <code>$h_{\theta}(x)$</code> equals to the estimated probability that y=1 (on input x, parameterized by $\theta$ ). This is to say,
+<code>$$h_{\theta}(x)=P(y=1\mid x ; \theta)$$</code></p>
+</li>
+<li>
+<p><strong>Decision Boundary</strong><br>
+The decision boundaries are like this:</p>
+</li>
+</ul>
+<p><img src="/article_imgs/decision_boundary.png" alt=""></p>
+<p>  <strong>Emphasis: Decision boundary is the property of hypothesis function, but not the property of training set and its parameters.</strong></p>
+<hr>
+<h2 id="logistic-regression---how-to-fit-the-parameters-of-theta"><strong>Logistic Regression</strong>&mdash;How to fit the parameters of theta</h2>
+<ul>
+<li>
+<p><strong>Cost Function of Logistic Regression:</strong><br>
+<code>$Cost(h_{\theta}, y)=\begin{cases} -log(h_{\theta}(x)) &amp; \text{ if } y=1 \\  -log(1-h_{\theta}(x))  &amp; \text{ if } y=0    \end{cases}$</code><br>
+Also, we can write it as:<br>
+<code>$$Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))$$</code></p>
+</li>
+<li>
+<p><strong>Gradient Descent:</strong><br>
+To minimize <code>$J_{\theta}$</code></p>
+</li>
+</ul>
+<p>   Repeat{<br>
+      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</code><br>
+   }</p>
+<p>  <strong>And we can see that this algortithm looks identical to linear regression!<br>
+  But actually, the hypothesis of them are different.</strong><br>
+<code>$$\begin{cases} Linear\:Regression: h_{\theta}(x)=\theta^{T}x\\ Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}} \end{cases}$$</code></p>
+<p>Besides,</p>
+<blockquote>
+<p>&ldquo;&hellip;use a vector rise implementation, so that a vector rise implementation can update all of these until parameters all in one fell swoop.&rdquo;</p>
+</blockquote>
+<hr>
+<h2 id="advanced-optimization">Advanced Optimization</h2>
+<blockquote>
+<ul>
+<li>Gradient Descent</li>
+<li>Conjngate Gradient</li>
+<li>BFGS</li>
+<li>L-BFGS</li>
+<li>……</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p><strong>Adcantages:</strong>
+No need to manually pick $\alpha$ ;
+Often faster than gradient descent;</p>
+</li>
+<li>
+<p><strong>Disadvantages:</strong>
+More complex;</p>
+</li>
+</ul>
+<hr>
+<h2 id="multi-class-classification-one-vs-all">Multi-class classification: One-vs-all</h2>
+<ul>
+<li>For example, to slove the three-class problem, we can <em>&ldquo;turn this into three seperate two-class classification problems.&quot;</em></li>
+<li>On a new input $x$, to make a prediction, pick the class i that maximizes.</li>
+</ul>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#classification">Classification</a></li>
+    <li><a href="#hypothesis-representation">Hypothesis Representation</a></li>
+    <li><a href="#logistic-regression---how-to-fit-the-parameters-of-theta"><strong>Logistic Regression</strong>&mdash;How to fit the parameters of theta</a></li>
+    <li><a href="#advanced-optimization">Advanced Optimization</a></li>
+    <li><a href="#multi-class-classification-one-vs-all">Multi-class classification: One-vs-all</a></li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/machine-learning">Machine Learning
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/161201_pycrawler1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            Python Crawler Note 1
+        </div>
+    </a>
+    
+    
+    <a href="/161018_ml_notes3/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Machine Learning Notes 03&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

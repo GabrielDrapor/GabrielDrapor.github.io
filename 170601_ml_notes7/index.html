@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Notes 07 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="Machine Learning Notes 07" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/170601_ml_notes7/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">Machine Learning Notes 07</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/170601_ml_notes7/" class="article-date">
+                <time datetime='2017-06-01T00:00:00.000&#43;00:00' itemprop="datePublished">2017-06-01</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="what-should-we-do-if-we-have-a-bad-predictions">What should we do if we have a bad predictions?</h2>
+<p>The following options may be feasible:</p>
+<ul>
+<li>Get more training examples;</li>
+<li>Try smaller sets of features;</li>
+<li>Try getting additional features;</li>
+<li>Try adding polynomial features (increasing degree of polynomial);</li>
+<li>Try decreasing \(\lambda\);</li>
+<li>Try increasing \(\lambda\);</li>
+</ul>
+<p>So we can take a kind of test called <strong>machine learning diagnostic</strong> to insight what is/isn&rsquo;t working with a learning algorithm, and gain guidance as to how best to improve its performance. It may take time to implement, but doing so can be vary good use of your time.</p>
+<hr>
+<h2 id="evaluating-a-hypothesis">Evaluating a hypothesis</h2>
+<p>To evaluating whether a hypothesis is good or bad (and we don&rsquo;t have extra test set), we can divide our training set at first to two parts (usually according to 7/3 proportion), and one for training, the other for testing, which helps us to avoid <strong>over fitting</strong> (perform on training set well, but bad on new examples not in training set)</p>
+<hr>
+<h2 id="model-selection">Model Selection</h2>
+<p>Take linear regression as a example, we use \(h_{\theta}(x) = \theta_0 +\theta_1 x + \theta_2 x^2 + \cdots\) as our hypothesis function, and we can add the degree of polynomial to make our hypothe/.sis better, but it may brings the over fitting problem, so we need to find out the best degree.</p>
+<p>To  achieve so, we can compute the \(J_{test}\)(cost of different degrees \(d\) on test set), and choose the best \(d\), but it&rsquo;s only fit to the test set. So we divide the data set into three parts:</p>
+<ul>
+<li>training set (60% usually)</li>
+<li>cross validation set (20% usually)</li>
+<li>test set (20% usually)(check if the combo of \(\theta\) and \(\lambda\) has a good generalization of the problem, avoiding over fitting)</li>
+</ul>
+<p>and three kinds of cost function is \(J_{train}\), \(J_{cv}\), \(J_{test}\).</p>
+<p>Then for different \(d(d=1, 2, 3, \cdots)\), minimize \(J(\theta)\) with \(J_{train}\) and \(J_{test}\), then compute the \(J_{cv}\) for each \(d\). We choose \(d\) who has the lowest \(J_{cv}\), and that.s how we do the model selection.</p>
+<hr>
+<h2 id="bias-vs-variance">Bias vs. Variance</h2>
+<ul>
+<li><img src="/article_imgs/bias_vs_var.JPG" alt=""></li>
+</ul>
+<h3 id="diagnosing-bias-vs-variance">Diagnosing bias vs. variance</h3>
+<ul>
+<li>If \(J_{train}\) is high and \(J_{cv}\approx J_{train}\), we can tell it&rsquo;s a <strong>bias</strong> problem;</li>
+<li>If \(J_{train}\) is low and \(J_{cv}\gg J_{train}\), we can tell it&rsquo;s a <strong>variance</strong> problem;</li>
+</ul>
+<hr>
+<h2 id="about-regularization">About regularization</h2>
+<p>As we know, appropriate \(\lambda\) (regularization parameter) can help to prevent over fitting, but when the \(\lambda\) is too large or too small. it won&rsquo;t work as so:</p>
+<p><img src="/article_imgs/different_lambda.JPG" alt=""></p>
+<p>So choosing appropriate value of \(\lambda\) is very necessary.</p>
+<p>We can try different \(\lambda\), minimize \(J(\theta)\), then compute \(J_{cv}\) (like what we do the model selection), and we can finf the best \(\lambda\).</p>
+<hr>
+<h2 id="learning-curves">Learning Curves</h2>
+<p>The learning curves describe the relationship of \(m\)(training set size) and error(\(J_{cv},J_{train}\)), it&rsquo;s look like:</p>
+<p><img src="/article_imgs/learningcurves.JPG" alt=""></p>
+<p>And if the algorithm is suffering from high bias, the learning curve is look like:</p>
+<p><img src="/article_imgs/high_bias_curve.JPG" alt=""></p>
+<p>We can see from the graph that the increasing \(m\) doesn&rsquo;t help to lower the bias, so we can conclude that getting more training data will not help to solve high-bias problem.</p>
+<p>While if the algorithm is suffering from high variance, the learning curve is look like:</p>
+<p><img src="/article_imgs/high_var_curve.JPG" alt=""></p>
+<p>From the graph we can see that there is a gap between \(J_{cv}\) and \(J_{train}\), and as \(m\) increasing, the gap diminishes and the bias is also decreasing. So we can conclude that getting more training data is helpful to solve the high-variance problem.</p>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-should-we-do-if-we-have-a-bad-predictions">What should we do if we have a bad predictions?</a></li>
+    <li><a href="#evaluating-a-hypothesis">Evaluating a hypothesis</a></li>
+    <li><a href="#model-selection">Model Selection</a></li>
+    <li><a href="#bias-vs-variance">Bias vs. Variance</a>
+      <ul>
+        <li><a href="#diagnosing-bias-vs-variance">Diagnosing bias vs. variance</a></li>
+      </ul>
+    </li>
+    <li><a href="#about-regularization">About regularization</a></li>
+    <li><a href="#learning-curves">Learning Curves</a></li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/machine-learning">Machine Learning
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/170614-pandas/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            pandas笔记
+        </div>
+    </a>
+    
+    
+    <a href="/170511-numpy/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Numpy入门笔记&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

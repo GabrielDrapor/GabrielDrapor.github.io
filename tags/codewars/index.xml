@@ -6,7 +6,6 @@
     <description>Recent content in Codewars on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
     <lastBuildDate>Sat, 19 Aug 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://drapor.me/tags/codewars/index.xml" rel="self" type="application/rss+xml" />
@@ -14,19 +13,19 @@
     
     <item>
       <title>Codewars上有趣的题（一）</title>
-      <link>https://drapor.me/posts/170819_funny_codewars/</link>
+      <link>https://drapor.me/170819_funny_codewars/</link>
       <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/posts/170819_funny_codewars/</guid>
+      <guid>https://drapor.me/170819_funny_codewars/</guid>
       <description>&lt;p&gt;最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Codewars上一道5 kyu的SQL题</title>
-      <link>https://drapor.me/posts/170721_a_sql_ex/</link>
+      <link>https://drapor.me/170721_a_sql_ex/</link>
       <pubDate>Fri, 21 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/posts/170721_a_sql_ex/</guid>
+      <guid>https://drapor.me/170721_a_sql_ex/</guid>
       <description>&lt;p&gt;具体思路和过程以后有时间再来整理（Flag）。&lt;/p&gt;</description>
     </item>
     

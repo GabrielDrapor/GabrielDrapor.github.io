@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Crawler Note 1 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="Python Crawler Note 1" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/161201_pycrawler1/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">Python Crawler Note 1</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/161201_pycrawler1/" class="article-date">
+                <time datetime='2016-12-01T00:00:00.000&#43;00:00' itemprop="datePublished">2016-12-01</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p> </p>
+<p>First, let&rsquo;s start with a easy one:</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> urllib2
+
+response <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>urlopen(<span style="color:#e6db74">&#39;http://drapor.me&#39;</span>)
+<span style="color:#66d9ef">print</span> response<span style="color:#f92672">.</span>read()</code></pre></div>
+The output should be like:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+	&lt;<span style="color:#f92672">head</span>&gt;
+......
+&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></div>
+Also, codes below do the same thing,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> urllib2
+
+request<span style="color:#f92672">=</span>urllib2<span style="color:#f92672">.</span>Request(url)
+response <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>urlopen(request)
+<span style="color:#66d9ef">print</span> response<span style="color:#f92672">.</span>read()</code></pre></div></p>
+<p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission">Tutorial I recommand</a>) here to help us:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> urllib2
+<span style="color:#f92672">import</span> re
+
+response <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>urlopen(<span style="color:#e6db74">&#39;http://drapor.me&#39;</span>)
+content <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>read()              <span style="color:#75715e">#First we store the content of whole webpage</span>
+content <span style="color:#f92672">=</span> content<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)     <span style="color:#75715e">#I use this to delete all the newline character to avoid some troubles</span>
+
+pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;&lt;a class=&#34;article-title&#34; href=&#34;.*?&#34;&gt;.*?&lt;/a&gt;&#39;</span>   <span style="color:#75715e">#Then your regex here, remember the &#39;r&#39;</span>
+
+result <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(pattern, content) <span style="color:#75715e">#Find all the result</span>
+
+<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;index.html&#34;</span>, <span style="color:#e6db74">&#34;w&#34;</span>) <span style="color:#66d9ef">as</span> f:    <span style="color:#75715e">#Write the result in a new HTML file</span>
+    <span style="color:#66d9ef">for</span> items <span style="color:#f92672">in</span> result:
+        f<span style="color:#f92672">.</span>write(items<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;&lt;br&gt;&#39;</span>)</code></pre></div>
+<strong>Tip: Don&rsquo;t use something like &lsquo;+&rsquo; or &lsquo;*&rsquo; in your zero-width assertion or write your regex like &lsquo;(?&lt;![a-z]+)/d+&rsquo;, or you will get:</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">error: look<span style="color:#f92672">-</span>behind requires fixed<span style="color:#f92672">-</span>width pattern<span style="color:#f92672">.</span></code></pre></div></p>
+<p>And open the new HTML file we create with browser, we got this:
+<img src="/article_imgs/pycrawler1_out.PNG" alt=""></p>
+<p><strong>Wow! How fantastic!!!</strong></p>
+<hr>
+<p><strong>And here&rsquo;s the first attempt of mine (also my first crawler):</strong></p>
+<blockquote>
+<p>URL: <a href="http://stat.drapor.me/">http://stat.drapor.me/</a>
+Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague">https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</a></p>
+</blockquote>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents"></nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/python">Python
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/crawler">Crawler
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/161202_pycrawler2/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            Python Crawler Note 2
+        </div>
+    </a>
+    
+    
+    <a href="/161121_ml_notes4/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Machine Learning Notes 04&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ASP.NET 搭建 Discuz! NT // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="ASP.NET 搭建 Discuz! NT" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/160503_asp/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">ASP.NET 搭建 Discuz! NT</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/160503_asp/" class="article-date">
+                <time datetime='2016-05-03T00:00:00.000&#43;00:00' itemprop="datePublished">2016-05-03</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p><strong>架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express</strong></p>
+<p>*<strong>由于搭建时网络的原因，只能在内网搭建，方法基本相同，只需在防火墙和ip等稍作调整即可</strong></p>
+<h5 id="1配置iis">1.配置IIS。</h5>
+<p>   IIS是我们的服务器应用程序，我们首先需要打开它。</p>
+<ul>
+<li>
+<p>首先在控制面板-程序和功能-打开或关闭Windows功能（如图），勾选“Internet Information Services可承载的Web核心”，“Internet信息服务”。</p>
+<p><img src="/article_imgs/image004.png" alt=""></p>
+</li>
+</ul>
+<p>​</p>
+<ul>
+<li>在管理工具中找到“Internet 信息服务(IIS)管理器”，打开它，在左侧的“连接”栏下面找“个人电脑名&gt;网站”，右键点击网站，选择“添加网站”（如图）</li>
+</ul>
+<p><img src="/article_imgs/image001.png" alt=""></p>
+<p>在弹出的对话框中，填写必要信息。</p>
+<!-- raw HTML omitted -->
+<p><img src="/article_imgs/image005.png" alt=""></p>
+<p>​</p>
+<pre><code>网站名称----给你的网站起个名字,如这里的&quot;SNC_ASP.NET&quot;
+
+物理路径----选取你网站在本地的目录
+
+绑定-IP地址----选取你服务器的ip地址，这里由于是在校园网环境中，无法搭建到外网的服务器，所以选取内网ip。
+
+端口----默认是80，如果有冲突可以自行修改。查看当前系统所占用的端口可以打开cmd，输入指令“netstat -a”查询（如图）
+</code></pre>
+<p><img src="/article_imgs/image007.png" alt=""></p>
+<ul>
+<li>
+<p>查看IIS的主界面，找到“默认文档”，打开。</p>
+</li>
+<li>
+<p>在打开的界面中，右键选择添加，添加名称为index.aspx，否则搭建服务器之后由于服务器不认识aspx的首页而打不开它。</p>
+</li>
+</ul>
+<p><img src="/article_imgs/image009.png" alt=""></p>
+<p><img src="/article_imgs/image011.png" alt=""></p>
+<hr>
+<h5 id="2配置sql-server">2.配置SQL Server</h5>
+<p>从https://www.microsoft.com/zh-CN/download/details.aspx?id=42299 下载 Microsoft® SQL Server® 2014 Express，只需下载	“ExpressAndTools 64BIT\SQLEXPRWT_你系统位数_CHS.exe”即可。下载完之后打开，选择提取目录，等待解压。</p>
+<p>打开解压的目录下的SETUP.EXE，在打开的“SQL Server安装中心”中选择“全新SQL Server 独立安装或向现有安装添加功能”，打开“SQL Server 2014安装程序”进行安装。</p>
+<p><strong>需要特别注意的是:</strong></p>
+<ul>
+<li>
+<p>在“实例配置”中，可以自行命名实例，也可以用系统默认的实例名，但最好把名字记下来</p>
+</li>
+<li>
+<p>在“服务器配置”中，需要对SQL Server数据库选择一个用户，可以添加系统中的用户，填写对应的密码。如图。</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>在“数据库引擎配置”中，最好选择混合模式，单独设置一个SQL Server系统管理员账户，否则在后面关联用户的时候可能会遇到麻烦。</li>
+</ul>
+<p><img src="/article_imgs/image015.png" alt=""></p>
+<!-- raw HTML omitted -->
+<p>完成安装后，打开SQL Server 2014 Management Studio，连接到你的服务器。</p>
+<p><img src="/article_imgs/image018.png" alt=""></p>
+<p>这里可以选择Windows 身份验证，也可以选择SQL Server身份验证。然后点击“连接”。</p>
+<p>连接后，在右侧的对象资源管理器中，找到“数据库，右键单击，选择“新建数据库”，填写数据库名称，如dnt，然后设置所有者，可以直接选sa即可。</p>
+<!-- raw HTML omitted -->
+<pre><code>![](/article_imgs/image021.png)
+
+&lt;img src=/article_imgs/image019.png&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<hr>
+<h5 id="3安装discuznt">3.安装Discuz！NT。</h5>
+<p>从官网 <a href="http://www.comsenz.com/products/nt">http://www.comsenz.com/products/nt</a> 下载Discuz！NT压缩包，将其解压，</p>
+<!-- raw HTML omitted -->
+<p>打开readme目录下的catalog.html可以看见官方所给出的介绍页面，其中就包括了安装指南</p>
+<!-- raw HTML omitted -->
+<p>接下来，我们只需按照安装指南所给的步骤一步步进行</p>
+<!-- raw HTML omitted -->
+<ul>
+<li>这里特别注意划红线的部分，是把upload_files目录里的东西放到服务器的根目录下而不是把upload_files文件夹整个放进服务器根目录。如图。</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li>我使用的系统是WIN7，但依旧需要修改目录的权限，右键-属性-安全-编辑就可以编辑用户权限了。在IIS管理器中也可以对目录的权限进行设置。</li>
+</ul>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --> </p>
+<ul>
+<li>按照教程要求，我们在浏览器地址栏中输入应输入的内容，然后发现了如下的报错。</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>通过阅读错误信息和查看根目录下的web.config配置文件，我们可以大概了解到问题出在Discuz!NT没有获得接管权，而在配置文件中也没有对相关权限的设置。</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>此时我们应该做的是，打开控制面板-Windows功能，在应用程序开发功能目录下将下面的ASP.NET功能勾选上。系统会自动将需要的其他功能自动勾选上。</li>
+</ul>
+<!-- raw HTML omitted -->
+<pre><code>![](/article_imgs/image037.png)
+
+&lt;img src=/article_imgs/image039.png&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<ul>
+<li>再次运行安装脚本，即访问http://您的域名/install/index.aspx ，会看到如图的界面。 选择&quot;接受&rdquo;，点击“下一步”。</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>通过环境监测后，需要填写数据库信息，填写刚才创建的数据库名称，管理员账号和密码，在数据库服务器一项中填写自己的SQL Server服务器名称。</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>点击下一步。</p>
+<ul>
+<li>在出现的“论坛设置信息”界面中，自行设定管理员名称和密码。然后再次点击下一步。</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>然后会出现如图界面。</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>点击”进入论坛“，可以看到论坛的界面，说明搭建成功。可以尝试登陆管理员账号，也可以通过本机ip访问论坛。</li>
+</ul>
+<!-- raw HTML omitted -->
+<pre><code> 
+</code></pre>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/server">Server
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/160513_dsa-ch1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            《数据结构与算法分析——C语言描述》第一章 引论
+        </div>
+    </a>
+    
+    
+    <a href="/160503_jsp/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">jsp搭建JEECMS&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

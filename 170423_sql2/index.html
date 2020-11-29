@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQL Syntax(Ⅱ) // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="SQL Syntax(Ⅱ)" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/170423_sql2/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">SQL Syntax(Ⅱ)</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/170423_sql2/" class="article-date">
+                <time datetime='2017-04-23T00:00:00.000&#43;00:00' itemprop="datePublished">2017-04-23</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>继续。</p>
+<hr>
+<h2 id="创建计算字段">创建计算字段</h2>
+<p>以下以书中例子呈现相关用法。</p>
+<ul>
+<li>拼接字段</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;(&#39;</span> <span style="color:#f92672">+</span> vend_country<span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;)&#39;</span>
+<span style="color:#66d9ef">FROM</span> venders
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> vender_name;</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_name <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;(&#39;</span> <span style="color:#f92672">||</span> vend_country<span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;)&#39;</span>
+<span style="color:#66d9ef">FROM</span> venders
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> vender_name;</code></pre></div>
+<p>以上两种写法是等价的，还可以用RTRIM()去除字符串右边的空格，用LTRIM()去除字符串左边的空格，用TRIM()去除字符串左右两边的空格。
+特别地，在MySQL和MariaDB中需要使用Concat()函数来完成相同的功能：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#66d9ef">In</span> MySQL <span style="color:#66d9ef">and</span> MariaDB
+<span style="color:#66d9ef">SELECT</span> Concat(vend_name, <span style="color:#e6db74">&#39;(&#39;</span>, vend_country, <span style="color:#e6db74">&#39;)&#39;</span>)
+<span style="color:#66d9ef">FROM</span> venders
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> vender_name;</code></pre></div></p>
+<ul>
+<li>为结果使用别名</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;(&#39;</span> <span style="color:#f92672">+</span> vend_country<span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;)&#39;</span>
+<span style="color:#66d9ef">AS</span> vend_title
+<span style="color:#66d9ef">FROM</span> venders
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> vender_name;</code></pre></div>
+<ul>
+<li>执行算术计算</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> prod_id,
+       quantity,
+       item_price,
+       quantity<span style="color:#f92672">*</span>item_price <span style="color:#66d9ef">AS</span> expanded_price
+<span style="color:#66d9ef">FROM</span> OrderItems
+<span style="color:#66d9ef">WHERE</span> order_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">20008</span>;</code></pre></div>
+<hr>
+<h2 id="使用函数处理数据">使用函数处理数据</h2>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">LEFT()（或使用子字符串函数）</td>
+<td align="center">返回字符串左边的字符</td>
+</tr>
+<tr>
+<td align="center">LENGTH()（也使用DATALENGTH()或LEN()）</td>
+<td align="center">返回字符串的长度</td>
+</tr>
+<tr>
+<td align="center">LOWER()（Access使用LCASE()）</td>
+<td align="center">将字符串转换为小写</td>
+</tr>
+<tr>
+<td align="center">SOUNDEX()</td>
+<td align="center">返回字符串的SOUNDEX值（Access和PostgreSQL不支持，SQLite需要编译支持）</td>
+</tr>
+<tr>
+<td align="center">UPPER()</td>
+<td align="center">将字符串转换为大写</td>
+</tr>
+<tr>
+<td align="center">DATEPART()</td>
+<td align="center">返回日期类型中的年、月或日</td>
+</tr>
+</tbody>
+</table>
+<p>关于SOUNDEX()，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> cust_name, cust_contact
+<span style="color:#66d9ef">FROM</span> Customers
+<span style="color:#66d9ef">WHERE</span> SOUNDEX(cust_contact) <span style="color:#f92672">=</span> SOUNDEX(<span style="color:#e6db74">&#39;Michael Green&#39;</span>)</code></pre></div>
+<p>【实测了一下，Michelle和Michael，Knuth和Kant的SOUNDEX值都是一样的，但是Bitch和Beach是不一样的，前者的SOUNDEX值是B320，后者则是B200……】</p>
+<hr>
+<h2 id="汇总数据">汇总数据</h2>
+<ul>
+<li>
+<p>聚集函数</p>
+<p>常用的函数包括AVG(), COUNT(), MAX(), MIN(), SUM()等，可以使用WHERE过滤，这些函数默认会忽略值为NULL的行，用*则可以不忽略；</p>
+</li>
+<li>
+<p>聚集不同值</p>
+<p>ALL代表对所有行进行运算，是默认行为，不需要指定；</p>
+<p>DISTINCT只对不同的行进行操作；</p>
+</li>
+<li>
+<p>组合聚集函数</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> num_items,
+       <span style="color:#66d9ef">MIN</span>(prod_price) <span style="color:#66d9ef">AS</span> price_min,
+       <span style="color:#66d9ef">MAX</span>(prod_price) <span style="color:#66d9ef">AS</span> price_max,
+       ACG(prod_price) <span style="color:#66d9ef">AS</span> price_avg
+<span style="color:#66d9ef">FROM</span> Products;</code></pre></div>
+<hr>
+<h2 id="分组数据">分组数据</h2>
+<ul>
+<li>创建分组</li>
+</ul>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_id, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> num_prods
+<span style="color:#66d9ef">FROM</span> Products
+<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> vend_id
+
+<span style="color:#75715e">/*output:
+</span><span style="color:#75715e">vend_id		num_prods
+</span><span style="color:#75715e">-------		---------
+</span><span style="color:#75715e">BRS01		3
+</span><span style="color:#75715e">DLL01		4
+</span><span style="color:#75715e">FNG01		2
+</span><span style="color:#75715e">*/</span></code></pre></div>
+其中，GROUP BY后可以包含任意数目的列以进行更细致的数据分组，还可以在子句中嵌套分组。SELECT语句中的每一列都必须在GROUP BY子句中给出。包含NULL值的行会被作为一个分组返回。GROUP BY子句必须在WHERE子句之后，ORDER BY子句之前。</p>
+<ul>
+<li>
+<p>过滤分组</p>
+<p>即规定包括哪些组，排除哪些组。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> cust_id, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> orders
+<span style="color:#66d9ef">FROM</span> Orders
+<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> cust_id
+<span style="color:#66d9ef">HAVING</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span></code></pre></div>
+<p>这里不能用 WHERE替换HAVING，可以理解为 WHERE 在分组前进行过滤，故排除的行不包括在分组中，而 HAVING  	在数据分组后过滤。当然，两个子句并非不能同时存在，如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> cust_id, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> orders
+<span style="color:#66d9ef">FROM</span> Orders
+<span style="color:#66d9ef">WHERE</span> prod_price <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">4</span>
+<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> cust_id
+<span style="color:#66d9ef">HAVING</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span>
+<span style="color:#75715e">/*output:
+</span><span style="color:#75715e">vend_id		num_prods
+</span><span style="color:#75715e">-------		---------
+</span><span style="color:#75715e">BRS01		3
+</span><span style="color:#75715e">DLL01		2
+</span><span style="color:#75715e">*/</span></code></pre></div>
+<ul>
+<li>
+<p>分组和排序</p>
+<p>下表列出了 ORDER BY 和 GROUP BY 的区别</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">ORDER BY</th>
+<th align="center">GROUP BY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">对产生的输出进行排序</td>
+<td align="center">对行分组，但输出可能不是分组的顺序【所以可以在后面再使用ORDER BY对输出进行排序】</td>
+</tr>
+<tr>
+<td align="center">任意列都可以使用（甚至非选择的列也可以使用）</td>
+<td align="center">只可能使用选择列或表达式列，而且必须使用每个选择列表达式</td>
+</tr>
+<tr>
+<td align="center">不一定需要</td>
+<td align="center">如果与聚集函数一起使用列（或表达式），则必须使用</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="使用子查询">使用子查询</h2>
+<p>子查询(Subquery)，即嵌套在其他查询中的查询。在需要多个SQL语句共同完成一个任务且他们之间存在递进关系时，可以使用类似于以下的用法：</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> cust_id
+<span style="color:#66d9ef">FROM</span> Orders
+<span style="color:#66d9ef">WHERE</span> order_num <span style="color:#66d9ef">IN</span> (<span style="color:#66d9ef">SELECT</span> order_num
+                    <span style="color:#66d9ef">FROM</span> OrderItems
+                    <span style="color:#66d9ef">WHERE</span> prod_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;RGAN01&#39;</span>);</code></pre></div>
+这其实就是将括号中的 SELECT order_num FROM OrderItems WHERE prod_id = &lsquo;RGAN01&rsquo; 这一句的输出结果传递给外面的 WHERE 查询子句。</p>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建计算字段">创建计算字段</a></li>
+    <li><a href="#使用函数处理数据">使用函数处理数据</a></li>
+    <li><a href="#汇总数据">汇总数据</a></li>
+    <li><a href="#分组数据">分组数据</a></li>
+    <li><a href="#使用子查询">使用子查询</a></li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/sql">SQL
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/170425_sql3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            SQL Syntax(Ⅲ)
+        </div>
+    </a>
+    
+    
+    <a href="/170422_sql1/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">SQL Syntax(Ⅰ)&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

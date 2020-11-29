@@ -3,17 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://drapor.me/posts/200413_insomnia/</loc>
+    <loc>https://drapor.me/200413_insomnia/</loc>
     <lastmod>2020-04-14T12:37:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://drapor.me/</loc>
-    <lastmod>2020-04-14T12:37:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drapor.me/posts/</loc>
     <lastmod>2020-04-14T12:37:05+08:00</lastmod>
   </url>
   
@@ -28,18 +23,8 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/200403_comments_and_sns/</loc>
+    <loc>https://drapor.me/200403_comments_and_sns/</loc>
     <lastmod>2020-04-03T16:00:59+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drapor.me/scribble/</loc>
-    <lastmod>2020-01-17T14:52:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drapor.me/scribble/start/</loc>
-    <lastmod>2020-01-17T14:52:34+08:00</lastmod>
   </url>
   
   <url>
@@ -48,12 +33,12 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/200113_proxy_pass_slash/</loc>
+    <loc>https://drapor.me/200113_proxy_pass_slash/</loc>
     <lastmod>2020-01-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/200101_2019/</loc>
+    <loc>https://drapor.me/200101_2019/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -68,7 +53,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/191101_grpc/</loc>
+    <loc>https://drapor.me/191101_grpc/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -78,12 +63,17 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/190801_py_with_c/</loc>
+    <loc>https://drapor.me/190801_py_with_c/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/190221_kcp_tun/</loc>
+    <loc>https://drapor.me/math-typesetting/</loc>
+    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drapor.me/190221_kcp_tun/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -93,12 +83,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/190101_2018/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drapor.me/2019-reading-list/</loc>
+    <loc>https://drapor.me/190101_2018/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -108,13 +93,8 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/181224_mongodb_query_optimization/</loc>
+    <loc>https://drapor.me/181224_mongodb_query_optimization/</loc>
     <lastmod>2018-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drapor.me/2018-reading-list/</loc>
-    <lastmod>2018-10-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -128,17 +108,17 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/180813_py_udf/</loc>
+    <loc>https://drapor.me/180813_py_udf/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/180805_pd_deepcopy/</loc>
+    <loc>https://drapor.me/180805_pd_deepcopy/</loc>
     <lastmod>2018-08-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/180711_pd_settingwithcopywarning/</loc>
+    <loc>https://drapor.me/180711_pd_settingwithcopywarning/</loc>
     <lastmod>2018-07-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -148,17 +128,17 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/180515_mongodb_common_query/</loc>
+    <loc>https://drapor.me/180515_mongodb_common_query/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/180428_pysound/</loc>
+    <loc>https://drapor.me/180428_pysound/</loc>
     <lastmod>2018-04-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/180319_star_operator/</loc>
+    <loc>https://drapor.me/180319_star_operator/</loc>
     <lastmod>2018-03-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -168,12 +148,12 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/180122_flask_simple_api/</loc>
+    <loc>https://drapor.me/180122_flask_simple_api/</loc>
     <lastmod>2018-01-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/180101_2017/</loc>
+    <loc>https://drapor.me/180101_2017/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -188,12 +168,12 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/171122_pymongo/</loc>
+    <loc>https://drapor.me/171122_pymongo/</loc>
     <lastmod>2017-11-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/171122_impala/</loc>
+    <loc>https://drapor.me/171122_impala/</loc>
     <lastmod>2017-11-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -203,7 +183,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170911_knn_digits_recognition/</loc>
+    <loc>https://drapor.me/170911_knn_digits_recognition/</loc>
     <lastmod>2017-09-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -223,7 +203,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170822_aws_tensorflow/</loc>
+    <loc>https://drapor.me/170822_aws_tensorflow/</loc>
     <lastmod>2017-08-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -233,7 +213,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170819_funny_codewars/</loc>
+    <loc>https://drapor.me/170819_funny_codewars/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -248,22 +228,22 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170808_sql_time_switch/</loc>
+    <loc>https://drapor.me/170808_sql_time_switch/</loc>
     <lastmod>2017-08-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170721_a_sql_ex/</loc>
+    <loc>https://drapor.me/170721_a_sql_ex/</loc>
     <lastmod>2017-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170707-firstinterview-md/</loc>
+    <loc>https://drapor.me/170707-firstinterview-md/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170701_term-summary/</loc>
+    <loc>https://drapor.me/170701_term-summary/</loc>
     <lastmod>2017-07-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -273,7 +253,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170614-pandas/</loc>
+    <loc>https://drapor.me/170614-pandas/</loc>
     <lastmod>2017-06-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -283,7 +263,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170601_ml_notes7/</loc>
+    <loc>https://drapor.me/170601_ml_notes7/</loc>
     <lastmod>2017-06-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -293,12 +273,12 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170511-numpy/</loc>
+    <loc>https://drapor.me/170511-numpy/</loc>
     <lastmod>2017-05-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170502_ipython/</loc>
+    <loc>https://drapor.me/170502_ipython/</loc>
     <lastmod>2017-05-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -308,27 +288,27 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170425_sql3/</loc>
+    <loc>https://drapor.me/170425_sql3/</loc>
     <lastmod>2017-04-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170423_sql2/</loc>
+    <loc>https://drapor.me/170423_sql2/</loc>
     <lastmod>2017-04-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170422_sql1/</loc>
+    <loc>https://drapor.me/170422_sql1/</loc>
     <lastmod>2017-04-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170406_ml_notes6/</loc>
+    <loc>https://drapor.me/170406_ml_notes6/</loc>
     <lastmod>2017-04-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170507_notice/</loc>
+    <loc>https://drapor.me/170507_notice/</loc>
     <lastmod>2017-03-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -338,22 +318,22 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170319-plans/</loc>
+    <loc>https://drapor.me/170319-plans/</loc>
     <lastmod>2017-03-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170305-plans/</loc>
+    <loc>https://drapor.me/170305-plans/</loc>
     <lastmod>2017-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170219_plans/</loc>
+    <loc>https://drapor.me/170219_plans/</loc>
     <lastmod>2017-02-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/170101_my2016/</loc>
+    <loc>https://drapor.me/170101_my2016/</loc>
     <lastmod>2017-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -363,7 +343,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/161202_ml_notes5/</loc>
+    <loc>https://drapor.me/161202_ml_notes5/</loc>
     <lastmod>2016-12-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -373,57 +353,57 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/161202_pycrawler2/</loc>
+    <loc>https://drapor.me/161202_pycrawler2/</loc>
     <lastmod>2016-12-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/161201_pycrawler1/</loc>
+    <loc>https://drapor.me/161201_pycrawler1/</loc>
     <lastmod>2016-12-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/161121_ml_notes4/</loc>
+    <loc>https://drapor.me/161121_ml_notes4/</loc>
     <lastmod>2016-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/161018_ml_notes3/</loc>
+    <loc>https://drapor.me/161018_ml_notes3/</loc>
     <lastmod>2016-10-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/161011_ml_notes2/</loc>
+    <loc>https://drapor.me/161011_ml_notes2/</loc>
     <lastmod>2016-10-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/161010_ml_notes1/</loc>
+    <loc>https://drapor.me/161010_ml_notes1/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160920_plans/</loc>
+    <loc>https://drapor.me/160920_plans/</loc>
     <lastmod>2016-09-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160810_re/</loc>
+    <loc>https://drapor.me/160810_re/</loc>
     <lastmod>2016-08-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160713_re/</loc>
+    <loc>https://drapor.me/160713_re/</loc>
     <lastmod>2016-07-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160624_re/</loc>
+    <loc>https://drapor.me/160624_re/</loc>
     <lastmod>2016-06-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160517_re/</loc>
+    <loc>https://drapor.me/160517_re/</loc>
     <lastmod>2016-05-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -438,22 +418,22 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160513_dsa-ch2/</loc>
+    <loc>https://drapor.me/160513_dsa-ch2/</loc>
     <lastmod>2016-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160513_dsa-ch1/</loc>
+    <loc>https://drapor.me/160513_dsa-ch1/</loc>
     <lastmod>2016-05-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160503_asp/</loc>
+    <loc>https://drapor.me/160503_asp/</loc>
     <lastmod>2016-05-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160503_jsp/</loc>
+    <loc>https://drapor.me/160503_jsp/</loc>
     <lastmod>2016-05-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -463,7 +443,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160503-php/</loc>
+    <loc>https://drapor.me/160503-php/</loc>
     <lastmod>2016-05-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -478,17 +458,17 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160427_http/</loc>
+    <loc>https://drapor.me/160427_http/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160416_re/</loc>
+    <loc>https://drapor.me/160416_re/</loc>
     <lastmod>2016-04-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/160320_plans/</loc>
+    <loc>https://drapor.me/160320_plans/</loc>
     <lastmod>2016-03-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -498,7 +478,7 @@
   </url>
   
   <url>
-    <loc>https://drapor.me/posts/151125_hardware/</loc>
+    <loc>https://drapor.me/151125_hardware/</loc>
     <lastmod>2015-11-25T00:00:00+00:00</lastmod>
   </url>
   

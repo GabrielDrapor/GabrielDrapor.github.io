@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQL Syntax(Ⅲ) // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="SQL Syntax(Ⅲ)" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/170425_sql3/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">SQL Syntax(Ⅲ)</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/170425_sql3/" class="article-date">
+                <time datetime='2017-04-25T00:00:00.000&#43;00:00' itemprop="datePublished">2017-04-25</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。</p>
+<hr>
+<h2 id="联结表">联结表</h2>
+<h5 id="创建联结">创建联结</h5>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_name, prod_name, prod_price
+<span style="color:#66d9ef">FROM</span> Venders, Products
+<span style="color:#66d9ef">WHERE</span> Venders.vend_id <span style="color:#f92672">=</span> Products.id</code></pre></div>
+　　简单解释一下，Venders和Products是一个数据库下的两张表，他们都有一个列叫Vend_id, prod_name和prod_price是表Products中的列，vend_name是表Venders中的列。
+需要注意的是，如果在SELECT中添加了共有的列名，需要做完全限定，比如上面的例子中，如果需要把vend_id这个列提取出来，需要用Venders.vend_id或者Products.id来完全限定。
+另外就是，WHERE子句非常重要，如果这里不用WHERE子句的话，输出的结果将会是指定的两部分内容的每一行的组合的结果，而忽略其中的逻辑，输出结果的行数将等于第一部分的列乘以第二个部分列的行数。这个结果也被称为<em>笛卡尔积</em>。所以，在联结表时为了避免输出的结果过长，千万不要忘了WHERE子句。</p>
+<p>　　以上的联结称为等值联结(equijoin)，也称为内联结(inner join)，我们可以用内联结的写法来重新写与上面等价的SQL语句：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_name, prod_name, prod_price
+<span style="color:#66d9ef">FROM</span> Venders <span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> Products
+ <span style="color:#66d9ef">ON</span> Venders.vend_id <span style="color:#f92672">=</span> Products.id</code></pre></div>
+<p>　　实际上，联结表的操作也可以用子查询完成，但SQL语句书写起来会麻烦许多。</p>
+<hr>
+<h2 id="创建高级联结">创建高级联结</h2>
+<h5 id="使用表别名">使用表别名</h5>
+<p>表别名还有以下这种有趣的用法：</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> cust_name, cust_contract
+<span style="color:#66d9ef">FROM</span> Customers <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">C</span>, Orders <span style="color:#66d9ef">AS</span> O, OrderItems <span style="color:#66d9ef">AS</span> OI
+<span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">C</span>.cust_id <span style="color:#f92672">=</span> O.cust_id
+ <span style="color:#66d9ef">AND</span> OI.order_num <span style="color:#f92672">=</span> O.order_num
+ <span style="color:#66d9ef">AND</span> prod_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;RGAN01&#39;</span></code></pre></div>
+P.S.:Oracle中没有AS这个用法</p>
+<h5 id="其他类型的联结">其他类型的联结</h5>
+<ul>
+<li>自联结(self-join)
+使用别名的好处在于可以不止一次地引用同一个表。下面两段SQL语句是等价的：</li>
+</ul>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> cest_id, cust_name, cust_contact
+<span style="color:#66d9ef">FROM</span> Customers
+<span style="color:#66d9ef">WHERE</span> cust_name <span style="color:#f92672">=</span> (<span style="color:#66d9ef">SELECT</span> cust_name
+                   <span style="color:#66d9ef">FROM</span> Customers
+                   <span style="color:#66d9ef">WHERE</span> cust_contact <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Jim Jones&#39;</span>);</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> c1.cust_id, c1.cust_name, c1.cust_contact
+<span style="color:#66d9ef">FROM</span> Customers <span style="color:#66d9ef">AS</span> c1, Customers <span style="color:#66d9ef">AS</span> c2
+<span style="color:#66d9ef">WHERE</span> c1.cust_name <span style="color:#f92672">=</span> c2.cust_name
+ <span style="color:#66d9ef">AND</span> c2.cust_contract <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Jim Jones&#39;</span>;</code></pre></div>
+　　第一段使用了子查询,而第二段使用了联结，他们的效果是一样的，但在许多DBMS中，处理联结远比子查询快得多。
+　　</p>
+<ul>
+<li>
+<p>自然联结(natural join)</p>
+<p>标准的联结返回所有的数据，相同的列甚至多次出现。自然联结排除多次出现，使每一列只返回一次。如：</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">C</span>.<span style="color:#f92672">*</span>, O.order_num, O.order_date,
+       OI.prod_id, OI.quantity, OI.item_price
+<span style="color:#66d9ef">FROM</span> Customers <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">C</span>, Orders <span style="color:#66d9ef">AS</span> O, OrderItems <span style="color:#66d9ef">AS</span> OI
+<span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">C</span>.cust_id <span style="color:#f92672">=</span> O.cust_id
+ <span style="color:#66d9ef">AND</span> OI.order_num <span style="color:#f92672">=</span> O.order_num
+ <span style="color:#66d9ef">AND</span> prod_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;RGAN01&#39;</span>;</code></pre></div>
+<ul>
+<li>外联结
+包含在相关表中没有关联行的行的联结，称为外联结(outer join)。用法如：</li>
+</ul>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> Customers.cust_id, Orders.order_num
+<span style="color:#66d9ef">FROM</span> Customers <span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">OUTER</span> <span style="color:#66d9ef">JOIN</span> Orders
+ <span style="color:#66d9ef">ON</span> Customers.cust_id <span style="color:#f92672">=</span> Orders.cust_id;</code></pre></div>
+注意，OUT JOIN前必须使用RIGHT或者LEFT关键字制定包括其所有行的表（RIGHT指出的是OUTER JOIN了FROM中右边的表，LEFT同理）。</p>
+<ul>
+<li>全外联结
+检索两个表中的所有行并关联那些可以关联的行，这种外联结称为全外联结(full outer join),如：</li>
+</ul>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> Customers.cust_id, Orders.order_num
+<span style="color:#66d9ef">FROM</span> Customers <span style="color:#66d9ef">FULL</span> <span style="color:#66d9ef">OUTER</span> <span style="color:#66d9ef">JOIN</span> Orders
+ <span style="color:#66d9ef">ON</span> Customers.cust_id <span style="color:#f92672">=</span> Orders.cust_id;</code></pre></div>
+当然，也可以在联结中使用聚集函数。</p>
+<hr>
+<h2 id="组合查询">组合查询</h2>
+<p>SQL允许执行多个查询（多条SELECT语句），并将结果作为一个查询结果集返回。这些组合查询通常称为并(union)或复制查询(compound query)</p>
+<h5 id="使用union">使用UNION</h5>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> cust_name, cust_contact, cust_email
+<span style="color:#66d9ef">FROM</span> Customers
+<span style="color:#66d9ef">WHERE</span> cust_state <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;IL&#39;</span>, <span style="color:#e6db74">&#39;IN&#39;</span>, <span style="color:#e6db74">&#39;MI&#39;</span>)
+<span style="color:#66d9ef">UNION</span>
+<span style="color:#66d9ef">SELECT</span> cust_name, cust_contact, cust_email
+<span style="color:#66d9ef">FROM</span> Customers
+<span style="color:#66d9ef">WHERE</span> cust_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Fun4All&#39;</span>;</code></pre></div>
+　　当然这里可以用OR达成同样的效果，但对于较复杂的过滤条件，或者从多个表检索数据的情形，使用UNION可能会使处理更简单。另外需要注意,UNION每个查询必须包含相同的列，表达式或聚集函数。</p>
+<p>　　此外，UNION会默认自动取消重复的行，当然如果有需要，也可以改变它，使用UNION ALL即可。如果需要对组合查询的结果进行排序，只需要在最后加上ORDER BY即可。</p>
+<hr>
+<h2 id="插入数据">插入数据</h2>
+<h5 id="使用insert">使用INSERT</h5>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">table_name</span>
+<span style="color:#66d9ef">VALUES</span>(Value <span style="color:#ae81ff">1</span>,
+       Value <span style="color:#ae81ff">2</span>,
+       Value <span style="color:#ae81ff">3</span>,
+       ......);</code></pre></div>
+　　这种用法很简单，但并不安全，应该尽量避免使用。更安全（也更烦琐）的用法应当是：</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">table_name</span>(column1,
+                       column2,
+                       column3,
+                       ......)
+<span style="color:#66d9ef">VALUES</span>(Value <span style="color:#ae81ff">1</span>,
+       Value <span style="color:#ae81ff">2</span>,
+       Value <span style="color:#ae81ff">3</span>,
+       ......);</code></pre></div>
+　　Values将以指定的次序匹配指定的列名，不一定按各列出现在表中的实际次序。其优点是，即使表的结构改变，这条INSERT仍然能正确工作。
+　　</p>
+<h5 id="插入检索出的数据">插入检索出的数据</h5>
+<p>　　INSERT还存在另一种形式，可以利用它将SELECT语句的结果插入表中，这就是所谓的INSERT SELECT，如：</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">table_name</span>(column1,
+                       column2,
+                       column3,
+                       ......)
+<span style="color:#66d9ef">SELECT</span> column_a,
+       column_b,
+       column_c,
+       ......
+<span style="color:#66d9ef">FROM</span> another_table_name;</code></pre></div>
+　　当然，利用INSERT SELECT，可以实现从一个表复制到另一个表：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">INTO</span> table1
+<span style="color:#66d9ef">FROM</span> table2;</code></pre></div>
+在MariaDB, MySQL, Oracle, PostgreSQL 和 SQLite 使用的用法稍有不同：</p>
+<h2 id="hahahugoshortcode-s13-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> table1 <span style="color:#66d9ef">AS</span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> table2;</code></pre></div></h2>
+<h2 id="更新和删除数据">更新和删除数据</h2>
+<h5 id="更新数据">更新数据</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">table_name</span>
+<span style="color:#66d9ef">SET</span> column1<span style="color:#f92672">=</span>value1,
+    column2<span style="color:#f92672">=</span>value2,
+    ......
+<span style="color:#66d9ef">WHERE</span> certain_column <span style="color:#f92672">=</span> certain_value;</code></pre></div>
+<h5 id="删除数据">删除数据</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
+<span style="color:#66d9ef">WHERE</span> ......</code></pre></div>
+<hr>
+<h2 id="创建和操纵表">创建和操纵表</h2>
+<h5 id="创建表">创建表</h5>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">table_name</span>
+(
+    column1_name	column_type		<span style="color:#66d9ef">NULL</span><span style="color:#f92672">/</span><span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    column2_name	column_type		<span style="color:#66d9ef">NULL</span><span style="color:#f92672">/</span><span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    column2_name	column_type		<span style="color:#66d9ef">NULL</span><span style="color:#f92672">/</span><span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    ......
+);</code></pre></div>
+其中，NULL是默认设置，可以省略。</p>
+<h5 id="指定默认值">指定默认值</h5>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">table_name</span>
+(
+    column1_name  column_type  <span style="color:#66d9ef">NULL</span><span style="color:#f92672">/</span><span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> [value],
+    column2_name  column_type  <span style="color:#66d9ef">NULL</span><span style="color:#f92672">/</span><span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> [value],
+    column2_name  column_type  <span style="color:#66d9ef">NULL</span><span style="color:#f92672">/</span><span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> [value],
+    ......
+);</code></pre></div>
+在实际中，常用的默认值会用到当前时间。</p>
+<table>
+<thead>
+<tr>
+<th align="center">DBMS</th>
+<th align="center">函数/变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Access</td>
+<td align="center">NOW()</td>
+</tr>
+<tr>
+<td align="center">DB2</td>
+<td align="center">CURRENT_DATE</td>
+</tr>
+<tr>
+<td align="center">MySQL</td>
+<td align="center">CURRENT_DATE()</td>
+</tr>
+<tr>
+<td align="center">Oracle</td>
+<td align="center">SYSDATE</td>
+</tr>
+<tr>
+<td align="center">PostgreSQL</td>
+<td align="center">CURRENT_DATE</td>
+</tr>
+<tr>
+<td align="center">SQL Server</td>
+<td align="center">GETDATE()</td>
+</tr>
+<tr>
+<td align="center">SQLite</td>
+<td align="center">date(&lsquo;now&rsquo;)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="更新表">更新表</h5>
+<p>以下展示了添加和删除列的用法：</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">table_name</span>
+<span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">column_name</span> column_type;</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">table_name</span>
+<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">column_name</span>;</code></pre></div></p>
+<h5 id="删除表">删除表</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">table_name</span>;</code></pre></div>
+<hr>
+<h2 id="使用视图">使用视图</h2>
+<p>视图(View)，其实就是封装起来的查询操作。【使用视图的好处大约就和贯彻面向对象思想的好处一样多。】</p>
+<h5 id="创建视图">创建视图</h5>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span> view_name <span style="color:#66d9ef">AS</span>
+.....
+[<span style="color:#66d9ef">SQL</span> Query]
+.....</code></pre></div>
+之后需要再次执行该查询操作时，只需要直接用
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> column1,column2,...
+<span style="color:#66d9ef">FROM</span> view_name
+<span style="color:#66d9ef">WHERE</span> ...</code></pre></div>
+即可。</p>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#联结表">联结表</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#创建高级联结">创建高级联结</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#组合查询">组合查询</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#插入数据">插入数据</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#hahahugoshortcode-s13-hbhb">HAHAHUGOSHORTCODE-s13-HBHB</a></li>
+    <li><a href="#更新和删除数据">更新和删除数据</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#创建和操纵表">创建和操纵表</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#使用视图">使用视图</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/sql">SQL
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/170502_ipython/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            IPython的一些笔记
+        </div>
+    </a>
+    
+    
+    <a href="/170423_sql2/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">SQL Syntax(Ⅱ)&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

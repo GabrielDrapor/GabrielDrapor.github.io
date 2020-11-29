@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>评论插件与SNS探索 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="评论插件与SNS探索" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/200403_comments_and_sns/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">评论插件与SNS探索</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/200403_comments_and_sns/" class="article-date">
+                <time datetime='2020-04-03T16:00:59.000&#43;08:00' itemprop="datePublished">2020-04-03</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>在<a href="https://drapor.me/posts/170507_notice/">多说关闭服务</a>将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。</p>
+<h4 id="评论插件">评论插件</h4>
+<p>多说的替代品不算少，但在各个方面能比得上多说的寥寥无几。这些替代品大致可以分为几类：一类是搜狐畅言*、*网易云跟贴（也已关闭）之类的国内门户网站提供的服务，它们的评论插件样式中带有强烈的品牌特征，嵌入到个人博客中难免风格不匹配；一类是Disqus、HyperComments和Livere一类的外国第三方服务，他们优劣各有不同，通常的问题是从国内的网络访问服务可能会比较缓慢，甚至根本无法从国内访问到，再者是由于是外国提供的服务，在SNS登陆的支持上通常选择的也是Twitter和Facebook之类的国外SNS，有些优质的服务价格不菲（对于我博客的用量而言），有些样式需要自己花工夫修改和增补CSS；还有一类是基于GitHub Issues的评论服务，依托Github Issues做评论数据的存储和Github的账号服务，这类服务的优劣也很明显：需要Github账号，国内网络访问也会受到一定程度的影响。</p>
+<p>我其实一开始打算直接用LiveRe（即来必力）来着，LiveRe对国内的SNS也算是不错了，访问速度略慢但是等一会儿还是可以的。让我比较烦恼的问题是，LiveRe的样式，在我博客的底色上，颜色和样式都有点不太融洽，我尝试自己写CSS修改，但囿于个人的配色能力，改来改去还是觉得不满意。后来转念一想，会看我博客的人大概都是圈内的人，也大多都有GitHub账号，索性直接从基于Github Issues的评论服务中挑一个好看的好了，于是最后决定采用<a href="%5Bhttps://gitalk.github.io/%5D(https://gitalk.github.io/)">Gitalk</a>。配置方法不再赘述，非常简单方便。</p>
+<hr>
+<h4 id="sns">SNS</h4>
+<p>很长时间以来，我对SNS的态度摇摆不定，一方面，我对日常生活确实有表达欲，很想po一些内容，但另一方面，每个SNS都似乎不能让我畅快地抒发心情。在此之前的一小段时间里一直在用即刻的内测版Jellow，但逐渐地，中心化的SNS社区依然会让我感到不适。于是开始考虑自建SNS是否可行，以及是否有某种替代方案。新的方案希望最好是去中心化的，可自动化的，同时po内容也足够便利。经过一番探索。最终，我发现了<a href="%5Bhttps://joinmastodon.org/%5D(https://joinmastodon.org/)">Mastodon</a>。</p>
+<p>简单说，Mastodon就是可以自建的SNS，任何人都可以用开源的代码部署一套Mastodon，创建一个新的Mastodon instance，而且通常情况下，这些Mastodon宇宙（不同的instance）之间也是可以互联的。我发现自己一年前注册的<a href="https://o3o.ca/">https://o3o.ca/</a> 其实也是Mastodon的一个instance；</p>
+<p>App方面，我下了Mastodon官网推荐的Tusky。原想这类开源生态中的免费app大概只能提供可用的基本功能，不能过多奢望UI和产品设计。意外的是，Tusky的UI和Twitter的app非常像。更妙的是Tusky还支持在下拉菜单中添加Shortcut按钮，点击按钮可以直接进入Compose页，而Twitter都并没有做过类似（哪怕是桌面Widget）的支持。</p>
+<p><img src="/article_imgs/tusky.jpg" alt=""></p>
+<p>此外，利用Mastodon提供的API，还可以用IFTTT做Applet，把其他地方的动态也同步到Mastodon上。比如利用我的豆瓣RSS更新作为Trigger，用Webhooks把豆瓣广播转发到Mastodon上。</p>
+<p><img src="/article_imgs/ifttt_mastodon.jpg" alt=""></p>
+<p>不出意外的话，自建Mastodon应该就是我用SNS的终点了。</p>
+<p>不禁感叹：<strong>开源真好啊！</strong></p>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/200413_insomnia/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            Alternative to Postman: Insomnia
+        </div>
+    </a>
+    
+    
+    <a href="/200113_proxy_pass_slash/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Nginx中proxy_pass的斜杠问题&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

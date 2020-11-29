@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>《数据结构与算法分析——C语言描述》第二章 算法分析 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="《数据结构与算法分析——C语言描述》第二章 算法分析" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/160513_dsa-ch2/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">《数据结构与算法分析——C语言描述》第二章 算法分析</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/160513_dsa-ch2/" class="article-date">
+                <time datetime='2016-05-14T00:00:00.000&#43;00:00' itemprop="datePublished">2016-05-14</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p> </p>
+<p><strong>2.4.3最大子序列和问题的解</strong></p>
+<blockquote>
+<p><strong>最大的子序列和问题</strong>：给定整数A1，A2，……，AN（可能有负数），求∑(k=i)^j A_k  的最大值（为方便起见，如果所有整数均为负数，则最大子序列和为0）</p>
+</blockquote>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><strong>• 算法3</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#75715e">//T(N)=O(N log N) 
+</span><span style="color:#75715e"></span>
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MaxSubSum</span>( <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> Left,<span style="color:#66d9ef">int</span> Right )
+	{
+		<span style="color:#66d9ef">int</span> MaxLeftSum,MaxRightSum;
+		<span style="color:#66d9ef">int</span> MaxLeftBorderSum,MaxRightBorderSum;
+		<span style="color:#66d9ef">int</span> LeftBorderSum,RightBorderSum;
+		<span style="color:#66d9ef">int</span> Center,i;
+
+		<span style="color:#66d9ef">if</span>(Left<span style="color:#f92672">==</span>Right)   <span style="color:#75715e">//Base Case,即&#39;基准情形&#39;
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> (A[Left]<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>)
+			<span style="color:#66d9ef">return</span> A[Left];
+		<span style="color:#66d9ef">else</span>
+			<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+
+		Center <span style="color:#f92672">=</span> (Left <span style="color:#f92672">+</span> Right)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
+		MaxLeftSum<span style="color:#f92672">=</span>MaxSubSum(A,Left,Center);<span style="color:#75715e">//左边中最大的子序列和
+</span><span style="color:#75715e"></span>		MaxRightSum<span style="color:#f92672">=</span>MaxSubSum(A,Center<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,Right);<span style="color:#75715e">//右边中最大的子序列和
+</span><span style="color:#75715e"></span>		MaxLeftBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; LeftBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+		<span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span>Center;i<span style="color:#f92672">&gt;=</span>Left;i<span style="color:#f92672">--</span>)<span style="color:#75715e">//从中心开始向左找最大子序列和
+</span><span style="color:#75715e"></span>		{
+			LeftBorderSum<span style="color:#f92672">+=</span>A[i];
+			<span style="color:#66d9ef">if</span>(LeftBorderSum<span style="color:#f92672">&gt;</span>MaxLeftBorderSum)
+			MaxLeftBorderSum<span style="color:#f92672">=</span> LeftBorderSum;
+		}
+
+		MaxRightBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; RightBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+		<span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span>Center<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span>Right;i<span style="color:#f92672">+</span>　<span style="color:#f92672">+</span>)<span style="color:#75715e">//从中心开始向右找最大子序列和
+</span><span style="color:#75715e"></span>		{
+			RightBorderSum<span style="color:#f92672">+=</span>A[i];
+			<span style="color:#66d9ef">if</span>(RightBorderSum<span style="color:#f92672">&gt;</span>MaxRightBorderSum)
+			MaxRightBorderSum<span style="color:#f92672">=</span>RightBorderSum;
+		}
+	
+		<span style="color:#66d9ef">return</span> Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum <span style="color:#f92672">+</span> MaxRightBorderSum);
+	}
+	
+	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MaxSubsequenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
+	{
+		<span style="color:#66d9ef">return</span> MaxSubSum(A , <span style="color:#ae81ff">0</span> , N <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+	}
+	
+	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max3</span>(<span style="color:#66d9ef">int</span> a,<span style="color:#66d9ef">int</span> b,<span style="color:#66d9ef">int</span> c)
+	{
+		<span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b)
+		<span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>c) <span style="color:#66d9ef">return</span> a;
+		<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> c;
+		<span style="color:#66d9ef">else</span>
+		<span style="color:#66d9ef">if</span> (c<span style="color:#f92672">&gt;</span>b) <span style="color:#66d9ef">return</span> c;
+		<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> b;
+	}
+</code></pre></div><p>​</p>
+<p>​</p>
+<p><strong>• 更简单有效的算法4</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MaxSubsequenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
+	{
+		<span style="color:#66d9ef">int</span> ThisSum,MaxSum,j;
+		
+		ThisSum<span style="color:#f92672">=</span>MaxSum<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+		<span style="color:#66d9ef">for</span>(j<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;j<span style="color:#f92672">&lt;</span>N;j<span style="color:#f92672">++</span>)
+		{
+			ThisSum<span style="color:#f92672">+=</span>A[j];
+			<span style="color:#66d9ef">if</span>(ThisSum <span style="color:#f92672">&gt;</span> MaxSum)
+				MaxSum <span style="color:#f92672">=</span> ThisSum;
+			<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(ThisSum <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)  <span style="color:#75715e">//这一步是关键，如果前j项和是负的，那就可以扔掉不要了
+</span><span style="color:#75715e"></span>				ThisSum<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+		}
+			<span style="color:#66d9ef">return</span> MaxSum;
+	}
+</code></pre></div><blockquote>
+<p>这种算法的附带优点是，只需要扫描一次数据，一旦A[i]被扫入并被处理，它就不再需要被记忆【5/13:数据赋值等操作少】。在任何时刻，算法都能对它已经读入的数据给出子序列问题的正确答案（其他算法不具有这个特性）【5/13:也就是说，假如你输入的是10个数据，在你输入到任何一个的时候，在这种情况下的解已经被算出来了】。具有这种特性的算法叫做<em>联机算法</em>（online algorithm）。</p>
+</blockquote>
+<p>​</p>
+<p><strong>2.4.4运行时间中的对数</strong></p>
+<blockquote>
+<p>除分治算法外，可将对数最常出现的规律概括为下列一般法则：如果一个算法用常数时间（O（1））将问题的大小削减为其一部分（通常是1/2），那么该算法就是O（log N）。另一方面，如果使用常数时间只是把问题减少一个常数（如将问题减少1），那么这种算法就是O（N）的。
+【5/15:可以理解为就是一个循环中，如果这个算法本身能够自己削减循环次数的话，那么就会从O（N）降到O（log N）】</p>
+</blockquote>
+<p><strong>• 对分算法</strong>
+​</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#75715e">//T(N)=O（log N）
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">BinarySearch</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> x,<span style="color:#66d9ef">int</span> n)
+	{
+		<span style="color:#66d9ef">int</span> Low,Mid,High;
+		Low<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;High<span style="color:#f92672">=</span>n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+		<span style="color:#66d9ef">while</span>(Low <span style="color:#f92672">&lt;=</span> High)
+		{
+			Mid <span style="color:#f92672">=</span> (Low<span style="color:#f92672">+</span>High) <span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
+	   	       <span style="color:#66d9ef">if</span>(A[Mid]<span style="color:#f92672">&lt;</span>x)
+				Low<span style="color:#f92672">=</span>Mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+			<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(A[Mid]<span style="color:#f92672">&gt;</span> x)
+			High<span style="color:#f92672">=</span>Mid<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+			<span style="color:#66d9ef">else</span>
+			<span style="color:#66d9ef">return</span> Mid;
+		}
+		<span style="color:#66d9ef">return</span> NotFound;
+	}
+
+</code></pre></div><p>它提供了在O（log N）时间内的Find（查找）操作。访问次数少，而如果是顺序查找的话就会需要多很多的访问次数。
+​
+<strong>• 欧几里德算法</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Gcd</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> M,<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> N)
+	{
+		<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> Rem;
+		<span style="color:#66d9ef">while</span>( N<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> )
+		{
+			Rem <span style="color:#f92672">=</span> M <span style="color:#f92672">%</span> N;
+			M <span style="color:#f92672">=</span> N;
+			N <span style="color:#f92672">=</span> Rem;
+		}
+		<span style="color:#66d9ef">return</span> M;
+	}
+</code></pre></div><p><strong>定理2.1</strong>：如果M &gt; N , 则M mod N &lt; M/2。T（N）=O（log N） 。
+​
+<strong>• 幂运算</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#75715e">//T(N)=O(log N)
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Pow</span>(<span style="color:#66d9ef">int</span> X,<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> N)
+	{
+		<span style="color:#66d9ef">if</span>( N <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> )
+			<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+		<span style="color:#66d9ef">if</span>( N <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> )    <span style="color:#75715e">/**接下来的两行也可以不写**/</span>
+			<span style="color:#66d9ef">return</span> X;
+		<span style="color:#66d9ef">if</span>( IsEven( N ) )
+			<span style="color:#66d9ef">return</span> Pow( X <span style="color:#f92672">*</span> X, N <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> );
+		<span style="color:#75715e">/**
+</span><span style="color:#75715e">		以下的修改都是不可取的:
+</span><span style="color:#75715e">		return Pow( Pow( X, 2), N / 2);
+</span><span style="color:#75715e">		return Pow( Pow( X, N / 2), 2);
+</span><span style="color:#75715e">		-以上这两种会产生无限循环，导致程序崩溃
+</span><span style="color:#75715e">		return Pow( X, N / 2)* Pow(X, N / 2 );
+</span><span style="color:#75715e">		-这种影响程序的效率【运行时间应该是O（N）(?)】
+</span><span style="color:#75715e">		**/</span>
+		<span style="color:#66d9ef">else</span>
+			<span style="color:#66d9ef">return</span> Pow( X <span style="color:#f92672">*</span> X, N <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> ) <span style="color:#f92672">*</span> N;
+		<span style="color:#75715e">/**
+</span><span style="color:#75715e">		如果不写N==1那两行的话，上面这行还可以写成
+</span><span style="color:#75715e">		return Pow(X,N-1)*X;
+</span><span style="color:#75715e">		**/</span>
+	}
+</code></pre></div><p><strong>“有时候看一看程序能够进行多大的调整而不影响其正确性倒是很有意思的”</strong></p>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents"></nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/data-structures-and-algorithms">Data Structures and Algorithms
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/160517_re/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            4.17-5.17
+        </div>
+    </a>
+    
+    
+    <a href="/160513_dsa-ch1/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">《数据结构与算法分析——C语言描述》第一章 引论&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

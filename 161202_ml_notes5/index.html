@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Notes 05 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="Machine Learning Notes 05" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/161202_ml_notes5/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">Machine Learning Notes 05</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/161202_ml_notes5/" class="article-date">
+                <time datetime='2016-12-02T00:00:00.000&#43;00:00' itemprop="datePublished">2016-12-02</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p> </p>
+<h2 id="overfitting">Overfitting</h2>
+<p>Overfitting would cause the modle to perform poorly, like this:
+<img src="/article_imgs/reg_exmp1.PNG" alt=""></p>
+<p><img src="/article_imgs/reg_exmp2.PNG" alt=""></p>
+<p>  As above, plotting the hypothesis could be one way to try to decide what degree polynomial to use, but that doesn&rsquo;t always work. Sometims we have too many features which cause that it&rsquo;s difficult to visulize. And if we have a lot of features and very little training data, then overfitting can become a problem.</p>
+<hr>
+<h2 id="two-options-to-solve">Two options to solve</h2>
+<p><strong>1.Reduce the number of features</strong></p>
+<blockquote>
+<p>Manually select which features to keep or throw out;<br>
+Model selection algorithm (help ue to decide which features to keep or throw out automatically);<br>
+Disadvantages: Reduce some information about the problem.</p>
+</blockquote>
+<p><strong>2.Regularization</strong></p>
+<blockquote>
+<p>Keep all the features, but reduce magnitude/values of parameters <code>$\theta_{j}$</code>.
+Works well when we have a lot of features, each of which contributes a bit to predicting $y$.</p>
+</blockquote>
+<p>So we can see regularization is a better choice mostly.</p>
+<hr>
+<h2 id="see-the-cost-functinon">See the cost functinon</h2>
+<ul>
+<li>First, consider this. If our hypothesis is like this:</li>
+</ul>
+<p><code>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4$$</code></p>
+<p>and if we penalize and make <code>$\theta_{3}$</code> and <code>$\theta_{4}$</code> really small, it means that <code>$\theta_{3}\approx0,\theta_{4}\approx0$</code>, that is like as if we &rsquo;re getting rid of these two terms, then we would find that
+<code>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2} $$</code></p>
+<hr>
+<h2 id="regularization">Regularization</h2>
+<p>“…having <strong>smaller values of the parameters</strong> corresponds to usually <strong>smoother functions as well for the simpler</strong>. And which are therefore, also, <strong>less prone to overfitting</strong>. ”
+What we should do is to modify the cost function to shrink all of the parameters like this:
+<code>$$J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}$$</code></p>
+<p>And the blue terms is called <strong>regularization terms</strong>, $\lambda$ is called <strong>regularization parameters</strong> which is used to trade off between two different goals:<br>
+`$$\begin{cases}</p>
+<ol>
+<li>\sum(h_{\theta}(x^{(i)})-y^{(i)})^{2}:-:fit:well\</li>
+<li>\sum{\theta_{j}^{2}}:-:keep:the:parameters:small
+\end{cases}$$`</li>
+</ol>
+<p>By the way, we don&rsquo;t penalize $\theta_{0}$ by convention.
+Besides, about the regularization parameters $\lambda$, if $\lambda$ is too large, it would cause underfitting, and if $\lambda$ is too small, it may cause the useless regularization.</p>
+<hr>
+<h2 id="regularized-linear-regression">Regularized linear regression</h2>
+<ul>
+<li>Gradient descent:
+Old:
+   Repeat{<br>
+      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,...,n)$</code>.
+   }</li>
+</ul>
+<p><!-- raw HTML omitted -->New:<!-- raw HTML omitted --><br>
+   <!-- raw HTML omitted -->Repeat{<!-- raw HTML omitted --><br>
+      <code>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</code><br>
+      <code>${\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</code><br>
+   <!-- raw HTML omitted -->}<!-- raw HTML omitted --></p>
+<hr>
+<h2 id="regularization-logistic-regression">Regularization logistic regression</h2>
+<p>   Cost function <code>$J(\theta)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x)){\color{Blue} {+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}}}$</code></p>
+<p>   <!-- raw HTML omitted -->Repeat{<!-- raw HTML omitted --><br>
+      <code>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</code><br>
+      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</code><br>
+   <!-- raw HTML omitted -->}<!-- raw HTML omitted --><br>
+Remember that <code>$h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$</code></p>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overfitting">Overfitting</a></li>
+    <li><a href="#two-options-to-solve">Two options to solve</a></li>
+    <li><a href="#see-the-cost-functinon">See the cost functinon</a></li>
+    <li><a href="#regularization">Regularization</a></li>
+    <li><a href="#regularized-linear-regression">Regularized linear regression</a></li>
+    <li><a href="#regularization-logistic-regression">Regularization logistic regression</a></li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/machine-learning">Machine Learning
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/170101_my2016/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            我的2016
+        </div>
+    </a>
+    
+    
+    <a href="/161202_pycrawler2/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Python Crawler Note 2&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>kcptun&#43;shadowsocks // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="kcptun&#43;shadowsocks" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/190221_kcp_tun/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">kcptun&#43;shadowsocks</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/190221_kcp_tun/" class="article-date">
+                <time datetime='2019-02-21T00:00:00.000&#43;00:00' itemprop="datePublished">2019-02-21</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>因为种种原因，自己的几个ss/ssr服务基本都失联了，最近被推荐了<a href="https://github.com/xtaci/kcptun">kcptun</a>，原来觉得kcptun只是用于加速，没想到由于它本身的设计，现在居然可以用于绕过高墙。</p>
+<h5 id="一服务端">一、服务端</h5>
+<p>首先配置ss：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip install shadowsocks <span style="color:#75715e"># 如果安完之后找不到ssserver，sudo之后可以解决；</span>
+$ ssserver -p <span style="color:#f92672">[</span>SS_PORT<span style="color:#f92672">]</span> -k <span style="color:#f92672">[</span>SS_KEY<span style="color:#f92672">]</span> -m <span style="color:#f92672">[</span>ENRYPT_METHOD<span style="color:#f92672">]</span> --user nobody -d start</code></pre></div>
+如果报了Exception: libsodium not found:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
+$ tar zxf LATEST.tar.gz
+$ cd libsodium-stable
+$ ./configure
+$ sudo make <span style="color:#f92672">&amp;&amp;</span> sudo make install</code></pre></div></p>
+<p>如果依然报错，su之后；
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf
+$ ldconfig</code></pre></div></p>
+<p>然后配置kcptun：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh
+$ chmod +x ./kcptun.sh
+$ ./kcp.sh</code></pre></div>
+在中文说明的引导下设置好各种参数，最后：
+<img src="/article_imgs/kcptun_finish.png" alt=""></p>
+<h4 id="二客户端">二、客户端</h4>
+<h5 id="1cli">1.CLI</h5>
+<p>以MacOS下为例：
+从原repo的releases页https://github.com/xtaci/kcptun/releases 获取kcptun的可执行文件
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./client_darwin_amd64 --help
+NAME:
+   kcptun - client<span style="color:#f92672">(</span>with SMUX<span style="color:#f92672">)</span>
+
+USAGE:
+   client_darwin_amd64 <span style="color:#f92672">[</span>global options<span style="color:#f92672">]</span> command <span style="color:#f92672">[</span>command options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>arguments...<span style="color:#f92672">]</span>
+
+VERSION:
+   <span style="color:#ae81ff">20190109</span>
+
+COMMANDS:
+     help, h  Shows a list of commands or help <span style="color:#66d9ef">for</span> one command
+
+GLOBAL OPTIONS:
+   --localaddr value, -l value      local listen address <span style="color:#f92672">(</span>default: <span style="color:#e6db74">&#34;:12948&#34;</span><span style="color:#f92672">)</span>
+   --remoteaddr value, -r value     kcp server address <span style="color:#f92672">(</span>default: <span style="color:#e6db74">&#34;vps:29900&#34;</span><span style="color:#f92672">)</span>
+   --key value                      pre-shared secret between client and server <span style="color:#f92672">(</span>default: <span style="color:#e6db74">&#34;it&#39;s a secrect&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">[</span>$KCPTUN_KEY<span style="color:#f92672">]</span>
+   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, sm4, none <span style="color:#f92672">(</span>default: <span style="color:#e6db74">&#34;aes&#34;</span><span style="color:#f92672">)</span>
+   --mode value                     profiles: fast3, fast2, fast, normal, manual <span style="color:#f92672">(</span>default: <span style="color:#e6db74">&#34;fast&#34;</span><span style="color:#f92672">)</span>
+   --conn value                     set num of UDP connections to server <span style="color:#f92672">(</span>default: 1<span style="color:#f92672">)</span>
+   --autoexpire value               set auto expiration time<span style="color:#f92672">(</span>in seconds<span style="color:#f92672">)</span> <span style="color:#66d9ef">for</span> a single UDP connection, <span style="color:#ae81ff">0</span> to disable <span style="color:#f92672">(</span>default: 0<span style="color:#f92672">)</span>
+   --scavengettl value              set how long an expired connection can live<span style="color:#f92672">(</span>in sec<span style="color:#f92672">)</span>, -1 to disable <span style="color:#f92672">(</span>default: 600<span style="color:#f92672">)</span>
+   --mtu value                      set maximum transmission unit <span style="color:#66d9ef">for</span> UDP packets <span style="color:#f92672">(</span>default: 1350<span style="color:#f92672">)</span>
+   --sndwnd value                   set send window size<span style="color:#f92672">(</span>num of packets<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>default: 128<span style="color:#f92672">)</span>
+   --rcvwnd value                   set receive window size<span style="color:#f92672">(</span>num of packets<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>default: 512<span style="color:#f92672">)</span>
+   --datashard value, --ds value    set reed-solomon erasure coding - datashard <span style="color:#f92672">(</span>default: 10<span style="color:#f92672">)</span>
+   --parityshard value, --ps value  set reed-solomon erasure coding - parityshard <span style="color:#f92672">(</span>default: 3<span style="color:#f92672">)</span>
+   --dscp value                     set DSCP<span style="color:#f92672">(</span>6bit<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>default: 0<span style="color:#f92672">)</span>
+   --nocomp                         disable compression
+   --sockbuf value                  per-socket buffer in bytes <span style="color:#f92672">(</span>default: 4194304<span style="color:#f92672">)</span>
+   --keepalive value                seconds between heartbeats <span style="color:#f92672">(</span>default: 10<span style="color:#f92672">)</span>
+   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log
+   --snmpperiod value               snmp collect period, in seconds <span style="color:#f92672">(</span>default: 60<span style="color:#f92672">)</span>
+   --log value                      specify a log file to output, default goes to stderr
+   --quiet                          to suppress the <span style="color:#e6db74">&#39;stream open/close&#39;</span> messages
+   -c value                         config from json file, which will override the command from shell
+   --help, -h                       show help
+   --version, -v                    print the version
+
+$ ./client_darwin_amd64 -l :xxx -r xx.xx.xx.xx:xxxxx --key xxxx --crypt xxxx --mode xxxx</code></pre></div></p>
+<h5 id="2windows-gui">2.Windows GUI</h5>
+<p>获取<a href="https://github.com/dfdragon/kcptun_gclient/releases">GUI客户端</a>和<a href="https://github.com/xtaci/kcptun/releases">kcptun本体exe</a>；</p>
+<p>在GUI客户端中进行配置，如图：
+<img src="/article_imgs/kcptun_gui.jpeg" alt="">
+配置完成点击启动；</p>
+<p>然后在Shadowsocsk的客户端中添加一个新的服务器，ip填127.0.0.1，端口填上面的“本地侦听端口”，其他参数与服务端的ss配置一致，配置完成启动即可；</p>
+<h5 id="3android">3.Android</h5>
+<p>在Play Store中下载Shadowsocks和kcptun，在Shadowsocks中填加一个新的服务器配置，ip填服务器ip，端口填服务端的kcp端口，其他和ss配置一致，在下方的Plugin设置中选择kcptun，参数仿照默认格式填写即可；</p>
+<p><img src="/article_imgs/kcptun_android.jpeg" alt=""></p>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/shadowsocks">Shadowsocks
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/math-typesetting/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            Math Typesetting
+        </div>
+    </a>
+    
+    
+    <a href="/190101_2018/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">2018&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

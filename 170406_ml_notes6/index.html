@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Notes 06 // DRAPORLAND</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="Machine Learning Notes 06" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://drapor.me/170406_ml_notes6/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://drapor.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://drapor.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://drapor.me/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.73.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://drapor.me/">DRAPORLAND</a>
+            <div class="subtitle">“Witness me.”</div>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">Machine Learning Notes 06</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/170406_ml_notes6/" class="article-date">
+                <time datetime='2017-04-05T00:00:00.000&#43;00:00' itemprop="datePublished">2017-04-05</time>
+            </a>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="how-biological-neural-network-work">How biological neural network work</h2>
+<p>As the following image shown, there are three main parts in each neuron:  <strong>Dendrites</strong>, <strong>Cell Body</strong> and <strong>Axon</strong>. The signals come from the last neuron to the dendrites first, then enter into the cell body. While the potential would be judged with the threshold and then output the signals into the axon, that&rsquo;s approximately how biological nerual network run.</p>
+<p><img src="/article_imgs/neuron.jpg" alt=""></p>
+<hr>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="how-artificial-neural-network-work">How artificial neural network work</h2>
+<p><img src="/article_imgs/perceptron.jpg" alt=""></p>
+<p>  The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
+<p>  And here&rsquo;s what a three-layer ann looks like,</p>
+<p><img src="/article_imgs/3lann.jpg" alt=""></p>
+<p>  The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, &hellip;, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that&rsquo;s why we need more).</p>
+<hr>
+<h2 id="feedforward-propagation-algorithm">Feedforward Propagation Algorithm</h2>
+<p>  We obtain the output first, by:</p>
+<p>$$y_{j}=g(\sum^{n}_{i=1}\omega_{ji}x_i-\theta),$$</p>
+<p>,and we often choose sigmoid function $g(z)=\frac{1}{1+e^{-z}}$ as our activation function. For the more complex situation, we can also use vectorization:</p>
+<p>$$a_{n+1}=g(a_{n}*\Theta_n)$$</p>
+<p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
+<hr>
+<h2 id="back-propagation-algorithm">Back Propagation Algorithm</h2>
+<p>For the training set <code>$\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) \}$</code>, <code>$\Delta_{ij}^{(l)}=0 $</code> (for all $l,i,j$). Then we run the following loop:</p>
+<p>For $i = 1$ to $m$:</p>
+<p>　　Set <code>$a^{(1)}=x^{(i)}$</code></p>
+<p>　　Perform forward propagation to compute <code>$a^{(l)}$ for $l=2,3,..,L$</code></p>
+<p>　　Using <code>$y^{(i)}$</code>, compute <code>$\delta^{L}=a^{(L)}-y^{(i)}$</code></p>
+<p>　　Compute $\delta^{(L-1)}, \delta^{(L-2)}, &hellip;, \color{red}{\delta^{(2)}}$</p>
+<p>　　<code>$ \Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i} $</code></p>
+<p>After that,</p>
+<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
+<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
+<p>And we get:</p>
+<p>　　$$\frac{\partial}{\partial\Theta^{(l)}_{ij}}J(\Theta) = D_{ij}^{(l)}$$</p>
+<hr>
+<h2 id="process-of-training-a-neural-network">Process of Training a Neural Network</h2>
+<ol>
+<li>Randomly initialize the weights;</li>
+<li>Implement forward propagation to get $h_{\Theta}(x^{(i)})$ for any $x^{(i)}$;</li>
+<li>Implement the cost function;</li>
+<li>Implement backpropagation to compute partial derivatives;</li>
+<li>Use gradient checking to confirm that your backpropagation works. Then disable gradient checking;</li>
+<li>Use gradient descent or a built-in optimization function to minimize the cost function with the weights in theta;</li>
+</ol>
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-biological-neural-network-work">How biological neural network work</a></li>
+    <li><a href="#how-artificial-neural-network-work">How artificial neural network work</a></li>
+    <li><a href="#feedforward-propagation-algorithm">Feedforward Propagation Algorithm</a></li>
+    <li><a href="#back-propagation-algorithm">Back Propagation Algorithm</a></li>
+    <li><a href="#process-of-training-a-neural-network">Process of Training a Neural Network</a></li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/machine-learning">Machine Learning
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/170422_sql1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            SQL Syntax(Ⅰ)
+        </div>
+    </a>
+    
+    
+    <a href="/170507_notice/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">一条置顶声明（已经不是了）&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 DRAPORLAND
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

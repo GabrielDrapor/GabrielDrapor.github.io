@@ -6,7 +6,6 @@
     <description>Recent content in Tools on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
     <lastBuildDate>Tue, 14 Apr 2020 12:37:05 +0800</lastBuildDate>
     
 	<atom:link href="https://drapor.me/tags/tools/index.xml" rel="self" type="application/rss+xml" />
@@ -14,10 +13,10 @@
     
     <item>
       <title>Alternative to Postman: Insomnia</title>
-      <link>https://drapor.me/posts/200413_insomnia/</link>
+      <link>https://drapor.me/200413_insomnia/</link>
       <pubDate>Tue, 14 Apr 2020 12:37:05 +0800</pubDate>
       
-      <guid>https://drapor.me/posts/200413_insomnia/</guid>
+      <guid>https://drapor.me/200413_insomnia/</guid>
       <description>&lt;p&gt;I gradually dissatisfied with Postman recently for many reasons, then I found a open source alternative &amp;mdash; &lt;a href=&#34;https://insomnia.rest/&#34;&gt;Insomnia&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     

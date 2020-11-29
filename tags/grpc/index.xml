@@ -6,7 +6,6 @@
     <description>Recent content in gRPC on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyright &amp;copy; 2020 Drapor |  Powered by Hugo</copyright>
     <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://drapor.me/tags/grpc/index.xml" rel="self" type="application/rss+xml" />
@@ -14,10 +13,10 @@
     
     <item>
       <title>gRPC基本使用</title>
-      <link>https://drapor.me/posts/191101_grpc/</link>
+      <link>https://drapor.me/191101_grpc/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/posts/191101_grpc/</guid>
+      <guid>https://drapor.me/191101_grpc/</guid>
       <description>&lt;p&gt;以Python做Server，Golang做Client为例。&lt;/p&gt;</description>
     </item>
     
