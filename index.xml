@@ -6,10 +6,19 @@
     <description>Recent content on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 14 Apr 2020 12:37:05 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://drapor.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mastodon优化</title>
+      <link>https://drapor.me/201129_mastodon_optimize/</link>
+      <pubDate>Sun, 29 Nov 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://drapor.me/201129_mastodon_optimize/</guid>
+      <description>&lt;p&gt;近期自建了Mastodon单用户实例，使用默认配置且不添加扩展功能的情况下一个实例需要2G RAM，本文主要讨论如何降低内存开销；&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Alternative to Postman: Insomnia</title>
@@ -63,15 +72,6 @@
       
       <guid>https://drapor.me/190801_py_with_c/</guid>
       <description>&lt;p&gt;最近项目中需要用Python调用C/C++的动态库，研究了一下Ctypes。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Typesetting</title>
-      <link>https://drapor.me/math-typesetting/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://drapor.me/math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
     </item>
     
     <item>

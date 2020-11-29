@@ -6,10 +6,19 @@
     <description>Recent content in Server on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 03 May 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://drapor.me/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mastodon优化</title>
+      <link>https://drapor.me/201129_mastodon_optimize/</link>
+      <pubDate>Sun, 29 Nov 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://drapor.me/201129_mastodon_optimize/</guid>
+      <description>&lt;p&gt;近期自建了Mastodon单用户实例，使用默认配置且不添加扩展功能的情况下一个实例需要2G RAM，本文主要讨论如何降低内存开销；&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>ASP.NET 搭建 Discuz! NT</title>

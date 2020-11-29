@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Alternative to Postman: Insomnia // DRAPORLAND</title>
+    <title>Mastodon优化 // DRAPORLAND</title>
 
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -10,11 +10,11 @@
     
     
 
-        <meta property="og:title" content="Alternative to Postman: Insomnia" />
+        <meta property="og:title" content="Mastodon优化" />
     <meta property="og:description" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en" />
-    <meta property="og:url" content="https://drapor.me/200413_insomnia/" />
+    <meta property="og:url" content="https://drapor.me/201129_mastodon_optimize/" />
     
 
     <link rel="shortcut icon" href="/favicon.ico">
@@ -55,29 +55,39 @@
     <div class="article-inner">
         
         <header class="article-header">
-            <h1 class="article-title" itemprop="name">Alternative to Postman: Insomnia</h1>
+            <h1 class="article-title" itemprop="name">Mastodon优化</h1>
         </header>
         
         <div class="article-meta">
-            <a href="/200413_insomnia/" class="article-date">
-                <time datetime='2020-04-14T12:37:05.000&#43;08:00' itemprop="datePublished">2020-04-14</time>
+            <a href="/201129_mastodon_optimize/" class="article-date">
+                <time datetime='2020-11-29T00:00:00.000&#43;08:00' itemprop="datePublished">2020-11-29</time>
             </a>
             
             
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p>I gradually dissatisfied with Postman recently for many reasons, then I found a open source alternative &mdash; <a href="https://insomnia.rest/">Insomnia</a>.</p>
-<p>It&rsquo;s quite simple to start using Insomnia if you have used Postman before. You can create workspaces, folders of request, environment variables just as what you can do in Postman. Besides, you can also parse response by JSONPath, which is not supported in Postman.</p>
-<p>Furthermore, Insomnia offers options of pay to support file sync and remove the restriction of the free version. I explored the possibility of DIY file sync, and have a crude idea: implement by Dropbox.</p>
-<p>First, move the Insomia data to the Dropbox folder, then set soft link.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#Mac</span>
-ln -s ~/Dropbox/Insomnia_bakup ~/Library/Application<span style="color:#ae81ff">\ </span>Support/AddressBook/Insomnia
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#Windows powershell</span>
-mklink %appdata%<span style="color:#ae81ff">\I</span>nsomnia C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\x</span>xx<span style="color:#ae81ff">\D</span>ropbox<span style="color:#ae81ff">\I</span>nsomnia_bakup
-</code></pre></div><p>However, there are still issues in this case. When Insomnia is open on multi device, they both read and write the same file in Dropbox directory, there&rsquo;ll be conflict. Dropbox would keep both version in the directory. I haven&rsquo;t figure out a better way fixing this issues.</p>
-<h3 id="reference">Reference:</h3>
+            <p>近期自建了Mastodon单用户实例，使用默认配置且不添加扩展功能的情况下一个实例需要2G RAM，本文主要讨论如何降低内存开销；</p>
+<h3 id="jemalloc">Jemalloc</h3>
+<p>Mastodon的服务端是用Ruby开发的，其本身对内存的消耗就很大，所以首先便可以考虑对Ruby本身做一下优化；
+<a href="http://jemalloc.net/">Jemalloc</a>是一款通用的内存分配器，支持对多种语言进行内存使用的优化，其中便包含Ruby。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt install libjemalloc-dev
+su - mastodon
+RUBY_CONFIGURE_OPTS<span style="color:#f92672">=</span>--with-jemalloc rbenv install 2.6.1
+rbenv global 2.5.1
+exit
+systemctl restart mastodon-sidekiq
+systemctl restart mastodon-streaming
+systemctl restart mastodon-web
+</code></pre></div><p>优化之后的效果非常显著，内存占用直接掉了一半；</p>
+<h3 id="搜索功能及其他">搜索功能及其他</h3>
+<p>通过Jemalloc已经可以将Mastodon实例的占用降至1G以下，但如果想要再增加<a href="https://docs.joinmastodon.org/admin/optional/elasticsearch/">搜索功能</a>，1G依然有些捉襟见肘，甚至直接打开ElasticSeach时，2G内存也会被占满；</p>
+<p>Mastodon实例本身依然还有一些优化的空间，官方也给出了<a href="https://docs.joinmastodon.org/zh-cn/admin/scaling/">相关文档</a>。</p>
+<p>对于使用Java开发的ElasticSearch，很容易想到其实可以通过减少JVM分配来降低它的内存占用，相关的配置文件在/etc/elasticsearch/jvm.options；</p>
+<p> <br>
+TBC.</p>
+<h3 id="refrence">Refrence:</h3>
 <ul>
-<li><a href="https://007.li/insomnia.html">https://007.li/insomnia.html</a></li>
+<li><a href="https://thomas-leister.de/en/mastodon-save-ram-jemalloc/">https://thomas-leister.de/en/mastodon-save-ram-jemalloc/</a></li>
 </ul>
         </div>
 
@@ -89,7 +99,9 @@ mklink %appdata%<span style="color:#ae81ff">\I</span>nsomnia C:<span style="colo
   <ul>
     <li>
       <ul>
-        <li><a href="#reference">Reference:</a></li>
+        <li><a href="#jemalloc">Jemalloc</a></li>
+        <li><a href="#搜索功能及其他">搜索功能及其他</a></li>
+        <li><a href="#refrence">Refrence:</a></li>
       </ul>
     </li>
   </ul>
@@ -106,7 +118,7 @@ mklink %appdata%<span style="color:#ae81ff">\I</span>nsomnia C:<span style="colo
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://drapor.me/tags/tools">Tools
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/server">Server
                     </a>
                 </li>
                 
@@ -117,15 +129,9 @@ mklink %appdata%<span style="color:#ae81ff">\I</span>nsomnia C:<span style="colo
     
 <nav id="article-nav">
     
-    <a href="/201129_mastodon_optimize/" id="article-nav-newer" class="article-nav-link-wrap">
-        <div class="article-nav-title"><span>&lt;</span>&nbsp;
-            Mastodon优化
-        </div>
-    </a>
     
-    
-    <a href="/200403_comments_and_sns/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">评论插件与SNS探索&nbsp;<span>&gt;</span></div>
+    <a href="/200413_insomnia/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Alternative to Postman: Insomnia&nbsp;<span>&gt;</span></div>
     </a>
     
 </nav>
