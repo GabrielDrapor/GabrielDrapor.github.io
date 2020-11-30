@@ -133,6 +133,7 @@ rs[<span style="color:#ae81ff">0</span>]
         
     </div>
     
+
 <nav id="article-nav">
     
     <a href="/191101_grpc/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -149,6 +150,22 @@ rs[<span style="color:#ae81ff">0</span>]
 </nav>
 
 
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+      clientID: 'b33898060f51f3637cdb',
+      clientSecret: '264aa9f9ab82c827765c14f5df4d8195bfd26a0d',
+      repo: 'gabrieldrapor.github.io',
+      owner: 'GabrielDrapor',
+      admin: ['GabrielDrapor'],
+      id: location.pathname,      
+      distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
 </article>
 
         
