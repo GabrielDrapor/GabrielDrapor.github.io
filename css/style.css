@@ -439,6 +439,7 @@ a.article-title:hover,
   float: left;
   margin-left: 8px;
   color: #939393;
+  display: none;
 }
 .article-category:before {
   content: "\2022";
@@ -805,7 +806,7 @@ a.article-title:hover,
 #page-nav .current {
   color: #fff;
   border-radius: 18px;
-  background-color: #000;
+  background-color: #888;
 }
 #page-nav .space {
   color: #ddd;
