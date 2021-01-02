@@ -69,47 +69,47 @@
             <p> </p>
 <p>Besides what we have seen in <a href="http://drapor.me/2016/12/01/161201_pyCrawler1/">Note 1</a>, we can add some details in our codes:
 Sometimes  we need to pretend as the browser to obtain the content of the page, we can add headers:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> urllib2
-url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://drapor.me&#39;</span>
-headers <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#39;User-Agent&#39;</span> : <span style="color:#e6db74">&#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#39;</span>} 
-request <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>Request(url, headers)
-response <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>urlopen(request)
-<span style="color:#66d9ef">print</span> response<span style="color:#f92672">.</span>read()</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
+url <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>
+headers <span style="color:#ff79c6">=</span> { <span style="color:#f1fa8c">&#39;User-Agent&#39;</span> : <span style="color:#f1fa8c">&#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#39;</span>} 
+request <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>Request(url, headers)
+response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(request)
+<span style="color:#ff79c6">print</span> response<span style="color:#ff79c6">.</span>read()</code></pre></div>
 <p>More about headers, you can check <a href="http://drapor.me/2016/04/27/160427_http/">this article</a>.</p>
 <hr>
 <p>And if you need to post some data, like your username or password to the sites, try this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> urllib2
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
 
-values <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;drapor&#34;</span>,<span style="color:#e6db74">&#34;password&#34;</span>:<span style="color:#e6db74">&#34;*****&#34;</span>}
+values <span style="color:#ff79c6">=</span> {<span style="color:#f1fa8c">&#34;username&#34;</span>:<span style="color:#f1fa8c">&#34;drapor&#34;</span>,<span style="color:#f1fa8c">&#34;password&#34;</span>:<span style="color:#f1fa8c">&#34;*****&#34;</span>}
 
-data <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>urlencode(values) 
-url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://www.heibanke.com/lesson/crawler_ex01/&#34;</span> <span style="color:#75715e">#This is a crawler game I found before which is quite interesting.</span>
-request <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>Request(url,data)
-response <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>urlopen(request)
-<span style="color:#66d9ef">print</span> response<span style="color:#f92672">.</span>read()</code></pre></div>
+data <span style="color:#ff79c6">=</span> urllib<span style="color:#ff79c6">.</span>urlencode(values) 
+url <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;http://www.heibanke.com/lesson/crawler_ex01/&#34;</span> <span style="color:#6272a4">#This is a crawler game I found before which is quite interesting.</span>
+request <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>Request(url,data)
+response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(request)
+<span style="color:#ff79c6">print</span> response<span style="color:#ff79c6">.</span>read()</code></pre></div>
 <hr>
 <p>If you find there&rsquo;s something wrong with your code, you can try this:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> urllib2
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
 
-requset <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>Request(<span style="color:#e6db74">&#39;http://www.xxxxx.com&#39;</span>)
-<span style="color:#66d9ef">try</span>:
-    urllib2<span style="color:#f92672">.</span>urlopen(request)
-<span style="color:#66d9ef">except</span> urllib2<span style="color:#f92672">.</span>URLError, e:
-    <span style="color:#66d9ef">print</span> e<span style="color:#f92672">.</span>reason</code></pre></div>
+requset <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>Request(<span style="color:#f1fa8c">&#39;http://www.xxxxx.com&#39;</span>)
+<span style="color:#ff79c6">try</span>:
+    urllib2<span style="color:#ff79c6">.</span>urlopen(request)
+<span style="color:#ff79c6">except</span> urllib2<span style="color:#ff79c6">.</span>URLError, e:
+    <span style="color:#ff79c6">print</span> e<span style="color:#ff79c6">.</span>reason</code></pre></div>
 And you will get the info of the error.</p>
 <hr>
 <p>And if you need to use cookies, try this:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> urllib2
-<span style="color:#f92672">import</span> cookielib
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
+<span style="color:#ff79c6">import</span> cookielib
 
-cookie <span style="color:#f92672">=</span> cookielib<span style="color:#f92672">.</span>CookieJar() <span style="color:#75715e">#Declar a CookieJar object to save cookie</span>
-handler <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>HTTPCookieProcessor(cookie) <span style="color:#75715e">#use HTTPCookieProcessor object in urllib2 to create cookie processor</span>
-opener <span style="color:#f92672">=</span> urllib2<span style="color:#f92672">.</span>build_opener(handler) <span style="color:#75715e">#build opener by Handler</span>
-response <span style="color:#f92672">=</span> opener<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#39;http://drapor.me&#39;</span>) <span style="color:#75715e"># this opener.open() is the same as urllib2.urlopen()</span>
+cookie <span style="color:#ff79c6">=</span> cookielib<span style="color:#ff79c6">.</span>CookieJar() <span style="color:#6272a4">#Declar a CookieJar object to save cookie</span>
+handler <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>HTTPCookieProcessor(cookie) <span style="color:#6272a4">#use HTTPCookieProcessor object in urllib2 to create cookie processor</span>
+opener <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>build_opener(handler) <span style="color:#6272a4">#build opener by Handler</span>
+response <span style="color:#ff79c6">=</span> opener<span style="color:#ff79c6">.</span>open(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>) <span style="color:#6272a4"># this opener.open() is the same as urllib2.urlopen()</span>
 
-<span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> cookie:
-    <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;Name = &#39;</span><span style="color:#f92672">+</span>item<span style="color:#f92672">.</span>name
-    <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;Value = &#39;</span><span style="color:#f92672">+</span>item<span style="color:#f92672">.</span>value</code></pre></div></p>
+<span style="color:#ff79c6">for</span> item <span style="color:#ff79c6">in</span> cookie:
+    <span style="color:#ff79c6">print</span> <span style="color:#f1fa8c">&#39;Name = &#39;</span><span style="color:#ff79c6">+</span>item<span style="color:#ff79c6">.</span>name
+    <span style="color:#ff79c6">print</span> <span style="color:#f1fa8c">&#39;Value = &#39;</span><span style="color:#ff79c6">+</span>item<span style="color:#ff79c6">.</span>value</code></pre></div></p>
         </div>
 
         
@@ -183,7 +183,7 @@ response <span style="color:#f92672">=</span> opener<span style="color:#f92672">
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 DRAPORLAND
+            &copy; 2021 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

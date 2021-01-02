@@ -67,17 +67,17 @@
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>最近有需要用python从MongoDB上取数的需求，于是研究了一下Pymongo，在此做个小记。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pymongo <span style="color:#f92672">import</span> MongoClient
-client <span style="color:#f92672">=</span> MongoClient(<span style="color:#e6db74">&#39;mongodb://x.x.x.x:xxxxx&#39;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> pymongo <span style="color:#ff79c6">import</span> MongoClient
+client <span style="color:#ff79c6">=</span> MongoClient(<span style="color:#f1fa8c">&#39;mongodb://x.x.x.x:xxxxx&#39;</span>)
 
-db <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>[DATABASES_NAME]
+db <span style="color:#ff79c6">=</span> client<span style="color:#ff79c6">.</span>[DATABASES_NAME]
 
-<span style="color:#66d9ef">print</span>(db<span style="color:#f92672">.</span>collection_names())  <span style="color:#75715e"># show the names of all the collections in selected database</span>
+<span style="color:#ff79c6">print</span>(db<span style="color:#ff79c6">.</span>collection_names())  <span style="color:#6272a4"># show the names of all the collections in selected database</span>
 
-collections <span style="color:#f92672">=</span> db[COLLECTION_NAME]
+collections <span style="color:#ff79c6">=</span> db[COLLECTION_NAME]
 
-collections<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;{xxx:xxxxx,xxx:xxx}&#39;</span>)  <span style="color:#75715e"># Execute the query, which is equivalent to db.getCollection(&#39;xxx&#39;).find({})</span>
-collections<span style="color:#f92672">.</span>find_one  <span style="color:#75715e">#same as db.getCollection(&#39;xxx&#39;).findOne({})</span></code></pre></div>
+collections<span style="color:#ff79c6">.</span>find(<span style="color:#f1fa8c">&#39;{xxx:xxxxx,xxx:xxx}&#39;</span>)  <span style="color:#6272a4"># Execute the query, which is equivalent to db.getCollection(&#39;xxx&#39;).find({})</span>
+collections<span style="color:#ff79c6">.</span>find_one  <span style="color:#6272a4">#same as db.getCollection(&#39;xxx&#39;).findOne({})</span></code></pre></div>
         </div>
 
         
@@ -151,7 +151,7 @@ collections<span style="color:#f92672">.</span>find_one  <span style="color:#757
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 DRAPORLAND
+            &copy; 2021 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

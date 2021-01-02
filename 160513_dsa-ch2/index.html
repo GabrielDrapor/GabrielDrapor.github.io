@@ -71,77 +71,77 @@
 <blockquote>
 <p><strong>最大的子序列和问题</strong>：给定整数A1，A2，……，AN（可能有负数），求∑(k=i)^j A_k  的最大值（为方便起见，如果所有整数均为负数，则最大子序列和为0）</p>
 </blockquote>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><escape><!-- more --></escape></p>
 <p><strong>• 算法3</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#75715e">//T(N)=O(N log N) 
-</span><span style="color:#75715e"></span>
-	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MaxSubSum</span>( <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> Left,<span style="color:#66d9ef">int</span> Right )
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O(N log N) 
+</span><span style="color:#6272a4"></span>
+	<span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">MaxSubSum</span>( <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> A[], <span style="color:#8be9fd">int</span> Left,<span style="color:#8be9fd">int</span> Right )
 	{
-		<span style="color:#66d9ef">int</span> MaxLeftSum,MaxRightSum;
-		<span style="color:#66d9ef">int</span> MaxLeftBorderSum,MaxRightBorderSum;
-		<span style="color:#66d9ef">int</span> LeftBorderSum,RightBorderSum;
-		<span style="color:#66d9ef">int</span> Center,i;
+		<span style="color:#8be9fd">int</span> MaxLeftSum,MaxRightSum;
+		<span style="color:#8be9fd">int</span> MaxLeftBorderSum,MaxRightBorderSum;
+		<span style="color:#8be9fd">int</span> LeftBorderSum,RightBorderSum;
+		<span style="color:#8be9fd">int</span> Center,i;
 
-		<span style="color:#66d9ef">if</span>(Left<span style="color:#f92672">==</span>Right)   <span style="color:#75715e">//Base Case,即&#39;基准情形&#39;
-</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> (A[Left]<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>)
-			<span style="color:#66d9ef">return</span> A[Left];
-		<span style="color:#66d9ef">else</span>
-			<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+		<span style="color:#ff79c6">if</span>(Left<span style="color:#ff79c6">==</span>Right)   <span style="color:#6272a4">//Base Case,即&#39;基准情形&#39;
+</span><span style="color:#6272a4"></span>		<span style="color:#ff79c6">if</span> (A[Left]<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">0</span>)
+			<span style="color:#ff79c6">return</span> A[Left];
+		<span style="color:#ff79c6">else</span>
+			<span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 
-		Center <span style="color:#f92672">=</span> (Left <span style="color:#f92672">+</span> Right)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
-		MaxLeftSum<span style="color:#f92672">=</span>MaxSubSum(A,Left,Center);<span style="color:#75715e">//左边中最大的子序列和
-</span><span style="color:#75715e"></span>		MaxRightSum<span style="color:#f92672">=</span>MaxSubSum(A,Center<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,Right);<span style="color:#75715e">//右边中最大的子序列和
-</span><span style="color:#75715e"></span>		MaxLeftBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; LeftBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-		<span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span>Center;i<span style="color:#f92672">&gt;=</span>Left;i<span style="color:#f92672">--</span>)<span style="color:#75715e">//从中心开始向左找最大子序列和
-</span><span style="color:#75715e"></span>		{
-			LeftBorderSum<span style="color:#f92672">+=</span>A[i];
-			<span style="color:#66d9ef">if</span>(LeftBorderSum<span style="color:#f92672">&gt;</span>MaxLeftBorderSum)
-			MaxLeftBorderSum<span style="color:#f92672">=</span> LeftBorderSum;
+		Center <span style="color:#ff79c6">=</span> (Left <span style="color:#ff79c6">+</span> Right)<span style="color:#ff79c6">/</span><span style="color:#bd93f9">2</span>;
+		MaxLeftSum<span style="color:#ff79c6">=</span>MaxSubSum(A,Left,Center);<span style="color:#6272a4">//左边中最大的子序列和
+</span><span style="color:#6272a4"></span>		MaxRightSum<span style="color:#ff79c6">=</span>MaxSubSum(A,Center<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>,Right);<span style="color:#6272a4">//右边中最大的子序列和
+</span><span style="color:#6272a4"></span>		MaxLeftBorderSum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; LeftBorderSum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+		<span style="color:#ff79c6">for</span>(i<span style="color:#ff79c6">=</span>Center;i<span style="color:#ff79c6">&gt;=</span>Left;i<span style="color:#ff79c6">--</span>)<span style="color:#6272a4">//从中心开始向左找最大子序列和
+</span><span style="color:#6272a4"></span>		{
+			LeftBorderSum<span style="color:#ff79c6">+=</span>A[i];
+			<span style="color:#ff79c6">if</span>(LeftBorderSum<span style="color:#ff79c6">&gt;</span>MaxLeftBorderSum)
+			MaxLeftBorderSum<span style="color:#ff79c6">=</span> LeftBorderSum;
 		}
 
-		MaxRightBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; RightBorderSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-		<span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span>Center<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span>Right;i<span style="color:#f92672">+</span>　<span style="color:#f92672">+</span>)<span style="color:#75715e">//从中心开始向右找最大子序列和
-</span><span style="color:#75715e"></span>		{
-			RightBorderSum<span style="color:#f92672">+=</span>A[i];
-			<span style="color:#66d9ef">if</span>(RightBorderSum<span style="color:#f92672">&gt;</span>MaxRightBorderSum)
-			MaxRightBorderSum<span style="color:#f92672">=</span>RightBorderSum;
+		MaxRightBorderSum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; RightBorderSum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+		<span style="color:#ff79c6">for</span>(i<span style="color:#ff79c6">=</span>Center<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>;i<span style="color:#ff79c6">&lt;=</span>Right;i<span style="color:#ff79c6">+</span>　<span style="color:#ff79c6">+</span>)<span style="color:#6272a4">//从中心开始向右找最大子序列和
+</span><span style="color:#6272a4"></span>		{
+			RightBorderSum<span style="color:#ff79c6">+=</span>A[i];
+			<span style="color:#ff79c6">if</span>(RightBorderSum<span style="color:#ff79c6">&gt;</span>MaxRightBorderSum)
+			MaxRightBorderSum<span style="color:#ff79c6">=</span>RightBorderSum;
 		}
 	
-		<span style="color:#66d9ef">return</span> Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum <span style="color:#f92672">+</span> MaxRightBorderSum);
+		<span style="color:#ff79c6">return</span> Max3(MaxLeftSum,MaxRightSum,MaxLeftBorderSum <span style="color:#ff79c6">+</span> MaxRightBorderSum);
 	}
 	
-	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MaxSubsequenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
+	<span style="color:#8be9fd">int</span> <span style="color:#50fa7b">MaxSubsequenceSum</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> A[], <span style="color:#8be9fd">int</span> N)
 	{
-		<span style="color:#66d9ef">return</span> MaxSubSum(A , <span style="color:#ae81ff">0</span> , N <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+		<span style="color:#ff79c6">return</span> MaxSubSum(A , <span style="color:#bd93f9">0</span> , N <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>);
 	}
 	
-	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max3</span>(<span style="color:#66d9ef">int</span> a,<span style="color:#66d9ef">int</span> b,<span style="color:#66d9ef">int</span> c)
+	<span style="color:#8be9fd">int</span> <span style="color:#50fa7b">Max3</span>(<span style="color:#8be9fd">int</span> a,<span style="color:#8be9fd">int</span> b,<span style="color:#8be9fd">int</span> c)
 	{
-		<span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b)
-		<span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>c) <span style="color:#66d9ef">return</span> a;
-		<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> c;
-		<span style="color:#66d9ef">else</span>
-		<span style="color:#66d9ef">if</span> (c<span style="color:#f92672">&gt;</span>b) <span style="color:#66d9ef">return</span> c;
-		<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> b;
+		<span style="color:#ff79c6">if</span> (a<span style="color:#ff79c6">&gt;</span>b)
+		<span style="color:#ff79c6">if</span> (a<span style="color:#ff79c6">&gt;</span>c) <span style="color:#ff79c6">return</span> a;
+		<span style="color:#ff79c6">else</span> <span style="color:#ff79c6">return</span> c;
+		<span style="color:#ff79c6">else</span>
+		<span style="color:#ff79c6">if</span> (c<span style="color:#ff79c6">&gt;</span>b) <span style="color:#ff79c6">return</span> c;
+		<span style="color:#ff79c6">else</span> <span style="color:#ff79c6">return</span> b;
 	}
 </code></pre></div><p>​</p>
 <p>​</p>
 <p><strong>• 更简单有效的算法4</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
-	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MaxSubsequenceSum</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> N)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+	<span style="color:#8be9fd">int</span> <span style="color:#50fa7b">MaxSubsequenceSum</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> A[], <span style="color:#8be9fd">int</span> N)
 	{
-		<span style="color:#66d9ef">int</span> ThisSum,MaxSum,j;
+		<span style="color:#8be9fd">int</span> ThisSum,MaxSum,j;
 		
-		ThisSum<span style="color:#f92672">=</span>MaxSum<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-		<span style="color:#66d9ef">for</span>(j<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;j<span style="color:#f92672">&lt;</span>N;j<span style="color:#f92672">++</span>)
+		ThisSum<span style="color:#ff79c6">=</span>MaxSum<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;
+		<span style="color:#ff79c6">for</span>(j<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;j<span style="color:#ff79c6">&lt;</span>N;j<span style="color:#ff79c6">++</span>)
 		{
-			ThisSum<span style="color:#f92672">+=</span>A[j];
-			<span style="color:#66d9ef">if</span>(ThisSum <span style="color:#f92672">&gt;</span> MaxSum)
-				MaxSum <span style="color:#f92672">=</span> ThisSum;
-			<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(ThisSum <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>)  <span style="color:#75715e">//这一步是关键，如果前j项和是负的，那就可以扔掉不要了
-</span><span style="color:#75715e"></span>				ThisSum<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+			ThisSum<span style="color:#ff79c6">+=</span>A[j];
+			<span style="color:#ff79c6">if</span>(ThisSum <span style="color:#ff79c6">&gt;</span> MaxSum)
+				MaxSum <span style="color:#ff79c6">=</span> ThisSum;
+			<span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span>(ThisSum <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">0</span>)  <span style="color:#6272a4">//这一步是关键，如果前j项和是负的，那就可以扔掉不要了
+</span><span style="color:#6272a4"></span>				ThisSum<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;
 		}
-			<span style="color:#66d9ef">return</span> MaxSum;
+			<span style="color:#ff79c6">return</span> MaxSum;
 	}
 </code></pre></div><blockquote>
 <p>这种算法的附带优点是，只需要扫描一次数据，一旦A[i]被扫入并被处理，它就不再需要被记忆【5/13:数据赋值等操作少】。在任何时刻，算法都能对它已经读入的数据给出子序列问题的正确答案（其他算法不具有这个特性）【5/13:也就是说，假如你输入的是10个数据，在你输入到任何一个的时候，在这种情况下的解已经被算出来了】。具有这种特性的算法叫做<em>联机算法</em>（online algorithm）。</p>
@@ -154,65 +154,65 @@
 </blockquote>
 <p><strong>• 对分算法</strong>
 ​</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#75715e">//T(N)=O（log N）
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">BinarySearch</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> A[], <span style="color:#66d9ef">int</span> x,<span style="color:#66d9ef">int</span> n)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O（log N）
+</span><span style="color:#6272a4"></span>	<span style="color:#8be9fd">int</span> <span style="color:#50fa7b">BinarySearch</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> A[], <span style="color:#8be9fd">int</span> x,<span style="color:#8be9fd">int</span> n)
 	{
-		<span style="color:#66d9ef">int</span> Low,Mid,High;
-		Low<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;High<span style="color:#f92672">=</span>n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-		<span style="color:#66d9ef">while</span>(Low <span style="color:#f92672">&lt;=</span> High)
+		<span style="color:#8be9fd">int</span> Low,Mid,High;
+		Low<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;High<span style="color:#ff79c6">=</span>n<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
+		<span style="color:#ff79c6">while</span>(Low <span style="color:#ff79c6">&lt;=</span> High)
 		{
-			Mid <span style="color:#f92672">=</span> (Low<span style="color:#f92672">+</span>High) <span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
-	   	       <span style="color:#66d9ef">if</span>(A[Mid]<span style="color:#f92672">&lt;</span>x)
-				Low<span style="color:#f92672">=</span>Mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
-			<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(A[Mid]<span style="color:#f92672">&gt;</span> x)
-			High<span style="color:#f92672">=</span>Mid<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-			<span style="color:#66d9ef">else</span>
-			<span style="color:#66d9ef">return</span> Mid;
+			Mid <span style="color:#ff79c6">=</span> (Low<span style="color:#ff79c6">+</span>High) <span style="color:#ff79c6">/</span><span style="color:#bd93f9">2</span>;
+	   	       <span style="color:#ff79c6">if</span>(A[Mid]<span style="color:#ff79c6">&lt;</span>x)
+				Low<span style="color:#ff79c6">=</span>Mid<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>;
+			<span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span>(A[Mid]<span style="color:#ff79c6">&gt;</span> x)
+			High<span style="color:#ff79c6">=</span>Mid<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
+			<span style="color:#ff79c6">else</span>
+			<span style="color:#ff79c6">return</span> Mid;
 		}
-		<span style="color:#66d9ef">return</span> NotFound;
+		<span style="color:#ff79c6">return</span> NotFound;
 	}
 
 </code></pre></div><p>它提供了在O（log N）时间内的Find（查找）操作。访问次数少，而如果是顺序查找的话就会需要多很多的访问次数。
 ​
 <strong>• 欧几里德算法</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
-	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Gcd</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> M,<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> N)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+	<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">Gcd</span>(<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> M,<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> N)
 	{
-		<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> Rem;
-		<span style="color:#66d9ef">while</span>( N<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> )
+		<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> Rem;
+		<span style="color:#ff79c6">while</span>( N<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">0</span> )
 		{
-			Rem <span style="color:#f92672">=</span> M <span style="color:#f92672">%</span> N;
-			M <span style="color:#f92672">=</span> N;
-			N <span style="color:#f92672">=</span> Rem;
+			Rem <span style="color:#ff79c6">=</span> M <span style="color:#ff79c6">%</span> N;
+			M <span style="color:#ff79c6">=</span> N;
+			N <span style="color:#ff79c6">=</span> Rem;
 		}
-		<span style="color:#66d9ef">return</span> M;
+		<span style="color:#ff79c6">return</span> M;
 	}
 </code></pre></div><p><strong>定理2.1</strong>：如果M &gt; N , 则M mod N &lt; M/2。T（N）=O（log N） 。
 ​
 <strong>• 幂运算</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#75715e">//T(N)=O(log N)
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Pow</span>(<span style="color:#66d9ef">int</span> X,<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> N)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O(log N)
+</span><span style="color:#6272a4"></span>	<span style="color:#8be9fd">long</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">Pow</span>(<span style="color:#8be9fd">int</span> X,<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> N)
 	{
-		<span style="color:#66d9ef">if</span>( N <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> )
-			<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
-		<span style="color:#66d9ef">if</span>( N <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> )    <span style="color:#75715e">/**接下来的两行也可以不写**/</span>
-			<span style="color:#66d9ef">return</span> X;
-		<span style="color:#66d9ef">if</span>( IsEven( N ) )
-			<span style="color:#66d9ef">return</span> Pow( X <span style="color:#f92672">*</span> X, N <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> );
-		<span style="color:#75715e">/**
-</span><span style="color:#75715e">		以下的修改都是不可取的:
-</span><span style="color:#75715e">		return Pow( Pow( X, 2), N / 2);
-</span><span style="color:#75715e">		return Pow( Pow( X, N / 2), 2);
-</span><span style="color:#75715e">		-以上这两种会产生无限循环，导致程序崩溃
-</span><span style="color:#75715e">		return Pow( X, N / 2)* Pow(X, N / 2 );
-</span><span style="color:#75715e">		-这种影响程序的效率【运行时间应该是O（N）(?)】
-</span><span style="color:#75715e">		**/</span>
-		<span style="color:#66d9ef">else</span>
-			<span style="color:#66d9ef">return</span> Pow( X <span style="color:#f92672">*</span> X, N <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> ) <span style="color:#f92672">*</span> N;
-		<span style="color:#75715e">/**
-</span><span style="color:#75715e">		如果不写N==1那两行的话，上面这行还可以写成
-</span><span style="color:#75715e">		return Pow(X,N-1)*X;
-</span><span style="color:#75715e">		**/</span>
+		<span style="color:#ff79c6">if</span>( N <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> )
+			<span style="color:#ff79c6">return</span> <span style="color:#bd93f9">1</span>;
+		<span style="color:#ff79c6">if</span>( N <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">1</span> )    <span style="color:#6272a4">/**接下来的两行也可以不写**/</span>
+			<span style="color:#ff79c6">return</span> X;
+		<span style="color:#ff79c6">if</span>( IsEven( N ) )
+			<span style="color:#ff79c6">return</span> Pow( X <span style="color:#ff79c6">*</span> X, N <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span> );
+		<span style="color:#6272a4">/**
+</span><span style="color:#6272a4">		以下的修改都是不可取的:
+</span><span style="color:#6272a4">		return Pow( Pow( X, 2), N / 2);
+</span><span style="color:#6272a4">		return Pow( Pow( X, N / 2), 2);
+</span><span style="color:#6272a4">		-以上这两种会产生无限循环，导致程序崩溃
+</span><span style="color:#6272a4">		return Pow( X, N / 2)* Pow(X, N / 2 );
+</span><span style="color:#6272a4">		-这种影响程序的效率【运行时间应该是O（N）(?)】
+</span><span style="color:#6272a4">		**/</span>
+		<span style="color:#ff79c6">else</span>
+			<span style="color:#ff79c6">return</span> Pow( X <span style="color:#ff79c6">*</span> X, N <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span> ) <span style="color:#ff79c6">*</span> N;
+		<span style="color:#6272a4">/**
+</span><span style="color:#6272a4">		如果不写N==1那两行的话，上面这行还可以写成
+</span><span style="color:#6272a4">		return Pow(X,N-1)*X;
+</span><span style="color:#6272a4">		**/</span>
 	}
 </code></pre></div><p><strong>“有时候看一看程序能够进行多大的调整而不影响其正确性倒是很有意思的”</strong></p>
         </div>
@@ -283,7 +283,7 @@
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 DRAPORLAND
+            &copy; 2021 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

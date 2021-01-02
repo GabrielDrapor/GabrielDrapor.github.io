@@ -69,13 +69,13 @@
             <p>前些日子有想用python从SparkThriftServer上取数的需求，与其他同事共同研究一番之后终于有了结果。</p>
 <p>其实很简单，只需要一个叫做<a href="https://github.com/cloudera/impyla">impyla</a>的库即可实现。不过在安装的时候需要注意，thrift_sasl的版本须是文档中所说的0.2.1，而不能是最新版本，否则会报错。</p>
 <p>安装好之后，只需要</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> impala.dbapi <span style="color:#f92672">import</span> connect
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> impala.dbapi <span style="color:#ff79c6">import</span> connect
 
-sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SELECT ......&#39;</span>
-conn <span style="color:#f92672">=</span> connect(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;xx.xx.xx.xx&#39;</span>, port<span style="color:#f92672">=</span>xxxxx, auth_mechanism<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;PLAIN&#39;</span>, database<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;DATABASE&#39;</span>)
-cursor <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span>cursor()
-cursor<span style="color:#f92672">.</span>execute(sql)
-result <span style="color:#f92672">=</span> cursor<span style="color:#f92672">.</span>fetchall()</code></pre></div>
+sql <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;SELECT ......&#39;</span>
+conn <span style="color:#ff79c6">=</span> connect(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;xx.xx.xx.xx&#39;</span>, port<span style="color:#ff79c6">=</span>xxxxx, auth_mechanism<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;PLAIN&#39;</span>, database<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;DATABASE&#39;</span>)
+cursor <span style="color:#ff79c6">=</span> conn<span style="color:#ff79c6">.</span>cursor()
+cursor<span style="color:#ff79c6">.</span>execute(sql)
+result <span style="color:#ff79c6">=</span> cursor<span style="color:#ff79c6">.</span>fetchall()</code></pre></div>
 <p>即可；</p>
 <p>（P.S.: 这里import的时候的名字是impala，但pip的时候需要是impyla）</p>
 <p>同时，还有一点非常好的是，impyla对python的数据结构非常友好，在得到结果后如需要将其转成pandas的DataFrame话非常方便。</p>
@@ -147,7 +147,7 @@ result <span style="color:#f92672">=</span> cursor<span style="color:#f92672">.<
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 DRAPORLAND
+            &copy; 2021 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

@@ -68,41 +68,41 @@
         <div class="article-entry" itemprop="articleBody">
             <p>最近项目中需要用Python调用C/C++的动态库，研究了一下Ctypes。</p>
 <p>上游给出的是编译好的.so文件，以下是用Ctypes调用的方式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> ctypes <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-lib <span style="color:#f92672">=</span> cdll<span style="color:#f92672">.</span>LoadLibrary(<span style="color:#e6db74">&#39;./xxx.so&#39;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> ctypes <span style="color:#ff79c6">import</span> <span style="color:#ff79c6">*</span>
+lib <span style="color:#ff79c6">=</span> cdll<span style="color:#ff79c6">.</span>LoadLibrary(<span style="color:#f1fa8c">&#39;./xxx.so&#39;</span>)
 
-<span style="color:#75715e">#假设xxx.so定义了一个init函数</span>
-init <span style="color:#f92672">=</span> lib<span style="color:#f92672">.</span>init
+<span style="color:#6272a4">#假设xxx.so定义了一个init函数</span>
+init <span style="color:#ff79c6">=</span> lib<span style="color:#ff79c6">.</span>init
 init()
 
-<span style="color:#75715e">#关于类型和参数：</span>
-i <span style="color:#f92672">=</span> c_int(<span style="color:#ae81ff">2</span>)
-<span style="color:#75715e"># int size</span>
+<span style="color:#6272a4">#关于类型和参数：</span>
+i <span style="color:#ff79c6">=</span> c_int(<span style="color:#bd93f9">2</span>)
+<span style="color:#6272a4"># int size</span>
 
-pChar <span style="color:#f92672">=</span> (c_char_p <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>)(addressof(create_string_buffer(<span style="color:#ae81ff">8</span>))) 
-<span style="color:#75715e"># char * pChar = new char[8];</span>
+pChar <span style="color:#ff79c6">=</span> (c_char_p <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">4</span>)(addressof(create_string_buffer(<span style="color:#bd93f9">8</span>))) 
+<span style="color:#6272a4"># char * pChar = new char[8];</span>
 
-c_char_p(<span style="color:#e6db74">&#34;CERTAIN_STRING&#34;</span><span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>))
-<span style="color:#75715e"># &#34;CERTAIN_STRING&#34;.c_str()</span>
+c_char_p(<span style="color:#f1fa8c">&#34;CERTAIN_STRING&#34;</span><span style="color:#ff79c6">.</span>encode(<span style="color:#f1fa8c">&#34;utf-8&#34;</span>))
+<span style="color:#6272a4"># &#34;CERTAIN_STRING&#34;.c_str()</span>
 
-data <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]
-p_data <span style="color:#f92672">=</span> (c_ubyte <span style="color:#f92672">*</span> len(data))(<span style="color:#f92672">*</span>data)
-<span style="color:#75715e"># unsigned char * data</span>
+data <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">3</span>,<span style="color:#bd93f9">4</span>,<span style="color:#bd93f9">5</span>]
+p_data <span style="color:#ff79c6">=</span> (c_ubyte <span style="color:#ff79c6">*</span> <span style="color:#8be9fd;font-style:italic">len</span>(data))(<span style="color:#ff79c6">*</span>data)
+<span style="color:#6272a4"># unsigned char * data</span>
 
-int_list <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]
-p_int_list <span style="color:#f92672">=</span> pointer((c_int<span style="color:#f92672">*</span>(<span style="color:#ae81ff">4</span>))(<span style="color:#f92672">*</span>int_list))
-<span style="color:#75715e"># int * int_list</span>
+int_list <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">3</span>,<span style="color:#bd93f9">4</span>]
+p_int_list <span style="color:#ff79c6">=</span> pointer((c_int<span style="color:#ff79c6">*</span>(<span style="color:#bd93f9">4</span>))(<span style="color:#ff79c6">*</span>int_list))
+<span style="color:#6272a4"># int * int_list</span>
 
-<span style="color:#75715e">#关于返回：</span>
-<span style="color:#75715e">#API int* rec(int* p)</span>
-p <span style="color:#f92672">=</span> pointer(c_int(<span style="color:#ae81ff">0</span>))
-rec <span style="color:#f92672">=</span> lib<span style="color:#f92672">.</span>rec
-rec<span style="color:#f92672">.</span>restype <span style="color:#f92672">=</span> POINTER(c_int)
+<span style="color:#6272a4">#关于返回：</span>
+<span style="color:#6272a4">#API int* rec(int* p)</span>
+p <span style="color:#ff79c6">=</span> pointer(c_int(<span style="color:#bd93f9">0</span>))
+rec <span style="color:#ff79c6">=</span> lib<span style="color:#ff79c6">.</span>rec
+rec<span style="color:#ff79c6">.</span>restype <span style="color:#ff79c6">=</span> POINTER(c_int)
 
-rs <span style="color:#f92672">=</span> rec(p)
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(p<span style="color:#f92672">.</span>contents<span style="color:#f92672">.</span>value):
-    <span style="color:#f92672">...</span>
-rs[<span style="color:#ae81ff">0</span>]
+rs <span style="color:#ff79c6">=</span> rec(p)
+<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(p<span style="color:#ff79c6">.</span>contents<span style="color:#ff79c6">.</span>value):
+    <span style="color:#ff79c6">...</span>
+rs[<span style="color:#bd93f9">0</span>]
 
 </code></pre></div>
         </div>
@@ -173,7 +173,7 @@ rs[<span style="color:#ae81ff">0</span>]
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 DRAPORLAND
+            &copy; 2021 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

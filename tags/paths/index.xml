@@ -6,10 +6,19 @@
     <description>Recent content in Paths on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://drapor.me/tags/paths/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2020</title>
+      <link>https://drapor.me/210101_2020/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://drapor.me/210101_2020/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>2019</title>

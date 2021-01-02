@@ -72,24 +72,24 @@
 <ul>
 <li>我使用的pandas的版本：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
-pd<span style="color:#f92672">.</span>_version<span style="color:#f92672">.</span>get_versions()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
+pd<span style="color:#ff79c6">.</span>_version<span style="color:#ff79c6">.</span>get_versions()
 
-<span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">{&#39;dirty&#39;: False,
-</span><span style="color:#e6db74"> &#39;error&#39;: None,
-</span><span style="color:#e6db74"> &#39;full-revisionid&#39;: &#39;a00154dcfe5057cb3fd86653172e74b6893e337d&#39;,
-</span><span style="color:#e6db74"> &#39;version&#39;: &#39;0.22.0&#39;}
-</span><span style="color:#e6db74">&#34;&#34;&#34;</span></code></pre></div>
+<span style="color:#f1fa8c">&#34;&#34;&#34;
+</span><span style="color:#f1fa8c">{&#39;dirty&#39;: False,
+</span><span style="color:#f1fa8c"> &#39;error&#39;: None,
+</span><span style="color:#f1fa8c"> &#39;full-revisionid&#39;: &#39;a00154dcfe5057cb3fd86653172e74b6893e337d&#39;,
+</span><span style="color:#f1fa8c"> &#39;version&#39;: &#39;0.22.0&#39;}
+</span><span style="color:#f1fa8c">&#34;&#34;&#34;</span></code></pre></div>
 <ul>
 <li>在探索过程中尝试了以下两种写法，但均不能避免SettingWithCopyWarning：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#e6db74">&#39;new_column&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>
-df<span style="color:#f92672">.</span>loc[:, <span style="color:#e6db74">&#39;new_column&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">...</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#f1fa8c">&#39;new_column&#39;</span>] <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>
+df<span style="color:#ff79c6">.</span>loc[:, <span style="color:#f1fa8c">&#39;new_column&#39;</span>] <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span></code></pre></div>
 <ul>
 <li>正确姿势：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>assign(new_column <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>)</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#ff79c6">=</span> df<span style="color:#ff79c6">.</span>assign(new_column <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>)</code></pre></div>
 <ul>
 <li>Reference: <a href="https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas">https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas</a></li>
 </ul>
@@ -161,7 +161,7 @@ df<span style="color:#f92672">.</span>loc[:, <span style="color:#e6db74">&#39;ne
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 DRAPORLAND
+            &copy; 2021 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

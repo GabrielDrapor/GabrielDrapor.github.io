@@ -67,33 +67,33 @@
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>小记如何用Flask实现一个带POST的api。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
 
-<span style="color:#f92672">import</span> json
-<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, request, Response
-<span style="color:#f92672">from</span> logging <span style="color:#f92672">import</span> FileHandler, INFO, Formatter
-
-
-app <span style="color:#f92672">=</span> Flask(__name__)
-
-<span style="color:#75715e"># log</span>
-err_log <span style="color:#f92672">=</span> FileHandler(<span style="color:#e6db74">&#39;error_log_&#39;</span><span style="color:#f92672">+</span>time<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y%m</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>,time<span style="color:#f92672">.</span>localtime()))
-err_log<span style="color:#f92672">.</span>setLevel(INFO)  <span style="color:#75715e">#设置日志级别</span>
-logging_format <span style="color:#f92672">=</span> Formatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(levelname)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(filename)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(funcName)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(lineno)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>)  <span style="color:#75715e"># 日志格式</span>
-err_log<span style="color:#f92672">.</span>setFormatter(logging_format)
-app<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>addHandler(err_log)
+<span style="color:#ff79c6">import</span> json
+<span style="color:#ff79c6">from</span> flask <span style="color:#ff79c6">import</span> Flask, request, Response
+<span style="color:#ff79c6">from</span> logging <span style="color:#ff79c6">import</span> FileHandler, INFO, Formatter
 
 
-<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>,methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>,<span style="color:#e6db74">&#39;GET&#39;</span>])  <span style="color:#75715e">#&#39;/&#39;指定了路径</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CERTAIN_FUNCTION</span>():
-    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;POST&#39;</span>:
-        <span style="color:#f92672">...</span>  <span style="color:#75715e">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
-        <span style="color:#66d9ef">return</span> Response(json<span style="color:#f92672">.</span>dumps(xxxx), mimetype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;application/json&#39;</span>)  <span style="color:#75715e"># 如果需要回传json的话</span>
-<span style="color:#75715e">#       return xxx 当然也可直接回传字符串或某个方法 </span>
+app <span style="color:#ff79c6">=</span> Flask(__name__)
+
+<span style="color:#6272a4"># log</span>
+err_log <span style="color:#ff79c6">=</span> FileHandler(<span style="color:#f1fa8c">&#39;error_log_&#39;</span><span style="color:#ff79c6">+</span>time<span style="color:#ff79c6">.</span>strftime(<span style="color:#f1fa8c">&#39;%Y%m</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">&#39;</span>,time<span style="color:#ff79c6">.</span>localtime()))
+err_log<span style="color:#ff79c6">.</span>setLevel(INFO)  <span style="color:#6272a4">#设置日志级别</span>
+logging_format <span style="color:#ff79c6">=</span> Formatter(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%(asctime)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(levelname)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(filename)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(funcName)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(lineno)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(message)s</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># 日志格式</span>
+err_log<span style="color:#ff79c6">.</span>setFormatter(logging_format)
+app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span>addHandler(err_log)
 
 
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-    app<span style="color:#f92672">.</span>run(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;x.x.x.x&#39;</span>,port<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;xxxx&#39;</span>)</code></pre></div>
+@app.route(<span style="color:#f1fa8c">&#39;/&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;POST&#39;</span>,<span style="color:#f1fa8c">&#39;GET&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">CERTAIN_FUNCTION</span>():
+    <span style="color:#ff79c6">if</span> request<span style="color:#ff79c6">.</span>method <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;POST&#39;</span>:
+        <span style="color:#ff79c6">...</span>  <span style="color:#6272a4">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
+        <span style="color:#ff79c6">return</span> Response(json<span style="color:#ff79c6">.</span>dumps(xxxx), mimetype<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;application/json&#39;</span>)  <span style="color:#6272a4"># 如果需要回传json的话</span>
+<span style="color:#6272a4">#       return xxx 当然也可直接回传字符串或某个方法 </span>
+
+
+<span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
+    app<span style="color:#ff79c6">.</span>run(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;x.x.x.x&#39;</span>,port<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;xxxx&#39;</span>)</code></pre></div>
 <blockquote>
 <p>Reference:</p>
 <ul>
@@ -184,7 +184,7 @@ app<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2020 DRAPORLAND
+            &copy; 2021 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
