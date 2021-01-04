@@ -70,39 +70,39 @@
 <h2 id="multivariate-linear-regression">Multivariate Linear Regression</h2>
 <ul>
 <li><strong>Hypothesis:</strong>
-<code>$$ h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i} $$</code></li>
+\( h(\theta) = \sum_{i=0}^{n}\theta_{i}X_{i} \)</li>
 </ul>
-<p><code>$$ X=\begin{bmatrix}x_{0}\\ x_{1}\\ .\\ .\\ .\\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1} \;, \theta=\begin{bmatrix}\theta_{0}\\ \theta_{1}\\ .\\ .\\ .\\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}$$</code></p>
-<p>  <strong>Also</strong>, $h(\theta) = \theta ^{ T} X$</p>
+<p>\( X=\begin{bmatrix}x_{0}\ x_{1}\ .\ .\ .\ x_{n}\end{bmatrix}\in \mathbb{R}^{n+1} ;, \theta=\begin{bmatrix}\theta_{0}\ \theta_{1}\ .\ .\ .\ \theta_{n}\end{bmatrix}\in \mathbb{R}^{n+1}\)</p>
+<p>  <strong>Also</strong>, \(h(\theta) = \theta ^{ T} X\)</p>
 <hr>
 <h2 id="gradient-descent"><strong>Gradient descent</strong></h2>
 <ul>
 <li><strong>Algorithm:</strong></li>
 </ul>
 <p>   Repeat{<br>
-      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</code><br>
+      \(\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}\)<br>
    }</p>
 <hr>
 <h2 id="feature-scaling">Feature Scaling</h2>
 <ul>
 <li><strong>Idea</strong>: Make sure fretures are on a similar scale.</li>
 <li><strong>Mean normalization</strong><br>
-  Replace <code>$x_{i}$ with $x_{i}-\mu_{i}$</code> to make features have approximately zero mean(Do not apply to <code>$x_{0}$</code>, Which we suppose equals 1)<br>
-<code>$x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)$</code>;<br>
-(<code>$\mu_{i}$</code> :Average value of <code>$x_{i}$</code> in training set, <code>$s_{i}$</code> :range(=max-min)(or standard deviation))</li>
+  Replace \(x_{i}\) with \(x_{i}-\mu_{i}\) to make features have approximately zero mean(Do not apply to \(x_{0}\), Which we suppose equals 1)<br>
+\(x_{i}:=\frac{x_{i}-\mu_{i}}{s_{i}}(i\neq0)\);<br>
+(\(\mu_{i}\) :Average value of \(x_{i}\) in training set, \(s_{i}\) :range(=max-min)(or standard deviation))</li>
 </ul>
 <hr>
 <h2 id="learning-rate">Learning Rate</h2>
 <ul>
-<li>If $\alpha$ is too small: slow convergence;</li>
-<li>If $\alpha$ is too large: $J(\theta)$ may not decrese on every iteration, may not converge(slow converge also possible);</li>
+<li>If \(\alpha\) is too small: slow convergence;</li>
+<li>If \(\alpha\) is too large: \(J(\theta)\) may not decrese on every iteration, may not converge(slow converge also possible);</li>
 </ul>
 <hr>
-<h2 id="normal-equation----solve-for-theta-analytically">Normal Equation &mdash;Solve for $\theta$ analytically</h2>
+<h2 id="normal-equation----solve-for-theta-analytically">Normal Equation &mdash;Solve for \(\theta\) analytically</h2>
 <ul>
 <li>For the input X, add a column on the left in X filled with 1, make up a new X;</li>
 <li>then,
-   $\theta = (X^{ T}X)^{-1}X^{ T}y$</li>
+   \(\theta = (X^{ T}X)^{-1}X^{ T}y\)</li>
 </ul>
 <p><strong>The difference between Gradient Descent and Normal Equation:</strong>
 <img src="/article_imgs/gd@nrml.png" alt=""></p>
@@ -118,7 +118,7 @@
     <li><a href="#gradient-descent"><strong>Gradient descent</strong></a></li>
     <li><a href="#feature-scaling">Feature Scaling</a></li>
     <li><a href="#learning-rate">Learning Rate</a></li>
-    <li><a href="#normal-equation----solve-for-theta-analytically">Normal Equation &mdash;Solve for $\theta$ analytically</a></li>
+    <li><a href="#normal-equation----solve-for-theta-analytically">Normal Equation &mdash;Solve for \(\theta\) analytically</a></li>
   </ul>
 </nav>
         </div>

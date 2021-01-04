@@ -68,19 +68,19 @@
         <div class="article-entry" itemprop="articleBody">
             <p> </p>
 <h2 id="classification">Classification</h2>
-<p>  For the binary classification, <code>$y\in \{0,1 \}$</code>(Also maybe, <code>$y\in \{ 0,1,2,3,... \}$</code>, that&rsquo;s called a <strong>multiclass classification problem</strong>, we will discuss it later.).<br>
-  So, we use a model called <strong>Logisitic Regression</strong>, and we can see the hypothesis <code>$h_{\theta}(x)$</code> should value in the range of 0 and 1. This is to say, $0\leq h_{\theta}(x)\leq 1$.</p>
+<p>  For the binary classification, \(y\in {0,1 }\)(Also maybe, \(y\in { 0,1,2,3,\cdots}\), that&rsquo;s called a <strong>multiclass classification problem</strong>, we will discuss it later.).<br>
+  So, we use a model called <strong>Logisitic Regression</strong>, and we can see the hypothesis \(h_{\theta}(x)\) should value in the range of 0 and 1. This is to say, \(0\leq h_{\theta}(x)\leq 1\).</p>
 <hr>
 <h2 id="hypothesis-representation">Hypothesis Representation</h2>
 <ul>
 <li>
 <p><strong>Logistic Regression:</strong>
-    <code>$$h_{\theta}(x)=g(\theta^{T}x)$, $g(z)=\frac{1}{1+e^{-z}}$$</code></p>
+    \(h_{\theta}(x)=g(\theta^{T}x)\), \(g(z)=\frac{1}{1+e^{-z}}\)</p>
 </li>
 <li>
-<p>**Interpretation of Hypothesis Output.
-The value of <code>$h_{\theta}(x)$</code> equals to the estimated probability that y=1 (on input x, parameterized by $\theta$ ). This is to say,
-<code>$$h_{\theta}(x)=P(y=1\mid x ; \theta)$$</code></p>
+<p><strong>Interpretation of Hypothesis Output</strong>.
+The value of \(h_{\theta}(x)\) equals to the estimated probability that y=1 (on input x, parameterized by \(\theta\) ). This is to say,
+\(h_{\theta}(x)=P(y=2\mid x ; \theta)\)</p>
 </li>
 <li>
 <p><strong>Decision Boundary</strong><br>
@@ -94,21 +94,20 @@ The decision boundaries are like this:</p>
 <ul>
 <li>
 <p><strong>Cost Function of Logistic Regression:</strong><br>
-<code>$Cost(h_{\theta}, y)=\begin{cases} -log(h_{\theta}(x)) &amp; \text{ if } y=1 \\  -log(1-h_{\theta}(x))  &amp; \text{ if } y=0    \end{cases}$</code><br>
-Also, we can write it as:<br>
-<code>$$Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))$$</code></p>
+\(Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))\)</p>
 </li>
 <li>
 <p><strong>Gradient Descent:</strong><br>
-To minimize <code>$J_{\theta}$</code></p>
+To minimize \(J_{\theta}\)</p>
 </li>
 </ul>
 <p>   Repeat{<br>
-      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</code><br>
+      \(\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}\)<br>
    }</p>
 <p>  <strong>And we can see that this algortithm looks identical to linear regression!<br>
   But actually, the hypothesis of them are different.</strong><br>
-<code>$$\begin{cases} Linear\:Regression: h_{\theta}(x)=\theta^{T}x\\ Logistic\:Regression: h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}} \end{cases}$$</code></p>
+ Linear Regression: \(h_{\theta}(x)=\theta^{T}x\)<br>
+ Logistic Regression: \(h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}\)</p>
 <p>Besides,</p>
 <blockquote>
 <p>&ldquo;&hellip;use a vector rise implementation, so that a vector rise implementation can update all of these until parameters all in one fell swoop.&rdquo;</p>
@@ -127,7 +126,7 @@ To minimize <code>$J_{\theta}$</code></p>
 <ul>
 <li>
 <p><strong>Adcantages:</strong>
-No need to manually pick $\alpha$ ;
+No need to manually pick \(\alpha\) ;
 Often faster than gradient descent;</p>
 </li>
 <li>
@@ -139,7 +138,7 @@ More complex;</p>
 <h2 id="multi-class-classification-one-vs-all">Multi-class classification: One-vs-all</h2>
 <ul>
 <li>For example, to slove the three-class problem, we can <em>&ldquo;turn this into three seperate two-class classification problems.&quot;</em></li>
-<li>On a new input $x$, to make a prediction, pick the class i that maximizes.</li>
+<li>On a new input \(x\), to make a prediction, pick the class i that maximizes.</li>
 </ul>
         </div>
 

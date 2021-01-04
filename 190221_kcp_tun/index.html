@@ -85,7 +85,7 @@ $ ldconfig</code></pre></div></p>
 $ chmod +x ./kcptun.sh
 $ ./kcp.sh</code></pre></div>
 在中文说明的引导下设置好各种参数，最后：
-<img src="/article_imgs/kcptun_finish.png" alt=""></p>
+<img src="/article_imgs/kcptun_finish.png" style="width:50%"></p>
 <h4 id="二客户端">二、客户端</h4>
 <h5 id="1cli">1.CLI</h5>
 <p>以MacOS下为例：
@@ -138,7 +138,7 @@ $ ./client_darwin_amd64 -l :xxx -r xx.xx.xx.xx:xxxxx --key xxxx --crypt xxxx --m
 <p>然后在Shadowsocsk的客户端中添加一个新的服务器，ip填127.0.0.1，端口填上面的“本地侦听端口”，其他参数与服务端的ss配置一致，配置完成启动即可；</p>
 <h5 id="3android">3.Android</h5>
 <p>在Play Store中下载Shadowsocks和kcptun，在Shadowsocks中填加一个新的服务器配置，ip填服务器ip，端口填服务端的kcp端口，其他和ss配置一致，在下方的Plugin设置中选择kcptun，参数仿照默认格式填写即可；</p>
-<p><img src="/article_imgs/kcptun_android.jpeg" alt=""></p>
+<img src="/article_imgs/kcptun_android.jpeg" style="width:50%">
         </div>
 
         

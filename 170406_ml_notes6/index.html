@@ -73,36 +73,35 @@
 <p><escape><!-- more --></escape></p>
 <h2 id="how-artificial-neural-network-work">How artificial neural network work</h2>
 <p><img src="/article_imgs/perceptron.jpg" alt=""></p>
-<p>  The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  $a_i$ was summed with the weights $\omega$ , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function $ g(z)=\frac{1}{1+e^{-z}} $ as our activation function. Then we return the bias back to adjust the parameters (weights $\omega$), when the parameters converge, the learning process end.</p>
+<p>  The pictures above shows a basic unit of the artificial nerual network, we usually call it as <em>perceptron</em>, which you can consider it as the neuron of the neural network. It works similarly as the biological neural network. The input data  \(a_i\) was summed with the weights \(\omega\) , and then input the summing value and the threshold into the <em>Activation Function</em>, then we get the output value. We often choose the function \( g(z)=\frac{1}{1+e^{-z}} \) as our activation function. Then we return the bias back to adjust the parameters (weights \(\omega\)), when the parameters converge, the learning process end.</p>
 <p>  And here&rsquo;s what a three-layer ann looks like,</p>
 <p><img src="/article_imgs/3lann.jpg" alt=""></p>
 <p>  The first layer, which is the input data belong to, is called <em>Input Layer</em>, while the last layer is called as <em>Output Layer</em> which is used to ouput data. And layer(s) in the middle of the input layer and output layer is called <em>Hidden Layer</em>, and the quantities of the hidden layers can be 1, 2, 3, &hellip;, even hundreds or thousands. the more hidden layers a neural network have, the more complex the system would be, which causes the calculation more difficult (and that&rsquo;s why we need more).</p>
 <hr>
 <h2 id="feedforward-propagation-algorithm">Feedforward Propagation Algorithm</h2>
-<p>  We obtain the output first, by:</p>
-<p>$$y_{j}=g(\sum^{n}_{i=1}\omega_{ji}x_i-\theta),$$</p>
-<p>,and we often choose sigmoid function $g(z)=\frac{1}{1+e^{-z}}$ as our activation function. For the more complex situation, we can also use vectorization:</p>
-<p>$$a_{n+1}=g(a_{n}*\Theta_n)$$</p>
-<p>($a_n$ stands for the input in the $n^{th}$ layer)</p>
+<p>  We obtain the output first, by: \(y_{j}=g(\sum^{n}_{i=1}\omega_{ji}x_i-\theta),\)</p>
+<p>,and we often choose sigmoid function \(g(z)=\frac{1}{1+e^{-z}}\) as our activation function. For the more complex situation, we can also use vectorization:</p>
+<p>\(a_{n+1}=g(a_{n}*\Theta_n)\)</p>
+<p>(\(a_n\) stands for the input in the \(n^{th}\) layer)</p>
 <hr>
 <h2 id="back-propagation-algorithm">Back Propagation Algorithm</h2>
-<p>For the training set <code>$\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)}) \}$</code>, <code>$\Delta_{ij}^{(l)}=0 $</code> (for all $l,i,j$). Then we run the following loop:</p>
-<p>For $i = 1$ to $m$:</p>
-<p>　　Set <code>$a^{(1)}=x^{(i)}$</code></p>
-<p>　　Perform forward propagation to compute <code>$a^{(l)}$ for $l=2,3,..,L$</code></p>
-<p>　　Using <code>$y^{(i)}$</code>, compute <code>$\delta^{L}=a^{(L)}-y^{(i)}$</code></p>
-<p>　　Compute $\delta^{(L-1)}, \delta^{(L-2)}, &hellip;, \color{red}{\delta^{(2)}}$</p>
-<p>　　<code>$ \Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i} $</code></p>
+<p>For the training set \({(x^{(1)},y^{(1)}),\cdots,(x^{(m)},y^{(m)}) }\), \(\Delta_{ij}^{(l)}=0 \) (for all \(l,i,j\)). Then we run the following loop:</p>
+<p>For \(i = 1\) to \(m\):</p>
+<p>　　Set \(a^{(1)}=x^{(i)}\)</p>
+<p>　　Perform forward propagation to compute \(a^{(l)}\) for \(l=2,3,..,L\)</p>
+<p>　　Using \(y^{(i)}\), compute \(\delta^{L}=a^{(L)}-y^{(i)}\)</p>
+<p>　　Compute \(\delta^{(L-1)}, \delta^{(L-2)}, \cdots, \color{red}{\delta^{(2)}}\)</p>
+<p>　　\( \Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i} \)</p>
 <p>After that,</p>
-<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}$   if $j\neq0$</p>
-<p>　　$D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}$　 if $j=0$</p>
+<p>　　\(D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}\)   if \(j\neq0\)</p>
+<p>　　\(D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}\)　 if \(j=0\)</p>
 <p>And we get:</p>
-<p>　　$$\frac{\partial}{\partial\Theta^{(l)}_{ij}}J(\Theta) = D_{ij}^{(l)}$$</p>
+<p>　　\(\frac{\partial}{\partial\Theta^{(l)}_{ij}}J(\Theta) = D_{ij}^{(l)}\)</p>
 <hr>
 <h2 id="process-of-training-a-neural-network">Process of Training a Neural Network</h2>
 <ol>
 <li>Randomly initialize the weights;</li>
-<li>Implement forward propagation to get $h_{\Theta}(x^{(i)})$ for any $x^{(i)}$;</li>
+<li>Implement forward propagation to get \(h_{\Theta}(x^{(i)})\) for any \(x^{(i)}\);</li>
 <li>Implement the cost function;</li>
 <li>Implement backpropagation to compute partial derivatives;</li>
 <li>Use gradient checking to confirm that your backpropagation works. Then disable gradient checking;</li>

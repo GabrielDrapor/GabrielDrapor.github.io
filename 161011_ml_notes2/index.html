@@ -70,28 +70,27 @@
 <h2 id="linear-regression-with-one-variable">Linear Regression with one variable</h2>
 <ul>
 <li>
-<p><strong>Hypothesis:</strong><br>
-$$h(\theta) = {\theta}_{0} + {\theta}_{1} x_{1}$$</p>
+<p><strong>Hypothesis:</strong> \(h(\theta) = {\theta}_{0} + {\theta}_{1} x_{1}\)</p>
 </li>
 <li>
 <p><strong>Cost function:</strong>
-$$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2$$</p>
+\(J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^2\)</p>
 </li>
 </ul>
 <hr>
 <h2 id="gradient-descent"><strong>Gradient descent</strong></h2>
-<p><strong>Target:</strong> minimize $J(\theta_{0},\theta_{1})$ or $J(\theta_{0},\theta_{1},&hellip;,\theta_{n})$</p>
+<p><strong>Target:</strong> minimize \(J(\theta_{0},\theta_{1})\) or \(J(\theta_{0},\theta_{1},\cdots,\theta_{n})\)</p>
 <ul>
 <li><strong>Gradient algorithm:</strong></li>
 </ul>
 <p>   Repeat until convergence{<br>
-      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})\;(for \: j=0\:and\:j=1)$</code><br>
+      \( \theta_{j}:=\theta_{j}-\alpha\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})\;(for \: j=0\:and\:j=1)\)<br>
    }<br>
-    ( $:=$ -   <em>Assignment</em>     $\alpha$ - <em>Learning rate</em> )</p>
-<p><strong>Warning:</strong> <code>$\theta_{0}$</code> and <code>$\theta_{1}$</code>should be updated <strong>Simultaneously</strong> !!!</p>
+    ( \(:=\) -   *Assignment*     \(\alpha\) - *Learning rate* )</p>
+<p><strong>Warning:</strong> \(\theta_{0}\) and \(\theta_{1}\)should be updated **Simultaneously** !!!</p>
 <p>  Especially, when gradient descent for linear regression,</p>
-<p>     <code>$\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}$</code>  <br>
-when <code>$i=0$</code>, we suppose <code>$x^{(0)}=1$</code></p>
+<p>     \(\frac{\partial }{\partial j}J(\theta_{0},\theta_{1})=\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}\)  <br>
+when \(i=0\), we suppose \(x^{(0)}=1\)</p>
         </div>
 
         

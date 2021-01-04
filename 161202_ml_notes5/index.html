@@ -82,8 +82,8 @@ Disadvantages: Reduce some information about the problem.</p>
 </blockquote>
 <p><strong>2.Regularization</strong></p>
 <blockquote>
-<p>Keep all the features, but reduce magnitude/values of parameters <code>$\theta_{j}$</code>.
-Works well when we have a lot of features, each of which contributes a bit to predicting $y$.</p>
+<p>Keep all the features, but reduce magnitude/values of parameters \(\theta_{j}\).
+Works well when we have a lot of features, each of which contributes a bit to predicting \(y\).</p>
 </blockquote>
 <p>So we can see regularization is a better choice mostly.</p>
 <hr>
@@ -91,45 +91,43 @@ Works well when we have a lot of features, each of which contributes a bit to pr
 <ul>
 <li>First, consider this. If our hypothesis is like this:</li>
 </ul>
-<p><code>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4$$</code></p>
-<p>and if we penalize and make <code>$\theta_{3}$</code> and <code>$\theta_{4}$</code> really small, it means that <code>$\theta_{3}\approx0,\theta_{4}\approx0$</code>, that is like as if we &rsquo;re getting rid of these two terms, then we would find that
-<code>$$\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2} $$</code></p>
+<p>\(\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\)</p>
+<p>and if we penalize and make \(\theta_{3}\) and \(\theta_{4}\) really small, it means that \(\theta_{3}\approx0,\theta_{4}\approx0\), that is like as if we &rsquo;re getting rid of these two terms, then we would find that
+\(\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2} \)</p>
 <hr>
 <h2 id="regularization">Regularization</h2>
 <p>“…having <strong>smaller values of the parameters</strong> corresponds to usually <strong>smoother functions as well for the simpler</strong>. And which are therefore, also, <strong>less prone to overfitting</strong>. ”
 What we should do is to modify the cost function to shrink all of the parameters like this:
-<code>$$J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}$$</code></p>
-<p>And the blue terms is called <strong>regularization terms</strong>, $\lambda$ is called <strong>regularization parameters</strong> which is used to trade off between two different goals:<br>
-`$$\begin{cases}</p>
+\(J(\theta)=\frac{1}{2m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + {\color{Blue} {\lambda\sum_{i=1}^{m}\theta_{j}^{2}}}\)</p>
+<p>And the blue terms is called <strong>regularization terms</strong>, \(\lambda\) is called <strong>regularization parameters</strong> which is used to trade off between two different goals:</p>
 <ol>
-<li>\sum(h_{\theta}(x^{(i)})-y^{(i)})^{2}:-:fit:well\</li>
-<li>\sum{\theta_{j}^{2}}:-:keep:the:parameters:small
-\end{cases}$$`</li>
+<li>\(\sum(h_{\theta}(x^{(i)})-y^{(i)})^{2}\) fit well</li>
+<li>\(\sum{\theta_{j}^{2}}\) keep the parameters small</li>
 </ol>
-<p>By the way, we don&rsquo;t penalize $\theta_{0}$ by convention.
-Besides, about the regularization parameters $\lambda$, if $\lambda$ is too large, it would cause underfitting, and if $\lambda$ is too small, it may cause the useless regularization.</p>
+<p>By the way, we don&rsquo;t penalize \(\theta_{0}\) by convention.
+Besides, about the regularization parameters \(\lambda\), if \(\lambda\) is too large, it would cause underfitting, and if \(\lambda\) is too small, it may cause the useless regularization.</p>
 <hr>
 <h2 id="regularized-linear-regression">Regularized linear regression</h2>
 <ul>
 <li>Gradient descent:
-Old:
+Old:<br>
    Repeat{<br>
-      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,...,n)$</code>.
+      \(\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=0,1,2,3,\cdots,n)\).<br>
    }</li>
 </ul>
 <p><font color=blue>New:</font><br>
    <font color=blue>Repeat{</font><br>
-      <code>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</code><br>
-      <code>${\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</code><br>
+      \({\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}\)<br>
+      \({\color{Blue} {\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}:(j=1,2,\cdots,n)}}{\color{Red} {+\frac{\lambda}{m}\theta_{j}}}\)<br>
    <font color=blue>}</font></p>
 <hr>
 <h2 id="regularization-logistic-regression">Regularization logistic regression</h2>
-<p>   Cost function <code>$J(\theta)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x)){\color{Blue} {+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}}}$</code></p>
+<p>   Cost function \(J(\theta)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x)){\color{Blue} {+\frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}}}\)</p>
 <p>   <font color=blue>Repeat{</font><br>
-      <code>${\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}$</code><br>
-      <code>$\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}\:(j=1,2,...,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}$</code><br>
+      \({\color{Blue} {\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}}\)<br>
+      \(\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}:(j=1,2,\cdots,n){\color{Red} {+\frac{\lambda}{m}\theta_{j}}}\)<br>
    <font color=blue>}</font><br>
-Remember that <code>$h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}$</code></p>
+Remember that \(h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}\)</p>
         </div>
 
         
