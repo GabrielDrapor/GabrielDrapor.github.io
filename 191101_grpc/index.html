@@ -100,7 +100,7 @@ python3 -m grpc_tools.protoc -I PACKAGE_NAME --python_out<span style="color:#ff7
 
 <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Service1Servicer</span>(XXX_pb2_grpc<span style="color:#ff79c6">.</span>Service1Servicer):
     <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">SomeFunc</span>(self, request, context):
-        \\可通过__getattr__从request取出proto中Message1定义的各项
+        <span style="color:#6272a4"># 可通过__getattr__从request取出proto中Message1定义的各项</span>
         response <span style="color:#ff79c6">=</span> XXX_pb2<span style="color:#ff79c6">.</span>Message2()
         
         reponse<span style="color:#ff79c6">.</span>data_3 <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>
@@ -132,7 +132,7 @@ protoc --go_out<span style="color:#ff79c6">=</span><span style="color:#8be9fd;fo
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#ff79c6">package</span> main
 
 <span style="color:#ff79c6">import</span> (
-    xxx <span style="color:#6272a4">//刚生成的go文件
+    xxx <span style="color:#6272a4">// 刚生成的go文件
 </span><span style="color:#6272a4"></span>    <span style="color:#f1fa8c">&#34;google.golang.org/grpc&#34;</span>
     <span style="color:#f1fa8c">&#34;context&#34;</span>
     <span style="color:#f1fa8c">&#34;fmt&#34;</span>
