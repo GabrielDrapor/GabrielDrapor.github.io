@@ -465,6 +465,7 @@ a.article-title:hover,
   margin-bottom: 10px;
 }
 .article-title {
+  font-family: monospace;
   font-size: 1.7em;
   font-weight: 500;
   line-height: 1em;
