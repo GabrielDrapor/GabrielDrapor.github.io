@@ -40,6 +40,14 @@ set autoindent
 set foldmethod=indent
 set noswapfile
 set completeopt-=preview
+set t_Co=256
+set undofile
+set autoread
+set listchars=tab:»■,trail:↤
+set list
+set wildmenu
+set wildmode=longest:list,full
+
 
 autocmd BufReadPost *.py
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -55,3 +63,10 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+autocmd BufWritePre *.py :call TrimWhitespace()
