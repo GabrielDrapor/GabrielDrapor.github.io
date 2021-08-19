@@ -7,14 +7,16 @@ nnoremap gi :GitGutterSignsToggle<CR>
 nnoremap gn :set number! number?<CR>
 nnoremap gu :GitGutter<CR>
 nnoremap gb :Black<CR>
-nnoremap ha :Ack!
+nnoremap gp :Prettier<CR>
+nnoremap ha :Ack <cword><cr>
 nnoremap zz zA
 nnoremap r zR
 nnoremap <C-Q> <C-W>q<CR>
 nnoremap tt :CtrlP<CR>
 nnoremap ff :FZF<CR>
 nnoremap hh :History<CR>
-nnoremap ga :call fzf#vim#files('.', {'options':'--query '.expand(<cword>)})<CR>
+nnoremap ga :Ag <C-R><C-W><CR>
+nnoremap cc :TComment<CR>
 
 call plug#begin()
 Plug 'universal-ctags/ctags'
@@ -26,6 +28,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'valloric/youcompleteme'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'trusktr/seti.vim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 call plug#end()
 
 
@@ -40,13 +46,16 @@ set autoindent
 set foldmethod=indent
 set noswapfile
 set completeopt-=preview
-set t_Co=256
-set undofile
 set autoread
-set listchars=tab:»■,trail:↤
-set list
-set wildmenu
-set wildmode=longest:list,full
+" set listchars=tab:»■,trail:↤
+" set list
+" set wildmenu
+" set wildmode=longest:list,full
+set termguicolors
+set t_Co=256
+let g:solarized_termcolors = 256
+let g:solarized_termtrans = 1
+let g:omni_sql_no_default_maps = 1
 
 
 autocmd BufReadPost *.py
@@ -57,7 +66,7 @@ autocmd BufReadPost *.py
 au BufNewFile *.py 0r ~/.vim/skeleton/py_skeleton
 
 syntax on
-colorscheme pablo
+colorscheme wombat256grf
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -70,3 +79,10 @@ fun! TrimWhitespace()
 endfun
 
 autocmd BufWritePre *.py :call TrimWhitespace()
+autocmd BufWritePre *.thirft :call TrimWhitespace()
+
+" for js
+let g:prettier#config#tab_width = 2
+let g:prettier#config#print_width = 80
+
+filetype plugin on
