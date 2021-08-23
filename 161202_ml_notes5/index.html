@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.70.0-DEV" />
+    <meta name="generator" content="Hugo 0.73.0" />
 </head>
 
 
@@ -92,7 +92,7 @@ Works well when we have a lot of features, each of which contributes a bit to pr
 <li>First, consider this. If our hypothesis is like this:</li>
 </ul>
 <p>\(\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\)</p>
-<p>and if we penalize and make \(\theta_{3}\) and \(\theta_{4}\) really small, it means that \(\theta_{3}\approx0,\theta_{4}\approx0\), that is like as if we &lsquo;re getting rid of these two terms, then we would find that
+<p>and if we penalize and make \(\theta_{3}\) and \(\theta_{4}\) really small, it means that \(\theta_{3}\approx0,\theta_{4}\approx0\), that is like as if we &rsquo;re getting rid of these two terms, then we would find that
 \(\theta_{0} + \theta_{1}x + \theta_{2}x^{2} + \theta_{3}x^3 + \theta_{4}x^4\approx\theta_{0} + \theta_{1}x + \theta_{2}x^{2} \)</p>
 <hr>
 <h2 id="regularization">Regularization</h2>
@@ -164,6 +164,11 @@ Remember that \(h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}\)</p>
         </footer>
         
     </div>
+    <div style="font-size: 14px;font-style: italic; color: #808080; text-align: right;"><br />
+    
+    本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+    <br /><br />
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>    </div>
     
 
 <nav id="article-nav">
@@ -198,6 +203,8 @@ Remember that \(h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}\)</p>
   })
   gittalk.render("gitalk-container")
 </script>
+
+
 </article>
 
         
