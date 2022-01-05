@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -73,7 +73,7 @@
 </blockquote>
 <p><escape><!-- more --></escape></p>
 <p><strong>• 算法3</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O(N log N) 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O(N log N) 
 </span><span style="color:#6272a4"></span>
 	<span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">MaxSubSum</span>( <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> A[], <span style="color:#8be9fd">int</span> Left,<span style="color:#8be9fd">int</span> Right )
 	{
@@ -127,7 +127,7 @@
 </code></pre></div><p>​</p>
 <p>​</p>
 <p><strong>• 更简单有效的算法4</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
 	<span style="color:#8be9fd">int</span> <span style="color:#50fa7b">MaxSubsequenceSum</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> A[], <span style="color:#8be9fd">int</span> N)
 	{
 		<span style="color:#8be9fd">int</span> ThisSum,MaxSum,j;
@@ -154,7 +154,7 @@
 </blockquote>
 <p><strong>• 对分算法</strong>
 ​</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O（log N）
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O（log N）
 </span><span style="color:#6272a4"></span>	<span style="color:#8be9fd">int</span> <span style="color:#50fa7b">BinarySearch</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> A[], <span style="color:#8be9fd">int</span> x,<span style="color:#8be9fd">int</span> n)
 	{
 		<span style="color:#8be9fd">int</span> Low,Mid,High;
@@ -175,7 +175,7 @@
 </code></pre></div><p>它提供了在O（log N）时间内的Find（查找）操作。访问次数少，而如果是顺序查找的话就会需要多很多的访问次数。
 ​
 <strong>• 欧几里德算法</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
 	<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">Gcd</span>(<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> M,<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> N)
 	{
 		<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> Rem;
@@ -190,7 +190,7 @@
 </code></pre></div><p><strong>定理2.1</strong>：如果M &gt; N , 则M mod N &lt; M/2。T（N）=O（log N） 。
 ​
 <strong>• 幂运算</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O(log N)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#6272a4">//T(N)=O(log N)
 </span><span style="color:#6272a4"></span>	<span style="color:#8be9fd">long</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">Pow</span>(<span style="color:#8be9fd">int</span> X,<span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> N)
 	{
 		<span style="color:#ff79c6">if</span>( N <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> )
@@ -290,7 +290,7 @@
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

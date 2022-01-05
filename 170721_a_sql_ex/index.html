@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -70,7 +70,7 @@
 <p>原题目的url是https://www.codewars.com/kata/calculating-running-total</p>
 <p>参考了一下简单的情况 <a href="http://sql55.com/query/cumulative-amount-1.php">http://sql55.com/query/cumulative-amount-1.php</a> ，然后自己建表鼓捣了一会儿，</p>
 <p>终于得(meng)出了一个可行的答案：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">CAST</span>(p1.created_at <span style="color:#ff79c6">AS</span> <span style="color:#8be9fd;font-style:italic">DATE</span>) <span style="color:#ff79c6">AS</span> <span style="color:#8be9fd;font-style:italic">date</span>,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">CAST</span>(p1.created_at <span style="color:#ff79c6">AS</span> <span style="color:#8be9fd;font-style:italic">DATE</span>) <span style="color:#ff79c6">AS</span> <span style="color:#8be9fd;font-style:italic">date</span>,
        <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">DISTINCT</span> p1.title) <span style="color:#ff79c6">AS</span> <span style="color:#ff79c6">count</span>,
        <span style="color:#ff79c6">COUNT</span>(p2.title)<span style="color:#ff79c6">/</span><span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">DISTINCT</span> p1.title) <span style="color:#ff79c6">AS</span> total
 <span style="color:#ff79c6">FROM</span> posts p1 <span style="color:#ff79c6">INNER</span> <span style="color:#ff79c6">JOIN</span> posts p2
@@ -152,7 +152,7 @@
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -68,7 +68,7 @@
         <div class="article-entry" itemprop="articleBody">
             <p>以Python做Server，Golang做Client为例。</p>
 <h4 id="proto">.proto:</h4>
-<pre><code>syntax = &quot;proto3&quot;
+<pre tabindex="0"><code>syntax = &quot;proto3&quot;
 
 package PACKAGE_NAME
 
@@ -87,12 +87,12 @@ service Service1 {
     rpc SomeFunc(Message1) returns (Message2) {}
 }
 </code></pre><h4 id="python-as-server">Python as server:</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install grpcio-tools
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install grpcio-tools
 
 python3 -m grpc_tools.protoc -I PACKAGE_NAME --python_out<span style="color:#ff79c6">=[</span>SOME_DIR<span style="color:#ff79c6">]</span> --grpc_python_out<span style="color:#ff79c6">=[</span>SOME_DIR<span style="color:#ff79c6">]</span> ./XXX.proto
 </code></pre></div><p>对应目录下会生成名为*_pb2.py和*_pb2_grpc.py的两个py文件。</p>
 <p>server.py</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> grpc
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> grpc
 <span style="color:#ff79c6">from</span> multiprocessing <span style="color:#ff79c6">import</span> Pool
 <span style="color:#ff79c6">from</span> concurrent <span style="color:#ff79c6">import</span> futures
 
@@ -115,9 +115,9 @@ python3 -m grpc_tools.protoc -I PACKAGE_NAME --python_out<span style="color:#ff7
     XXX_pb2_grpc<span style="color:#ff79c6">.</span>add_Sevice1Servicer_to_server(Service1Servicer(), server)
     server<span style="color:#ff79c6">.</span>add_insecure_port(<span style="color:#f1fa8c">&#39;[::]:50051&#39;</span>)
     server<span style="color:#ff79c6">.</span>start()
-    <span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#34;grpc server has already started.&#34;</span>)
+    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;grpc server has already started.&#34;</span>)
     <span style="color:#ff79c6">try</span>:
-        <span style="color:#ff79c6">while</span> True:
+        <span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
             time<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">9999999</span>)
     <span style="color:#ff79c6">except</span> KeyboardInterrupt:
         server<span style="color:#ff79c6">.</span>stop(<span style="color:#bd93f9">0</span>)
@@ -125,11 +125,11 @@ python3 -m grpc_tools.protoc -I PACKAGE_NAME --python_out<span style="color:#ff7
 <span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
     serve()
 </code></pre></div><h4 id="golang-as-client">Golang as client:</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go get -u github.com/golang/protobuf/protoc-gen-go
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go get -u github.com/golang/protobuf/protoc-gen-go
 protoc --go_out<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">plugins</span><span style="color:#ff79c6">=</span>grpc:. ./XXX.proto
 </code></pre></div><p>目录下会生成一个xxx.pb.go</p>
 <p>client.go</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#ff79c6">package</span> main
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#ff79c6">package</span> main
 
 <span style="color:#ff79c6">import</span> (
     xxx <span style="color:#6272a4">// 刚生成的go文件
@@ -241,7 +241,7 @@ protoc --go_out<span style="color:#ff79c6">=</span><span style="color:#8be9fd;fo
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

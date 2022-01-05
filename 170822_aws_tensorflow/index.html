@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -78,7 +78,7 @@
 <p>登陆之后首先确认一下GPU信息：</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  <span style="color:#ff79c6">$(</span><span style="color:#8be9fd;font-style:italic">local</span><span style="color:#ff79c6">)</span> lspci | grep -i nvidia</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  <span style="color:#ff79c6">$(</span><span style="color:#8be9fd;font-style:italic">local</span><span style="color:#ff79c6">)</span> lspci | grep -i nvidia</code></pre></div>
 <ul>
 <li>GPU方面需要安装的东西有两个：NVIDIA CUDA Toolkit 和 cuDNN library；
 <ul>
@@ -86,7 +86,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  $ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  $ wget https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_linux-run
 
   $ chmod <span style="color:#bd93f9">755</span> cuda_8.0.44_linux-run
 
@@ -109,14 +109,14 @@
 <li>然后是cuDNN library：</li>
 </ul>
 <p>首先去https://developer.nvidia.com/cudnn 注册Nvidia Developer的账号，然后在本地下载好相应的tgz包，将它scp到服务器上去。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  $ tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  $ tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz
   $ cp cuda/lib64/* /usr/local/cuda-8.0/lib64/
   $ cp cuda/include/* /usr/local/cuda-8.0/include/</code></pre></div>
 <p>至此，GPU Drivers的部分基本配置完成。</p>
 <ul>
 <li>然后是TensorFlow的配置，这里采用官方推荐的Installing with virtualenv的方法：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  <span style="color:#6272a4"># Install pip and virtualen</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  <span style="color:#6272a4"># Install pip and virtualen </span>
   $ sudo apt install python-pip python-dev python-virtualenv <span style="color:#6272a4"># for Python 2.7</span>
   $ sudo apt install python3-pip python3-dev python-virtualenv <span style="color:#6272a4"># for Python 3.n</span>
 
@@ -141,16 +141,16 @@
 <ul>
 <li>
 <p>激活命令为<br>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#8be9fd;font-style:italic">source</span> ~/tensorflow/bin/activate      <span style="color:#6272a4"># bash, sh, ksh, or zsh</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#8be9fd;font-style:italic">source</span> ~/tensorflow/bin/activate      <span style="color:#6272a4"># bash, sh, ksh, or zsh</span>
 $ <span style="color:#8be9fd;font-style:italic">source</span> ~/tensorflow/bin/activate.csh  <span style="color:#6272a4"># csh or tcsh</span></code></pre></div></p>
 </li>
 <li>
 <p>退出环境<br>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">(</span>tensorflow<span style="color:#ff79c6">)</span>$ deactivate </code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">(</span>tensorflow<span style="color:#ff79c6">)</span>$ deactivate </code></pre></div></p>
 </li>
 <li>
 <p>卸载<br>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rm -r targetDirectory </code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rm -r targetDirectory </code></pre></div></p>
 <p>​</p>
 </li>
 </ul>
@@ -229,7 +229,7 @@ $ <span style="color:#8be9fd;font-style:italic">source</span> ~/tensorflow/bin/a
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

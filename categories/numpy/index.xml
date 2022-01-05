@@ -6,11 +6,7 @@
     <description>Recent content in numpy on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 11 May 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://drapor.me/categories/numpy/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 11 May 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://drapor.me/categories/numpy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Numpy入门笔记</title>
       <link>https://drapor.me/170511-numpy/</link>

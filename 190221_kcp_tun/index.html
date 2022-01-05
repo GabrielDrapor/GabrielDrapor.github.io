@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -69,19 +69,19 @@
             <p>因为种种原因，自己的几个ss/ssr服务基本都失联了，最近被推荐了<a href="https://github.com/xtaci/kcptun">kcptun</a>，原来觉得kcptun只是用于加速，没想到由于它本身的设计，现在居然可以用于绕过高墙。</p>
 <h5 id="一服务端">一、服务端</h5>
 <p>首先配置ss：
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip install shadowsocks <span style="color:#6272a4"># 如果安完之后找不到ssserver，sudo之后可以解决；</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip install shadowsocks <span style="color:#6272a4"># 如果安完之后找不到ssserver，sudo之后可以解决；</span>
 $ ssserver -p <span style="color:#ff79c6">[</span>SS_PORT<span style="color:#ff79c6">]</span> -k <span style="color:#ff79c6">[</span>SS_KEY<span style="color:#ff79c6">]</span> -m <span style="color:#ff79c6">[</span>ENRYPT_METHOD<span style="color:#ff79c6">]</span> --user nobody -d start</code></pre></div>
 如果报了Exception: libsodium not found:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
 $ tar zxf LATEST.tar.gz
 $ <span style="color:#8be9fd;font-style:italic">cd</span> libsodium-stable
 $ ./configure
 $ sudo make <span style="color:#ff79c6">&amp;&amp;</span> sudo make install</code></pre></div></p>
 <p>如果依然报错，su之后；
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#8be9fd;font-style:italic">echo</span> /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#8be9fd;font-style:italic">echo</span> /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf
 $ ldconfig</code></pre></div></p>
 <p>然后配置kcptun：
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh
 $ chmod +x ./kcptun.sh
 $ ./kcp.sh</code></pre></div>
 在中文说明的引导下设置好各种参数，最后：
@@ -90,7 +90,7 @@ $ ./kcp.sh</code></pre></div>
 <h5 id="1cli">1.CLI</h5>
 <p>以MacOS下为例：
 从原repo的releases页https://github.com/xtaci/kcptun/releases 获取kcptun的可执行文件
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./client_darwin_amd64 --help
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./client_darwin_amd64 --help
 NAME:
    kcptun - client<span style="color:#ff79c6">(</span>with SMUX<span style="color:#ff79c6">)</span>
 
@@ -222,7 +222,7 @@ $ ./client_darwin_amd64 -l :xxx -r xx.xx.xx.xx:xxxxx --key xxxx --crypt xxxx --m
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

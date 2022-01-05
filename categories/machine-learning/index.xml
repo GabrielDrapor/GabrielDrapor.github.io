@@ -6,11 +6,7 @@
     <description>Recent content in Machine Learning on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 11 Sep 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://drapor.me/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 11 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://drapor.me/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kaggle 0 手写数字识别器的探索</title>
       <link>https://drapor.me/170911_knn_digits_recognition/</link>

@@ -6,11 +6,7 @@
     <description>Recent content in Crawler on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Dec 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://drapor.me/tags/crawler/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 02 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://drapor.me/tags/crawler/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python Crawler Note 2</title>
       <link>https://drapor.me/161202_pycrawler2/</link>

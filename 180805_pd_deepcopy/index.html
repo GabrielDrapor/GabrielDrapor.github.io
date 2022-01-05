@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -70,7 +70,7 @@
 <ul>
 <li>我使用的pandas的版本：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
 pd<span style="color:#ff79c6">.</span>_version<span style="color:#ff79c6">.</span>get_versions()
 
 <span style="color:#f1fa8c">&#34;&#34;&#34;
@@ -82,7 +82,7 @@ pd<span style="color:#ff79c6">.</span>_version<span style="color:#ff79c6">.</spa
 <ul>
 <li>常规情况：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[<span style="color:#bd93f9">1</span>]])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[<span style="color:#bd93f9">1</span>]])
 a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>] <span style="color:#6272a4"># 1</span>
 
 b <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">.</span>copy() <span style="color:#6272a4">#.copy(deep=True) as default</span>
@@ -92,7 +92,7 @@ a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <
 <ul>
 <li>进一步：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[[<span style="color:#bd93f9">1</span>]]])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[[<span style="color:#bd93f9">1</span>]]])
 a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>] <span style="color:#6272a4"># [1]</span>
 
 b <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">.</span>copy() <span style="color:#6272a4">#.copy(deep=True) as default</span>
@@ -102,7 +102,7 @@ a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <
 <ul>
 <li>进而：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[[<span style="color:#bd93f9">1</span>]]])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[[<span style="color:#bd93f9">1</span>]]])
 a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>] <span style="color:#6272a4"># [1]</span>
 
 b <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">.</span>copy() <span style="color:#6272a4">#.copy(deep=True) as default</span>
@@ -114,29 +114,29 @@ a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <
 <ul>
 <li>其他的发现：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[<span style="color:#bd93f9">1</span>]])
-<span style="color:#ff79c6">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>][<span style="color:#bd93f9">0</span>])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[<span style="color:#bd93f9">1</span>]])
+<span style="color:#8be9fd;font-style:italic">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>][<span style="color:#bd93f9">0</span>])
 
 b <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">.</span>copy()
 b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>
-<span style="color:#ff79c6">print</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>])  <span style="color:#6272a4"># 2</span>
-<span style="color:#ff79c6">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>])  <span style="color:#6272a4"># 1</span>
+<span style="color:#8be9fd;font-style:italic">print</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>])  <span style="color:#6272a4"># 2</span>
+<span style="color:#8be9fd;font-style:italic">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>])  <span style="color:#6272a4"># 1</span>
 
-<span style="color:#ff79c6">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>] <span style="color:#ff79c6">is</span> b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>]) <span style="color:#6272a4"># False</span>
-<span style="color:#ff79c6">print</span>(<span style="color:#8be9fd;font-style:italic">id</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>]) <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">id</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>])) <span style="color:#6272a4">#True</span>
+<span style="color:#8be9fd;font-style:italic">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>] <span style="color:#ff79c6">is</span> b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>]) <span style="color:#6272a4"># False</span>
+<span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#8be9fd;font-style:italic">id</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>]) <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">id</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>])) <span style="color:#6272a4">#True</span>
 
 <span style="color:#6272a4"># ------</span>
 
 a <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>DataFrame([[[<span style="color:#bd93f9">1</span>]]])
-<span style="color:#ff79c6">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>][<span style="color:#bd93f9">0</span>])
+<span style="color:#8be9fd;font-style:italic">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>][<span style="color:#bd93f9">0</span>])
 
 b <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">.</span>copy()
 b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>][<span style="color:#bd93f9">0</span>] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>
-<span style="color:#ff79c6">print</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>]) <span style="color:#6272a4"># [2]</span>
-<span style="color:#ff79c6">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>]) <span style="color:#6272a4"># [2]</span>
+<span style="color:#8be9fd;font-style:italic">print</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>]) <span style="color:#6272a4"># [2]</span>
+<span style="color:#8be9fd;font-style:italic">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>]) <span style="color:#6272a4"># [2]</span>
 
-<span style="color:#ff79c6">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>] <span style="color:#ff79c6">is</span> b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>])  <span style="color:#6272a4"># True</span>
-<span style="color:#ff79c6">print</span>(<span style="color:#8be9fd;font-style:italic">id</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>]) <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">id</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>])) <span style="color:#6272a4"># True</span></code></pre></div>
+<span style="color:#8be9fd;font-style:italic">print</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>] <span style="color:#ff79c6">is</span> b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>])  <span style="color:#6272a4"># True</span>
+<span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#8be9fd;font-style:italic">id</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>]) <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">id</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>])) <span style="color:#6272a4"># True</span></code></pre></div>
 <p>神奇…</p>
 <hr>
 <p><strong>18.8.10：</strong></p>
@@ -149,7 +149,7 @@ b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<s
 <p>When deep=True, data is copied but actual Python objects will not be copied recursively, only the reference to the object. This is in contrast to copy.deepcopy in the Standard Library, which recursively copies object data (see examples below).</p>
 </blockquote>
 <p>他还指出：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8be9fd;font-style:italic">id</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>]) <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">id</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>])</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8be9fd;font-style:italic">id</span>(a<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>]) <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">id</span>(b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>])</code></pre></div>
 <p>这个语句中，</p>
 <blockquote>
 <p>the Python interpreter could perform the following steps:</p>
@@ -161,7 +161,7 @@ b<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">0</span>,<s
 </ol>
 <p>If the temporary object created in step 1 is GC&rsquo;ed in between, the temporary object created in step 3 may be created at the same address. (In CPython, the <code>id</code> function <a href="https://docs.python.org/3/library/functions.html#id">returns the memory address</a> of an object, although this is considered a CPython implementation detail.)</p>
 <p>One case see examples of this just using plain old Python objects:</p>
-<pre><code>In [13]: id(object()), id(object())
+<pre tabindex="0"><code>In [13]: id(object()), id(object())
 Out[13]: (4763425312, 4763425312)
 
 In [19]: print(object() is object())
@@ -246,7 +246,7 @@ True
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

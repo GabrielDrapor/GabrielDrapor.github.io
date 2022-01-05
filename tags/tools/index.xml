@@ -6,11 +6,7 @@
     <description>Recent content in Tools on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 14 Apr 2020 12:37:05 +0800</lastBuildDate>
-    
-	<atom:link href="https://drapor.me/tags/tools/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 14 Apr 2020 12:37:05 +0800</lastBuildDate><atom:link href="https://drapor.me/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Alternative to Postman: Insomnia</title>
       <link>https://drapor.me/200413_insomnia/</link>

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -67,7 +67,7 @@
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>小记如何用Flask实现一个带POST的api。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
 
 <span style="color:#ff79c6">import</span> json
 <span style="color:#ff79c6">from</span> flask <span style="color:#ff79c6">import</span> Flask, request, Response
@@ -84,7 +84,7 @@ err_log<span style="color:#ff79c6">.</span>setFormatter(logging_format)
 app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span>addHandler(err_log)
 
 
-@app.route(<span style="color:#f1fa8c">&#39;/&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;POST&#39;</span>,<span style="color:#f1fa8c">&#39;GET&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
+@app<span style="color:#ff79c6">.</span>route(<span style="color:#f1fa8c">&#39;/&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;POST&#39;</span>,<span style="color:#f1fa8c">&#39;GET&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
 <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">CERTAIN_FUNCTION</span>():
     <span style="color:#ff79c6">if</span> request<span style="color:#ff79c6">.</span>method <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;POST&#39;</span>:
         <span style="color:#ff79c6">...</span>  <span style="color:#6272a4">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
@@ -191,7 +191,7 @@ app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -70,19 +70,19 @@
 <ul>
 <li>
 <p>python部分：（通过stdin和stdout进行数据交互)
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#!/usr/bin/python</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#!/usr/bin/python</span>
 <span style="color:#ff79c6">import</span> sys
 <span style="color:#ff79c6">for</span> line <span style="color:#ff79c6">in</span> sys<span style="color:#ff79c6">.</span>stdin:
-    <span style="color:#ff79c6">print</span>(<span style="color:#ff79c6">...</span>)</code></pre></div></p>
+    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#ff79c6">...</span>)</code></pre></div></p>
 </li>
 <li>
 <p>将写好的脚本上传到HDFS：
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  $ hadoop fs -put -f xxx.py <span style="color:#ff79c6">[</span>PATH<span style="color:#ff79c6">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  $ hadoop fs -put -f xxx.py <span style="color:#ff79c6">[</span>PATH<span style="color:#ff79c6">]</span>
   </code></pre></div></p>
 </li>
 <li>
 <p>在HIVE上：
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">  ADD FILE hdfs:///<span style="color:#ff79c6">[</span>PATH<span style="color:#ff79c6">]</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">  ADD FILE hdfs:///<span style="color:#ff79c6">[</span>PATH<span style="color:#ff79c6">]</span>;
   <span style="color:#8be9fd;font-style:italic">set</span> hive.execution.engine<span style="color:#ff79c6">=</span>mr;
   SELECT TRANSFORM<span style="color:#ff79c6">(</span>...<span style="color:#ff79c6">)</span>
   USING <span style="color:#f1fa8c">&#39;python jr_collect_list_udf.py&#39;</span>
@@ -175,7 +175,7 @@
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

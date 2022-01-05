@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -70,9 +70,9 @@
 <p>It&rsquo;s quite simple to start using Insomnia if you have used Postman before. You can create workspaces, folders of request, environment variables just as what you can do in Postman. Besides, you can also parse response by JSONPath, which is not supported in Postman.</p>
 <p>Furthermore, Insomnia offers options of pay to support file sync and remove the restriction of the free version. I explored the possibility of DIY file sync, and have a crude idea: implement by Dropbox.</p>
 <p>First, move the Insomia data to the Dropbox folder, then set soft link.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#Mac</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#Mac</span>
 ln -s ~/Dropbox/Insomnia_bakup ~/Library/Application<span style="color:#f1fa8c">\ </span>Support/AddressBook/Insomnia
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#Windows powershell</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#Windows powershell</span>
 mklink %appdata%<span style="color:#f1fa8c">\I</span>nsomnia C:<span style="color:#f1fa8c">\U</span>sers<span style="color:#f1fa8c">\x</span>xx<span style="color:#f1fa8c">\D</span>ropbox<span style="color:#f1fa8c">\I</span>nsomnia_bakup
 </code></pre></div><p>However, there are still issues in this case. When Insomnia is open on multi device, they both read and write the same file in Dropbox directory, there&rsquo;ll be conflict. Dropbox would keep both version in the directory. I haven&rsquo;t figure out a better way fixing this issues.</p>
 <h3 id="reference">Reference:</h3>
@@ -162,7 +162,7 @@ mklink %appdata%<span style="color:#f1fa8c">\I</span>nsomnia C:<span style="colo
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

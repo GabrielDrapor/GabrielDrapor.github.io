@@ -56,6 +56,7 @@ set t_Co=256
 let g:solarized_termcolors = 256
 let g:solarized_termtrans = 1
 let g:omni_sql_no_default_maps = 1
+let g:prettier#config#tab_width = 2
 
 
 autocmd BufReadPost *.py
@@ -80,9 +81,5 @@ endfun
 
 autocmd BufWritePre *.py :call TrimWhitespace()
 autocmd BufWritePre *.thirft :call TrimWhitespace()
-
-" for js
-let g:prettier#config#tab_width = 2
-let g:prettier#config#print_width = 80
 
 filetype plugin on

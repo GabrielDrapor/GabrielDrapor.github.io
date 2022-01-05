@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -72,7 +72,7 @@
 <ul>
 <li>原repo中提及的基本使用：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> pydub <span style="color:#ff79c6">import</span> AudioSegment
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> pydub <span style="color:#ff79c6">import</span> AudioSegment
 
 <span style="color:#6272a4"># 读取音频文件</span>
 song <span style="color:#ff79c6">=</span> AudioSegment<span style="color:#ff79c6">.</span>from_wav(<span style="color:#f1fa8c">&#34;xxx.wav&#34;</span>)
@@ -92,11 +92,11 @@ song <span style="color:#ff79c6">=</span> song <span style="color:#ff79c6">+</sp
 song <span style="color:#ff79c6">=</span> song1 <span style="color:#ff79c6">+</span> song2
 
 <span style="color:#6272a4"># 导出音频</span>
-song<span style="color:#ff79c6">.</span>export(<span style="color:#f1fa8c">&#39;test2.wav&#39;</span>, format<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;wav&#39;</span>)
+song<span style="color:#ff79c6">.</span>export(<span style="color:#f1fa8c">&#39;test2.wav&#39;</span>, <span style="color:#8be9fd;font-style:italic">format</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;wav&#39;</span>)
 </code></pre></div><ul>
 <li>以及在使用过程中和其他处发现的用法：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># 生成</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># 生成</span>
 
 <span style="color:#6272a4"># 会有损失的一种变速方法 </span>
 <span style="color:#6272a4"># https://stackoverflow.com/questions/51434897/how-to-change-audio-playback-speed-using-pydub</span>
@@ -200,7 +200,7 @@ speed_change(sound, <span style="color:#bd93f9">0.9</span>)</code></pre></div>
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

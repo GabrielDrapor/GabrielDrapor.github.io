@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -69,7 +69,7 @@
             <p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
 <h3 id="911">9.11</h3>
 <p>没看书自己实现了一下KNN，算法本身也没什么复杂的，但是实现起来还是费了一番不小的功夫，动手能力还需增强啊…</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#!/usr/bin/env python3</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#!/usr/bin/env python3</span>
 <span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
 <span style="color:#f1fa8c">&#34;&#34;&#34;
 </span><span style="color:#f1fa8c">@author: drapor
@@ -77,14 +77,14 @@
 
 <span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
 <span style="color:#ff79c6">import</span> numpy <span style="color:#ff79c6">as</span> np
-<span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
+<span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
 train_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;train.csv&#39;</span>)
 pixel <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">785</span>]
 label <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">0</span>]
 test_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;test.csv&#39;</span>)
 r <span style="color:#ff79c6">=</span> []
 <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(test_set)):
-        <span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000&#39;</span> <span style="color:#ff79c6">%</span> (t<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>))
+        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000&#39;</span> <span style="color:#ff79c6">%</span> (t<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>))
     a <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(test_set<span style="color:#ff79c6">.</span>loc[t])
     d <span style="color:#ff79c6">=</span> []
     <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(train_set)):
@@ -100,7 +100,7 @@ r <span style="color:#ff79c6">=</span> []
 <hr>
 <h3 id="912">9.12</h3>
 <p>昨天请教了公司的组长之后得知，还可以用Deep Learning中的Pooling来降低计算的复杂度，但还是想先上多线程看看。经过一个晚上和半个上午的研究探索，终于成功地让任务以多进程的方式跑起来了。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#!/usr/bin/env python3</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#!/usr/bin/env python3</span>
 <span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
 <span style="color:#f1fa8c">&#34;&#34;&#34;
 </span><span style="color:#f1fa8c">Description:
@@ -117,9 +117,9 @@ r <span style="color:#ff79c6">=</span> []
 
 <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">processing</span>(test_set):
     s <span style="color:#ff79c6">=</span> []
-    <span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#34;Running... pid:&#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">str</span>(os<span style="color:#ff79c6">.</span>getpid()))
+    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Running... pid:&#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">str</span>(os<span style="color:#ff79c6">.</span>getpid()))
     <span style="color:#ff79c6">for</span> idx, df <span style="color:#ff79c6">in</span> test_set<span style="color:#ff79c6">.</span>iterrows():
-        <span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000, pid </span><span style="color:#f1fa8c">%s</span><span style="color:#f1fa8c">&#39;</span> <span style="color:#ff79c6">%</span> (idx, os<span style="color:#ff79c6">.</span>getpid()))
+        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000, pid </span><span style="color:#f1fa8c">%s</span><span style="color:#f1fa8c">&#39;</span> <span style="color:#ff79c6">%</span> (idx, os<span style="color:#ff79c6">.</span>getpid()))
         a <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(df)
         d <span style="color:#ff79c6">=</span> []
         <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">42000</span>):
@@ -134,7 +134,7 @@ r <span style="color:#ff79c6">=</span> []
     <span style="color:#ff79c6">return</span> s
 
 <span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
-    <span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
+    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
     train_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;train.csv&#39;</span>)
     pixel <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">785</span>]
     label <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">0</span>]
@@ -246,7 +246,7 @@ r <span style="color:#ff79c6">=</span> []
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>

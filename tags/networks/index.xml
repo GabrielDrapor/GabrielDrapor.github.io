@@ -6,11 +6,7 @@
     <description>Recent content in Networks on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 03 May 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://drapor.me/tags/networks/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 03 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://drapor.me/tags/networks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>jsp搭建JEECMS</title>
       <link>https://drapor.me/160503_jsp/</link>

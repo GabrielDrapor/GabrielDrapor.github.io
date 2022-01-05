@@ -6,11 +6,7 @@
     <description>Recent content in Nginx on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://drapor.me/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://drapor.me/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nginx中proxy_pass的斜杠问题</title>
       <link>https://drapor.me/200113_proxy_pass_slash/</link>

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://drapor.me/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <meta name="generator" content="Hugo 0.91.2" />
 </head>
 
 
@@ -91,7 +91,7 @@
 <p>　　Perform forward propagation to compute \(a^{(l)}\) for \(l=2,3,..,L\)</p>
 <p>　　Using \(y^{(i)}\), compute \(\delta^{L}=a^{(L)}-y^{(i)}\)</p>
 <p>　　Compute \(\delta^{(L-1)}, \delta^{(L-2)}, \cdots, \color{red}{\delta^{(2)}}\)</p>
-<p>　　\( \Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}_{j}\delta^{l+1}_{i} \)</p>
+<p>　　\( \Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)} + a^{(l)}<em>{j}\delta^{l+1}</em>{i} \)</p>
 <p>After that,</p>
 <p>　　\(D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}+ \lambda\Theta^{(l)}_{ij}\)   if \(j\neq0\)</p>
 <p>　　\(D_{ij}^{(l)}:= \frac{1}{m}\Delta_{ij}^{(l)}\)　 if \(j=0\)</p>
@@ -190,7 +190,7 @@
     <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 DRAPORLAND
+            &copy; 2022 DRAPORLAND
             <br />
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
