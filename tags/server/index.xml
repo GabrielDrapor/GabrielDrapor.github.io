@@ -6,7 +6,19 @@
     <description>Recent content in Server on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 29 Nov 2020 00:00:00 +0800</lastBuildDate><atom:link href="https://drapor.me/tags/server/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Jul 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://drapor.me/tags/server/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 Deta Space 部署 Vue &#43; Python</title>
+      <link>https://drapor.me/230710_deta_vue_py/</link>
+      <pubDate>Mon, 10 Jul 2023 00:00:00 +0800</pubDate>
+      
+      <guid>https://drapor.me/230710_deta_vue_py/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Deta is building a personal computer on the internet — “a personal cloud” — called Deta Space. If you build software for the internet, Space wants to make it dramatically easier to do so. If you’re a user of the internet, Space wants to bring the freedom of personal computing to your life online.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;本文讨论如何在其上部署一个 Vue 为前端 + Python 为后端的服务。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Mastodon优化</title>
       <link>https://drapor.me/201129_mastodon_optimize/</link>

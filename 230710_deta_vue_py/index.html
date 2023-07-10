@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>2022 // DRAPORLAND</title>
+    <title>在 Deta Space 部署 Vue &#43; Python // DRAPORLAND</title>
 
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -10,11 +10,11 @@
     
     
 
-        <meta property="og:title" content="2022" />
+        <meta property="og:title" content="在 Deta Space 部署 Vue &#43; Python" />
     <meta property="og:description" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en" />
-    <meta property="og:url" content="https://drapor.me/230101_2022/" />
+    <meta property="og:url" content="https://drapor.me/230710_deta_vue_py/" />
     
 
     <link rel="shortcut icon" href="/favicon.ico">
@@ -55,45 +55,80 @@
     <div class="article-inner">
         
         <header class="article-header">
-            <h1 class="article-title" itemprop="name">2022</h1>
+            <h1 class="article-title" itemprop="name">在 Deta Space 部署 Vue &#43; Python</h1>
         </header>
         
         <div class="article-meta">
-            <a href="/230101_2022/" class="article-date">
-                <time datetime='2023-01-01T00:00:00.000&#43;08:00' itemprop="datePublished">2023-01-01</time>
+            <a href="/230710_deta_vue_py/" class="article-date">
+                <time datetime='2023-07-10T00:00:00.000&#43;08:00' itemprop="datePublished">2023-07-10</time>
             </a>
             
             
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <br>
-<p>去年年终总结的结尾：</p>
-<blockquote>
-<p><strong>2022年，想要更勇敢，<del>想得到更多爱和拥抱</del>，想找到和创造更多快乐。</strong></p>
+            <blockquote>
+<p>Deta is building a personal computer on the internet — “a personal cloud” — called Deta Space. If you build software for the internet, Space wants to make it dramatically easier to do so. If you’re a user of the internet, Space wants to bring the freedom of personal computing to your life online.</p>
 </blockquote>
-<p>结束时回望这一年，想要非常开心地说：2022，是我得到很多爱和拥抱，找到和创造了不少快乐的一年。</p>
-<p>这一年最大的好事是遇到了无与伦比的爱人。她善良、真诚、美丽、可爱，似乎具有无穷的光辉。我在亲密关系中得到相当多的支持和鼓励，也从中学到很多。与爱人的每一天都开心，见不到爱人的每一天都煎熬：</p>
-<blockquote>
-<p>有了你開心D 乜都稱心滿意<br>
-鹹魚白菜也好好味<br>
-我與你永共聚 分分鐘需要你<br>
-你似是陽光空氣</p>
-</blockquote>
-<p>这一年的生活算得上十分充实。在球队得到非常多的快乐：过了过去几年最好的一次生日，看见大家的进步，和大家庆祝第一次胜利，见证数不清的精彩时刻。足球伟大。看了比2021年多了快一倍的书，喝了不少咖啡，开了不少车，下了不少馆子，走了不少路。很开心。</p>
-<p>尝试着做了一些好玩的东西。把朋友送我的纸质年历电子化分享给更多的人；和朋友探索了Wordle本地化的可能性；落地了过去几年都萦绕在心头的填字游戏项目；新的一年希望做更多好玩的东西。</p>
-<p>这一年在思维上最重要的进步可能是发现了「叙事」的重要性。我开始察觉到过去的几年我给自己的「悲惨叙事」太多了，很大程度上造成了自己的沉沦。于是开始留意自己对每一件事的「叙事」，避免用夸大和拥有无限验证效力的修辞，回到具体的当下。十分喜欢<a href="https://store.steampowered.com/app/1049410/_Superliminal/">《Superliminal》</a>结尾的一段话：</p>
-<blockquote>
-<p>你的人生始终会是一场挣扎，永远都会有困境。但今天，你有机会用不同的视角感知世界。</p>
-</blockquote>
-<p>要说遗憾的话，由于长期和同事处于远程协作的状态，工作体验十分一般，成就感也减弱了很多。技术上的成长也比较有限。希望新的一年可以改善吧。</p>
-<p>2023年有什么祝愿呢？此刻竟有点不知道还可以盼望什么更好的。希望爱人、朋友和家人身体健康，一切都好。</p>
+<p>本文讨论如何在其上部署一个 Vue 为前端 + Python 为后端的服务。</p>
+<h3 id="目录结构">目录结构</h3>
+<pre tabindex="0"><code>some_project
+├── Spacefile
+├── backend
+│   ├── main.py
+│   ├── requirements.txt
+│   └── ...
+└── frontend
+    ├── dist
+    ├── index.html
+    ├── node_modules
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    ├── src
+    ├── vite.config.js
+    └── ...
+</code></pre><h3 id="spacefile">Spacefile</h3>
+<pre tabindex="0"><code># Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: frontend
+    src: frontend
+    engine: vue
+    primary: true
+    path: app
+    public: true
+    serve: dist/
+  - name: backend
+    src: backend
+    engine: python3.9
+    public: true
+    path: api
+    dev: gunicorn main:app
+</code></pre><p>P.S.: 2023.06 发现的小问题是如果 Python 的依赖没有装全，后端服务会<code>502</code>，但 Runtime Log 中并不能看到报错。</p>
+<p>按照如上的方式配置好<code>Spacefile</code>后，便可以直接根据通过<code>path</code>来将请求相应地路由到前/后端。在这个例子中，我们如果想要在前端的 Javascript 代码中访问后端接口，只需：</p>
+<pre tabindex="0"><code>fetch(`/api/xxx`);
+</code></pre><p>即可。</p>
+<h3 id="refrence">Refrence:</h3>
+<ul>
+<li><a href="https://deta.space/docs/en/build/reference/spacefile">https://deta.space/docs/en/build/reference/spacefile</a></li>
+</ul>
         </div>
 
         
         
         <div class="article-toc" >
             <h3>Contents</h3>
-            <nav id="TableOfContents"></nav>
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#目录结构">目录结构</a></li>
+        <li><a href="#spacefile">Spacefile</a></li>
+        <li><a href="#refrence">Refrence:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
         </div>
         
         
@@ -106,7 +141,7 @@
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://drapor.me/tags/paths">Paths
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/server">Server
                     </a>
                 </li>
                 
@@ -123,15 +158,9 @@
 
 <nav id="article-nav">
     
-    <a href="/230710_deta_vue_py/" id="article-nav-newer" class="article-nav-link-wrap">
-        <div class="article-nav-title"><span>&lt;</span>&nbsp;
-            在 Deta Space 部署 Vue &#43; Python
-        </div>
-    </a>
     
-    
-    <a href="/220101_2021/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">2021&nbsp;<span>&gt;</span></div>
+    <a href="/230101_2022/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">2022&nbsp;<span>&gt;</span></div>
     </a>
     
 </nav>
