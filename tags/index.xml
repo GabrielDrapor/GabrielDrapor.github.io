@@ -6,7 +6,16 @@
     <description>Recent content in Tags on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 10 Jul 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://drapor.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Aug 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://drapor.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jottings</title>
+      <link>https://drapor.me/tags/jottings/</link>
+      <pubDate>Sat, 05 Aug 2023 00:00:00 +0800</pubDate>
+      
+      <guid>https://drapor.me/tags/jottings/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Server</title>
       <link>https://drapor.me/tags/server/</link>

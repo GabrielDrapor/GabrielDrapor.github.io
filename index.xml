@@ -6,7 +6,16 @@
     <description>Recent content on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 10 Jul 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://drapor.me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Aug 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://drapor.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>找工作、面试与假期</title>
+      <link>https://drapor.me/230805_job_interview_vacation/</link>
+      <pubDate>Sat, 05 Aug 2023 00:00:00 +0800</pubDate>
+      
+      <guid>https://drapor.me/230805_job_interview_vacation/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>在 Deta Space 部署 Vue &#43; Python</title>
       <link>https://drapor.me/230710_deta_vue_py/</link>

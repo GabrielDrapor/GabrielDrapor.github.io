@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>在 Deta Space 部署 Vue &#43; Python // DRAPORLAND</title>
+    <title>找工作、面试与假期 // DRAPORLAND</title>
 
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -10,11 +10,11 @@
     
     
 
-        <meta property="og:title" content="在 Deta Space 部署 Vue &#43; Python" />
+        <meta property="og:title" content="找工作、面试与假期" />
     <meta property="og:description" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en" />
-    <meta property="og:url" content="https://drapor.me/230710_deta_vue_py/" />
+    <meta property="og:url" content="https://drapor.me/230805_job_interview_vacation/" />
     
 
     <link rel="shortcut icon" href="/favicon.ico">
@@ -55,80 +55,33 @@
     <div class="article-inner">
         
         <header class="article-header">
-            <h1 class="article-title" itemprop="name">在 Deta Space 部署 Vue &#43; Python</h1>
+            <h1 class="article-title" itemprop="name">找工作、面试与假期</h1>
         </header>
         
         <div class="article-meta">
-            <a href="/230710_deta_vue_py/" class="article-date">
-                <time datetime='2023-07-10T00:00:00.000&#43;08:00' itemprop="datePublished">2023-07-10</time>
+            <a href="/230805_job_interview_vacation/" class="article-date">
+                <time datetime='2023-08-05T00:00:00.000&#43;08:00' itemprop="datePublished">2023-08-05</time>
             </a>
             
             
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>Deta is building a personal computer on the internet — “a personal cloud” — called Deta Space. If you build software for the internet, Space wants to make it dramatically easier to do so. If you’re a user of the internet, Space wants to bring the freedom of personal computing to your life online.</p>
-</blockquote>
-<p>本文讨论如何在其上部署一个 Vue 为前端 + Python 为后端的服务。</p>
-<h3 id="目录结构">目录结构</h3>
-<pre tabindex="0"><code>some_project
-├── Spacefile
-├── backend
-│   ├── main.py
-│   ├── requirements.txt
-│   └── ...
-└── frontend
-    ├── dist
-    ├── index.html
-    ├── node_modules
-    ├── package-lock.json
-    ├── package.json
-    ├── public
-    ├── src
-    ├── vite.config.js
-    └── ...
-</code></pre><h3 id="spacefile">Spacefile</h3>
-<pre tabindex="0"><code># Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
-v: 0
-micros:
-  - name: frontend
-    src: frontend
-    engine: vue
-    primary: true
-    path: app
-    public: true
-    serve: dist/
-  - name: backend
-    src: backend
-    engine: python3.9
-    public: true
-    path: api
-    dev: gunicorn main:app
-</code></pre><p>P.S.: 2023.06 发现的小问题是如果 Python 的依赖没有装全，后端服务会<code>502</code>，但 Runtime Log 中并不能看到报错。</p>
-<p>按照如上的方式配置好<code>Spacefile</code>后，便可以直接根据通过<code>path</code>来将请求相应地路由到前/后端。在这个例子中，我们如果想要在前端的 Javascript 代码中访问后端接口，只需：</p>
-<pre tabindex="0"><code>fetch(`/api/xxx`);
-</code></pre><p>即可。</p>
-<h3 id="refrence">Refrence:</h3>
-<ul>
-<li><a href="https://deta.space/docs/en/build/reference/spacefile">https://deta.space/docs/en/build/reference/spacefile</a></li>
-</ul>
+            <img src="/article_imgs/ysm_flowers.jpeg" style="width: 100%;">
+<br>
+<p>4月从前司离了职，休息了一段时间，最近即将开始下一段职业经历，在此写下最近所想。</p>
+<br>
+<p>过去几年里，我对「工作」逐渐有了这样的认识：人和岗位之间，匹配最重要。另一个角度说，「能力」「水平」应当是有多维度的，更多数人在各个维度上有长有短，而岗位对能力的需要也是分维度有高有低。有了这样的认识，我找工作时的焦虑感减少了很多，并且十分相信「自己一定能收到 Offer」。当然，这需要建立在与市场上的机会有充分接触的前提下。此外，应当尽可能多地了解当下的招聘状况，并相应地调整期待。</p>
+<br>
+<p>面试是找工作中必经的部分。基于上面的认识，面试的目的对双方来说，都是判断是否匹配。我一向觉得通常的面试流程是非常低效的，不仅包括同样的话需要对多家公司或者同家公司不同轮次的不同面试官讲，更包括是很多时候一场面试中大部分时间里双方的讨论，对解答「是否匹配」这个问题的帮助很小。当然，很可能也并不存在什么更好的方式。</p>
+<br>
+<p>这次的无业时间持续了将近四个月。读完了20多本书，学会了自由泳，学了一点Swift和Vue，打通了《塞尔达·王国之泪》。规律作息，健康饮食，经常运动。几乎是我此前希望拥有的休息状态了，我对这段时间的生活非常满意。</p>
         </div>
 
         
         
         <div class="article-toc" >
             <h3>Contents</h3>
-            <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#目录结构">目录结构</a></li>
-        <li><a href="#spacefile">Spacefile</a></li>
-        <li><a href="#refrence">Refrence:</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+            <nav id="TableOfContents"></nav>
         </div>
         
         
@@ -141,7 +94,7 @@ micros:
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://drapor.me/tags/server">Server
+                    <a class="article-tag-list-link" href="https://drapor.me/tags/jottings">Jottings
                     </a>
                 </li>
                 
@@ -158,15 +111,9 @@ micros:
 
 <nav id="article-nav">
     
-    <a href="/230805_job_interview_vacation/" id="article-nav-newer" class="article-nav-link-wrap">
-        <div class="article-nav-title"><span>&lt;</span>&nbsp;
-            找工作、面试与假期
-        </div>
-    </a>
     
-    
-    <a href="/230101_2022/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">2022&nbsp;<span>&gt;</span></div>
+    <a href="/230710_deta_vue_py/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">在 Deta Space 部署 Vue &#43; Python&nbsp;<span>&gt;</span></div>
     </a>
     
 </nav>
