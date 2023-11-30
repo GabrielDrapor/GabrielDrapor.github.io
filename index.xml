@@ -8,6 +8,17 @@
     <language>zh-cn</language>
     <lastBuildDate>Sat, 05 Aug 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://drapor.me/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>《毫无意义的工作 / Bullshit Jobs: A Theory》</title>
+      <link>https://drapor.me/231201_bullshit_job/</link>
+      <pubDate>Thu, 30 Nov 2023 00:00:00 +0800</pubDate>
+      
+      <guid>https://drapor.me/231201_bullshit_job/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;一篇读书笔记。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
       <title>找工作、面试与假期</title>
       <link>https://drapor.me/230805_job_interview_vacation/</link>
       <pubDate>Sat, 05 Aug 2023 00:00:00 +0800</pubDate>
@@ -317,7 +328,7 @@
       <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/170601_ml_notes7/</guid>
-      <description>&lt;h2 id=&#34;what-should-we-do-if-we-have-a-bad-predictions&#34;&gt;What should we do if we have a bad predictions?&lt;/h2&gt;</description>
+      <description></description>
     </item>
     
     <item>
@@ -372,7 +383,7 @@
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/170406_ml_notes6/</guid>
-      <description>&lt;h2 id=&#34;how-biological-neural-network-work&#34;&gt;How biological neural network work&lt;/h2&gt;</description>
+      <description></description>
     </item>
     
     <item>
@@ -617,13 +628,12 @@
       <pubDate>Fri, 18 Apr 1997 00:00:00 +0000</pubDate>
       
       <guid>https://drapor.me/about/</guid>
-      <description>I am Drapor;
-Mathematics undergraduate, Junior Engineer;
-Love brewed coffee, cuisine, whisky etc.
+      <description>I am Drapor / Jared / Jelly.
+Mathematics undergraduate, backend engineer.
+Love brewed coffee, crossword, detective novels, cuisine, etc.
+My Chinese crossword newsletter: 填言觅语
 Douban: @Drapor
-GitHub: @GabrielDrapor Mastodon: DRAPORISLET Instagram: @gabrieldrapor Email: gabrieldrapor@gmail.com
- &amp;ldquo;You can code. They cannot. That is pretty damn cool.&amp;quot; &amp;ndash;Learn Python The Hard Way
- </description>
+GitHub: @GabrielDrapor Mastodon: DRAPORISLET Instagram: @gabrieldrapor Email: gabrieldrapor@gmail.com</description>
     </item>
     
   </channel>
