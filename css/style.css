@@ -299,6 +299,7 @@ a.article-title:hover,
     font-size: 1em;
     font-style: italic;
     padding-top: 26px;
+    font-family: monospace;
 }
 #main-nav {
   float: right;
