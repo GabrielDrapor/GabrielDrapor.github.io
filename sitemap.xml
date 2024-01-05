@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://drapor.me/</loc>
-    <lastmod>2023-11-30T00:00:00+08:00</lastmod>
+    <loc>https://drapor.me/240101_2023/</loc>
+    <lastmod>2024-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://drapor.me/tags/reading/</loc>
-    <lastmod>2023-11-30T00:00:00+08:00</lastmod>
+    <loc>https://drapor.me/</loc>
+    <lastmod>2024-01-01T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://drapor.me/tags/paths/</loc>
+    <lastmod>2024-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://drapor.me/tags/</loc>
+    <lastmod>2024-01-01T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://drapor.me/tags/reading/</loc>
     <lastmod>2023-11-30T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://drapor.me/231201_bullshit_job/</loc>
@@ -27,9 +33,6 @@
     <lastmod>2023-07-10T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://drapor.me/230101_2022/</loc>
-    <lastmod>2023-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://drapor.me/tags/paths/</loc>
     <lastmod>2023-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://drapor.me/220101_2021/</loc>
