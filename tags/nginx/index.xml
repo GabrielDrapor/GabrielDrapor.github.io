@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nginx on DRAPORLAND</title>
-    <link>https://je11y.buzz/tags/nginx/</link>
+    <link>https://jrd.pub/tags/nginx/</link>
     <description>Recent content in Nginx on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://je11y.buzz/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://jrd.pub/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nginx中proxy_pass的斜杠问题</title>
-      <link>https://je11y.buzz/200113_proxy_pass_slash/</link>
+      <link>https://jrd.pub/200113_proxy_pass_slash/</link>
       <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/200113_proxy_pass_slash/</guid>
+      <guid>https://jrd.pub/200113_proxy_pass_slash/</guid>
       <description>&lt;p&gt;在Nginx中配置proxy_pass时，需要注意斜杠的问题。&lt;/p&gt;</description>
     </item>
     

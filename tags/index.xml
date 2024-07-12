@@ -2,197 +2,197 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on DRAPORLAND</title>
-    <link>https://je11y.buzz/tags/</link>
+    <link>https://jrd.pub/tags/</link>
     <description>Recent content in Tags on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Apr 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://je11y.buzz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://jrd.pub/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reading</title>
-      <link>https://je11y.buzz/tags/reading/</link>
+      <link>https://jrd.pub/tags/reading/</link>
       <pubDate>Fri, 12 Apr 2024 00:00:00 +0800</pubDate>
       
-      <guid>https://je11y.buzz/tags/reading/</guid>
+      <guid>https://jrd.pub/tags/reading/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Paths</title>
-      <link>https://je11y.buzz/tags/paths/</link>
+      <link>https://jrd.pub/tags/paths/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate>
       
-      <guid>https://je11y.buzz/tags/paths/</guid>
+      <guid>https://jrd.pub/tags/paths/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jottings</title>
-      <link>https://je11y.buzz/tags/jottings/</link>
+      <link>https://jrd.pub/tags/jottings/</link>
       <pubDate>Sat, 05 Aug 2023 00:00:00 +0800</pubDate>
       
-      <guid>https://je11y.buzz/tags/jottings/</guid>
+      <guid>https://jrd.pub/tags/jottings/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Server</title>
-      <link>https://je11y.buzz/tags/server/</link>
+      <link>https://jrd.pub/tags/server/</link>
       <pubDate>Mon, 10 Jul 2023 00:00:00 +0800</pubDate>
       
-      <guid>https://je11y.buzz/tags/server/</guid>
+      <guid>https://jrd.pub/tags/server/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>https://je11y.buzz/tags/tools/</link>
+      <link>https://jrd.pub/tags/tools/</link>
       <pubDate>Tue, 14 Apr 2020 12:37:05 +0800</pubDate>
       
-      <guid>https://je11y.buzz/tags/tools/</guid>
+      <guid>https://jrd.pub/tags/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>https://je11y.buzz/tags/nginx/</link>
+      <link>https://jrd.pub/tags/nginx/</link>
       <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/nginx/</guid>
+      <guid>https://jrd.pub/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>gRPC</title>
-      <link>https://je11y.buzz/tags/grpc/</link>
+      <link>https://jrd.pub/tags/grpc/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/grpc/</guid>
+      <guid>https://jrd.pub/tags/grpc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://je11y.buzz/tags/python/</link>
+      <link>https://jrd.pub/tags/python/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/python/</guid>
+      <guid>https://jrd.pub/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shadowsocks</title>
-      <link>https://je11y.buzz/tags/shadowsocks/</link>
+      <link>https://jrd.pub/tags/shadowsocks/</link>
       <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/shadowsocks/</guid>
+      <guid>https://jrd.pub/tags/shadowsocks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MongoDB</title>
-      <link>https://je11y.buzz/tags/mongodb/</link>
+      <link>https://jrd.pub/tags/mongodb/</link>
       <pubDate>Mon, 24 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/mongodb/</guid>
+      <guid>https://jrd.pub/tags/mongodb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flask</title>
-      <link>https://je11y.buzz/tags/flask/</link>
+      <link>https://jrd.pub/tags/flask/</link>
       <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/flask/</guid>
+      <guid>https://jrd.pub/tags/flask/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Plans</title>
-      <link>https://je11y.buzz/tags/plans/</link>
+      <link>https://jrd.pub/tags/plans/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/plans/</guid>
+      <guid>https://jrd.pub/tags/plans/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kaggle</title>
-      <link>https://je11y.buzz/tags/kaggle/</link>
+      <link>https://jrd.pub/tags/kaggle/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/kaggle/</guid>
+      <guid>https://jrd.pub/tags/kaggle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>TensorFlow</title>
-      <link>https://je11y.buzz/tags/tensorflow/</link>
+      <link>https://jrd.pub/tags/tensorflow/</link>
       <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/tensorflow/</guid>
+      <guid>https://jrd.pub/tags/tensorflow/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Codewars</title>
-      <link>https://je11y.buzz/tags/codewars/</link>
+      <link>https://jrd.pub/tags/codewars/</link>
       <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/codewars/</guid>
+      <guid>https://jrd.pub/tags/codewars/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>https://je11y.buzz/tags/machine-learning/</link>
+      <link>https://jrd.pub/tags/machine-learning/</link>
       <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/machine-learning/</guid>
+      <guid>https://jrd.pub/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SQL</title>
-      <link>https://je11y.buzz/tags/sql/</link>
+      <link>https://jrd.pub/tags/sql/</link>
       <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/sql/</guid>
+      <guid>https://jrd.pub/tags/sql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Crawler</title>
-      <link>https://je11y.buzz/tags/crawler/</link>
+      <link>https://jrd.pub/tags/crawler/</link>
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/crawler/</guid>
+      <guid>https://jrd.pub/tags/crawler/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Structures and Algorithms</title>
-      <link>https://je11y.buzz/tags/data-structures-and-algorithms/</link>
+      <link>https://jrd.pub/tags/data-structures-and-algorithms/</link>
       <pubDate>Sat, 14 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/data-structures-and-algorithms/</guid>
+      <guid>https://jrd.pub/tags/data-structures-and-algorithms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Networks</title>
-      <link>https://je11y.buzz/tags/networks/</link>
+      <link>https://jrd.pub/tags/networks/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/networks/</guid>
+      <guid>https://jrd.pub/tags/networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hardware</title>
-      <link>https://je11y.buzz/tags/hardware/</link>
+      <link>https://jrd.pub/tags/hardware/</link>
       <pubDate>Wed, 25 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/tags/hardware/</guid>
+      <guid>https://jrd.pub/tags/hardware/</guid>
       <description></description>
     </item>
     

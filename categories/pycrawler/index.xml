@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>pyCrawler on DRAPORLAND</title>
-    <link>https://je11y.buzz/categories/pycrawler/</link>
+    <link>https://jrd.pub/categories/pycrawler/</link>
     <description>Recent content in pyCrawler on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://je11y.buzz/categories/pycrawler/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://jrd.pub/categories/pycrawler/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python Crawler Note 2</title>
-      <link>https://je11y.buzz/161202_pycrawler2/</link>
+      <link>https://jrd.pub/161202_pycrawler2/</link>
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/161202_pycrawler2/</guid>
+      <guid>https://jrd.pub/161202_pycrawler2/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Python Crawler Note 1</title>
-      <link>https://je11y.buzz/161201_pycrawler1/</link>
+      <link>https://jrd.pub/161201_pycrawler1/</link>
       <pubDate>Thu, 01 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/161201_pycrawler1/</guid>
+      <guid>https://jrd.pub/161201_pycrawler1/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
     

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MongoDB on DRAPORLAND</title>
-    <link>https://je11y.buzz/categories/mongodb/</link>
+    <link>https://jrd.pub/categories/mongodb/</link>
     <description>Recent content in MongoDB on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://je11y.buzz/categories/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://jrd.pub/categories/mongodb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MongoDB常用查询</title>
-      <link>https://je11y.buzz/180515_mongodb_common_query/</link>
+      <link>https://jrd.pub/180515_mongodb_common_query/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://je11y.buzz/180515_mongodb_common_query/</guid>
+      <guid>https://jrd.pub/180515_mongodb_common_query/</guid>
       <description>&lt;p&gt;总结了一下自己经常用到的一些MongoDB查询。&lt;/p&gt;</description>
     </item>
     
