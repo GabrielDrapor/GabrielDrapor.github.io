@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hardware on DRAPORLAND</title>
-    <link>https://drapor.me/tags/hardware/</link>
+    <link>https://je11y.buzz/tags/hardware/</link>
     <description>Recent content in Hardware on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 25 Nov 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://drapor.me/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Nov 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://je11y.buzz/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>计算机南北桥</title>
-      <link>https://drapor.me/151125_hardware/</link>
+      <link>https://je11y.buzz/151125_hardware/</link>
       <pubDate>Wed, 25 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/151125_hardware/</guid>
+      <guid>https://je11y.buzz/151125_hardware/</guid>
       <description>&lt;p&gt;&lt;strong&gt;南桥和北桥是PC主板芯片组中的两枚芯片。&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     

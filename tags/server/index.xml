@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Server on DRAPORLAND</title>
-    <link>https://drapor.me/tags/server/</link>
+    <link>https://je11y.buzz/tags/server/</link>
     <description>Recent content in Server on DRAPORLAND</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 10 Jul 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://drapor.me/tags/server/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Jul 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://je11y.buzz/tags/server/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 Deta Space 部署 Vue &#43; Python</title>
-      <link>https://drapor.me/230710_deta_vue_py/</link>
+      <link>https://je11y.buzz/230710_deta_vue_py/</link>
       <pubDate>Mon, 10 Jul 2023 00:00:00 +0800</pubDate>
       
-      <guid>https://drapor.me/230710_deta_vue_py/</guid>
+      <guid>https://je11y.buzz/230710_deta_vue_py/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Deta is building a personal computer on the internet — “a personal cloud” — called Deta Space. If you build software for the internet, Space wants to make it dramatically easier to do so. If you’re a user of the internet, Space wants to bring the freedom of personal computing to your life online.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -21,37 +21,37 @@
     
     <item>
       <title>Mastodon优化</title>
-      <link>https://drapor.me/201129_mastodon_optimize/</link>
+      <link>https://je11y.buzz/201129_mastodon_optimize/</link>
       <pubDate>Sun, 29 Nov 2020 00:00:00 +0800</pubDate>
       
-      <guid>https://drapor.me/201129_mastodon_optimize/</guid>
+      <guid>https://je11y.buzz/201129_mastodon_optimize/</guid>
       <description>&lt;p&gt;近期自建了Mastodon单用户实例，使用默认配置且不添加扩展功能的情况下一个实例需要2G RAM，本文主要讨论如何降低内存开销以及一些其他方面的优化。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ASP.NET 搭建 Discuz! NT</title>
-      <link>https://drapor.me/160503_asp/</link>
+      <link>https://je11y.buzz/160503_asp/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/160503_asp/</guid>
+      <guid>https://je11y.buzz/160503_asp/</guid>
       <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Windows 7 32bit + IIS 7.0 + Microsoft SQL Server 2014 Express&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>jsp搭建JEECMS</title>
-      <link>https://drapor.me/160503_jsp/</link>
+      <link>https://je11y.buzz/160503_jsp/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/160503_jsp/</guid>
+      <guid>https://je11y.buzz/160503_jsp/</guid>
       <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>php搭建WordPress</title>
-      <link>https://drapor.me/160503-php/</link>
+      <link>https://je11y.buzz/160503-php/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://drapor.me/160503-php/</guid>
+      <guid>https://je11y.buzz/160503-php/</guid>
       <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
