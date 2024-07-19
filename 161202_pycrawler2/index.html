@@ -70,7 +70,7 @@
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p> </p>
-<p>Besides what we have seen in <a href="http://drapor.me/2016/12/01/161201_pyCrawler1/">Note 1</a>, we can add some details in our codes:
+<p>Besides what we have seen in <a href="/161201_pycrawler1/">Note 1</a>, we can add some details in our codes:
 Sometimes  we need to pretend as the browser to obtain the content of the page, we can add headers:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
 url <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>
@@ -78,7 +78,7 @@ headers <span style="color:#ff79c6">=</span> { <span style="color:#f1fa8c">&#39;
 request <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>Request(url, headers)
 response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(request)
 <span style="color:#8be9fd;font-style:italic">print</span> response<span style="color:#ff79c6">.</span>read()</code></pre></div>
-<p>More about headers, you can check <a href="http://drapor.me/2016/04/27/160427_http/">this article</a>.</p>
+<p>More about headers, you can check <a href="/160427_http/">this article</a>.</p>
 <hr>
 <p>And if you need to post some data, like your username or password to the sites, try this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
