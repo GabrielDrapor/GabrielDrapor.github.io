@@ -4,17 +4,16 @@
     <title>Flask on DRAPORLAND</title>
     <link>https://jrd.pub/tags/flask/</link>
     <description>Recent content in Flask on DRAPORLAND</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 22 Jan 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://jrd.pub/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/tags/flask/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用Flask实现一个简单的带POST的api</title>
       <link>https://jrd.pub/180122_flask_simple_api/</link>
       <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/180122_flask_simple_api/</guid>
       <description>&lt;p&gt;小记如何用Flask实现一个带POST的api。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

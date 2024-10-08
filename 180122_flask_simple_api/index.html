@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,37 +66,36 @@
                 <time datetime='2018-01-22T00:00:00.000&#43;00:00' itemprop="datePublished">2018-01-22</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>小记如何用Flask实现一个带POST的api。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
-
-<span style="color:#ff79c6">import</span> json
-<span style="color:#ff79c6">from</span> flask <span style="color:#ff79c6">import</span> Flask, request, Response
-<span style="color:#ff79c6">from</span> logging <span style="color:#ff79c6">import</span> FileHandler, INFO, Formatter
-
-
-app <span style="color:#ff79c6">=</span> Flask(__name__)
-
-<span style="color:#6272a4"># log</span>
-err_log <span style="color:#ff79c6">=</span> FileHandler(<span style="color:#f1fa8c">&#39;error_log_&#39;</span><span style="color:#ff79c6">+</span>time<span style="color:#ff79c6">.</span>strftime(<span style="color:#f1fa8c">&#39;%Y%m</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">&#39;</span>,time<span style="color:#ff79c6">.</span>localtime()))
-err_log<span style="color:#ff79c6">.</span>setLevel(INFO)  <span style="color:#6272a4">#设置日志级别</span>
-logging_format <span style="color:#ff79c6">=</span> Formatter(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%(asctime)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(levelname)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(filename)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(funcName)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(lineno)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(message)s</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># 日志格式</span>
-err_log<span style="color:#ff79c6">.</span>setFormatter(logging_format)
-app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span>addHandler(err_log)
-
-
-@app<span style="color:#ff79c6">.</span>route(<span style="color:#f1fa8c">&#39;/&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;POST&#39;</span>,<span style="color:#f1fa8c">&#39;GET&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
-<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">CERTAIN_FUNCTION</span>():
-    <span style="color:#ff79c6">if</span> request<span style="color:#ff79c6">.</span>method <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;POST&#39;</span>:
-        <span style="color:#ff79c6">...</span>  <span style="color:#6272a4">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
-        <span style="color:#ff79c6">return</span> Response(json<span style="color:#ff79c6">.</span>dumps(xxxx), mimetype<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;application/json&#39;</span>)  <span style="color:#6272a4"># 如果需要回传json的话</span>
-<span style="color:#6272a4">#       return xxx 当然也可直接回传字符串或某个方法 </span>
-
-
-<span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
-    app<span style="color:#ff79c6">.</span>run(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;x.x.x.x&#39;</span>,port<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;xxxx&#39;</span>)</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> flask <span style="color:#ff79c6">import</span> Flask, request, Response
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> logging <span style="color:#ff79c6">import</span> FileHandler, INFO, Formatter
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#ff79c6">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># log</span>
+</span></span><span style="display:flex;"><span>err_log <span style="color:#ff79c6">=</span> FileHandler(<span style="color:#f1fa8c">&#39;error_log_&#39;</span><span style="color:#ff79c6">+</span>time<span style="color:#ff79c6">.</span>strftime(<span style="color:#f1fa8c">&#39;%Y%m</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">&#39;</span>,time<span style="color:#ff79c6">.</span>localtime()))
+</span></span><span style="display:flex;"><span>err_log<span style="color:#ff79c6">.</span>setLevel(INFO)  <span style="color:#6272a4">#设置日志级别</span>
+</span></span><span style="display:flex;"><span>logging_format <span style="color:#ff79c6">=</span> Formatter(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%(asctime)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(levelname)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(filename)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(funcName)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(lineno)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(message)s</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># 日志格式</span>
+</span></span><span style="display:flex;"><span>err_log<span style="color:#ff79c6">.</span>setFormatter(logging_format)
+</span></span><span style="display:flex;"><span>app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span>addHandler(err_log)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@app.route(<span style="color:#f1fa8c">&#39;/&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;POST&#39;</span>,<span style="color:#f1fa8c">&#39;GET&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">CERTAIN_FUNCTION</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> request<span style="color:#ff79c6">.</span>method <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;POST&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">...</span>  <span style="color:#6272a4">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> Response(json<span style="color:#ff79c6">.</span>dumps(xxxx), mimetype<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;application/json&#39;</span>)  <span style="color:#6272a4"># 如果需要回传json的话</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#       return xxx 当然也可直接回传字符串或某个方法 </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    app<span style="color:#ff79c6">.</span>run(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;x.x.x.x&#39;</span>,port<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;xxxx&#39;</span>)</span></span></code></pre></div>
 <blockquote>
 <p>Reference:</p>
 <ul>
@@ -133,12 +132,12 @@ app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/python">Python
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/python">Python
                     </a>
                 </li>
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/flask">Flask
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/flask">Flask
                     </a>
                 </li>
                 
@@ -189,11 +188,11 @@ app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -209,8 +208,6 @@ app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

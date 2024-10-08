@@ -4,35 +4,30 @@
     <title>SQL on DRAPORLAND</title>
     <link>https://jrd.pub/tags/sql/</link>
     <description>Recent content in SQL on DRAPORLAND</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 25 Apr 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://jrd.pub/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SQL Syntax(Ⅲ)</title>
       <link>https://jrd.pub/170425_sql3/</link>
       <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/170425_sql3/</guid>
       <description>&lt;p&gt;后面储存过程、事务处理、游标和一些高级特性感觉太遥远就只是翻了翻，没作整理。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>SQL Syntax(Ⅱ)</title>
       <link>https://jrd.pub/170423_sql2/</link>
       <pubDate>Sun, 23 Apr 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/170423_sql2/</guid>
       <description>&lt;p&gt;继续。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>SQL Syntax(Ⅰ)</title>
       <link>https://jrd.pub/170422_sql1/</link>
       <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/170422_sql1/</guid>
       <description>&lt;p&gt;　　这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

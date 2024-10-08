@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,22 +66,21 @@
                 <time datetime='2020-11-29T00:00:00.000&#43;08:00' itemprop="datePublished">2020-11-29</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>近期自建了Mastodon单用户实例，使用默认配置且不添加扩展功能的情况下一个实例需要2G RAM，本文主要讨论如何降低内存开销以及一些其他方面的优化。</p>
 <h3 id="jemalloc">Jemalloc</h3>
 <p>Mastodon的服务端是用Ruby开发的，其本身对内存的消耗就很大，所以首先便可以考虑对Ruby本身做一下优化；
 <a href="http://jemalloc.net/">Jemalloc</a>是一款通用的内存分配器，支持对多种语言进行内存使用的优化，其中便包含Ruby。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt install libjemalloc-dev
-su - mastodon
-<span style="color:#8be9fd;font-style:italic">RUBY_CONFIGURE_OPTS</span><span style="color:#ff79c6">=</span>--with-jemalloc rbenv install 2.6.1
-rbenv global 2.5.1
-<span style="color:#8be9fd;font-style:italic">exit</span>
-systemctl restart mastodon-sidekiq
-systemctl restart mastodon-streaming
-systemctl restart mastodon-web
-</code></pre></div><p>优化之后的效果非常显著，内存占用直接掉了一半；</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt install libjemalloc-dev
+</span></span><span style="display:flex;"><span>su - mastodon
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">RUBY_CONFIGURE_OPTS</span><span style="color:#ff79c6">=</span>--with-jemalloc rbenv install 2.6.1
+</span></span><span style="display:flex;"><span>rbenv global 2.5.1
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">exit</span>
+</span></span><span style="display:flex;"><span>systemctl restart mastodon-sidekiq
+</span></span><span style="display:flex;"><span>systemctl restart mastodon-streaming
+</span></span><span style="display:flex;"><span>systemctl restart mastodon-web
+</span></span></code></pre></div><p>优化之后的效果非常显著，内存占用直接掉了一半；</p>
 <h3 id="搜索功能及其他">搜索功能及其他</h3>
 <p>通过Jemalloc已经可以将Mastodon实例的占用降至1G以下，但如果想要再增加<a href="https://docs.joinmastodon.org/admin/optional/elasticsearch/">搜索功能</a>，1G依然有些捉襟见肘，甚至直接打开ElasticSeach时，2G内存也会被占满；</p>
 <p>Mastodon实例本身依然还有一些优化的空间，官方也给出了<a href="https://docs.joinmastodon.org/zh-cn/admin/scaling/">相关文档</a>。</p>
@@ -121,7 +120,7 @@ TBC.</p>
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/server">Server
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/server">Server
                     </a>
                 </li>
                 
@@ -172,11 +171,11 @@ TBC.</p>
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -192,8 +191,6 @@ TBC.</p>
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

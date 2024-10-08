@@ -4,71 +4,58 @@
     <title>Machine Learning on DRAPORLAND</title>
     <link>https://jrd.pub/tags/machine-learning/</link>
     <description>Recent content in Machine Learning on DRAPORLAND</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Jun 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://jrd.pub/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Machine Learning Notes 07</title>
       <link>https://jrd.pub/170601_ml_notes7/</link>
       <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/170601_ml_notes7/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 06</title>
       <link>https://jrd.pub/170406_ml_notes6/</link>
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/170406_ml_notes6/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 05</title>
       <link>https://jrd.pub/161202_ml_notes5/</link>
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161202_ml_notes5/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 04</title>
       <link>https://jrd.pub/161121_ml_notes4/</link>
       <pubDate>Mon, 21 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161121_ml_notes4/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 03</title>
       <link>https://jrd.pub/161018_ml_notes3/</link>
       <pubDate>Tue, 18 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161018_ml_notes3/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 02</title>
       <link>https://jrd.pub/161011_ml_notes2/</link>
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161011_ml_notes2/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 01</title>
       <link>https://jrd.pub/161010_ml_notes1/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161010_ml_notes1/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

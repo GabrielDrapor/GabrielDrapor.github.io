@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,73 +66,72 @@
                 <time datetime='2019-02-21T00:00:00.000&#43;00:00' itemprop="datePublished">2019-02-21</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>因为种种原因，自己的几个ss/ssr服务基本都失联了，最近被推荐了<a href="https://github.com/xtaci/kcptun">kcptun</a>，原来觉得kcptun只是用于加速，没想到由于它本身的设计，现在居然可以用于绕过高墙。</p>
 <h5 id="一服务端">一、服务端</h5>
 <p>首先配置ss：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip install shadowsocks <span style="color:#6272a4"># 如果安完之后找不到ssserver，sudo之后可以解决；</span>
-$ ssserver -p <span style="color:#ff79c6">[</span>SS_PORT<span style="color:#ff79c6">]</span> -k <span style="color:#ff79c6">[</span>SS_KEY<span style="color:#ff79c6">]</span> -m <span style="color:#ff79c6">[</span>ENRYPT_METHOD<span style="color:#ff79c6">]</span> --user nobody -d start</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pip install shadowsocks <span style="color:#6272a4"># 如果安完之后找不到ssserver，sudo之后可以解决；</span>
+</span></span><span style="display:flex;"><span>$ ssserver -p <span style="color:#ff79c6">[</span>SS_PORT<span style="color:#ff79c6">]</span> -k <span style="color:#ff79c6">[</span>SS_KEY<span style="color:#ff79c6">]</span> -m <span style="color:#ff79c6">[</span>ENRYPT_METHOD<span style="color:#ff79c6">]</span> --user nobody -d start</span></span></code></pre></div>
 如果报了Exception: libsodium not found:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
-$ tar zxf LATEST.tar.gz
-$ <span style="color:#8be9fd;font-style:italic">cd</span> libsodium-stable
-$ ./configure
-$ sudo make <span style="color:#ff79c6">&amp;&amp;</span> sudo make install</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
+</span></span><span style="display:flex;"><span>$ tar zxf LATEST.tar.gz
+</span></span><span style="display:flex;"><span>$ <span style="color:#8be9fd;font-style:italic">cd</span> libsodium-stable
+</span></span><span style="display:flex;"><span>$ ./configure
+</span></span><span style="display:flex;"><span>$ sudo make <span style="color:#ff79c6">&amp;&amp;</span> sudo make install</span></span></code></pre></div></p>
 <p>如果依然报错，su之后；
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#8be9fd;font-style:italic">echo</span> /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf
-$ ldconfig</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#8be9fd;font-style:italic">echo</span> /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf
+</span></span><span style="display:flex;"><span>$ ldconfig</span></span></code></pre></div></p>
 <p>然后配置kcptun：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh
-$ chmod +x ./kcptun.sh
-$ ./kcp.sh</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh
+</span></span><span style="display:flex;"><span>$ chmod +x ./kcptun.sh
+</span></span><span style="display:flex;"><span>$ ./kcp.sh</span></span></code></pre></div>
 在中文说明的引导下设置好各种参数，最后：
 <img src="/article_imgs/kcptun_finish.png" style="width:50%"></p>
 <h4 id="二客户端">二、客户端</h4>
 <h5 id="1cli">1.CLI</h5>
 <p>以MacOS下为例：
 从原repo的releases页https://github.com/xtaci/kcptun/releases 获取kcptun的可执行文件
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./client_darwin_amd64 --help
-NAME:
-   kcptun - client<span style="color:#ff79c6">(</span>with SMUX<span style="color:#ff79c6">)</span>
-
-USAGE:
-   client_darwin_amd64 <span style="color:#ff79c6">[</span>global options<span style="color:#ff79c6">]</span> <span style="color:#8be9fd;font-style:italic">command</span> <span style="color:#ff79c6">[</span><span style="color:#8be9fd;font-style:italic">command</span> options<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>arguments...<span style="color:#ff79c6">]</span>
-
-VERSION:
-   <span style="color:#bd93f9">20190109</span>
-
-COMMANDS:
-     help, h  Shows a list of commands or <span style="color:#8be9fd;font-style:italic">help</span> <span style="color:#ff79c6">for</span> one <span style="color:#8be9fd;font-style:italic">command</span>
-
-GLOBAL OPTIONS:
-   --localaddr value, -l value      <span style="color:#8be9fd;font-style:italic">local</span> listen address <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;:12948&#34;</span><span style="color:#ff79c6">)</span>
-   --remoteaddr value, -r value     kcp server address <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;vps:29900&#34;</span><span style="color:#ff79c6">)</span>
-   --key value                      pre-shared secret between client and server <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;it&#39;s a secrect&#34;</span><span style="color:#ff79c6">)</span> <span style="color:#ff79c6">[</span><span style="color:#8be9fd;font-style:italic">$KCPTUN_KEY</span><span style="color:#ff79c6">]</span>
-   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, sm4, none <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;aes&#34;</span><span style="color:#ff79c6">)</span>
-   --mode value                     profiles: fast3, fast2, fast, normal, manual <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;fast&#34;</span><span style="color:#ff79c6">)</span>
-   --conn value                     <span style="color:#8be9fd;font-style:italic">set</span> num of UDP connections to server <span style="color:#ff79c6">(</span>default: 1<span style="color:#ff79c6">)</span>
-   --autoexpire value               <span style="color:#8be9fd;font-style:italic">set</span> auto expiration time<span style="color:#ff79c6">(</span>in seconds<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">for</span> a single UDP connection, <span style="color:#bd93f9">0</span> to disable <span style="color:#ff79c6">(</span>default: 0<span style="color:#ff79c6">)</span>
-   --scavengettl value              <span style="color:#8be9fd;font-style:italic">set</span> how long an expired connection can live<span style="color:#ff79c6">(</span>in sec<span style="color:#ff79c6">)</span>, -1 to disable <span style="color:#ff79c6">(</span>default: 600<span style="color:#ff79c6">)</span>
-   --mtu value                      <span style="color:#8be9fd;font-style:italic">set</span> maximum transmission unit <span style="color:#ff79c6">for</span> UDP packets <span style="color:#ff79c6">(</span>default: 1350<span style="color:#ff79c6">)</span>
-   --sndwnd value                   <span style="color:#8be9fd;font-style:italic">set</span> send window size<span style="color:#ff79c6">(</span>num of packets<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">(</span>default: 128<span style="color:#ff79c6">)</span>
-   --rcvwnd value                   <span style="color:#8be9fd;font-style:italic">set</span> receive window size<span style="color:#ff79c6">(</span>num of packets<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">(</span>default: 512<span style="color:#ff79c6">)</span>
-   --datashard value, --ds value    <span style="color:#8be9fd;font-style:italic">set</span> reed-solomon erasure coding - datashard <span style="color:#ff79c6">(</span>default: 10<span style="color:#ff79c6">)</span>
-   --parityshard value, --ps value  <span style="color:#8be9fd;font-style:italic">set</span> reed-solomon erasure coding - parityshard <span style="color:#ff79c6">(</span>default: 3<span style="color:#ff79c6">)</span>
-   --dscp value                     <span style="color:#8be9fd;font-style:italic">set</span> DSCP<span style="color:#ff79c6">(</span>6bit<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">(</span>default: 0<span style="color:#ff79c6">)</span>
-   --nocomp                         disable compression
-   --sockbuf value                  per-socket buffer in bytes <span style="color:#ff79c6">(</span>default: 4194304<span style="color:#ff79c6">)</span>
-   --keepalive value                seconds between heartbeats <span style="color:#ff79c6">(</span>default: 10<span style="color:#ff79c6">)</span>
-   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log
-   --snmpperiod value               snmp collect period, in seconds <span style="color:#ff79c6">(</span>default: 60<span style="color:#ff79c6">)</span>
-   --log value                      specify a log file to output, default goes to stderr
-   --quiet                          to suppress the <span style="color:#f1fa8c">&#39;stream open/close&#39;</span> messages
-   -c value                         config from json file, which will override the <span style="color:#8be9fd;font-style:italic">command</span> from shell
-   --help, -h                       show <span style="color:#8be9fd;font-style:italic">help</span>
-   --version, -v                    print the version
-
-$ ./client_darwin_amd64 -l :xxx -r xx.xx.xx.xx:xxxxx --key xxxx --crypt xxxx --mode xxxx</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ./client_darwin_amd64 --help
+</span></span><span style="display:flex;"><span>NAME:
+</span></span><span style="display:flex;"><span>   kcptun - client<span style="color:#ff79c6">(</span>with SMUX<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>USAGE:
+</span></span><span style="display:flex;"><span>   client_darwin_amd64 <span style="color:#ff79c6">[</span>global options<span style="color:#ff79c6">]</span> <span style="color:#8be9fd;font-style:italic">command</span> <span style="color:#ff79c6">[</span><span style="color:#8be9fd;font-style:italic">command</span> options<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>arguments...<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>VERSION:
+</span></span><span style="display:flex;"><span>   <span style="color:#bd93f9">20190109</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>COMMANDS:
+</span></span><span style="display:flex;"><span>     help, h  Shows a list of commands or <span style="color:#8be9fd;font-style:italic">help</span> <span style="color:#ff79c6">for</span> one <span style="color:#8be9fd;font-style:italic">command</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>GLOBAL OPTIONS:
+</span></span><span style="display:flex;"><span>   --localaddr value, -l value      <span style="color:#8be9fd;font-style:italic">local</span> listen address <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;:12948&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --remoteaddr value, -r value     kcp server address <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;vps:29900&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --key value                      pre-shared secret between client and server <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;it&#39;s a secrect&#34;</span><span style="color:#ff79c6">)</span> <span style="color:#ff79c6">[</span><span style="color:#8be9fd;font-style:italic">$KCPTUN_KEY</span><span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span>   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, sm4, none <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;aes&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --mode value                     profiles: fast3, fast2, fast, normal, manual <span style="color:#ff79c6">(</span>default: <span style="color:#f1fa8c">&#34;fast&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --conn value                     <span style="color:#8be9fd;font-style:italic">set</span> num of UDP connections to server <span style="color:#ff79c6">(</span>default: 1<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --autoexpire value               <span style="color:#8be9fd;font-style:italic">set</span> auto expiration time<span style="color:#ff79c6">(</span>in seconds<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">for</span> a single UDP connection, <span style="color:#bd93f9">0</span> to disable <span style="color:#ff79c6">(</span>default: 0<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --scavengettl value              <span style="color:#8be9fd;font-style:italic">set</span> how long an expired connection can live<span style="color:#ff79c6">(</span>in sec<span style="color:#ff79c6">)</span>, -1 to disable <span style="color:#ff79c6">(</span>default: 600<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --mtu value                      <span style="color:#8be9fd;font-style:italic">set</span> maximum transmission unit <span style="color:#ff79c6">for</span> UDP packets <span style="color:#ff79c6">(</span>default: 1350<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --sndwnd value                   <span style="color:#8be9fd;font-style:italic">set</span> send window size<span style="color:#ff79c6">(</span>num of packets<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">(</span>default: 128<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --rcvwnd value                   <span style="color:#8be9fd;font-style:italic">set</span> receive window size<span style="color:#ff79c6">(</span>num of packets<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">(</span>default: 512<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --datashard value, --ds value    <span style="color:#8be9fd;font-style:italic">set</span> reed-solomon erasure coding - datashard <span style="color:#ff79c6">(</span>default: 10<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --parityshard value, --ps value  <span style="color:#8be9fd;font-style:italic">set</span> reed-solomon erasure coding - parityshard <span style="color:#ff79c6">(</span>default: 3<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --dscp value                     <span style="color:#8be9fd;font-style:italic">set</span> DSCP<span style="color:#ff79c6">(</span>6bit<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">(</span>default: 0<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --nocomp                         disable compression
+</span></span><span style="display:flex;"><span>   --sockbuf value                  per-socket buffer in bytes <span style="color:#ff79c6">(</span>default: 4194304<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --keepalive value                seconds between heartbeats <span style="color:#ff79c6">(</span>default: 10<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log
+</span></span><span style="display:flex;"><span>   --snmpperiod value               snmp collect period, in seconds <span style="color:#ff79c6">(</span>default: 60<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>   --log value                      specify a log file to output, default goes to stderr
+</span></span><span style="display:flex;"><span>   --quiet                          to suppress the <span style="color:#f1fa8c">&#39;stream open/close&#39;</span> messages
+</span></span><span style="display:flex;"><span>   -c value                         config from json file, which will override the <span style="color:#8be9fd;font-style:italic">command</span> from shell
+</span></span><span style="display:flex;"><span>   --help, -h                       show <span style="color:#8be9fd;font-style:italic">help</span>
+</span></span><span style="display:flex;"><span>   --version, -v                    print the version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ ./client_darwin_amd64 -l :xxx -r xx.xx.xx.xx:xxxxx --key xxxx --crypt xxxx --mode xxxx</span></span></code></pre></div></p>
 <h5 id="2windows-gui">2.Windows GUI</h5>
 <p>获取<a href="https://github.com/dfdragon/kcptun_gclient/releases">GUI客户端</a>和<a href="https://github.com/xtaci/kcptun/releases">kcptun本体exe</a>；</p>
 <p>在GUI客户端中进行配置，如图：
@@ -169,7 +168,7 @@ $ ./client_darwin_amd64 -l :xxx -r xx.xx.xx.xx:xxxxx --key xxxx --crypt xxxx --m
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/shadowsocks">Shadowsocks
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/shadowsocks">Shadowsocks
                     </a>
                 </li>
                 
@@ -220,11 +219,11 @@ $ ./client_darwin_amd64 -l :xxx -r xx.xx.xx.xx:xxxxx --key xxxx --crypt xxxx --m
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -240,8 +239,6 @@ $ ./client_darwin_amd64 -l :xxx -r xx.xx.xx.xx:xxxxx --key xxxx --crypt xxxx --m
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

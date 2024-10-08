@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,48 +66,47 @@
                 <time datetime='2018-03-19T00:00:00.000&#43;00:00' itemprop="datePublished">2018-03-19</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>最近了解到*和**运算符的用法，特此小记。</p>
 <p>最开始遇到的情形是这样的：我从另一个地方得到了一个tuple a：<br>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#ff79c6">=</span> (<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>)</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#ff79c6">=</span> (<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>)</span></span></code></pre></div></p>
 <p>想把这个tuple里的值作为另一个函数f的参数传给它，理论上完全可以用[]把每个值取出来再一个一个传给函数：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">f</span>(x, y):
-    <span style="color:#ff79c6">return</span> x <span style="color:#ff79c6">+</span> y
-f(a[<span style="color:#bd93f9">0</span>], a[<span style="color:#bd93f9">1</span>])</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">f</span>(x, y):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> x <span style="color:#ff79c6">+</span> y
+</span></span><span style="display:flex;"><span>f(a[<span style="color:#bd93f9">0</span>], a[<span style="color:#bd93f9">1</span>])</span></span></code></pre></div></p>
 <p>但这样写也太蠢了，而且当这里参数的个数不是两个而是很多的时候，这样写也太麻烦了。Google一番之后了解到有*运算符这种神奇的东西，有了它，上面的写法可以简化为：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f(<span style="color:#ff79c6">*</span>a)</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f(<span style="color:#ff79c6">*</span>a)</span></span></code></pre></div></p>
 <p>在<a href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists">官方文档</a>中也有相关的说明：</p>
 <blockquote>
 <p><strong>4.7.4. Unpacking Argument Lists</strong></p>
 <p>The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. For instance, the built-in range() function expects separate start and stop arguments. If they are not available separately, write the function call with the *-operator to unpack the arguments out of a list or tuple:</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">6</span>))            <span style="color:#6272a4"># normal call with separate arguments</span>
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>]  
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> args <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">6</span>]
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">range</span>(\<span style="color:#ff79c6">*</span>args))            <span style="color:#6272a4"># call with arguments unpacked from a list</span>
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>]   </code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">6</span>))            <span style="color:#6272a4"># normal call with separate arguments</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>]  
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> args <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">6</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">range</span>(\<span style="color:#ff79c6">*</span>args))            <span style="color:#6272a4"># call with arguments unpacked from a list</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>]   </span></span></code></pre></div>
 <p>文档中还提了**的用法：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">parrot</span>(voltage, state<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;a stiff&#39;</span>, action<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;voom&#39;</span>):
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">...</span>     <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;-- This parrot wouldn&#39;t&#34;</span>, action, end<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39; &#39;</span>)
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">...</span>     <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;if you put&#34;</span>, voltage, <span style="color:#f1fa8c">&#34;volts through it.&#34;</span>, end<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39; &#39;</span>)
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">...</span>     <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;E&#39;s&#34;</span>, state, <span style="color:#f1fa8c">&#34;!&#34;</span>)
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">...</span>
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> d <span style="color:#ff79c6">=</span> {<span style="color:#f1fa8c">&#34;voltage&#34;</span>: <span style="color:#f1fa8c">&#34;four million&#34;</span>, <span style="color:#f1fa8c">&#34;state&#34;</span>: <span style="color:#f1fa8c">&#34;bleedin&#39; demised&#34;</span>, <span style="color:#f1fa8c">&#34;action&#34;</span>: <span style="color:#f1fa8c">&#34;VOOM&#34;</span>}
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> parrot(<span style="color:#ff79c6">**</span>d)
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">--</span> This parrot wouldn<span style="color:#f1fa8c">&#39;t VOOM if you put four million volts through it. E&#39;</span>s bleedin<span style="color:#f1fa8c">&#39; demised !</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">parrot</span>(voltage, state<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;a stiff&#39;</span>, action<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;voom&#39;</span>):
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">...</span>     <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;-- This parrot wouldn&#39;t&#34;</span>, action, end<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">...</span>     <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;if you put&#34;</span>, voltage, <span style="color:#f1fa8c">&#34;volts through it.&#34;</span>, end<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">...</span>     <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;E&#39;s&#34;</span>, state, <span style="color:#f1fa8c">&#34;!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> d <span style="color:#ff79c6">=</span> {<span style="color:#f1fa8c">&#34;voltage&#34;</span>: <span style="color:#f1fa8c">&#34;four million&#34;</span>, <span style="color:#f1fa8c">&#34;state&#34;</span>: <span style="color:#f1fa8c">&#34;bleedin&#39; demised&#34;</span>, <span style="color:#f1fa8c">&#34;action&#34;</span>: <span style="color:#f1fa8c">&#34;VOOM&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> parrot(<span style="color:#ff79c6">**</span>d)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#ff79c6">--</span> This parrot wouldn<span style="color:#f1fa8c">&#39;t VOOM if you put four million volts through it. E&#39;</span>s bleedin<span style="color:#f1fa8c">&#39; demised !</span></span></span></code></pre></div></p>
 <p>在自己尝试的过程中也发现了两个有意思的用法：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">&gt;&gt;&gt;</span> a <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">3</span>]
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#8be9fd;font-style:italic">print</span>(a)
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>]
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#ff79c6">*</span>a)
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#bd93f9">1</span> <span style="color:#bd93f9">2</span> <span style="color:#bd93f9">3</span></code></pre></div></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">&gt;&gt;&gt;</span> a <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>]
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">4</span>,<span style="color:#bd93f9">5</span>,a,<span style="color:#bd93f9">7</span>,<span style="color:#bd93f9">8</span>]
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>, [<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>], <span style="color:#bd93f9">7</span>, <span style="color:#bd93f9">8</span>]
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">4</span>,<span style="color:#bd93f9">5</span>,<span style="color:#ff79c6">*</span>a,<span style="color:#bd93f9">7</span>,<span style="color:#bd93f9">8</span>]
-<span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">7</span>, <span style="color:#bd93f9">8</span>]</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> a <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#8be9fd;font-style:italic">print</span>(a)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#ff79c6">*</span>a)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> <span style="color:#bd93f9">1</span> <span style="color:#bd93f9">2</span> <span style="color:#bd93f9">3</span></span></span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> a <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">4</span>,<span style="color:#bd93f9">5</span>,a,<span style="color:#bd93f9">7</span>,<span style="color:#bd93f9">8</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>, [<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>], <span style="color:#bd93f9">7</span>, <span style="color:#bd93f9">8</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">4</span>,<span style="color:#bd93f9">5</span>,<span style="color:#ff79c6">*</span>a,<span style="color:#bd93f9">7</span>,<span style="color:#bd93f9">8</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt;&gt;&gt;</span> [<span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">5</span>, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">7</span>, <span style="color:#bd93f9">8</span>]</span></span></code></pre></div>
         </div>
 
         
@@ -127,7 +126,7 @@ f(a[<span style="color:#bd93f9">0</span>], a[<span style="color:#bd93f9">1</span
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/python">Python
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/python">Python
                     </a>
                 </li>
                 
@@ -178,11 +177,11 @@ f(a[<span style="color:#bd93f9">0</span>], a[<span style="color:#bd93f9">1</span
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -198,8 +197,6 @@ f(a[<span style="color:#bd93f9">0</span>], a[<span style="color:#bd93f9">1</span
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

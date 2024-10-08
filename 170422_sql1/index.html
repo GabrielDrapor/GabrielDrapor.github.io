@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,101 +66,100 @@
                 <time datetime='2017-04-22T00:00:00.000&#43;00:00' itemprop="datePublished">2017-04-22</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>　　这两天刚好在翻《SQL必知必会》，就顺手写几篇Markdown整理一下语法吧。</p>
 <h2 id="检索数据">检索数据</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... <span style="color:#6272a4">--&#39;\*&#39; for all
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0, column1,... <span style="color:#6272a4">--&#39;\*&#39; for all
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;</span></span></code></pre></div>
 <ul>
 <li>In SQL Server and Access,</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> TOP [num] column0, column1,... 
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> TOP [num] column0, column1,... 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;</span></span></code></pre></div>
 <ul>
 <li>In DB2,</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-<span style="color:#ff79c6">FETCH</span> <span style="color:#ff79c6">FIRST</span> [num] <span style="color:#ff79c6">ROWS</span> <span style="color:#ff79c6">ONLY</span>;</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0, column1,... 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FETCH</span> <span style="color:#ff79c6">FIRST</span> [num] <span style="color:#ff79c6">ROWS</span> <span style="color:#ff79c6">ONLY</span>;</span></span></code></pre></div>
 <ul>
 <li>In Oracle,</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-<span style="color:#ff79c6">WHERE</span> ROWNUM <span style="color:#ff79c6">&lt;=</span> [num];</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0, column1,... 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> ROWNUM <span style="color:#ff79c6">&lt;=</span> [num];</span></span></code></pre></div>
 <ul>
 <li>In MySQL, MariaDB, PostgreSQL and SQLite</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-<span style="color:#ff79c6">LIMIT</span> [num] {<span style="color:#ff79c6">OFFSET</span> [num]};</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0, column1,... 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">LIMIT</span> [num] {<span style="color:#ff79c6">OFFSET</span> [num]};</span></span></code></pre></div>
 <ul>
 <li>Select distinct value</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">DISTINCT</span> <span style="color:#ff79c6">column_name</span>
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">DISTINCT</span> <span style="color:#ff79c6">column_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;</span></span></code></pre></div>
 <ul>
 <li>Annotation</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">#</span> Here <span style="color:#ff79c6">is</span> a <span style="color:#ff79c6">comment</span>
-<span style="color:#ff79c6">SELECT</span> column0 <span style="color:#6272a4">-- Here is also a comment
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;
-<span style="color:#6272a4">/*
-</span><span style="color:#6272a4">Also a comment~
-</span><span style="color:#6272a4">*/</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">#</span> Here <span style="color:#ff79c6">is</span> a <span style="color:#ff79c6">comment</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0 <span style="color:#6272a4">-- Here is also a comment
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">Also a comment~
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">*/</span></span></span></code></pre></div>
 <hr>
 <h2 id="排列检索数据">排列检索数据</h2>
-<h2 id="hahahugoshortcode-s7-hbhb"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-<span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> column0, column1, ...;
-<span style="color:#6272a4">-- Also, you can use order numbers to represent certain column
-</span><span style="color:#6272a4">-- Use &#39;DESC&#39; or &#39;ASC&#39; in the end to assigned the order direction</span></code></pre></div></h2>
+<h2 id="hahahugoshortcode27s7hbhb"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0, column1,... 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> column0, column1, ...;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- Also, you can use order numbers to represent certain column
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">-- Use &#39;DESC&#39; or &#39;ASC&#39; in the end to assigned the order direction</span></span></span></code></pre></div></h2>
 <h2 id="过滤数据">过滤数据</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-<span style="color:#ff79c6">WHERE</span> <span style="color:#ff79c6">column</span> <span style="color:#ff79c6">=</span> [value];</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0, column1,... 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> <span style="color:#ff79c6">column</span> <span style="color:#ff79c6">=</span> [value];</span></span></code></pre></div>
 <hr>
 <h2 id="高级数据过滤">高级数据过滤</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-<span style="color:#ff79c6">WHERE</span> [clause] <span style="color:#ff79c6">AND</span><span style="color:#ff79c6">/</span><span style="color:#ff79c6">OR</span> [clause];
-<span style="color:#6272a4">-- The priority of &#39;AND&#39; is higher than &#39;OR&#39; when they are used together</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0, column1,... 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> [clause] <span style="color:#ff79c6">AND</span><span style="color:#ff79c6">/</span><span style="color:#ff79c6">OR</span> [clause];
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- The priority of &#39;AND&#39; is higher than &#39;OR&#39; when they are used together</span></span></span></code></pre></div>
 <ul>
 <li>Actually, &lsquo;OR&rsquo; is same as &lsquo;IN&rsquo;</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ff79c6">SELECT</span> column0, column1,... 
-<span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-<span style="color:#ff79c6">WHERE</span> [<span style="color:#ff79c6">column_name</span>] <span style="color:#ff79c6">IN</span> ([value1],[value2],...);</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> column0, column1,... 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> [<span style="color:#ff79c6">column_name</span>] <span style="color:#ff79c6">IN</span> ([value1],[value2],...);</span></span></code></pre></div>
 <ul>
 <li>&lsquo;NOT&rsquo;</li>
 </ul>
-<h2 id="hahahugoshortcode-s11-hbhb"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">  <span style="color:#ff79c6">SELECT</span> column0, column1,... 
-  <span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
-  <span style="color:#ff79c6">WHERE</span> <span style="color:#ff79c6">NOT</span> xxxx;</code></pre></div></h2>
+<h2 id="hahahugoshortcode27s11hbhb"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>  <span style="color:#ff79c6">SELECT</span> column0, column1,... 
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">FROM</span> <span style="color:#ff79c6">table_name</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">WHERE</span> <span style="color:#ff79c6">NOT</span> xxxx;</span></span></code></pre></div></h2>
 <h2 id="用通配符进行过滤">用通配符进行过滤</h2>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">通配符</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">%(* in Access)</td>
-<td style="text-align:center">任意字符任意次数</td>
-</tr>
-<tr>
-<td style="text-align:center">_</td>
-<td style="text-align:center">任意字符一次</td>
-</tr>
-<tr>
-<td style="text-align:center">[]</td>
-<td style="text-align:center">指定一个字符集, 如 [JM] 匹配&rsquo;J&rsquo;和&rsquo;M'（用&quot;^&ldquo;可以否定）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">通配符</th>
+          <th style="text-align: center">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">%(* in Access)</td>
+          <td style="text-align: center">任意字符任意次数</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">_</td>
+          <td style="text-align: center">任意字符一次</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">[]</td>
+          <td style="text-align: center">指定一个字符集, 如 [JM] 匹配&rsquo;J&rsquo;和&rsquo;M&rsquo;（用&quot;^&ldquo;可以否定）</td>
+      </tr>
+  </tbody>
 </table>
         </div>
 
@@ -172,10 +171,10 @@
   <ul>
     <li><a href="#检索数据">检索数据</a></li>
     <li><a href="#排列检索数据">排列检索数据</a></li>
-    <li><a href="#hahahugoshortcode-s7-hbhb">HAHAHUGOSHORTCODE-s7-HBHB</a></li>
+    <li><a href="#hahahugoshortcode27s7hbhb">HAHAHUGOSHORTCODE27s7HBHB</a></li>
     <li><a href="#过滤数据">过滤数据</a></li>
     <li><a href="#高级数据过滤">高级数据过滤</a></li>
-    <li><a href="#hahahugoshortcode-s11-hbhb">HAHAHUGOSHORTCODE-s11-HBHB</a></li>
+    <li><a href="#hahahugoshortcode27s11hbhb">HAHAHUGOSHORTCODE27s11HBHB</a></li>
     <li><a href="#用通配符进行过滤">用通配符进行过滤</a></li>
   </ul>
 </nav>
@@ -191,7 +190,7 @@
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/sql">SQL
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/sql">SQL
                     </a>
                 </li>
                 
@@ -242,11 +241,11 @@
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -262,8 +261,6 @@
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

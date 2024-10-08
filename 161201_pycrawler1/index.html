@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,44 +66,43 @@
                 <time datetime='2016-12-01T00:00:00.000&#43;00:00' itemprop="datePublished">2016-12-01</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p> </p>
 <p>First, let&rsquo;s start with a easy one:</p>
-<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
-
-response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>)
-<span style="color:#8be9fd;font-style:italic">print</span> response<span style="color:#ff79c6">.</span>read()</code></pre></div>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> urllib2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span> response<span style="color:#ff79c6">.</span>read()</span></span></code></pre></div>
 The output should be like:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#ff79c6">&lt;!DOCTYPE html&gt;</span>
-&lt;<span style="color:#ff79c6">html</span>&gt;
-	&lt;<span style="color:#ff79c6">head</span>&gt;
-......
-&lt;/<span style="color:#ff79c6">html</span>&gt;</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">html</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#ff79c6">head</span>&gt;
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">html</span>&gt;</span></span></code></pre></div>
 Also, codes below do the same thing,
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
-
-request<span style="color:#ff79c6">=</span>urllib2<span style="color:#ff79c6">.</span>Request(url)
-response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(request)
-<span style="color:#8be9fd;font-style:italic">print</span> response<span style="color:#ff79c6">.</span>read()</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> urllib2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>request<span style="color:#ff79c6">=</span>urllib2<span style="color:#ff79c6">.</span>Request(url)
+</span></span><span style="display:flex;"><span>response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(request)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span> response<span style="color:#ff79c6">.</span>read()</span></span></code></pre></div></p>
 <p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission">Tutorial I recommand</a>) here to help us:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib2
-<span style="color:#ff79c6">import</span> re
-
-response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>)
-content <span style="color:#ff79c6">=</span> response<span style="color:#ff79c6">.</span>read()              <span style="color:#6272a4">#First we store the content of whole webpage</span>
-content <span style="color:#ff79c6">=</span> content<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#39;</span>,<span style="color:#f1fa8c">&#39;&#39;</span>)     <span style="color:#6272a4">#I use this to delete all the newline character to avoid some troubles</span>
-
-pattern <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">r</span><span style="color:#f1fa8c">&#39;&lt;a class=&#34;article-title&#34; href=&#34;.*?&#34;&gt;.*?&lt;/a&gt;&#39;</span>   <span style="color:#6272a4">#Then your regex here, remember the &#39;r&#39;</span>
-
-result <span style="color:#ff79c6">=</span> re<span style="color:#ff79c6">.</span>findall(pattern, content) <span style="color:#6272a4">#Find all the result</span>
-
-<span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#34;index.html&#34;</span>, <span style="color:#f1fa8c">&#34;w&#34;</span>) <span style="color:#ff79c6">as</span> f:    <span style="color:#6272a4">#Write the result in a new HTML file</span>
-    <span style="color:#ff79c6">for</span> items <span style="color:#ff79c6">in</span> result:
-        f<span style="color:#ff79c6">.</span>write(items<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;&lt;br&gt;&#39;</span>)</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> urllib2
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>)
+</span></span><span style="display:flex;"><span>content <span style="color:#ff79c6">=</span> response<span style="color:#ff79c6">.</span>read()              <span style="color:#6272a4">#First we store the content of whole webpage</span>
+</span></span><span style="display:flex;"><span>content <span style="color:#ff79c6">=</span> content<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#39;</span>,<span style="color:#f1fa8c">&#39;&#39;</span>)     <span style="color:#6272a4">#I use this to delete all the newline character to avoid some troubles</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pattern <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">r</span><span style="color:#f1fa8c">&#39;&lt;a class=&#34;article-title&#34; href=&#34;.*?&#34;&gt;.*?&lt;/a&gt;&#39;</span>   <span style="color:#6272a4">#Then your regex here, remember the &#39;r&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#ff79c6">=</span> re<span style="color:#ff79c6">.</span>findall(pattern, content) <span style="color:#6272a4">#Find all the result</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#34;index.html&#34;</span>, <span style="color:#f1fa8c">&#34;w&#34;</span>) <span style="color:#ff79c6">as</span> f:    <span style="color:#6272a4">#Write the result in a new HTML file</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> items <span style="color:#ff79c6">in</span> result:
+</span></span><span style="display:flex;"><span>        f<span style="color:#ff79c6">.</span>write(items<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;&lt;br&gt;&#39;</span>)</span></span></code></pre></div>
 <strong>Tip: Don&rsquo;t use something like &lsquo;+&rsquo; or &lsquo;*&rsquo; in your zero-width assertion or write your regex like &lsquo;(?&lt;![a-z]+)/d+&rsquo;, or you will get:</strong>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">error: look<span style="color:#ff79c6">-</span>behind requires fixed<span style="color:#ff79c6">-</span>width pattern<span style="color:#ff79c6">.</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>error: look<span style="color:#ff79c6">-</span>behind requires fixed<span style="color:#ff79c6">-</span>width pattern<span style="color:#ff79c6">.</span></span></span></code></pre></div></p>
 <p>And open the new HTML file we create with browser, we got this:
 <img src="/article_imgs/pycrawler1_out.PNG" alt=""></p>
 <p><strong>Wow! How fantastic!!!</strong></p>
@@ -132,12 +131,12 @@ Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague">https:
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/python">Python
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/python">Python
                     </a>
                 </li>
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/crawler">Crawler
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/crawler">Crawler
                     </a>
                 </li>
                 
@@ -188,11 +187,11 @@ Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague">https:
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -208,8 +207,6 @@ Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague">https:
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

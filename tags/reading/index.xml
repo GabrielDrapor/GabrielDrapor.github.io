@@ -4,28 +4,23 @@
     <title>Reading on DRAPORLAND</title>
     <link>https://jrd.pub/tags/reading/</link>
     <description>Recent content in Reading on DRAPORLAND</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Apr 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://jrd.pub/tags/reading/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://jrd.pub/tags/reading/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>尝试向人推荐《战争与和平》</title>
       <link>https://jrd.pub/240412_war_and_peace/</link>
       <pubDate>Fri, 12 Apr 2024 00:00:00 +0800</pubDate>
-      
       <guid>https://jrd.pub/240412_war_and_peace/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>《毫无意义的工作 / Bullshit Jobs: A Theory》</title>
       <link>https://jrd.pub/231201_bullshit_job/</link>
       <pubDate>Thu, 30 Nov 2023 00:00:00 +0800</pubDate>
-      
       <guid>https://jrd.pub/231201_bullshit_job/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;一篇读书笔记。&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;一篇读书笔记。&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
   </channel>
 </rss>

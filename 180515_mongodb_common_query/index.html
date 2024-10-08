@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,51 +66,50 @@
                 <time datetime='2018-05-15T00:00:00.000&#43;00:00' itemprop="datePublished">2018-05-15</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>总结了一下自己经常用到的一些MongoDB查询。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">db.collection.find()
-<span style="color:#6272a4">// SELECT * FROM xxx
-</span><span style="color:#6272a4"></span>
-db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... } ) 
-<span style="color:#6272a4">// SELECT * FROM xxx WHERE field1 = value1
-</span><span style="color:#6272a4"></span>
-db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... }, { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#bd93f9">1</span>, <span style="color:#ff79c6">&lt;</span>field2<span style="color:#ff79c6">&gt;:</span> <span style="color:#bd93f9">0</span>, ... } ) 
-<span style="color:#6272a4">// SELECT _id, field1 FROM xxx WHERE field1 = value1
-</span><span style="color:#6272a4"></span>
-db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> { $lt<span style="color:#ff79c6">:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span> } } ) 
-<span style="color:#6272a4">//SELECT * FROM xxx WHERE field1 &lt; value1 
-</span><span style="color:#6272a4">//Besides $lt, other commmon comparison operators is $lte, $gt, $gte, $in, $nin, $neq
-</span><span style="color:#6272a4"></span>
-db.collection.find( { $or<span style="color:#ff79c6">:</span> [ { <span style="color:#ff79c6">&lt;</span>condition1<span style="color:#ff79c6">&gt;</span> }, { <span style="color:#ff79c6">&lt;</span>condition2<span style="color:#ff79c6">&gt;</span> }, ... ] } ) 
-<span style="color:#6272a4">//SELECT * FROM xxx WHERE condition1 OR &lt;condition2 
-</span><span style="color:#6272a4"></span>
-db.collection.findOne() 
-<span style="color:#6272a4">//SELECT * FROM xxx LIMIT 1
-</span><span style="color:#6272a4">//When there is sub-field, use dot notation like &#34;field.subfield&#34; to access it
-</span><span style="color:#6272a4"></span>
-db.collection.find( { ... } ).count() 
-<span style="color:#6272a4">//SELECT COUNT(1) FROM xxx WHERE ...
-</span><span style="color:#6272a4"></span>
-db.collection.distinct(field, query, options) 
-<span style="color:#6272a4">//SELECT DISTINCT field FROM xxx WHERE ...
-</span><span style="color:#6272a4"></span>
-db.collection.dataSize()
-<span style="color:#6272a4">//Calculate the size of the dump BSON file
-</span><span style="color:#6272a4"></span>
-
-db.collection.aggregate( [	
-			  { $match<span style="color:#ff79c6">:</span> {...} },
-	                      { $group<span style="color:#ff79c6">:</span> { _id<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;$cust_id&#34;</span>, total<span style="color:#ff79c6">:</span> { $sum<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;$amount&#34;</span> } } }
-					   ] )
-<span style="color:#6272a4">//SELECT cust_id, SUM(amount) AS total
-</span><span style="color:#6272a4">//FROM xxx
-</span><span style="color:#6272a4">//WHERE ...
-</span><span style="color:#6272a4">//GROUP BY id
-</span><span style="color:#6272a4"></span>​                     
-<span style="color:#6272a4">//More abount Aggregation: https://docs.mongodb.com/manual/aggregation/   
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>db.collection.find()
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// SELECT * FROM xxx
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... } ) 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// SELECT * FROM xxx WHERE field1 = value1
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span>, ... }, { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> <span style="color:#bd93f9">1</span>, <span style="color:#ff79c6">&lt;</span>field2<span style="color:#ff79c6">&gt;:</span> <span style="color:#bd93f9">0</span>, ... } ) 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// SELECT _id, field1 FROM xxx WHERE field1 = value1
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>db.collection.find( { <span style="color:#ff79c6">&lt;</span>field1<span style="color:#ff79c6">&gt;:</span> { $lt<span style="color:#ff79c6">:</span> <span style="color:#ff79c6">&lt;</span>value1<span style="color:#ff79c6">&gt;</span> } } ) 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//SELECT * FROM xxx WHERE field1 &lt; value1 
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//Besides $lt, other commmon comparison operators is $lte, $gt, $gte, $in, $nin, $neq
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>db.collection.find( { $or<span style="color:#ff79c6">:</span> [ { <span style="color:#ff79c6">&lt;</span>condition1<span style="color:#ff79c6">&gt;</span> }, { <span style="color:#ff79c6">&lt;</span>condition2<span style="color:#ff79c6">&gt;</span> }, ... ] } ) 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//SELECT * FROM xxx WHERE condition1 OR &lt;condition2 
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>db.collection.findOne() 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//SELECT * FROM xxx LIMIT 1
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//When there is sub-field, use dot notation like &#34;field.subfield&#34; to access it
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>db.collection.find( { ... } ).count() 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//SELECT COUNT(1) FROM xxx WHERE ...
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>db.collection.distinct(field, query, options) 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//SELECT DISTINCT field FROM xxx WHERE ...
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>db.collection.dataSize()
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//Calculate the size of the dump BSON file
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>db.collection.aggregate( [	
+</span></span><span style="display:flex;"><span>			  { $match<span style="color:#ff79c6">:</span> {...} },
+</span></span><span style="display:flex;"><span>	                      { $group<span style="color:#ff79c6">:</span> { _id<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;$cust_id&#34;</span>, total<span style="color:#ff79c6">:</span> { $sum<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;$amount&#34;</span> } } }
+</span></span><span style="display:flex;"><span>					   ] )
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//SELECT cust_id, SUM(amount) AS total
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//FROM xxx
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//WHERE ...
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//GROUP BY id
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>​                     
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//More abount Aggregation: https://docs.mongodb.com/manual/aggregation/   
+</span></span></span></code></pre></div>
 <ul>
 <li>Reference: <a href="https://docs.mongodb.com/manual/">MongoDB Documentation</a></li>
 </ul>
@@ -133,7 +132,7 @@ db.collection.aggregate( [
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/mongodb">MongoDB
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/mongodb">MongoDB
                     </a>
                 </li>
                 
@@ -184,11 +183,11 @@ db.collection.aggregate( [
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -204,8 +203,6 @@ db.collection.aggregate( [
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

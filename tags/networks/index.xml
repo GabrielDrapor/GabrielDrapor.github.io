@@ -4,35 +4,30 @@
     <title>Networks on DRAPORLAND</title>
     <link>https://jrd.pub/tags/networks/</link>
     <description>Recent content in Networks on DRAPORLAND</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 03 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://jrd.pub/tags/networks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 May 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/tags/networks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>jsp搭建JEECMS</title>
       <link>https://jrd.pub/160503_jsp/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/160503_jsp/</guid>
       <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Win8.1 64bit + Apache-tomcat-9.0.0 + MySQL5.7 + JDK 8.0&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>php搭建WordPress</title>
       <link>https://jrd.pub/160503-php/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/160503-php/</guid>
       <description>&lt;p&gt;&lt;strong&gt;架设环境选择：Win8.1 64bit + Apache2.2.25 + MySQL5.7 + PHP5.6.20&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>HTTP Response/Request Headers</title>
       <link>https://jrd.pub/160427_http/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/160427_http/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

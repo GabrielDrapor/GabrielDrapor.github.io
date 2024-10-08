@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,98 +66,97 @@
                 <time datetime='2017-09-11T00:00:00.000&#43;00:00' itemprop="datePublished">2017-09-11</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
 <h3 id="911">9.11</h3>
 <p>没看书自己实现了一下KNN，算法本身也没什么复杂的，但是实现起来还是费了一番不小的功夫，动手能力还需增强啊…</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#!/usr/bin/env python3</span>
-<span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
-<span style="color:#f1fa8c">&#34;&#34;&#34;
-</span><span style="color:#f1fa8c">@author: drapor
-</span><span style="color:#f1fa8c">&#34;&#34;&#34;</span>
-
-<span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
-<span style="color:#ff79c6">import</span> numpy <span style="color:#ff79c6">as</span> np
-<span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
-train_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;train.csv&#39;</span>)
-pixel <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">785</span>]
-label <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">0</span>]
-test_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;test.csv&#39;</span>)
-r <span style="color:#ff79c6">=</span> []
-<span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(test_set)):
-        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000&#39;</span> <span style="color:#ff79c6">%</span> (t<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>))
-    a <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(test_set<span style="color:#ff79c6">.</span>loc[t])
-    d <span style="color:#ff79c6">=</span> []
-    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(train_set)):
-        b <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(pixel<span style="color:#ff79c6">.</span>loc[i])
-        d<span style="color:#ff79c6">.</span>append(np<span style="color:#ff79c6">.</span>dot((a<span style="color:#ff79c6">-</span>b)<span style="color:#ff79c6">.</span>T,(a<span style="color:#ff79c6">-</span>b)))
-    k <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">zip</span>(d,<span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(d))))
-    k<span style="color:#ff79c6">.</span>sort()
-    m <span style="color:#ff79c6">=</span> []
-    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> k[:<span style="color:#bd93f9">10</span>]:
-        m<span style="color:#ff79c6">.</span>append(label<span style="color:#ff79c6">.</span>loc[i[<span style="color:#bd93f9">1</span>]])
-    r<span style="color:#ff79c6">.</span>append(<span style="color:#8be9fd;font-style:italic">sum</span>(m)<span style="color:#ff79c6">/</span><span style="color:#bd93f9">10</span>)</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">@author: drapor
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> numpy <span style="color:#ff79c6">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
+</span></span><span style="display:flex;"><span>train_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;train.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>pixel <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">785</span>]
+</span></span><span style="display:flex;"><span>label <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">0</span>]
+</span></span><span style="display:flex;"><span>test_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;test.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>r <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(test_set)):
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000&#39;</span> <span style="color:#ff79c6">%</span> (t<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>))
+</span></span><span style="display:flex;"><span>    a <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(test_set<span style="color:#ff79c6">.</span>loc[t])
+</span></span><span style="display:flex;"><span>    d <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(train_set)):
+</span></span><span style="display:flex;"><span>        b <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(pixel<span style="color:#ff79c6">.</span>loc[i])
+</span></span><span style="display:flex;"><span>        d<span style="color:#ff79c6">.</span>append(np<span style="color:#ff79c6">.</span>dot((a<span style="color:#ff79c6">-</span>b)<span style="color:#ff79c6">.</span>T,(a<span style="color:#ff79c6">-</span>b)))
+</span></span><span style="display:flex;"><span>    k <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">zip</span>(d,<span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(d))))
+</span></span><span style="display:flex;"><span>    k<span style="color:#ff79c6">.</span>sort()
+</span></span><span style="display:flex;"><span>    m <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> k[:<span style="color:#bd93f9">10</span>]:
+</span></span><span style="display:flex;"><span>        m<span style="color:#ff79c6">.</span>append(label<span style="color:#ff79c6">.</span>loc[i[<span style="color:#bd93f9">1</span>]])
+</span></span><span style="display:flex;"><span>    r<span style="color:#ff79c6">.</span>append(<span style="color:#8be9fd;font-style:italic">sum</span>(m)<span style="color:#ff79c6">/</span><span style="color:#bd93f9">10</span>)</span></span></code></pre></div>
 <p>跑了几个试了试，K选了10，有一些误差，不过效果看起来还可以。但是全量数据一起跑的时候就发现，完成任务需要的时间非常久，大概至少需要三十个小时。这当然是不能接受的，得想办法改进才行。目前初步的打算是用多进程，应该可以明显地缩短完成任务所需的时间。</p>
 <hr>
 <h3 id="912">9.12</h3>
 <p>昨天请教了公司的组长之后得知，还可以用Deep Learning中的Pooling来降低计算的复杂度，但还是想先上多线程看看。经过一个晚上和半个上午的研究探索，终于成功地让任务以多进程的方式跑起来了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#!/usr/bin/env python3</span>
-<span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
-<span style="color:#f1fa8c">&#34;&#34;&#34;
-</span><span style="color:#f1fa8c">Description:
-</span><span style="color:#f1fa8c">kaggle 0 
-</span><span style="color:#f1fa8c">
-</span><span style="color:#f1fa8c">@author: drapor
-</span><span style="color:#f1fa8c">&#34;&#34;&#34;</span>
-
-<span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
-<span style="color:#ff79c6">import</span> numpy <span style="color:#ff79c6">as</span> np
-<span style="color:#ff79c6">import</span> multiprocessing
-<span style="color:#ff79c6">import</span> os
-<span style="color:#6272a4">#import matplotlib.pyplot as plt</span>
-
-<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">processing</span>(test_set):
-    s <span style="color:#ff79c6">=</span> []
-    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Running... pid:&#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">str</span>(os<span style="color:#ff79c6">.</span>getpid()))
-    <span style="color:#ff79c6">for</span> idx, df <span style="color:#ff79c6">in</span> test_set<span style="color:#ff79c6">.</span>iterrows():
-        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000, pid </span><span style="color:#f1fa8c">%s</span><span style="color:#f1fa8c">&#39;</span> <span style="color:#ff79c6">%</span> (idx, os<span style="color:#ff79c6">.</span>getpid()))
-        a <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(df)
-        d <span style="color:#ff79c6">=</span> []
-        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">42000</span>):
-            b <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(pixel<span style="color:#ff79c6">.</span>iloc[i])
-            d<span style="color:#ff79c6">.</span>append(np<span style="color:#ff79c6">.</span>dot((a<span style="color:#ff79c6">-</span>b)<span style="color:#ff79c6">.</span>T,(a<span style="color:#ff79c6">-</span>b)))
-        k <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">zip</span>(d,<span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(d))))
-        k<span style="color:#ff79c6">.</span>sort()
-        m <span style="color:#ff79c6">=</span> []
-        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> k[:<span style="color:#bd93f9">10</span>]:
-            m<span style="color:#ff79c6">.</span>append(label<span style="color:#ff79c6">.</span>loc[i[<span style="color:#bd93f9">1</span>]])
-        s<span style="color:#ff79c6">.</span>append([idx,<span style="color:#8be9fd;font-style:italic">sum</span>(m)<span style="color:#ff79c6">/</span><span style="color:#bd93f9">10</span>])
-    <span style="color:#ff79c6">return</span> s
-
-<span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
-    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
-    train_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;train.csv&#39;</span>)
-    pixel <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">785</span>]
-    label <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">0</span>]
-    <span style="color:#6272a4">#plt.imshow(test.reshape(28,28), cmap=plt.cm.gray)</span>
-    test_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;test.csv&#39;</span>)
-    pool <span style="color:#ff79c6">=</span> multiprocessing<span style="color:#ff79c6">.</span>Pool(processes <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">16</span>)
-    r <span style="color:#ff79c6">=</span> []
-    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">16</span>):
-        train <span style="color:#ff79c6">=</span> test_set<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">1750</span><span style="color:#ff79c6">*</span>i:<span style="color:#bd93f9">1750</span><span style="color:#ff79c6">*</span>(i<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>)<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>]
-        r<span style="color:#ff79c6">.</span>append(pool<span style="color:#ff79c6">.</span>apply_async(processing,(train,)))
-    pool<span style="color:#ff79c6">.</span>close()
-    pool<span style="color:#ff79c6">.</span>join()
-    result  <span style="color:#ff79c6">=</span> []
-    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> r:
-        <span style="color:#ff79c6">for</span> j <span style="color:#ff79c6">in</span> i<span style="color:#ff79c6">.</span>get():
-            result<span style="color:#ff79c6">.</span>append(j)
-    result<span style="color:#ff79c6">.</span>sort()
-    <span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#39;result.csv&#39;</span>,<span style="color:#f1fa8c">&#34;w&#34;</span>) <span style="color:#ff79c6">as</span> f:
-        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> result:
-            f<span style="color:#ff79c6">.</span>writelines(<span style="color:#8be9fd;font-style:italic">str</span>(i[<span style="color:#bd93f9">0</span>]<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>)<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;,&#39;</span><span style="color:#ff79c6">+</span><span style="color:#8be9fd;font-style:italic">str</span>(<span style="color:#8be9fd;font-style:italic">round</span>(i[<span style="color:#bd93f9">1</span>]))[:<span style="color:#ff79c6">-</span><span style="color:#bd93f9">2</span>]<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#39;</span>)</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Description:
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">kaggle 0 
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">@author: drapor
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> numpy <span style="color:#ff79c6">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> multiprocessing
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#import matplotlib.pyplot as plt</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">processing</span>(test_set):
+</span></span><span style="display:flex;"><span>    s <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Running... pid:&#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">str</span>(os<span style="color:#ff79c6">.</span>getpid()))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> idx, df <span style="color:#ff79c6">in</span> test_set<span style="color:#ff79c6">.</span>iterrows():
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000, pid </span><span style="color:#f1fa8c">%s</span><span style="color:#f1fa8c">&#39;</span> <span style="color:#ff79c6">%</span> (idx, os<span style="color:#ff79c6">.</span>getpid()))
+</span></span><span style="display:flex;"><span>        a <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(df)
+</span></span><span style="display:flex;"><span>        d <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">42000</span>):
+</span></span><span style="display:flex;"><span>            b <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(pixel<span style="color:#ff79c6">.</span>iloc[i])
+</span></span><span style="display:flex;"><span>            d<span style="color:#ff79c6">.</span>append(np<span style="color:#ff79c6">.</span>dot((a<span style="color:#ff79c6">-</span>b)<span style="color:#ff79c6">.</span>T,(a<span style="color:#ff79c6">-</span>b)))
+</span></span><span style="display:flex;"><span>        k <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">zip</span>(d,<span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(d))))
+</span></span><span style="display:flex;"><span>        k<span style="color:#ff79c6">.</span>sort()
+</span></span><span style="display:flex;"><span>        m <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> k[:<span style="color:#bd93f9">10</span>]:
+</span></span><span style="display:flex;"><span>            m<span style="color:#ff79c6">.</span>append(label<span style="color:#ff79c6">.</span>loc[i[<span style="color:#bd93f9">1</span>]])
+</span></span><span style="display:flex;"><span>        s<span style="color:#ff79c6">.</span>append([idx,<span style="color:#8be9fd;font-style:italic">sum</span>(m)<span style="color:#ff79c6">/</span><span style="color:#bd93f9">10</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
+</span></span><span style="display:flex;"><span>    train_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;train.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>    pixel <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">785</span>]
+</span></span><span style="display:flex;"><span>    label <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">#plt.imshow(test.reshape(28,28), cmap=plt.cm.gray)</span>
+</span></span><span style="display:flex;"><span>    test_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;test.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>    pool <span style="color:#ff79c6">=</span> multiprocessing<span style="color:#ff79c6">.</span>Pool(processes <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">16</span>)
+</span></span><span style="display:flex;"><span>    r <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">16</span>):
+</span></span><span style="display:flex;"><span>        train <span style="color:#ff79c6">=</span> test_set<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">1750</span><span style="color:#ff79c6">*</span>i:<span style="color:#bd93f9">1750</span><span style="color:#ff79c6">*</span>(i<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>)<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>]
+</span></span><span style="display:flex;"><span>        r<span style="color:#ff79c6">.</span>append(pool<span style="color:#ff79c6">.</span>apply_async(processing,(train,)))
+</span></span><span style="display:flex;"><span>    pool<span style="color:#ff79c6">.</span>close()
+</span></span><span style="display:flex;"><span>    pool<span style="color:#ff79c6">.</span>join()
+</span></span><span style="display:flex;"><span>    result  <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> r:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> j <span style="color:#ff79c6">in</span> i<span style="color:#ff79c6">.</span>get():
+</span></span><span style="display:flex;"><span>            result<span style="color:#ff79c6">.</span>append(j)
+</span></span><span style="display:flex;"><span>    result<span style="color:#ff79c6">.</span>sort()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#39;result.csv&#39;</span>,<span style="color:#f1fa8c">&#34;w&#34;</span>) <span style="color:#ff79c6">as</span> f:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> result:
+</span></span><span style="display:flex;"><span>            f<span style="color:#ff79c6">.</span>writelines(<span style="color:#8be9fd;font-style:italic">str</span>(i[<span style="color:#bd93f9">0</span>]<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>)<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;,&#39;</span><span style="color:#ff79c6">+</span><span style="color:#8be9fd;font-style:italic">str</span>(<span style="color:#8be9fd;font-style:italic">round</span>(i[<span style="color:#bd93f9">1</span>]))[:<span style="color:#ff79c6">-</span><span style="color:#bd93f9">2</span>]<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#39;</span>)</span></span></code></pre></div>
 <p>为了能够快速地完成任务，我又去AWS上租了一个c4.4xlarge，配置是16 vCPU, 2.9 GHz, Intel Xeon E5-2666v3, 30 GiB 内存，在上面把任务分成16个进程进行计算。即便如此，整个任务还是花费了大概三四个小时的时间，但总算最后还是成功地跑出来了。</p>
 <p>将结果按照要求稍微整理一下就可以提交了，初次提交的分数是0.87314，预料之中。虽然准确率看起来还可以，但这个成绩在这项竞赛中的排名是1534／1625，非常的惨淡，不过这也说明改进的空间还很大。之后考虑用Pooling试试。</p>
 <p><img src="/article_imgs/first_submission.png" alt=""></p>
@@ -193,7 +192,7 @@ r <span style="color:#ff79c6">=</span> []
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/kaggle">Kaggle
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/kaggle">Kaggle
                     </a>
                 </li>
                 
@@ -244,11 +243,11 @@ r <span style="color:#ff79c6">=</span> []
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -264,8 +263,6 @@ r <span style="color:#ff79c6">=</span> []
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

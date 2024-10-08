@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,36 +66,35 @@
                 <time datetime='2017-08-08T00:00:00.000&#43;00:00' itemprop="datePublished">2017-08-08</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。</p>
 <p>其实主要涉及的几种日期格式就是以下几种：</p>
 <table>
-<thead>
-<tr>
-<th>类型</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>&lsquo;2017-08-08 15:56:31.111&rsquo;</td>
-</tr>
-<tr>
-<td>STRING(&lsquo;yyyyMMdd&rsquo;)</td>
-<td>&lsquo;20170808&rsquo;</td>
-</tr>
-<tr>
-<td>DATE(&lsquo;yyyy-MM-dd&rsquo;)</td>
-<td>&lsquo;2017-08-08&rsquo;</td>
-</tr>
-<tr>
-<td>INT</td>
-<td>20170808</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">类型</th>
+          <th style="text-align: left">示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">TIMESTAMP</td>
+          <td style="text-align: left">&lsquo;2017-08-08 15:56:31.111&rsquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">STRING(&lsquo;yyyyMMdd&rsquo;)</td>
+          <td style="text-align: left">&lsquo;20170808&rsquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DATE(&lsquo;yyyy-MM-dd&rsquo;)</td>
+          <td style="text-align: left">&lsquo;2017-08-08&rsquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">INT</td>
+          <td style="text-align: left">20170808</td>
+      </tr>
+  </tbody>
 </table>
 <p>其中主要会用到两个非常万能的函数，from_unixtime() 和 unix_timestamp()。</p>
 <ul>
@@ -165,11 +164,11 @@
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -185,8 +184,6 @@
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

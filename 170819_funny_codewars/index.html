@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://jrd.pub/css/style.css">
     
 
-    <meta name="generator" content="Hugo 0.91.2" />
+    <meta name="generator" content="Hugo 0.135.0">
 </head>
 
 
@@ -66,7 +66,6 @@
                 <time datetime='2017-08-19T00:00:00.000&#43;00:00' itemprop="datePublished">2017-08-19</time>
             </a>
             
-            
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p>
@@ -75,13 +74,13 @@
 <ul>
 <li>
 <p>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">digital_root</span>(n):
-    <span style="color:#ff79c6">return</span> n <span style="color:#ff79c6">if</span> n <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">else</span> digital_root(<span style="color:#8be9fd;font-style:italic">sum</span>(<span style="color:#8be9fd;font-style:italic">map</span>(<span style="color:#8be9fd;font-style:italic">int</span>,<span style="color:#8be9fd;font-style:italic">str</span>(n))))</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">digital_root</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> n <span style="color:#ff79c6">if</span> n <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">else</span> digital_root(<span style="color:#8be9fd;font-style:italic">sum</span>(<span style="color:#8be9fd;font-style:italic">map</span>(<span style="color:#8be9fd;font-style:italic">int</span>,<span style="color:#8be9fd;font-style:italic">str</span>(n))))</span></span></code></pre></div></p>
 </li>
 <li>
 <p>然后我往下翻，又看到了下面这个让我颇为震惊的解法：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">digital_root</span>(n):
-    <span style="color:#ff79c6">return</span> n<span style="color:#ff79c6">%</span><span style="color:#bd93f9">9</span> <span style="color:#ff79c6">or</span> n <span style="color:#ff79c6">and</span> <span style="color:#bd93f9">9</span> </code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">digital_root</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> n<span style="color:#ff79c6">%</span><span style="color:#bd93f9">9</span> <span style="color:#ff79c6">or</span> n <span style="color:#ff79c6">and</span> <span style="color:#bd93f9">9</span> </span></span></code></pre></div>
 我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：https://www.zhihu.com/question/30972581 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p>
 </li>
 <li>
@@ -102,37 +101,37 @@
 <p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
 <ul>
 <li>在代码框里最开始给的是：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint
-guess <span style="color:#ff79c6">=</span> </code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint
+</span></span><span style="display:flex;"><span>guess <span style="color:#ff79c6">=</span> </span></span></code></pre></div></li>
 </ul>
 <p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
 <ul>
 <li>
 <p>首先是：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint,seed
-seed(<span style="color:#bd93f9">1</span>)
-guess <span style="color:#ff79c6">=</span> randint(<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">100</span>)
-seed(<span style="color:#bd93f9">1</span>)</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint,seed
+</span></span><span style="display:flex;"><span>seed(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>guess <span style="color:#ff79c6">=</span> randint(<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">100</span>)
+</span></span><span style="display:flex;"><span>seed(<span style="color:#bd93f9">1</span>)</span></span></code></pre></div></p>
 <p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
 </li>
 <li>
 <p>然后是这个：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint
-<span style="color:#ff79c6">class</span> <span style="color:#50fa7b">CheatingNumber</span>:
-    <span style="color:#ff79c6">def</span> __eq__(self, x):
-        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">True</span>
-
-guess <span style="color:#ff79c6">=</span> CheatingNumber()</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">CheatingNumber</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> __eq__(self, x):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>guess <span style="color:#ff79c6">=</span> CheatingNumber()</span></span></code></pre></div>
 前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
 </li>
 <li>
 <p>当然，最让我折服的还是下面这个：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">randint</span>(a, b):
-    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">10</span>
-guess <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">randint</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>guess <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span></span></span></code></pre></div></p>
 <p>？？？？？？？？？</p>
 <p>与上面这种解法类似的还有：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">randint,guess <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">lambda</span> x,y:<span style="color:#bd93f9">666</span>,<span style="color:#bd93f9">666</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>randint,guess <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">lambda</span> x,y:<span style="color:#bd93f9">666</span>,<span style="color:#bd93f9">666</span></span></span></code></pre></div></p>
 <p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
 </li>
 </ul>
@@ -163,7 +162,7 @@ guess <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>
             <ul class="article-tag-list">
                 
                 <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://jrd.pub/tags/codewars">Codewars
+                    <a class="article-tag-list-link" href="https://jrd.pub//tags/codewars">Codewars
                     </a>
                 </li>
                 
@@ -214,11 +213,11 @@ guess <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>
 
 </article>
 
-        
     </section>
     <footer id="footer">
     <div class="outer">
         <blockquote><p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p></blockquote>
+        <div>This message is used to verify that this feed (feedId:62670689650080768) belongs to me (userId:43287882001820672). Join me in enjoying the next generation information browser https://follow.is.</div>
         <hr style="width:10vw;margin: 5vh auto;">
         <div id="footer-info" class="inner">
             &copy; 2024 DRAPORLAND
@@ -234,8 +233,6 @@ guess <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
         </div>
     </div>
-    
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWNGY49SK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

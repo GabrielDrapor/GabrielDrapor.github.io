@@ -4,80 +4,65 @@
     <title>Machine Learning on DRAPORLAND</title>
     <link>https://jrd.pub/categories/machine-learning/</link>
     <description>Recent content in Machine Learning on DRAPORLAND</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 11 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://jrd.pub/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kaggle 0 手写数字识别器的探索</title>
       <link>https://jrd.pub/170911_knn_digits_recognition/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/170911_knn_digits_recognition/</guid>
       <description>&lt;p&gt;最近打算开始玩Kaggle，作为入门选了一个入门级的任务&lt;a href=&#34;https://www.kaggle.com/c/digit-recognizer/&#34;&gt;Digit-Recognizer&lt;/a&gt;。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（&lt;strong&gt;9.13:现在要换成CNN来做了&lt;/strong&gt;）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 07</title>
       <link>https://jrd.pub/170601_ml_notes7/</link>
       <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/170601_ml_notes7/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 06</title>
       <link>https://jrd.pub/170406_ml_notes6/</link>
       <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/170406_ml_notes6/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 05</title>
       <link>https://jrd.pub/161202_ml_notes5/</link>
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161202_ml_notes5/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 04</title>
       <link>https://jrd.pub/161121_ml_notes4/</link>
       <pubDate>Mon, 21 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161121_ml_notes4/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 03</title>
       <link>https://jrd.pub/161018_ml_notes3/</link>
       <pubDate>Tue, 18 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161018_ml_notes3/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 02</title>
       <link>https://jrd.pub/161011_ml_notes2/</link>
       <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161011_ml_notes2/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Machine Learning Notes 01</title>
       <link>https://jrd.pub/161010_ml_notes1/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://jrd.pub/161010_ml_notes1/</guid>
       <description>&lt;p&gt; &lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
