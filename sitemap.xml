@@ -2,20 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jrd.pub/241031_time_is_money/</loc>
-    <lastmod>2024-10-31T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://jrd.pub/</loc>
+    <lastmod>2025-01-26T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://jrd.pub/now/</loc>
+    <lastmod>2025-01-26T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://jrd.pub/250125_2024/</loc>
+    <lastmod>2025-01-25T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://jrd.pub/tags/paths/</loc>
+    <lastmod>2025-01-25T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://jrd.pub/tags/</loc>
+    <lastmod>2025-01-25T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://jrd.pub/241031_time_is_money/</loc>
     <lastmod>2024-10-31T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://jrd.pub/tags/scribbles/</loc>
     <lastmod>2024-10-31T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://jrd.pub/tags/</loc>
-    <lastmod>2024-10-31T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://jrd.pub/now/</loc>
-    <lastmod>2024-10-08T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://jrd.pub/tags/reading/</loc>
     <lastmod>2024-04-12T00:00:00+08:00</lastmod>
@@ -24,9 +30,6 @@
     <lastmod>2024-04-12T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://jrd.pub/240101_2023/</loc>
-    <lastmod>2024-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://jrd.pub/tags/paths/</loc>
     <lastmod>2024-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://jrd.pub/231201_bullshit_job/</loc>
