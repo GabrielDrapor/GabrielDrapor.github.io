@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学习记录 on Jellyland</title>
+    <link>https://jrd.pub/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
+    <description>Recent content in 学习记录 on Jellyland</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2017</title>
+      <link>https://jrd.pub/180101_2017/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/180101_2017/</guid>
+      <description>&lt;p&gt;2017已经接近尾声，在此谨记2017的种种。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>来写个学期总结吧</title>
+      <link>https://jrd.pub/170701_term-summary/</link>
+      <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/170701_term-summary/</guid>
+      <description>&lt;p&gt;这个学期就这样结束了，简单来写个总结吧，顺便做点计划。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>我的2016</title>
+      <link>https://jrd.pub/170101_my2016/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/170101_my2016/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;  2016, 结束了。  &#xA;  在此谨记我在2016的所得。  &#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>7.16-8.10</title>
+      <link>https://jrd.pub/160810_re/</link>
+      <pubDate>Wed, 10 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/160810_re/</guid>
+      <description>&lt;p&gt;这段日子参加了学校SNC组织的暑期学校，所得不少，主要包含以下：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>6.26-7.13</title>
+      <link>https://jrd.pub/160713_re/</link>
+      <pubDate>Wed, 13 Jul 2016 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/160713_re/</guid>
+      <description>&lt;p&gt;小学期结束了，也来写个总结吧。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>5.17-6.24</title>
+      <link>https://jrd.pub/160624_re/</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/160624_re/</guid>
+      <description>&lt;p&gt; &lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>4.17-5.17</title>
+      <link>https://jrd.pub/160517_re/</link>
+      <pubDate>Tue, 17 May 2016 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/160517_re/</guid>
+      <description>&lt;p&gt; &lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

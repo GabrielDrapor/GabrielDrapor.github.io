@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>评论插件与SNS探索 | Jellyland</title>
+<meta name="title" content="评论插件与SNS探索" />
+<meta name="description" content="在多说关闭服务将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。" />
+<meta name="keywords" content="" />
+
+
+<meta property="og:url" content="https://jrd.pub/200403_comments_and_sns/">
+  <meta property="og:site_name" content="Jellyland">
+  <meta property="og:title" content="评论插件与SNS探索">
+  <meta property="og:description" content="在多说关闭服务将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2020-04-03T16:00:59+08:00">
+    <meta property="article:modified_time" content="2020-04-03T16:00:59+08:00">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="评论插件与SNS探索">
+  <meta name="twitter:description" content="在多说关闭服务将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。">
+
+
+
+
+  <meta itemprop="name" content="评论插件与SNS探索">
+  <meta itemprop="description" content="在多说关闭服务将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。">
+  <meta itemprop="datePublished" content="2020-04-03T16:00:59+08:00">
+  <meta itemprop="dateModified" content="2020-04-03T16:00:59+08:00">
+  <meta itemprop="wordCount" content="16">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #282a36;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+   
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    < !-- color: var(--code-color);
+    -->border-radius: 3px;
+  }
+
+  blockquote {
+     
+     
+     
+     
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Jellyland</h2>
+</a>
+<nav>
+<a href="/now">Now</a>
+
+<a href="/about">About</a>
+
+<a href="/index.xml">RSS</a>
+
+</nav>
+</header>
+  <main>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+">
+  <h1>评论插件与SNS探索</h1>
+  
+  <p>
+    <time datetime='2020-04-03'>
+      Apr 03, 2020
+    </time>
+  </p>
+  
+</div>
+<content>
+  <p>在<a href="/170507_notice/">多说关闭服务</a>将近三年之后，最近突然又想给自己的博客重新加上评论功能（虽然估计没什么实际作用……），以及最近对SNS也做了一些新的探索。</p>
+<h4 id="评论插件">评论插件</h4>
+<p>多说的替代品不算少，但在各个方面能比得上多说的寥寥无几。这些替代品大致可以分为几类：一类是搜狐畅言*、*网易云跟贴（也已关闭）之类的国内门户网站提供的服务，它们的评论插件样式中带有强烈的品牌特征，嵌入到个人博客中难免风格不匹配；一类是Disqus、HyperComments和Livere一类的外国第三方服务，他们优劣各有不同，通常的问题是从国内的网络访问服务可能会比较缓慢，甚至根本无法从国内访问到，再者是由于是外国提供的服务，在SNS登陆的支持上通常选择的也是Twitter和Facebook之类的国外SNS，有些优质的服务价格不菲（对于我博客的用量而言），有些样式需要自己花工夫修改和增补CSS；还有一类是基于GitHub Issues的评论服务，依托Github Issues做评论数据的存储和Github的账号服务，这类服务的优劣也很明显：需要Github账号，国内网络访问也会受到一定程度的影响。</p>
+<p>我其实一开始打算直接用LiveRe（即来必力）来着，LiveRe对国内的SNS也算是不错了，访问速度略慢但是等一会儿还是可以的。让我比较烦恼的问题是，LiveRe的样式，在我博客的底色上，颜色和样式都有点不太融洽，我尝试自己写CSS修改，但囿于个人的配色能力，改来改去还是觉得不满意。后来转念一想，会看我博客的人大概都是圈内的人，也大多都有GitHub账号，索性直接从基于Github Issues的评论服务中挑一个好看的好了，于是最后决定采用<a href="%5Bhttps://gitalk.github.io/%5D(https://gitalk.github.io/)">Gitalk</a>。配置方法不再赘述，非常简单方便。</p>
+<hr>
+<h4 id="sns">SNS</h4>
+<p>很长时间以来，我对SNS的态度摇摆不定，一方面，我对日常生活确实有表达欲，很想po一些内容，但另一方面，每个SNS都似乎不能让我畅快地抒发心情。在此之前的一小段时间里一直在用即刻的内测版Jellow，但逐渐地，中心化的SNS社区依然会让我感到不适。于是开始考虑自建SNS是否可行，以及是否有某种替代方案。新的方案希望最好是去中心化的，可自动化的，同时po内容也足够便利。经过一番探索。最终，我发现了<a href="%5Bhttps://joinmastodon.org/%5D(https://joinmastodon.org/)">Mastodon</a>。</p>
+<p>简单说，Mastodon就是可以自建的SNS，任何人都可以用开源的代码部署一套Mastodon，创建一个新的Mastodon instance，而且通常情况下，这些Mastodon宇宙（不同的instance）之间也是可以互联的。我发现自己一年前注册的<a href="https://o3o.ca/">https://o3o.ca/</a> 其实也是Mastodon的一个instance；</p>
+<p>App方面，我下了Mastodon官网推荐的Tusky。原想这类开源生态中的免费app大概只能提供可用的基本功能，不能过多奢望UI和产品设计。意外的是，Tusky的UI和Twitter的app非常像。更妙的是Tusky还支持在下拉菜单中添加Shortcut按钮，点击按钮可以直接进入Compose页，而Twitter都并没有做过类似（哪怕是桌面Widget）的支持。</p>
+<img src="/article_imgs/tusky.jpg" style="width: 50%;">
+<p>此外，利用Mastodon提供的API，还可以用IFTTT做Applet，把其他地方的动态也同步到Mastodon上。比如利用我的豆瓣RSS更新作为Trigger，用Webhooks把豆瓣广播转发到Mastodon上。</p>
+<img src="/article_imgs/ifttt_mastodon.jpg" style="width: 50%;">
+<p>不出意外的话，自建Mastodon应该就是我用SNS的终点了。</p>
+<p>不禁感叹：<strong>开源真好啊！</strong></p>
+</content>
+<p>
+  
+</p>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'gabrieldrapor.github.io',
+    owner: 'GabrielDrapor',
+    admin: ['GabrielDrapor'],
+    id: location.pathname,      
+    distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+
+
+  </main>
+
+  <footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"
+    integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js"
+    integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+<script>renderMathInElement(document.body);</script>
+
+
+<div class="outer">
+
+
+    <blockquote>
+        <p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p>
+    </blockquote>
+    <hr style="width:10vw;margin: 5vh auto; border: 0; border-width: 1px; border-style: inset;">
+
+    <div id="footer-info" class="inner">
+        &copy; 2025 Jellyland
+
+        <br />
+        Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/janraasch/hugo-bearblog"
+            target="_blank">hugo-bearblog</a>
+    </div>
+</div>
+
+</footer>
+</body>
+
+</html>

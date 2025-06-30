@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding  on Jellyland</title>
+    <link>https://jrd.pub/categories/coding-/</link>
+    <description>Recent content in Coding  on Jellyland</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 19 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/categories/coding-/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codewars上有趣的题</title>
+      <link>https://jrd.pub/170819_funny_codewars/</link>
+      <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/170819_funny_codewars/</guid>
+      <description>&lt;p&gt;最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

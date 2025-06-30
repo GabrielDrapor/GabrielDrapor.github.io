@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MongoDB查询优化 | Jellyland</title>
+<meta name="title" content="MongoDB查询优化" />
+<meta name="description" content="部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。" />
+<meta name="keywords" content="mongodb,Python," />
+
+
+<meta property="og:url" content="https://jrd.pub/181224_mongodb_query_optimization/">
+  <meta property="og:site_name" content="Jellyland">
+  <meta property="og:title" content="MongoDB查询优化">
+  <meta property="og:description" content="部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2018-12-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-12-24T00:00:00+00:00">
+    <meta property="article:tag" content="Mongodb">
+    <meta property="article:tag" content="Python">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MongoDB查询优化">
+  <meta name="twitter:description" content="部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。">
+
+
+
+
+  <meta itemprop="name" content="MongoDB查询优化">
+  <meta itemprop="description" content="部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。">
+  <meta itemprop="datePublished" content="2018-12-24T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2018-12-24T00:00:00+00:00">
+  <meta itemprop="wordCount" content="21">
+  <meta itemprop="keywords" content="Mongodb,Python">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #282a36;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+   
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    < !-- color: var(--code-color);
+    -->border-radius: 3px;
+  }
+
+  blockquote {
+     
+     
+     
+     
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Jellyland</h2>
+</a>
+<nav>
+<a href="/now">Now</a>
+
+<a href="/about">About</a>
+
+<a href="/index.xml">RSS</a>
+
+</nav>
+</header>
+  <main>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+">
+  <h1>MongoDB查询优化</h1>
+  
+  <p>
+    <time datetime='2018-12-24'>
+      Dec 24, 2018
+    </time>
+  </p>
+  
+</div>
+<content>
+  <p>部署服务时，如果底层数据采用的是MongoDB，为了提高响应速度，可以在查询上做一些优化。</p>
+<h4 id="一关于索引">一、关于索引</h4>
+<h5 id="1-建索引">1. 建索引</h5>
+<p>在Collection上建立索引是非常有必要的，特别是需要在海量的数据中根据某个键查出一条数据时，索引就显得更加重要了。</p>
+<p>举个栗子：</p>
+<p>有一张记录用户行为历史的Collection，数据量在百万级，查询同一条记录，</p>
+<ul>
+<li>无索引：</li>
+</ul>
+<p><img src="/article_imgs/without_index.png" alt=""></p>
+<ul>
+<li>有索引：</li>
+</ul>
+<p><img src="/article_imgs/with_index.png" alt=""></p>
+<p>可以明显地看出，有索引带来的速度提升是非常巨大的。</p>
+<h5 id="2-关于组合索引">2. 关于组合索引</h5>
+<p>当查询需要匹配多个键时，使用复合索引和建立“组合”索引（即将两个键拼成一个键）的查询速度差距不大。</p>
+<h4 id="二关于查询方式">二、关于查询方式</h4>
+<h5 id="1--将多次查询合并到一次中">1.  将多次查询合并到一次中</h5>
+<p>再举个栗子：
+现在需要以一个DataFrame中某一列的每个值进行匹配查询，此时，和用pd.Series.apply()方法挨个做查询相比，使用mongodb的条件操作符$in一起查询，然后再merge回原来的DataFrame会更快一些：
+<img src="/article_imgs/traverse_or_not.png" alt=""></p>
+<h5 id="2-find和find_one">2. find()和find_one()</h5>
+<p>在已知查询记录只有一条时，可以用find_one()替代find()来减少一次slice操作（但其实很快），但经过测试，发现find()和find_one()的速度并没有很大的差距；</p>
+</content>
+<p>
+  
+  <a href="https://jrd.pub/tags/mongodb/">#Mongodb</a>
+  
+  <a href="https://jrd.pub/tags/python/">#Python</a>
+  
+</p>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'gabrieldrapor.github.io',
+    owner: 'GabrielDrapor',
+    admin: ['GabrielDrapor'],
+    id: location.pathname,      
+    distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+
+
+  </main>
+
+  <footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"
+    integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js"
+    integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+<script>renderMathInElement(document.body);</script>
+
+
+<div class="outer">
+
+
+    <blockquote>
+        <p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p>
+    </blockquote>
+    <hr style="width:10vw;margin: 5vh auto; border: 0; border-width: 1px; border-style: inset;">
+
+    <div id="footer-info" class="inner">
+        &copy; 2025 Jellyland
+
+        <br />
+        Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/janraasch/hugo-bearblog"
+            target="_blank">hugo-bearblog</a>
+    </div>
+</div>
+
+</footer>
+</body>
+
+</html>

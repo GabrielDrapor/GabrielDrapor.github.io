@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Numpy on Jellyland</title>
+    <link>https://jrd.pub/categories/numpy/</link>
+    <description>Recent content in Numpy on Jellyland</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 11 May 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/categories/numpy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Numpy入门笔记</title>
+      <link>https://jrd.pub/170511-numpy/</link>
+      <pubDate>Thu, 11 May 2017 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/170511-numpy/</guid>
+      <description>&lt;p&gt;看书时顺手用Jupyter Notebook做的笔记。&#xA;并没有涵盖Numpy的全部用法，仅仅是入门部分的一些知识。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>IPython的一些笔记</title>
+      <link>https://jrd.pub/170502_ipython/</link>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/170502_ipython/</guid>
+      <description>&lt;p&gt;最近在看《利用Python进行数据分析》…&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

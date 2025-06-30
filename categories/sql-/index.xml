@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL  on Jellyland</title>
+    <link>https://jrd.pub/categories/sql-/</link>
+    <description>Recent content in SQL  on Jellyland</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 08 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jrd.pub/categories/sql-/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL的时间／日期无脑转换</title>
+      <link>https://jrd.pub/170808_sql_time_switch/</link>
+      <pubDate>Tue, 08 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/170808_sql_time_switch/</guid>
+      <description>&lt;p&gt;最近在公司写数据需求的时候，由于各个表里存的日期和时间格式不尽相同，所以时常会遇到各种格式的日期转换的问题，一度搞得我非常烦躁。后来终于忍无可忍，仔细地去研究了一波，发现其实并没有想象中的那么麻烦，在此做个总结。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Codewars上一道5 kyu的SQL题</title>
+      <link>https://jrd.pub/170721_a_sql_ex/</link>
+      <pubDate>Fri, 21 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://jrd.pub/170721_a_sql_ex/</guid>
+      <description>&lt;p&gt;具体思路和过程以后有时间再来整理（Flag）。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

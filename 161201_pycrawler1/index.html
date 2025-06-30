@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Crawler Note 1 | Jellyland</title>
+<meta name="title" content="Python Crawler Note 1" />
+<meta name="description" content=" " />
+<meta name="keywords" content="Python,Crawler," />
+
+
+<meta property="og:url" content="https://jrd.pub/161201_pycrawler1/">
+  <meta property="og:site_name" content="Jellyland">
+  <meta property="og:title" content="Python Crawler Note 1">
+  <meta property="og:description" content=" ">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2016-12-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2016-12-01T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Crawler">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Python Crawler Note 1">
+  <meta name="twitter:description" content=" ">
+
+
+
+
+  <meta itemprop="name" content="Python Crawler Note 1">
+  <meta itemprop="description" content=" ">
+  <meta itemprop="datePublished" content="2016-12-01T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2016-12-01T00:00:00+00:00">
+  <meta itemprop="wordCount" content="208">
+  <meta itemprop="keywords" content="Python,Crawler">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #282a36;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+   
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    < !-- color: var(--code-color);
+    -->border-radius: 3px;
+  }
+
+  blockquote {
+     
+     
+     
+     
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Jellyland</h2>
+</a>
+<nav>
+<a href="/now">Now</a>
+
+<a href="/about">About</a>
+
+<a href="/index.xml">RSS</a>
+
+</nav>
+</header>
+  <main>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+">
+  <h1>Python Crawler Note 1</h1>
+  
+  <p>
+    <time datetime='2016-12-01'>
+      Dec 01, 2016
+    </time>
+  </p>
+  
+</div>
+<content>
+  <p> </p>
+<p>First, let&rsquo;s start with a easy one:</p>
+<p><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> urllib2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span> response<span style="color:#ff79c6">.</span>read()</span></span></code></pre></div>
+The output should be like:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">html</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#ff79c6">head</span>&gt;
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">html</span>&gt;</span></span></code></pre></div>
+Also, codes below do the same thing,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> urllib2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>request<span style="color:#ff79c6">=</span>urllib2<span style="color:#ff79c6">.</span>Request(url)
+</span></span><span style="display:flex;"><span>response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(request)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span> response<span style="color:#ff79c6">.</span>read()</span></span></code></pre></div></p>
+<p>However, there are too many things in the output result, we want to filter out the content we want (for instance, every article title on the page), so we can add <strong>Regex</strong>(<a href="http://deerchao.net/tutorials/regex/regex.htm#mission">Tutorial I recommand</a>) here to help us:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> urllib2
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#ff79c6">=</span> urllib2<span style="color:#ff79c6">.</span>urlopen(<span style="color:#f1fa8c">&#39;http://drapor.me&#39;</span>)
+</span></span><span style="display:flex;"><span>content <span style="color:#ff79c6">=</span> response<span style="color:#ff79c6">.</span>read()              <span style="color:#6272a4">#First we store the content of whole webpage</span>
+</span></span><span style="display:flex;"><span>content <span style="color:#ff79c6">=</span> content<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#39;</span>,<span style="color:#f1fa8c">&#39;&#39;</span>)     <span style="color:#6272a4">#I use this to delete all the newline character to avoid some troubles</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pattern <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">r</span><span style="color:#f1fa8c">&#39;&lt;a class=&#34;article-title&#34; href=&#34;.*?&#34;&gt;.*?&lt;/a&gt;&#39;</span>   <span style="color:#6272a4">#Then your regex here, remember the &#39;r&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#ff79c6">=</span> re<span style="color:#ff79c6">.</span>findall(pattern, content) <span style="color:#6272a4">#Find all the result</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#34;index.html&#34;</span>, <span style="color:#f1fa8c">&#34;w&#34;</span>) <span style="color:#ff79c6">as</span> f:    <span style="color:#6272a4">#Write the result in a new HTML file</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> items <span style="color:#ff79c6">in</span> result:
+</span></span><span style="display:flex;"><span>        f<span style="color:#ff79c6">.</span>write(items<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;&lt;br&gt;&#39;</span>)</span></span></code></pre></div>
+<strong>Tip: Don&rsquo;t use something like &lsquo;+&rsquo; or &lsquo;*&rsquo; in your zero-width assertion or write your regex like &lsquo;(?&lt;![a-z]+)/d+&rsquo;, or you will get:</strong>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>error: look<span style="color:#ff79c6">-</span>behind requires fixed<span style="color:#ff79c6">-</span>width pattern<span style="color:#ff79c6">.</span></span></span></code></pre></div></p>
+<p>And open the new HTML file we create with browser, we got this:
+<img src="/article_imgs/pycrawler1_out.PNG" alt=""></p>
+<p><strong>Wow! How fantastic!!!</strong></p>
+<hr>
+<p><strong>And here&rsquo;s the first attempt of mine (also my first crawler):</strong></p>
+<blockquote>
+<p>URL: <a href="http://stat.drapor.me/">http://stat.drapor.me/</a>
+Code: <a href="https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague">https://github.com/GabrielDrapor/FiveManStat-Of-NBAleague</a></p>
+</blockquote>
+</content>
+<p>
+  
+  <a href="https://jrd.pub/tags/python/">#Python</a>
+  
+  <a href="https://jrd.pub/tags/crawler/">#Crawler</a>
+  
+</p>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'gabrieldrapor.github.io',
+    owner: 'GabrielDrapor',
+    admin: ['GabrielDrapor'],
+    id: location.pathname,      
+    distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+
+
+  </main>
+
+  <footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"
+    integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js"
+    integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+<script>renderMathInElement(document.body);</script>
+
+
+<div class="outer">
+
+
+    <blockquote>
+        <p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p>
+    </blockquote>
+    <hr style="width:10vw;margin: 5vh auto; border: 0; border-width: 1px; border-style: inset;">
+
+    <div id="footer-info" class="inner">
+        &copy; 2025 Jellyland
+
+        <br />
+        Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/janraasch/hugo-bearblog"
+            target="_blank">hugo-bearblog</a>
+    </div>
+</div>
+
+</footer>
+</body>
+
+</html>

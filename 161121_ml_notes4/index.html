@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Machine Learning Notes 04 | Jellyland</title>
+<meta name="title" content="Machine Learning Notes 04" />
+<meta name="description" content=" " />
+<meta name="keywords" content="Machine Learning," />
+
+
+<meta property="og:url" content="https://jrd.pub/161121_ml_notes4/">
+  <meta property="og:site_name" content="Jellyland">
+  <meta property="og:title" content="Machine Learning Notes 04">
+  <meta property="og:description" content=" ">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2016-11-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2016-11-21T00:00:00+00:00">
+    <meta property="article:tag" content="Machine Learning">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Machine Learning Notes 04">
+  <meta name="twitter:description" content=" ">
+
+
+
+
+  <meta itemprop="name" content="Machine Learning Notes 04">
+  <meta itemprop="description" content=" ">
+  <meta itemprop="datePublished" content="2016-11-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2016-11-21T00:00:00+00:00">
+  <meta itemprop="wordCount" content="250">
+  <meta itemprop="keywords" content="Machine Learning">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #282a36;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+   
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    < !-- color: var(--code-color);
+    -->border-radius: 3px;
+  }
+
+  blockquote {
+     
+     
+     
+     
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Jellyland</h2>
+</a>
+<nav>
+<a href="/now">Now</a>
+
+<a href="/about">About</a>
+
+<a href="/index.xml">RSS</a>
+
+</nav>
+</header>
+  <main>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+">
+  <h1>Machine Learning Notes 04</h1>
+  
+  <p>
+    <time datetime='2016-11-21'>
+      Nov 21, 2016
+    </time>
+  </p>
+  
+</div>
+<content>
+  <p> </p>
+<h2 id="classification">Classification</h2>
+<p>  For the binary classification, \(y\in {0,1 }\)(Also maybe, \(y\in { 0,1,2,3,\cdots}\), that&rsquo;s called a <strong>multiclass classification problem</strong>, we will discuss it later.).<br>
+  So, we use a model called <strong>Logisitic Regression</strong>, and we can see the hypothesis \(h_{\theta}(x)\) should value in the range of 0 and 1. This is to say, \(0\leq h_{\theta}(x)\leq 1\).</p>
+<hr>
+<h2 id="hypothesis-representation">Hypothesis Representation</h2>
+<ul>
+<li>
+<p><strong>Logistic Regression:</strong>
+    \(h_{\theta}(x)=g(\theta^{T}x)\), \(g(z)=\frac{1}{1+e^{-z}}\)</p>
+</li>
+<li>
+<p><strong>Interpretation of Hypothesis Output</strong>.
+The value of \(h_{\theta}(x)\) equals to the estimated probability that y=1 (on input x, parameterized by \(\theta\) ). This is to say,
+\(h_{\theta}(x)=P(y=2\mid x ; \theta)\)</p>
+</li>
+<li>
+<p><strong>Decision Boundary</strong><br>
+The decision boundaries are like this:</p>
+</li>
+</ul>
+<p><img src="/article_imgs/decision_boundary.png" alt=""></p>
+<p>  <strong>Emphasis: Decision boundary is the property of hypothesis function, but not the property of training set and its parameters.</strong></p>
+<hr>
+<h2 id="logistic-regression---how-to-fit-the-parameters-of-theta"><strong>Logistic Regression</strong>&mdash;How to fit the parameters of theta</h2>
+<ul>
+<li>
+<p><strong>Cost Function of Logistic Regression:</strong><br>
+\(Cost(h_{\theta}, y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))\)</p>
+</li>
+<li>
+<p><strong>Gradient Descent:</strong><br>
+To minimize \(J_{\theta}\)</p>
+</li>
+</ul>
+<p>   Repeat{<br>
+      \(\theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{n}(h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}\)<br>
+   }</p>
+<p>  <strong>And we can see that this algortithm looks identical to linear regression!<br>
+  But actually, the hypothesis of them are different.</strong><br>
+ Linear Regression: \(h_{\theta}(x)=\theta^{T}x\)<br>
+ Logistic Regression: \(h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}x}}\)</p>
+<p>Besides,</p>
+<blockquote>
+<p>&ldquo;&hellip;use a vector rise implementation, so that a vector rise implementation can update all of these until parameters all in one fell swoop.&rdquo;</p>
+</blockquote>
+<hr>
+<h2 id="advanced-optimization">Advanced Optimization</h2>
+<blockquote>
+<ul>
+<li>Gradient Descent</li>
+<li>Conjngate Gradient</li>
+<li>BFGS</li>
+<li>L-BFGS</li>
+<li>……</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p><strong>Adcantages:</strong>
+No need to manually pick \(\alpha\) ;
+Often faster than gradient descent;</p>
+</li>
+<li>
+<p><strong>Disadvantages:</strong>
+More complex;</p>
+</li>
+</ul>
+<hr>
+<h2 id="multi-class-classification-one-vs-all">Multi-class classification: One-vs-all</h2>
+<ul>
+<li>For example, to slove the three-class problem, we can <em>&ldquo;turn this into three seperate two-class classification problems.&rdquo;</em></li>
+<li>On a new input \(x\), to make a prediction, pick the class i that maximizes.</li>
+</ul>
+</content>
+<p>
+  
+  <a href="https://jrd.pub/tags/machine-learning/">#Machine Learning</a>
+  
+</p>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'gabrieldrapor.github.io',
+    owner: 'GabrielDrapor',
+    admin: ['GabrielDrapor'],
+    id: location.pathname,      
+    distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+
+
+  </main>
+
+  <footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"
+    integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js"
+    integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+<script>renderMathInElement(document.body);</script>
+
+
+<div class="outer">
+
+
+    <blockquote>
+        <p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p>
+    </blockquote>
+    <hr style="width:10vw;margin: 5vh auto; border: 0; border-width: 1px; border-style: inset;">
+
+    <div id="footer-info" class="inner">
+        &copy; 2025 Jellyland
+
+        <br />
+        Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/janraasch/hugo-bearblog"
+            target="_blank">hugo-bearblog</a>
+    </div>
+</div>
+
+</footer>
+</body>
+
+</html>

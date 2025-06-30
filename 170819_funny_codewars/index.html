@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Codewars上有趣的题 | Jellyland</title>
+<meta name="title" content="Codewars上有趣的题" />
+<meta name="description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。" />
+<meta name="keywords" content="Codewars," />
+
+
+<meta property="og:url" content="https://jrd.pub/170819_funny_codewars/">
+  <meta property="og:site_name" content="Jellyland">
+  <meta property="og:title" content="Codewars上有趣的题">
+  <meta property="og:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2017-08-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-08-19T00:00:00+00:00">
+    <meta property="article:tag" content="Codewars">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Codewars上有趣的题">
+  <meta name="twitter:description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。">
+
+
+
+
+  <meta itemprop="name" content="Codewars上有趣的题">
+  <meta itemprop="description" content="最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。">
+  <meta itemprop="datePublished" content="2017-08-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2017-08-19T00:00:00+00:00">
+  <meta itemprop="wordCount" content="143">
+  <meta itemprop="keywords" content="Codewars">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #282a36;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+   
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    < !-- color: var(--code-color);
+    -->border-radius: 3px;
+  }
+
+  blockquote {
+     
+     
+     
+     
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Jellyland</h2>
+</a>
+<nav>
+<a href="/now">Now</a>
+
+<a href="/about">About</a>
+
+<a href="/index.xml">RSS</a>
+
+</nav>
+</header>
+  <main>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+">
+  <h1>Codewars上有趣的题</h1>
+  
+  <p>
+    <time datetime='2017-08-19'>
+      Aug 19, 2017
+    </time>
+  </p>
+  
+</div>
+<content>
+  <p>最近一段时间常在Codewars上刷题，也因而发现了几道有意思的题。</p>
+<h4 id="sum-of-digits--digital-roothttpswwwcodewarscomkatasum-of-digits-slash-digital-root"><a href="https://www.codewars.com/kata/sum-of-digits-slash-digital-root">Sum of Digits / Digital Root</a></h4>
+<p>题目并不难，就是求数根（“數根是將一正整數的各個位數相加（即橫向相加），若加完後的值大於10的話，則繼續將各位數進行橫向相加直到其值小於十為止，或是，將一數字重複做數字和，直到其值小於十為止，則所得的值為該數的數根。” ——WIkipedia）。按照定义来做的话，也其实没什么难的，用python的话，无非就是分拆成字符，再转回数字然后相加，如此往复直到位数为1。然而在做完之后，我在Solutions里发现了这样两个答案：</p>
+<ul>
+<li>
+<p>首先是下面这个，巧妙地用了一下递归和map函数，使得代码短了很多；
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">digital_root</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> n <span style="color:#ff79c6">if</span> n <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">else</span> digital_root(<span style="color:#8be9fd;font-style:italic">sum</span>(<span style="color:#8be9fd;font-style:italic">map</span>(<span style="color:#8be9fd;font-style:italic">int</span>,<span style="color:#8be9fd;font-style:italic">str</span>(n))))</span></span></code></pre></div></p>
+</li>
+<li>
+<p>然后我往下翻，又看到了下面这个让我颇为震惊的解法：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">digital_root</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> n<span style="color:#ff79c6">%</span><span style="color:#bd93f9">9</span> <span style="color:#ff79c6">or</span> n <span style="color:#ff79c6">and</span> <span style="color:#bd93f9">9</span> </span></span></code></pre></div>
+我算了几个大于9的数，发现它们对9取余的结果确实是它们的数根，当时感觉这个结论很神奇，于是Google了一下之后，在知乎找到了相应的证明：https://www.zhihu.com/question/30972581 。而且这段代码中or和and的用法我也是头一次见，经过探索之后发现or和and在对数字使用的时候，大致遵循的规律是：</p>
+</li>
+<li>
+<p>a and b，ab都非零时，结果为b；ab其中一个为0时，结果为0；</p>
+</li>
+<li>
+<p>a or b，ab都非零时，结果为a；ab其中一个为0时，结果为另一个非零的数；</p>
+<p>并且，0 and 0和0 or 0都等于0。另外就是and的运算级要高于or，所以return后面的执行顺序就是先and后or：</p>
+</li>
+</ul>
+<blockquote>
+<p>n != 0且n != 9时，n and 9 == 9，n % 9 or 9 == n % 9；</p>
+<p>n == 0时，n and 9 == 0，n % 9 or 0 == 0；</p>
+<p>n == 9时，n and 9 == 9，n%9 or 9 == 9；</p>
+</blockquote>
+<hr>
+<h4 id="dont-rely-on-luckhttpswwwcodewarscomkatadont-rely-on-luck"><a href="https://www.codewars.com/kata/dont-rely-on-luck">Don&rsquo;t rely on luck.</a></h4>
+<p>这题乍一看，感觉毫无技术含量可言，纯粹是看运气，他用randint从1到100随机抽一个数出来，让你也猜一个数，两数相等即可通过。</p>
+<ul>
+<li>在代码框里最开始给的是：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint
+</span></span><span style="display:flex;"><span>guess <span style="color:#ff79c6">=</span> </span></span></code></pre></div></li>
+</ul>
+<p>我想了一会儿，好像也没什么别的办法，就在guess后面填了个42，然后一遍遍地提交，在提交了许多许多许多次之后，终于对面random出了42，于是过了。过了之后当然要看看别人是怎么解的，在看了几个答案之后，我笑了很久……</p>
+<ul>
+<li>
+<p>首先是：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint,seed
+</span></span><span style="display:flex;"><span>seed(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>guess <span style="color:#ff79c6">=</span> randint(<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">100</span>)
+</span></span><span style="display:flex;"><span>seed(<span style="color:#bd93f9">1</span>)</span></span></code></pre></div></p>
+<p>强行改seed让randint()输出一样的数，可以，很厉害。</p>
+</li>
+<li>
+<p>然后是这个：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> random <span style="color:#ff79c6">import</span> randint
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">CheatingNumber</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> __eq__(self, x):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>guess <span style="color:#ff79c6">=</span> CheatingNumber()</span></span></code></pre></div>
+前面那个强行改seed，你强行让 ‘ = ’ 运算符返回True？？？？我服了。</p>
+</li>
+<li>
+<p>当然，最让我折服的还是下面这个：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">randint</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>guess <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span></span></span></code></pre></div></p>
+<p>？？？？？？？？？</p>
+<p>与上面这种解法类似的还有：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>randint,guess <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">lambda</span> x,y:<span style="color:#bd93f9">666</span>,<span style="color:#bd93f9">666</span></span></span></code></pre></div></p>
+<p><strong>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</strong></p>
+</li>
+</ul>
+</content>
+<p>
+  
+  <a href="https://jrd.pub/tags/codewars/">#Codewars</a>
+  
+</p>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'gabrieldrapor.github.io',
+    owner: 'GabrielDrapor',
+    admin: ['GabrielDrapor'],
+    id: location.pathname,      
+    distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+
+
+  </main>
+
+  <footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"
+    integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js"
+    integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+<script>renderMathInElement(document.body);</script>
+
+
+<div class="outer">
+
+
+    <blockquote>
+        <p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p>
+    </blockquote>
+    <hr style="width:10vw;margin: 5vh auto; border: 0; border-width: 1px; border-style: inset;">
+
+    <div id="footer-info" class="inner">
+        &copy; 2025 Jellyland
+
+        <br />
+        Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/janraasch/hugo-bearblog"
+            target="_blank">hugo-bearblog</a>
+    </div>
+</div>
+
+</footer>
+</body>
+
+</html>

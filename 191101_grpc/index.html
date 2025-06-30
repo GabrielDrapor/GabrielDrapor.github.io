@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>gRPC基本使用 | Jellyland</title>
+<meta name="title" content="gRPC基本使用" />
+<meta name="description" content="以Python做Server，Golang做Client为例。" />
+<meta name="keywords" content="gRPC," />
+
+
+<meta property="og:url" content="https://jrd.pub/191101_grpc/">
+  <meta property="og:site_name" content="Jellyland">
+  <meta property="og:title" content="gRPC基本使用">
+  <meta property="og:description" content="以Python做Server，Golang做Client为例。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-11-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-11-01T00:00:00+00:00">
+    <meta property="article:tag" content="GRPC">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="gRPC基本使用">
+  <meta name="twitter:description" content="以Python做Server，Golang做Client为例。">
+
+
+
+
+  <meta itemprop="name" content="gRPC基本使用">
+  <meta itemprop="description" content="以Python做Server，Golang做Client为例。">
+  <meta itemprop="datePublished" content="2019-11-01T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2019-11-01T00:00:00+00:00">
+  <meta itemprop="wordCount" content="194">
+  <meta itemprop="keywords" content="GRPC">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #282a36;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+   
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    < !-- color: var(--code-color);
+    -->border-radius: 3px;
+  }
+
+  blockquote {
+     
+     
+     
+     
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Jellyland</h2>
+</a>
+<nav>
+<a href="/now">Now</a>
+
+<a href="/about">About</a>
+
+<a href="/index.xml">RSS</a>
+
+</nav>
+</header>
+  <main>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+">
+  <h1>gRPC基本使用</h1>
+  
+  <p>
+    <time datetime='2019-11-01'>
+      Nov 01, 2019
+    </time>
+  </p>
+  
+</div>
+<content>
+  <p>以Python做Server，Golang做Client为例。</p>
+<h4 id="proto">.proto:</h4>
+<pre tabindex="0"><code>syntax = &#34;proto3&#34;
+
+package PACKAGE_NAME
+
+message Message1 {
+  int32 data_1 = 1;
+  string data_2 = 2;
+  ...//More about data type, read https://developers.google.com/protocol-buffers/docs/proto3#scalar
+}
+
+message Message2 {
+  int32 data_3 = 1;
+  repeated string data_4 = 2; //Use &#39;repeated [DATA_TYPE]&#39; to sub array;
+}
+
+service Service1 {
+    rpc SomeFunc(Message1) returns (Message2) {}
+}
+</code></pre><h4 id="python-as-server">Python as server:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip install grpcio-tools
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>python3 -m grpc_tools.protoc -I PACKAGE_NAME --python_out<span style="color:#ff79c6">=[</span>SOME_DIR<span style="color:#ff79c6">]</span> --grpc_python_out<span style="color:#ff79c6">=[</span>SOME_DIR<span style="color:#ff79c6">]</span> ./XXX.proto
+</span></span></code></pre></div><p>对应目录下会生成名为*_pb2.py和*_pb2_grpc.py的两个py文件。</p>
+<p>server.py</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> grpc
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> multiprocessing <span style="color:#ff79c6">import</span> Pool
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> concurrent <span style="color:#ff79c6">import</span> futures
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> XXX_pb2_grpc<span style="color:#ff79c6">,</span> XXX_pb2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Service1Servicer</span>(XXX_pb2_grpc<span style="color:#ff79c6">.</span>Service1Servicer):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">SomeFunc</span>(self, request, context):
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># 可通过__getattr__从request取出proto中Message1定义的各项</span>
+</span></span><span style="display:flex;"><span>        response <span style="color:#ff79c6">=</span> XXX_pb2<span style="color:#ff79c6">.</span>Message2()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        reponse<span style="color:#ff79c6">.</span>data_3 <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>
+</span></span><span style="display:flex;"><span>        response<span style="color:#ff79c6">.</span>data_4<span style="color:#ff79c6">.</span>append(<span style="color:#ff79c6">...</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> response
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">serve</span>():
+</span></span><span style="display:flex;"><span>    server <span style="color:#ff79c6">=</span> grpc<span style="color:#ff79c6">.</span>server(futures<span style="color:#ff79c6">.</span>ThreadPoolExecutor(max_workers<span style="color:#ff79c6">=</span><span style="color:#bd93f9">10</span>))
+</span></span><span style="display:flex;"><span>    XXX_pb2_grpc<span style="color:#ff79c6">.</span>add_Sevice1Servicer_to_server(Service1Servicer(), server)
+</span></span><span style="display:flex;"><span>    server<span style="color:#ff79c6">.</span>add_insecure_port(<span style="color:#f1fa8c">&#39;[::]:50051&#39;</span>)
+</span></span><span style="display:flex;"><span>    server<span style="color:#ff79c6">.</span>start()
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;grpc server has already started.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>            time<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">9999999</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> KeyboardInterrupt:
+</span></span><span style="display:flex;"><span>        server<span style="color:#ff79c6">.</span>stop(<span style="color:#bd93f9">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    serve()
+</span></span></code></pre></div><h4 id="golang-as-client">Golang as client:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go get -u github.com/golang/protobuf/protoc-gen-go
+</span></span><span style="display:flex;"><span>protoc --go_out<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">plugins</span><span style="color:#ff79c6">=</span>grpc:. ./XXX.proto
+</span></span></code></pre></div><p>目录下会生成一个xxx.pb.go</p>
+<p>client.go</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#ff79c6">package</span> main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> (
+</span></span><span style="display:flex;"><span>    xxx <span style="color:#6272a4">// 刚生成的go文件
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#f1fa8c">&#34;google.golang.org/grpc&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;context&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    conn, err <span style="color:#ff79c6">:=</span> grpc.<span style="color:#50fa7b">Dial</span>(<span style="color:#f1fa8c">&#34;:50051&#34;</span>, grpc.<span style="color:#50fa7b">WithInsecure</span>())
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+</span></span><span style="display:flex;"><span>        fmt.<span style="color:#50fa7b">Println</span>(err)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    client <span style="color:#ff79c6">:=</span> xxx.<span style="color:#50fa7b">NewService1Client</span>(conn)
+</span></span><span style="display:flex;"><span>    ctx, cancel <span style="color:#ff79c6">:=</span> context.<span style="color:#50fa7b">WithTimeout</span>(context.<span style="color:#50fa7b">Background</span>(), <span style="color:#bd93f9">10</span><span style="color:#ff79c6">*</span>time.Second)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">defer</span> <span style="color:#50fa7b">cancel</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    response, err <span style="color:#ff79c6">:=</span> client.<span style="color:#50fa7b">SomeFunc</span>(ctx, <span style="color:#ff79c6">&amp;</span>xxx.Message1{data_1: xxx, data_2:xxx, <span style="color:#ff79c6">...</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+</span></span><span style="display:flex;"><span>        fmt.<span style="color:#50fa7b">Println</span>(err)
+</span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>        fmt.<span style="color:#50fa7b">Println</span>(response.Message2)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</content>
+<p>
+  
+  <a href="https://jrd.pub/tags/grpc/">#GRPC</a>
+  
+</p>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'gabrieldrapor.github.io',
+    owner: 'GabrielDrapor',
+    admin: ['GabrielDrapor'],
+    id: location.pathname,      
+    distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+
+
+  </main>
+
+  <footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"
+    integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js"
+    integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+<script>renderMathInElement(document.body);</script>
+
+
+<div class="outer">
+
+
+    <blockquote>
+        <p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p>
+    </blockquote>
+    <hr style="width:10vw;margin: 5vh auto; border: 0; border-width: 1px; border-style: inset;">
+
+    <div id="footer-info" class="inner">
+        &copy; 2025 Jellyland
+
+        <br />
+        Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/janraasch/hugo-bearblog"
+            target="_blank">hugo-bearblog</a>
+    </div>
+</div>
+
+</footer>
+</body>
+
+</html>

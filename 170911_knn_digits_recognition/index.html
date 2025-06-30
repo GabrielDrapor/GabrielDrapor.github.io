@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kaggle 0 手写数字识别器的探索 | Jellyland</title>
+<meta name="title" content="Kaggle 0 手写数字识别器的探索" />
+<meta name="description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（9.13:现在要换成CNN来做了）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。" />
+<meta name="keywords" content="Kaggle," />
+
+
+<meta property="og:url" content="https://jrd.pub/170911_knn_digits_recognition/">
+  <meta property="og:site_name" content="Jellyland">
+  <meta property="og:title" content="Kaggle 0 手写数字识别器的探索">
+  <meta property="og:description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（9.13:现在要换成CNN来做了）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2017-09-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-09-11T00:00:00+00:00">
+    <meta property="article:tag" content="Kaggle">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kaggle 0 手写数字识别器的探索">
+  <meta name="twitter:description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（9.13:现在要换成CNN来做了）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
+
+
+
+
+  <meta itemprop="name" content="Kaggle 0 手写数字识别器的探索">
+  <meta itemprop="description" content="最近打算开始玩Kaggle，作为入门选了一个入门级的任务Digit-Recognizer。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（9.13:现在要换成CNN来做了）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。">
+  <meta itemprop="datePublished" content="2017-09-11T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2017-09-11T00:00:00+00:00">
+  <meta itemprop="wordCount" content="231">
+  <meta itemprop="keywords" content="Kaggle">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #282a36;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+   
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    < !-- color: var(--code-color);
+    -->border-radius: 3px;
+  }
+
+  blockquote {
+     
+     
+     
+     
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Jellyland</h2>
+</a>
+<nav>
+<a href="/now">Now</a>
+
+<a href="/about">About</a>
+
+<a href="/index.xml">RSS</a>
+
+</nav>
+</header>
+  <main>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+">
+  <h1>Kaggle 0 手写数字识别器的探索</h1>
+  
+  <p>
+    <time datetime='2017-09-11'>
+      Sep 11, 2017
+    </time>
+  </p>
+  
+</div>
+<content>
+  <p>最近打算开始玩Kaggle，作为入门选了一个入门级的任务<a href="https://www.kaggle.com/c/digit-recognizer/">Digit-Recognizer</a>。正好在翻《机器学习实战》的时候看到可以用KNN做图像识别，于是就打算用KNN来做一个手写数字的识别器（<strong>9.13:现在要换成CNN来做了</strong>）。这也算是我第一次应用机器学习来解决比较实际的问题。此篇作为一个类似于项目日志的东西，在这个项目完成之前，应该会一直更新。</p>
+<h3 id="911">9.11</h3>
+<p>没看书自己实现了一下KNN，算法本身也没什么复杂的，但是实现起来还是费了一番不小的功夫，动手能力还需增强啊…</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">@author: drapor
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> numpy <span style="color:#ff79c6">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
+</span></span><span style="display:flex;"><span>train_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;train.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>pixel <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">785</span>]
+</span></span><span style="display:flex;"><span>label <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">0</span>]
+</span></span><span style="display:flex;"><span>test_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;test.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>r <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(test_set)):
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000&#39;</span> <span style="color:#ff79c6">%</span> (t<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>))
+</span></span><span style="display:flex;"><span>    a <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(test_set<span style="color:#ff79c6">.</span>loc[t])
+</span></span><span style="display:flex;"><span>    d <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(train_set)):
+</span></span><span style="display:flex;"><span>        b <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(pixel<span style="color:#ff79c6">.</span>loc[i])
+</span></span><span style="display:flex;"><span>        d<span style="color:#ff79c6">.</span>append(np<span style="color:#ff79c6">.</span>dot((a<span style="color:#ff79c6">-</span>b)<span style="color:#ff79c6">.</span>T,(a<span style="color:#ff79c6">-</span>b)))
+</span></span><span style="display:flex;"><span>    k <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">zip</span>(d,<span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(d))))
+</span></span><span style="display:flex;"><span>    k<span style="color:#ff79c6">.</span>sort()
+</span></span><span style="display:flex;"><span>    m <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> k[:<span style="color:#bd93f9">10</span>]:
+</span></span><span style="display:flex;"><span>        m<span style="color:#ff79c6">.</span>append(label<span style="color:#ff79c6">.</span>loc[i[<span style="color:#bd93f9">1</span>]])
+</span></span><span style="display:flex;"><span>    r<span style="color:#ff79c6">.</span>append(<span style="color:#8be9fd;font-style:italic">sum</span>(m)<span style="color:#ff79c6">/</span><span style="color:#bd93f9">10</span>)</span></span></code></pre></div>
+<p>跑了几个试了试，K选了10，有一些误差，不过效果看起来还可以。但是全量数据一起跑的时候就发现，完成任务需要的时间非常久，大概至少需要三十个小时。这当然是不能接受的，得想办法改进才行。目前初步的打算是用多进程，应该可以明显地缩短完成任务所需的时间。</p>
+<hr>
+<h3 id="912">9.12</h3>
+<p>昨天请教了公司的组长之后得知，还可以用Deep Learning中的Pooling来降低计算的复杂度，但还是想先上多线程看看。经过一个晚上和半个上午的研究探索，终于成功地让任务以多进程的方式跑起来了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Description:
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">kaggle 0 
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">@author: drapor
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> pandas <span style="color:#ff79c6">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> numpy <span style="color:#ff79c6">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> multiprocessing
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#import matplotlib.pyplot as plt</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">processing</span>(test_set):
+</span></span><span style="display:flex;"><span>    s <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Running... pid:&#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">str</span>(os<span style="color:#ff79c6">.</span>getpid()))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> idx, df <span style="color:#ff79c6">in</span> test_set<span style="color:#ff79c6">.</span>iterrows():
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">/28000, pid </span><span style="color:#f1fa8c">%s</span><span style="color:#f1fa8c">&#39;</span> <span style="color:#ff79c6">%</span> (idx, os<span style="color:#ff79c6">.</span>getpid()))
+</span></span><span style="display:flex;"><span>        a <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(df)
+</span></span><span style="display:flex;"><span>        d <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">42000</span>):
+</span></span><span style="display:flex;"><span>            b <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>array(pixel<span style="color:#ff79c6">.</span>iloc[i])
+</span></span><span style="display:flex;"><span>            d<span style="color:#ff79c6">.</span>append(np<span style="color:#ff79c6">.</span>dot((a<span style="color:#ff79c6">-</span>b)<span style="color:#ff79c6">.</span>T,(a<span style="color:#ff79c6">-</span>b)))
+</span></span><span style="display:flex;"><span>        k <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">zip</span>(d,<span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(d))))
+</span></span><span style="display:flex;"><span>        k<span style="color:#ff79c6">.</span>sort()
+</span></span><span style="display:flex;"><span>        m <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> k[:<span style="color:#bd93f9">10</span>]:
+</span></span><span style="display:flex;"><span>            m<span style="color:#ff79c6">.</span>append(label<span style="color:#ff79c6">.</span>loc[i[<span style="color:#bd93f9">1</span>]])
+</span></span><span style="display:flex;"><span>        s<span style="color:#ff79c6">.</span>append([idx,<span style="color:#8be9fd;font-style:italic">sum</span>(m)<span style="color:#ff79c6">/</span><span style="color:#bd93f9">10</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;Importing the data...&#39;</span>)
+</span></span><span style="display:flex;"><span>    train_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;train.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>    pixel <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">785</span>]
+</span></span><span style="display:flex;"><span>    label <span style="color:#ff79c6">=</span> train_set<span style="color:#ff79c6">.</span>iloc[:,<span style="color:#bd93f9">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">#plt.imshow(test.reshape(28,28), cmap=plt.cm.gray)</span>
+</span></span><span style="display:flex;"><span>    test_set <span style="color:#ff79c6">=</span> pd<span style="color:#ff79c6">.</span>read_csv(<span style="color:#f1fa8c">&#39;test.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>    pool <span style="color:#ff79c6">=</span> multiprocessing<span style="color:#ff79c6">.</span>Pool(processes <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">16</span>)
+</span></span><span style="display:flex;"><span>    r <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">16</span>):
+</span></span><span style="display:flex;"><span>        train <span style="color:#ff79c6">=</span> test_set<span style="color:#ff79c6">.</span>loc[<span style="color:#bd93f9">1750</span><span style="color:#ff79c6">*</span>i:<span style="color:#bd93f9">1750</span><span style="color:#ff79c6">*</span>(i<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>)<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>]
+</span></span><span style="display:flex;"><span>        r<span style="color:#ff79c6">.</span>append(pool<span style="color:#ff79c6">.</span>apply_async(processing,(train,)))
+</span></span><span style="display:flex;"><span>    pool<span style="color:#ff79c6">.</span>close()
+</span></span><span style="display:flex;"><span>    pool<span style="color:#ff79c6">.</span>join()
+</span></span><span style="display:flex;"><span>    result  <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> r:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> j <span style="color:#ff79c6">in</span> i<span style="color:#ff79c6">.</span>get():
+</span></span><span style="display:flex;"><span>            result<span style="color:#ff79c6">.</span>append(j)
+</span></span><span style="display:flex;"><span>    result<span style="color:#ff79c6">.</span>sort()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#39;result.csv&#39;</span>,<span style="color:#f1fa8c">&#34;w&#34;</span>) <span style="color:#ff79c6">as</span> f:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> result:
+</span></span><span style="display:flex;"><span>            f<span style="color:#ff79c6">.</span>writelines(<span style="color:#8be9fd;font-style:italic">str</span>(i[<span style="color:#bd93f9">0</span>]<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>)<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;,&#39;</span><span style="color:#ff79c6">+</span><span style="color:#8be9fd;font-style:italic">str</span>(<span style="color:#8be9fd;font-style:italic">round</span>(i[<span style="color:#bd93f9">1</span>]))[:<span style="color:#ff79c6">-</span><span style="color:#bd93f9">2</span>]<span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#39;</span>)</span></span></code></pre></div>
+<p>为了能够快速地完成任务，我又去AWS上租了一个c4.4xlarge，配置是16 vCPU, 2.9 GHz, Intel Xeon E5-2666v3, 30 GiB 内存，在上面把任务分成16个进程进行计算。即便如此，整个任务还是花费了大概三四个小时的时间，但总算最后还是成功地跑出来了。</p>
+<p>将结果按照要求稍微整理一下就可以提交了，初次提交的分数是0.87314，预料之中。虽然准确率看起来还可以，但这个成绩在这项竞赛中的排名是1534／1625，非常的惨淡，不过这也说明改进的空间还很大。之后考虑用Pooling试试。</p>
+<p><img src="/article_imgs/first_submission.png" alt=""></p>
+<hr>
+<h3 id="913">9.13</h3>
+<p>今天发现其实Pooling并不是一种可以提高精度的办法，只是一种可以降低计算复杂度的方法，如果原算法的精度本身就不高的话，Pooliing之后同样也不高，组长建议我改用CNN。我想了一下，就算调整K的值重新跑一次可能不会使准确率有明显的提升，Google了一下发现大家用KNN做手写识别，精度可能也就追求到0.8。嗯……这两天探索一下Tensorflow+CNN（之前只是知道，并没有深入了解过），尝试用这种方式解决这个问题。</p>
+</content>
+<p>
+  
+  <a href="https://jrd.pub/tags/kaggle/">#Kaggle</a>
+  
+</p>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'gabrieldrapor.github.io',
+    owner: 'GabrielDrapor',
+    admin: ['GabrielDrapor'],
+    id: location.pathname,      
+    distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+
+
+  </main>
+
+  <footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"
+    integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js"
+    integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+<script>renderMathInElement(document.body);</script>
+
+
+<div class="outer">
+
+
+    <blockquote>
+        <p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p>
+    </blockquote>
+    <hr style="width:10vw;margin: 5vh auto; border: 0; border-width: 1px; border-style: inset;">
+
+    <div id="footer-info" class="inner">
+        &copy; 2025 Jellyland
+
+        <br />
+        Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/janraasch/hugo-bearblog"
+            target="_blank">hugo-bearblog</a>
+    </div>
+</div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>用Flask实现一个简单的带POST的api | Jellyland</title>
+<meta name="title" content="用Flask实现一个简单的带POST的api" />
+<meta name="description" content="小记如何用Flask实现一个带POST的api。" />
+<meta name="keywords" content="Python,Flask," />
+
+
+<meta property="og:url" content="https://jrd.pub/180122_flask_simple_api/">
+  <meta property="og:site_name" content="Jellyland">
+  <meta property="og:title" content="用Flask实现一个简单的带POST的api">
+  <meta property="og:description" content="小记如何用Flask实现一个带POST的api。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2018-01-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-01-22T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Flask">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="用Flask实现一个简单的带POST的api">
+  <meta name="twitter:description" content="小记如何用Flask实现一个带POST的api。">
+
+
+
+
+  <meta itemprop="name" content="用Flask实现一个简单的带POST的api">
+  <meta itemprop="description" content="小记如何用Flask实现一个带POST的api。">
+  <meta itemprop="datePublished" content="2018-01-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2018-01-22T00:00:00+00:00">
+  <meta itemprop="wordCount" content="76">
+  <meta itemprop="keywords" content="Python,Flask">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #282a36;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+   
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    < !-- color: var(--code-color);
+    -->border-radius: 3px;
+  }
+
+  blockquote {
+     
+     
+     
+     
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Jellyland</h2>
+</a>
+<nav>
+<a href="/now">Now</a>
+
+<a href="/about">About</a>
+
+<a href="/index.xml">RSS</a>
+
+</nav>
+</header>
+  <main>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+">
+  <h1>用Flask实现一个简单的带POST的api</h1>
+  
+  <p>
+    <time datetime='2018-01-22'>
+      Jan 22, 2018
+    </time>
+  </p>
+  
+</div>
+<content>
+  <p>小记如何用Flask实现一个带POST的api。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> flask <span style="color:#ff79c6">import</span> Flask, request, Response
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> logging <span style="color:#ff79c6">import</span> FileHandler, INFO, Formatter
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#ff79c6">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># log</span>
+</span></span><span style="display:flex;"><span>err_log <span style="color:#ff79c6">=</span> FileHandler(<span style="color:#f1fa8c">&#39;error_log_&#39;</span><span style="color:#ff79c6">+</span>time<span style="color:#ff79c6">.</span>strftime(<span style="color:#f1fa8c">&#39;%Y%m</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">&#39;</span>,time<span style="color:#ff79c6">.</span>localtime()))
+</span></span><span style="display:flex;"><span>err_log<span style="color:#ff79c6">.</span>setLevel(INFO)  <span style="color:#6272a4">#设置日志级别</span>
+</span></span><span style="display:flex;"><span>logging_format <span style="color:#ff79c6">=</span> Formatter(<span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">%(asctime)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(levelname)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(filename)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(funcName)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(lineno)s</span><span style="color:#f1fa8c"> - </span><span style="color:#f1fa8c">%(message)s</span><span style="color:#f1fa8c">&#39;</span>)  <span style="color:#6272a4"># 日志格式</span>
+</span></span><span style="display:flex;"><span>err_log<span style="color:#ff79c6">.</span>setFormatter(logging_format)
+</span></span><span style="display:flex;"><span>app<span style="color:#ff79c6">.</span>logger<span style="color:#ff79c6">.</span>addHandler(err_log)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@app.route(<span style="color:#f1fa8c">&#39;/&#39;</span>,methods<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;POST&#39;</span>,<span style="color:#f1fa8c">&#39;GET&#39;</span>])  <span style="color:#6272a4">#&#39;/&#39;指定了路径</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">CERTAIN_FUNCTION</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> request<span style="color:#ff79c6">.</span>method <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;POST&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">...</span>  <span style="color:#6272a4">#POST过来的数据可用request.form[]将其解析出来，如果是json的话可用request.json获取</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> Response(json<span style="color:#ff79c6">.</span>dumps(xxxx), mimetype<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;application/json&#39;</span>)  <span style="color:#6272a4"># 如果需要回传json的话</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#       return xxx 当然也可直接回传字符串或某个方法 </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    app<span style="color:#ff79c6">.</span>run(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;x.x.x.x&#39;</span>,port<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;xxxx&#39;</span>)</span></span></code></pre></div>
+<blockquote>
+<p>Reference:</p>
+<ul>
+<li>
+<p><a href="http://docs.jinkan.org/docs/flask/quickstart.html">http://docs.jinkan.org/docs/flask/quickstart.html</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=LGlRYlbawnE">https://www.youtube.com/watch?v=LGlRYlbawnE</a></p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/wanghaonull/p/6537823.html">http://www.cnblogs.com/wanghaonull/p/6537823.html</a></p>
+</li>
+<li>
+<p><a href="http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html">http://www.polarxiong.com/archives/Flask%E8%AE%BE%E7%BD%AE%E8%BF%94%E5%9B%9Ejson%E6%A0%BC%E5%BC%8F.html</a></p>
+</li>
+</ul>
+</blockquote>
+</content>
+<p>
+  
+  <a href="https://jrd.pub/tags/python/">#Python</a>
+  
+  <a href="https://jrd.pub/tags/flask/">#Flask</a>
+  
+</p>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gittalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'gabrieldrapor.github.io',
+    owner: 'GabrielDrapor',
+    admin: ['GabrielDrapor'],
+    id: location.pathname,      
+    distractionFreeMode: false  
+  })
+  gittalk.render("gitalk-container")
+</script>
+
+
+  </main>
+
+  <footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"
+    integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js"
+    integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+<script>renderMathInElement(document.body);</script>
+
+
+<div class="outer">
+
+
+    <blockquote>
+        <p style="font-family: monospace;font-style: italic;">"It’s not magic, it’s talent and sweat."</p>
+    </blockquote>
+    <hr style="width:10vw;margin: 5vh auto; border: 0; border-width: 1px; border-style: inset;">
+
+    <div id="footer-info" class="inner">
+        &copy; 2025 Jellyland
+
+        <br />
+        Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/janraasch/hugo-bearblog"
+            target="_blank">hugo-bearblog</a>
+    </div>
+</div>
+
+</footer>
+</body>
+
+</html>
