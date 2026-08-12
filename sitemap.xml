@@ -2,10 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jrd.pub/tags/creation/</loc>
-    <lastmod>2026-07-20T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://jrd.pub/</loc>
+    <lastmod>2026-07-29T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://jrd.pub/260729_celebration/</loc>
+    <lastmod>2026-07-29T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://jrd.pub/260721_works/</loc>
+    <lastmod>2026-07-22T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://jrd.pub/tags/creation/</loc>
     <lastmod>2026-07-20T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://jrd.pub/260720_ovid/</loc>
